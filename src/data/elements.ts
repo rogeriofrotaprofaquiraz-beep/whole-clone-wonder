@@ -1613,198 +1613,198 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 9,
     "symbol": "F",
     "name": "Flúor",
-    "heroName": "Flúor Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Flúor.",
-    "heroImage": "/placeholder.svg",
+    "heroName": "Fluorine Phantom",
+    "heroDescription": "O elemento mais reativo e implacável do cosmos. Fluorine Phantom é o mestre da eletronegatividade, capaz de romper qualquer ligação.",
+    "heroImage": "https://cvbgrjauqjawrsyknhyj.supabase.co/storage/v1/object/public/files/uploads/higtSN3xyfWHqjML33VUnzcwd6r2/1777828798671-dg6tr-9_fluor.mp4",
     "attributes": [
       {
         "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Fraquezas",
+        "value": "Extrema agressividade química",
+        "justification": "Reage com quase tudo, inclusive vidro e metais nobres, dificultando o armazenamento.",
+        "score": 5
       },
       {
         "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Risco/Benefício à natureza",
+        "value": "Vazamentos letais",
+        "justification": "Gás extremamente corrosivo e tóxico para todos os seres vivos.",
+        "score": 10
       },
       {
         "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Risco à saúde",
+        "value": "Altamente Tóxico / Corrosivo",
+        "justification": "Causa queimaduras químicas profundas e danos ósseos.",
+        "score": 5
       },
       {
         "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Benefício",
+        "value": "Saúde Bucal e Teflon",
+        "justification": "Previne cáries em doses baixas e cria polímeros antiaderentes.",
+        "score": 80
       },
       {
         "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de ligantes possíveis",
+        "value": "1 (Covalente/Iônico)",
+        "justification": "Falta apenas 1 elétron para completar sua camada, capturando-o com força total.",
+        "score": 25
       },
       {
         "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Abundância na natureza",
+        "value": "585 ppm (crosta)",
+        "justification": "Encontrado em minerais como a fluorita.",
+        "score": 55
       },
       {
         "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Abundância no universo",
+        "value": "0,00004%",
+        "justification": "Elemento raro no universo devido à sua síntese estelar específica.",
+        "score": 20
       },
       {
         "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Massa atômica",
+        "value": "18,998 u",
+        "justification": "Massa leve, típica dos primeiros halogênios.",
+        "score": 19
       },
       {
         "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Densidade",
+        "value": "1,696 g/L",
+        "justification": "Gás mais denso que o ar.",
+        "score": 17
       },
       {
         "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Raio atômico",
+        "value": "57 pm",
+        "justification": "Um dos menores raios, o que explica sua atração eletrônica extrema.",
+        "score": 99
       },
       {
         "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Oxidação",
+        "value": "-1",
+        "justification": "Estado de oxidação único e o mais estável possível.",
+        "score": 100
       },
       {
         "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Condutividade elétrica",
+        "value": "Isolante (Gás)",
+        "justification": "Não-metal clássico, não conduz eletricidade.",
+        "score": 1
       },
       {
         "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Eletronegatividade",
+        "value": "3,98 (Pauling)",
+        "justification": "O valor mais alto de toda a tabela periódica.",
+        "score": 100
       },
       {
         "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Estado físico",
+        "value": "Gás (Não-metal)",
+        "justification": "Gás amarelo-pálido altamente reativo.",
+        "score": 1
       },
       {
         "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Maior subnível energético",
+        "value": "2p⁵",
+        "justification": "Quase um gás nobre, o que gera sua 'fome' por um elétron.",
+        "score": 9
       },
       {
         "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Distribuição eletrônica",
+        "value": "1s² 2s² 2p⁵",
+        "justification": "Configuração de alta energia e instabilidade química.",
+        "score": 95
       },
       {
         "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de prótons / Nº de elétrons",
+        "value": "9",
+        "justification": "O número atômico do herói halogênio.",
+        "score": 9
       },
       {
         "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de nêutrons",
+        "value": "10",
+        "justification": "Configuração estável no isótopo Flúor-19.",
+        "score": 10
       },
       {
         "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Radioatividade",
+        "value": "Estável (F-19)",
+        "justification": "O único isótopo natural é estável.",
+        "score": 100
       },
       {
         "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Aplicabilidade / Utilidade",
+        "value": "Pastas de dente, Enriquecimento Nuclear",
+        "justification": "Crucial para a higiene bucal e na indústria de urânio.",
+        "score": 95
       },
       {
         "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Local de origem",
+        "value": "Paris, França",
+        "justification": "Isolado por Henri Moissan após muitas tentativas perigosas.",
+        "score": 85
       },
       {
         "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Curiosidade",
+        "value": "O Devorador de Recipientes",
+        "justification": "Por décadas, nenhum recipiente conseguia contê-lo sem ser destruído.",
+        "score": 99
       },
       {
         "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Origem do nome",
+        "value": "Fluere (Fluir)",
+        "justification": "Do latim 'fluere', devido ao uso da fluorita como fundente.",
+        "score": 75
       },
       {
         "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Descobridor",
+        "value": "Henri Moissan",
+        "justification": "Ganhou o Prêmio Nobel por isolar este elemento perigoso.",
+        "score": 100
       },
       {
         "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ano de descoberta",
+        "value": "1886",
+        "justification": "Levou quase 100 anos para ser isolado após sua identificação.",
+        "score": 85
       },
       {
         "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de fusão",
+        "value": "-219,62 °C",
+        "justification": "Ponto de congelamento extremamente baixo.",
+        "score": 2
       },
       {
         "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de ebulição",
+        "value": "-188,12 °C",
+        "justification": "Torna-se líquido em temperaturas criogênicas.",
+        "score": 5
       }
     ]
   },
