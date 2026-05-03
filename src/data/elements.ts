@@ -1215,198 +1215,198 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 7,
     "symbol": "N",
     "name": "Nitrogênio",
-    "heroName": "Nitrogênio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Nitrogênio.",
-    "heroImage": "/placeholder.svg",
+    "heroName": "Nitro Frost",
+    "heroDescription": "O mestre do frio absoluto e o guardião da atmosfera. Invisível e onipresente, Nitro Frost mantém o equilíbrio vital de todo o planeta.",
+    "heroImage": "https://cvbgrjauqjawrsyknhyj.supabase.co/storage/v1/object/public/files/uploads/higtSN3xyfWHqjML33VUnzcwd6r2/1777828651281-141mv-7_nitrogenio.mp4",
     "attributes": [
       {
         "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Fraquezas",
+        "value": "Inércia em temperatura ambiente",
+        "justification": "Sua ligação tripla é tão forte que ele raramente reage sem energia extrema.",
+        "score": 10
       },
       {
         "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Risco/Benefício à natureza",
+        "value": "Ciclo do Nitrogênio",
+        "justification": "Vital para o crescimento das plantas como fertilizante natural.",
+        "score": 95
       },
       {
         "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Risco à saúde",
+        "value": "Asfixiante simples / Criogênico",
+        "justification": "Inofensivo no ar, mas perigoso se deslocar o oxigênio ou em estado líquido.",
+        "score": 70
       },
       {
         "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Benefício",
+        "value": "Proteínas e DNA",
+        "justification": "Componente essencial de todos os aminoácidos e bases nitrogenadas.",
+        "score": 100
       },
       {
         "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de ligantes possíveis",
+        "value": "3 (Covalente)",
+        "justification": "Forma ligações triplas extremamente estáveis.",
+        "score": 60
       },
       {
         "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Abundância na natureza",
+        "value": "78% da atmosfera",
+        "justification": "O componente mais abundante do ar que respiramos.",
+        "score": 100
       },
       {
         "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Abundância no universo",
+        "value": "0,1%",
+        "justification": "Sétimo elemento mais abundante no cosmos.",
+        "score": 75
       },
       {
         "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Massa atômica",
+        "value": "14,007 u",
+        "justification": "Massa intermediária, essencial para a densidade atmosférica.",
+        "score": 14
       },
       {
         "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Densidade",
+        "value": "1,25 g/L",
+        "justification": "Ligeiramente mais leve que o ar atmosférico.",
+        "score": 12
       },
       {
         "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Raio atômico",
+        "value": "65 pm",
+        "justification": "Um dos menores raios atômicos, permitindo ligações triplas curtas.",
+        "score": 95
       },
       {
         "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Oxidação",
+        "value": "+5, +4, +3, +2, +1, -3",
+        "justification": "Uma das maiores variedades de estados de oxidação.",
+        "score": 98
       },
       {
         "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Condutividade elétrica",
+        "value": "Isolante (Gás)",
+        "justification": "Pobre condutor, típico de não-metais gasosos.",
+        "score": 1
       },
       {
         "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Eletronegatividade",
+        "value": "3,04 (Pauling)",
+        "justification": "Altamente eletronegativo, atrás apenas de Flúor e Oxigênio.",
+        "score": 90
       },
       {
         "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Estado físico",
+        "value": "Gás (Não-metal)",
+        "justification": "Gás incolor e inodoro à temperatura ambiente.",
+        "score": 1
       },
       {
         "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Maior subnível energético",
+        "value": "2p³",
+        "justification": "Subnível p exatamente na metade, conferindo estabilidade.",
+        "score": 7
       },
       {
         "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Distribuição eletrônica",
+        "value": "1s² 2s² 2p³",
+        "justification": "Configuração que permite a formação de amônia e nitratos.",
+        "score": 85
       },
       {
         "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de prótons / Nº de elétrons",
+        "value": "7",
+        "justification": "Número atômico da vida e da atmosfera.",
+        "score": 7
       },
       {
         "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de nêutrons",
+        "value": "7",
+        "justification": "Núcleo perfeitamente balanceado no Nitrogênio-14.",
+        "score": 7
       },
       {
         "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Radioatividade",
+        "value": "Estável",
+        "justification": "A grande maioria do nitrogênio terrestre é estável.",
+        "score": 100
       },
       {
         "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Aplicabilidade / Utilidade",
+        "value": "Criogenia, Fertilizantes, Explosivos",
+        "justification": "Essencial para a produção de alimentos (Processo Haber-Bosch).",
+        "score": 99
       },
       {
         "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Local de origem",
+        "value": "Edimburgo, Escócia",
+        "justification": "Identificado pela primeira vez por Daniel Rutherford.",
+        "score": 80
       },
       {
         "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Curiosidade",
+        "value": "Líquido Criogênico",
+        "justification": "Pode congelar quase qualquer coisa instantaneamente a -196 °C.",
+        "score": 98
       },
       {
         "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Origem do nome",
+        "value": "Nitron (Salitre) + Genes (Formador)",
+        "justification": "Significa 'formador de salitre' (nitrato de potássio).",
+        "score": 85
       },
       {
         "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Descobridor",
+        "value": "Daniel Rutherford",
+        "justification": "Descobriu o 'ar deletério' em 1772.",
+        "score": 90
       },
       {
         "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ano de descoberta",
+        "value": "1772",
+        "justification": "Descoberto durante os experimentos com composição do ar.",
+        "score": 92
       },
       {
         "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de fusão",
+        "value": "-210 °C",
+        "justification": "Extremamente baixo, permitindo sua fase líquida criogênica.",
+        "score": 2
       },
       {
         "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de ebulição",
+        "value": "-195,79 °C",
+        "justification": "A temperatura famosa do nitrogênio líquido.",
+        "score": 5
       }
     ]
   },
