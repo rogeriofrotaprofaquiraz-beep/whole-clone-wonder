@@ -140,16 +140,32 @@ const Index = () => {
     ["", "", "Ac", "Th", "Pa", "U", "Np", "Pu", "Am", "Cm", "Bk", "Cf", "Es", "Fm", "Md", "No", "Lr", ""],
   ];
 
-  const getElementCategoryColor = (symbol: string) => {
-    if (["H", "C", "N", "O", "P", "S", "Se"].includes(symbol)) return "bg-green-500/20 text-green-400 border-green-500/50"; // Não metais
-    if (["He", "Ne", "Ar", "Kr", "Xe", "Rn", "Og"].includes(symbol)) return "bg-blue-500/20 text-blue-400 border-blue-500/50"; // Gases Nobres
-    if (["Li", "Na", "K", "Rb", "Cs", "Fr"].includes(symbol)) return "bg-red-500/20 text-red-400 border-red-500/50"; // Metais Alcalinos
+  const getElementCategoryColor = (symbol: string, rIdx: number, sIdx: number) => {
+    if (["H", "C", "N", "O", "P", "S", "Se"].includes(symbol)) return "bg-emerald-500/20 text-emerald-400 border-emerald-500/50"; // Não metais
+    if (["He", "Ne", "Ar", "Kr", "Xe", "Rn", "Og"].includes(symbol)) return "bg-sky-500/20 text-sky-400 border-sky-500/50"; // Gases Nobres
+    if (["Li", "Na", "K", "Rb", "Cs", "Fr"].includes(symbol)) return "bg-rose-500/20 text-rose-400 border-rose-500/50"; // Metais Alcalinos
     if (["Be", "Mg", "Ca", "Sr", "Ba", "Ra"].includes(symbol)) return "bg-orange-500/20 text-orange-400 border-orange-500/50"; // Alcalino Terrosos
-    if (["B", "Si", "Ge", "As", "Sb", "Te", "At"].includes(symbol)) return "bg-teal-500/20 text-teal-400 border-teal-500/50"; // Semimetais
-    if (["F", "Cl", "Br", "I", "Ts"].includes(symbol)) return "bg-yellow-500/20 text-yellow-400 border-yellow-500/50"; // Halogênios
-    if (symbol.includes("La") || symbol.includes("Ce") || symbol.includes("Pr") || symbol.includes("Nd")) return "bg-pink-500/20 text-pink-400 border-pink-500/50"; // Lantanídeos
-    if (symbol.includes("Ac") || symbol.includes("Th") || symbol.includes("Pa") || symbol.includes("U")) return "bg-purple-500/20 text-purple-400 border-purple-500/50"; // Actinídeos
-    return "bg-slate-800/40 text-slate-400 border-slate-700/50"; // Metais de transição e outros
+    if (["B", "Si", "Ge", "As", "Sb", "Te", "Po"].includes(symbol)) return "bg-teal-500/20 text-teal-400 border-teal-500/50"; // Semimetais
+    if (["F", "Cl", "Br", "I", "At", "Ts"].includes(symbol)) return "bg-yellow-500/20 text-yellow-400 border-yellow-500/50"; // Halogênios
+    if (["Al", "Ga", "In", "Sn", "Tl", "Pb", "Bi", "Nh", "Fl", "Mc", "Lv"].includes(symbol)) return "bg-indigo-500/20 text-indigo-400 border-indigo-500/50"; // Outros Metais
+    if (rIdx >= 3 && rIdx <= 6 && sIdx >= 2 && sIdx <= 11) return "bg-blue-500/20 text-blue-400 border-blue-500/50"; // Metais de Transição
+    if (rIdx === 8) return "bg-pink-500/20 text-pink-400 border-pink-500/50"; // Lantanídeos
+    if (rIdx === 9) return "bg-purple-500/20 text-purple-400 border-purple-500/50"; // Actinídeos
+    return "bg-slate-800/40 text-slate-400 border-slate-700/50";
+  };
+
+  const getCategoryName = (symbol: string, rIdx: number, sIdx: number) => {
+    if (["H", "C", "N", "O", "P", "S", "Se"].includes(symbol)) return "Não Metal";
+    if (["He", "Ne", "Ar", "Kr", "Xe", "Rn", "Og"].includes(symbol)) return "Gás Nobre";
+    if (["Li", "Na", "K", "Rb", "Cs", "Fr"].includes(symbol)) return "Metal Alcalino";
+    if (["Be", "Mg", "Ca", "Sr", "Ba", "Ra"].includes(symbol)) return "Alcalino Terroso";
+    if (["B", "Si", "Ge", "As", "Sb", "Te", "Po"].includes(symbol)) return "Semimetal";
+    if (["F", "Cl", "Br", "I", "At", "Ts"].includes(symbol)) return "Halogênio";
+    if (["Al", "Ga", "In", "Sn", "Tl", "Pb", "Bi", "Nh", "Fl", "Mc", "Lv"].includes(symbol)) return "Outro Metal";
+    if (rIdx >= 3 && rIdx <= 6 && sIdx >= 2 && sIdx <= 11) return "Metal de Transição";
+    if (rIdx === 8) return "Lantanídeo";
+    if (rIdx === 9) return "Actinídeo";
+    return "Desconhecido";
   };
 
   return (
@@ -175,7 +191,8 @@ const Index = () => {
               <React.Fragment key={rIdx}>
                 {row.map((symbol, sIdx) => {
                   const isAvailable = symbol && ELEMENTS_DATA[symbol];
-                  const categoryStyle = getElementCategoryColor(symbol);
+                  const categoryStyle = getElementCategoryColor(symbol, rIdx, sIdx);
+                  const categoryName = getCategoryName(symbol, rIdx, sIdx);
                   
                   return (
                     <button
@@ -185,17 +202,18 @@ const Index = () => {
                         relative aspect-square flex flex-col items-center justify-center rounded-md transition-all duration-300 border
                         ${!symbol ? 'invisible' : 'hover:scale-125 hover:z-20 hover:shadow-[0_0_25px_rgba(255,255,255,0.4)]'}
                         ${selectedSymbol === symbol ? 'ring-2 ring-white scale-110 z-10 shadow-[0_0_20px_rgba(255,255,255,0.3)]' : ''}
-                        ${!isAvailable && symbol ? 'opacity-30 grayscale cursor-not-allowed' : 'cursor-pointer'}
+                        ${!isAvailable && symbol ? 'opacity-40 grayscale cursor-not-allowed' : 'cursor-pointer'}
                         ${categoryStyle}
                         group/item
                       `}
                     >
                       {/* Tooltip/Hover Info */}
                       {symbol && (
-                        <div className="absolute -top-12 left-1/2 -translate-x-1/2 bg-slate-900 border border-white/20 px-2 py-1 rounded shadow-2xl opacity-0 group-hover/item:opacity-100 pointer-events-none transition-opacity z-30 min-w-[80px] text-center">
+                        <div className="absolute -top-16 left-1/2 -translate-x-1/2 bg-slate-900 border border-white/20 px-2 py-1 rounded shadow-2xl opacity-0 group-hover/item:opacity-100 pointer-events-none transition-opacity z-30 min-w-[100px] text-center">
                           <div className="text-[8px] text-blue-400 font-bold leading-none">{isAvailable ? ELEMENTS_DATA[symbol].number : ''}</div>
-                          <div className="text-xs font-black text-white">{symbol.replace('-Lu', '').replace('-Lr', '')}</div>
-                          <div className="text-[7px] text-white/60 truncate uppercase">{isAvailable ? ELEMENTS_DATA[symbol].name : symbol}</div>
+                          <div className="text-sm font-black text-white leading-tight">{symbol.replace('-Lu', '').replace('-Lr', '')}</div>
+                          <div className="text-[7px] text-white/60 truncate uppercase font-bold">{isAvailable ? ELEMENTS_DATA[symbol].name : symbol}</div>
+                          <div className="text-[6px] text-blue-300 mt-0.5 border-t border-white/10 pt-0.5 uppercase tracking-tighter">{categoryName}</div>
                           <div className="absolute bottom-[-5px] left-1/2 -translate-x-1/2 w-2 h-2 bg-slate-900 border-r border-b border-white/20 rotate-45"></div>
                         </div>
                       )}
@@ -217,25 +235,49 @@ const Index = () => {
             ))}
           </div>
 
-          {/* Legenda Estilizada */}
-          <div className="flex flex-wrap gap-3 justify-center text-[9px] font-bold uppercase tracking-widest text-white/40">
-            <div className="flex items-center gap-1.5 px-2 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-400">
-              <div className="w-1.5 h-1.5 rounded-full bg-red-500"></div>
+          <div className="flex flex-wrap gap-2 justify-center text-[8px] font-bold uppercase tracking-widest text-white/40 max-w-4xl mx-auto">
+            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/20 text-rose-400">
+              <div className="w-1.5 h-1.5 rounded-full bg-rose-500"></div>
               <span>Metais Alcalinos</span>
             </div>
-            <div className="flex items-center gap-1.5 px-2 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400">
-              <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
-              <span>Gases Nobres</span>
+            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400">
+              <div className="w-1.5 h-1.5 rounded-full bg-orange-500"></div>
+              <span>Alcalino Terrosos</span>
             </div>
-            <div className="flex items-center gap-1.5 px-2 py-1 rounded-full bg-green-500/10 border border-green-500/20 text-green-400">
-              <div className="w-1.5 h-1.5 rounded-full bg-green-500"></div>
+            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400">
+              <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
+              <span>Transição</span>
+            </div>
+            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400">
+              <div className="w-1.5 h-1.5 rounded-full bg-indigo-500"></div>
+              <span>Outros Metais</span>
+            </div>
+            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/20 text-teal-400">
+              <div className="w-1.5 h-1.5 rounded-full bg-teal-500"></div>
+              <span>Semimetais</span>
+            </div>
+            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
+              <div className="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>
               <span>Não Metais</span>
             </div>
-            <div className="flex items-center gap-1.5 px-2 py-1 rounded-full bg-white/10 border border-white/20 text-white/60">
-              <div className="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></div>
-              <span>Herói Pronto</span>
+            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-yellow-500/10 border border-yellow-500/20 text-yellow-400">
+              <div className="w-1.5 h-1.5 rounded-full bg-yellow-500"></div>
+              <span>Halogênios</span>
+            </div>
+            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400">
+              <div className="w-1.5 h-1.5 rounded-full bg-sky-500"></div>
+              <span>Gases Nobres</span>
+            </div>
+            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-pink-500/10 border border-pink-500/20 text-pink-400">
+              <div className="w-1.5 h-1.5 rounded-full bg-pink-500"></div>
+              <span>Lantanídeos</span>
+            </div>
+            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400">
+              <div className="w-1.5 h-1.5 rounded-full bg-purple-500"></div>
+              <span>Actinídeos</span>
             </div>
           </div>
+
         </div>
 
         {/* Lado Direito: Visualização da Carta */}
