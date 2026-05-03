@@ -140,7 +140,7 @@ const Index = () => {
     ["", "", "Ac", "Th", "Pa", "U", "Np", "Pu", "Am", "Cm", "Bk", "Cf", "Es", "Fm", "Md", "No", "Lr", ""],
   ];
 
-  const getElementCategoryColor = (symbol: string) => {
+  const getElementCategoryColor = (symbol: string, rIdx: number, sIdx: number) => {
     if (["H", "C", "N", "O", "P", "S", "Se"].includes(symbol)) return "bg-emerald-500/20 text-emerald-400 border-emerald-500/50"; // Não metais
     if (["He", "Ne", "Ar", "Kr", "Xe", "Rn", "Og"].includes(symbol)) return "bg-sky-500/20 text-sky-400 border-sky-500/50"; // Gases Nobres
     if (["Li", "Na", "K", "Rb", "Cs", "Fr"].includes(symbol)) return "bg-rose-500/20 text-rose-400 border-rose-500/50"; // Metais Alcalinos
