@@ -220,198 +220,198 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 2,
     "symbol": "He",
     "name": "Hélio",
-    "heroName": "Hélio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Hélio.",
-    "heroImage": "/placeholder.svg",
+    "heroName": "Solaris",
+    "heroDescription": "Nascido no fogo das estrelas, Solaris é a essência da luz e o fôlego da ascensão cósmica.",
+    "heroImage": "https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?auto=format&fit=crop&q=80&w=1000",
     "attributes": [
       {
         "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Fraquezas",
+        "value": "Inércia química total",
+        "justification": "Quase impossível de reagir com outros elementos.",
+        "score": 10
       },
       {
         "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Risco/Benefício à natureza",
+        "value": "Vital para as estrelas",
+        "justification": "Motor da fusão nuclear estelar.",
+        "score": 100
       },
       {
         "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Risco à saúde",
+        "value": "Não tóxico (Asfixiante)",
+        "justification": "Seguro, mas pode deslocar o oxigênio.",
+        "score": 95
       },
       {
         "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Benefício",
+        "value": "Resfriamento quântico",
+        "justification": "Essencial para supercondutores e MRIs.",
+        "score": 90
       },
       {
         "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de ligantes possíveis",
+        "value": "0",
+        "justification": "Gás nobre com camada de valência completa.",
+        "score": 1
       },
       {
         "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Abundância na natureza",
+        "value": "5,2 ppm (atmosfera)",
+        "justification": "Raríssimo na Terra devido à sua leveza.",
+        "score": 5
       },
       {
         "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Abundância no universo",
+        "value": "~24%",
+        "justification": "O segundo elemento mais comum no cosmos.",
+        "score": 99
       },
       {
         "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Massa atômica",
+        "value": "4,0026 u",
+        "justification": "Muito leve, perde apenas para o Hidrogênio.",
+        "score": 4
       },
       {
         "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Densidade",
+        "value": "0,1785 g/L",
+        "justification": "Extremamente baixa, flutua no ar.",
+        "score": 2
       },
       {
         "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Raio atômico",
+        "value": "31 pm",
+        "justification": "O menor raio atômico de todos.",
+        "score": 100
       },
       {
         "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Oxidação",
+        "value": "0",
+        "justification": "Não ganha nem perde elétrons facilmente.",
+        "score": 1
       },
       {
         "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Condutividade elétrica",
+        "value": "Isolante",
+        "justification": "Pobre condutor, exceto em estado de plasma.",
+        "score": 5
       },
       {
         "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Eletronegatividade",
+        "value": "N/A",
+        "justification": "Não possui afinidade por elétrons alheios.",
+        "score": 1
       },
       {
         "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Estado físico",
+        "value": "Gás",
+        "justification": "Permanece gasoso até quase o zero absoluto.",
+        "score": 1
       },
       {
         "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Maior subnível energético",
+        "value": "1s²",
+        "justification": "Configuração de dueto perfeita.",
+        "score": 2
       },
       {
         "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Distribuição eletrônica",
+        "value": "1s²",
+        "justification": "O exemplo máximo de estabilidade.",
+        "score": 100
       },
       {
         "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de prótons / Nº de elétrons",
+        "value": "2",
+        "justification": "Define sua identidade como o segundo elemento.",
+        "score": 99
       },
       {
         "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de nêutrons",
+        "value": "2",
+        "justification": "Equilíbrio nuclear perfeito no Hélio-4.",
+        "score": 5
       },
       {
         "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Radioatividade",
+        "value": "Estável",
+        "justification": "Núcleo altamente estável.",
+        "score": 100
       },
       {
         "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Aplicabilidade / Utilidade",
+        "value": "Alta (Criogenia/Aeroespacial)",
+        "justification": "Insubstituível em tecnologias de ponta.",
+        "score": 95
       },
       {
         "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Local de origem",
+        "value": "Coração Estelar",
+        "justification": "Criado via fusão nuclear em estrelas.",
+        "score": 100
       },
       {
         "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Curiosidade",
+        "value": "Elemento 'Solar'",
+        "justification": "Único elemento descoberto no espaço antes da Terra.",
+        "score": 98
       },
       {
         "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Origem do nome",
+        "value": "Helios (Sol)",
+        "justification": "Homenagem ao deus grego do Sol.",
+        "score": 95
       },
       {
         "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Descobridor",
+        "value": "Janssen & Lockyer",
+        "justification": "Identificado por espectroscopia em 1868.",
+        "score": 85
       },
       {
         "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ano de descoberta",
+        "value": "1868",
+        "justification": "Relativamente recente na história da química.",
+        "score": 80
       },
       {
         "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de fusão",
+        "value": "-272,2 °C",
+        "justification": "Só solidifica sob pressão extrema.",
+        "score": 1
       },
       {
         "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de ebulição",
+        "value": "-268,9 °C",
+        "justification": "O ponto de ebulição mais baixo da matéria.",
+        "score": 100
       }
     ]
   },
