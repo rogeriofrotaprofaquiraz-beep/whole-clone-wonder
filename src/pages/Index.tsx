@@ -119,7 +119,8 @@ const Index = () => {
                     className={`
                       aspect-square flex items-center justify-center text-[8px] md:text-xs font-bold rounded transition-all
                       ${!symbol ? 'invisible' : ''}
-                      ${symbol && ELEMENTS_DATA[symbol]?.heroImage === '/placeholder.svg' ? 'opacity-40 hover:opacity-100 bg-slate-800' : 'bg-slate-800 hover:bg-blue-600 hover:scale-110 active:scale-95 shadow-[0_0_10px_rgba(59,130,246,0.3)]'}
+                      ${symbol && !ELEMENTS_DATA[symbol] ? 'opacity-20 cursor-default bg-slate-900' : ''}
+                      ${symbol && ELEMENTS_DATA[symbol]?.heroImage === '/placeholder.svg' ? 'opacity-40 hover:opacity-100 bg-slate-800' : symbol && ELEMENTS_DATA[symbol] ? 'bg-slate-800 hover:bg-blue-600 hover:scale-110 active:scale-95 shadow-[0_0_10px_rgba(59,130,246,0.3)]' : ''}
                       ${selectedSymbol === symbol ? 'ring-2 ring-blue-400 bg-blue-900 shadow-[0_0_15px_rgba(59,130,246,0.5)] opacity-100' : ''}
                     `}
                   >
