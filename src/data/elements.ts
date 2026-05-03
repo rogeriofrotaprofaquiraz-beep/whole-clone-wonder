@@ -2011,198 +2011,198 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 11,
     "symbol": "Na",
     "name": "Sódio",
-    "heroName": "Sódio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Sódio.",
-    "heroImage": "/placeholder.svg",
+    "heroName": "Natrium Spark",
+    "heroDescription": "Um metal macio de coração explosivo. Natrium Spark é o condutor da eletricidade nervosa e o mestre das reações violentas com a água.",
+    "heroImage": "https://cvbgrjauqjawrsyknhyj.supabase.co/storage/v1/object/public/files/uploads/higtSN3xyfWHqjML33VUnzcwd6r2/1777828933483-lercb-11__S_DIO.mp4",
     "attributes": [
       {
         "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Fraquezas",
+        "value": "Reatividade extrema com água",
+        "justification": "Pode explodir ou pegar fogo ao entrar em contato com umidade.",
+        "score": 10
       },
       {
         "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Risco/Benefício à natureza",
+        "value": "Essencial para os oceanos",
+        "justification": "Principal íon dissolvido na água do mar, regulando a salinidade.",
+        "score": 90
       },
       {
         "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Risco à saúde",
+        "value": "Vital / Hipertensão",
+        "justification": "Essencial para impulsos nervosos, mas o excesso de sal causa doenças cardíacas.",
+        "score": 45
       },
       {
         "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Benefício",
+        "value": "Sal de Cozinha e Impulsos Nervosos",
+        "justification": "Sem ele, o cérebro não conseguiria enviar sinais para o corpo.",
+        "score": 100
       },
       {
         "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de ligantes possíveis",
+        "value": "1 (Iônico)",
+        "justification": "Metal alcalino que perde facilmente seu único elétron de valência.",
+        "score": 30
       },
       {
         "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Abundância na natureza",
+        "value": "2,3% na crosta",
+        "justification": "O sexto elemento mais abundante na crosta terrestre.",
+        "score": 85
       },
       {
         "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Abundância no universo",
+        "value": "0,002%",
+        "justification": "Comum em sistemas solares e estrelas tipo G como o Sol.",
         "score": 50
       },
       {
         "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Massa atômica",
+        "value": "22,989 u",
+        "justification": "Massa moderada, iniciando o terceiro período da tabela.",
+        "score": 23
       },
       {
         "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Densidade",
+        "value": "0,968 g/cm³",
+        "justification": "Tão leve que flutua na água (enquanto reage violentamente!).",
+        "score": 15
       },
       {
         "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Raio atômico",
+        "value": "186 pm",
+        "justification": "Raio grande, característico dos metais alcalinos.",
+        "score": 75
       },
       {
         "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Oxidação",
+        "value": "+1",
+        "justification": "Estado de oxidação quase único e extremamente estável em compostos.",
+        "score": 90
       },
       {
         "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Condutividade elétrica",
+        "value": "2,1 × 10⁷ S/m",
+        "justification": "Excelente condutor elétrico em estado puro.",
+        "score": 85
       },
       {
         "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Eletronegatividade",
+        "value": "0,93 (Pauling)",
+        "justification": "Valor muito baixo, indicando sua forte natureza metálica.",
+        "score": 15
       },
       {
         "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Estado físico",
+        "value": "Sólido (Metal Alcalino)",
+        "justification": "Metal prateado tão macio que pode ser cortado com uma faca.",
+        "score": 90
       },
       {
         "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Maior subnível energético",
+        "value": "3s¹",
+        "justification": "Possui um único elétron solitário na terceira camada.",
+        "score": 11
       },
       {
         "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Distribuição eletrônica",
+        "value": "[Ne] 3s¹",
+        "justification": "Configuração que explica sua alta reatividade química.",
+        "score": 80
       },
       {
         "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de prótons / Nº de elétrons",
+        "value": "11",
+        "justification": "Número atômico que inicia o bloco s do terceiro período.",
+        "score": 11
       },
       {
         "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de nêutrons",
+        "value": "12",
+        "justification": "Núcleo estável no isótopo Sódio-23.",
+        "score": 12
       },
       {
         "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Radioatividade",
+        "value": "Estável (Na-23)",
+        "justification": "O isótopo natural é completamente estável.",
+        "score": 100
       },
       {
         "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Aplicabilidade / Utilidade",
+        "value": "Lâmpadas de Vapor, Nutrição, Indústria",
+        "justification": "Usado em iluminação pública amarela e processos químicos.",
+        "score": 95
       },
       {
         "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Local de origem",
+        "value": "Londres, Inglaterra",
+        "justification": "Isolado por Humphry Davy através da eletrólise da soda cáustica.",
+        "score": 85
       },
       {
         "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Curiosidade",
+        "value": "Explosão na Água",
+        "justification": "O metal puro explode ao contato com a água, liberando gás hidrogênio e calor.",
+        "score": 99
       },
       {
         "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Origem do nome",
+        "value": "Natrium (Soda)",
+        "justification": "Do egípcio 'natron', usado para designar o carbonato de sódio.",
+        "score": 80
       },
       {
         "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Descobridor",
+        "value": "Humphry Davy",
+        "justification": "Grande químico que isolou vários metais alcalinos em 1807.",
+        "score": 90
       },
       {
         "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ano de descoberta",
+        "value": "1807",
+        "justification": "Descoberto no auge da era da eletroquímica.",
+        "score": 90
       },
       {
         "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de fusão",
+        "value": "97,72 °C",
+        "justification": "Derrete abaixo da temperatura de ebulição da água.",
+        "score": 15
       },
       {
         "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de ebulição",
+        "value": "883 °C",
+        "justification": "Ponto de ebulição típico de metais leves.",
+        "score": 30
       }
     ]
   },
