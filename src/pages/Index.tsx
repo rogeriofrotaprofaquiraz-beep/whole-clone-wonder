@@ -126,7 +126,7 @@ const Index = () => {
   const [selectedSymbol, setSelectedSymbol] = useState<string>("H");
   const selectedElement = ELEMENTS_DATA[selectedSymbol];
 
-  // Tabela Periódica Completa (118 elementos)
+  // Tabela Periódica Completa com agrupamentos por cores e estrutura fiel ao PDF
   const periodicTableLayout = [
     ["H", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "He"],
     ["Li", "Be", "", "", "", "", "", "", "", "", "", "", "B", "C", "N", "O", "F", "Ne"],
@@ -139,6 +139,18 @@ const Index = () => {
     ["", "", "La", "Ce", "Pr", "Nd", "Pm", "Sm", "Eu", "Gd", "Tb", "Dy", "Ho", "Er", "Tm", "Yb", "Lu", ""],
     ["", "", "Ac", "Th", "Pa", "U", "Np", "Pu", "Am", "Cm", "Bk", "Cf", "Es", "Fm", "Md", "No", "Lr", ""],
   ];
+
+  const getElementCategoryColor = (symbol: string) => {
+    if (["H", "C", "N", "O", "P", "S", "Se"].includes(symbol)) return "bg-green-500/20 text-green-400 border-green-500/50"; // Não metais
+    if (["He", "Ne", "Ar", "Kr", "Xe", "Rn", "Og"].includes(symbol)) return "bg-blue-500/20 text-blue-400 border-blue-500/50"; // Gases Nobres
+    if (["Li", "Na", "K", "Rb", "Cs", "Fr"].includes(symbol)) return "bg-red-500/20 text-red-400 border-red-500/50"; // Metais Alcalinos
+    if (["Be", "Mg", "Ca", "Sr", "Ba", "Ra"].includes(symbol)) return "bg-orange-500/20 text-orange-400 border-orange-500/50"; // Alcalino Terrosos
+    if (["B", "Si", "Ge", "As", "Sb", "Te", "At"].includes(symbol)) return "bg-teal-500/20 text-teal-400 border-teal-500/50"; // Semimetais
+    if (["F", "Cl", "Br", "I", "Ts"].includes(symbol)) return "bg-yellow-500/20 text-yellow-400 border-yellow-500/50"; // Halogênios
+    if (symbol.includes("La") || symbol.includes("Ce") || symbol.includes("Pr") || symbol.includes("Nd")) return "bg-pink-500/20 text-pink-400 border-pink-500/50"; // Lantanídeos
+    if (symbol.includes("Ac") || symbol.includes("Th") || symbol.includes("Pa") || symbol.includes("U")) return "bg-purple-500/20 text-purple-400 border-purple-500/50"; // Actinídeos
+    return "bg-slate-800/40 text-slate-400 border-slate-700/50"; // Metais de transição e outros
+  };
 
   return (
     <div className="min-h-screen bg-slate-950 p-4 md:p-8 flex flex-col items-center justify-start font-sans text-white overflow-hidden">
@@ -154,40 +166,62 @@ const Index = () => {
 
       <div className="flex flex-col lg:flex-row gap-8 items-start justify-center w-full max-w-7xl">
         {/* Lado Esquerdo: Tabela Periódica (Mini) */}
-        <div className="flex-1 bg-slate-900/50 p-6 rounded-2xl border border-slate-800 backdrop-blur-md">
-          <div className="grid grid-cols-18 gap-1 md:gap-2 mb-4">
+        <div className="flex-1 bg-slate-900/40 p-4 md:p-8 rounded-[2rem] border border-white/5 backdrop-blur-2xl shadow-[0_0_50px_rgba(0,0,0,0.3)] relative overflow-hidden group">
+          {/* Grid Background Effect */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none"></div>
+          
+          <div className="relative grid grid-cols-18 gap-1 md:gap-1.5 mb-8 scale-95 lg:scale-100 origin-left">
             {periodicTableLayout.map((row, rIdx) => (
               <React.Fragment key={rIdx}>
-                {row.map((symbol, sIdx) => (
-                  <button
-                    key={`${rIdx}-${sIdx}`}
-                    onClick={() => symbol && ELEMENTS_DATA[symbol] && setSelectedSymbol(symbol)}
-                    className={`
-                      aspect-square flex items-center justify-center text-[8px] md:text-xs font-bold rounded transition-all
-                      ${!symbol ? 'invisible' : ''}
-                      ${symbol && !ELEMENTS_DATA[symbol] ? 'opacity-20 cursor-default bg-slate-900' : ''}
-                      ${symbol && ELEMENTS_DATA[symbol]?.heroImage === '/placeholder.svg' ? 'opacity-40 hover:opacity-100 bg-slate-800' : symbol && ELEMENTS_DATA[symbol] ? 'bg-slate-800 hover:bg-blue-600 hover:scale-110 active:scale-95 shadow-[0_0_10px_rgba(59,130,246,0.3)]' : ''}
-                      ${selectedSymbol === symbol ? 'ring-2 ring-blue-400 bg-blue-900 shadow-[0_0_15px_rgba(59,130,246,0.5)] opacity-100' : ''}
-                    `}
-                  >
-                    {symbol}
-                  </button>
-                ))}
+                {row.map((symbol, sIdx) => {
+                  const isAvailable = symbol && ELEMENTS_DATA[symbol];
+                  const categoryStyle = getElementCategoryColor(symbol);
+                  
+                  return (
+                    <button
+                      key={`${rIdx}-${sIdx}`}
+                      onClick={() => symbol && isAvailable && setSelectedSymbol(symbol)}
+                      className={`
+                        relative aspect-square flex flex-col items-center justify-center rounded-md transition-all duration-300 border
+                        ${!symbol ? 'invisible' : 'hover:scale-110 active:scale-95'}
+                        ${selectedSymbol === symbol ? 'ring-2 ring-white scale-110 z-10 shadow-[0_0_20px_rgba(255,255,255,0.3)]' : 'hover:shadow-lg'}
+                        ${!isAvailable && symbol ? 'opacity-30 grayscale cursor-not-allowed' : 'cursor-pointer'}
+                        ${categoryStyle}
+                      `}
+                    >
+                      <span className="text-[6px] md:text-[8px] absolute top-1 left-1 font-mono opacity-50">
+                        {isAvailable ? ELEMENTS_DATA[symbol].number : ''}
+                      </span>
+                      <span className="text-[10px] md:text-sm font-black tracking-tighter">
+                        {symbol.replace('-Lu', '').replace('-Lr', '')}
+                      </span>
+                      {isAvailable && (
+                        <div className="absolute bottom-1 w-1 h-1 bg-white rounded-full animate-pulse"></div>
+                      )}
+                    </button>
+                  );
+                })}
               </React.Fragment>
             ))}
           </div>
-          <div className="text-xs text-slate-500 mt-4 flex items-center gap-4">
-            <div className="flex items-center gap-1">
-              <div className="w-3 h-3 bg-blue-900 ring-1 ring-blue-400 rounded"></div>
-              <span>Selecionado</span>
+
+          {/* Legenda Estilizada */}
+          <div className="flex flex-wrap gap-3 justify-center text-[9px] font-bold uppercase tracking-widest text-white/40">
+            <div className="flex items-center gap-1.5 px-2 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-400">
+              <div className="w-1.5 h-1.5 rounded-full bg-red-500"></div>
+              <span>Metais Alcalinos</span>
             </div>
-            <div className="flex items-center gap-1">
-              <div className="w-3 h-3 bg-slate-800 rounded"></div>
-              <span>Disponível</span>
+            <div className="flex items-center gap-1.5 px-2 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400">
+              <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
+              <span>Gases Nobres</span>
             </div>
-            <div className="flex items-center gap-1 opacity-20">
-              <div className="w-3 h-3 bg-slate-800 rounded"></div>
-              <span>Em desenvolvimento</span>
+            <div className="flex items-center gap-1.5 px-2 py-1 rounded-full bg-green-500/10 border border-green-500/20 text-green-400">
+              <div className="w-1.5 h-1.5 rounded-full bg-green-500"></div>
+              <span>Não Metais</span>
+            </div>
+            <div className="flex items-center gap-1.5 px-2 py-1 rounded-full bg-white/10 border border-white/20 text-white/60">
+              <div className="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></div>
+              <span>Herói Pronto</span>
             </div>
           </div>
         </div>
