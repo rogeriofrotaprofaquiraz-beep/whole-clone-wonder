@@ -77,7 +77,7 @@ const ElementCard = ({ element }: { element: PeriodicElement }) => {
 };
 
 const Index = () => {
-  const [selectedSymbol, setSelectedSymbol] = useState<string>("Fe");
+  const [selectedSymbol, setSelectedSymbol] = useState<string>("H");
   const selectedElement = ELEMENTS_DATA[selectedSymbol];
 
   // Grade simplificada da Tabela Periódica
