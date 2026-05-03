@@ -222,7 +222,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Hélio",
     "heroName": "Solaris",
     "heroDescription": "Nascido no fogo das estrelas, Solaris é a essência da luz e o fôlego da ascensão cósmica.",
-    "heroImage": "https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?auto=format&fit=crop&q=80&w=1000",
+    "heroImage": "https://cvbgrjauqjawrsyknhyj.supabase.co/storage/v1/object/public/files/uploads/higtSN3xyfWHqjML33VUnzcwd6r2/1777824274005-l1qse-helio_mov.mp4",
     "attributes": [
       {
         "id": 1,
