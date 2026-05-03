@@ -19,11 +19,22 @@ const ElementCard = ({ element }: { element: PeriodicElement }) => {
       </div>
       
       <div className="h-[450px] bg-slate-800 rounded-lg mb-3 flex items-start justify-center border border-slate-700 overflow-hidden relative group shadow-inner">
-        <img 
-          src={element.heroImage} 
-          alt={element.heroName}
-          className="w-full h-full object-contain object-top transition-transform duration-700 group-hover:scale-105" 
-        />
+        {element.heroImage.endsWith('.mp4') ? (
+          <video 
+            src={element.heroImage} 
+            autoPlay 
+            loop 
+            muted 
+            playsInline
+            className="w-full h-full object-contain object-top transition-transform duration-700 group-hover:scale-105"
+          />
+        ) : (
+          <img 
+            src={element.heroImage} 
+            alt={element.heroName}
+            className="w-full h-full object-contain object-top transition-transform duration-700 group-hover:scale-105" 
+          />
+        )}
         <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-black/40 to-transparent pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/80 via-black/40 to-transparent text-[11px] italic">
           "{element.heroDescription}"
