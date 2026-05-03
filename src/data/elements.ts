@@ -1414,198 +1414,198 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 8,
     "symbol": "O",
     "name": "Oxigênio",
-    "heroName": "Oxigênio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Oxigênio.",
-    "heroImage": "/placeholder.svg",
+    "heroName": "Oxy Vitalis",
+    "heroDescription": "O combustível da vida e o mestre da combustão. Sem Oxy Vitalis, o fogo se apaga e o fôlego do mundo cessa.",
+    "heroImage": "https://cvbgrjauqjawrsyknhyj.supabase.co/storage/v1/object/public/files/uploads/higtSN3xyfWHqjML33VUnzcwd6r2/1777828713122-ejdx8-8_oxig_nio.mp4",
     "attributes": [
       {
         "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Fraquezas",
+        "value": "Altamente oxidante",
+        "justification": "Pode acelerar a corrosão de metais e a combustão de materiais.",
+        "score": 20
       },
       {
         "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Risco/Benefício à natureza",
+        "value": "Essencial para respiração / Ozônio",
+        "justification": "Forma a camada de ozônio que protege a Terra dos raios UV.",
+        "score": 100
       },
       {
         "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Risco à saúde",
+        "value": "Vital / Tóxico em excesso",
+        "justification": "Essencial para a vida, mas oxigênio puro sob pressão é tóxico.",
+        "score": 95
       },
       {
         "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Benefício",
+        "value": "Respiração Aeróbica",
+        "justification": "Fundamental para a produção de energia nas células (ATP).",
+        "score": 100
       },
       {
         "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de ligantes possíveis",
+        "value": "2 (Covalente)",
+        "justification": "Tende a formar duas ligações para completar o octeto.",
+        "score": 40
       },
       {
         "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Abundância na natureza",
+        "value": "46% da crosta / 21% do ar",
+        "justification": "O elemento mais abundante na crosta terrestre.",
+        "score": 100
       },
       {
         "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Abundância no universo",
+        "value": "1%",
+        "justification": "Terceiro elemento mais abundante no cosmos.",
+        "score": 90
       },
       {
         "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Massa atômica",
+        "value": "15,999 u",
+        "justification": "Massa fundamental para a química da água e do ar.",
+        "score": 16
       },
       {
         "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Densidade",
+        "value": "1,429 g/L",
+        "justification": "Mais denso que o ar atmosférico.",
+        "score": 14
       },
       {
         "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Raio atômico",
+        "value": "60 pm",
+        "justification": "Raio muito pequeno, resultando em alta eletronegatividade.",
+        "score": 98
       },
       {
         "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Oxidação",
+        "value": "-2, -1",
+        "justification": "O estado -2 é quase universal em seus compostos.",
+        "score": 85
       },
       {
         "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Condutividade elétrica",
+        "value": "Isolante (Gás)",
+        "justification": "Não conduz eletricidade em condições normais.",
+        "score": 1
       },
       {
         "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Eletronegatividade",
+        "value": "3,44 (Pauling)",
+        "justification": "O segundo elemento mais eletronegativo da tabela.",
+        "score": 99
       },
       {
         "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Estado físico",
+        "value": "Gás (Não-metal)",
+        "justification": "Gás incolor e vital à temperatura ambiente.",
+        "score": 1
       },
       {
         "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Maior subnível energético",
+        "value": "2p⁴",
+        "justification": "Quatro elétrons no subnível p, buscando o octeto.",
+        "score": 8
       },
       {
         "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Distribuição eletrônica",
+        "value": "1s² 2s² 2p⁴",
+        "justification": "Configuração que o torna altamente reativo.",
+        "score": 90
       },
       {
         "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de prótons / Nº de elétrons",
+        "value": "8",
+        "justification": "O número atômico que define o fôlego da vida.",
+        "score": 8
       },
       {
         "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de nêutrons",
+        "value": "8",
+        "justification": "Núcleo estável no isótopo Oxigênio-16.",
+        "score": 8
       },
       {
         "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Radioatividade",
+        "value": "Estável",
+        "justification": "O oxigênio natural é predominantemente estável.",
+        "score": 100
       },
       {
         "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Aplicabilidade / Utilidade",
+        "value": "Suporte à vida, Foguetes, Indústria",
+        "justification": "Usado em hospitais, soldagem e como comburente em foguetes.",
+        "score": 100
       },
       {
         "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Local de origem",
+        "value": "Inglaterra / Suécia",
+        "justification": "Descoberto independentemente por Priestley e Scheele.",
+        "score": 85
       },
       {
         "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Curiosidade",
+        "value": "Oxigênio Líquido Azul",
+        "justification": "Em estado líquido, o oxigênio possui uma bela coloração azul pálida.",
+        "score": 95
       },
       {
         "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Origem do nome",
+        "value": "Oxys (Ácido) + Genes (Formador)",
+        "justification": "Significa 'formador de ácidos' (crença antiga de Lavoisier).",
+        "score": 80
       },
       {
         "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Descobridor",
+        "value": "Joseph Priestley",
+        "justification": "Primeiro a publicar a descoberta em 1774.",
+        "score": 90
       },
       {
         "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ano de descoberta",
+        "value": "1774",
+        "justification": "Marco fundamental na revolução química.",
+        "score": 90
       },
       {
         "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de fusão",
+        "value": "-218,79 °C",
+        "justification": "Ponto de congelamento extremamente baixo.",
+        "score": 2
       },
       {
         "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de ebulição",
+        "value": "-182,95 °C",
+        "justification": "Temperatura em que se torna oxigênio líquido.",
+        "score": 5
       }
     ]
   },
