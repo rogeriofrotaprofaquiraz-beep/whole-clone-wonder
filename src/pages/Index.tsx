@@ -19,11 +19,22 @@ const ElementCard = ({ element }: { element: PeriodicElement }) => {
       </div>
       
       <div className="h-[450px] bg-slate-800 rounded-lg mb-3 flex items-start justify-center border border-slate-700 overflow-hidden relative group shadow-inner">
-        <img 
-          src={element.heroImage} 
-          alt={element.heroName}
-          className="w-full h-full object-contain object-top transition-transform duration-700 group-hover:scale-105" 
-        />
+        {element.heroImage.endsWith('.mp4') ? (
+          <video 
+            src={element.heroImage} 
+            autoPlay 
+            loop 
+            muted 
+            playsInline
+            className="w-full h-full object-contain object-top transition-transform duration-700 group-hover:scale-105"
+          />
+        ) : (
+          <img 
+            src={element.heroImage} 
+            alt={element.heroName}
+            className="w-full h-full object-contain object-top transition-transform duration-700 group-hover:scale-105" 
+          />
+        )}
         <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-black/40 to-transparent pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/80 via-black/40 to-transparent text-[11px] italic">
           "{element.heroDescription}"
@@ -66,15 +77,21 @@ const ElementCard = ({ element }: { element: PeriodicElement }) => {
 };
 
 const Index = () => {
-  const [selectedSymbol, setSelectedSymbol] = useState<string>("Fe");
+  const [selectedSymbol, setSelectedSymbol] = useState<string>("H");
   const selectedElement = ELEMENTS_DATA[selectedSymbol];
 
-  // Grade simplificada da Tabela Periódica
+  // Tabela Periódica Completa (118 elementos)
   const periodicTableLayout = [
     ["H", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "He"],
     ["Li", "Be", "", "", "", "", "", "", "", "", "", "", "B", "C", "N", "O", "F", "Ne"],
     ["Na", "Mg", "", "", "", "", "", "", "", "", "", "", "Al", "Si", "P", "S", "Cl", "Ar"],
     ["K", "Ca", "Sc", "Ti", "V", "Cr", "Mn", "Fe", "Co", "Ni", "Cu", "Zn", "Ga", "Ge", "As", "Se", "Br", "Kr"],
+    ["Rb", "Sr", "Y", "Zr", "Nb", "Mo", "Tc", "Ru", "Rh", "Pd", "Ag", "Cd", "In", "Sn", "Sb", "Te", "I", "Xe"],
+    ["Cs", "Ba", "La-Lu", "Hf", "Ta", "W", "Re", "Os", "Ir", "Pt", "Au", "Hg", "Tl", "Pb", "Bi", "Po", "At", "Rn"],
+    ["Fr", "Ra", "Ac-Lr", "Rf", "Db", "Sg", "Bh", "Hs", "Mt", "Ds", "Rg", "Cn", "Nh", "Fl", "Mc", "Lv", "Ts", "Og"],
+    ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+    ["", "", "La", "Ce", "Pr", "Nd", "Pm", "Sm", "Eu", "Gd", "Tb", "Dy", "Ho", "Er", "Tm", "Yb", "Lu", ""],
+    ["", "", "Ac", "Th", "Pa", "U", "Np", "Pu", "Am", "Cm", "Bk", "Cf", "Es", "Fm", "Md", "No", "Lr", ""],
   ];
 
   return (
@@ -100,10 +117,11 @@ const Index = () => {
                     key={`${rIdx}-${sIdx}`}
                     onClick={() => symbol && ELEMENTS_DATA[symbol] && setSelectedSymbol(symbol)}
                     className={`
-                      aspect-square flex items-center justify-center text-[10px] md:text-sm font-bold rounded transition-all
+                      aspect-square flex items-center justify-center text-[8px] md:text-xs font-bold rounded transition-all
                       ${!symbol ? 'invisible' : ''}
-                      ${!ELEMENTS_DATA[symbol] ? 'opacity-20 cursor-not-allowed bg-slate-800' : 'bg-slate-800 hover:bg-blue-600 hover:scale-110 active:scale-95'}
-                      ${selectedSymbol === symbol ? 'ring-2 ring-blue-400 bg-blue-900 shadow-[0_0_15px_rgba(59,130,246,0.5)]' : ''}
+                      ${symbol && !ELEMENTS_DATA[symbol] ? 'opacity-20 cursor-default bg-slate-900' : ''}
+                      ${symbol && ELEMENTS_DATA[symbol]?.heroImage === '/placeholder.svg' ? 'opacity-40 hover:opacity-100 bg-slate-800' : symbol && ELEMENTS_DATA[symbol] ? 'bg-slate-800 hover:bg-blue-600 hover:scale-110 active:scale-95 shadow-[0_0_10px_rgba(59,130,246,0.3)]' : ''}
+                      ${selectedSymbol === symbol ? 'ring-2 ring-blue-400 bg-blue-900 shadow-[0_0_15px_rgba(59,130,246,0.5)] opacity-100' : ''}
                     `}
                   >
                     {symbol}
