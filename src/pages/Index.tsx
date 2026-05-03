@@ -117,10 +117,10 @@ const Index = () => {
                     key={`${rIdx}-${sIdx}`}
                     onClick={() => symbol && ELEMENTS_DATA[symbol] && setSelectedSymbol(symbol)}
                     className={`
-                      aspect-square flex items-center justify-center text-[10px] md:text-sm font-bold rounded transition-all
+                      aspect-square flex items-center justify-center text-[8px] md:text-xs font-bold rounded transition-all
                       ${!symbol ? 'invisible' : ''}
-                      ${!ELEMENTS_DATA[symbol] ? 'opacity-20 cursor-not-allowed bg-slate-800' : 'bg-slate-800 hover:bg-blue-600 hover:scale-110 active:scale-95'}
-                      ${selectedSymbol === symbol ? 'ring-2 ring-blue-400 bg-blue-900 shadow-[0_0_15px_rgba(59,130,246,0.5)]' : ''}
+                      ${symbol && ELEMENTS_DATA[symbol]?.heroImage === '/placeholder.svg' ? 'opacity-40 hover:opacity-100 bg-slate-800' : 'bg-slate-800 hover:bg-blue-600 hover:scale-110 active:scale-95 shadow-[0_0_10px_rgba(59,130,246,0.3)]'}
+                      ${selectedSymbol === symbol ? 'ring-2 ring-blue-400 bg-blue-900 shadow-[0_0_15px_rgba(59,130,246,0.5)] opacity-100' : ''}
                     `}
                   >
                     {symbol}
