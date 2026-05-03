@@ -183,12 +183,23 @@ const Index = () => {
                       onClick={() => symbol && isAvailable && setSelectedSymbol(symbol)}
                       className={`
                         relative aspect-square flex flex-col items-center justify-center rounded-md transition-all duration-300 border
-                        ${!symbol ? 'invisible' : 'hover:scale-110 active:scale-95'}
-                        ${selectedSymbol === symbol ? 'ring-2 ring-white scale-110 z-10 shadow-[0_0_20px_rgba(255,255,255,0.3)]' : 'hover:shadow-lg'}
+                        ${!symbol ? 'invisible' : 'hover:scale-125 hover:z-20 hover:shadow-[0_0_25px_rgba(255,255,255,0.4)]'}
+                        ${selectedSymbol === symbol ? 'ring-2 ring-white scale-110 z-10 shadow-[0_0_20px_rgba(255,255,255,0.3)]' : ''}
                         ${!isAvailable && symbol ? 'opacity-30 grayscale cursor-not-allowed' : 'cursor-pointer'}
                         ${categoryStyle}
+                        group/item
                       `}
                     >
+                      {/* Tooltip/Hover Info */}
+                      {symbol && (
+                        <div className="absolute -top-12 left-1/2 -translate-x-1/2 bg-slate-900 border border-white/20 px-2 py-1 rounded shadow-2xl opacity-0 group-hover/item:opacity-100 pointer-events-none transition-opacity z-30 min-w-[80px] text-center">
+                          <div className="text-[8px] text-blue-400 font-bold leading-none">{isAvailable ? ELEMENTS_DATA[symbol].number : ''}</div>
+                          <div className="text-xs font-black text-white">{symbol.replace('-Lu', '').replace('-Lr', '')}</div>
+                          <div className="text-[7px] text-white/60 truncate uppercase">{isAvailable ? ELEMENTS_DATA[symbol].name : symbol}</div>
+                          <div className="absolute bottom-[-5px] left-1/2 -translate-x-1/2 w-2 h-2 bg-slate-900 border-r border-b border-white/20 rotate-45"></div>
+                        </div>
+                      )}
+
                       <span className="text-[6px] md:text-[8px] absolute top-1 left-1 font-mono opacity-50">
                         {isAvailable ? ELEMENTS_DATA[symbol].number : ''}
                       </span>
@@ -199,6 +210,7 @@ const Index = () => {
                         <div className="absolute bottom-1 w-1 h-1 bg-white rounded-full animate-pulse"></div>
                       )}
                     </button>
+
                   );
                 })}
               </React.Fragment>
