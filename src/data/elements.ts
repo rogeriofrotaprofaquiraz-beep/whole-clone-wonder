@@ -618,198 +618,198 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 4,
     "symbol": "Be",
     "name": "Berílio",
-    "heroName": "Berílio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Berílio.",
-    "heroImage": "/placeholder.svg",
+    "heroName": "Beryl Shield",
+    "heroDescription": "Uma guardiã de metal ultraleve e resistente, capaz de suportar as condições mais extremas do espaço e da radiação.",
+    "heroImage": "https://cvbgrjauqjawrsyknhyj.supabase.co/storage/v1/object/public/files/uploads/higtSN3xyfWHqjML33VUnzcwd6r2/1777827780458-p3485-4_be_mov.mp4",
     "attributes": [
       {
         "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Fraquezas",
+        "value": "Extrema toxicidade",
+        "justification": "O pó de berílio pode causar beriliose, uma doença pulmonar incurável.",
+        "score": 5
       },
       {
         "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Risco/Benefício à natureza",
+        "value": "Raro e difícil de extrair",
+        "justification": "Sua mineração exige processos químicos complexos.",
+        "score": 40
       },
       {
         "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Risco à saúde",
+        "value": "Altamente perigoso (Carcinogênico)",
+        "justification": "Um dos elementos mais tóxicos na manipulação industrial.",
+        "score": 5
       },
       {
         "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Benefício",
+        "value": "Aeroespacial e Raios-X",
+        "justification": "Transparente a raios-X e vital para espelhos de telescópios (como o James Webb).",
+        "score": 95
       },
       {
         "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de ligantes possíveis",
+        "value": "2 (Covalente)",
+        "justification": "Tende a formar ligações covalentes apesar de ser metal.",
+        "score": 45
       },
       {
         "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Abundância na natureza",
+        "value": "2,8 ppm (crosta)",
+        "justification": "Relativamente raro, encontrado em pedras preciosas como a esmeralda.",
+        "score": 35
       },
       {
         "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Abundância no universo",
+        "value": "0,0000001%",
+        "justification": "Elemento raro no cosmos, formado por espalação de raios cósmicos.",
+        "score": 40
       },
       {
         "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Massa atômica",
+        "value": "9,0122 u",
+        "justification": "Massa atômica muito baixa para um metal estrutural.",
+        "score": 9
       },
       {
         "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Densidade",
+        "value": "1,85 g/cm³",
+        "justification": "Muito leve, cerca de 1/3 menos denso que o alumínio.",
+        "score": 18
       },
       {
         "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Raio atômico",
+        "value": "112 pm",
+        "justification": "Raio atômico pequeno, conferindo alta densidade de carga.",
+        "score": 80
       },
       {
         "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Oxidação",
+        "value": "+2",
+        "justification": "Estado de oxidação fixo como metal alcalino-terroso.",
+        "score": 85
       },
       {
         "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Condutividade elétrica",
+        "value": "2,5 × 10⁷ S/m",
+        "justification": "Excelente condutor elétrico e térmico.",
+        "score": 80
       },
       {
         "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Eletronegatividade",
+        "value": "1,57 (Pauling)",
+        "justification": "A mais alta entre os metais alcalino-terrosos.",
+        "score": 60
       },
       {
         "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Estado físico",
+        "value": "Sólido (Metal)",
+        "justification": "Metal duro, cinza-aço e quebradiço à temperatura ambiente.",
+        "score": 90
       },
       {
         "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Maior subnível energético",
+        "value": "2s²",
+        "justification": "Camada de valência completa no subnível s.",
+        "score": 4
       },
       {
         "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Distribuição eletrônica",
+        "value": "1s² 2s²",
+        "justification": "Configuração eletrônica estável e compacta.",
+        "score": 85
       },
       {
         "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de prótons / Nº de elétrons",
+        "value": "4",
+        "justification": "Quarto elemento da tabela periódica.",
+        "score": 4
       },
       {
         "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de nêutrons",
+        "value": "5",
+        "justification": "O isótopo estável único é o Berílio-9.",
+        "score": 5
       },
       {
         "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Radioatividade",
+        "value": "Estável",
+        "justification": "O berílio natural é monoisotópico e estável.",
+        "score": 100
       },
       {
         "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Aplicabilidade / Utilidade",
+        "value": "Satélites, Mísseis, Reatores",
+        "justification": "Essencial em tecnologias de defesa e exploração espacial.",
+        "score": 98
       },
       {
         "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Local de origem",
+        "value": "Paris, França",
+        "justification": "Descoberto por Louis-Nicolas Vauquelin em 1798.",
+        "score": 75
       },
       {
         "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Curiosidade",
+        "value": "Gosto adocicado",
+        "justification": "Antigamente chamado de 'Glicínio' por causa do gosto doce de seus sais (porém altamente tóxico!).",
+        "score": 95
       },
       {
         "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Origem do nome",
+        "value": "Beryllos (Berilo)",
+        "justification": "Grego para o mineral berilo, de onde é extraído.",
+        "score": 65
       },
       {
         "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Descobridor",
+        "value": "Louis-Nicolas Vauquelin",
+        "justification": "Identificado como um novo óxido em 1798.",
+        "score": 80
       },
       {
         "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ano de descoberta",
+        "value": "1798",
+        "justification": "Descoberto no final do século XVIII.",
+        "score": 88
       },
       {
         "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de fusão",
+        "value": "1287 °C",
+        "justification": "Ponto de fusão excepcionalmente alto para um metal leve.",
+        "score": 85
       },
       {
         "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de ebulição",
+        "value": "2469 °C",
+        "justification": "Alta estabilidade térmica.",
+        "score": 82
       }
     ]
   },
