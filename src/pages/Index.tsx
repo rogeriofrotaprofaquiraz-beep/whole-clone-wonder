@@ -6,8 +6,8 @@ import { Badge } from "@/components/ui/badge";
 
 const ElementCard = ({ element }: { element: PeriodicElement }) => {
   return (
-    <div className="p-4 bg-slate-900 border-2 border-blue-500 rounded-xl w-full max-w-sm text-white font-sans shadow-2xl animate-in fade-in zoom-in duration-300">
-      <div className="flex justify-between items-center mb-2">
+    <div className="p-4 bg-slate-900 border-2 border-blue-500 rounded-xl w-full max-w-md text-white font-sans shadow-2xl animate-in fade-in zoom-in duration-300">
+      <div className="flex justify-between items-center mb-3">
         <div>
           <span className="text-2xl font-bold text-blue-400 italic uppercase">{element.name}</span>
           <p className="text-xs text-blue-300/70">{element.heroName}</p>
