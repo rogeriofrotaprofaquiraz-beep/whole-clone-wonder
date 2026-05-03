@@ -5,20 +5,45 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Badge } from "@/components/ui/badge";
 
 const ElementCard = ({ element }: { element: PeriodicElement }) => {
+  const isGas = ["Gás", "Gás incolor", "Gás nobre"].some(type => 
+    element.attributes.find(a => a.label === "Estado físico")?.value.toString().includes(type)
+  );
+
   return (
-    <div className="p-4 bg-slate-900 border-2 border-blue-500 rounded-xl w-full max-w-md text-white font-sans shadow-2xl animate-in fade-in zoom-in duration-300">
-      <div className="flex justify-between items-center mb-3">
-        <div>
-          <span className="text-2xl font-bold text-blue-400 italic uppercase">{element.name}</span>
-          <p className="text-xs text-blue-300/70">{element.heroName}</p>
+    <div className={`
+      relative p-5 rounded-3xl w-full max-w-md text-white font-sans shadow-[0_20px_50px_rgba(0,0,0,0.5)] 
+      animate-in fade-in zoom-in duration-500 border border-white/10 overflow-hidden
+      ${isGas ? 'backdrop-blur-xl bg-white/5 shadow-[0_0_40px_rgba(59,130,246,0.2)]' : 'bg-slate-900/90'}
+    `}>
+      {/* 3D Texture Overlay */}
+      <div className="absolute inset-0 opacity-10 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+      
+      {/* Decorative Glows */}
+      <div className={`absolute -top-20 -right-20 w-40 h-40 rounded-full blur-[80px] pointer-events-none opacity-50 ${isGas ? 'bg-blue-400' : 'bg-purple-600'}`}></div>
+      <div className={`absolute -bottom-20 -left-20 w-40 h-40 rounded-full blur-[80px] pointer-events-none opacity-30 ${isGas ? 'bg-cyan-300' : 'bg-blue-600'}`}></div>
+
+      <div className="relative flex justify-between items-start mb-4">
+        <div className="z-10">
+          <h2 className="text-3xl font-black tracking-tighter italic uppercase text-transparent bg-clip-text bg-gradient-to-r from-white via-white/80 to-white/40 drop-shadow-sm">
+            {element.name}
+          </h2>
+          <p className="text-[10px] font-bold tracking-[0.2em] text-blue-400/80 uppercase">{element.heroName}</p>
         </div>
-        <div className="flex flex-col items-end">
-          <span className="bg-blue-600 px-2 py-1 rounded text-xs font-bold">Nº {element.number}</span>
-          <span className="text-xl font-black text-blue-500">{element.symbol}</span>
+        <div className="flex flex-col items-end z-10">
+          <span className="bg-white/10 backdrop-blur-md px-2 py-0.5 rounded-full text-[10px] font-black border border-white/10 mb-1">
+            #{element.number}
+          </span>
+          <span className="text-4xl font-black leading-none bg-clip-text text-transparent bg-gradient-to-b from-blue-400 to-blue-600 drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
+            {element.symbol}
+          </span>
         </div>
       </div>
       
-      <div className="h-[450px] bg-slate-800 rounded-lg mb-3 flex items-start justify-center border border-slate-700 overflow-hidden relative group shadow-inner">
+      <div className={`
+        h-[480px] rounded-2xl mb-4 flex items-start justify-center overflow-hidden relative group 
+        border border-white/10 shadow-[inset_0_0_20px_rgba(0,0,0,0.5)]
+        ${isGas ? 'bg-gradient-to-b from-blue-900/20 to-black/40' : 'bg-slate-950'}
+      `}>
         {element.heroImage.endsWith('.mp4') ? (
           <video 
             src={element.heroImage} 
@@ -26,49 +51,70 @@ const ElementCard = ({ element }: { element: PeriodicElement }) => {
             loop 
             muted 
             playsInline
-            className="w-full h-full object-contain object-top transition-transform duration-700 group-hover:scale-105"
+            className={`
+              w-full h-full object-contain object-top transition-all duration-1000 group-hover:scale-110
+              ${isGas ? 'opacity-80 blur-[1px] group-hover:blur-0' : 'opacity-100'}
+            `}
           />
         ) : (
           <img 
             src={element.heroImage} 
             alt={element.heroName}
-            className="w-full h-full object-contain object-top transition-transform duration-700 group-hover:scale-105" 
+            className="w-full h-full object-contain object-top transition-transform duration-1000 group-hover:scale-110" 
           />
         )}
-        <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-black/40 to-transparent pointer-events-none"></div>
-        <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/80 via-black/40 to-transparent text-[11px] italic">
-          "{element.heroDescription}"
+        
+        {/* State specific overlays */}
+        {isGas && (
+          <div className="absolute inset-0 bg-blue-400/5 mix-blend-overlay pointer-events-none animate-pulse"></div>
+        )}
+
+        <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black/60 to-transparent pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 via-black/60 to-transparent">
+          <p className="text-xs italic text-white/90 leading-relaxed font-light drop-shadow-md">
+            "{element.heroDescription}"
+          </p>
         </div>
       </div>
 
-      <ScrollArea className="h-64 pr-2">
-        <div className="space-y-1.5 text-[11px]">
+      <ScrollArea className="h-64 pr-3 custom-scrollbar">
+        <div className="space-y-2">
           {element.attributes.map((attr) => (
-            <div key={attr.id} className="group border-b border-slate-800 pb-1 hover:bg-white/5 p-1 rounded transition-colors">
-              <div className="flex justify-between items-start">
-                <span className="text-slate-400">{attr.label}</span>
-                <span className="font-bold text-yellow-400 ml-2 text-right">{attr.value}</span>
+            <div key={attr.id} className="group relative bg-white/5 border border-white/5 rounded-xl p-2 hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+              <div className="flex justify-between items-start mb-1">
+                <span className="text-[10px] font-bold text-white/40 uppercase tracking-wider">{attr.label}</span>
+                <span className="text-xs font-black text-blue-300 drop-shadow-sm">{attr.value}</span>
               </div>
-              <div className="flex justify-between items-center mt-0.5">
-                <div className="w-full bg-slate-700 h-1 rounded-full mr-2 overflow-hidden">
+              
+              <div className="flex items-center gap-2">
+                <div className="flex-1 bg-black/40 h-1.5 rounded-full overflow-hidden p-[1px]">
                   <div 
-                    className={`h-full rounded-full ${attr.score > 70 ? 'bg-green-500' : attr.score > 40 ? 'bg-yellow-500' : 'bg-red-500'}`}
+                    className={`h-full rounded-full transition-all duration-1000 ease-out shadow-[0_0_8px_rgba(0,0,0,0.5)]
+                      ${attr.score > 80 ? 'bg-gradient-to-r from-emerald-500 to-green-400' : 
+                        attr.score > 50 ? 'bg-gradient-to-r from-blue-500 to-cyan-400' : 
+                        'bg-gradient-to-r from-amber-500 to-orange-400'}`}
                     style={{ width: `${attr.score}%` }}
                   ></div>
                 </div>
-                <span className="text-[9px] font-mono text-slate-500 w-4">{attr.score}</span>
+                <span className="text-[10px] font-mono font-bold text-white/30 w-5 text-right">{attr.score}</span>
               </div>
-              <div className="hidden group-hover:block text-[9px] text-blue-300 mt-1 italic">
-                {attr.justification}
+              
+              <div className="max-h-0 overflow-hidden group-hover:max-h-20 transition-all duration-500 ease-in-out">
+                <p className="text-[9px] text-blue-200/60 mt-2 italic leading-tight border-t border-white/5 pt-2">
+                  {attr.justification}
+                </p>
               </div>
             </div>
           ))}
         </div>
       </ScrollArea>
       
-      <div className="mt-3 flex justify-between items-center pt-2 border-t border-slate-700">
-        <div className="text-[10px] text-slate-400">Poder Médio</div>
-        <div className="text-lg font-black text-blue-400">
+      <div className="mt-4 flex justify-between items-center px-2 py-3 bg-white/5 rounded-2xl border border-white/5">
+        <div className="flex flex-col">
+          <span className="text-[9px] font-bold text-white/30 uppercase tracking-[0.2em]">Poder Total</span>
+          <span className="text-xs text-blue-400/60 font-mono tracking-tighter">ESTADO: {isGas ? 'GASOSO' : 'SÓLIDO'}</span>
+        </div>
+        <div className="text-3xl font-black italic text-transparent bg-clip-text bg-gradient-to-br from-blue-400 to-blue-700 drop-shadow-md">
           {(element.attributes.reduce((acc, curr) => acc + curr.score, 0) / 27).toFixed(1)}
         </div>
       </div>
