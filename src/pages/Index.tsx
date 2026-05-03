@@ -143,14 +143,14 @@ const Index = () => {
   const getElementCategoryColor = (symbol: string, rIdx: number, sIdx: number) => {
     if (["H", "C", "N", "O", "P", "S", "Se"].includes(symbol)) return "bg-emerald-500/20 text-emerald-400 border-emerald-500/50"; // Não metais
     if (["He", "Ne", "Ar", "Kr", "Xe", "Rn", "Og"].includes(symbol)) return "bg-sky-500/20 text-sky-400 border-sky-500/50"; // Gases Nobres
-    if (["Li", "Na", "K", "Rb", "Cs", "Fr"].includes(symbol)) return "bg-rose-500/20 text-rose-400 border-rose-500/50"; // Metais Alcalinos
+    if (["Li", "Na", "K", "Rb", "Cs", "Fr"].includes(symbol)) return "bg-amber-500/20 text-amber-400 border-amber-500/50"; // Metais Alcalinos (Amarelo Ouro)
     if (["Be", "Mg", "Ca", "Sr", "Ba", "Ra"].includes(symbol)) return "bg-orange-500/20 text-orange-400 border-orange-500/50"; // Alcalino Terrosos
     if (["B", "Si", "Ge", "As", "Sb", "Te", "Po"].includes(symbol)) return "bg-teal-500/20 text-teal-400 border-teal-500/50"; // Semimetais
-    if (["F", "Cl", "Br", "I", "At", "Ts"].includes(symbol)) return "bg-yellow-500/20 text-yellow-400 border-yellow-500/50"; // Halogênios
+    if (["F", "Cl", "Br", "I", "At", "Ts"].includes(symbol)) return "bg-lime-500/20 text-lime-400 border-lime-500/50"; // Halogênios
     if (["Al", "Ga", "In", "Sn", "Tl", "Pb", "Bi", "Nh", "Fl", "Mc", "Lv"].includes(symbol)) return "bg-indigo-500/20 text-indigo-400 border-indigo-500/50"; // Outros Metais
     if (rIdx >= 3 && rIdx <= 6 && sIdx >= 2 && sIdx <= 11) return "bg-blue-500/20 text-blue-400 border-blue-500/50"; // Metais de Transição
-    if (rIdx === 8) return "bg-pink-500/20 text-pink-400 border-pink-500/50"; // Lantanídeos
-    if (rIdx === 9) return "bg-purple-500/20 text-purple-400 border-purple-500/50"; // Actinídeos
+    if (rIdx === 8) return "bg-fuchsia-500/20 text-fuchsia-400 border-fuchsia-500/50"; // Lantanídeos (Fúcsia vibrante)
+    if (rIdx === 9) return "bg-violet-600/20 text-violet-400 border-violet-600/50"; // Actinídeos (Violeta profundo)
     return "bg-slate-800/40 text-slate-400 border-slate-700/50";
   };
 
@@ -236,47 +236,48 @@ const Index = () => {
           </div>
 
           <div className="flex flex-wrap gap-2 justify-center text-[8px] font-bold uppercase tracking-widest text-white/40 max-w-4xl mx-auto">
-            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/20 text-rose-400">
-              <div className="w-1.5 h-1.5 rounded-full bg-rose-500"></div>
+            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400">
+              <div className="w-1.5 h-1.5 rounded-full bg-amber-500 shadow-[0_0_8px_#f59e0b]"></div>
               <span>Metais Alcalinos</span>
             </div>
             <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400">
-              <div className="w-1.5 h-1.5 rounded-full bg-orange-500"></div>
+              <div className="w-1.5 h-1.5 rounded-full bg-orange-500 shadow-[0_0_8px_#f97316]"></div>
               <span>Alcalino Terrosos</span>
             </div>
             <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400">
-              <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
+              <div className="w-1.5 h-1.5 rounded-full bg-blue-500 shadow-[0_0_8px_#3b82f6]"></div>
               <span>Transição</span>
             </div>
             <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400">
-              <div className="w-1.5 h-1.5 rounded-full bg-indigo-500"></div>
+              <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 shadow-[0_0_8px_#6366f1]"></div>
               <span>Outros Metais</span>
             </div>
             <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/20 text-teal-400">
-              <div className="w-1.5 h-1.5 rounded-full bg-teal-500"></div>
+              <div className="w-1.5 h-1.5 rounded-full bg-teal-500 shadow-[0_0_8px_#14b8a6]"></div>
               <span>Semimetais</span>
             </div>
             <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
-              <div className="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>
+              <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_8px_#10b981]"></div>
               <span>Não Metais</span>
             </div>
-            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-yellow-500/10 border border-yellow-500/20 text-yellow-400">
-              <div className="w-1.5 h-1.5 rounded-full bg-yellow-500"></div>
+            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-lime-500/10 border border-lime-500/20 text-lime-400">
+              <div className="w-1.5 h-1.5 rounded-full bg-lime-500 shadow-[0_0_8px_#84cc16]"></div>
               <span>Halogênios</span>
             </div>
             <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400">
-              <div className="w-1.5 h-1.5 rounded-full bg-sky-500"></div>
+              <div className="w-1.5 h-1.5 rounded-full bg-sky-500 shadow-[0_0_8px_#0ea5e9]"></div>
               <span>Gases Nobres</span>
             </div>
-            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-pink-500/10 border border-pink-500/20 text-pink-400">
-              <div className="w-1.5 h-1.5 rounded-full bg-pink-500"></div>
+            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-fuchsia-500/10 border border-fuchsia-500/20 text-fuchsia-400">
+              <div className="w-1.5 h-1.5 rounded-full bg-fuchsia-500 shadow-[0_0_8px_#d946ef]"></div>
               <span>Lantanídeos</span>
             </div>
-            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400">
-              <div className="w-1.5 h-1.5 rounded-full bg-purple-500"></div>
+            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-violet-600/10 border border-violet-600/20 text-violet-400">
+              <div className="w-1.5 h-1.5 rounded-full bg-violet-600 shadow-[0_0_8px_#7c3aed]"></div>
               <span>Actinídeos</span>
             </div>
           </div>
+
 
         </div>
 
