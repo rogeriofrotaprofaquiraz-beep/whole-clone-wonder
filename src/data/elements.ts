@@ -2210,198 +2210,198 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 12,
     "symbol": "Mg",
     "name": "Magnésio",
-    "heroName": "Magnésio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Magnésio.",
-    "heroImage": "/placeholder.svg",
+    "heroName": "Magnesium Flare",
+    "heroDescription": "O iluminador da vida e o mestre da força estrutural leve. Magnesium Flare brilha com uma luz ofuscante e é o motor químico da fotossíntese.",
+    "heroImage": "https://cvbgrjauqjawrsyknhyj.supabase.co/storage/v1/object/public/files/uploads/higtSN3xyfWHqjML33VUnzcwd6r2/1777828971424-odkrt-12_magnegio.mp4",
     "attributes": [
       {
         "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Fraquezas",
+        "value": "Combustão intensa",
+        "justification": "Uma vez aceso, queima com uma chama branca brilhante difícil de apagar.",
+        "score": 15
       },
       {
         "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Risco/Benefício à natureza",
+        "value": "Coração da Clorofila",
+        "justification": "Sem ele, as plantas não conseguiriam realizar a fotossíntese.",
+        "score": 100
       },
       {
         "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Risco à saúde",
+        "value": "Vital (Essencial)",
+        "justification": "Necessário para mais de 300 reações bioquímicas no corpo humano.",
+        "score": 95
       },
       {
         "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Benefício",
+        "value": "Ligas Leves e Suplementação",
+        "justification": "Crucial para a aviação por sua leveza e para a saúde muscular e óssea.",
+        "score": 98
       },
       {
         "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de ligantes possíveis",
+        "value": "2 (Iônico)",
+        "justification": "Metal alcalino-terroso com dois elétrons de valência.",
+        "score": 45
       },
       {
         "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Abundância na natureza",
+        "value": "2,1% na crosta",
+        "justification": "Oitavo elemento mais abundante na crosta terrestre.",
+        "score": 80
       },
       {
         "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Abundância no universo",
+        "value": "0,06%",
+        "justification": "Sétimo elemento mais abundante no cosmos.",
+        "score": 85
       },
       {
         "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Massa atômica",
+        "value": "24,305 u",
+        "justification": "Massa atômica baixa, típica de metais estruturais leves.",
+        "score": 24
       },
       {
         "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Densidade",
+        "value": "1,738 g/cm³",
+        "justification": "O metal estrutural mais leve que existe.",
+        "score": 17
       },
       {
         "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Raio atômico",
+        "value": "160 pm",
+        "justification": "Raio atômico típico do terceiro período.",
+        "score": 70
       },
       {
         "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Oxidação",
+        "value": "+2",
+        "justification": "Estado de oxidação estável e único em seus compostos.",
+        "score": 85
       },
       {
         "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Condutividade elétrica",
+        "value": "2,26 × 10⁷ S/m",
+        "justification": "Bom condutor elétrico, similar ao alumínio.",
+        "score": 82
       },
       {
         "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Eletronegatividade",
+        "value": "1,31 (Pauling)",
+        "justification": "Baixa eletronegatividade, característica metálica marcante.",
+        "score": 55
       },
       {
         "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Estado físico",
+        "value": "Sólido (Metal)",
+        "justification": "Metal branco-prateado, leve e razoavelmente duro.",
+        "score": 90
       },
       {
         "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Maior subnível energético",
+        "value": "3s²",
+        "justification": "Subnível s da terceira camada totalmente preenchido.",
+        "score": 12
       },
       {
         "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Distribuição eletrônica",
+        "value": "[Ne] 3s²",
+        "justification": "Configuração que define sua posição no grupo 2.",
+        "score": 85
       },
       {
         "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de prótons / Nº de elétrons",
+        "value": "12",
+        "justification": "O número atômico que define o Magnésio.",
+        "score": 12
       },
       {
         "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de nêutrons",
+        "value": "12",
+        "justification": "Isótopo Magnésio-24 é o mais estável e abundante.",
+        "score": 12
       },
       {
         "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Radioatividade",
+        "value": "Estável",
+        "justification": "O magnésio natural é composto por três isótopos estáveis.",
+        "score": 100
       },
       {
         "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Aplicabilidade / Utilidade",
+        "value": "Aeronáutica, Fogos de Artifício, Saúde",
+        "justification": "Usado em ligas para aviões, flashes fotográficos e suplementos.",
+        "score": 96
       },
       {
         "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Local de origem",
+        "value": "Magnésia, Grécia",
+        "justification": "Identificado por Joseph Black em 1755 e isolado por Davy.",
+        "score": 75
       },
       {
         "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Curiosidade",
+        "value": "Luz Ofuscante",
+        "justification": "Queima com uma luz branca tão intensa que era usada nos primeiros flashes de câmeras.",
+        "score": 97
       },
       {
         "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Origem do nome",
+        "value": "Magnesia (Distrito Grego)",
+        "justification": "Homenagem à região da Tessália onde foi encontrado.",
+        "score": 65
       },
       {
         "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Descobridor",
+        "value": "Joseph Black / Humphry Davy",
+        "justification": "Identificado como elemento distinto em 1755.",
+        "score": 85
       },
       {
         "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ano de descoberta",
+        "value": "1755",
+        "justification": "Uma das descobertas fundamentais da química do século XVIII.",
+        "score": 95
       },
       {
         "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de fusão",
+        "value": "650 °C",
+        "justification": "Ponto de fusão relativamente baixo para um metal estrutural.",
+        "score": 40
       },
       {
         "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de ebulição",
+        "value": "1090 °C",
+        "justification": "Ponto de ebulição moderado.",
+        "score": 45
       }
     ]
   },
