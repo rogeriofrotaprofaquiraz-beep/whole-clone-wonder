@@ -1812,198 +1812,198 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 10,
     "symbol": "Ne",
     "name": "Neônio",
-    "heroName": "Neônio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Neônio.",
-    "heroImage": "/placeholder.svg",
+    "heroName": "Neon Glow",
+    "heroDescription": "O herói das luzes vibrantes e da nobreza inabalável. Neon Glow ilumina as cidades com seu brilho carmesim, mantendo-se sempre puro e imperturbável.",
+    "heroImage": "https://cvbgrjauqjawrsyknhyj.supabase.co/storage/v1/object/public/files/uploads/higtSN3xyfWHqjML33VUnzcwd6r2/1777828889968-ofrl8-10_neonio.mp4",
     "attributes": [
       {
         "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Fraquezas",
+        "value": "Inércia total",
+        "justification": "Não forma compostos químicos conhecidos em condições naturais.",
+        "score": 1
       },
       {
         "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Risco/Benefício à natureza",
+        "value": "Inofensivo",
+        "justification": "Gás nobre quimicamente inerte e seguro para o ambiente.",
+        "score": 100
       },
       {
         "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Risco à saúde",
+        "value": "Não tóxico (Asfixiante)",
+        "justification": "Seguro ao toque e respiração, mas pode deslocar oxigênio em locais fechados.",
+        "score": 95
       },
       {
         "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Benefício",
+        "value": "Iluminação e Criogenia",
+        "justification": "Essencial para letreiros luminosos e como refrigerante criogênico.",
+        "score": 90
       },
       {
         "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de ligantes possíveis",
+        "value": "0",
+        "justification": "Camada de valência completa (Octeto), não precisa de elétrons.",
+        "score": 1
       },
       {
         "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Abundância na natureza",
+        "value": "18 ppm (atmosfera)",
+        "justification": "Raro no ar da Terra, mas comum no universo.",
+        "score": 15
       },
       {
         "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Abundância no universo",
+        "value": "0,13%",
+        "justification": "Quinto elemento mais comum no cosmos.",
+        "score": 95
       },
       {
         "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Massa atômica",
+        "value": "20,179 u",
+        "justification": "Massa atômica leve, completando o segundo período.",
+        "score": 20
       },
       {
         "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Densidade",
+        "value": "0,899 g/L",
+        "justification": "Ligeiramente mais leve que o ar atmosférico.",
+        "score": 10
       },
       {
         "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Raio atômico",
+        "value": "38 pm",
+        "justification": "Raio extremamente pequeno devido à forte atração do núcleo.",
+        "score": 98
       },
       {
         "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Oxidação",
+        "value": "0",
+        "justification": "Estado de oxidação padrão dos gases nobres.",
+        "score": 1
       },
       {
         "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Condutividade elétrica",
+        "value": "Gás Luminescente",
+        "justification": "Conduz eletricidade quando ionizado em tubos de descarga.",
+        "score": 75
       },
       {
         "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Eletronegatividade",
+        "value": "N/A",
+        "justification": "Gases nobres não possuem eletronegatividade definida.",
+        "score": 1
       },
       {
         "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Estado físico",
+        "value": "Gás (Gás Nobre)",
+        "justification": "Permanece gasoso até temperaturas extremamente baixas.",
+        "score": 1
       },
       {
         "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Maior subnível energético",
+        "value": "2p⁶",
+        "justification": "Subnível p totalmente preenchido, o ideal de estabilidade.",
+        "score": 10
       },
       {
         "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Distribuição eletrônica",
+        "value": "1s² 2s² 2p⁶",
+        "justification": "Configuração do octeto completo, a mais estável da natureza.",
+        "score": 100
       },
       {
         "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de prótons / Nº de elétrons",
+        "value": "10",
+        "justification": "Número atômico do primeiro gás nobre do bloco p.",
+        "score": 10
       },
       {
         "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de nêutrons",
+        "value": "10",
+        "justification": "Equilíbrio estável no isótopo Neônio-20.",
+        "score": 10
       },
       {
         "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Radioatividade",
+        "value": "Estável",
+        "justification": "Os três isótopos naturais do neônio são estáveis.",
+        "score": 100
       },
       {
         "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Aplicabilidade / Utilidade",
+        "value": "Letreiros, Lasers, Criogenia",
+        "justification": "Famoso pelos anúncios luminosos 'Neon' e lasers de hélio-neônio.",
+        "score": 92
       },
       {
         "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Local de origem",
+        "value": "Londres, Inglaterra",
+        "justification": "Descoberto por Sir William Ramsay e Morris Travers.",
+        "score": 85
       },
       {
         "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Curiosidade",
+        "value": "Brilho Vermelho",
+        "justification": "O verdadeiro neônio brilha apenas em vermelho-alaranjado; outras cores usam gases diferentes.",
+        "score": 98
       },
       {
         "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Origem do nome",
+        "value": "Neos (Novo)",
+        "justification": "Do grego 'neos', significando o 'novo' gás descoberto.",
+        "score": 80
       },
       {
         "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Descobridor",
+        "value": "William Ramsay & Morris Travers",
+        "justification": "Isolaram o gás a partir do ar líquido em 1898.",
+        "score": 95
       },
       {
         "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ano de descoberta",
+        "value": "1898",
+        "justification": "Descoberto no final do século XIX.",
+        "score": 85
       },
       {
         "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de fusão",
+        "value": "-248,59 °C",
+        "justification": "Um dos pontos de fusão mais baixos conhecidos.",
+        "score": 5
       },
       {
         "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de ebulição",
+        "value": "-246,08 °C",
+        "justification": "Intervalo líquido minúsculo entre fusão e ebulição.",
+        "score": 5
       }
     ]
   },
