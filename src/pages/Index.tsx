@@ -6,8 +6,8 @@ import { Badge } from "@/components/ui/badge";
 
 const ElementCard = ({ element }: { element: PeriodicElement }) => {
   return (
-    <div className="p-4 bg-slate-900 border-2 border-blue-500 rounded-xl w-full max-w-sm text-white font-sans shadow-2xl animate-in fade-in zoom-in duration-300">
-      <div className="flex justify-between items-center mb-2">
+    <div className="p-4 bg-slate-900 border-2 border-blue-500 rounded-xl w-full max-w-md text-white font-sans shadow-2xl animate-in fade-in zoom-in duration-300">
+      <div className="flex justify-between items-center mb-3">
         <div>
           <span className="text-2xl font-bold text-blue-400 italic uppercase">{element.name}</span>
           <p className="text-xs text-blue-300/70">{element.heroName}</p>
@@ -18,13 +18,14 @@ const ElementCard = ({ element }: { element: PeriodicElement }) => {
         </div>
       </div>
       
-      <div className="h-64 bg-gray-800 rounded-lg mb-3 flex items-center justify-center border border-slate-700 overflow-hidden relative group">
+      <div className="h-[450px] bg-slate-800 rounded-lg mb-3 flex items-start justify-center border border-slate-700 overflow-hidden relative group shadow-inner">
         <img 
           src={element.heroImage} 
           alt={element.heroName}
-          className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110" 
+          className="w-full h-full object-contain object-top transition-transform duration-700 group-hover:scale-105" 
         />
-        <div className="absolute bottom-0 left-0 right-0 p-2 bg-black/60 backdrop-blur-sm text-[10px] italic">
+        <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-black/40 to-transparent pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/80 via-black/40 to-transparent text-[11px] italic">
           "{element.heroDescription}"
         </div>
       </div>
