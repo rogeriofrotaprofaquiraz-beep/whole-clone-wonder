@@ -2409,198 +2409,198 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 13,
     "symbol": "Al",
     "name": "Alumínio",
-    "heroName": "Alumínio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Alumínio.",
-    "heroImage": "/placeholder.svg",
+    "heroName": "Comandante Alumínio",
+    "heroDescription": "O metal da leveza e da versatilidade. Comandante Alumínio é o mestre da infraestrutura moderna, capaz de se moldar a qualquer desafio sem nunca perder sua resistência, protegendo o progresso com sua barreira de óxido auto-regenerativa.",
+    "heroImage": "https://cvbgrjauqjawrsyknhyj.supabase.co/storage/v1/object/public/files/uploads/higtSN3xyfWHqjML33VUnzcwd6r2/1777986832507-jbsij-13_aluminio.mp4",
     "attributes": [
       {
         "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Massa Atômica",
+        "value": "26.981 u",
+        "justification": "O Alumínio possui uma massa atômica de aproximadamente 26.981 u.",
+        "score": 27
       },
       {
         "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Abundância na Crosta",
+        "value": "8.1 %",
+        "justification": "É o metal mais abundante na crosta terrestre.",
+        "score": 95
       },
       {
         "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de Fusão",
+        "value": "660.3 °C",
+        "justification": "Possui um ponto de fusão relativamente baixo para um metal industrial.",
+        "score": 66
       },
       {
         "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de Ebulição",
+        "value": "2470 °C",
+        "justification": "Sua temperatura de vaporização é bastante elevada.",
+        "score": 78
       },
       {
         "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Densidade",
+        "value": "2.70 g/cm³",
+        "justification": "Extremamente leve, cerca de um terço da densidade do aço ou cobre.",
+        "score": 90
       },
       {
         "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Dureza de Mohs",
+        "value": "2.75",
+        "justification": "É um metal relativamente macio e fácil de processar.",
+        "score": 28
       },
       {
         "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Eletronegatividade",
+        "value": "1.61",
+        "justification": "Moderadamente eletronegativo, formando ligações covalentes e iônicas.",
+        "score": 40
       },
       {
         "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Condutividade Térmica",
+        "value": "235 W/(m·K)",
+        "justification": "Excelente condutor de calor, muito usado em dissipadores.",
+        "score": 88
       },
       {
         "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Condutividade Elétrica",
+        "value": "35 MS/m",
+        "justification": "Grande condutor, preferido para linhas de transmissão de alta tensão devido ao seu peso.",
+        "score": 85
       },
       {
         "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Calor Específico",
+        "value": "0.897 J/(g·K)",
+        "justification": "Alta capacidade de absorção de calor por unidade de massa.",
+        "score": 75
       },
       {
         "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Raio Atômico",
+        "value": "143 pm",
+        "justification": "Tamanho atômico médio, típico dos metais do bloco p.",
+        "score": 45
       },
       {
         "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Energia de Ionização",
+        "value": "5.986 eV",
+        "justification": "Primeira energia de ionização necessária para remover um elétron.",
+        "score": 55
       },
       {
         "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Estado Físico (CNTP)",
+        "value": "Sólido",
+        "justification": "Metal sólido prateado e brilhante em temperatura ambiente.",
+        "score": 99
       },
       {
         "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Reatividade Química",
+        "value": "Alta",
+        "justification": "Reage rapidamente com o oxigênio, formando uma camada protetora de Al2O3.",
+        "score": 82
       },
       {
         "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Reciclabilidade",
+        "value": "100 %",
+        "justification": "Infinitamente reciclável sem perda de propriedades, economizando 95% de energia.",
+        "score": 100
       },
       {
         "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Resistência à Corrosão",
+        "value": "Excepcional",
+        "justification": "Sua camada natural de óxido impede a oxidação profunda.",
+        "score": 92
       },
       {
         "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Refletividade",
+        "value": "Prata/Branco",
+        "justification": "Excelente refletor de luz visível e radiação térmica.",
+        "score": 80
       },
       {
         "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Maleabilidade",
+        "value": "Muito Alta",
+        "justification": "Pode ser transformado em folhas finíssimas (papel alumínio).",
+        "score": 95
       },
       {
         "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Dutibilidade",
+        "value": "Alta",
+        "justification": "Pode ser esticado em fios finos para diversas aplicações.",
+        "score": 85
       },
       {
         "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Isótopos Estáveis",
+        "value": "1 (Al-27)",
+        "justification": "Elemento monoisotópico na natureza.",
+        "score": 98
       },
       {
         "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Toxicidade",
+        "value": "Baixa",
+        "justification": "Geralmente considerado seguro, mas o acúmulo excessivo deve ser evitado.",
+        "score": 85
       },
       {
         "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Aplicações Aeroespaciais",
+        "value": "Essencial",
+        "justification": "Base da indústria aeronáutica devido à relação resistência/peso.",
+        "score": 97
       },
       {
         "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Magnético",
+        "value": "Paramagnético",
+        "justification": "Não é ferromagnético, não sendo atraído por ímãs comuns.",
+        "score": 10
       },
       {
         "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Custo de Produção",
+        "value": "Moderado",
+        "justification": "Exige muita eletricidade para extração via eletrólise (Processo Hall-Héroult).",
+        "score": 45
       },
       {
         "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Risco à Natureza",
+        "value": "Baixo",
+        "justification": "Estável no ambiente, mas a mineração da bauxita requer cuidados.",
+        "score": 80
       },
       {
         "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Radioatividade",
+        "value": "Nula",
+        "justification": "Isótopo natural Al-27 é completamente estável.",
+        "score": 100
       },
       {
         "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Curiosidade Histórica",
+        "value": "Metal Precioso",
+        "justification": "Já foi mais valioso que o ouro no século XIX devido à dificuldade de extração.",
+        "score": 99
       }
     ]
   },
