@@ -10756,7 +10756,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "heroName": "Praseodymium Green",
     "heroDescription": "O mestre do vidro verde e dos ímãs poderosos, um herói que une força magnética e elegância ótica.",
     "heroImage": "/placeholder.svg",
-    "attributes": [[
+    "attributes": [
       { "id": 1, "label": "Massa Atômica", "value": "140.91 u", "justification": "Massa atômica relativa do Praseodímio.", "score": 47 },
       { "id": 2, "label": "Abundância na Crosta", "value": "9.2 ppm", "justification": "Concentração média na crosta terrestre.", "score": 40 },
       { "id": 3, "label": "Ponto de Fusão", "value": "931 °C", "justification": "Temperatura de transição para o estado líquido.", "score": 60 },
@@ -10794,7 +10794,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "heroName": "Neodymium Force",
     "heroDescription": "O titã dos ímãs permanentes e mestre do magnetismo supremo, herói que sustenta a tecnologia moderna com sua força invisível.",
     "heroImage": "/placeholder.svg",
-    "attributes": [[
+    "attributes": [
       { "id": 1, "label": "Massa Atômica", "value": "144.24 u", "justification": "Massa atômica relativa do Neodímio.", "score": 48 },
       { "id": 2, "label": "Abundância na Crosta", "value": "41.5 ppm", "justification": "Concentração média na crosta terrestre.", "score": 40 },
       { "id": 3, "label": "Ponto de Fusão", "value": "1021 °C", "justification": "Temperatura de transição para o estado líquido.", "score": 60 },
@@ -10832,7 +10832,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "heroName": "Promethium Glow",
     "heroDescription": "O portador da luz eterna e mestre da luminescência atômica, herói que brilha na escuridão com energia radioativa.",
     "heroImage": "/placeholder.svg",
-    "attributes": [[
+    "attributes": [
       { "id": 1, "label": "Massa Atômica", "value": "145 u", "justification": "Massa atômica relativa do Promécio.", "score": 48 },
       { "id": 2, "label": "Abundância na Crosta", "value": "0 ppm", "justification": "Concentração média na crosta terrestre.", "score": 40 },
       { "id": 3, "label": "Ponto de Fusão", "value": "1042 °C", "justification": "Temperatura de transição para o estado líquido.", "score": 60 },
@@ -10870,7 +10870,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "heroName": "Samarium Spark",
     "heroDescription": "O especialista em resistências extremas e mestre dos ímãs térmicos, herói que mantém sua força mesmo no calor das batalhas.",
     "heroImage": "/placeholder.svg",
-    "attributes": [[
+    "attributes": [
       { "id": 1, "label": "Massa Atômica", "value": "150.36 u", "justification": "Massa atômica relativa do Samário.", "score": 50 },
       { "id": 2, "label": "Abundância na Crosta", "value": "7.05 ppm", "justification": "Concentração média na crosta terrestre.", "score": 40 },
       { "id": 3, "label": "Ponto de Fusão", "value": "1072 °C", "justification": "Temperatura de transição para o estado líquido.", "score": 60 },
@@ -10908,7 +10908,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "heroName": "Europium Light",
     "heroDescription": "O mestre das cores vivas e guardião da autenticidade, herói que ilumina as telas do mundo e protege as moedas da falsificação.",
     "heroImage": "/placeholder.svg",
-    "attributes": [[
+    "attributes": [
       { "id": 1, "label": "Massa Atômica", "value": "151.96 u", "justification": "Massa atômica relativa do Európio.", "score": 51 },
       { "id": 2, "label": "Abundância na Crosta", "value": "2.1 ppm", "justification": "Concentração média na crosta terrestre.", "score": 40 },
       { "id": 3, "label": "Ponto de Fusão", "value": "822 °C", "justification": "Temperatura de transição para o estado líquido.", "score": 60 },
@@ -10946,7 +10946,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "heroName": "Gadolinium Vision",
     "heroDescription": "O mestre do contraste magnético e guardião do frio extremo, herói que revela segredos médicos e domina a refrigeração do futuro.",
     "heroImage": "/placeholder.svg",
-    "attributes": [[
+    "attributes": [
       { "id": 1, "label": "Massa Atômica", "value": "157.25 u", "justification": "Massa atômica relativa do Gadolínio.", "score": 52 },
       { "id": 2, "label": "Abundância na Crosta", "value": "6.2 ppm", "justification": "Concentração média na crosta terrestre.", "score": 40 },
       { "id": 3, "label": "Ponto de Fusão", "value": "1313 °C", "justification": "Temperatura de transição para o estado líquido.", "score": 60 },
