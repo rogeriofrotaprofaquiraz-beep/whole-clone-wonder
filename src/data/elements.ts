@@ -8579,200 +8579,200 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "symbol": "Ru",
     "name": "Rutênio",
     "heroName": "Ruthenium Catalyst",
-    "heroDescription": "O acelerador reacional, um herói que torna possível a indústria química moderna.",
+    "heroDescription": "O mestre da precisão química e herói da durabilidade. Ruthenium Catalyst é o especialista em acelerar reações complexas e proteger contatos elétricos com sua dureza inabalável.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-        {
-            "id": 1,
-            "label": "Dado 1",
-            "value": "Processando",
-            "justification": "Característica em análise para o Rutênio.",
-            "score": 50
-        },
-        {
-            "id": 2,
-            "label": "Dado 2",
-            "value": "Processando",
-            "justification": "Característica em análise para o Rutênio.",
-            "score": 50
-        },
-        {
-            "id": 3,
-            "label": "Dado 3",
-            "value": "Processando",
-            "justification": "Característica em análise para o Rutênio.",
-            "score": 50
-        },
-        {
-            "id": 4,
-            "label": "Dado 4",
-            "value": "Processando",
-            "justification": "Característica em análise para o Rutênio.",
-            "score": 50
-        },
-        {
-            "id": 5,
-            "label": "Dado 5",
-            "value": "Processando",
-            "justification": "Característica em análise para o Rutênio.",
-            "score": 50
-        },
-        {
-            "id": 6,
-            "label": "Dado 6",
-            "value": "Processando",
-            "justification": "Característica em análise para o Rutênio.",
-            "score": 50
-        },
-        {
-            "id": 7,
-            "label": "Dado 7",
-            "value": "Processando",
-            "justification": "Característica em análise para o Rutênio.",
-            "score": 50
-        },
-        {
-            "id": 8,
-            "label": "Dado 8",
-            "value": "Processando",
-            "justification": "Característica em análise para o Rutênio.",
-            "score": 50
-        },
-        {
-            "id": 9,
-            "label": "Dado 9",
-            "value": "Processando",
-            "justification": "Característica em análise para o Rutênio.",
-            "score": 50
-        },
-        {
-            "id": 10,
-            "label": "Dado 10",
-            "value": "Processando",
-            "justification": "Característica em análise para o Rutênio.",
-            "score": 50
-        },
-        {
-            "id": 11,
-            "label": "Dado 11",
-            "value": "Processando",
-            "justification": "Característica em análise para o Rutênio.",
-            "score": 50
-        },
-        {
-            "id": 12,
-            "label": "Dado 12",
-            "value": "Processando",
-            "justification": "Característica em análise para o Rutênio.",
-            "score": 50
-        },
-        {
-            "id": 13,
-            "label": "Dado 13",
-            "value": "Processando",
-            "justification": "Característica em análise para o Rutênio.",
-            "score": 50
-        },
-        {
-            "id": 14,
-            "label": "Dado 14",
-            "value": "Processando",
-            "justification": "Característica em análise para o Rutênio.",
-            "score": 50
-        },
-        {
-            "id": 15,
-            "label": "Dado 15",
-            "value": "Processando",
-            "justification": "Característica em análise para o Rutênio.",
-            "score": 50
-        },
-        {
-            "id": 16,
-            "label": "Dado 16",
-            "value": "Processando",
-            "justification": "Característica em análise para o Rutênio.",
-            "score": 50
-        },
-        {
-            "id": 17,
-            "label": "Dado 17",
-            "value": "Processando",
-            "justification": "Característica em análise para o Rutênio.",
-            "score": 50
-        },
-        {
-            "id": 18,
-            "label": "Dado 18",
-            "value": "Processando",
-            "justification": "Característica em análise para o Rutênio.",
-            "score": 50
-        },
-        {
-            "id": 19,
-            "label": "Dado 19",
-            "value": "Processando",
-            "justification": "Característica em análise para o Rutênio.",
-            "score": 50
-        },
-        {
-            "id": 20,
-            "label": "Dado 20",
-            "value": "Processando",
-            "justification": "Característica em análise para o Rutênio.",
-            "score": 50
-        },
-        {
-            "id": 21,
-            "label": "Dado 21",
-            "value": "Processando",
-            "justification": "Característica em análise para o Rutênio.",
-            "score": 50
-        },
-        {
-            "id": 22,
-            "label": "Dado 22",
-            "value": "Processando",
-            "justification": "Característica em análise para o Rutênio.",
-            "score": 50
-        },
-        {
-            "id": 23,
-            "label": "Dado 23",
-            "value": "Processando",
-            "justification": "Característica em análise para o Rutênio.",
-            "score": 50
-        },
-        {
-            "id": 24,
-            "label": "Dado 24",
-            "value": "Processando",
-            "justification": "Característica em análise para o Rutênio.",
-            "score": 50
-        },
-        {
-            "id": 25,
-            "label": "Dado 25",
-            "value": "Processando",
-            "justification": "Característica em análise para o Rutênio.",
-            "score": 50
-        },
-        {
-            "id": 26,
-            "label": "Dado 26",
-            "value": "Processando",
-            "justification": "Característica em análise para o Rutênio.",
-            "score": 50
-        },
-        {
-            "id": 27,
-            "label": "Dado 27",
-            "value": "Processando",
-            "justification": "Característica em análise para o Rutênio.",
-            "score": 50
-        }
+      {
+        "id": 1,
+        "label": "Massa Atômica",
+        "value": "101.07 u",
+        "justification": "O Rutênio possui uma massa atômica de aproximadamente 101.07 u.",
+        "score": 101
+      },
+      {
+        "id": 2,
+        "label": "Abundância na Crosta",
+        "value": "0.001 ppm",
+        "justification": "Um dos metais mais raros da Terra, encontrado em minérios de platina.",
+        "score": 10
+      },
+      {
+        "id": 3,
+        "label": "Ponto de Fusão",
+        "value": "2334 °C",
+        "justification": "Possui um ponto de fusão muito alto, característico dos metais do grupo da platina.",
+        "score": 95
+      },
+      {
+        "id": 4,
+        "label": "Ponto de Ebulição",
+        "value": "4150 °C",
+        "justification": "Sua temperatura de vaporização é extremamente elevada.",
+        "score": 90
+      },
+      {
+        "id": 5,
+        "label": "Densidade",
+        "value": "12.45 g/cm³",
+        "justification": "Metal muito denso e pesado.",
+        "score": 92
+      },
+      {
+        "id": 6,
+        "label": "Dureza de Mohs",
+        "value": "6.5",
+        "justification": "Metal muito duro, usado para aumentar a dureza da platina e do paládio.",
+        "score": 85
+      },
+      {
+        "id": 7,
+        "label": "Eletronegatividade",
+        "value": "2.2",
+        "justification": "Valor alto para um metal, indicando sua nobreza química.",
+        "score": 60
+      },
+      {
+        "id": 8,
+        "label": "Condutividade Térmica",
+        "value": "117 W/(m·K)",
+        "justification": "Boa condutividade térmica para um metal de transição pesado.",
+        "score": 75
+      },
+      {
+        "id": 9,
+        "label": "Condutividade Elétrica",
+        "value": "14.0 MS/m",
+        "justification": "Excelente condutor, usado em contatos elétricos de alta confiabilidade.",
+        "score": 85
+      },
+      {
+        "id": 10,
+        "label": "Calor Específico",
+        "value": "0.238 J/(g·K)",
+        "justification": "Baixa capacidade térmica, aquece rapidamente.",
+        "score": 45
+      },
+      {
+        "id": 11,
+        "label": "Raio Atômico",
+        "value": "134 pm",
+        "justification": "Raio atômico compacto que favorece sua dureza.",
+        "score": 60
+      },
+      {
+        "id": 12,
+        "label": "Energia de Ionização",
+        "value": "7.361 eV",
+        "justification": "Energia necessária para remover o primeiro elétron.",
+        "score": 72
+      },
+      {
+        "id": 13,
+        "label": "Estado Físico (CNTP)",
+        "value": "Sólido",
+        "justification": "Metal branco prateado, duro e quebradiço.",
+        "score": 99
+      },
+      {
+        "id": 14,
+        "label": "Reatividade Química",
+        "value": "Muito Baixa",
+        "justification": "Inerte à maioria dos produtos químicos; não é atacado por ácidos frios ou água régia.",
+        "score": 95
+      },
+      {
+        "id": 15,
+        "label": "Reciclabilidade",
+        "value": "Máxima",
+        "justification": "Altamente valorizado e quase totalmente reciclado de catalisadores industriais.",
+        "score": 100
+      },
+      {
+        "id": 16,
+        "label": "Resistência à Corrosão",
+        "value": "Excepcional",
+        "justification": "Um dos metais mais resistentes à corrosão conhecidos.",
+        "score": 100
+      },
+      {
+        "id": 17,
+        "label": "Refletividade",
+        "value": "Alta",
+        "justification": "Excelente brilho metálico prateado.",
+        "score": 80
+      },
+      {
+        "id": 18,
+        "label": "Maleabilidade",
+        "value": "Baixa",
+        "justification": "Geralmente quebradiço, difícil de moldar sem aquecimento extremo.",
+        "score": 20
+      },
+      {
+        "id": 19,
+        "label": "Dutibilidade",
+        "value": "Baixa",
+        "justification": "Não é facilmente esticado em fios quando puro.",
+        "score": 20
+      },
+      {
+        "id": 20,
+        "label": "Isótopos Estáveis",
+        "value": "7 (Ru-96, 98, 99, 100, 101, 102, 104)",
+        "justification": "Possui uma das maiores coleções de isótopos estáveis da tabela.",
+        "score": 95
+      },
+      {
+        "id": 21,
+        "label": "Toxicidade",
+        "value": "Moderada",
+        "justification": "Seus compostos, especialmente o tetróxido de rutênio, são altamente voláteis e tóxicos.",
+        "score": 40
+      },
+      {
+        "id": 22,
+        "label": "Aplicações Tecnológicas",
+        "value": "Crítica",
+        "justification": "Essencial para a indústria eletrônica, catalisadores químicos e armazenamento de dados (discos rígidos).",
+        "score": 100
+      },
+      {
+        "id": 23,
+        "label": "Magnético",
+        "value": "Paramagnético",
+        "justification": "Resposta magnética fraca.",
+        "score": 15
+      },
+      {
+        "id": 24,
+        "label": "Custo de Produção",
+        "value": "Muito Alto",
+        "justification": "Preço elevado devido à sua extrema raridade e complexidade de extração.",
+        "score": 15
+      },
+      {
+        "id": 25,
+        "label": "Risco à Natureza",
+        "value": "Baixo",
+        "justification": "Metal estável que não se degrada ou polui facilmente em forma metálica.",
+        "score": 90
+      },
+      {
+        "id": 26,
+        "label": "Radioatividade",
+        "value": "Nula (Isótopos naturais)",
+        "justification": "Isótopos naturais são estáveis.",
+        "score": 100
+      },
+      {
+        "id": 27,
+        "label": "Curiosidade Histórica",
+        "value": "Rússia",
+        "justification": "Nomeado em homenagem à Rússia (Ruthenia em latim), país onde foi descoberto.",
+        "score": 95
+      }
     ]
-},
+  },
   "Rh": {
     "number": 45,
     "symbol": "Rh",
