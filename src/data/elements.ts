@@ -19121,12 +19121,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "97": {
+  "Bk": {
     "number": 97,
-    "symbol": "Element",
-    "name": "Elemento 97",
-    "heroName": "Hero 97",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "Bk",
+    "name": "Berquélio",
+    "heroName": "Berkelium Beam",
+    "heroDescription": "O herói da síntese avançada, elo para a criação de novos mundos elementais.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -19320,12 +19320,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "98": {
+  "Cf": {
     "number": 98,
-    "symbol": "Element",
-    "name": "Elemento 98",
-    "heroName": "Hero 98",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "Cf",
+    "name": "Califórnio",
+    "heroName": "Californium Neutron",
+    "heroDescription": "O mestre da emissão de nêutrons, o herói que detecta camadas de ouro e prata.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -19519,12 +19519,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "99": {
+  "Es": {
     "number": 99,
-    "symbol": "Element",
-    "name": "Elemento 99",
-    "heroName": "Hero 99",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "Es",
+    "name": "Enstênio",
+    "heroName": "Einsteinium Genius",
+    "heroDescription": "O herói nascido da força termonuclear, tributo ao gênio da relatividade.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -19718,12 +19718,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "100": {
+  "Fm": {
     "number": 100,
-    "symbol": "Element",
-    "name": "Elemento 100",
-    "heroName": "Hero 100",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "Fm",
+    "name": "Férmio",
+    "heroName": "Fermium Core",
+    "heroDescription": "O mestre do centésimo degrau elemental, herói da física quântica aplicada.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -19917,12 +19917,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "101": {
+  "Md": {
     "number": 101,
-    "symbol": "Element",
-    "name": "Elemento 101",
-    "heroName": "Hero 101",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "Md",
+    "name": "Mendelévio",
+    "heroName": "Mendelevium Father",
+    "heroDescription": "O herói que honra o arquiteto da tabela periódica.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -20116,12 +20116,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "102": {
+  "No": {
     "number": 102,
-    "symbol": "Element",
-    "name": "Elemento 102",
-    "heroName": "Hero 102",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "No",
+    "name": "Nobélio",
+    "heroName": "Nobelium Prize",
+    "heroDescription": "O herói da excelência científica e da paz atômica.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -20315,12 +20315,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "103": {
+  "Lr": {
     "number": 103,
-    "symbol": "Element",
-    "name": "Elemento 103",
-    "heroName": "Hero 103",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "Lr",
+    "name": "Laurêncio",
+    "heroName": "Lawrencium Cyclotron",
+    "heroDescription": "O herói que marca o fim da série dos actinídeos com força acelerada.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -20514,12 +20514,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "104": {
+  "Rf": {
     "number": 104,
-    "symbol": "Element",
-    "name": "Elemento 104",
-    "heroName": "Hero 104",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "Rf",
+    "name": "Rutherfórdio",
+    "heroName": "Rutherfordium Nucleus",
+    "heroDescription": "O primeiro herói dos transactinídeos, explorador do núcleo central.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -20713,12 +20713,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "105": {
+  "Db": {
     "number": 105,
-    "symbol": "Element",
-    "name": "Elemento 105",
-    "heroName": "Hero 105",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "Db",
+    "name": "Dúbnio",
+    "heroName": "Dubnium Heavy",
+    "heroDescription": "O herói da colaboração científica internacional nas profundezas atômicas.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -20912,12 +20912,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "106": {
+  "Sg": {
     "number": 106,
-    "symbol": "Element",
-    "name": "Elemento 106",
-    "heroName": "Hero 106",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "Sg",
+    "name": "Seabórgio",
+    "heroName": "Seaborgium Synth",
+    "heroDescription": "O herói que personifica a criação artificial de elementos superpesados.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
