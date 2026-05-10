@@ -281,7 +281,7 @@ const Index = () => {
         </div>
 
         {/* Lado Direito: Visualização da Carta */}
-        <div className="lg:w-96 w-full flex justify-center sticky top-8">
+        <div className="lg:w-[500px] w-full flex justify-center sticky top-8">
           {selectedElement ? (
             <ElementCard element={selectedElement} />
           ) : (
