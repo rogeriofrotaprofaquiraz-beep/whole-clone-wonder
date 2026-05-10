@@ -180,7 +180,7 @@ const Index = () => {
         </p>
       </header>
 
-      <div className="flex flex-col lg:flex-row gap-8 items-start justify-center w-full max-w-7xl">
+      <div className="flex flex-col lg:flex-row gap-12 items-start justify-center w-full max-w-[1400px]">
         {/* Lado Esquerdo: Tabela Periódica (Mini) */}
         <div className="flex-1 bg-slate-900/40 p-4 md:p-8 rounded-[2rem] border border-white/5 backdrop-blur-2xl shadow-[0_0_50px_rgba(0,0,0,0.3)] relative overflow-hidden group">
           {/* Grid Background Effect */}
