@@ -17131,12 +17131,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "87": {
+  "Fr": {
     "number": 87,
-    "symbol": "Element",
-    "name": "Elemento 87",
-    "heroName": "Hero 87",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "Fr",
+    "name": "Frâncio",
+    "heroName": "Francium Flash",
+    "heroDescription": "O herói ultra-instável, o metal alcalino que mal existe antes de desaparecer.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -17330,12 +17330,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "88": {
+  "Ra": {
     "number": 88,
-    "symbol": "Element",
-    "name": "Elemento 88",
-    "heroName": "Hero 88",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "Ra",
+    "name": "Rádio",
+    "heroName": "Radium Glow",
+    "heroDescription": "A heroína pioneira do brilho eterno, que revelou os segredos do núcleo atômico.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -17529,12 +17529,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "89": {
+  "Ac": {
     "number": 89,
-    "symbol": "Element",
-    "name": "Elemento 89",
-    "heroName": "Hero 89",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "Ac",
+    "name": "Actínio",
+    "heroName": "Actinium Ray",
+    "heroDescription": "O mestre da luminescência azulada e precursor da série dos actinídeos.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -17728,12 +17728,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "90": {
+  "Th": {
     "number": 90,
-    "symbol": "Element",
-    "name": "Elemento 90",
-    "heroName": "Hero 90",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "Th",
+    "name": "Tório",
+    "heroName": "Thorium Power",
+    "heroDescription": "O herói do futuro energético, combustível nuclear limpo e abundante.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -17927,12 +17927,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "91": {
+  "Pa": {
     "number": 91,
-    "symbol": "Element",
-    "name": "Elemento 91",
-    "heroName": "Hero 91",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "Pa",
+    "name": "Protactínio",
+    "heroName": "Protactinium Ghost",
+    "heroDescription": "O elo perdido radioativo, denso e extremamente raro.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -18126,12 +18126,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "92": {
+  "U": {
     "number": 92,
-    "symbol": "Element",
-    "name": "Elemento 92",
-    "heroName": "Hero 92",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "U",
+    "name": "Urânio",
+    "heroName": "Uranium Titan",
+    "heroDescription": "O gigante da energia nuclear, o herói cujo núcleo sustenta cidades inteiras.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -18325,12 +18325,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "93": {
+  "Np": {
     "number": 93,
-    "symbol": "Element",
-    "name": "Elemento 93",
-    "heroName": "Hero 93",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "Np",
+    "name": "Netúnio",
+    "heroName": "Neptunium Voyager",
+    "heroDescription": "O primeiro elemento transurânico, mensageiro das profundezas do reator nuclear.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -18524,12 +18524,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "94": {
+  "Pu": {
     "number": 94,
-    "symbol": "Element",
-    "name": "Elemento 94",
-    "heroName": "Hero 94",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "Pu",
+    "name": "Plutônio",
+    "heroName": "Plutonium Force",
+    "heroDescription": "O herói da potência concentrada e das missões espaciais de longa duração.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -18723,12 +18723,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "95": {
+  "Am": {
     "number": 95,
-    "symbol": "Element",
-    "name": "Elemento 95",
-    "heroName": "Hero 95",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "Am",
+    "name": "Amerício",
+    "heroName": "Americium Guard",
+    "heroDescription": "O sentinela invisível em cada lar, o herói detector de fumaça.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -18922,12 +18922,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "96": {
+  "Cm": {
     "number": 96,
-    "symbol": "Element",
-    "name": "Elemento 96",
-    "heroName": "Hero 96",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "Cm",
+    "name": "Cúrio",
+    "heroName": "Curium Spark",
+    "heroDescription": "O herói radioativo que alimenta experimentos científicos em Marte.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
