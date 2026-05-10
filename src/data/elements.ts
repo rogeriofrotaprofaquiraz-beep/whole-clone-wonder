@@ -8777,201 +8777,201 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 45,
     "symbol": "Rh",
     "name": "Ródio",
-    "heroName": "Rhodium Convert",
-    "heroDescription": "O purificador do ar automotivo, um herói que reduz a poluição dos escapamentos.",
+    "heroName": "Rhodium Shine",
+    "heroDescription": "O herói do brilho eterno e protetor dos ares. Rhodium Shine é o metal mais precioso do mundo, um guardião que limpa as emissões e reflete a luz com perfeição inigualável.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-        {
-            "id": 1,
-            "label": "Dado 1",
-            "value": "Processando",
-            "justification": "Característica em análise para o Ródio.",
-            "score": 50
-        },
-        {
-            "id": 2,
-            "label": "Dado 2",
-            "value": "Processando",
-            "justification": "Característica em análise para o Ródio.",
-            "score": 50
-        },
-        {
-            "id": 3,
-            "label": "Dado 3",
-            "value": "Processando",
-            "justification": "Característica em análise para o Ródio.",
-            "score": 50
-        },
-        {
-            "id": 4,
-            "label": "Dado 4",
-            "value": "Processando",
-            "justification": "Característica em análise para o Ródio.",
-            "score": 50
-        },
-        {
-            "id": 5,
-            "label": "Dado 5",
-            "value": "Processando",
-            "justification": "Característica em análise para o Ródio.",
-            "score": 50
-        },
-        {
-            "id": 6,
-            "label": "Dado 6",
-            "value": "Processando",
-            "justification": "Característica em análise para o Ródio.",
-            "score": 50
-        },
-        {
-            "id": 7,
-            "label": "Dado 7",
-            "value": "Processando",
-            "justification": "Característica em análise para o Ródio.",
-            "score": 50
-        },
-        {
-            "id": 8,
-            "label": "Dado 8",
-            "value": "Processando",
-            "justification": "Característica em análise para o Ródio.",
-            "score": 50
-        },
-        {
-            "id": 9,
-            "label": "Dado 9",
-            "value": "Processando",
-            "justification": "Característica em análise para o Ródio.",
-            "score": 50
-        },
-        {
-            "id": 10,
-            "label": "Dado 10",
-            "value": "Processando",
-            "justification": "Característica em análise para o Ródio.",
-            "score": 50
-        },
-        {
-            "id": 11,
-            "label": "Dado 11",
-            "value": "Processando",
-            "justification": "Característica em análise para o Ródio.",
-            "score": 50
-        },
-        {
-            "id": 12,
-            "label": "Dado 12",
-            "value": "Processando",
-            "justification": "Característica em análise para o Ródio.",
-            "score": 50
-        },
-        {
-            "id": 13,
-            "label": "Dado 13",
-            "value": "Processando",
-            "justification": "Característica em análise para o Ródio.",
-            "score": 50
-        },
-        {
-            "id": 14,
-            "label": "Dado 14",
-            "value": "Processando",
-            "justification": "Característica em análise para o Ródio.",
-            "score": 50
-        },
-        {
-            "id": 15,
-            "label": "Dado 15",
-            "value": "Processando",
-            "justification": "Característica em análise para o Ródio.",
-            "score": 50
-        },
-        {
-            "id": 16,
-            "label": "Dado 16",
-            "value": "Processando",
-            "justification": "Característica em análise para o Ródio.",
-            "score": 50
-        },
-        {
-            "id": 17,
-            "label": "Dado 17",
-            "value": "Processando",
-            "justification": "Característica em análise para o Ródio.",
-            "score": 50
-        },
-        {
-            "id": 18,
-            "label": "Dado 18",
-            "value": "Processando",
-            "justification": "Característica em análise para o Ródio.",
-            "score": 50
-        },
-        {
-            "id": 19,
-            "label": "Dado 19",
-            "value": "Processando",
-            "justification": "Característica em análise para o Ródio.",
-            "score": 50
-        },
-        {
-            "id": 20,
-            "label": "Dado 20",
-            "value": "Processando",
-            "justification": "Característica em análise para o Ródio.",
-            "score": 50
-        },
-        {
-            "id": 21,
-            "label": "Dado 21",
-            "value": "Processando",
-            "justification": "Característica em análise para o Ródio.",
-            "score": 50
-        },
-        {
-            "id": 22,
-            "label": "Dado 22",
-            "value": "Processando",
-            "justification": "Característica em análise para o Ródio.",
-            "score": 50
-        },
-        {
-            "id": 23,
-            "label": "Dado 23",
-            "value": "Processando",
-            "justification": "Característica em análise para o Ródio.",
-            "score": 50
-        },
-        {
-            "id": 24,
-            "label": "Dado 24",
-            "value": "Processando",
-            "justification": "Característica em análise para o Ródio.",
-            "score": 50
-        },
-        {
-            "id": 25,
-            "label": "Dado 25",
-            "value": "Processando",
-            "justification": "Característica em análise para o Ródio.",
-            "score": 50
-        },
-        {
-            "id": 26,
-            "label": "Dado 26",
-            "value": "Processando",
-            "justification": "Característica em análise para o Ródio.",
-            "score": 50
-        },
-        {
-            "id": 27,
-            "label": "Dado 27",
-            "value": "Processando",
-            "justification": "Característica em análise para o Ródio.",
-            "score": 50
-        }
+      {
+        "id": 1,
+        "label": "Massa Atômica",
+        "value": "102.91 u",
+        "justification": "O Ródio possui uma massa atômica de aproximadamente 102.91 u.",
+        "score": 103
+      },
+      {
+        "id": 2,
+        "label": "Abundância na Crosta",
+        "value": "0.0002 ppm",
+        "justification": "Extremamente raro, sendo um dos elementos menos abundantes da crosta terrestre.",
+        "score": 5
+      },
+      {
+        "id": 3,
+        "label": "Ponto de Fusão",
+        "value": "1964 °C",
+        "justification": "Possui um ponto de fusão elevado, típico dos metais nobres.",
+        "score": 92
+      },
+      {
+        "id": 4,
+        "label": "Ponto de Ebulição",
+        "value": "3695 °C",
+        "justification": "Sua temperatura de vaporização é alta.",
+        "score": 88
+      },
+      {
+        "id": 5,
+        "label": "Densidade",
+        "value": "12.41 g/cm³",
+        "justification": "Metal denso, similar à densidade do rutênio e do paládio.",
+        "score": 90
+      },
+      {
+        "id": 6,
+        "label": "Dureza de Mohs",
+        "value": "6.0",
+        "justification": "Metal duro para os padrões dos metais nobres.",
+        "score": 80
+      },
+      {
+        "id": 7,
+        "label": "Eletronegatividade",
+        "value": "2.28",
+        "justification": "Eletronegatividade elevada, refletindo sua baixa reatividade química.",
+        "score": 65
+      },
+      {
+        "id": 8,
+        "label": "Condutividade Térmica",
+        "value": "150 W/(m·K)",
+        "justification": "Excelente condutividade térmica.",
+        "score": 85
+      },
+      {
+        "id": 9,
+        "label": "Condutividade Elétrica",
+        "value": "21.0 MS/m",
+        "justification": "Ótimo condutor elétrico, usado em contatos de alta performance.",
+        "score": 90
+      },
+      {
+        "id": 10,
+        "label": "Calor Específico",
+        "value": "0.243 J/(g·K)",
+        "justification": "Baixa capacidade térmica.",
+        "score": 45
+      },
+      {
+        "id": 11,
+        "label": "Raio Atômico",
+        "value": "134 pm",
+        "justification": "Raio atômico compacto.",
+        "score": 55
+      },
+      {
+        "id": 12,
+        "label": "Energia de Ionização",
+        "value": "7.459 eV",
+        "justification": "Energia necessária para remover o primeiro elétron.",
+        "score": 75
+      },
+      {
+        "id": 13,
+        "label": "Estado Físico (CNTP)",
+        "value": "Sólido",
+        "justification": "Metal branco-prateado, brilhante e altamente reflexivo.",
+        "score": 99
+      },
+      {
+        "id": 14,
+        "label": "Reatividade Química",
+        "value": "Muito Baixa",
+        "justification": "Altamente resistente à oxidação e ao ataque de ácidos.",
+        "score": 98
+      },
+      {
+        "id": 15,
+        "label": "Reciclabilidade",
+        "value": "Máxima",
+        "justification": "Extremamente valioso e recuperado de catalisadores automotivos.",
+        "score": 100
+      },
+      {
+        "id": 16,
+        "label": "Resistência à Corrosão",
+        "value": "Excepcional",
+        "justification": "Não mancha e resiste a quase todos os agentes corrosivos.",
+        "score": 100
+      },
+      {
+        "id": 17,
+        "label": "Refletividade",
+        "value": "Máxima",
+        "justification": "Uma das maiores refletividades conhecidas, especialmente para luz visível.",
+        "score": 100
+      },
+      {
+        "id": 18,
+        "label": "Maleabilidade",
+        "value": "Baixa",
+        "justification": "Difícil de moldar quando puro devido à sua dureza.",
+        "score": 30
+      },
+      {
+        "id": 19,
+        "label": "Dutibilidade",
+        "value": "Moderada",
+        "justification": "Pode ser esticado em fios quando aquecido.",
+        "score": 50
+      },
+      {
+        "id": 20,
+        "label": "Isótopos Estáveis",
+        "value": "1 (Rh-103)",
+        "justification": "Elemento monoisotópico na natureza.",
+        "score": 98
+      },
+      {
+        "id": 21,
+        "label": "Toxicidade",
+        "value": "Muito Baixa",
+        "justification": "Metal nobre inerte e seguro para o contato humano.",
+        "score": 98
+      },
+      {
+        "id": 22,
+        "label": "Aplicações Tecnológicas",
+        "value": "Crítica",
+        "justification": "Essencial para conversores catalíticos que reduzem a poluição do ar.",
+        "score": 100
+      },
+      {
+        "id": 23,
+        "label": "Magnético",
+        "value": "Paramagnético",
+        "justification": "Resposta magnética muito fraca.",
+        "score": 10
+      },
+      {
+        "id": 24,
+        "label": "Custo de Produção",
+        "value": "Extremo",
+        "justification": "Muitas vezes o metal mais caro do mundo, devido à sua extrema raridade.",
+        "score": 1
+      },
+      {
+        "id": 25,
+        "label": "Risco à Natureza",
+        "value": "Mínimo",
+        "justification": "Elemento estável e benéfico ao meio ambiente via catalisadores.",
+        "score": 100
+      },
+      {
+        "id": 26,
+        "label": "Radioatividade",
+        "value": "Nula",
+        "justification": "Isótopo natural Rh-103 é estável.",
+        "score": 100
+      },
+      {
+        "id": 27,
+        "label": "Curiosidade Histórica",
+        "value": "Rosa",
+        "justification": "Seu nome vem do grego 'rhodon' (rosa), devido à cor de seus sais em solução.",
+        "score": 95
+      }
     ]
-},
+  },
   "Pd": {
     "number": 46,
     "symbol": "Pd",
