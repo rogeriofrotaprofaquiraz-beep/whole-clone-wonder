@@ -11183,15 +11183,19 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
           "justification": "Não possui papel biológico mas é pouco tóxico.",
           "score": 85
         },
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+        {
+          "id": 3,
+          "label": "Risco à saúde",
+          "value": "Baixo",
+          "justification": "Seguro em manuseio controlado.",
+          "score": 90
         },
         {
-            "id": 3,
-            "label": "Atributo 3",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 4,
+          "label": "Benefício",
+          "value": "Lentes de câmera, vidros ópticos",
+          "justification": "Melhora o índice de refração do vidro.",
+          "score": 95
         },
         {
             "id": 4,
