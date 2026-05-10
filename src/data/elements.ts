@@ -8180,201 +8180,201 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 42,
     "symbol": "Mo",
     "name": "Molibdênio",
-    "heroName": "Molybdenum Steel",
-    "heroDescription": "O fortificador de metais, um herói que permite turbinas de avião a temperaturas extremas.",
+    "heroName": "Molybdenum Shield",
+    "heroDescription": "O herói da resistência térmica e pilar biológico. Molybdenum Shield é o mestre das altas temperaturas e catalisador essencial para a vida, garantindo que as estruturas resistam ao calor e à degradação.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-        {
-            "id": 1,
-            "label": "Dado 1",
-            "value": "Processando",
-            "justification": "Característica em análise para o Molibdênio.",
-            "score": 50
-        },
-        {
-            "id": 2,
-            "label": "Dado 2",
-            "value": "Processando",
-            "justification": "Característica em análise para o Molibdênio.",
-            "score": 50
-        },
-        {
-            "id": 3,
-            "label": "Dado 3",
-            "value": "Processando",
-            "justification": "Característica em análise para o Molibdênio.",
-            "score": 50
-        },
-        {
-            "id": 4,
-            "label": "Dado 4",
-            "value": "Processando",
-            "justification": "Característica em análise para o Molibdênio.",
-            "score": 50
-        },
-        {
-            "id": 5,
-            "label": "Dado 5",
-            "value": "Processando",
-            "justification": "Característica em análise para o Molibdênio.",
-            "score": 50
-        },
-        {
-            "id": 6,
-            "label": "Dado 6",
-            "value": "Processando",
-            "justification": "Característica em análise para o Molibdênio.",
-            "score": 50
-        },
-        {
-            "id": 7,
-            "label": "Dado 7",
-            "value": "Processando",
-            "justification": "Característica em análise para o Molibdênio.",
-            "score": 50
-        },
-        {
-            "id": 8,
-            "label": "Dado 8",
-            "value": "Processando",
-            "justification": "Característica em análise para o Molibdênio.",
-            "score": 50
-        },
-        {
-            "id": 9,
-            "label": "Dado 9",
-            "value": "Processando",
-            "justification": "Característica em análise para o Molibdênio.",
-            "score": 50
-        },
-        {
-            "id": 10,
-            "label": "Dado 10",
-            "value": "Processando",
-            "justification": "Característica em análise para o Molibdênio.",
-            "score": 50
-        },
-        {
-            "id": 11,
-            "label": "Dado 11",
-            "value": "Processando",
-            "justification": "Característica em análise para o Molibdênio.",
-            "score": 50
-        },
-        {
-            "id": 12,
-            "label": "Dado 12",
-            "value": "Processando",
-            "justification": "Característica em análise para o Molibdênio.",
-            "score": 50
-        },
-        {
-            "id": 13,
-            "label": "Dado 13",
-            "value": "Processando",
-            "justification": "Característica em análise para o Molibdênio.",
-            "score": 50
-        },
-        {
-            "id": 14,
-            "label": "Dado 14",
-            "value": "Processando",
-            "justification": "Característica em análise para o Molibdênio.",
-            "score": 50
-        },
-        {
-            "id": 15,
-            "label": "Dado 15",
-            "value": "Processando",
-            "justification": "Característica em análise para o Molibdênio.",
-            "score": 50
-        },
-        {
-            "id": 16,
-            "label": "Dado 16",
-            "value": "Processando",
-            "justification": "Característica em análise para o Molibdênio.",
-            "score": 50
-        },
-        {
-            "id": 17,
-            "label": "Dado 17",
-            "value": "Processando",
-            "justification": "Característica em análise para o Molibdênio.",
-            "score": 50
-        },
-        {
-            "id": 18,
-            "label": "Dado 18",
-            "value": "Processando",
-            "justification": "Característica em análise para o Molibdênio.",
-            "score": 50
-        },
-        {
-            "id": 19,
-            "label": "Dado 19",
-            "value": "Processando",
-            "justification": "Característica em análise para o Molibdênio.",
-            "score": 50
-        },
-        {
-            "id": 20,
-            "label": "Dado 20",
-            "value": "Processando",
-            "justification": "Característica em análise para o Molibdênio.",
-            "score": 50
-        },
-        {
-            "id": 21,
-            "label": "Dado 21",
-            "value": "Processando",
-            "justification": "Característica em análise para o Molibdênio.",
-            "score": 50
-        },
-        {
-            "id": 22,
-            "label": "Dado 22",
-            "value": "Processando",
-            "justification": "Característica em análise para o Molibdênio.",
-            "score": 50
-        },
-        {
-            "id": 23,
-            "label": "Dado 23",
-            "value": "Processando",
-            "justification": "Característica em análise para o Molibdênio.",
-            "score": 50
-        },
-        {
-            "id": 24,
-            "label": "Dado 24",
-            "value": "Processando",
-            "justification": "Característica em análise para o Molibdênio.",
-            "score": 50
-        },
-        {
-            "id": 25,
-            "label": "Dado 25",
-            "value": "Processando",
-            "justification": "Característica em análise para o Molibdênio.",
-            "score": 50
-        },
-        {
-            "id": 26,
-            "label": "Dado 26",
-            "value": "Processando",
-            "justification": "Característica em análise para o Molibdênio.",
-            "score": 50
-        },
-        {
-            "id": 27,
-            "label": "Dado 27",
-            "value": "Processando",
-            "justification": "Característica em análise para o Molibdênio.",
-            "score": 50
-        }
+      {
+        "id": 1,
+        "label": "Massa Atômica",
+        "value": "95.95 u",
+        "justification": "O Molibdênio possui uma massa atômica de aproximadamente 95.95 u.",
+        "score": 96
+      },
+      {
+        "id": 2,
+        "label": "Abundância na Crosta",
+        "value": "1.2 ppm",
+        "justification": "Elemento relativamente raro, encontrado principalmente na molibdenita.",
+        "score": 30
+      },
+      {
+        "id": 3,
+        "label": "Ponto de Fusão",
+        "value": "2623 °C",
+        "justification": "Possui um dos pontos de fusão mais elevados entre todos os elementos, perdendo para poucos.",
+        "score": 99
+      },
+      {
+        "id": 4,
+        "label": "Ponto de Ebulição",
+        "value": "4639 °C",
+        "justification": "Sua temperatura de vaporização é extremamente alta.",
+        "score": 98
+      },
+      {
+        "id": 5,
+        "label": "Densidade",
+        "value": "10.28 g/cm³",
+        "justification": "Metal denso e pesado, contribuindo para sua resistência.",
+        "score": 88
+      },
+      {
+        "id": 6,
+        "label": "Dureza de Mohs",
+        "value": "5.5",
+        "justification": "Metal duro e resistente à abrasão.",
+        "score": 75
+      },
+      {
+        "id": 7,
+        "label": "Eletronegatividade",
+        "value": "2.16",
+        "justification": "Valor elevado para um metal de transição, similar ao fósforo.",
+        "score": 55
+      },
+      {
+        "id": 8,
+        "label": "Condutividade Térmica",
+        "value": "138 W/(m·K)",
+        "justification": "Boa condutividade térmica para aplicações de engenharia.",
+        "score": 80
+      },
+      {
+        "id": 9,
+        "label": "Condutividade Elétrica",
+        "value": "18.0 MS/m",
+        "justification": "Condutor elétrico eficiente.",
+        "score": 85
+      },
+      {
+        "id": 10,
+        "label": "Calor Específico",
+        "value": "0.251 J/(g·K)",
+        "justification": "Baixo calor específico, aquece rapidamente sob carga.",
+        "score": 40
+      },
+      {
+        "id": 11,
+        "label": "Raio Atômico",
+        "value": "139 pm",
+        "justification": "Tamanho compacto que confere dureza a suas ligas.",
+        "score": 55
+      },
+      {
+        "id": 12,
+        "label": "Energia de Ionização",
+        "value": "7.092 eV",
+        "justification": "Energia necessária para remover o primeiro elétron.",
+        "score": 68
+      },
+      {
+        "id": 13,
+        "label": "Estado Físico (CNTP)",
+        "value": "Sólido",
+        "justification": "Metal cinza prateado, muito duro e com alto brilho metálico.",
+        "score": 99
+      },
+      {
+        "id": 14,
+        "label": "Reatividade Química",
+        "value": "Moderada (Estável)",
+        "justification": "Não reage com oxigênio ou água à temperatura ambiente.",
+        "score": 70
+      },
+      {
+        "id": 15,
+        "label": "Reciclabilidade",
+        "value": "Alta",
+        "justification": "Muito valorizado e reciclado a partir de sucatas de aço.",
+        "score": 90
+      },
+      {
+        "id": 16,
+        "label": "Resistência à Corrosão",
+        "value": "Excelente",
+        "justification": "Melhora significativamente a resistência ao pite (corrosão localizada) do aço inoxidável.",
+        "score": 95
+      },
+      {
+        "id": 17,
+        "label": "Refletividade",
+        "value": "Alta",
+        "justification": "Excelente brilho prateado.",
+        "score": 75
+      },
+      {
+        "id": 18,
+        "label": "Maleabilidade",
+        "value": "Moderada",
+        "justification": "Difícil de trabalhar em temperatura ambiente, mas maleável quando aquecido.",
+        "score": 60
+      },
+      {
+        "id": 19,
+        "label": "Dutibilidade",
+        "value": "Boa",
+        "justification": "Pode ser transformado em filamentos e suportes de alta temperatura.",
+        "score": 75
+      },
+      {
+        "id": 20,
+        "label": "Isótopos Estáveis",
+        "value": "7 (Mo-92, 94, 95, 96, 97, 98, 100)",
+        "justification": "Possui uma ampla gama de isótopos naturais.",
+        "score": 96
+      },
+      {
+        "id": 21,
+        "label": "Toxicidade",
+        "value": "Baixa (Micronutriente)",
+        "justification": "Essencial para plantas e animais, mas o excesso pode ser prejudicial.",
+        "score": 90
+      },
+      {
+        "id": 22,
+        "label": "Aplicações Tecnológicas",
+        "value": "Crítica",
+        "justification": "Vital para ligas de aço, eletrodos de fornos e lubrificantes de alta performance.",
+        "score": 100
+      },
+      {
+        "id": 23,
+        "label": "Magnético",
+        "value": "Paramagnético",
+        "justification": "Fracamente atraído por campos magnéticos.",
+        "score": 10
+      },
+      {
+        "id": 24,
+        "label": "Custo de Produção",
+        "value": "Moderado a Alto",
+        "justification": "Extraído como subproduto do cobre ou de minas dedicadas.",
+        "score": 45
+      },
+      {
+        "id": 25,
+        "label": "Risco à Natureza",
+        "value": "Baixo",
+        "justification": "Relativamente seguro no ambiente devido à sua estabilidade.",
+        "score": 92
+      },
+      {
+        "id": 26,
+        "label": "Radioatividade",
+        "value": "Nula (Isótopos naturais)",
+        "justification": "Isótopos naturais são estáveis ou têm meia-vida imensa.",
+        "score": 100
+      },
+      {
+        "id": 27,
+        "label": "Curiosidade Histórica",
+        "value": "Guerra",
+        "justification": "Foi o 'metal secreto' da Primeira Guerra Mundial, usado para blindar os canhões alemães.",
+        "score": 95
+      }
     ]
-},
+  },
   "Tc": {
     "number": 43,
     "symbol": "Tc",
