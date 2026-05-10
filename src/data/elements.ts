@@ -15141,12 +15141,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "77": {
+  "Ir": {
     "number": 77,
-    "symbol": "Element",
-    "name": "Elemento 77",
-    "heroName": "Hero 77",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "Ir",
+    "name": "Irídio",
+    "heroName": "Iridium Impact",
+    "heroDescription": "O mestre da resistência extrema e sobrevivente do impacto que mudou a história da Terra.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -15340,12 +15340,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "78": {
+  "Pt": {
     "number": 78,
-    "symbol": "Element",
-    "name": "Elemento 78",
-    "heroName": "Hero 78",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "Pt",
+    "name": "Platina",
+    "heroName": "Platinum Noble",
+    "heroDescription": "O herói da nobreza absoluta e catalisador da purificação ambiental.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -15539,12 +15539,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "79": {
+  "Au": {
     "number": 79,
-    "symbol": "Element",
-    "name": "Elemento 79",
-    "heroName": "Hero 79",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "Au",
+    "name": "Ouro",
+    "heroName": "Gold Monarch",
+    "heroDescription": "O rei do brilho eterno e condutor supremo da era digital.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -15738,12 +15738,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "80": {
+  "Hg": {
     "number": 80,
-    "symbol": "Element",
-    "name": "Elemento 80",
-    "heroName": "Hero 80",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "Hg",
+    "name": "Mercúrio",
+    "heroName": "Mercury Fluid",
+    "heroDescription": "O mestre da fluidez metálica e mensageiro da temperatura.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -15937,12 +15937,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "81": {
+  "Tl": {
     "number": 81,
-    "symbol": "Element",
-    "name": "Elemento 81",
-    "heroName": "Hero 81",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "Tl",
+    "name": "Tálio",
+    "heroName": "Thallium Shadow",
+    "heroDescription": "O mestre da invisibilidade tóxica e dos sensores infravermelhos.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -16136,12 +16136,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "82": {
+  "Pb": {
     "number": 82,
-    "symbol": "Element",
-    "name": "Elemento 82",
-    "heroName": "Hero 82",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "Pb",
+    "name": "Chumbo",
+    "heroName": "Plumbum Guard",
+    "heroDescription": "O herói protetor contra a radiação e base das baterias ancestrais.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -16335,12 +16335,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "83": {
+  "Bi": {
     "number": 83,
-    "symbol": "Element",
-    "name": "Elemento 83",
-    "heroName": "Hero 83",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "Bi",
+    "name": "Bismuto",
+    "heroName": "Bismuth Crystal",
+    "heroDescription": "O mestre das cores iridescentes e protetor do sistema digestivo.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -16534,12 +16534,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "84": {
+  "Po": {
     "number": 84,
-    "symbol": "Element",
-    "name": "Elemento 84",
-    "heroName": "Hero 84",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "Po",
+    "name": "Polônio",
+    "heroName": "Polonium Alpha",
+    "heroDescription": "O herói radioativo letal, fonte de calor no vácuo do espaço.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -16733,12 +16733,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "85": {
+  "At": {
     "number": 85,
-    "symbol": "Element",
-    "name": "Elemento 85",
-    "heroName": "Hero 85",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "At",
+    "name": "Astato",
+    "heroName": "Astatine Ghost",
+    "heroDescription": "O herói mais raro da Terra, um fantasma radioativo de vida curtíssima.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -16932,12 +16932,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "86": {
+  "Rn": {
     "number": 86,
-    "symbol": "Element",
-    "name": "Elemento 86",
-    "heroName": "Hero 86",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "Rn",
+    "name": "Radônio",
+    "heroName": "Radon Phantom",
+    "heroDescription": "O gás invisível que surge das profundezas, silencioso e radioativo.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
