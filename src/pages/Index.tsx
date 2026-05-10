@@ -30,7 +30,7 @@ const ElementCard = ({ element }: { element: PeriodicElement }) => {
           <p className="text-[10px] font-bold tracking-[0.2em] text-blue-400/80 uppercase">{element.heroName}</p>
         </div>
         <div className="flex flex-col items-end z-10">
-          <span className="bg-white/10 backdrop-blur-md px-2 py-0.5 rounded-full text-[10px] font-black border border-white/10 mb-1">
+          <span className="bg-blue-600 px-3 py-1 rounded-lg text-sm font-black border border-white/20 mb-2 shadow-[0_0_15px_rgba(37,99,235,0.4)]">
             #{element.number}
           </span>
           <span className="text-4xl font-black leading-none bg-clip-text text-transparent bg-gradient-to-b from-blue-400 to-blue-600 drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
