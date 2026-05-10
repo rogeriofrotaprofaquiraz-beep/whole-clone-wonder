@@ -11161,12 +11161,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "57": {
+  "La": {
     "number": 57,
-    "symbol": "Element",
-    "name": "Elemento 57",
-    "heroName": "Hero 57",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "La",
+    "name": "Lantânio",
+    "heroName": "Lanthanum Luminous",
+    "heroDescription": "O mestre da luz branca e da ótica, um herói que clareia o caminho com precisão científica.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -11360,12 +11360,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "58": {
+  "Ce": {
     "number": 58,
-    "symbol": "Element",
-    "name": "Elemento 58",
-    "heroName": "Hero 58",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "Ce",
+    "name": "Cério",
+    "heroName": "Cerium Spark",
+    "heroDescription": "O mestre da ignição e das ligas metálicas, um herói que brilha sob pressão.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -11559,12 +11559,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "59": {
+  "Pr": {
     "number": 59,
-    "symbol": "Element",
-    "name": "Elemento 59",
-    "heroName": "Hero 59",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "Pr",
+    "name": "Praseodímio",
+    "heroName": "Praseodymium Green",
+    "heroDescription": "O mestre do vidro verde e dos ímãs poderosos, um herói que une força e elegância.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -11758,12 +11758,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "60": {
+  "Nd": {
     "number": 60,
-    "symbol": "Element",
-    "name": "Elemento 60",
-    "heroName": "Hero 60",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "Nd",
+    "name": "Neodímio",
+    "heroName": "Neodymium Magnet",
+    "heroDescription": "O mestre do magnetismo supremo, o herói que sustenta a tecnologia moderna com sua força invisível.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -11957,12 +11957,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "61": {
+  "Pm": {
     "number": 61,
-    "symbol": "Element",
-    "name": "Elemento 61",
-    "heroName": "Hero 61",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "Pm",
+    "name": "Promécio",
+    "heroName": "Promethium Glow",
+    "heroDescription": "O mestre da luminescência radioativa, um herói que brilha eternamente no vácuo do espaço.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -12156,12 +12156,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "62": {
+  "Sm": {
     "number": 62,
-    "symbol": "Element",
-    "name": "Elemento 62",
-    "heroName": "Hero 62",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "Sm",
+    "name": "Samário",
+    "heroName": "Samarium Shield",
+    "heroDescription": "O mestre dos ímãs de alta temperatura, o protetor dos motores a jato.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -12355,12 +12355,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "63": {
+  "Eu": {
     "number": 63,
-    "symbol": "Element",
-    "name": "Elemento 63",
-    "heroName": "Hero 63",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "Eu",
+    "name": "Európio",
+    "heroName": "Europium Phosphor",
+    "heroDescription": "O mestre das cores vibrantes em telas e da segurança em notas fiscais, o herói do brilho escarlate.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -12554,12 +12554,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "64": {
+  "Gd": {
     "number": 64,
-    "symbol": "Element",
-    "name": "Elemento 64",
-    "heroName": "Hero 64",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "Gd",
+    "name": "Gadovínio",
+    "heroName": "Gadolinium Vision",
+    "heroDescription": "O mestre do contraste médico, o herói que revela o invisível em ressonâncias magnéticas.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -12753,12 +12753,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "65": {
+  "Tb": {
     "number": 65,
-    "symbol": "Element",
-    "name": "Elemento 65",
-    "heroName": "Hero 65",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "Tb",
+    "name": "Térbio",
+    "heroName": "Terbium Lumina",
+    "heroDescription": "O mestre da fluorescência verde e do armazenamento magneto-óptico.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -12952,12 +12952,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "66": {
+  "Dy": {
     "number": 66,
-    "symbol": "Element",
-    "name": "Elemento 66",
-    "heroName": "Hero 66",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "Dy",
+    "name": "Disprósio",
+    "heroName": "Dysprosium Magneto",
+    "heroDescription": "O mestre da resistência térmica magnética, essencial para carros elétricos.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
