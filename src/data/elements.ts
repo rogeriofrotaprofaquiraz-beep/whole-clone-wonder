@@ -15632,109 +15632,109 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
           "score": 90
         },
         {
-            "id": 13,
-            "label": "Atributo 13",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 13,
+          "label": "Eletronegatividade",
+          "value": "2,54 (Pauling)",
+          "justification": "A mais alta eletronegatividade entre todos os metais.",
+          "score": 25
         },
         {
-            "id": 14,
-            "label": "Atributo 14",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 14,
+          "label": "Estado físico",
+          "value": "Sólido",
+          "justification": "Metal amarelo brilhante, o mais maleável e dúctil de todos.",
+          "score": 50
         },
         {
-            "id": 15,
-            "label": "Atributo 15",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 15,
+          "label": "Maior subnível energético",
+          "value": "5d¹⁰",
+          "justification": "Apresenta uma configuração irregular onde a camada 5d é completada migrando um elétron 6s.",
+          "score": 59
         },
         {
-            "id": 16,
-            "label": "Atributo 16",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 16,
+          "label": "Distribuição eletrônica",
+          "value": "[Xe] 4f¹⁴ 5d¹⁰ 6s¹",
+          "justification": "Configuração fundamental que explica sua estabilidade química e cor única.",
+          "score": 99
         },
         {
-            "id": 17,
-            "label": "Atributo 17",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 17,
+          "label": "Nº de prótons / Nº de elétrons",
+          "value": "79",
+          "justification": "Identidade atômica do Ouro.",
+          "score": 99
         },
         {
-            "id": 18,
-            "label": "Atributo 18",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 18,
+          "label": "Nº de nêutrons",
+          "value": "118",
+          "justification": "Baseado no único isótopo estável Au-197.",
+          "score": 118
         },
         {
-            "id": 19,
-            "label": "Atributo 19",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 19,
+          "label": "Radioatividade",
+          "value": "Totalmente Estável",
+          "justification": "O ouro natural não possui isótopos radioativos.",
+          "score": 100
         },
         {
-            "id": 20,
-            "label": "Atributo 20",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 20,
+          "label": "Aplicabilidade / Utilidade",
+          "value": "Conectores, Aeroespacial, Finanças",
+          "justification": "Vital para satélites (proteção térmica) e para a economia global.",
+          "score": 100
         },
         {
-            "id": 21,
-            "label": "Atributo 21",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 21,
+          "label": "Local de origem",
+          "value": "Conhecido desde a Antiguidade",
+          "justification": "Usado por praticamente todas as civilizações antigas devido à sua ocorrência nativa.",
+          "score": 100
         },
         {
-            "id": 22,
-            "label": "Atributo 22",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 22,
+          "label": "Curiosidade",
+          "value": "Ultra Maleabilidade",
+          "justification": "Um único grama de ouro pode ser batido em uma folha transparente de um metro quadrado.",
+          "score": 100
         },
         {
-            "id": 23,
-            "label": "Atributo 23",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 23,
+          "label": "Origem do nome",
+          "value": "Aurum (Brilho Aurora)",
+          "justification": "Termo latino que evoca o brilho do amanhecer.",
+          "score": 95
         },
         {
-            "id": 24,
-            "label": "Atributo 24",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 24,
+          "label": "Descobridor",
+          "value": "Desconhecido",
+          "justification": "Um dos primeiros metais a serem manipulados pelo homem pré-histórico.",
+          "score": 100
         },
         {
-            "id": 25,
-            "label": "Atributo 25",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 25,
+          "label": "Ano de descoberta",
+          "value": "~6000 a.C.",
+          "justification": "Evidências de uso desde a Idade do Cobre.",
+          "score": 100
         },
         {
-            "id": 26,
-            "label": "Atributo 26",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 26,
+          "label": "Ponto de fusão",
+          "value": "1064 °C",
+          "justification": "Ponto de fusão moderado, facilitando a metalurgia antiga.",
+          "score": 96
         },
         {
-            "id": 27,
-            "label": "Atributo 27",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 27,
+          "label": "Ponto de ebulição",
+          "value": "2856 °C",
+          "justification": "Ponto de ebulição elevado.",
+          "score": 28
         }
     ]
 },
