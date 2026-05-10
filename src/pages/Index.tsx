@@ -186,7 +186,7 @@ const Index = () => {
           {/* Grid Background Effect */}
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none"></div>
           
-          <div className="relative grid grid-cols-18 gap-1 md:gap-1.5 mb-8 scale-95 lg:scale-100 origin-left">
+          <div className="relative grid grid-cols-18 gap-1.5 md:gap-2 mb-8 scale-100 origin-left">
             {periodicTableLayout.map((row, rIdx) => (
               <React.Fragment key={rIdx}>
                 {row.map((symbol, sIdx) => {
@@ -199,36 +199,35 @@ const Index = () => {
                       key={`${rIdx}-${sIdx}`}
                       onClick={() => symbol && isAvailable && setSelectedSymbol(symbol)}
                       className={`
-                        relative aspect-square flex flex-col items-center justify-center rounded-md transition-all duration-300 border
-                        ${!symbol ? 'invisible' : 'hover:scale-125 hover:z-20 hover:shadow-[0_0_25px_rgba(255,255,255,0.4)]'}
-                        ${selectedSymbol === symbol ? 'ring-2 ring-white scale-110 z-10 shadow-[0_0_20px_rgba(255,255,255,0.3)]' : ''}
-                        ${!isAvailable && symbol ? 'opacity-40 grayscale cursor-not-allowed' : 'cursor-pointer'}
+                        relative aspect-square flex flex-col items-center justify-center rounded-lg transition-all duration-300 border-2
+                        ${!symbol ? 'invisible' : 'hover:scale-150 hover:z-20 hover:shadow-[0_0_30px_rgba(255,255,255,0.6)] hover:border-white/80'}
+                        ${selectedSymbol === symbol ? 'ring-4 ring-white scale-125 z-10 shadow-[0_0_40px_rgba(255,255,255,0.5)] border-white' : ''}
+                        ${!isAvailable && symbol ? 'opacity-30 grayscale cursor-not-allowed' : 'cursor-pointer shadow-lg'}
                         ${categoryStyle}
-                        group/item
+                        group/item w-10 h-10 md:w-12 md:h-12
                       `}
                     >
                       {/* Tooltip/Hover Info */}
                       {symbol && (
-                        <div className="absolute -top-16 left-1/2 -translate-x-1/2 bg-slate-900 border border-white/20 px-2 py-1 rounded shadow-2xl opacity-0 group-hover/item:opacity-100 pointer-events-none transition-opacity z-30 min-w-[100px] text-center">
-                          <div className="text-[8px] text-blue-400 font-bold leading-none">{isAvailable ? ELEMENTS_DATA[symbol].number : ''}</div>
-                          <div className="text-sm font-black text-white leading-tight">{symbol.replace('-Lu', '').replace('-Lr', '')}</div>
-                          <div className="text-[7px] text-white/60 truncate uppercase font-bold">{isAvailable ? ELEMENTS_DATA[symbol].name : symbol}</div>
-                          <div className="text-[6px] text-blue-300 mt-0.5 border-t border-white/10 pt-0.5 uppercase tracking-tighter">{categoryName}</div>
-                          <div className="absolute bottom-[-5px] left-1/2 -translate-x-1/2 w-2 h-2 bg-slate-900 border-r border-b border-white/20 rotate-45"></div>
+                        <div className="absolute -top-20 left-1/2 -translate-x-1/2 bg-slate-900/95 backdrop-blur-md border border-white/20 px-3 py-2 rounded-xl shadow-2xl opacity-0 group-hover/item:opacity-100 pointer-events-none transition-all duration-300 z-30 min-w-[120px] text-center scale-75 group-hover/item:scale-100">
+                          <div className="text-[10px] text-blue-400 font-black leading-none mb-1">#{isAvailable ? ELEMENTS_DATA[symbol].number : ''}</div>
+                          <div className="text-xl font-black text-white leading-tight drop-shadow-sm">{symbol.replace('-Lu', '').replace('-Lr', '')}</div>
+                          <div className="text-[9px] text-white/80 truncate uppercase font-black tracking-tight">{isAvailable ? ELEMENTS_DATA[symbol].name : symbol}</div>
+                          <div className="text-[7px] text-blue-300 mt-1 border-t border-white/10 pt-1 uppercase font-bold tracking-widest">{categoryName}</div>
+                          <div className="absolute bottom-[-6px] left-1/2 -translate-x-1/2 w-3 h-3 bg-slate-900 border-r border-b border-white/20 rotate-45"></div>
                         </div>
                       )}
 
-                      <span className="text-[6px] md:text-[8px] absolute top-1 left-1 font-mono opacity-50">
+                      <span className="text-[8px] md:text-[10px] absolute top-1 left-1 font-black text-white drop-shadow-md z-10 bg-black/40 px-1 rounded-sm min-w-[14px] text-center">
                         {isAvailable ? ELEMENTS_DATA[symbol].number : ''}
                       </span>
-                      <span className="text-[10px] md:text-sm font-black tracking-tighter">
+                      <span className="text-sm md:text-lg font-black tracking-tighter drop-shadow-lg">
                         {symbol.replace('-Lu', '').replace('-Lr', '')}
                       </span>
                       {isAvailable && (
-                        <div className="absolute bottom-1 w-1 h-1 bg-white rounded-full animate-pulse"></div>
+                        <div className="absolute bottom-1 w-1.5 h-1.5 bg-white rounded-full animate-pulse shadow-[0_0_8px_white]"></div>
                       )}
                     </button>
-
                   );
                 })}
               </React.Fragment>
