@@ -7583,198 +7583,198 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 39,
     "symbol": "Y",
     "name": "Ítrio",
-    "heroName": "Ítrio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Ítrio.",
+    "heroName": "Yttrium Laser",
+    "heroDescription": "O mestre da luz focalizada e da supercondutividade. Yttrium Laser é o elemento que transforma cerâmicas em condutores perfeitos e cristais em lasers de alta potência.",
     "heroImage": "/placeholder.svg",
     "attributes": [
       {
         "id": 1,
-        "label": "Dado 1",
-        "value": "Processando",
-        "justification": "Característica em análise para o Ítrio.",
-        "score": 50
+        "label": "Massa Atômica",
+        "value": "88.905 u",
+        "justification": "O Ítrio possui uma massa atômica de aproximadamente 88.905 u.",
+        "score": 89
       },
       {
         "id": 2,
-        "label": "Dado 2",
-        "value": "Processando",
-        "justification": "Característica em análise para o Ítrio.",
-        "score": 50
+        "label": "Abundância na Crosta",
+        "value": "33 ppm",
+        "justification": "Relativamente comum, encontrado em quase todos os minerais de terras raras.",
+        "score": 65
       },
       {
         "id": 3,
-        "label": "Dado 3",
-        "value": "Processando",
-        "justification": "Característica em análise para o Ítrio.",
-        "score": 50
+        "label": "Ponto de Fusão",
+        "value": "1526 °C",
+        "justification": "Possui um ponto de fusão elevado, típico de metais de transição do bloco d.",
+        "score": 88
       },
       {
         "id": 4,
-        "label": "Dado 4",
-        "value": "Processando",
-        "justification": "Característica em análise para o Ítrio.",
-        "score": 50
+        "label": "Ponto de Ebulição",
+        "value": "3336 °C",
+        "justification": "Sua temperatura de vaporização é bastante elevada.",
+        "score": 92
       },
       {
         "id": 5,
-        "label": "Dado 5",
-        "value": "Processando",
-        "justification": "Característica em análise para o Ítrio.",
-        "score": 50
+        "label": "Densidade",
+        "value": "4.47 g/cm³",
+        "justification": "Densidade moderada, similar à do titânio.",
+        "score": 45
       },
       {
         "id": 6,
-        "label": "Dado 6",
-        "value": "Processando",
-        "justification": "Característica em análise para o Ítrio.",
-        "score": 50
+        "label": "Dureza de Mohs",
+        "value": "4.0",
+        "justification": "Metal razoavelmente duro, mas pode ser cortado com uma serra.",
+        "score": 40
       },
       {
         "id": 7,
-        "label": "Dado 7",
-        "value": "Processando",
-        "justification": "Característica em análise para o Ítrio.",
-        "score": 50
+        "label": "Eletronegatividade",
+        "value": "1.22",
+        "justification": "Baixa eletronegatividade, característica de metais eletropositivos.",
+        "score": 30
       },
       {
         "id": 8,
-        "label": "Dado 8",
-        "value": "Processando",
-        "justification": "Característica em análise para o Ítrio.",
-        "score": 50
+        "label": "Condutividade Térmica",
+        "value": "17.2 W/(m·K)",
+        "justification": "Condutividade térmica baixa para um metal.",
+        "score": 35
       },
       {
         "id": 9,
-        "label": "Dado 9",
-        "value": "Processando",
-        "justification": "Característica em análise para o Ítrio.",
-        "score": 50
+        "label": "Condutividade Elétrica",
+        "value": "1.7 MS/m",
+        "justification": "Condutor metálico, mas não entre os melhores.",
+        "score": 40
       },
       {
         "id": 10,
-        "label": "Dado 10",
-        "value": "Processando",
-        "justification": "Característica em análise para o Ítrio.",
+        "label": "Calor Específico",
+        "value": "0.298 J/(g·K)",
+        "justification": "Capacidade térmica moderada.",
         "score": 50
       },
       {
         "id": 11,
-        "label": "Dado 11",
-        "value": "Processando",
-        "justification": "Característica em análise para o Ítrio.",
-        "score": 50
+        "label": "Raio Atômico",
+        "value": "180 pm",
+        "justification": "Raio atômico grande, permitindo diversas dopagens em cristais.",
+        "score": 75
       },
       {
         "id": 12,
-        "label": "Dado 12",
-        "value": "Processando",
-        "justification": "Característica em análise para o Ítrio.",
-        "score": 50
+        "label": "Energia de Ionização",
+        "value": "6.217 eV",
+        "justification": "Primeira energia de ionização necessária para remover um elétron.",
+        "score": 58
       },
       {
         "id": 13,
-        "label": "Dado 13",
-        "value": "Processando",
-        "justification": "Característica em análise para o Ítrio.",
-        "score": 50
+        "label": "Estado Físico (CNTP)",
+        "value": "Sólido",
+        "justification": "Metal prateado-metálico, estável no ar em forma compacta.",
+        "score": 99
       },
       {
         "id": 14,
-        "label": "Dado 14",
-        "value": "Processando",
-        "justification": "Característica em análise para o Ítrio.",
-        "score": 50
+        "label": "Reatividade Química",
+        "value": "Moderada",
+        "justification": "Reage com a água e dissolve-se em ácidos minerais.",
+        "score": 60
       },
       {
         "id": 15,
-        "label": "Dado 15",
-        "value": "Processando",
-        "justification": "Característica em análise para o Ítrio.",
-        "score": 50
+        "label": "Reciclabilidade",
+        "value": "Alta",
+        "justification": "Pode ser recuperado de componentes eletrônicos e fósforos de TV antigos.",
+        "score": 80
       },
       {
         "id": 16,
-        "label": "Dado 16",
-        "value": "Processando",
-        "justification": "Característica em análise para o Ítrio.",
-        "score": 50
+        "label": "Resistência à Corrosão",
+        "value": "Boa",
+        "justification": "Forma uma camada protetora de óxido quando exposto ao ar.",
+        "score": 70
       },
       {
         "id": 17,
-        "label": "Dado 17",
-        "value": "Processando",
-        "justification": "Característica em análise para o Ítrio.",
-        "score": 50
+        "label": "Refletividade",
+        "value": "Prata",
+        "justification": "Apresenta um brilho metálico prateado característico.",
+        "score": 75
       },
       {
         "id": 18,
-        "label": "Dado 18",
-        "value": "Processando",
-        "justification": "Característica em análise para o Ítrio.",
-        "score": 50
+        "label": "Maleabilidade",
+        "value": "Alta",
+        "justification": "Pode ser moldado e processado industrialmente.",
+        "score": 85
       },
       {
         "id": 19,
-        "label": "Dado 19",
-        "value": "Processando",
-        "justification": "Característica em análise para o Ítrio.",
-        "score": 50
+        "label": "Dutibilidade",
+        "value": "Moderada",
+        "justification": "Pode ser transformado em fios e lâminas delgadas.",
+        "score": 70
       },
       {
         "id": 20,
-        "label": "Dado 20",
-        "value": "Processando",
-        "justification": "Característica em análise para o Ítrio.",
-        "score": 50
+        "label": "Isótopos Estáveis",
+        "value": "1 (Y-89)",
+        "justification": "Elemento monoisotópico na natureza.",
+        "score": 98
       },
       {
         "id": 21,
-        "label": "Dado 21",
-        "value": "Processando",
-        "justification": "Característica em análise para o Ítrio.",
-        "score": 50
+        "label": "Toxicidade",
+        "value": "Baixa a Moderada",
+        "justification": "Compostos solúveis são levemente tóxicos se ingeridos.",
+        "score": 80
       },
       {
         "id": 22,
-        "label": "Dado 22",
-        "value": "Processando",
-        "justification": "Característica em análise para o Ítrio.",
-        "score": 50
+        "label": "Aplicações Tecnológicas",
+        "value": "Máxima",
+        "justification": "Indispensável em lasers YAG, supercondutores YBCO e LEDs.",
+        "score": 100
       },
       {
         "id": 23,
-        "label": "Dado 23",
-        "value": "Processando",
-        "justification": "Característica em análise para o Ítrio.",
-        "score": 50
+        "label": "Magnético",
+        "value": "Paramagnético",
+        "justification": "Apresenta uma resposta fraca a campos magnéticos externos.",
+        "score": 15
       },
       {
         "id": 24,
-        "label": "Dado 24",
-        "value": "Processando",
-        "justification": "Característica em análise para o Ítrio.",
-        "score": 50
+        "label": "Custo de Produção",
+        "value": "Alto",
+        "justification": "Requer processos químicos complexos de separação de outras terras raras.",
+        "score": 25
       },
       {
         "id": 25,
-        "label": "Dado 25",
-        "value": "Processando",
-        "justification": "Característica em análise para o Ítrio.",
-        "score": 50
+        "label": "Risco à Natureza",
+        "value": "Baixo",
+        "justification": "Geralmente encontrado em minerais estáveis e de baixo impacto ambiental.",
+        "score": 90
       },
       {
         "id": 26,
-        "label": "Dado 26",
-        "value": "Processando",
-        "justification": "Característica em análise para o Ítrio.",
-        "score": 50
+        "label": "Radioatividade",
+        "value": "Nula (Y-89)",
+        "justification": "Isótopo natural é estável, isótopos artificiais são usados em medicina.",
+        "score": 100
       },
       {
         "id": 27,
-        "label": "Dado 27",
-        "value": "Processando",
-        "justification": "Característica em análise para o Ítrio.",
-        "score": 50
+        "label": "Curiosidade Histórica",
+        "value": "Ytterby",
+        "justification": "Nomeado em homenagem à vila sueca de Ytterby, onde muitos elementos foram descobertos.",
+        "score": 95
       }
     ]
   },
