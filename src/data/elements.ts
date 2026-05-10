@@ -5788,202 +5788,202 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
       }
     ]
   },
-  "Cu": {
-    "number": 29,
-    "symbol": "Cu",
-    "name": "Cobre",
-    "heroName": "Copper Circuit",
-    "heroDescription": "O condutor supremo e mestre da energia, um herói que conecta o mundo através de fios invisíveis de poder e comunicação.",
+  "Zn": {
+    "number": 30,
+    "symbol": "Zn",
+    "name": "Zinco",
+    "heroName": "Zinc Protector",
+    "heroDescription": "O mestre da galvanização e guardião da saúde celular, um herói que protege os metais contra a ferrugem e fortalece o sistema imunológico.",
     "heroImage": "/placeholder.svg",
     "attributes": [
       {
         "id": 1,
         "label": "Fraquezas",
-        "value": "Oxidação superficial (Zinabre)",
-        "justification": "Desenvolve uma pátina verde em contato com o ar úmido.",
-        "score": 30
+        "value": "Vulnerável a ácidos fortes",
+        "justification": "Reage rapidamente com ácidos, liberando gás hidrogênio.",
+        "score": 25
       },
       {
         "id": 2,
         "label": "Risco/Benefício à natureza",
-        "value": "Antimicrobiano Natural",
-        "justification": "Elimina bactérias e vírus em superfícies de contato.",
-        "score": 95
+        "value": "Micronutriente Essencial",
+        "justification": "Vital para o crescimento de plantas e animais.",
+        "score": 90
       },
       {
         "id": 3,
         "label": "Risco à saúde",
-        "value": "Toxicidade em altas doses",
-        "justification": "O excesso pode causar danos ao fígado e rins.",
-        "score": 45
+        "value": "Febre dos fumos metálicos",
+        "justification": "A inalação de vapores de óxido de zinco pode causar sintomas de gripe.",
+        "score": 40
       },
       {
         "id": 4,
         "label": "Benefício",
-        "value": "Eletrônica, Fiação, Moedas",
-        "justification": "Fundamental para a infraestrutura elétrica global.",
+        "value": "Galvanização, Imunidade, Ligas (Latão)",
+        "justification": "Protege o aço contra corrosão e é vital para centenas de enzimas.",
         "score": 100
       },
       {
         "id": 5,
         "label": "Nº de ligantes possíveis",
-        "value": "2, 4, 6",
-        "justification": "Forma complexos estáveis, especialmente em solução aquosa.",
-        "score": 70
+        "value": "4, 5, 6",
+        "justification": "Frequentemente forma complexos tetraédricos em sistemas biológicos.",
+        "score": 65
       },
       {
         "id": 6,
         "label": "Abundância na natureza",
-        "value": "60 ppm (crosta)",
-        "justification": "Elemento moderadamente abundante, essencial para a civilização.",
-        "score": 60
+        "value": "70 ppm (crosta)",
+        "justification": "Elemento comum, extraído principalmente da esfalerita.",
+        "score": 65
       },
       {
         "id": 7,
         "label": "Abundância no universo",
-        "value": "0,00007%",
-        "justification": "Sintetizado em estrelas massivas via captura de nêutrons.",
-        "score": 25
+        "value": "0,00003%",
+        "justification": "Produzido em estrelas massivas via captura de nêutrons lenta.",
+        "score": 20
       },
       {
         "id": 8,
         "label": "Massa atômica",
-        "value": "63,546 u",
-        "justification": "Massa moderada, entre o níquel e o zinco.",
-        "score": 63
+        "value": "65,38 u",
+        "justification": "Massa moderada, fechando a primeira série de transição.",
+        "score": 65
       },
       {
         "id": 9,
         "label": "Densidade",
-        "value": "8,96 g/cm³",
-        "justification": "Metal denso, excelente condutor térmico e elétrico.",
-        "score": 89
+        "value": "7,134 g/cm³",
+        "justification": "Densidade similar à do cromo e estanho.",
+        "score": 71
       },
       {
         "id": 10,
         "label": "Raio atômico",
-        "value": "128 pm",
-        "justification": "Compacto, favorecendo alta condutividade.",
-        "score": 65
+        "value": "134 pm",
+        "justification": "Raio atômico moderado.",
+        "score": 55
       },
       {
         "id": 11,
         "label": "Oxidação",
-        "value": "+1, +2",
-        "justification": "Os estados cuproso (+1) e cúprico (+2) são os mais comuns.",
-        "score": 85
+        "value": "+2",
+        "justification": "Quase exclusivamente +2, perdendo os dois elétrons 4s.",
+        "score": 98
       },
       {
         "id": 12,
         "label": "Condutividade elétrica",
-        "value": "Excelente (Segunda maior)",
-        "justification": "Apenas a prata supera o cobre em condutividade.",
-        "score": 99
+        "value": "Boa",
+        "justification": "Condutor metálico eficiente.",
+        "score": 60
       },
       {
         "id": 13,
         "label": "Eletronegatividade",
-        "value": "1,90",
-        "justification": "Valor elevado que reflete sua nobreza relativa.",
-        "score": 55
+        "value": "1,65",
+        "justification": "Valor típico dos metais de transição finais.",
+        "score": 45
       },
       {
         "id": 14,
         "label": "Estado físico",
         "value": "Sólido",
-        "justification": "Metal de cor avermelhada característica, maleável e dúctil.",
-        "score": 90
+        "justification": "Metal branco-azulado, quebradiço a frio e maleável a calor.",
+        "score": 70
       },
       {
         "id": 15,
         "label": "Maior subnível energético",
         "value": "3d¹⁰",
-        "justification": "Configuração anômala para preencher o orbital d completamente.",
-        "score": 29
+        "justification": "Subnível d completamente preenchido, o que define sua baixa reatividade química.",
+        "score": 30
       },
       {
         "id": 16,
         "label": "Distribuição eletrônica",
-        "value": "[Ar] 3d¹⁰ 4s¹",
-        "justification": "Promove um elétron do 4s para estabilizar o subnível 3d.",
-        "score": 98
+        "value": "[Ar] 3d¹⁰ 4s²",
+        "justification": "Configuração de camadas completas e estáveis.",
+        "score": 100
       },
       {
         "id": 17,
         "label": "Nº de prótons / Nº de elétrons",
-        "value": "29",
-        "justification": "Identidade atômica do Cobre.",
+        "value": "30",
+        "justification": "Identidade do Zinco.",
         "score": 99
       },
       {
         "id": 18,
         "label": "Nº de nêutrons",
-        "value": "34",
-        "justification": "Equilíbrio nuclear nos isótopos naturais Cu-63 e Cu-65.",
-        "score": 34
+        "value": "35",
+        "justification": "Equilíbrio nuclear no isótopo principal Zn-64.",
+        "score": 35
       },
       {
         "id": 19,
         "label": "Radioatividade",
         "value": "Estável",
-        "justification": "O cobre natural é perfeitamente estável.",
+        "justification": "Possui cinco isótopos naturais perfeitamente estáveis.",
         "score": 100
       },
       {
         "id": 20,
         "label": "Aplicabilidade / Utilidade",
-        "value": "Fios Elétricos, Tubulações, Esculturas",
-        "justification": "Onipresente na vida moderna e na arte.",
-        "score": 100
+        "value": "Telhados, Baterias, Suplementos, Cremes",
+        "justification": "Versátil, desde a construção civil até a farmacologia.",
+        "score": 98
       },
       {
         "id": 21,
         "label": "Local de origem",
-        "value": "Mundial (Conhecido desde a Antiguidade)",
-        "justification": "Um dos primeiros metais trabalhados pelo homem.",
-        "score": 100
+        "value": "Índia/China (Conhecido desde a Antiguidade)",
+        "justification": "Produzido em escala industrial na Índia muito antes da Europa.",
+        "score": 85
       },
       {
         "id": 22,
         "label": "Curiosidade",
-        "value": "Sangue Azul",
-        "justification": "Moluscos e crustáceos usam hemocianina (com cobre) para respirar.",
+        "value": "O 'Dedo de Zinco'",
+        "justification": "Estruturas proteicas que usam zinco para se ligar ao DNA.",
         "score": 100
       },
       {
         "id": 23,
         "label": "Origem do nome",
-        "value": "Cuprum (Chipre)",
-        "justification": "Ilha mediterrânea famosa por suas minas de cobre na antiguidade.",
-        "score": 95
+        "value": "Zinke (Dente/Ponta)",
+        "justification": "Referência à aparência pontiaguda dos cristais no forno.",
+        "score": 90
       },
       {
         "id": 24,
         "label": "Descobridor",
-        "value": "Desconhecido",
-        "justification": "Usado há mais de 10.000 anos por civilizações antigas.",
-        "score": 100
+        "value": "Andreas Sigismund Marggraf",
+        "justification": "Crédito europeu por isolar o metal puro em 1746.",
+        "score": 85
       },
       {
         "id": 25,
         "label": "Ano de descoberta",
-        "value": "~9000 a.C.",
-        "justification": "O primeiro metal a ser fundido e moldado.",
-        "score": 100
+        "value": "1746 (Isolamento oficial)",
+        "justification": "Embora o latão fosse conhecido há milênios, o metal puro veio depois.",
+        "score": 90
       },
       {
         "id": 26,
         "label": "Ponto de fusão",
-        "value": "1084 °C",
-        "justification": "Fusão acessível para fundição antiga.",
-        "score": 10
+        "value": "419,5 °C",
+        "justification": "Baixo para um metal, facilitando a fundição e galvanização.",
+        "score": 42
       },
       {
         "id": 27,
         "label": "Ponto de ebulição",
-        "value": "2562 °C",
-        "justification": "Alta estabilidade em estado líquido.",
-        "score": 25
+        "value": "907 °C",
+        "justification": "Ebulição baixa, o metal se vaporiza facilmente em fornos comuns.",
+        "score": 91
       }
     ]
   },
