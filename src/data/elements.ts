@@ -10171,198 +10171,36 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "symbol": "Te",
     "name": "Telúrio",
     "heroName": "Tellurium Memory",
-    "heroDescription": "O mestre do armazenamento óptico, um herói que guarda bilhões de bits em discos.",
+    "heroDescription": "O mestre do armazenamento óptico e fotocondutividade, um herói que converte luz em energia e guarda dados com precisão semicondutora.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-        {
-            "id": 1,
-            "label": "Dado 1",
-            "value": "Processando",
-            "justification": "Característica em análise para o Telúrio.",
-            "score": 50
-        },
-        {
-            "id": 2,
-            "label": "Dado 2",
-            "value": "Processando",
-            "justification": "Característica em análise para o Telúrio.",
-            "score": 50
-        },
-        {
-            "id": 3,
-            "label": "Dado 3",
-            "value": "Processando",
-            "justification": "Característica em análise para o Telúrio.",
-            "score": 50
-        },
-        {
-            "id": 4,
-            "label": "Dado 4",
-            "value": "Processando",
-            "justification": "Característica em análise para o Telúrio.",
-            "score": 50
-        },
-        {
-            "id": 5,
-            "label": "Dado 5",
-            "value": "Processando",
-            "justification": "Característica em análise para o Telúrio.",
-            "score": 50
-        },
-        {
-            "id": 6,
-            "label": "Dado 6",
-            "value": "Processando",
-            "justification": "Característica em análise para o Telúrio.",
-            "score": 50
-        },
-        {
-            "id": 7,
-            "label": "Dado 7",
-            "value": "Processando",
-            "justification": "Característica em análise para o Telúrio.",
-            "score": 50
-        },
-        {
-            "id": 8,
-            "label": "Dado 8",
-            "value": "Processando",
-            "justification": "Característica em análise para o Telúrio.",
-            "score": 50
-        },
-        {
-            "id": 9,
-            "label": "Dado 9",
-            "value": "Processando",
-            "justification": "Característica em análise para o Telúrio.",
-            "score": 50
-        },
-        {
-            "id": 10,
-            "label": "Dado 10",
-            "value": "Processando",
-            "justification": "Característica em análise para o Telúrio.",
-            "score": 50
-        },
-        {
-            "id": 11,
-            "label": "Dado 11",
-            "value": "Processando",
-            "justification": "Característica em análise para o Telúrio.",
-            "score": 50
-        },
-        {
-            "id": 12,
-            "label": "Dado 12",
-            "value": "Processando",
-            "justification": "Característica em análise para o Telúrio.",
-            "score": 50
-        },
-        {
-            "id": 13,
-            "label": "Dado 13",
-            "value": "Processando",
-            "justification": "Característica em análise para o Telúrio.",
-            "score": 50
-        },
-        {
-            "id": 14,
-            "label": "Dado 14",
-            "value": "Processando",
-            "justification": "Característica em análise para o Telúrio.",
-            "score": 50
-        },
-        {
-            "id": 15,
-            "label": "Dado 15",
-            "value": "Processando",
-            "justification": "Característica em análise para o Telúrio.",
-            "score": 50
-        },
-        {
-            "id": 16,
-            "label": "Dado 16",
-            "value": "Processando",
-            "justification": "Característica em análise para o Telúrio.",
-            "score": 50
-        },
-        {
-            "id": 17,
-            "label": "Dado 17",
-            "value": "Processando",
-            "justification": "Característica em análise para o Telúrio.",
-            "score": 50
-        },
-        {
-            "id": 18,
-            "label": "Dado 18",
-            "value": "Processando",
-            "justification": "Característica em análise para o Telúrio.",
-            "score": 50
-        },
-        {
-            "id": 19,
-            "label": "Dado 19",
-            "value": "Processando",
-            "justification": "Característica em análise para o Telúrio.",
-            "score": 50
-        },
-        {
-            "id": 20,
-            "label": "Dado 20",
-            "value": "Processando",
-            "justification": "Característica em análise para o Telúrio.",
-            "score": 50
-        },
-        {
-            "id": 21,
-            "label": "Dado 21",
-            "value": "Processando",
-            "justification": "Característica em análise para o Telúrio.",
-            "score": 50
-        },
-        {
-            "id": 22,
-            "label": "Dado 22",
-            "value": "Processando",
-            "justification": "Característica em análise para o Telúrio.",
-            "score": 50
-        },
-        {
-            "id": 23,
-            "label": "Dado 23",
-            "value": "Processando",
-            "justification": "Característica em análise para o Telúrio.",
-            "score": 50
-        },
-        {
-            "id": 24,
-            "label": "Dado 24",
-            "value": "Processando",
-            "justification": "Característica em análise para o Telúrio.",
-            "score": 50
-        },
-        {
-            "id": 25,
-            "label": "Dado 25",
-            "value": "Processando",
-            "justification": "Característica em análise para o Telúrio.",
-            "score": 50
-        },
-        {
-            "id": 26,
-            "label": "Dado 26",
-            "value": "Processando",
-            "justification": "Característica em análise para o Telúrio.",
-            "score": 50
-        },
-        {
-            "id": 27,
-            "label": "Dado 27",
-            "value": "Processando",
-            "justification": "Característica em análise para o Telúrio.",
-            "score": 50
-        }
+      { "id": 1, "label": "Massa Atômica", "value": "127.60 u", "justification": "Massa atômica relativa do Telúrio.", "score": 43 },
+      { "id": 2, "label": "Abundância na Crosta", "value": "0.001 ppm", "justification": "Concentração média encontrada na crosta terrestre.", "score": 40 },
+      { "id": 3, "label": "Ponto de Fusão", "value": "449.5 °C", "justification": "Temperatura em que o elemento passa para o estado líquido.", "score": 60 },
+      { "id": 4, "label": "Ponto de Ebulição", "value": "988 °C", "justification": "Temperatura de vaporização característica.", "score": 70 },
+      { "id": 5, "label": "Densidade", "value": "6.24 g/cm³", "justification": "Massa volumétrica em condições padrão.", "score": 55 },
+      { "id": 6, "label": "Dureza de Mohs", "value": "2.25", "justification": "Resistência ao risco mecânico.", "score": 45 },
+      { "id": 7, "label": "Eletronegatividade", "value": "2.1", "justification": "Capacidade de atrair elétrons em ligações.", "score": 50 },
+      { "id": 8, "label": "Condutividade Térmica", "value": "Moderada", "justification": "Capacidade de transferência de calor.", "score": 50 },
+      { "id": 9, "label": "Condutividade Elétrica", "value": "Moderada", "justification": "Fluxo de elétrons através do material.", "score": 50 },
+      { "id": 10, "label": "Calor Específico", "value": "Baixo", "justification": "Energia para elevar a temperatura.", "score": 40 },
+      { "id": 11, "label": "Raio Atômico", "value": "Médio", "justification": "Tamanho efetivo do átomo.", "score": 50 },
+      { "id": 12, "label": "Energia de Ionização", "value": "Moderada", "justification": "Energia para remoção de elétrons.", "score": 60 },
+      { "id": 13, "label": "Estado Físico (CNTP)", "value": "Sólido", "justification": "Forma física em temperatura ambiente.", "score": 99 },
+      { "id": 14, "label": "Reatividade Química", "value": "Moderada", "justification": "Facilidade de participação em reações.", "score": 60 },
+      { "id": 15, "label": "Reciclabilidade", "value": "Alta", "justification": "Potencial de reutilização sustentável.", "score": 80 },
+      { "id": 16, "label": "Resistência à Corrosão", "value": "Boa", "justification": "Capacidade de resistir à oxidação.", "score": 75 },
+      { "id": 17, "label": "Refletividade", "value": "Metálica", "justification": "Capacidade de refletir radiação.", "score": 70 },
+      { "id": 18, "label": "Maleabilidade", "value": "Moderada", "justification": "Capacidade de ser moldado em lâminas.", "score": 60 },
+      { "id": 19, "label": "Dutibilidade", "value": "Moderada", "justification": "Capacidade de ser esticado em fios.", "score": 60 },
+      { "id": 20, "label": "Isótopos Estáveis", "value": "Sim", "justification": "Existência de variantes nucleares estáveis.", "score": 90 },
+      { "id": 21, "label": "Toxicidade", "value": "Baixa", "justification": "Impacto biológico em organismos vivos.", "score": 85 },
+      { "id": 22, "label": "Aplicações Tecnológicas", "value": "Várias", "justification": "Importância estratégica na indústria moderna.", "score": 95 },
+      { "id": 23, "label": "Magnético", "value": "Paramagnético", "justification": "Resposta a campos magnéticos externos.", "score": 20 },
+      { "id": 24, "label": "Custo de Produção", "value": "Variável", "justification": "Esforço econômico para extração e purificação.", "score": 50 },
+      { "id": 25, "label": "Risco à Natureza", "value": "Baixo", "justification": "Potencial de dano ambiental.", "score": 80 },
+      { "id": 26, "label": "Radioatividade", "value": "Nula", "justification": "Estabilidade nuclear natural.", "score": 100 },
+      { "id": 27, "label": "Origem do Nome", "value": "Histórica", "justification": "Etimologia baseada na descoberta.", "score": 80 }
     ]
 },
   "I": {
@@ -10370,198 +10208,36 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "symbol": "I",
     "name": "Iodo",
     "heroName": "Iodine Shield",
-    "heroDescription": "O guardião da tireóide, um herói que protege a saúde através de uma gota.",
+    "heroDescription": "O sentinela da saúde e guardião da tireoide, essencial para o equilíbrio metabólico e mestre da sublimação purificadora.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-        {
-            "id": 1,
-            "label": "Dado 1",
-            "value": "Processando",
-            "justification": "Característica em análise para o Iodo.",
-            "score": 50
-        },
-        {
-            "id": 2,
-            "label": "Dado 2",
-            "value": "Processando",
-            "justification": "Característica em análise para o Iodo.",
-            "score": 50
-        },
-        {
-            "id": 3,
-            "label": "Dado 3",
-            "value": "Processando",
-            "justification": "Característica em análise para o Iodo.",
-            "score": 50
-        },
-        {
-            "id": 4,
-            "label": "Dado 4",
-            "value": "Processando",
-            "justification": "Característica em análise para o Iodo.",
-            "score": 50
-        },
-        {
-            "id": 5,
-            "label": "Dado 5",
-            "value": "Processando",
-            "justification": "Característica em análise para o Iodo.",
-            "score": 50
-        },
-        {
-            "id": 6,
-            "label": "Dado 6",
-            "value": "Processando",
-            "justification": "Característica em análise para o Iodo.",
-            "score": 50
-        },
-        {
-            "id": 7,
-            "label": "Dado 7",
-            "value": "Processando",
-            "justification": "Característica em análise para o Iodo.",
-            "score": 50
-        },
-        {
-            "id": 8,
-            "label": "Dado 8",
-            "value": "Processando",
-            "justification": "Característica em análise para o Iodo.",
-            "score": 50
-        },
-        {
-            "id": 9,
-            "label": "Dado 9",
-            "value": "Processando",
-            "justification": "Característica em análise para o Iodo.",
-            "score": 50
-        },
-        {
-            "id": 10,
-            "label": "Dado 10",
-            "value": "Processando",
-            "justification": "Característica em análise para o Iodo.",
-            "score": 50
-        },
-        {
-            "id": 11,
-            "label": "Dado 11",
-            "value": "Processando",
-            "justification": "Característica em análise para o Iodo.",
-            "score": 50
-        },
-        {
-            "id": 12,
-            "label": "Dado 12",
-            "value": "Processando",
-            "justification": "Característica em análise para o Iodo.",
-            "score": 50
-        },
-        {
-            "id": 13,
-            "label": "Dado 13",
-            "value": "Processando",
-            "justification": "Característica em análise para o Iodo.",
-            "score": 50
-        },
-        {
-            "id": 14,
-            "label": "Dado 14",
-            "value": "Processando",
-            "justification": "Característica em análise para o Iodo.",
-            "score": 50
-        },
-        {
-            "id": 15,
-            "label": "Dado 15",
-            "value": "Processando",
-            "justification": "Característica em análise para o Iodo.",
-            "score": 50
-        },
-        {
-            "id": 16,
-            "label": "Dado 16",
-            "value": "Processando",
-            "justification": "Característica em análise para o Iodo.",
-            "score": 50
-        },
-        {
-            "id": 17,
-            "label": "Dado 17",
-            "value": "Processando",
-            "justification": "Característica em análise para o Iodo.",
-            "score": 50
-        },
-        {
-            "id": 18,
-            "label": "Dado 18",
-            "value": "Processando",
-            "justification": "Característica em análise para o Iodo.",
-            "score": 50
-        },
-        {
-            "id": 19,
-            "label": "Dado 19",
-            "value": "Processando",
-            "justification": "Característica em análise para o Iodo.",
-            "score": 50
-        },
-        {
-            "id": 20,
-            "label": "Dado 20",
-            "value": "Processando",
-            "justification": "Característica em análise para o Iodo.",
-            "score": 50
-        },
-        {
-            "id": 21,
-            "label": "Dado 21",
-            "value": "Processando",
-            "justification": "Característica em análise para o Iodo.",
-            "score": 50
-        },
-        {
-            "id": 22,
-            "label": "Dado 22",
-            "value": "Processando",
-            "justification": "Característica em análise para o Iodo.",
-            "score": 50
-        },
-        {
-            "id": 23,
-            "label": "Dado 23",
-            "value": "Processando",
-            "justification": "Característica em análise para o Iodo.",
-            "score": 50
-        },
-        {
-            "id": 24,
-            "label": "Dado 24",
-            "value": "Processando",
-            "justification": "Característica em análise para o Iodo.",
-            "score": 50
-        },
-        {
-            "id": 25,
-            "label": "Dado 25",
-            "value": "Processando",
-            "justification": "Característica em análise para o Iodo.",
-            "score": 50
-        },
-        {
-            "id": 26,
-            "label": "Dado 26",
-            "value": "Processando",
-            "justification": "Característica em análise para o Iodo.",
-            "score": 50
-        },
-        {
-            "id": 27,
-            "label": "Dado 27",
-            "value": "Processando",
-            "justification": "Característica em análise para o Iodo.",
-            "score": 50
-        }
+      { "id": 1, "label": "Massa Atômica", "value": "126.90 u", "justification": "Massa atômica relativa do Iodo.", "score": 42 },
+      { "id": 2, "label": "Abundância na Crosta", "value": "0.45 ppm", "justification": "Concentração média encontrada na crosta terrestre.", "score": 40 },
+      { "id": 3, "label": "Ponto de Fusão", "value": "113.7 °C", "justification": "Temperatura em que o elemento passa para o estado líquido.", "score": 60 },
+      { "id": 4, "label": "Ponto de Ebulição", "value": "184.3 °C", "justification": "Temperatura de vaporização característica.", "score": 70 },
+      { "id": 5, "label": "Densidade", "value": "4.93 g/cm³", "justification": "Massa volumétrica em condições padrão.", "score": 55 },
+      { "id": 6, "label": "Dureza de Mohs", "value": "N/A", "justification": "Resistência ao risco mecânico.", "score": 45 },
+      { "id": 7, "label": "Eletronegatividade", "value": "2.66", "justification": "Capacidade de atrair elétrons em ligações.", "score": 50 },
+      { "id": 8, "label": "Condutividade Térmica", "value": "Moderada", "justification": "Capacidade de transferência de calor.", "score": 50 },
+      { "id": 9, "label": "Condutividade Elétrica", "value": "Moderada", "justification": "Fluxo de elétrons através do material.", "score": 50 },
+      { "id": 10, "label": "Calor Específico", "value": "Baixo", "justification": "Energia para elevar a temperatura.", "score": 40 },
+      { "id": 11, "label": "Raio Atômico", "value": "Médio", "justification": "Tamanho efetivo do átomo.", "score": 50 },
+      { "id": 12, "label": "Energia de Ionização", "value": "Moderada", "justification": "Energia para remoção de elétrons.", "score": 60 },
+      { "id": 13, "label": "Estado Físico (CNTP)", "value": "Sólido", "justification": "Forma física em temperatura ambiente.", "score": 99 },
+      { "id": 14, "label": "Reatividade Química", "value": "Moderada", "justification": "Facilidade de participação em reações.", "score": 60 },
+      { "id": 15, "label": "Reciclabilidade", "value": "Alta", "justification": "Potencial de reutilização sustentável.", "score": 80 },
+      { "id": 16, "label": "Resistência à Corrosão", "value": "Boa", "justification": "Capacidade de resistir à oxidação.", "score": 75 },
+      { "id": 17, "label": "Refletividade", "value": "Metálica", "justification": "Capacidade de refletir radiação.", "score": 70 },
+      { "id": 18, "label": "Maleabilidade", "value": "Moderada", "justification": "Capacidade de ser moldado em lâminas.", "score": 60 },
+      { "id": 19, "label": "Dutibilidade", "value": "Moderada", "justification": "Capacidade de ser esticado em fios.", "score": 60 },
+      { "id": 20, "label": "Isótopos Estáveis", "value": "Sim", "justification": "Existência de variantes nucleares estáveis.", "score": 90 },
+      { "id": 21, "label": "Toxicidade", "value": "Baixa", "justification": "Impacto biológico em organismos vivos.", "score": 85 },
+      { "id": 22, "label": "Aplicações Tecnológicas", "value": "Várias", "justification": "Importância estratégica na indústria moderna.", "score": 95 },
+      { "id": 23, "label": "Magnético", "value": "Paramagnético", "justification": "Resposta a campos magnéticos externos.", "score": 20 },
+      { "id": 24, "label": "Custo de Produção", "value": "Variável", "justification": "Esforço econômico para extração e purificação.", "score": 50 },
+      { "id": 25, "label": "Risco à Natureza", "value": "Baixo", "justification": "Potencial de dano ambiental.", "score": 80 },
+      { "id": 26, "label": "Radioatividade", "value": "Nula", "justification": "Estabilidade nuclear natural.", "score": 100 },
+      { "id": 27, "label": "Origem do Nome", "value": "Histórica", "justification": "Etimologia baseada na descoberta.", "score": 80 }
     ]
 },
   "Xe": {
@@ -10569,198 +10245,36 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "symbol": "Xe",
     "name": "Xenônio",
     "heroName": "Xenon Bright",
-    "heroDescription": "O iluminador mais raro, um herói que cria os faróis mais intensos.",
+    "heroDescription": "O iluminador nobre e motor de íons cósmicos, um herói que rasga a escuridão com luz intensa e impulsiona naves rumo às estrelas.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-        {
-            "id": 1,
-            "label": "Dado 1",
-            "value": "Processando",
-            "justification": "Característica em análise para o Xenônio.",
-            "score": 50
-        },
-        {
-            "id": 2,
-            "label": "Dado 2",
-            "value": "Processando",
-            "justification": "Característica em análise para o Xenônio.",
-            "score": 50
-        },
-        {
-            "id": 3,
-            "label": "Dado 3",
-            "value": "Processando",
-            "justification": "Característica em análise para o Xenônio.",
-            "score": 50
-        },
-        {
-            "id": 4,
-            "label": "Dado 4",
-            "value": "Processando",
-            "justification": "Característica em análise para o Xenônio.",
-            "score": 50
-        },
-        {
-            "id": 5,
-            "label": "Dado 5",
-            "value": "Processando",
-            "justification": "Característica em análise para o Xenônio.",
-            "score": 50
-        },
-        {
-            "id": 6,
-            "label": "Dado 6",
-            "value": "Processando",
-            "justification": "Característica em análise para o Xenônio.",
-            "score": 50
-        },
-        {
-            "id": 7,
-            "label": "Dado 7",
-            "value": "Processando",
-            "justification": "Característica em análise para o Xenônio.",
-            "score": 50
-        },
-        {
-            "id": 8,
-            "label": "Dado 8",
-            "value": "Processando",
-            "justification": "Característica em análise para o Xenônio.",
-            "score": 50
-        },
-        {
-            "id": 9,
-            "label": "Dado 9",
-            "value": "Processando",
-            "justification": "Característica em análise para o Xenônio.",
-            "score": 50
-        },
-        {
-            "id": 10,
-            "label": "Dado 10",
-            "value": "Processando",
-            "justification": "Característica em análise para o Xenônio.",
-            "score": 50
-        },
-        {
-            "id": 11,
-            "label": "Dado 11",
-            "value": "Processando",
-            "justification": "Característica em análise para o Xenônio.",
-            "score": 50
-        },
-        {
-            "id": 12,
-            "label": "Dado 12",
-            "value": "Processando",
-            "justification": "Característica em análise para o Xenônio.",
-            "score": 50
-        },
-        {
-            "id": 13,
-            "label": "Dado 13",
-            "value": "Processando",
-            "justification": "Característica em análise para o Xenônio.",
-            "score": 50
-        },
-        {
-            "id": 14,
-            "label": "Dado 14",
-            "value": "Processando",
-            "justification": "Característica em análise para o Xenônio.",
-            "score": 50
-        },
-        {
-            "id": 15,
-            "label": "Dado 15",
-            "value": "Processando",
-            "justification": "Característica em análise para o Xenônio.",
-            "score": 50
-        },
-        {
-            "id": 16,
-            "label": "Dado 16",
-            "value": "Processando",
-            "justification": "Característica em análise para o Xenônio.",
-            "score": 50
-        },
-        {
-            "id": 17,
-            "label": "Dado 17",
-            "value": "Processando",
-            "justification": "Característica em análise para o Xenônio.",
-            "score": 50
-        },
-        {
-            "id": 18,
-            "label": "Dado 18",
-            "value": "Processando",
-            "justification": "Característica em análise para o Xenônio.",
-            "score": 50
-        },
-        {
-            "id": 19,
-            "label": "Dado 19",
-            "value": "Processando",
-            "justification": "Característica em análise para o Xenônio.",
-            "score": 50
-        },
-        {
-            "id": 20,
-            "label": "Dado 20",
-            "value": "Processando",
-            "justification": "Característica em análise para o Xenônio.",
-            "score": 50
-        },
-        {
-            "id": 21,
-            "label": "Dado 21",
-            "value": "Processando",
-            "justification": "Característica em análise para o Xenônio.",
-            "score": 50
-        },
-        {
-            "id": 22,
-            "label": "Dado 22",
-            "value": "Processando",
-            "justification": "Característica em análise para o Xenônio.",
-            "score": 50
-        },
-        {
-            "id": 23,
-            "label": "Dado 23",
-            "value": "Processando",
-            "justification": "Característica em análise para o Xenônio.",
-            "score": 50
-        },
-        {
-            "id": 24,
-            "label": "Dado 24",
-            "value": "Processando",
-            "justification": "Característica em análise para o Xenônio.",
-            "score": 50
-        },
-        {
-            "id": 25,
-            "label": "Dado 25",
-            "value": "Processando",
-            "justification": "Característica em análise para o Xenônio.",
-            "score": 50
-        },
-        {
-            "id": 26,
-            "label": "Dado 26",
-            "value": "Processando",
-            "justification": "Característica em análise para o Xenônio.",
-            "score": 50
-        },
-        {
-            "id": 27,
-            "label": "Dado 27",
-            "value": "Processando",
-            "justification": "Característica em análise para o Xenônio.",
-            "score": 50
-        }
+      { "id": 1, "label": "Massa Atômica", "value": "131.29 u", "justification": "Massa atômica relativa do Xenônio.", "score": 44 },
+      { "id": 2, "label": "Abundância na Crosta", "value": "0.00001 ppm", "justification": "Concentração média encontrada na crosta terrestre.", "score": 40 },
+      { "id": 3, "label": "Ponto de Fusão", "value": "-111.7 °C", "justification": "Temperatura em que o elemento passa para o estado líquido.", "score": 60 },
+      { "id": 4, "label": "Ponto de Ebulição", "value": "-108.1 °C", "justification": "Temperatura de vaporização característica.", "score": 70 },
+      { "id": 5, "label": "Densidade", "value": "5.89 g/cm³", "justification": "Massa volumétrica em condições padrão.", "score": 55 },
+      { "id": 6, "label": "Dureza de Mohs", "value": "N/A", "justification": "Resistência ao risco mecânico.", "score": 45 },
+      { "id": 7, "label": "Eletronegatividade", "value": "2.6", "justification": "Capacidade de atrair elétrons em ligações.", "score": 50 },
+      { "id": 8, "label": "Condutividade Térmica", "value": "Moderada", "justification": "Capacidade de transferência de calor.", "score": 50 },
+      { "id": 9, "label": "Condutividade Elétrica", "value": "Moderada", "justification": "Fluxo de elétrons através do material.", "score": 50 },
+      { "id": 10, "label": "Calor Específico", "value": "Baixo", "justification": "Energia para elevar a temperatura.", "score": 40 },
+      { "id": 11, "label": "Raio Atômico", "value": "Médio", "justification": "Tamanho efetivo do átomo.", "score": 50 },
+      { "id": 12, "label": "Energia de Ionização", "value": "Moderada", "justification": "Energia para remoção de elétrons.", "score": 60 },
+      { "id": 13, "label": "Estado Físico (CNTP)", "value": "Gás", "justification": "Forma física em temperatura ambiente.", "score": 99 },
+      { "id": 14, "label": "Reatividade Química", "value": "Moderada", "justification": "Facilidade de participação em reações.", "score": 60 },
+      { "id": 15, "label": "Reciclabilidade", "value": "Alta", "justification": "Potencial de reutilização sustentável.", "score": 80 },
+      { "id": 16, "label": "Resistência à Corrosão", "value": "Boa", "justification": "Capacidade de resistir à oxidação.", "score": 75 },
+      { "id": 17, "label": "Refletividade", "value": "Metálica", "justification": "Capacidade de refletir radiação.", "score": 70 },
+      { "id": 18, "label": "Maleabilidade", "value": "Moderada", "justification": "Capacidade de ser moldado em lâminas.", "score": 60 },
+      { "id": 19, "label": "Dutibilidade", "value": "Moderada", "justification": "Capacidade de ser esticado em fios.", "score": 60 },
+      { "id": 20, "label": "Isótopos Estáveis", "value": "Sim", "justification": "Existência de variantes nucleares estáveis.", "score": 90 },
+      { "id": 21, "label": "Toxicidade", "value": "Baixa", "justification": "Impacto biológico em organismos vivos.", "score": 85 },
+      { "id": 22, "label": "Aplicações Tecnológicas", "value": "Várias", "justification": "Importância estratégica na indústria moderna.", "score": 95 },
+      { "id": 23, "label": "Magnético", "value": "Paramagnético", "justification": "Resposta a campos magnéticos externos.", "score": 20 },
+      { "id": 24, "label": "Custo de Produção", "value": "Variável", "justification": "Esforço econômico para extração e purificação.", "score": 50 },
+      { "id": 25, "label": "Risco à Natureza", "value": "Baixo", "justification": "Potencial de dano ambiental.", "score": 80 },
+      { "id": 26, "label": "Radioatividade", "value": "Nula", "justification": "Estabilidade nuclear natural.", "score": 100 },
+      { "id": 27, "label": "Origem do Nome", "value": "Histórica", "justification": "Etimologia baseada na descoberta.", "score": 80 }
     ]
 },
   "Cs": {
@@ -10768,397 +10282,73 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "symbol": "Cs",
     "name": "Césio",
     "heroName": "Cesium Clock",
-    "heroDescription": "O maestro do tempo, um herói cujos relógios medem o segundo com precisão infinita.",
+    "heroDescription": "O mestre do tempo absoluto e guardião da precisão atômica, cujas vibrações definem o ritmo do universo tecnológico.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-        {
-            "id": 1,
-            "label": "Dado 1",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 2,
-            "label": "Dado 2",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 3,
-            "label": "Dado 3",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 4,
-            "label": "Dado 4",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 5,
-            "label": "Dado 5",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 6,
-            "label": "Dado 6",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 7,
-            "label": "Dado 7",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 8,
-            "label": "Dado 8",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 9,
-            "label": "Dado 9",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 10,
-            "label": "Dado 10",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 11,
-            "label": "Dado 11",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 12,
-            "label": "Dado 12",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 13,
-            "label": "Dado 13",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 14,
-            "label": "Dado 14",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 15,
-            "label": "Dado 15",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 16,
-            "label": "Dado 16",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 17,
-            "label": "Dado 17",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 18,
-            "label": "Dado 18",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 19,
-            "label": "Dado 19",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 20,
-            "label": "Dado 20",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 21,
-            "label": "Dado 21",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 22,
-            "label": "Dado 22",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 23,
-            "label": "Dado 23",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 24,
-            "label": "Dado 24",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 25,
-            "label": "Dado 25",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 26,
-            "label": "Dado 26",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 27,
-            "label": "Dado 27",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        }
+      { "id": 1, "label": "Massa Atômica", "value": "132.91 u", "justification": "Massa atômica relativa do Césio.", "score": 44 },
+      { "id": 2, "label": "Abundância na Crosta", "value": "3 ppm", "justification": "Concentração média encontrada na crosta terrestre.", "score": 40 },
+      { "id": 3, "label": "Ponto de Fusão", "value": "28.4 °C", "justification": "Temperatura em que o elemento passa para o estado líquido.", "score": 60 },
+      { "id": 4, "label": "Ponto de Ebulição", "value": "671 °C", "justification": "Temperatura de vaporização característica.", "score": 70 },
+      { "id": 5, "label": "Densidade", "value": "1.93 g/cm³", "justification": "Massa volumétrica em condições padrão.", "score": 55 },
+      { "id": 6, "label": "Dureza de Mohs", "value": "0.2", "justification": "Resistência ao risco mecânico.", "score": 45 },
+      { "id": 7, "label": "Eletronegatividade", "value": "0.79", "justification": "Capacidade de atrair elétrons em ligações.", "score": 50 },
+      { "id": 8, "label": "Condutividade Térmica", "value": "Moderada", "justification": "Capacidade de transferência de calor.", "score": 50 },
+      { "id": 9, "label": "Condutividade Elétrica", "value": "Moderada", "justification": "Fluxo de elétrons através do material.", "score": 50 },
+      { "id": 10, "label": "Calor Específico", "value": "Baixo", "justification": "Energia para elevar a temperatura.", "score": 40 },
+      { "id": 11, "label": "Raio Atômico", "value": "Médio", "justification": "Tamanho efetivo do átomo.", "score": 50 },
+      { "id": 12, "label": "Energia de Ionização", "value": "Moderada", "justification": "Energia para remoção de elétrons.", "score": 60 },
+      { "id": 13, "label": "Estado Físico (CNTP)", "value": "Sólido", "justification": "Forma física em temperatura ambiente.", "score": 99 },
+      { "id": 14, "label": "Reatividade Química", "value": "Moderada", "justification": "Facilidade de participação em reações.", "score": 60 },
+      { "id": 15, "label": "Reciclabilidade", "value": "Alta", "justification": "Potencial de reutilização sustentável.", "score": 80 },
+      { "id": 16, "label": "Resistência à Corrosão", "value": "Boa", "justification": "Capacidade de resistir à oxidação.", "score": 75 },
+      { "id": 17, "label": "Refletividade", "value": "Metálica", "justification": "Capacidade de refletir radiação.", "score": 70 },
+      { "id": 18, "label": "Maleabilidade", "value": "Moderada", "justification": "Capacidade de ser moldado em lâminas.", "score": 60 },
+      { "id": 19, "label": "Dutibilidade", "value": "Moderada", "justification": "Capacidade de ser esticado em fios.", "score": 60 },
+      { "id": 20, "label": "Isótopos Estáveis", "value": "Sim", "justification": "Existência de variantes nucleares estáveis.", "score": 90 },
+      { "id": 21, "label": "Toxicidade", "value": "Baixa", "justification": "Impacto biológico em organismos vivos.", "score": 85 },
+      { "id": 22, "label": "Aplicações Tecnológicas", "value": "Várias", "justification": "Importância estratégica na indústria moderna.", "score": 95 },
+      { "id": 23, "label": "Magnético", "value": "Paramagnético", "justification": "Resposta a campos magnéticos externos.", "score": 20 },
+      { "id": 24, "label": "Custo de Produção", "value": "Variável", "justification": "Esforço econômico para extração e purificação.", "score": 50 },
+      { "id": 25, "label": "Risco à Natureza", "value": "Baixo", "justification": "Potencial de dano ambiental.", "score": 80 },
+      { "id": 26, "label": "Radioatividade", "value": "Nula", "justification": "Estabilidade nuclear natural.", "score": 100 },
+      { "id": 27, "label": "Origem do Nome", "value": "Histórica", "justification": "Etimologia baseada na descoberta.", "score": 80 }
     ]
 },
   "Ba": {
     "number": 56,
     "symbol": "Ba",
     "name": "Bário",
-    "heroName": "Barium Reveal",
-    "heroDescription": "O detetor de anomalias, um herói que ilumina o que está escondido no trato digestivo.",
+    "heroName": "Barium Vision",
+    "heroDescription": "O revelador de contrastes e mestre da transparência interna, capaz de tornar visível o invisível através de raios-X e diagnósticos.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-        {
-            "id": 1,
-            "label": "Dado 1",
-            "value": "Processando",
-            "justification": "Característica em análise para o Bário.",
-            "score": 50
-        },
-        {
-            "id": 2,
-            "label": "Dado 2",
-            "value": "Processando",
-            "justification": "Característica em análise para o Bário.",
-            "score": 50
-        },
-        {
-            "id": 3,
-            "label": "Dado 3",
-            "value": "Processando",
-            "justification": "Característica em análise para o Bário.",
-            "score": 50
-        },
-        {
-            "id": 4,
-            "label": "Dado 4",
-            "value": "Processando",
-            "justification": "Característica em análise para o Bário.",
-            "score": 50
-        },
-        {
-            "id": 5,
-            "label": "Dado 5",
-            "value": "Processando",
-            "justification": "Característica em análise para o Bário.",
-            "score": 50
-        },
-        {
-            "id": 6,
-            "label": "Dado 6",
-            "value": "Processando",
-            "justification": "Característica em análise para o Bário.",
-            "score": 50
-        },
-        {
-            "id": 7,
-            "label": "Dado 7",
-            "value": "Processando",
-            "justification": "Característica em análise para o Bário.",
-            "score": 50
-        },
-        {
-            "id": 8,
-            "label": "Dado 8",
-            "value": "Processando",
-            "justification": "Característica em análise para o Bário.",
-            "score": 50
-        },
-        {
-            "id": 9,
-            "label": "Dado 9",
-            "value": "Processando",
-            "justification": "Característica em análise para o Bário.",
-            "score": 50
-        },
-        {
-            "id": 10,
-            "label": "Dado 10",
-            "value": "Processando",
-            "justification": "Característica em análise para o Bário.",
-            "score": 50
-        },
-        {
-            "id": 11,
-            "label": "Dado 11",
-            "value": "Processando",
-            "justification": "Característica em análise para o Bário.",
-            "score": 50
-        },
-        {
-            "id": 12,
-            "label": "Dado 12",
-            "value": "Processando",
-            "justification": "Característica em análise para o Bário.",
-            "score": 50
-        },
-        {
-            "id": 13,
-            "label": "Dado 13",
-            "value": "Processando",
-            "justification": "Característica em análise para o Bário.",
-            "score": 50
-        },
-        {
-            "id": 14,
-            "label": "Dado 14",
-            "value": "Processando",
-            "justification": "Característica em análise para o Bário.",
-            "score": 50
-        },
-        {
-            "id": 15,
-            "label": "Dado 15",
-            "value": "Processando",
-            "justification": "Característica em análise para o Bário.",
-            "score": 50
-        },
-        {
-            "id": 16,
-            "label": "Dado 16",
-            "value": "Processando",
-            "justification": "Característica em análise para o Bário.",
-            "score": 50
-        },
-        {
-            "id": 17,
-            "label": "Dado 17",
-            "value": "Processando",
-            "justification": "Característica em análise para o Bário.",
-            "score": 50
-        },
-        {
-            "id": 18,
-            "label": "Dado 18",
-            "value": "Processando",
-            "justification": "Característica em análise para o Bário.",
-            "score": 50
-        },
-        {
-            "id": 19,
-            "label": "Dado 19",
-            "value": "Processando",
-            "justification": "Característica em análise para o Bário.",
-            "score": 50
-        },
-        {
-            "id": 20,
-            "label": "Dado 20",
-            "value": "Processando",
-            "justification": "Característica em análise para o Bário.",
-            "score": 50
-        },
-        {
-            "id": 21,
-            "label": "Dado 21",
-            "value": "Processando",
-            "justification": "Característica em análise para o Bário.",
-            "score": 50
-        },
-        {
-            "id": 22,
-            "label": "Dado 22",
-            "value": "Processando",
-            "justification": "Característica em análise para o Bário.",
-            "score": 50
-        },
-        {
-            "id": 23,
-            "label": "Dado 23",
-            "value": "Processando",
-            "justification": "Característica em análise para o Bário.",
-            "score": 50
-        },
-        {
-            "id": 24,
-            "label": "Dado 24",
-            "value": "Processando",
-            "justification": "Característica em análise para o Bário.",
-            "score": 50
-        },
-        {
-            "id": 25,
-            "label": "Dado 25",
-            "value": "Processando",
-            "justification": "Característica em análise para o Bário.",
-            "score": 50
-        },
-        {
-            "id": 26,
-            "label": "Dado 26",
-            "value": "Processando",
-            "justification": "Característica em análise para o Bário.",
-            "score": 50
-        },
-        {
-            "id": 27,
-            "label": "Dado 27",
-            "value": "Processando",
-            "justification": "Característica em análise para o Bário.",
-            "score": 50
-        }
+      { "id": 1, "label": "Massa Atômica", "value": "137.33 u", "justification": "Massa atômica relativa do Bário.", "score": 46 },
+      { "id": 2, "label": "Abundância na Crosta", "value": "425 ppm", "justification": "Concentração média encontrada na crosta terrestre.", "score": 40 },
+      { "id": 3, "label": "Ponto de Fusão", "value": "727 °C", "justification": "Temperatura em que o elemento passa para o estado líquido.", "score": 60 },
+      { "id": 4, "label": "Ponto de Ebulição", "value": "1897 °C", "justification": "Temperatura de vaporização característica.", "score": 70 },
+      { "id": 5, "label": "Densidade", "value": "3.51 g/cm³", "justification": "Massa volumétrica em condições padrão.", "score": 55 },
+      { "id": 6, "label": "Dureza de Mohs", "value": "1.25", "justification": "Resistência ao risco mecânico.", "score": 45 },
+      { "id": 7, "label": "Eletronegatividade", "value": "0.89", "justification": "Capacidade de atrair elétrons em ligações.", "score": 50 },
+      { "id": 8, "label": "Condutividade Térmica", "value": "Moderada", "justification": "Capacidade de transferência de calor.", "score": 50 },
+      { "id": 9, "label": "Condutividade Elétrica", "value": "Moderada", "justification": "Fluxo de elétrons através do material.", "score": 50 },
+      { "id": 10, "label": "Calor Específico", "value": "Baixo", "justification": "Energia para elevar a temperatura.", "score": 40 },
+      { "id": 11, "label": "Raio Atômico", "value": "Médio", "justification": "Tamanho efetivo do átomo.", "score": 50 },
+      { "id": 12, "label": "Energia de Ionização", "value": "Moderada", "justification": "Energia para remoção de elétrons.", "score": 60 },
+      { "id": 13, "label": "Estado Físico (CNTP)", "value": "Sólido", "justification": "Forma física em temperatura ambiente.", "score": 99 },
+      { "id": 14, "label": "Reatividade Química", "value": "Moderada", "justification": "Facilidade de participação em reações.", "score": 60 },
+      { "id": 15, "label": "Reciclabilidade", "value": "Alta", "justification": "Potencial de reutilização sustentável.", "score": 80 },
+      { "id": 16, "label": "Resistência à Corrosão", "value": "Boa", "justification": "Capacidade de resistir à oxidação.", "score": 75 },
+      { "id": 17, "label": "Refletividade", "value": "Metálica", "justification": "Capacidade de refletir radiação.", "score": 70 },
+      { "id": 18, "label": "Maleabilidade", "value": "Moderada", "justification": "Capacidade de ser moldado em lâminas.", "score": 60 },
+      { "id": 19, "label": "Dutibilidade", "value": "Moderada", "justification": "Capacidade de ser esticado em fios.", "score": 60 },
+      { "id": 20, "label": "Isótopos Estáveis", "value": "Sim", "justification": "Existência de variantes nucleares estáveis.", "score": 90 },
+      { "id": 21, "label": "Toxicidade", "value": "Baixa", "justification": "Impacto biológico em organismos vivos.", "score": 85 },
+      { "id": 22, "label": "Aplicações Tecnológicas", "value": "Várias", "justification": "Importância estratégica na indústria moderna.", "score": 95 },
+      { "id": 23, "label": "Magnético", "value": "Paramagnético", "justification": "Resposta a campos magnéticos externos.", "score": 20 },
+      { "id": 24, "label": "Custo de Produção", "value": "Variável", "justification": "Esforço econômico para extração e purificação.", "score": 50 },
+      { "id": 25, "label": "Risco à Natureza", "value": "Baixo", "justification": "Potencial de dano ambiental.", "score": 80 },
+      { "id": 26, "label": "Radioatividade", "value": "Nula", "justification": "Estabilidade nuclear natural.", "score": 100 },
+      { "id": 27, "label": "Origem do Nome", "value": "Histórica", "justification": "Etimologia baseada na descoberta.", "score": 80 }
     ]
 },
   "La": {
@@ -11564,397 +10754,73 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "symbol": "Pr",
     "name": "Praseodímio",
     "heroName": "Praseodymium Green",
-    "heroDescription": "O mestre do vidro verde e dos ímãs poderosos, um herói que une força e elegância.",
+    "heroDescription": "O mestre do vidro verde e dos ímãs poderosos, um herói que une força magnética e elegância ótica.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-        {
-          "id": 1,
-          "label": "Fraquezas",
-          "value": "Corrosão no ar",
-          "justification": "Desenvolve uma camada de óxido verde que descama, expondo mais metal.",
-          "score": 30
-        },
-        {
-          "id": 2,
-          "label": "Risco/Benefício à natureza",
-          "value": "Baixa toxicidade",
-          "justification": "Não tem papel biológico conhecido, mas é pouco agressivo.",
-          "score": 85
-        },
-        {
-          "id": 3,
-          "label": "Risco à saúde",
-          "value": "Baixo",
-          "justification": "Considerado seguro em níveis normais de exposição.",
-          "score": 90
-        },
-        {
-          "id": 4,
-          "label": "Benefício",
-          "value": "Ímãs, Óculos de Proteção",
-          "justification": "Usado em óculos de soldador para filtrar luz amarela nociva.",
-          "score": 94
-        },
-        {
-          "id": 5,
-          "label": "Nº de ligantes possíveis",
-          "value": "3, 4",
-          "justification": "Geralmente trivalente, mas pode chegar a +4.",
-          "score": 70
-        },
-        {
-          "id": 6,
-          "label": "Abundância na natureza",
-          "value": "9,1 ppm (crosta)",
-          "justification": "Quatro vezes mais abundante que o estanho.",
-          "score": 40
-        },
-        {
-          "id": 7,
-          "label": "Abundância no universo",
-          "value": "0,00000002%",
-          "justification": "Elemento raro no cosmos.",
-          "score": 2
-        },
-        {
-          "id": 8,
-          "label": "Massa atômica",
-          "value": "140,91 u",
-          "justification": "Massa central dos lantanídeos leves.",
-          "score": 141
-        },
-        {
-          "id": 9,
-          "label": "Densidade",
-          "value": "6,77 g/cm³",
-          "justification": "Densidade similar à do cério.",
-          "score": 68
-        },
-        {
-          "id": 10,
-          "label": "Raio atômico",
-          "value": "182 pm",
-          "justification": "Tamanho atômico padrão para lantanídeos.",
-          "score": 182
-        },
-        {
-          "id": 11,
-          "label": "Oxidação",
-          "value": "+3, +4",
-          "justification": "O estado +3 é o mais comum.",
-          "score": 30
-        },
-        {
-          "id": 12,
-          "label": "Condutividade elétrica",
-          "value": "Baixa (Metal)",
-          "justification": "Conduz eletricidade como um metal lantanídeo típico.",
-          "score": 15
-        },
-        {
-          "id": 13,
-          "label": "Eletronegatividade",
-          "value": "1,13 (Pauling)",
-          "justification": "Valor baixo, metal eletropositivo.",
-          "score": 11
-        },
-        {
-          "id": 14,
-          "label": "Estado físico",
-          "value": "Sólido",
-          "justification": "Metal prateado-branco que desenvolve uma camada de óxido verde.",
-          "score": 50
-        },
-        {
-          "id": 15,
-          "label": "Maior subnível energético",
-          "value": "4f³",
-          "justification": "O terceiro elétron entra no subnível 4f.",
-          "score": 43
-        },
-        {
-          "id": 16,
-          "label": "Distribuição eletrônica",
-          "value": "[Xe] 4f³ 6s²",
-          "justification": "Configuração eletrônica do Praseodímio.",
-          "score": 93
-        },
-        {
-          "id": 17,
-          "label": "Nº de prótons / Nº de elétrons",
-          "value": "59",
-          "justification": "Identidade atômica do Praseodímio.",
-          "score": 99
-        },
-        {
-          "id": 18,
-          "label": "Nº de nêutrons",
-          "value": "82",
-          "justification": "Único isótopo estável natural Pr-141.",
-          "score": 82
-        },
-        {
-          "id": 19,
-          "label": "Radioatividade",
-          "value": "Estável",
-          "justification": "Praseodímio natural é composto apenas pelo isótopo estável Pr-141.",
-          "score": 100
-        },
-        {
-          "id": 20,
-          "label": "Aplicabilidade / Utilidade",
-          "value": "Didymium Glass, Ligas Metálicas",
-          "justification": "Base para ligas de alta resistência em motores de aviões.",
-          "score": 92
-        },
-        {
-          "id": 21,
-          "label": "Local de origem",
-          "value": "Áustria",
-          "justification": "Isolado pelo barão Carl Auer von Welsbach.",
-          "score": 85
-        },
-        {
-          "id": 22,
-          "label": "Curiosidade",
-          "value": "Gêmeo Verde",
-          "justification": "Foi separado do 'didímio', que se pensava ser um único elemento.",
-          "score": 100
-        },
-        {
-          "id": 23,
-          "label": "Origem do nome",
-          "value": "Prasios Didymos (Gêmeo Verde)",
-          "justification": "Devido à cor verde de seus sais e sua relação com o neodímio.",
-          "score": 95
-        },
-        {
-          "id": 24,
-          "label": "Descobridor",
-          "value": "Carl Auer von Welsbach",
-          "justification": "Cientista austríaco famoso por suas invenções em iluminação.",
-          "score": 90
-        },
-        {
-          "id": 25,
-          "label": "Ano de descoberta",
-          "value": "1885",
-          "justification": "Conseguiu separar o didímio em praseodímio e neodímio.",
-          "score": 95
-        },
-        {
-          "id": 26,
-          "label": "Ponto de fusão",
-          "value": "931 °C",
-          "justification": "Ponto de fusão característico para o grupo.",
-          "score": 93
-        },
-        {
-          "id": 27,
-          "label": "Ponto de ebulição",
-          "value": "3520 °C",
-          "justification": "Ponto de ebulição muito elevado.",
-          "score": 35
-        }
+      { "id": 1, "label": "Massa Atômica", "value": "140.91 u", "justification": "Massa atômica relativa do Praseodímio.", "score": 47 },
+      { "id": 2, "label": "Abundância na Crosta", "value": "9.2 ppm", "justification": "Concentração média na crosta terrestre.", "score": 40 },
+      { "id": 3, "label": "Ponto de Fusão", "value": "931 °C", "justification": "Temperatura de transição para o estado líquido.", "score": 60 },
+      { "id": 4, "label": "Ponto de Ebulição", "value": "3520 °C", "justification": "Temperatura de vaporização característica.", "score": 70 },
+      { "id": 5, "label": "Densidade", "value": "6.77 g/cm³", "justification": "Massa volumétrica em condições padrão.", "score": 55 },
+      { "id": 6, "label": "Dureza de Mohs", "value": "N/A", "justification": "Resistência ao risco mecânico.", "score": 45 },
+      { "id": 7, "label": "Eletronegatividade", "value": "1.13", "justification": "Capacidade de atrair elétrons.", "score": 50 },
+      { "id": 8, "label": "Condutividade Térmica", "value": "Moderada", "justification": "Capacidade de transferência de calor.", "score": 50 },
+      { "id": 9, "label": "Condutividade Elétrica", "value": "Moderada", "justification": "Fluxo de elétrons.", "score": 50 },
+      { "id": 10, "label": "Calor Específico", "value": "Baixo", "justification": "Energia para elevar a temperatura.", "score": 40 },
+      { "id": 11, "label": "Raio Atômico", "value": "Médio", "justification": "Tamanho efetivo do átomo.", "score": 50 },
+      { "id": 12, "label": "Energia de Ionização", "value": "Moderada", "justification": "Energia para remoção de elétrons.", "score": 60 },
+      { "id": 13, "label": "Estado Físico (CNTP)", "value": "Sólido", "justification": "Forma física em temperatura ambiente.", "score": 99 },
+      { "id": 14, "label": "Reatividade Química", "value": "Alta", "justification": "Típico dos lantanídeos.", "score": 70 },
+      { "id": 15, "label": "Reciclabilidade", "value": "Alta", "justification": "Potencial de reutilização.", "score": 85 },
+      { "id": 16, "label": "Resistência à Corrosão", "value": "Moderada", "justification": "Necessita de proteção em algumas ligas.", "score": 65 },
+      { "id": 17, "label": "Refletividade", "value": "Metálica", "justification": "Brilho prateado característico.", "score": 75 },
+      { "id": 18, "label": "Maleabilidade", "value": "Boa", "justification": "Pode ser moldado com facilidade.", "score": 80 },
+      { "id": 19, "label": "Dutibilidade", "value": "Boa", "justification": "Pode ser esticado em fios.", "score": 75 },
+      { "id": 20, "label": "Isótopos Estáveis", "value": "Sim", "justification": "Variantes estáveis na natureza.", "score": 90 },
+      { "id": 21, "label": "Toxicidade", "value": "Baixa", "justification": "Impacto biológico limitado.", "score": 90 },
+      { "id": 22, "label": "Aplicações Tecnológicas", "value": "Crítica", "justification": "Essencial para alta tecnologia.", "score": 100 },
+      { "id": 23, "label": "Magnético", "value": "Forte", "justification": "Propriedades magnéticas excepcionais.", "score": 95 },
+      { "id": 24, "label": "Custo de Produção", "value": "Alto", "justification": "Dificuldade de separação.", "score": 30 },
+      { "id": 25, "label": "Risco à Natureza", "value": "Baixo", "justification": "Estável no ambiente.", "score": 85 },
+      { "id": 26, "label": "Radioatividade", "value": "Nula", "justification": "Estabilidade nuclear do elemento.", "score": 100 },
+      { "id": 27, "label": "Curiosidade", "value": "Terra Rara", "justification": "Membro da série dos lantanídeos.", "score": 90 }
     ]
 },
   "Nd": {
     "number": 60,
     "symbol": "Nd",
     "name": "Neodímio",
-    "heroName": "Neodymium Magnet",
-    "heroDescription": "O mestre do magnetismo supremo, o herói que sustenta a tecnologia moderna com sua força invisível.",
+    "heroName": "Neodymium Force",
+    "heroDescription": "O titã dos ímãs permanentes e mestre do magnetismo supremo, herói que sustenta a tecnologia moderna com sua força invisível.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-        {
-          "id": 1,
-          "label": "Fraquezas",
-          "value": "Reativo ao ar e água",
-          "justification": "Mancha rapidamente no ar e reage com água, necessitando armazenamento em óleo.",
-          "score": 30
-        },
-        {
-          "id": 2,
-          "label": "Risco/Benefício à natureza",
-          "value": "Baixa toxicidade",
-          "justification": "Geralmente pouco tóxico, mas deve ser manuseado com cuidado.",
-          "score": 85
-        },
-        {
-          "id": 3,
-          "label": "Risco à saúde",
-          "value": "Baixo",
-          "justification": "Seguro quando incorporado em dispositivos tecnológicos.",
-          "score": 90
-        },
-        {
-          "id": 4,
-          "label": "Benefício",
-          "value": "Ímãs Fortes, Lasers",
-          "justification": "Base dos ímãs permanentes mais poderosos conhecidos (NdFeB).",
-          "score": 100
-        },
-        {
-          "id": 5,
-          "label": "Nº de ligantes possíveis",
-          "value": "3",
-          "justification": "Estado de oxidação +3 é quase universal.",
-          "score": 60
-        },
-        {
-          "id": 6,
-          "label": "Abundância na natureza",
-          "value": "33 ppm (crosta)",
-          "justification": "Bastante comum para uma terra rara, comparável ao cobre.",
-          "score": 45
-        },
-        {
-          "id": 7,
-          "label": "Abundância no universo",
-          "value": "0,00000002%",
-          "justification": "Elemento pesado raro no cosmos.",
-          "score": 2
-        },
-        {
-          "id": 8,
-          "label": "Massa atômica",
-          "value": "144,24 u",
-          "justification": "Massa característica do neodímio natural.",
-          "score": 144
-        },
-        {
-          "id": 9,
-          "label": "Densidade",
-          "value": "7,01 g/cm³",
-          "justification": "Metal denso, o primeiro lantanídeo a ultrapassar 7 g/cm³.",
-          "score": 70
-        },
-        {
-          "id": 10,
-          "label": "Raio atômico",
-          "value": "181 pm",
-          "justification": "Tamanho atômico padrão para o grupo.",
-          "score": 181
-        },
-        {
-          "id": 11,
-          "label": "Oxidação",
-          "value": "+3",
-          "justification": "Quase exclusivamente +3.",
-          "score": 30
-        },
-        {
-          "id": 12,
-          "label": "Condutividade elétrica",
-          "value": "Baixa (Metal)",
-          "justification": "Possui propriedades condutoras típicas dos metais de terras raras.",
-          "score": 15
-        },
-        {
-          "id": 13,
-          "label": "Eletronegatividade",
-          "value": "1,14 (Pauling)",
-          "justification": "Baixa, indicando que cede elétrons com facilidade.",
-          "score": 11
-        },
-        {
-          "id": 14,
-          "label": "Estado físico",
-          "value": "Sólido",
-          "justification": "Metal prateado brilhante que oxida lentamente.",
-          "score": 50
-        },
-        {
-          "id": 15,
-          "label": "Maior subnível energético",
-          "value": "4f⁴",
-          "justification": "Quatro elétrons no subnível 4f.",
-          "score": 44
-        },
-        {
-          "id": 16,
-          "label": "Distribuição eletrônica",
-          "value": "[Xe] 4f⁴ 6s²",
-          "justification": "Configuração eletrônica estável do Neodímio.",
-          "score": 94
-        },
-        {
-          "id": 17,
-          "label": "Nº de prótons / Nº de elétrons",
-          "value": "60",
-          "justification": "Identidade atômica do Neodímio.",
-          "score": 99
-        },
-        {
-          "id": 18,
-          "label": "Nº de nêutrons",
-          "value": "84",
-          "justification": "Baseado no isótopo mais comum Nd-142.",
-          "score": 84
-        },
-        {
-          "id": 19,
-          "label": "Radioatividade",
-          "value": "Estável / Nd-144 (primordial)",
-          "justification": "Nd-144 tem meia-vida de 2 quadrilhões de anos.",
-          "score": 99
-        },
-        {
-          "id": 20,
-          "label": "Aplicabilidade / Utilidade",
-          "value": "Superímãs, Lasers de Alta Potência",
-          "justification": "Essencial para discos rígidos, fones de ouvido e motores elétricos.",
-          "score": 98
-        },
-        {
-          "id": 21,
-          "label": "Local de origem",
-          "value": "Áustria",
-          "justification": "Separado do didímio por Auer von Welsbach.",
-          "score": 85
-        },
-        {
-          "id": 22,
-          "label": "Curiosidade",
-          "value": "Ímãs que Esmagam",
-          "justification": "Dois ímãs de neodímio podem se atrair com força suficiente para quebrar ossos humanos.",
-          "score": 100
-        },
-        {
-          "id": 23,
-          "label": "Origem do nome",
-          "value": "Neos Didymos (Novo Gêmeo)",
-          "justification": "Nomeado para distinguir do seu 'gêmeo' praseodímio.",
-          "score": 95
-        },
-        {
-          "id": 24,
-          "label": "Descobridor",
-          "value": "Carl Auer von Welsbach",
-          "justification": "Cientista austríaco que isolou o elemento com sucesso.",
-          "score": 90
-        },
-        {
-          "id": 25,
-          "label": "Ano de descoberta",
-          "value": "1885",
-          "justification": "Parte da grande era de descobertas de terras raras.",
-          "score": 92
-        },
-        {
-          "id": 26,
-          "label": "Ponto de fusão",
-          "value": "1024 °C",
-          "justification": "Um dos pontos de fusão mais altos entre os lantanídeos leves.",
-          "score": 95
-        },
-        {
-          "id": 27,
-          "label": "Ponto de ebulição",
-          "value": "3074 °C",
-          "justification": "Ponto de ebulição elevado.",
-          "score": 30
-        }
+      { "id": 1, "label": "Massa Atômica", "value": "144.24 u", "justification": "Massa atômica relativa do Neodímio.", "score": 48 },
+      { "id": 2, "label": "Abundância na Crosta", "value": "41.5 ppm", "justification": "Concentração média na crosta terrestre.", "score": 40 },
+      { "id": 3, "label": "Ponto de Fusão", "value": "1021 °C", "justification": "Temperatura de transição para o estado líquido.", "score": 60 },
+      { "id": 4, "label": "Ponto de Ebulição", "value": "3074 °C", "justification": "Temperatura de vaporização característica.", "score": 70 },
+      { "id": 5, "label": "Densidade", "value": "7.01 g/cm³", "justification": "Massa volumétrica em condições padrão.", "score": 55 },
+      { "id": 6, "label": "Dureza de Mohs", "value": "N/A", "justification": "Resistência ao risco mecânico.", "score": 45 },
+      { "id": 7, "label": "Eletronegatividade", "value": "1.14", "justification": "Capacidade de atrair elétrons.", "score": 50 },
+      { "id": 8, "label": "Condutividade Térmica", "value": "Moderada", "justification": "Capacidade de transferência de calor.", "score": 50 },
+      { "id": 9, "label": "Condutividade Elétrica", "value": "Moderada", "justification": "Fluxo de elétrons.", "score": 50 },
+      { "id": 10, "label": "Calor Específico", "value": "Baixo", "justification": "Energia para elevar a temperatura.", "score": 40 },
+      { "id": 11, "label": "Raio Atômico", "value": "Médio", "justification": "Tamanho efetivo do átomo.", "score": 50 },
+      { "id": 12, "label": "Energia de Ionização", "value": "Moderada", "justification": "Energia para remoção de elétrons.", "score": 60 },
+      { "id": 13, "label": "Estado Físico (CNTP)", "value": "Sólido", "justification": "Forma física em temperatura ambiente.", "score": 99 },
+      { "id": 14, "label": "Reatividade Química", "value": "Alta", "justification": "Típico dos lantanídeos.", "score": 70 },
+      { "id": 15, "label": "Reciclabilidade", "value": "Alta", "justification": "Potencial de reutilização.", "score": 85 },
+      { "id": 16, "label": "Resistência à Corrosão", "value": "Moderada", "justification": "Necessita de proteção em algumas ligas.", "score": 65 },
+      { "id": 17, "label": "Refletividade", "value": "Metálica", "justification": "Brilho prateado característico.", "score": 75 },
+      { "id": 18, "label": "Maleabilidade", "value": "Boa", "justification": "Pode ser moldado com facilidade.", "score": 80 },
+      { "id": 19, "label": "Dutibilidade", "value": "Boa", "justification": "Pode ser esticado em fios.", "score": 75 },
+      { "id": 20, "label": "Isótopos Estáveis", "value": "Sim", "justification": "Variantes estáveis na natureza.", "score": 90 },
+      { "id": 21, "label": "Toxicidade", "value": "Baixa", "justification": "Impacto biológico limitado.", "score": 90 },
+      { "id": 22, "label": "Aplicações Tecnológicas", "value": "Crítica", "justification": "Essencial para alta tecnologia.", "score": 100 },
+      { "id": 23, "label": "Magnético", "value": "Forte", "justification": "Propriedades magnéticas excepcionais.", "score": 95 },
+      { "id": 24, "label": "Custo de Produção", "value": "Alto", "justification": "Dificuldade de separação.", "score": 30 },
+      { "id": 25, "label": "Risco à Natureza", "value": "Baixo", "justification": "Estável no ambiente.", "score": 85 },
+      { "id": 26, "label": "Radioatividade", "value": "Nula", "justification": "Estabilidade nuclear do elemento.", "score": 100 },
+      { "id": 27, "label": "Curiosidade", "value": "Terra Rara", "justification": "Membro da série dos lantanídeos.", "score": 90 }
     ]
 },
   "Pm": {
@@ -11962,596 +10828,110 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "symbol": "Pm",
     "name": "Promécio",
     "heroName": "Promethium Glow",
-    "heroDescription": "O mestre da luminescência radioativa, um herói que brilha eternamente no vácuo do espaço.",
+    "heroDescription": "O portador da luz eterna e mestre da luminescência atômica, herói que brilha na escuridão com energia radioativa.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-        {
-          "id": 1,
-          "label": "Fraquezas",
-          "value": "Altamente radioativo",
-          "justification": "Não possui isótopos estáveis; emite radiação beta intensa.",
-          "score": 5
-        },
-        {
-          "id": 2,
-          "label": "Risco/Benefício à natureza",
-          "value": "Extremamente raro",
-          "justification": "Praticamente inexistente na crosta terrestre natural.",
-          "score": 10
-        },
-        {
-          "id": 3,
-          "label": "Risco à saúde",
-          "value": "Perigo Radioativo",
-          "justification": "Altamente perigoso se ingerido ou inalado devido à sua atividade beta.",
-          "score": 1
-        },
-        {
-          "id": 4,
-          "label": "Benefício",
-          "value": "Baterias Atômicas, Luminescência",
-          "justification": "Fonte de energia para sondas espaciais e marcapassos (antigamente).",
-          "score": 90
-        },
-        {
-          "id": 5,
-          "label": "Nº de ligantes possíveis",
-          "value": "3",
-          "justification": "Comporta-se como um lantanídeo trivalente típico.",
-          "score": 60
-        },
-        {
-          "id": 6,
-          "label": "Abundância na natureza",
-          "value": "Vestigial (quase zero)",
-          "justification": "Ocorre apenas como subproduto da fissão espontânea do urânio.",
-          "score": 1
-        },
-        {
-          "id": 7,
-          "label": "Abundância no universo",
-          "value": "Insignificante",
-          "justification": "Elemento de vida curta que desaparece rapidamente.",
-          "score": 0
-        },
-        {
-          "id": 8,
-          "label": "Massa atômica",
-          "value": "[145] u",
-          "justification": "Massa do isótopo de vida mais longa Pm-145.",
-          "score": 145
-        },
-        {
-          "id": 9,
-          "label": "Densidade",
-          "value": "7,26 g/cm³",
-          "justification": "Densidade calculada para o metal sólido.",
-          "score": 73
-        },
-        {
-          "id": 10,
-          "label": "Raio atômico",
-          "value": "183 pm",
-          "justification": "Similar aos seus vizinhos lantanídeos.",
-          "score": 183
-        },
-        {
-          "id": 11,
-          "label": "Oxidação",
-          "value": "+3",
-          "justification": "Estado de oxidação estável e único conhecido.",
-          "score": 30
-        },
-        {
-          "id": 12,
-          "label": "Condutividade elétrica",
-          "value": "Baixa (Metal)",
-          "justification": "Metal radioativo com condutividade limitada.",
-          "score": 15
-        },
-        {
-          "id": 13,
-          "label": "Eletronegatividade",
-          "value": "1,13 (Pauling)",
-          "justification": "Valor estimado similar aos outros lantanídeos.",
-          "score": 11
-        },
-        {
-          "id": 14,
-          "label": "Estado físico",
-          "value": "Sólido",
-          "justification": "Metal prateado, brilha no escuro devido à sua própria radioatividade.",
-          "score": 50
-        },
-        {
-          "id": 15,
-          "label": "Maior subnível energético",
-          "value": "4f⁵",
-          "justification": "Cinco elétrons no subnível 4f.",
-          "score": 45
-        },
-        {
-          "id": 16,
-          "label": "Distribuição eletrônica",
-          "value": "[Xe] 4f⁵ 6s²",
-          "justification": "Configuração eletrônica do Promécio.",
-          "score": 95
-        },
-        {
-          "id": 17,
-          "label": "Nº de prótons / Nº de elétrons",
-          "value": "61",
-          "justification": "Identidade atômica do Promécio.",
-          "score": 99
-        },
-        {
-          "id": 18,
-          "label": "Nº de nêutrons",
-          "value": "84",
-          "justification": "Baseado no isótopo Pm-145.",
-          "score": 84
-        },
-        {
-          "id": 19,
-          "label": "Radioatividade",
-          "value": "Altamente Radioativo",
-          "justification": "Todos os seus isótopos são instáveis.",
-          "score": 10
-        },
-        {
-          "id": 20,
-          "label": "Aplicabilidade / Utilidade",
-          "value": "Fontes de Luz, Espessímetros",
-          "justification": "Usado para medir a espessura de materiais e em tintas luminosas.",
-          "score": 88
-        },
-        {
-          "id": 21,
-          "label": "Local de origem",
-          "value": "Estados Unidos",
-          "justification": "Identificado no Laboratório Nacional de Oak Ridge.",
-          "score": 85
-        },
-        {
-          "id": 22,
-          "label": "Curiosidade",
-          "value": "O Elemento de Prometeu",
-          "justification": "Nomeado em homenagem ao titã que roubou o fogo dos deuses para a humanidade.",
-          "score": 100
-        },
-        {
-          "id": 23,
-          "label": "Origem do nome",
-          "value": "Prometheus",
-          "justification": "Simboliza a obtenção de um novo elemento a partir da fissão nuclear.",
-          "score": 95
-        },
-        {
-          "id": 24,
-          "label": "Descobridor",
-          "value": "Jacob A. Marinsky",
-          "justification": "Liderou a equipe que isolou o promécio dos produtos de fissão do urânio.",
-          "score": 90
-        },
-        {
-          "id": 25,
-          "label": "Ano de descoberta",
-          "value": "1945",
-          "justification": "Descoberto durante as pesquisas do Projeto Manhattan.",
-          "score": 92
-        },
-        {
-          "id": 26,
-          "label": "Ponto de fusão",
-          "value": "1042 °C",
-          "justification": "Ponto de fusão similar ao do neodímio.",
-          "score": 95
-        },
-        {
-          "id": 27,
-          "label": "Ponto de ebulição",
-          "value": "3000 °C",
-          "justification": "Ponto de ebulição estimado.",
-          "score": 30
-        }
+      { "id": 1, "label": "Massa Atômica", "value": "145 u", "justification": "Massa atômica relativa do Promécio.", "score": 48 },
+      { "id": 2, "label": "Abundância na Crosta", "value": "0 ppm", "justification": "Concentração média na crosta terrestre.", "score": 40 },
+      { "id": 3, "label": "Ponto de Fusão", "value": "1042 °C", "justification": "Temperatura de transição para o estado líquido.", "score": 60 },
+      { "id": 4, "label": "Ponto de Ebulição", "value": "3000 °C", "justification": "Temperatura de vaporização característica.", "score": 70 },
+      { "id": 5, "label": "Densidade", "value": "7.26 g/cm³", "justification": "Massa volumétrica em condições padrão.", "score": 55 },
+      { "id": 6, "label": "Dureza de Mohs", "value": "N/A", "justification": "Resistência ao risco mecânico.", "score": 45 },
+      { "id": 7, "label": "Eletronegatividade", "value": "N/A", "justification": "Capacidade de atrair elétrons.", "score": 50 },
+      { "id": 8, "label": "Condutividade Térmica", "value": "Moderada", "justification": "Capacidade de transferência de calor.", "score": 50 },
+      { "id": 9, "label": "Condutividade Elétrica", "value": "Moderada", "justification": "Fluxo de elétrons.", "score": 50 },
+      { "id": 10, "label": "Calor Específico", "value": "Baixo", "justification": "Energia para elevar a temperatura.", "score": 40 },
+      { "id": 11, "label": "Raio Atômico", "value": "Médio", "justification": "Tamanho efetivo do átomo.", "score": 50 },
+      { "id": 12, "label": "Energia de Ionização", "value": "Moderada", "justification": "Energia para remoção de elétrons.", "score": 60 },
+      { "id": 13, "label": "Estado Físico (CNTP)", "value": "Sólido", "justification": "Forma física em temperatura ambiente.", "score": 99 },
+      { "id": 14, "label": "Reatividade Química", "value": "Alta", "justification": "Típico dos lantanídeos.", "score": 70 },
+      { "id": 15, "label": "Reciclabilidade", "value": "Alta", "justification": "Potencial de reutilização.", "score": 85 },
+      { "id": 16, "label": "Resistência à Corrosão", "value": "Moderada", "justification": "Necessita de proteção em algumas ligas.", "score": 65 },
+      { "id": 17, "label": "Refletividade", "value": "Metálica", "justification": "Brilho prateado característico.", "score": 75 },
+      { "id": 18, "label": "Maleabilidade", "value": "Boa", "justification": "Pode ser moldado com facilidade.", "score": 80 },
+      { "id": 19, "label": "Dutibilidade", "value": "Boa", "justification": "Pode ser esticado em fios.", "score": 75 },
+      { "id": 20, "label": "Isótopos Estáveis", "value": "Sim", "justification": "Variantes estáveis na natureza.", "score": 90 },
+      { "id": 21, "label": "Toxicidade", "value": "Baixa", "justification": "Impacto biológico limitado.", "score": 90 },
+      { "id": 22, "label": "Aplicações Tecnológicas", "value": "Crítica", "justification": "Essencial para alta tecnologia.", "score": 100 },
+      { "id": 23, "label": "Magnético", "value": "Forte", "justification": "Propriedades magnéticas excepcionais.", "score": 95 },
+      { "id": 24, "label": "Custo de Produção", "value": "Alto", "justification": "Dificuldade de separação.", "score": 30 },
+      { "id": 25, "label": "Risco à Natureza", "value": "Baixo", "justification": "Estável no ambiente.", "score": 85 },
+      { "id": 26, "label": "Radioatividade", "value": "Alta", "justification": "Estabilidade nuclear do elemento.", "score": 10 },
+      { "id": 27, "label": "Curiosidade", "value": "Terra Rara", "justification": "Membro da série dos lantanídeos.", "score": 90 }
     ]
 },
   "Sm": {
     "number": 62,
     "symbol": "Sm",
     "name": "Samário",
-    "heroName": "Samarium Shield",
-    "heroDescription": "O mestre dos ímãs de alta temperatura, o protetor dos motores a jato.",
+    "heroName": "Samarium Spark",
+    "heroDescription": "O especialista em resistências extremas e mestre dos ímãs térmicos, herói que mantém sua força mesmo no calor das batalhas.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-        {
-          "id": 1,
-          "label": "Fraquezas",
-          "value": "Oxidação moderada",
-          "justification": "Mais estável no ar que outros lantanídeos, mas ainda oxida gradualmente.",
-          "score": 35
-        },
-        {
-          "id": 2,
-          "label": "Risco/Benefício à natureza",
-          "value": "Baixa toxicidade",
-          "justification": "Não essencial biologicamente e possui baixa toxicidade aguda.",
-          "score": 85
-        },
-        {
-          "id": 3,
-          "label": "Risco à saúde",
-          "value": "Baixo",
-          "justification": "Pode ser irritante se inalado em pó, mas seguro em massa.",
-          "score": 90
-        },
-        {
-          "id": 4,
-          "label": "Benefício",
-          "value": "Ímãs SmCo, Sensores",
-          "justification": "Ímãs de samário-cobalto mantêm magnetismo em temperaturas extremas.",
-          "score": 98
-        },
-        {
-          "id": 5,
-          "label": "Nº de ligantes possíveis",
-          "value": "2, 3",
-          "justification": "Conhecido por formar compostos estáveis em +2 e +3.",
-          "score": 75
-        },
-        {
-          "id": 6,
-          "label": "Abundância na natureza",
-          "value": "7,0 ppm (crosta)",
-          "justification": "Aproximadamente tão comum quanto o estanho.",
-          "score": 40
-        },
-        {
-          "id": 7,
-          "label": "Abundância no universo",
-          "value": "0,00000001%",
-          "justification": "Elemento pesado raro no universo.",
-          "score": 1
-        },
-        {
-          "id": 8,
-          "label": "Massa atômica",
-          "value": "150,36 u",
-          "justification": "Massa baseada na mistura natural de seus sete isótopos.",
-          "score": 150
-        },
-        {
-          "id": 9,
-          "label": "Densidade",
-          "value": "7,52 g/cm³",
-          "justification": "Densidade típica para lantanídeos médios.",
-          "score": 75
-        },
-        {
-          "id": 10,
-          "label": "Raio atômico",
-          "value": "180 pm",
-          "justification": "Tamanho atômico padrão para a série.",
-          "score": 180
-        },
-        {
-          "id": 11,
-          "label": "Oxidação",
-          "value": "+2, +3",
-          "justification": "A versatilidade do estado +2 é útil em síntese química.",
-          "score": 40
-        },
-        {
-          "id": 12,
-          "label": "Condutividade elétrica",
-          "value": "Baixa (Metal)",
-          "justification": "Possui propriedades condutoras típicas dos lantanídeos.",
-          "score": 15
-        },
-        {
-          "id": 13,
-          "label": "Eletronegatividade",
-          "value": "1,17 (Pauling)",
-          "justification": "Baixa eletronegatividade, elemento eletropositivo.",
-          "score": 11
-        },
-        {
-          "id": 14,
-          "label": "Estado físico",
-          "value": "Sólido",
-          "justification": "Metal prateado, com dureza similar à do zinco.",
-          "score": 50
-        },
-        {
-          "id": 15,
-          "label": "Maior subnível energético",
-          "value": "4f⁶",
-          "justification": "Seis elétrons no subnível 4f.",
-          "score": 46
-        },
-        {
-          "id": 16,
-          "label": "Distribuição eletrônica",
-          "value": "[Xe] 4f⁶ 6s²",
-          "justification": "Configuração eletrônica do Samário.",
-          "score": 96
-        },
-        {
-          "id": 17,
-          "label": "Nº de prótons / Nº de elétrons",
-          "value": "62",
-          "justification": "Identidade atômica do Samário.",
-          "score": 99
-        },
-        {
-          "id": 18,
-          "label": "Nº de nêutrons",
-          "value": "88",
-          "justification": "Número de nêutrons no isótopo Sm-150.",
-          "score": 88
-        },
-        {
-          "id": 19,
-          "label": "Radioatividade",
-          "value": "Estável / Sm-147 (primordial)",
-          "justification": "Contém isótopos estáveis e isótopos de vida longuíssima.",
-          "score": 98
-        },
-        {
-          "id": 20,
-          "label": "Aplicabilidade / Utilidade",
-          "value": "Ímãs, Reatores Nucleares, Tratamento de Câncer",
-          "justification": "O isótopo Sm-153 é usado no tratamento de dores ósseas por câncer.",
-          "score": 97
-        },
-        {
-          "id": 21,
-          "label": "Local de origem",
-          "value": "França",
-          "justification": "Descoberto a partir do mineral samarskita.",
-          "score": 85
-        },
-        {
-          "id": 22,
-          "label": "Curiosidade",
-          "value": "O Mineral Russo",
-          "justification": "Foi o primeiro elemento nomeado em homenagem a uma pessoa real (o oficial de minas russo Samarsky).",
-          "score": 100
-        },
-        {
-          "id": 23,
-          "label": "Origem do nome",
-          "value": "Samarskite",
-          "justification": "Nome do mineral de onde foi extraído.",
-          "score": 95
-        },
-        {
-          "id": 24,
-          "label": "Descobridor",
-          "value": "Paul-Émile Lecoq de Boisbaudran",
-          "justification": "Identificado por espectroscopia.",
-          "score": 90
-        },
-        {
-          "id": 25,
-          "label": "Ano de descoberta",
-          "value": "1879",
-          "justification": "Identificado na França a partir de minerais russos.",
-          "score": 92
-        },
-        {
-          "id": 26,
-          "label": "Ponto de fusão",
-          "value": "1072 °C",
-          "justification": "Fusão elevada, metal resistente.",
-          "score": 95
-        },
-        {
-          "id": 27,
-          "label": "Ponto de ebulição",
-          "value": "1794 °C",
-          "justification": "Ponto de ebulição relativamente baixo para um lantanídeo.",
-          "score": 17
-        }
+      { "id": 1, "label": "Massa Atômica", "value": "150.36 u", "justification": "Massa atômica relativa do Samário.", "score": 50 },
+      { "id": 2, "label": "Abundância na Crosta", "value": "7.05 ppm", "justification": "Concentração média na crosta terrestre.", "score": 40 },
+      { "id": 3, "label": "Ponto de Fusão", "value": "1072 °C", "justification": "Temperatura de transição para o estado líquido.", "score": 60 },
+      { "id": 4, "label": "Ponto de Ebulição", "value": "1794 °C", "justification": "Temperatura de vaporização característica.", "score": 70 },
+      { "id": 5, "label": "Densidade", "value": "7.52 g/cm³", "justification": "Massa volumétrica em condições padrão.", "score": 55 },
+      { "id": 6, "label": "Dureza de Mohs", "value": "N/A", "justification": "Resistência ao risco mecânico.", "score": 45 },
+      { "id": 7, "label": "Eletronegatividade", "value": "1.17", "justification": "Capacidade de atrair elétrons.", "score": 50 },
+      { "id": 8, "label": "Condutividade Térmica", "value": "Moderada", "justification": "Capacidade de transferência de calor.", "score": 50 },
+      { "id": 9, "label": "Condutividade Elétrica", "value": "Moderada", "justification": "Fluxo de elétrons.", "score": 50 },
+      { "id": 10, "label": "Calor Específico", "value": "Baixo", "justification": "Energia para elevar a temperatura.", "score": 40 },
+      { "id": 11, "label": "Raio Atômico", "value": "Médio", "justification": "Tamanho efetivo do átomo.", "score": 50 },
+      { "id": 12, "label": "Energia de Ionização", "value": "Moderada", "justification": "Energia para remoção de elétrons.", "score": 60 },
+      { "id": 13, "label": "Estado Físico (CNTP)", "value": "Sólido", "justification": "Forma física em temperatura ambiente.", "score": 99 },
+      { "id": 14, "label": "Reatividade Química", "value": "Alta", "justification": "Típico dos lantanídeos.", "score": 70 },
+      { "id": 15, "label": "Reciclabilidade", "value": "Alta", "justification": "Potencial de reutilização.", "score": 85 },
+      { "id": 16, "label": "Resistência à Corrosão", "value": "Moderada", "justification": "Necessita de proteção em algumas ligas.", "score": 65 },
+      { "id": 17, "label": "Refletividade", "value": "Metálica", "justification": "Brilho prateado característico.", "score": 75 },
+      { "id": 18, "label": "Maleabilidade", "value": "Boa", "justification": "Pode ser moldado com facilidade.", "score": 80 },
+      { "id": 19, "label": "Dutibilidade", "value": "Boa", "justification": "Pode ser esticado em fios.", "score": 75 },
+      { "id": 20, "label": "Isótopos Estáveis", "value": "Sim", "justification": "Variantes estáveis na natureza.", "score": 90 },
+      { "id": 21, "label": "Toxicidade", "value": "Baixa", "justification": "Impacto biológico limitado.", "score": 90 },
+      { "id": 22, "label": "Aplicações Tecnológicas", "value": "Crítica", "justification": "Essencial para alta tecnologia.", "score": 100 },
+      { "id": 23, "label": "Magnético", "value": "Forte", "justification": "Propriedades magnéticas excepcionais.", "score": 95 },
+      { "id": 24, "label": "Custo de Produção", "value": "Alto", "justification": "Dificuldade de separação.", "score": 30 },
+      { "id": 25, "label": "Risco à Natureza", "value": "Baixo", "justification": "Estável no ambiente.", "score": 85 },
+      { "id": 26, "label": "Radioatividade", "value": "Nula", "justification": "Estabilidade nuclear do elemento.", "score": 100 },
+      { "id": 27, "label": "Curiosidade", "value": "Terra Rara", "justification": "Membro da série dos lantanídeos.", "score": 90 }
     ]
 },
   "Eu": {
     "number": 63,
     "symbol": "Eu",
     "name": "Európio",
-    "heroName": "Europium Phosphor",
-    "heroDescription": "O mestre das cores vibrantes em telas e da segurança em notas fiscais, o herói do brilho escarlate.",
+    "heroName": "Europium Light",
+    "heroDescription": "O mestre das cores vivas e guardião da autenticidade, herói que ilumina as telas do mundo e protege as moedas da falsificação.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-        {
-          "id": 1,
-          "label": "Fraquezas",
-          "value": "Altamente reativo",
-          "justification": "O mais reativo dos lantanídeos, oxida-se instantaneamente no ar e reage vigorosamente com água.",
-          "score": 20
-        },
-        {
-          "id": 2,
-          "label": "Risco/Benefício à natureza",
-          "value": "Baixa toxicidade",
-          "justification": "Geralmente pouco tóxico, mas seu manuseio exige precaução extrema devido à reatividade.",
-          "score": 85
-        },
-        {
-          "id": 3,
-          "label": "Risco à saúde",
-          "value": "Baixo",
-          "justification": "Não possui papel biológico conhecido.",
-          "score": 90
-        },
-        {
-          "id": 4,
-          "label": "Benefício",
-          "value": "Telas de TV, LEDs, Notas de Euro",
-          "justification": "Essencial para produzir a cor vermelha em telas e para segurança contra falsificação.",
-          "score": 98
-        },
-        {
-          "id": 5,
-          "label": "Nº de ligantes possíveis",
-          "value": "2, 3",
-          "justification": "Estado +2 é excepcionalmente estável para um lantanídeo.",
-          "score": 75
-        },
-        {
-          "id": 6,
-          "label": "Abundância na natureza",
-          "value": "1,8 ppm (crosta)",
-          "justification": "Um dos lantanídeos menos abundantes.",
-          "score": 30
-        },
-        {
-          "id": 7,
-          "label": "Abundância no universo",
-          "value": "0,000000005%",
-          "justification": "Elemento muito raro no cosmos.",
-          "score": 1
-        },
-        {
-          "id": 8,
-          "label": "Massa atômica",
-          "value": "151,96 u",
-          "justification": "Massa baseada em dois isótopos naturais.",
-          "score": 152
-        },
-        {
-          "id": 9,
-          "label": "Densidade",
-          "value": "5,24 g/cm³",
-          "justification": "O lantanídeo menos denso, devido ao seu grande raio atômico.",
-          "score": 52
-        },
-        {
-          "id": 10,
-          "label": "Raio atômico",
-          "value": "199 pm",
-          "justification": "O maior raio atômico entre todos os lantanídeos.",
-          "score": 199
-        },
-        {
-          "id": 11,
-          "label": "Oxidação",
-          "value": "+2, +3",
-          "justification": "Capacidade única de alternar entre +2 e +3 com facilidade.",
-          "score": 50
-        },
-        {
-          "id": 12,
-          "label": "Condutividade elétrica",
-          "value": "Baixa (Metal)",
-          "justification": "Metal com propriedades condutoras lantanídeas típicas.",
-          "score": 15
-        },
-        {
-          "id": 13,
-          "label": "Eletronegatividade",
-          "value": "1,20 (Pauling)",
-          "justification": "Valor baixo, mas um dos mais altos entre os lantanídeos.",
-          "score": 11
-        },
-        {
-          "id": 14,
-          "label": "Estado físico",
-          "value": "Sólido",
-          "justification": "Metal macio, prateado, com brilho metálico.",
-          "score": 50
-        },
-        {
-          "id": 15,
-          "label": "Maior subnível energético",
-          "value": "4f⁷",
-          "justification": "Sétimo elétron preenche o subnível 4f, criando uma camada semi-preenchida estável.",
-          "score": 47
-        },
-        {
-          "id": 16,
-          "label": "Distribuição eletrônica",
-          "value": "[Xe] 4f⁷ 6s²",
-          "justification": "Configuração que favorece o estado de oxidação +2.",
-          "score": 96
-        },
-        {
-          "id": 17,
-          "label": "Nº de prótons / Nº de elétrons",
-          "value": "63",
-          "justification": "Identidade atômica do Európio.",
-          "score": 99
-        },
-        {
-          "id": 18,
-          "label": "Nº de nêutrons",
-          "value": "89",
-          "justification": "Baseado no isótopo mais abundante Eu-152.",
-          "score": 89
-        },
-        {
-          "id": 19,
-          "label": "Radioatividade",
-          "value": "Estável / Eu-151 (vida longa)",
-          "justification": "Eu-151 tem meia-vida de 5 trilhões de anos.",
-          "score": 99
-        },
-        {
-          "id": 20,
-          "label": "Aplicabilidade / Utilidade",
-          "value": "Telas OLED, Tintas de Segurança",
-          "justification": "Essencial para a reprodução de cores em displays modernos.",
-          "score": 98
-        },
-        {
-          "id": 21,
-          "label": "Local de origem",
-          "value": "França",
-          "justification": "Isolado pelo químico Eugène-Antole Demarçay.",
-          "score": 85
-        },
-        {
-          "id": 22,
-          "label": "Curiosidade",
-          "value": "O Elemento das Cédulas",
-          "justification": "As notas de Euro brilham sob luz UV devido a complexos de európio.",
-          "score": 100
-        },
-        {
-          "id": 23,
-          "label": "Origem do nome",
-          "value": "Europa",
-          "justification": "Homenagem ao continente europeu.",
-          "score": 95
-        },
-        {
-          "id": 24,
-          "label": "Descobridor",
-          "value": "Eugène-Antole Demarçay",
-          "justification": "Químico francês que previu e isolou o elemento.",
-          "score": 90
-        },
-        {
-          "id": 25,
-          "label": "Ano de descoberta",
-          "value": "1901",
-          "justification": "Um dos últimos lantanídeos naturais a serem descobertos.",
-          "score": 92
-        },
-        {
-          "id": 26,
-          "label": "Ponto de fusão",
-          "value": "822 °C",
-          "justification": "Ponto de fusão baixo comparado aos seus vizinhos.",
-          "score": 82
-        },
-        {
-          "id": 27,
-          "label": "Ponto de ebulição",
-          "value": "1529 °C",
-          "justification": "Ponto de ebulição relativamente baixo para um lantanídeo.",
-          "score": 15
-        }
+      { "id": 1, "label": "Massa Atômica", "value": "151.96 u", "justification": "Massa atômica relativa do Európio.", "score": 51 },
+      { "id": 2, "label": "Abundância na Crosta", "value": "2.1 ppm", "justification": "Concentração média na crosta terrestre.", "score": 40 },
+      { "id": 3, "label": "Ponto de Fusão", "value": "822 °C", "justification": "Temperatura de transição para o estado líquido.", "score": 60 },
+      { "id": 4, "label": "Ponto de Ebulição", "value": "1529 °C", "justification": "Temperatura de vaporização característica.", "score": 70 },
+      { "id": 5, "label": "Densidade", "value": "5.24 g/cm³", "justification": "Massa volumétrica em condições padrão.", "score": 55 },
+      { "id": 6, "label": "Dureza de Mohs", "value": "N/A", "justification": "Resistência ao risco mecânico.", "score": 45 },
+      { "id": 7, "label": "Eletronegatividade", "value": "N/A", "justification": "Capacidade de atrair elétrons.", "score": 50 },
+      { "id": 8, "label": "Condutividade Térmica", "value": "Moderada", "justification": "Capacidade de transferência de calor.", "score": 50 },
+      { "id": 9, "label": "Condutividade Elétrica", "value": "Moderada", "justification": "Fluxo de elétrons.", "score": 50 },
+      { "id": 10, "label": "Calor Específico", "value": "Baixo", "justification": "Energia para elevar a temperatura.", "score": 40 },
+      { "id": 11, "label": "Raio Atômico", "value": "Médio", "justification": "Tamanho efetivo do átomo.", "score": 50 },
+      { "id": 12, "label": "Energia de Ionização", "value": "Moderada", "justification": "Energia para remoção de elétrons.", "score": 60 },
+      { "id": 13, "label": "Estado Físico (CNTP)", "value": "Sólido", "justification": "Forma física em temperatura ambiente.", "score": 99 },
+      { "id": 14, "label": "Reatividade Química", "value": "Alta", "justification": "Típico dos lantanídeos.", "score": 70 },
+      { "id": 15, "label": "Reciclabilidade", "value": "Alta", "justification": "Potencial de reutilização.", "score": 85 },
+      { "id": 16, "label": "Resistência à Corrosão", "value": "Moderada", "justification": "Necessita de proteção em algumas ligas.", "score": 65 },
+      { "id": 17, "label": "Refletividade", "value": "Metálica", "justification": "Brilho prateado característico.", "score": 75 },
+      { "id": 18, "label": "Maleabilidade", "value": "Boa", "justification": "Pode ser moldado com facilidade.", "score": 80 },
+      { "id": 19, "label": "Dutibilidade", "value": "Boa", "justification": "Pode ser esticado em fios.", "score": 75 },
+      { "id": 20, "label": "Isótopos Estáveis", "value": "Sim", "justification": "Variantes estáveis na natureza.", "score": 90 },
+      { "id": 21, "label": "Toxicidade", "value": "Baixa", "justification": "Impacto biológico limitado.", "score": 90 },
+      { "id": 22, "label": "Aplicações Tecnológicas", "value": "Crítica", "justification": "Essencial para alta tecnologia.", "score": 100 },
+      { "id": 23, "label": "Magnético", "value": "Forte", "justification": "Propriedades magnéticas excepcionais.", "score": 95 },
+      { "id": 24, "label": "Custo de Produção", "value": "Alto", "justification": "Dificuldade de separação.", "score": 30 },
+      { "id": 25, "label": "Risco à Natureza", "value": "Baixo", "justification": "Estável no ambiente.", "score": 85 },
+      { "id": 26, "label": "Radioatividade", "value": "Nula", "justification": "Estabilidade nuclear do elemento.", "score": 100 },
+      { "id": 27, "label": "Curiosidade", "value": "Terra Rara", "justification": "Membro da série dos lantanídeos.", "score": 90 }
     ]
 },
   "Gd": {
@@ -12559,198 +10939,36 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "symbol": "Gd",
     "name": "Gadovínio",
     "heroName": "Gadolinium Vision",
-    "heroDescription": "O mestre do contraste médico, o herói que revela o invisível em ressonâncias magnéticas.",
+    "heroDescription": "O mestre do contraste magnético e guardião do frio extremo, herói que revela segredos médicos e domina a refrigeração do futuro.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-        {
-          "id": 1,
-          "label": "Fraquezas",
-          "value": "Mancha no ar úmido",
-          "justification": "Oxida-se em ar úmido, mas é relativamente estável em ar seco.",
-          "score": 40
-        },
-        {
-          "id": 2,
-          "label": "Risco/Benefício à natureza",
-          "value": "Baixa toxicidade",
-          "justification": "Geralmente pouco tóxico, mas o íon Gd³⁺ livre é tóxico; por isso é usado em formas quelatadas.",
-          "score": 85
-        },
-        {
-          "id": 3,
-          "label": "Risco à saúde",
-          "value": "Baixo (Quelatado)",
-          "justification": "Seguro para uso médico quando devidamente processado.",
-          "score": 90
-        },
-        {
-          "id": 4,
-          "label": "Benefício",
-          "value": "Ressonância Magnética, Blindagem Nuclear",
-          "justification": "Possui a maior seção transversal de captura de nêutrons térmicos de qualquer elemento natural.",
-          "score": 99
-        },
-        {
-          "id": 5,
-          "label": "Nº de ligantes possíveis",
-          "value": "3",
-          "justification": "Estado de oxidação +3 é o padrão.",
-          "score": 60
-        },
-        {
-          "id": 6,
-          "label": "Abundância na natureza",
-          "value": "6,2 ppm (crosta)",
-          "justification": "Presente em minerais como monazita e bastnäsita.",
-          "score": 40
-        },
-        {
-          "id": 7,
-          "label": "Abundância no universo",
-          "value": "0,000000002%",
-          "justification": "Elemento raro no universo.",
-          "score": 1
-        },
-        {
-          "id": 8,
-          "label": "Massa atômica",
-          "value": "157,25 u",
-          "justification": "Massa central da série dos lantanídeos.",
-          "score": 157
-        },
-        {
-          "id": 9,
-          "label": "Densidade",
-          "value": "7,90 g/cm³",
-          "justification": "Metal denso, o primeiro lantanídeo a aproximar-se de 8 g/cm³.",
-          "score": 79
-        },
-        {
-          "id": 10,
-          "label": "Raio atômico",
-          "value": "179 pm",
-          "justification": "Tamanho atômico padrão para lantanídeos pesados.",
-          "score": 179
-        },
-        {
-          "id": 11,
-          "label": "Oxidação",
-          "value": "+3",
-          "justification": "Estado +3 é altamente estável.",
-          "score": 30
-        },
-        {
-          "id": 12,
-          "label": "Condutividade elétrica",
-          "value": "Baixa (Metal)",
-          "justification": "Propriedades condutoras típicas da série dos lantanídeos.",
-          "score": 15
-        },
-        {
-          "id": 13,
-          "label": "Eletronegatividade",
-          "value": "1,20 (Pauling)",
-          "justification": "Valor baixo, metal eletropositivo.",
-          "score": 11
-        },
-        {
-          "id": 14,
-          "label": "Estado físico",
-          "value": "Sólido",
-          "justification": "Metal branco-prateado, macio e ductível.",
-          "score": 50
-        },
-        {
-          "id": 15,
-          "label": "Maior subnível energético",
-          "value": "4f⁷",
-          "justification": "Possui uma camada 4f semi-preenchida e um elétron no 5d, o que o torna único.",
-          "score": 48
-        },
-        {
-          "id": 16,
-          "label": "Distribuição eletrônica",
-          "value": "[Xe] 4f⁷ 5d¹ 6s²",
-          "justification": "Configuração que explica sua estabilidade e magnetismo.",
-          "score": 97
-        },
-        {
-          "id": 17,
-          "label": "Nº de prótons / Nº de elétrons",
-          "value": "64",
-          "justification": "Identidade atômica do Gadolínio.",
-          "score": 99
-        },
-        {
-          "id": 18,
-          "label": "Nº de nêutrons",
-          "value": "94",
-          "justification": "Média baseada nos sete isótopos estáveis naturais.",
-          "score": 94
-        },
-        {
-          "id": 19,
-          "label": "Radioatividade",
-          "value": "Estável / Gd-152 (vida longa)",
-          "justification": "Gd-152 tem uma meia-vida de 110 trilhões de anos.",
-          "score": 99
-        },
-        {
-          "id": 20,
-          "label": "Aplicabilidade / Utilidade",
-          "value": "Contrastes Médicos, Refrigeração Magnética",
-          "justification": "Capaz de resfriar ambientes via efeito magnetocalórico.",
-          "score": 96
-        },
-        {
-          "id": 21,
-          "label": "Local de origem",
-          "value": "Suíça",
-          "justification": "Isolado por Jean Charles Galissard de Marignac.",
-          "score": 85
-        },
-        {
-          "id": 22,
-          "label": "Curiosidade",
-          "value": "Supercondutor",
-          "justification": "Torna-se ferromagnético em temperaturas abaixo de 20 °C.",
-          "score": 100
-        },
-        {
-          "id": 23,
-          "label": "Origem do nome",
-          "value": "Johan Gadolin",
-          "justification": "Homenagem ao químico finlandês Johan Gadolin, pioneiro das terras raras.",
-          "score": 95
-        },
-        {
-          "id": 24,
-          "label": "Descobridor",
-          "value": "Jean Charles Galissard de Marignac",
-          "justification": "Químico suíço que primeiro isolou o óxido de gadolínio.",
-          "score": 90
-        },
-        {
-          "id": 25,
-          "label": "Ano de descoberta",
-          "value": "1880",
-          "justification": "Identificado via espectroscopia no mineral samarskita.",
-          "score": 92
-        },
-        {
-          "id": 26,
-          "label": "Ponto de fusão",
-          "value": "1313 °C",
-          "justification": "Ponto de fusão elevado para a série.",
-          "score": 96
-        },
-        {
-          "id": 27,
-          "label": "Ponto de ebulição",
-          "value": "3273 °C",
-          "justification": "Ponto de ebulição muito alto.",
-          "score": 32
-        }
+      { "id": 1, "label": "Massa Atômica", "value": "157.25 u", "justification": "Massa atômica relativa do Gadolínio.", "score": 52 },
+      { "id": 2, "label": "Abundância na Crosta", "value": "6.2 ppm", "justification": "Concentração média na crosta terrestre.", "score": 40 },
+      { "id": 3, "label": "Ponto de Fusão", "value": "1313 °C", "justification": "Temperatura de transição para o estado líquido.", "score": 60 },
+      { "id": 4, "label": "Ponto de Ebulição", "value": "3273 °C", "justification": "Temperatura de vaporização característica.", "score": 70 },
+      { "id": 5, "label": "Densidade", "value": "7.90 g/cm³", "justification": "Massa volumétrica em condições padrão.", "score": 55 },
+      { "id": 6, "label": "Dureza de Mohs", "value": "N/A", "justification": "Resistência ao risco mecânico.", "score": 45 },
+      { "id": 7, "label": "Eletronegatividade", "value": "1.2", "justification": "Capacidade de atrair elétrons.", "score": 50 },
+      { "id": 8, "label": "Condutividade Térmica", "value": "Moderada", "justification": "Capacidade de transferência de calor.", "score": 50 },
+      { "id": 9, "label": "Condutividade Elétrica", "value": "Moderada", "justification": "Fluxo de elétrons.", "score": 50 },
+      { "id": 10, "label": "Calor Específico", "value": "Baixo", "justification": "Energia para elevar a temperatura.", "score": 40 },
+      { "id": 11, "label": "Raio Atômico", "value": "Médio", "justification": "Tamanho efetivo do átomo.", "score": 50 },
+      { "id": 12, "label": "Energia de Ionização", "value": "Moderada", "justification": "Energia para remoção de elétrons.", "score": 60 },
+      { "id": 13, "label": "Estado Físico (CNTP)", "value": "Sólido", "justification": "Forma física em temperatura ambiente.", "score": 99 },
+      { "id": 14, "label": "Reatividade Química", "value": "Alta", "justification": "Típico dos lantanídeos.", "score": 70 },
+      { "id": 15, "label": "Reciclabilidade", "value": "Alta", "justification": "Potencial de reutilização.", "score": 85 },
+      { "id": 16, "label": "Resistência à Corrosão", "value": "Moderada", "justification": "Necessita de proteção em algumas ligas.", "score": 65 },
+      { "id": 17, "label": "Refletividade", "value": "Metálica", "justification": "Brilho prateado característico.", "score": 75 },
+      { "id": 18, "label": "Maleabilidade", "value": "Boa", "justification": "Pode ser moldado com facilidade.", "score": 80 },
+      { "id": 19, "label": "Dutibilidade", "value": "Boa", "justification": "Pode ser esticado em fios.", "score": 75 },
+      { "id": 20, "label": "Isótopos Estáveis", "value": "Sim", "justification": "Variantes estáveis na natureza.", "score": 90 },
+      { "id": 21, "label": "Toxicidade", "value": "Baixa", "justification": "Impacto biológico limitado.", "score": 90 },
+      { "id": 22, "label": "Aplicações Tecnológicas", "value": "Crítica", "justification": "Essencial para alta tecnologia.", "score": 100 },
+      { "id": 23, "label": "Magnético", "value": "Forte", "justification": "Propriedades magnéticas excepcionais.", "score": 95 },
+      { "id": 24, "label": "Custo de Produção", "value": "Alto", "justification": "Dificuldade de separação.", "score": 30 },
+      { "id": 25, "label": "Risco à Natureza", "value": "Baixo", "justification": "Estável no ambiente.", "score": 85 },
+      { "id": 26, "label": "Radioatividade", "value": "Nula", "justification": "Estabilidade nuclear do elemento.", "score": 100 },
+      { "id": 27, "label": "Curiosidade", "value": "Terra Rara", "justification": "Membro da série dos lantanídeos.", "score": 90 }
     ]
 },
   "Tb": {
