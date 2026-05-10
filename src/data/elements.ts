@@ -10785,7 +10785,6 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
       { "id": 26, "label": "Radioatividade", "value": "Nula", "justification": "Estabilidade nuclear do elemento.", "score": 100 },
       { "id": 27, "label": "Curiosidade", "value": "Terra Rara", "justification": "Membro da série dos lantanídeos.", "score": 90 }
     ]
-    ]
 },
   "Nd": {
     "number": 60,
@@ -10822,7 +10821,6 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
       { "id": 25, "label": "Risco à Natureza", "value": "Baixo", "justification": "Estável no ambiente.", "score": 85 },
       { "id": 26, "label": "Radioatividade", "value": "Nula", "justification": "Estabilidade nuclear do elemento.", "score": 100 },
       { "id": 27, "label": "Curiosidade", "value": "Terra Rara", "justification": "Membro da série dos lantanídeos.", "score": 90 }
-    ]
     ]
 },
   "Pm": {
@@ -10861,7 +10859,6 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
       { "id": 26, "label": "Radioatividade", "value": "Alta", "justification": "Estabilidade nuclear do elemento.", "score": 10 },
       { "id": 27, "label": "Curiosidade", "value": "Terra Rara", "justification": "Membro da série dos lantanídeos.", "score": 90 }
     ]
-    ]
 },
   "Sm": {
     "number": 62,
@@ -10898,7 +10895,6 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
       { "id": 25, "label": "Risco à Natureza", "value": "Baixo", "justification": "Estável no ambiente.", "score": 85 },
       { "id": 26, "label": "Radioatividade", "value": "Nula", "justification": "Estabilidade nuclear do elemento.", "score": 100 },
       { "id": 27, "label": "Curiosidade", "value": "Terra Rara", "justification": "Membro da série dos lantanídeos.", "score": 90 }
-    ]
     ]
 },
   "Eu": {
@@ -10937,7 +10933,6 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
       { "id": 26, "label": "Radioatividade", "value": "Nula", "justification": "Estabilidade nuclear do elemento.", "score": 100 },
       { "id": 27, "label": "Curiosidade", "value": "Terra Rara", "justification": "Membro da série dos lantanídeos.", "score": 90 }
     ]
-    ]
 },
   "Gd": {
     "number": 64,
@@ -10974,7 +10969,6 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
       { "id": 25, "label": "Risco à Natureza", "value": "Baixo", "justification": "Estável no ambiente.", "score": 85 },
       { "id": 26, "label": "Radioatividade", "value": "Nula", "justification": "Estabilidade nuclear do elemento.", "score": 100 },
       { "id": 27, "label": "Curiosidade", "value": "Terra Rara", "justification": "Membro da série dos lantanídeos.", "score": 90 }
-    ]
     ]
 },
   "Tb": {
