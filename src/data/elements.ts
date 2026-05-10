@@ -11966,84 +11966,84 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
-            "id": 1,
-            "label": "Atributo 1",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 1,
+          "label": "Fraquezas",
+          "value": "Altamente radioativo",
+          "justification": "Não possui isótopos estáveis; emite radiação beta intensa.",
+          "score": 5
         },
         {
-            "id": 2,
-            "label": "Atributo 2",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 2,
+          "label": "Risco/Benefício à natureza",
+          "value": "Extremamente raro",
+          "justification": "Praticamente inexistente na crosta terrestre natural.",
+          "score": 10
         },
         {
-            "id": 3,
-            "label": "Atributo 3",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 3,
+          "label": "Risco à saúde",
+          "value": "Perigo Radioativo",
+          "justification": "Altamente perigoso se ingerido ou inalado devido à sua atividade beta.",
+          "score": 1
         },
         {
-            "id": 4,
-            "label": "Atributo 4",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 4,
+          "label": "Benefício",
+          "value": "Baterias Atômicas, Luminescência",
+          "justification": "Fonte de energia para sondas espaciais e marcapassos (antigamente).",
+          "score": 90
         },
         {
-            "id": 5,
-            "label": "Atributo 5",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 5,
+          "label": "Nº de ligantes possíveis",
+          "value": "3",
+          "justification": "Comporta-se como um lantanídeo trivalente típico.",
+          "score": 60
         },
         {
-            "id": 6,
-            "label": "Atributo 6",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 6,
+          "label": "Abundância na natureza",
+          "value": "Vestigial (quase zero)",
+          "justification": "Ocorre apenas como subproduto da fissão espontânea do urânio.",
+          "score": 1
         },
         {
-            "id": 7,
-            "label": "Atributo 7",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 7,
+          "label": "Abundância no universo",
+          "value": "Insignificante",
+          "justification": "Elemento de vida curta que desaparece rapidamente.",
+          "score": 0
         },
         {
-            "id": 8,
-            "label": "Atributo 8",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 8,
+          "label": "Massa atômica",
+          "value": "[145] u",
+          "justification": "Massa do isótopo de vida mais longa Pm-145.",
+          "score": 145
         },
         {
-            "id": 9,
-            "label": "Atributo 9",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 9,
+          "label": "Densidade",
+          "value": "7,26 g/cm³",
+          "justification": "Densidade calculada para o metal sólido.",
+          "score": 73
         },
         {
-            "id": 10,
-            "label": "Atributo 10",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 10,
+          "label": "Raio atômico",
+          "value": "183 pm",
+          "justification": "Similar aos seus vizinhos lantanídeos.",
+          "score": 183
         },
         {
-            "id": 11,
-            "label": "Atributo 11",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 11,
+          "label": "Oxidação",
+          "value": "+3",
+          "justification": "Estado de oxidação estável e único conhecido.",
+          "score": 30
         },
         {
-            "id": 12,
+          "id": 12,
             "label": "Atributo 12",
             "value": "Em breve",
             "justification": "Dados sendo processados pela central elemental.",
