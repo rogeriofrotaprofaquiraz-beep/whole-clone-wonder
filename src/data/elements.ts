@@ -5991,198 +5991,198 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 31,
     "symbol": "Ga",
     "name": "Gálio",
-    "heroName": "Gálio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Gálio.",
+    "heroName": "Gallium Melter",
+    "heroDescription": "O mestre da liquidez e dos semicondutores, um herói que derrete em suas mãos mas brilha na tecnologia moderna.",
     "heroImage": "/placeholder.svg",
     "attributes": [
       {
         "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Fraquezas",
+        "value": "Ponto de fusão muito baixo",
+        "justification": "Derrete a apenas 29,76 °C, tornando-o líquido em dias quentes.",
+        "score": 10
       },
       {
         "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Risco/Benefício à natureza",
+        "value": "Baixa toxicidade",
+        "justification": "Geralmente seguro, mas não possui papel biológico conhecido.",
+        "score": 80
       },
       {
         "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Risco à saúde",
+        "value": "Irritante leve",
+        "justification": "O contato prolongado pode causar dermatites leves.",
+        "score": 85
       },
       {
         "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Benefício",
+        "value": "LEDs, Blu-ray, Termômetros",
+        "justification": "Essencial para a optoeletrônica e lasers modernos.",
+        "score": 95
       },
       {
         "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de ligantes possíveis",
+        "value": "3",
+        "justification": "Estado de oxidação mais estável é +3.",
+        "score": 40
       },
       {
         "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Abundância na natureza",
+        "value": "19 ppm (crosta)",
+        "justification": "Similar ao lítio e ao chumbo em abundância.",
         "score": 50
       },
       {
         "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Abundância no universo",
+        "value": "0,000001%",
+        "justification": "Elemento raro, formado por captura de nêutrons em estrelas.",
+        "score": 5
       },
       {
         "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Massa atômica",
+        "value": "69,723 u",
+        "justification": "Massa média entre o zinco e o germânio.",
+        "score": 69
       },
       {
         "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Densidade",
+        "value": "5,91 g/cm³",
+        "justification": "Curiosamente, é mais denso no estado líquido que no sólido.",
+        "score": 59
       },
       {
         "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Raio atômico",
+        "value": "135 pm",
+        "justification": "Tamanho típico de elementos do grupo 13.",
+        "score": 55
       },
       {
         "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Oxidação",
+        "value": "+3",
+        "justification": "Forma compostos estáveis perdendo seus 3 elétrons de valência.",
+        "score": 90
       },
       {
         "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Condutividade elétrica",
+        "value": "Boa",
+        "justification": "Conduz bem, especialmente no estado líquido.",
+        "score": 70
       },
       {
         "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Eletronegatividade",
+        "value": "1,81",
+        "justification": "Similar ao silício e ao germânio.",
         "score": 50
       },
       {
         "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Estado físico",
+        "value": "Sólido (Quase líquido)",
+        "justification": "Metal prateado e macio que derrete com o calor da mão.",
+        "score": 30
       },
       {
         "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Maior subnível energético",
+        "value": "4p¹",
+        "justification": "Primeiro elemento com elétrons no subnível 4p.",
+        "score": 31
       },
       {
         "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Distribuição eletrônica",
+        "value": "[Ar] 3d¹⁰ 4s² 4p¹",
+        "justification": "Configuração que define suas propriedades químicas.",
+        "score": 90
       },
       {
         "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de prótons / Nº de elétrons",
+        "value": "31",
+        "justification": "Identidade do Gálio.",
+        "score": 99
       },
       {
         "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de nêutrons",
+        "value": "39",
+        "justification": "Média para o isótopo estável Ga-70.",
+        "score": 39
       },
       {
         "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Radioatividade",
+        "value": "Estável",
+        "justification": "Possui dois isótopos naturais perfeitamente estáveis.",
+        "score": 100
       },
       {
         "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Aplicabilidade / Utilidade",
+        "value": "Arsenieto de Gálio (GaAs), Semicondutores",
+        "justification": "Base para micro-ondas e comunicações sem fio.",
+        "score": 98
       },
       {
         "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Local de origem",
+        "value": "França",
+        "justification": "Descoberto por Paul-Émile Lecoq de Boisbaudran.",
+        "score": 85
       },
       {
         "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Curiosidade",
+        "value": "A Colher que Derrete",
+        "justification": "Truque famoso onde uma colher de gálio derrete no chá quente.",
+        "score": 100
       },
       {
         "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Origem do nome",
+        "value": "Gallia (França)",
+        "justification": "Homenagem à pátria do seu descobridor.",
+        "score": 95
       },
       {
         "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Descobridor",
+        "value": "Paul-Émile Lecoq de Boisbaudran",
+        "justification": "Químico francês que também descobriu o samário e o disprósio.",
+        "score": 90
       },
       {
         "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ano de descoberta",
+        "value": "1875",
+        "justification": "Identificado por espectroscopia em uma amostra de blenda.",
+        "score": 92
       },
       {
         "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de fusão",
+        "value": "29,76 °C",
+        "justification": "Um dos pontos de fusão mais baixos entre os metais.",
+        "score": 30
       },
       {
         "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de ebulição",
+        "value": "2204 °C",
+        "justification": "A maior faixa de temperatura em estado líquido de qualquer metal.",
+        "score": 22
       }
     ]
   },
@@ -6190,198 +6190,198 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 32,
     "symbol": "Ge",
     "name": "Germânio",
-    "heroName": "Germânio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Germânio.",
+    "heroName": "Germanium Core",
+    "heroDescription": "O pioneiro da eletrônica e mestre do infravermelho, o herói que abriu as portas para a era digital.",
     "heroImage": "/placeholder.svg",
     "attributes": [
       {
         "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Fraquezas",
+        "value": "Sensível à temperatura",
+        "justification": "Sua condutividade muda drasticamente com o calor.",
+        "score": 20
       },
       {
         "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Risco/Benefício à natureza",
+        "value": "Neutro",
+        "justification": "Não possui papel biológico mas é inofensivo em pequenas quantidades.",
+        "score": 85
       },
       {
         "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Risco à saúde",
+        "value": "Seguro",
+        "justification": "Considerado de baixa toxicidade.",
+        "score": 95
       },
       {
         "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Benefício",
+        "value": "Fibras Ópticas, Lentes Infravermelhas",
+        "justification": "Indispensável para comunicações de alta velocidade e visão noturna.",
+        "score": 97
       },
       {
         "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Nº de ligantes possíveis",
+        "value": "4",
+        "justification": "Tetravalente, como o silício e o carbono.",
         "score": 50
       },
       {
         "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Abundância na natureza",
+        "value": "1,5 ppm (crosta)",
+        "justification": "Elemento relativamente raro na crosta terrestre.",
+        "score": 30
       },
       {
         "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Abundância no universo",
+        "value": "0,000005%",
+        "justification": "Formado em estrelas via captura de nêutrons.",
+        "score": 10
       },
       {
         "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Massa atômica",
+        "value": "72,63 u",
+        "justification": "Massa moderada, entre o gálio e o arsênio.",
+        "score": 72
       },
       {
         "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Densidade",
+        "value": "5,323 g/cm³",
+        "justification": "Semimetal denso e quebradiço.",
+        "score": 53
       },
       {
         "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Raio atômico",
+        "value": "122 pm",
+        "justification": "Raio compacto, típico de semimetais.",
+        "score": 60
       },
       {
         "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Oxidação",
+        "value": "+2, +4",
+        "justification": "O estado +4 é o mais comum e estável.",
+        "score": 92
       },
       {
         "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Condutividade elétrica",
+        "value": "Semicondutor",
+        "justification": "Condutividade intermediária entre metais e isolantes.",
+        "score": 85
       },
       {
         "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Eletronegatividade",
+        "value": "2,01",
+        "justification": "Eletronegatividade similar ao silício.",
+        "score": 55
       },
       {
         "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Estado físico",
+        "value": "Sólido",
+        "justification": "Semimetal prateado, quebradiço e brilhante.",
+        "score": 60
       },
       {
         "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Maior subnível energético",
+        "value": "4p²",
+        "justification": "Segundo elemento da série 4p.",
+        "score": 32
       },
       {
         "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Distribuição eletrônica",
+        "value": "[Ar] 3d¹⁰ 4s² 4p²",
+        "justification": "Configuração que fundamenta suas propriedades semicondutoras.",
+        "score": 95
       },
       {
         "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de prótons / Nº de elétrons",
+        "value": "32",
+        "justification": "Identidade do Germânio.",
+        "score": 99
       },
       {
         "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de nêutrons",
+        "value": "41",
+        "justification": "Média para os isótopos estáveis naturais.",
+        "score": 41
       },
       {
         "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Radioatividade",
+        "value": "Estável",
+        "justification": "Possui cinco isótopos naturais, um deles muito levemente radioativo (Ge-76).",
+        "score": 100
       },
       {
         "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Aplicabilidade / Utilidade",
+        "value": "Transistores, Catalisadores, Células Solares",
+        "justification": "Vital para a indústria de eletrônicos e polímeros.",
+        "score": 96
       },
       {
         "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Local de origem",
+        "value": "Alemanha",
+        "justification": "Descoberto por Clemens Winkler.",
+        "score": 85
       },
       {
         "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Curiosidade",
+        "value": "O Primeiro Transistor",
+        "justification": "O primeiro transistor do mundo foi feito de germânio, não de silício.",
+        "score": 100
       },
       {
         "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Origem do nome",
+        "value": "Germania (Alemanha)",
+        "justification": "Homenagem ao país de origem de Winkler.",
+        "score": 95
       },
       {
         "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Descobridor",
+        "value": "Clemens Winkler",
+        "justification": "Químico alemão que confirmou a existência do 'Ekasilício'.",
+        "score": 90
       },
       {
         "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ano de descoberta",
+        "value": "1886",
+        "justification": "Isolado a partir do mineral argirodita.",
+        "score": 95
       },
       {
         "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de fusão",
+        "value": "938,25 °C",
+        "justification": "Fusão alta, típica de semimetais cristalinos.",
+        "score": 93
       },
       {
         "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de ebulição",
+        "value": "2833 °C",
+        "justification": "Ponto de ebulição elevado.",
+        "score": 28
       }
     ]
   },
@@ -6389,198 +6389,198 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 33,
     "symbol": "As",
     "name": "Arsênio",
-    "heroName": "Arsênio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Arsênio.",
+    "heroName": "Arsenic Shadow",
+    "heroDescription": "O mestre dos venenos e da dualidade, um herói temido mas essencial para a microeletrônica avançada.",
     "heroImage": "/placeholder.svg",
     "attributes": [
       {
         "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Fraquezas",
+        "value": "Má fama histórica",
+        "justification": "Conhecido principalmente como o 'rei dos venenos'.",
+        "score": 5
       },
       {
         "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Risco/Benefício à natureza",
+        "value": "Poluente de águas",
+        "justification": "A contaminação natural de lençóis freáticos é um grave problema ambiental.",
+        "score": 10
       },
       {
         "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Risco à saúde",
+        "value": "Altamente Tóxico",
+        "justification": "Pode causar morte rápida ou câncer crônico se ingerido.",
+        "score": 1
       },
       {
         "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Benefício",
+        "value": "Semicondutores, Ligas de Chumbo",
+        "justification": "Essencial para lasers e eletrônicos de alta velocidade.",
+        "score": 85
       },
       {
         "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de ligantes possíveis",
+        "value": "3, 5",
+        "justification": "Pode formar diversos compostos orgânicos e inorgânicos.",
+        "score": 70
       },
       {
         "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Abundância na natureza",
+        "value": "1,8 ppm (crosta)",
+        "justification": "Raro na crosta, mas amplamente distribuído em minerais.",
+        "score": 35
       },
       {
         "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Abundância no universo",
+        "value": "0,0000008%",
+        "justification": "Elemento raro no cosmos.",
+        "score": 2
       },
       {
         "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Massa atômica",
+        "value": "74,921 u",
+        "justification": "Massa central do grupo 15.",
+        "score": 75
       },
       {
         "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Densidade",
+        "value": "5,727 g/cm³",
+        "justification": "Densidade moderada para um semimetal.",
+        "score": 57
       },
       {
         "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Raio atômico",
+        "value": "119 pm",
+        "justification": "Raio atômico compacto.",
+        "score": 60
       },
       {
         "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Oxidação",
+        "value": "-3, +3, +5",
+        "justification": "Versatilidade química em diversos estados de oxidação.",
+        "score": 88
       },
       {
         "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Condutividade elétrica",
+        "value": "Semicondutor",
+        "justification": "Conduz eletricidade sob certas condições.",
+        "score": 75
       },
       {
         "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Eletronegatividade",
+        "value": "2,18",
+        "justification": "Valor próximo ao do hidrogênio.",
+        "score": 58
       },
       {
         "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Estado físico",
+        "value": "Sólido",
+        "justification": "Semimetal cinza, quebradiço e com brilho metálico.",
         "score": 50
       },
       {
         "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Maior subnível energético",
+        "value": "4p³",
+        "justification": "Terceiro elemento da série 4p.",
+        "score": 33
       },
       {
         "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Distribuição eletrônica",
+        "value": "[Ar] 3d¹⁰ 4s² 4p³",
+        "justification": "Cinco elétrons na camada de valência.",
+        "score": 92
       },
       {
         "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de prótons / Nº de elétrons",
+        "value": "33",
+        "justification": "Identidade do Arsênio.",
+        "score": 99
       },
       {
         "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de nêutrons",
+        "value": "42",
+        "justification": "Número de nêutrons no isótopo único natural As-75.",
+        "score": 42
       },
       {
         "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Radioatividade",
+        "value": "Estável",
+        "justification": "O arsênio natural é totalmente estável.",
+        "score": 100
       },
       {
         "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Aplicabilidade / Utilidade",
+        "value": "Pesticidas (antigamente), Chips, Lasers",
+        "justification": "Uso crítico na tecnologia de ponta atual.",
+        "score": 90
       },
       {
         "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Local de origem",
+        "value": "Conhecido desde a Antiguidade",
+        "justification": "Suas formas minerais foram usadas por gregos e romanos.",
+        "score": 100
       },
       {
         "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Curiosidade",
+        "value": "Cheiro de Alho",
+        "justification": "Quando queimado, o arsênio libera um odor característico de alho.",
+        "score": 100
       },
       {
         "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Origem do nome",
+        "value": "Arsenikon (Masculino/Forte)",
+        "justification": "Termo grego que reflete a força de seus efeitos.",
+        "score": 95
       },
       {
         "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Descobridor",
+        "value": "Alberto Magno",
+        "justification": "Atribuído ao alquimista alemão do século XIII.",
+        "score": 80
       },
       {
         "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ano de descoberta",
+        "value": "~1250",
+        "justification": "Um dos primeiros elementos a serem isolados individualmente.",
+        "score": 98
       },
       {
         "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de fusão",
+        "value": "817 °C (sob pressão)",
+        "justification": "Sublima-se a 614 °C em pressão normal.",
+        "score": 81
       },
       {
         "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de ebulição",
+        "value": "614 °C (Sublimação)",
+        "justification": "Passa direto do sólido para o gás.",
+        "score": 61
       }
     ]
   },
@@ -6588,198 +6588,198 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 34,
     "symbol": "Se",
     "name": "Selênio",
-    "heroName": "Selênio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Selênio.",
+    "heroName": "Selenium Ray",
+    "heroDescription": "O mestre da luz e da visão elétrica, um herói que transforma o brilho do sol em sinais eletrônicos.",
     "heroImage": "/placeholder.svg",
     "attributes": [
       {
         "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Fraquezas",
+        "value": "Odor desagradável",
+        "justification": "Compostos de selênio cheiram a rabanete podre.",
+        "score": 20
       },
       {
         "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Risco/Benefício à natureza",
+        "value": "Antioxidante Essencial",
+        "justification": "Fundamental para combater radicais livres em seres vivos.",
+        "score": 95
       },
       {
         "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Risco à saúde",
+        "value": "Toxicidade em excesso (Selenose)",
+        "justification": "Pode causar perda de cabelo e unhas.",
+        "score": 40
       },
       {
         "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Benefício",
+        "value": "Fotocélulas, Vidros Vermelhos, Champôs",
+        "justification": "Usado em eletrônica solar e tratamento de caspa.",
+        "score": 92
       },
       {
         "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de ligantes possíveis",
+        "value": "2, 4, 6",
+        "justification": "Similar ao enxofre em suas capacidades de ligação.",
+        "score": 75
       },
       {
         "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Abundância na natureza",
+        "value": "0,05 ppm (crosta)",
+        "justification": "Elemento raro, mais escasso que o arsênio.",
+        "score": 15
       },
       {
         "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Abundância no universo",
+        "value": "0,000003%",
+        "justification": "Elemento raro no cosmos.",
+        "score": 5
       },
       {
         "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Massa atômica",
+        "value": "78,971 u",
+        "justification": "Massa característica do grupo 16.",
+        "score": 79
       },
       {
         "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Densidade",
+        "value": "4,81 g/cm³",
+        "justification": "Densidade moderada para um não-metal.",
+        "score": 48
       },
       {
         "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Raio atômico",
+        "value": "117 pm",
+        "justification": "Tamanho atômico reduzido.",
+        "score": 65
       },
       {
         "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Oxidação",
+        "value": "-2, +4, +6",
+        "justification": "Versatilidade típica de calcogênios.",
+        "score": 88
       },
       {
         "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Condutividade elétrica",
+        "value": "Fotocondutor",
+        "justification": "Sua condutividade aumenta drasticamente com a luz.",
+        "score": 100
       },
       {
         "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Eletronegatividade",
+        "value": "2,55",
+        "justification": "Eletronegatividade idêntica à do enxofre.",
+        "score": 60
       },
       {
         "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Estado físico",
+        "value": "Sólido",
+        "justification": "Não-metal que existe em várias formas alotrópicas (cinza, vermelho).",
         "score": 50
       },
       {
         "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Maior subnível energético",
+        "value": "4p⁴",
+        "justification": "Quarto elemento da série 4p.",
+        "score": 34
       },
       {
         "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Distribuição eletrônica",
+        "value": "[Ar] 3d¹⁰ 4s² 4p⁴",
+        "justification": "Seis elétrons na camada de valência.",
+        "score": 94
       },
       {
         "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de prótons / Nº de elétrons",
+        "value": "34",
+        "justification": "Identidade do Selênio.",
+        "score": 99
       },
       {
         "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de nêutrons",
+        "value": "45",
+        "justification": "Média dos isótopos estáveis naturais.",
+        "score": 45
       },
       {
         "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Radioatividade",
+        "value": "Estável",
+        "justification": "Possui cinco isótopos naturais perfeitamente estáveis.",
+        "score": 100
       },
       {
         "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Aplicabilidade / Utilidade",
+        "value": "Painéis Solares, Retificadores, Vidros",
+        "justification": "Fundamental para a conversão de energia e ótica.",
+        "score": 95
       },
       {
         "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Local de origem",
+        "value": "Suécia",
+        "justification": "Descoberto por Jöns Jacob Berzelius.",
+        "score": 85
       },
       {
         "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Curiosidade",
+        "value": "Cópia Xerográfica",
+        "justification": "As primeiras máquinas de xerox usavam cilindros cobertos de selênio.",
+        "score": 100
       },
       {
         "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Origem do nome",
+        "value": "Selene (Lua)",
+        "justification": "Homenagem à Lua, devido à sua semelhança com o telúrio (Terra).",
+        "score": 95
       },
       {
         "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Descobridor",
+        "value": "Jöns Jacob Berzelius",
+        "justification": "Um dos pais da química moderna.",
+        "score": 95
       },
       {
         "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ano de descoberta",
+        "value": "1817",
+        "justification": "Identificado como um resíduo na fabricação de ácido sulfúrico.",
+        "score": 92
       },
       {
         "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de fusão",
+        "value": "221 °C",
+        "justification": "Fusão relativamente baixa para um sólido cristalino.",
+        "score": 22
       },
       {
         "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de ebulição",
+        "value": "685 °C",
+        "justification": "Ponto de ebulição moderado.",
+        "score": 68
       }
     ]
   },
@@ -6787,198 +6787,198 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 35,
     "symbol": "Br",
     "name": "Bromo",
-    "heroName": "Bromo Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Bromo.",
+    "heroName": "Bromine Liquid",
+    "heroDescription": "O único não-metal líquido e mestre dos retardantes de chama, um herói denso e reativo que protege o mundo do fogo.",
     "heroImage": "/placeholder.svg",
     "attributes": [
       {
         "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Fraquezas",
+        "value": "Altamente Corrosivo",
+        "justification": "Ataca tecidos humanos e muitos metais agressivamente.",
+        "score": 10
       },
       {
         "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Risco/Benefício à natureza",
+        "value": "Destruição da Camada de Ozônio",
+        "justification": "Halon e brometo de metila são prejudiciais à estratosfera.",
+        "score": 15
       },
       {
         "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Risco à saúde",
+        "value": "Vapores Sufocantes",
+        "justification": "Causa queimaduras severas na pele e pulmões.",
+        "score": 5
       },
       {
         "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Benefício",
+        "value": "Extintores de Incêndio, Fotografia",
+        "justification": "Essencial para segurança contra fogo e cinema clássico.",
+        "score": 90
       },
       {
         "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de ligantes possíveis",
+        "value": "1, 3, 5, 7",
+        "justification": "Halogênio com múltiplos estados de valência possíveis.",
+        "score": 85
       },
       {
         "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Abundância na natureza",
+        "value": "2,4 ppm (crosta) / 67 ppm (oceanos)",
+        "justification": "Mais comum nos mares, na forma de brometos.",
+        "score": 60
       },
       {
         "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Abundância no universo",
+        "value": "0,0000007%",
+        "justification": "Elemento raro no cosmos.",
+        "score": 2
       },
       {
         "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Massa atômica",
+        "value": "79,904 u",
+        "justification": "Massa quase igual a 80 unidades.",
+        "score": 80
       },
       {
         "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Densidade",
+        "value": "3,1028 g/cm³",
+        "justification": "Três vezes mais pesado que a água, sendo um líquido.",
+        "score": 31
       },
       {
         "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Raio atômico",
+        "value": "114 pm",
+        "justification": "Tamanho atômico reduzido.",
+        "score": 60
       },
       {
         "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Oxidação",
+        "value": "-1, +1, +3, +5",
+        "justification": "Versatilidade química em diversos estados.",
+        "score": 90
       },
       {
         "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Condutividade elétrica",
+        "value": "Isolante",
+        "justification": "Não-metal, não conduz eletricidade.",
+        "score": 1
       },
       {
         "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Eletronegatividade",
+        "value": "2,96",
+        "justification": "Halogênio altamente eletronegativo.",
+        "score": 90
       },
       {
         "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Estado físico",
+        "value": "Líquido",
+        "justification": "O único não-metal que é líquido à temperatura ambiente.",
+        "score": 100
       },
       {
         "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Maior subnível energético",
+        "value": "4p⁵",
+        "justification": "Quinto elemento da série 4p.",
+        "score": 35
       },
       {
         "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Distribuição eletrônica",
+        "value": "[Ar] 3d¹⁰ 4s² 4p⁵",
+        "justification": "Falta apenas 1 elétron para o octeto completo.",
+        "score": 96
       },
       {
         "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de prótons / Nº de elétrons",
+        "value": "35",
+        "justification": "Identidade do Bromo.",
+        "score": 99
       },
       {
         "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de nêutrons",
+        "value": "45",
+        "justification": "Equilíbrio nuclear nos isótopos Br-79 e Br-81.",
+        "score": 45
       },
       {
         "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Radioatividade",
+        "value": "Estável",
+        "justification": "Possui dois isótopos naturais perfeitamente estáveis.",
+        "score": 100
       },
       {
         "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Aplicabilidade / Utilidade",
+        "value": "Retardantes de Chama, Purificação de Piscinas",
+        "justification": "Fundamental para a segurança e higiene.",
+        "score": 94
       },
       {
         "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Local de origem",
+        "value": "França/Alemanha",
+        "justification": "Descoberto independentemente por Balard e Löwig.",
+        "score": 85
       },
       {
         "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Curiosidade",
+        "value": "Púrpura de Tiro",
+        "justification": "O corante real da antiguidade continha bromo extraído de caramujos.",
+        "score": 100
       },
       {
         "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Origem do nome",
+        "value": "Bromos (Fétido)",
+        "justification": "Devido ao seu odor forte e desagradável.",
+        "score": 95
       },
       {
         "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Descobridor",
+        "value": "Antoine Jérôme Balard",
+        "justification": "Químico francês que publicou a descoberta primeiro.",
+        "score": 90
       },
       {
         "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ano de descoberta",
+        "value": "1826",
+        "justification": "Isolado a partir de resíduos de salmouras marinhas.",
+        "score": 95
       },
       {
         "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de fusão",
+        "value": "-7,2 °C",
+        "justification": "Congela apenas em temperaturas abaixo de zero.",
+        "score": 7
       },
       {
         "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de ebulição",
+        "value": "58,8 °C",
+        "justification": "Evapora facilmente gerando vapores avermelhados.",
+        "score": 58
       }
     ]
   },
@@ -6986,198 +6986,198 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 36,
     "symbol": "Kr",
     "name": "Criptônio",
-    "heroName": "Criptônio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Criptônio.",
+    "heroName": "Krypton Glow",
+    "heroDescription": "O guardião do brilho intenso e mestre do vácuo, um herói nobre que ilumina as pistas e as cirurgias de precisão.",
     "heroImage": "/placeholder.svg",
     "attributes": [
       {
         "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Fraquezas",
+        "value": "Totalmente Inerte",
+        "justification": "Dificilmente forma qualquer tipo de ligação química.",
+        "score": 1
       },
       {
         "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Risco/Benefício à natureza",
+        "value": "Neutro",
+        "justification": "Não reage com o ambiente nem causa poluição.",
+        "score": 100
       },
       {
         "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Risco à saúde",
+        "value": "Asfixiante simples",
+        "justification": "Pode causar asfixia se substituir o oxigênio em locais fechados.",
+        "score": 90
       },
       {
         "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Benefício",
+        "value": "Iluminação de Pistas, Lasers Cirúrgicos",
+        "justification": "Essencial para luzes estroboscópicas e medicina de precisão.",
+        "score": 88
       },
       {
         "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de ligantes possíveis",
+        "value": "0",
+        "justification": "Gás nobre com camada de valência completa.",
+        "score": 1
       },
       {
         "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Abundância na natureza",
+        "value": "1 ppm (atmosfera)",
+        "justification": "Gás extremamente raro na atmosfera terrestre.",
+        "score": 20
       },
       {
         "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Abundância no universo",
+        "value": "0,000004%",
+        "justification": "Formado em supernovas e estrelas gigantes.",
+        "score": 10
       },
       {
         "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Massa atômica",
+        "value": "83,798 u",
+        "justification": "Massa característica do quarto gás nobre.",
+        "score": 84
       },
       {
         "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Densidade",
+        "value": "3,75 g/L",
+        "justification": "Cerca de três vezes mais denso que o ar.",
+        "score": 4
       },
       {
         "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Raio atômico",
+        "value": "112 pm",
+        "justification": "Raio compacto devido à estabilidade eletrônica.",
+        "score": 80
       },
       {
         "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Oxidação",
+        "value": "0",
+        "justification": "Estado de oxidação nulo é a regra.",
+        "score": 1
       },
       {
         "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Condutividade elétrica",
+        "value": "Isolante (Plasma condutor)",
+        "justification": "Emite luz branca-esverdeada quando ionizado.",
+        "score": 15
       },
       {
         "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Eletronegatividade",
+        "value": "3,00",
+        "justification": "Valor alto, mas raramente exercido por ser inerte.",
+        "score": 90
       },
       {
         "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Estado físico",
+        "value": "Gás",
+        "justification": "Gás incolor, inodoro e insípido.",
+        "score": 1
       },
       {
         "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Maior subnível energético",
+        "value": "4p⁶",
+        "justification": "Octeto completo no quarto nível.",
+        "score": 36
       },
       {
         "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Distribuição eletrônica",
+        "value": "[Ar] 3d¹⁰ 4s² 4p⁶",
+        "justification": "Configuração de máxima estabilidade eletrônica.",
+        "score": 100
       },
       {
         "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de prótons / Nº de elétrons",
+        "value": "36",
+        "justification": "Identidade do Criptônio.",
+        "score": 99
       },
       {
         "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de nêutrons",
+        "value": "48",
+        "justification": "Média dos isótopos estáveis naturais.",
+        "score": 48
       },
       {
         "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Radioatividade",
+        "value": "Estável",
+        "justification": "Possui seis isótopos naturais perfeitamente estáveis.",
+        "score": 100
       },
       {
         "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Aplicabilidade / Utilidade",
+        "value": "Lâmpadas Fluorescentes, Janelas de Isolamento",
+        "justification": "Melhora a eficiência térmica e luminosa.",
+        "score": 85
       },
       {
         "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Local de origem",
+        "value": "Inglaterra",
+        "justification": "Descoberto por Sir William Ramsay e Morris Travers.",
+        "score": 85
       },
       {
         "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Curiosidade",
+        "value": "Antigo Padrão do Metro",
+        "justification": "O metro foi definido pelo comprimento de onda da luz do criptônio entre 1960 e 1983.",
+        "score": 100
       },
       {
         "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Origem do nome",
+        "value": "Kryptos (Oculto)",
+        "justification": "Devido à dificuldade de encontrá-lo e isolá-lo.",
+        "score": 95
       },
       {
         "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Descobridor",
+        "value": "William Ramsay & Morris Travers",
+        "justification": "Descobridores de quase todos os gases nobres.",
+        "score": 95
       },
       {
         "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ano de descoberta",
+        "value": "1898",
+        "justification": "Isolado a partir de resíduos de ar líquido.",
+        "score": 95
       },
       {
         "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de fusão",
+        "value": "-157,37 °C",
+        "justification": "Fusão extremamente baixa.",
+        "score": 1
       },
       {
         "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de ebulição",
+        "value": "-153,22 °C",
+        "justification": "Permanece gasoso em quase todas as condições terrestres.",
+        "score": 1
       }
     ]
   },
@@ -7185,198 +7185,198 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 37,
     "symbol": "Rb",
     "name": "Rubídio",
-    "heroName": "Rubídio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Rubídio.",
+    "heroName": "Rubidium Pulse",
+    "heroDescription": "O senhor do ritmo cardíaco eletrônico, um herói que controla corações artificiais e mantém a precisão dos relógios atômicos.",
     "heroImage": "/placeholder.svg",
     "attributes": [
       {
         "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Fraquezas",
+        "value": "Reatividade violenta com água",
+        "justification": "Explode ao contato com a umidade do ar.",
+        "score": 10
       },
       {
         "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Risco/Benefício à natureza",
+        "value": "Inerte em forma de sal",
+        "justification": "Pouco impactante na natureza, mas exige cuidado ao manusear o metal.",
+        "score": 60
       },
       {
         "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Risco à saúde",
+        "value": "Queimaduras químicas",
+        "justification": "O metal puro reage rapidamente com a umidade da pele.",
+        "score": 20
       },
       {
         "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Benefício",
+        "value": "Relógios Atômicos, GPS",
+        "justification": "Essencial para a navegação por satélite e medição precisa do tempo.",
+        "score": 98
       },
       {
         "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de ligantes possíveis",
+        "value": "1",
+        "justification": "Metal alcalino altamente eletropositivo.",
+        "score": 20
       },
       {
         "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Abundância na natureza",
+        "value": "90 ppm (crosta)",
+        "justification": "Relativamente comum, disperso em minerais de potássio.",
         "score": 50
       },
       {
         "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Abundância no universo",
+        "value": "0,000001%",
+        "justification": "Muito raro no cosmos.",
+        "score": 2
       },
       {
         "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Massa atômica",
+        "value": "85,468 u",
+        "justification": "Massa atômica considerável para um metal alcalino.",
+        "score": 85
       },
       {
         "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Densidade",
+        "value": "1,53 g/cm³",
+        "justification": "Mais denso que o potássio.",
+        "score": 15
       },
       {
         "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Raio atômico",
+        "value": "248 pm",
+        "justification": "Raio muito grande, característica de alcalinos pesados.",
+        "score": 90
       },
       {
         "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Oxidação",
+        "value": "+1",
+        "justification": "Estado de oxidação altamente estável.",
+        "score": 98
       },
       {
         "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Condutividade elétrica",
+        "value": "Boa",
+        "justification": "Conduz bem a eletricidade, como todo metal.",
+        "score": 65
       },
       {
         "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Eletronegatividade",
+        "value": "0,82",
+        "justification": "Muito baixa, perde elétrons facilmente.",
+        "score": 10
       },
       {
         "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Estado físico",
+        "value": "Sólido (macio)",
+        "justification": "Metal prateado muito macio, quase líquido em dias quentes.",
+        "score": 20
       },
       {
         "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Maior subnível energético",
+        "value": "5s¹",
+        "justification": "Define sua posição no grupo 1.",
+        "score": 37
       },
       {
         "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Distribuição eletrônica",
+        "value": "[Kr] 5s¹",
+        "justification": "Configuração típica de um metal alcalino reativo.",
+        "score": 90
       },
       {
         "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de prótons / Nº de elétrons",
+        "value": "37",
+        "justification": "Número atômico do Rubídio.",
+        "score": 99
       },
       {
         "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de nêutrons",
+        "value": "48",
+        "justification": "Número de nêutrons no isótopo Rb-85.",
+        "score": 48
       },
       {
         "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Radioatividade",
+        "value": "Ligeiramente Radioativo",
+        "justification": "O isótopo Rb-87 é natural e fracamente radioativo.",
+        "score": 60
       },
       {
         "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Aplicabilidade / Utilidade",
+        "value": "GPS, Pesquisa Quântica",
+        "justification": "Vital para tecnologias de ponta em medição.",
+        "score": 92
       },
       {
         "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Local de origem",
+        "value": "Alemanha",
+        "justification": "Descoberto por Robert Bunsen e Gustav Kirchhoff.",
+        "score": 85
       },
       {
         "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Curiosidade",
+        "value": "Primeira linha espectral",
+        "justification": "Descoberto pela cor vermelha brilhante em seu espectro.",
+        "score": 98
       },
       {
         "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Origem do nome",
+        "value": "Rubidius (Vermelho intenso)",
+        "justification": "Referência às linhas vermelhas em seu espectro.",
+        "score": 95
       },
       {
         "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Descobridor",
+        "value": "Bunsen & Kirchhoff",
+        "justification": "Inventores da análise espectroscópica.",
+        "score": 98
       },
       {
         "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ano de descoberta",
+        "value": "1861",
+        "justification": "Identificado pela espectroscopia atômica.",
+        "score": 92
       },
       {
         "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de fusão",
+        "value": "39,3 °C",
+        "justification": "Ponto de fusão muito baixo, derrete no calor do verão.",
+        "score": 39
       },
       {
         "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de ebulição",
+        "value": "688 °C",
+        "justification": "Ponto de ebulição baixo para um metal.",
+        "score": 68
       }
     ]
   },
@@ -7384,198 +7384,198 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 38,
     "symbol": "Sr",
     "name": "Estrôncio",
-    "heroName": "Estrôncio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Estrôncio.",
+    "heroName": "Strontium Spark",
+    "heroDescription": "O mestre das cores escarlates e guardião da saúde óssea, um herói que ilumina o céu festivo com cor intensa.",
     "heroImage": "/placeholder.svg",
     "attributes": [
       {
         "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Fraquezas",
+        "value": "Reativo ao ar",
+        "justification": "Como metal alcalino-terroso, reage com oxigênio e umidade.",
+        "score": 15
       },
       {
         "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Risco/Benefício à natureza",
+        "value": "Neutro",
+        "justification": "Não possui papel biológico significativo.",
+        "score": 70
       },
       {
         "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Risco à saúde",
+        "value": "Estrôncio-90 (Radioativo)",
+        "justification": "Isótopo radioativo perigoso que se deposita nos ossos.",
+        "score": 5
       },
       {
         "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Benefício",
+        "value": "Fogos de Artifício, Saúde Óssea",
+        "justification": "Cor vermelha brilhante e uso medicinal em doenças ósseas.",
+        "score": 88
       },
       {
         "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de ligantes possíveis",
+        "value": "2",
+        "justification": "Forma ligações iônicas como Sr²⁺.",
+        "score": 35
       },
       {
         "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Abundância na natureza",
+        "value": "360 ppm (crosta)",
+        "justification": "Bastante comum na crosta terrestre.",
+        "score": 75
       },
       {
         "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Abundância no universo",
+        "value": "0,000008%",
+        "justification": "Elemento raro no cosmos.",
+        "score": 5
       },
       {
         "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Massa atômica",
+        "value": "87,62 u",
+        "justification": "Massa moderada.",
+        "score": 87
       },
       {
         "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Densidade",
+        "value": "2,64 g/cm³",
+        "justification": "Densidade baixa para um metal.",
+        "score": 26
       },
       {
         "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Raio atômico",
+        "value": "215 pm",
+        "justification": "Grande raio atômico, típico de alcalino-terrosos pesados.",
+        "score": 85
       },
       {
         "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Oxidação",
+        "value": "+2",
+        "justification": "Estado de oxidação estável.",
+        "score": 95
       },
       {
         "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Condutividade elétrica",
+        "value": "Boa",
+        "justification": "Conduz eletricidade como um metal alcalino-terroso.",
+        "score": 60
       },
       {
         "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Eletronegatividade",
+        "value": "0,95",
+        "justification": "Baixa, perde elétrons facilmente.",
+        "score": 15
       },
       {
         "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Estado físico",
+        "value": "Sólido",
+        "justification": "Metal prateado, macio e maleável.",
+        "score": 40
       },
       {
         "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Maior subnível energético",
+        "value": "5s²",
+        "justification": "Define sua posição no grupo 2.",
+        "score": 38
       },
       {
         "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Distribuição eletrônica",
+        "value": "[Kr] 5s²",
+        "justification": "Configuração estável para perda de elétrons.",
+        "score": 92
       },
       {
         "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de prótons / Nº de elétrons",
+        "value": "38",
+        "justification": "Número atômico do Estrôncio.",
+        "score": 99
       },
       {
         "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Nº de nêutrons",
+        "value": "50",
+        "justification": "Número de nêutrons no isótopo principal Sr-88.",
         "score": 50
       },
       {
         "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Radioatividade",
+        "value": "Estável / Estrôncio-90",
+        "justification": "Estrôncio natural é estável, mas isótopos artificiais são radioativos.",
+        "score": 75
       },
       {
         "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Aplicabilidade / Utilidade",
+        "value": "Fogos de artifício, Medicamentos (Ranelato de estrôncio)",
+        "justification": "Uso em pirotecnia e tratamento de osteoporose.",
+        "score": 90
       },
       {
         "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Local de origem",
+        "value": "Escócia",
+        "justification": "Nomeado em homenagem a uma vila escocesa (Strontian).",
+        "score": 80
       },
       {
         "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Curiosidade",
+        "value": "Brilho Escarlate",
+        "justification": "A luz vermelha em fogos de artifício é produzida por sais de estrôncio.",
+        "score": 100
       },
       {
         "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Origem do nome",
+        "value": "Strontian",
+        "justification": "Vila na Escócia onde foi descoberto.",
+        "score": 95
       },
       {
         "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Descobridor",
+        "value": "Adair Crawford",
+        "justification": "Químico escocês que identificou the mineral.",
+        "score": 85
       },
       {
         "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ano de descoberta",
+        "value": "1790",
+        "justification": "Identificado inicialmente em minerais locais.",
+        "score": 92
       },
       {
         "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de fusão",
+        "value": "777 °C",
+        "justification": "Fusão elevada, metal refratário.",
+        "score": 77
       },
       {
         "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de ebulição",
+        "value": "1382 °C",
+        "justification": "Ponto de ebulição alto.",
+        "score": 13
       }
     ]
   },
