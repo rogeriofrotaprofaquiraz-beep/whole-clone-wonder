@@ -21519,192 +21519,192 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "attributes": [
         {
             "id": 1,
-            "label": "Atributo 1",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Fraquezas",
+            "value": "Vida de Milissegundos",
+            "justification": "Seus isótopos duram frações minúsculas de segundo.",
+            "score": 1
         },
         {
             "id": 2,
-            "label": "Atributo 2",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
+            "label": "Risco/Benefício à natureza",
+            "value": "Nenhum",
+            "justification": "Sem presença na natureza ou impacto ecológico.",
             "score": 50
         },
         {
             "id": 3,
-            "label": "Atributo 3",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Risco à saúde",
+            "value": "Extremo",
+            "justification": "Radiação de alta intensidade em amostras microscópicas.",
+            "score": 1
         },
         {
             "id": 4,
-            "label": "Atributo 4",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
+            "label": "Benefício",
+            "value": "Física Teórica",
+            "justification": "Ajuda a validar modelos de estabilidade nuclear superpesada.",
             "score": 50
         },
         {
             "id": 5,
-            "label": "Atributo 5",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Nº de ligantes possíveis",
+            "value": "9 (Teórico)",
+            "justification": "Como membro do grupo 9, sua química é estimada, mas difícil de testar.",
+            "score": 90
         },
         {
             "id": 6,
-            "label": "Atributo 6",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Abundância na natureza",
+            "value": "Zero",
+            "justification": "Totalmente artificial.",
+            "score": 0
         },
         {
             "id": 7,
-            "label": "Atributo 7",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Abundância no universo",
+            "value": "Zero",
+            "justification": "Nenhuma fonte natural conhecida.",
+            "score": 0
         },
         {
             "id": 8,
-            "label": "Atributo 8",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Massa atômica",
+            "value": "278 u",
+            "justification": "Massa do isótopo mais estável conhecido.",
+            "score": 278
         },
         {
             "id": 9,
-            "label": "Atributo 9",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Densidade",
+            "value": "37,4 g/cm³ (Est.)",
+            "justification": "Densidade estimada massiva.",
+            "score": 100
         },
         {
             "id": 10,
-            "label": "Atributo 10",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Raio atômico",
+            "value": "125 pm (Est.)",
+            "justification": "Tamanho atômico estimado para o grupo 9.",
+            "score": 125
         },
         {
             "id": 11,
-            "label": "Atributo 11",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Oxidação",
+            "value": "+3, +4, +6, +8, +9 (Est.)",
+            "justification": "Química prevista para seguir o grupo do cobalto/irídio.",
+            "score": 100
         },
         {
             "id": 12,
-            "label": "Atributo 12",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Condutividade elétrica",
+            "value": "Baixa (Teórica)",
+            "justification": "Propriedades metálicas esperadas.",
+            "score": 20
         },
         {
             "id": 13,
-            "label": "Atributo 13",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Eletronegatividade",
+            "value": "Não definida",
+            "justification": "Propriedade física ainda não mensurada.",
+            "score": 0
         },
         {
             "id": 14,
-            "label": "Atributo 14",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Estado físico",
+            "value": "Sólido (Teórico)",
+            "justification": "Metal pesado em teoria.",
+            "score": 100
         },
         {
             "id": 15,
-            "label": "Atributo 15",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Maior subnível energético",
+            "value": "6d⁷",
+            "justification": "Sete elétrons no subnível 6d de valência.",
+            "score": 70
         },
         {
             "id": 16,
-            "label": "Atributo 16",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Distribuição eletrônica",
+            "value": "[Rn] 5f¹⁴ 6d⁷ 7s²",
+            "justification": "Configuração que o coloca sob o Irídio na tabela.",
+            "score": 100
         },
         {
             "id": 17,
-            "label": "Atributo 17",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Nº de prótons / Nº de elétrons",
+            "value": "109",
+            "justification": "Identidade atômica do Meitnério.",
+            "score": 100
         },
         {
             "id": 18,
-            "label": "Atributo 18",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Nº de nêutrons",
+            "value": "169",
+            "justification": "Número de nêutrons no isótopo Mt-278.",
+            "score": 169
         },
         {
             "id": 19,
-            "label": "Atributo 19",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Radioatividade",
+            "value": "Altíssima",
+            "justification": "Meia-vida de apenas 4,5 segundos para o isótopo mais estável.",
+            "score": 1
         },
         {
             "id": 20,
-            "label": "Atributo 20",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
+            "label": "Aplicabilidade / Utilidade",
+            "value": "Física Nuclear",
+            "justification": "Usado para testar limites de teorias atômicas.",
             "score": 50
         },
         {
             "id": 21,
-            "label": "Atributo 21",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Local de origem",
+            "value": "Darmstadt, Alemanha",
+            "justification": "Identificado no GSI por bombardeamento de bismuto com ferro.",
+            "score": 100
         },
         {
             "id": 22,
-            "label": "Atributo 22",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Curiosidade",
+            "value": "Justiça Científica",
+            "justification": "Nomeado para corrigir a injustiça do Nobel não dado a Lise Meitner.",
+            "score": 100
         },
         {
             "id": 23,
-            "label": "Atributo 23",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Origem do nome",
+            "value": "Lise Meitner",
+            "justification": "Física austríaca descobridora da fissão nuclear.",
+            "score": 100
         },
         {
             "id": 24,
-            "label": "Atributo 24",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Descobridor",
+            "value": "Peter Armbruster e Gottfried Münzenberg",
+            "justification": "Lideraram a equipe alemã que sintetizou o elemento.",
+            "score": 100
         },
         {
             "id": 25,
-            "label": "Atributo 25",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Ano de descoberta",
+            "value": "1982",
+            "justification": "Síntese inicial em agosto de 1982.",
+            "score": 95
         },
         {
             "id": 26,
-            "label": "Atributo 26",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Ponto de fusão",
+            "value": "Não definido",
+            "justification": "Vida curta impede a medição direta.",
+            "score": 0
         },
         {
             "id": 27,
-            "label": "Atributo 27",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Ponto de ebulição",
+            "value": "Não definido",
+            "justification": "Vida curta impede a medição direta.",
+            "score": 0
         }
     ]
 },
