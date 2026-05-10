@@ -13151,12 +13151,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "67": {
+  "Ho": {
     "number": 67,
-    "symbol": "Element",
-    "name": "Elemento 67",
-    "heroName": "Hero 67",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "Ho",
+    "name": "Hólmio",
+    "heroName": "Holmium Laser",
+    "heroDescription": "O mestre dos campos magnéticos mais fortes e das cirurgias a laser.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -13350,12 +13350,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "68": {
+  "Er": {
     "number": 68,
-    "symbol": "Element",
-    "name": "Elemento 68",
-    "heroName": "Hero 68",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "Er",
+    "name": "Érbio",
+    "heroName": "Erbium Fiber",
+    "heroDescription": "O mestre da amplificação de sinais em fibras ópticas, o herói da internet global.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -13549,12 +13549,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "69": {
+  "Tm": {
     "number": 69,
-    "symbol": "Element",
-    "name": "Elemento 69",
-    "heroName": "Hero 69",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "Tm",
+    "name": "Túlio",
+    "heroName": "Thulium Beam",
+    "heroDescription": "O mestre das máquinas de raio-X portáteis e dos lasers cirúrgicos avançados.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -13748,12 +13748,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "70": {
+  "Yb": {
     "number": 70,
-    "symbol": "Element",
-    "name": "Elemento 70",
-    "heroName": "Hero 70",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "Yb",
+    "name": "Itérbio",
+    "heroName": "Ytterbium Clock",
+    "heroDescription": "O mestre da precisão temporal e dos relógios atômicos mais exatos do mundo.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -13947,12 +13947,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "71": {
+  "Lu": {
     "number": 71,
-    "symbol": "Element",
-    "name": "Elemento 71",
-    "heroName": "Hero 71",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "Lu",
+    "name": "Lutécio",
+    "heroName": "Lutetium Peak",
+    "heroDescription": "O mestre do topo dos lantanídeos, o herói da datação radioativa e da medicina nuclear.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -14146,12 +14146,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "72": {
+  "Hf": {
     "number": 72,
-    "symbol": "Element",
-    "name": "Elemento 72",
-    "heroName": "Hero 72",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "Hf",
+    "name": "Háfnio",
+    "heroName": "Hafnium Shield",
+    "heroDescription": "O mestre do controle nuclear e dos processadores ultra-rápidos.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -14345,12 +14345,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "73": {
+  "Ta": {
     "number": 73,
-    "symbol": "Element",
-    "name": "Elemento 73",
-    "heroName": "Hero 73",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "Ta",
+    "name": "Tântalo",
+    "heroName": "Tantalum Core",
+    "heroDescription": "O mestre da resistência à corrosão e dos capacitores minúsculos em smartphones.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -14544,12 +14544,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "74": {
+  "W": {
     "number": 74,
-    "symbol": "Element",
-    "name": "Elemento 74",
-    "heroName": "Hero 74",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "W",
+    "name": "Tungstênio",
+    "heroName": "Wolfram Strength",
+    "heroDescription": "O herói com o ponto de fusão mais alto de todos os metais, indestrutível sob calor extremo.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -14743,12 +14743,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "75": {
+  "Re": {
     "number": 75,
-    "symbol": "Element",
-    "name": "Elemento 75",
-    "heroName": "Hero 75",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "Re",
+    "name": "Rênio",
+    "heroName": "Rhenium Jet",
+    "heroDescription": "O mestre das superligas para turbinas de aviões e catalisadores industriais.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -14942,12 +14942,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "76": {
+  "Os": {
     "number": 76,
-    "symbol": "Element",
-    "name": "Elemento 76",
-    "heroName": "Hero 76",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "Os",
+    "name": "Ósmio",
+    "heroName": "Osmium Density",
+    "heroDescription": "O herói mais denso de todos, o pilar inabalável da tabela periódica.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
