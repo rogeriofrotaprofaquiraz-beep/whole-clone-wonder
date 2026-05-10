@@ -18932,192 +18932,192 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "attributes": [
         {
             "id": 1,
-            "label": "Atributo 1",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Fraquezas",
+            "value": "Calor Radiogênico",
+            "justification": "Gera tanto calor que pode derreter se não for resfriado.",
+            "score": 1
         },
         {
             "id": 2,
-            "label": "Atributo 2",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Risco/Benefício à natureza",
+            "value": "Perigoso (Altamente Radioativo)",
+            "justification": "Representa um risco severo de contaminação se não houver contenção.",
+            "score": 5
         },
         {
             "id": 3,
-            "label": "Atributo 3",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Risco à saúde",
+            "value": "Crítico",
+            "justification": "Acumula-se no tecido ósseo e destrói a medula.",
+            "score": 1
         },
         {
             "id": 4,
-            "label": "Atributo 4",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Benefício",
+            "value": "Análise Espacial",
+            "justification": "Usado em espectrômetros de raios-X em missões a Marte e à Lua.",
+            "score": 100
         },
         {
             "id": 5,
-            "label": "Atributo 5",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Nº de ligantes possíveis",
+            "value": "3",
+            "justification": "O estado de oxidação +3 é o dominante e mais estável.",
+            "score": 30
         },
         {
             "id": 6,
-            "label": "Atributo 6",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Abundância na natureza",
+            "value": "Zero",
+            "justification": "Não existe naturalmente na Terra.",
+            "score": 0
         },
         {
             "id": 7,
-            "label": "Atributo 7",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Abundância no universo",
+            "value": "Indetectável",
+            "justification": "Elemento exclusivamente sintético.",
+            "score": 0
         },
         {
             "id": 8,
-            "label": "Atributo 8",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Massa atômica",
+            "value": "247 u",
+            "justification": "Massa do seu isótopo mais duradouro.",
+            "score": 247
         },
         {
             "id": 9,
-            "label": "Atributo 9",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Densidade",
+            "value": "13,51 g/cm³",
+            "justification": "Metal pesado e denso.",
+            "score": 100
         },
         {
             "id": 10,
-            "label": "Atributo 10",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Raio atômico",
+            "value": "174 pm",
+            "justification": "Similar ao amerício em tamanho atômico.",
+            "score": 174
         },
         {
             "id": 11,
-            "label": "Atributo 11",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Oxidação",
+            "value": "+3, +4",
+            "justification": "Química relativamente simples para um actinídeo.",
+            "score": 80
         },
         {
             "id": 12,
-            "label": "Atributo 12",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Condutividade elétrica",
+            "value": "Baixa",
+            "justification": "Pobre condutor elétrico metálico.",
+            "score": 15
         },
         {
             "id": 13,
-            "label": "Atributo 13",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Eletronegatividade",
+            "value": "1,3 (Pauling)",
+            "justification": "Valor padrão para os actinídeos transplutonianos.",
+            "score": 13
         },
         {
             "id": 14,
-            "label": "Atributo 14",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Estado físico",
+            "value": "Sólido",
+            "justification": "Metal prateado e duro, brilha no escuro pela própria radiação.",
+            "score": 100
         },
         {
             "id": 15,
-            "label": "Atributo 15",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Maior subnível energético",
+            "value": "5f⁷",
+            "justification": "Possui uma camada 5f preenchida pela metade, similar ao Gadolínio.",
+            "score": 70
         },
         {
             "id": 16,
-            "label": "Atributo 16",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Distribuição eletrônica",
+            "value": "[Rn] 5f⁷ 6d¹ 7s²",
+            "justification": "Configuração que explica sua estabilidade química relativa.",
+            "score": 100
         },
         {
             "id": 17,
-            "label": "Atributo 17",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Nº de prótons / Nº de elétrons",
+            "value": "96",
+            "justification": "Identidade atômica do Cúrio.",
+            "score": 100
         },
         {
             "id": 18,
-            "label": "Atributo 18",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Nº de nêutrons",
+            "value": "151",
+            "justification": "Número de nêutrons no isótopo Cm-247.",
+            "score": 151
         },
         {
             "id": 19,
-            "label": "Atributo 19",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Radioatividade",
+            "value": "Altíssima",
+            "justification": "Cm-244 emite radiação alfa tão forte que brilha em roxo.",
+            "score": 1
         },
         {
             "id": 20,
-            "label": "Atributo 20",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Aplicabilidade / Utilidade",
+            "value": "Fonte de Partículas Alfa",
+            "justification": "Usado para bombardear outras amostras em missões espaciais.",
+            "score": 100
         },
         {
             "id": 21,
-            "label": "Atributo 21",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Local de origem",
+            "value": "Berkeley, EUA",
+            "justification": "Identificado por Seaborg, James e Ghiorso em 1944.",
+            "score": 100
         },
         {
             "id": 22,
-            "label": "Atributo 22",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Curiosidade",
+            "value": "Brilho Roxo",
+            "justification": "A intensa radioatividade ioniza o ar criando uma aura luminosa.",
+            "score": 100
         },
         {
             "id": 23,
-            "label": "Atributo 23",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Origem do nome",
+            "value": "Marie e Pierre Curie",
+            "justification": "Homenagem aos pioneiros da radioatividade.",
+            "score": 100
         },
         {
             "id": 24,
-            "label": "Atributo 24",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Descobridor",
+            "value": "Glenn Seaborg e equipe",
+            "justification": "Descoberto durante a pesquisa secreta do Projeto Manhattan.",
+            "score": 100
         },
         {
             "id": 25,
-            "label": "Atributo 25",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Ano de descoberta",
+            "value": "1944",
+            "justification": "Descoberto no mesmo ano que o amerício.",
+            "score": 95
         },
         {
             "id": 26,
-            "label": "Atributo 26",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Ponto de fusão",
+            "value": "1340 °C",
+            "justification": "Ponto de fusão alto, refletindo fortes ligações metálicas.",
+            "score": 90
         },
         {
             "id": 27,
-            "label": "Atributo 27",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Ponto de ebulição",
+            "value": "3110 °C",
+            "justification": "Vaporiza-se em temperaturas muito elevadas.",
+            "score": 90
         }
     ]
 },
