@@ -11198,11 +11198,11 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
           "score": 95
         },
         {
-            "id": 4,
-            "label": "Atributo 4",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 5,
+          "label": "Nº de ligantes possíveis",
+          "value": "3",
+          "justification": "Geralmente trivalente em seus compostos.",
+          "score": 60
         },
         {
             "id": 5,
