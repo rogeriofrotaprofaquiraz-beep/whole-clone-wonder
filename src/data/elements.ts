@@ -4594,202 +4594,202 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
       }
     ]
   },
-  "V": {
-    "number": 23,
-    "symbol": "V",
-    "name": "Vanádio",
-    "heroName": "Vanádio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Vanádio.",
+  "Cr": {
+    "number": 24,
+    "symbol": "Cr",
+    "name": "Cromo",
+    "heroName": "Chrome Blade",
+    "heroDescription": "O mestre do brilho e da proteção, um herói inoxidável que confere beleza e resistência eterna a tudo o que toca.",
     "heroImage": "/placeholder.svg",
     "attributes": [
       {
         "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Fraquezas",
+        "value": "Toxicidade do Cr(VI)",
+        "justification": "O cromo hexavalente é cancerígeno e altamente tóxico.",
+        "score": 10
       },
       {
         "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Risco/Benefício à natureza",
+        "value": "Essencial em traços (Cr III)",
+        "justification": "Necessário para o metabolismo da glicose em humanos.",
+        "score": 85
       },
       {
         "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Risco à saúde",
+        "value": "Dermatite e Câncer",
+        "justification": "Contato direto ou inalação de Cr(VI) é extremamente perigoso.",
+        "score": 15
       },
       {
         "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Benefício",
+        "value": "Aço Inoxidável, Cromagem, Pigmentos",
+        "justification": "Protege metais contra corrosão e confere brilho espelhado.",
+        "score": 99
       },
       {
         "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de ligantes possíveis",
+        "value": "2 a 6",
+        "justification": "Forma complexos octaédricos muito estáveis.",
+        "score": 80
       },
       {
         "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Abundância na natureza",
+        "value": "102 ppm (crosta)",
+        "justification": "Elemento comum, encontrado principalmente no mineral cromita.",
+        "score": 75
       },
       {
         "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Abundância no universo",
+        "value": "0,0015%",
+        "justification": "Criado em explosões de supernovas tipo Ia.",
+        "score": 40
       },
       {
         "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Massa atômica",
+        "value": "51,996 u",
+        "justification": "Massa similar à do ferro e manganês.",
+        "score": 52
       },
       {
         "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Densidade",
+        "value": "7,19 g/cm³",
+        "justification": "Metal denso e muito duro.",
+        "score": 72
       },
       {
         "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Raio atômico",
+        "value": "128 pm",
+        "justification": "Raio pequeno, contribuindo para sua grande dureza.",
+        "score": 60
       },
       {
         "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Oxidação",
+        "value": "+2, +3, +6",
+        "justification": "Os estados +3 (seguro) e +6 (tóxico) são os mais comuns.",
+        "score": 95
       },
       {
         "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Condutividade elétrica",
+        "value": "Boa",
+        "justification": "Condutor metálico eficiente.",
+        "score": 70
       },
       {
         "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Eletronegatividade",
+        "value": "1,66",
+        "justification": "Valor médio para metais de transição.",
+        "score": 48
       },
       {
         "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Estado físico",
+        "value": "Sólido",
+        "justification": "Metal cinza-azulado, o mais duro dos metais puros.",
+        "score": 90
       },
       {
         "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Maior subnível energético",
+        "value": "3d⁵",
+        "justification": "Configuração anômala para ganhar estabilidade (meio preenchido).",
+        "score": 24
       },
       {
         "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Distribuição eletrônica",
+        "value": "[Ar] 3d⁵ 4s¹",
+        "justification": "Promove um elétron do 4s para o 3d para maior estabilidade.",
+        "score": 98
       },
       {
         "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de prótons / Nº de elétrons",
+        "value": "24",
+        "justification": "Número atômico do Cromo.",
+        "score": 99
       },
       {
         "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de nêutrons",
+        "value": "28",
+        "justification": "Equilíbrio nuclear no isótopo principal Cr-52.",
+        "score": 28
       },
       {
         "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Radioatividade",
+        "value": "Estável",
+        "justification": "Possui quatro isótopos naturais estáveis.",
+        "score": 100
       },
       {
         "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Aplicabilidade / Utilidade",
+        "value": "Talheres, Rodas de Carro, Tintas",
+        "justification": "Onipresente na metalurgia decorativa e funcional.",
+        "score": 98
       },
       {
         "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Local de origem",
+        "value": "Rússia",
+        "justification": "Identificado no mineral 'chumbo vermelho da Sibéria'.",
+        "score": 85
       },
       {
         "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Curiosidade",
+        "value": "Cor dos Rubis",
+        "justification": "A cor vermelha do rubi é causada por traços de cromo.",
+        "score": 100
       },
       {
         "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Origem do nome",
+        "value": "Chroma (Cor)",
+        "justification": "Devido à grande variedade de cores de seus compostos.",
+        "score": 95
       },
       {
         "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Descobridor",
+        "value": "Louis Nicolas Vauquelin",
+        "justification": "Farmacêutico e químico francês do século XVIII.",
+        "score": 90
       },
       {
         "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ano de descoberta",
+        "value": "1797",
+        "justification": "Isolado a partir da crocoíta.",
+        "score": 95
       },
       {
         "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de fusão",
+        "value": "1907 °C",
+        "justification": "Fusão elevada, superior à do ferro.",
+        "score": 19
       },
       {
         "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de ebulição",
+        "value": "2671 °C",
+        "justification": "Alta resistência térmica.",
+        "score": 26
       }
     ]
   },
