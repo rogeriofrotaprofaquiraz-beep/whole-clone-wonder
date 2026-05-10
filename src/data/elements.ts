@@ -7185,198 +7185,198 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 37,
     "symbol": "Rb",
     "name": "Rubídio",
-    "heroName": "Rubídio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Rubídio.",
+    "heroName": "Rubidium Pulse",
+    "heroDescription": "O senhor do ritmo cardíaco eletrônico, um herói que controla corações artificiais e mantém a precisão dos relógios atômicos.",
     "heroImage": "/placeholder.svg",
     "attributes": [
       {
         "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Fraquezas",
+        "value": "Reatividade violenta com água",
+        "justification": "Explode ao contato com a umidade do ar.",
+        "score": 10
       },
       {
         "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Risco/Benefício à natureza",
+        "value": "Inerte em forma de sal",
+        "justification": "Pouco impactante na natureza, mas exige cuidado ao manusear o metal.",
+        "score": 60
       },
       {
         "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Risco à saúde",
+        "value": "Queimaduras químicas",
+        "justification": "O metal puro reage rapidamente com a umidade da pele.",
+        "score": 20
       },
       {
         "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Benefício",
+        "value": "Relógios Atômicos, GPS",
+        "justification": "Essencial para a navegação por satélite e medição precisa do tempo.",
+        "score": 98
       },
       {
         "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de ligantes possíveis",
+        "value": "1",
+        "justification": "Metal alcalino altamente eletropositivo.",
+        "score": 20
       },
       {
         "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Abundância na natureza",
+        "value": "90 ppm (crosta)",
+        "justification": "Relativamente comum, disperso em minerais de potássio.",
         "score": 50
       },
       {
         "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Abundância no universo",
+        "value": "0,000001%",
+        "justification": "Muito raro no cosmos.",
+        "score": 2
       },
       {
         "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Massa atômica",
+        "value": "85,468 u",
+        "justification": "Massa atômica considerável para um metal alcalino.",
+        "score": 85
       },
       {
         "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Densidade",
+        "value": "1,53 g/cm³",
+        "justification": "Mais denso que o potássio.",
+        "score": 15
       },
       {
         "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Raio atômico",
+        "value": "248 pm",
+        "justification": "Raio muito grande, característica de alcalinos pesados.",
+        "score": 90
       },
       {
         "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Oxidação",
+        "value": "+1",
+        "justification": "Estado de oxidação altamente estável.",
+        "score": 98
       },
       {
         "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Condutividade elétrica",
+        "value": "Boa",
+        "justification": "Conduz bem a eletricidade, como todo metal.",
+        "score": 65
       },
       {
         "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Eletronegatividade",
+        "value": "0,82",
+        "justification": "Muito baixa, perde elétrons facilmente.",
+        "score": 10
       },
       {
         "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Estado físico",
+        "value": "Sólido (macio)",
+        "justification": "Metal prateado muito macio, quase líquido em dias quentes.",
+        "score": 20
       },
       {
         "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Maior subnível energético",
+        "value": "5s¹",
+        "justification": "Define sua posição no grupo 1.",
+        "score": 37
       },
       {
         "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Distribuição eletrônica",
+        "value": "[Kr] 5s¹",
+        "justification": "Configuração típica de um metal alcalino reativo.",
+        "score": 90
       },
       {
         "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de prótons / Nº de elétrons",
+        "value": "37",
+        "justification": "Número atômico do Rubídio.",
+        "score": 99
       },
       {
         "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de nêutrons",
+        "value": "48",
+        "justification": "Número de nêutrons no isótopo Rb-85.",
+        "score": 48
       },
       {
         "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Radioatividade",
+        "value": "Ligeiramente Radioativo",
+        "justification": "O isótopo Rb-87 é natural e fracamente radioativo.",
+        "score": 60
       },
       {
         "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Aplicabilidade / Utilidade",
+        "value": "GPS, Pesquisa Quântica",
+        "justification": "Vital para tecnologias de ponta em medição.",
+        "score": 92
       },
       {
         "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Local de origem",
+        "value": "Alemanha",
+        "justification": "Descoberto por Robert Bunsen e Gustav Kirchhoff.",
+        "score": 85
       },
       {
         "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Curiosidade",
+        "value": "Primeira linha espectral",
+        "justification": "Descoberto pela cor vermelha brilhante em seu espectro.",
+        "score": 98
       },
       {
         "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Origem do nome",
+        "value": "Rubidius (Vermelho intenso)",
+        "justification": "Referência às linhas vermelhas em seu espectro.",
+        "score": 95
       },
       {
         "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Descobridor",
+        "value": "Bunsen & Kirchhoff",
+        "justification": "Inventores da análise espectroscópica.",
+        "score": 98
       },
       {
         "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ano de descoberta",
+        "value": "1861",
+        "justification": "Identificado pela espectroscopia atômica.",
+        "score": 92
       },
       {
         "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de fusão",
+        "value": "39,3 °C",
+        "justification": "Ponto de fusão muito baixo, derrete no calor do verão.",
+        "score": 39
       },
       {
         "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de ebulição",
+        "value": "688 °C",
+        "justification": "Ponto de ebulição baixo para um metal.",
+        "score": 68
       }
     ]
   },
