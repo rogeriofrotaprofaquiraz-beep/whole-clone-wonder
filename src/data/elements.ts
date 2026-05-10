@@ -3404,198 +3404,198 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 18,
     "symbol": "Ar",
     "name": "Argônio",
-    "heroName": "Argônio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Argônio.",
+    "heroName": "Argon Shield",
+    "heroDescription": "O guardião da inércia e protetor invisível, capaz de envolver o mundo em um escudo de estabilidade absoluta.",
     "heroImage": "/placeholder.svg",
     "attributes": [
       {
         "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Fraquezas",
+        "value": "Incapaz de formar ligações",
+        "justification": "Gás nobre com estabilidade total.",
+        "score": 1
       },
       {
         "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Risco/Benefício à natureza",
+        "value": "Totalmente inerte",
+        "justification": "Não reage com o ambiente nem causa poluição.",
+        "score": 100
       },
       {
         "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Risco à saúde",
+        "value": "Asfixiante simples",
+        "justification": "Seguro em pequenas doses, perigoso apenas se deslocar o O₂.",
+        "score": 90
       },
       {
         "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Benefício",
+        "value": "Lâmpadas Incandescentes, Soldagem",
+        "justification": "Essencial para proteger metais da oxidação durante o trabalho.",
+        "score": 85
       },
       {
         "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de ligantes possíveis",
+        "value": "0",
+        "justification": "Estabilidade máxima por octeto completo.",
+        "score": 1
       },
       {
         "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Abundância na natureza",
+        "value": "0,93% (atmosfera)",
+        "justification": "O terceiro gás mais abundante no ar que respiramos.",
+        "score": 92
       },
       {
         "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Abundância no universo",
+        "value": "0,02%",
+        "justification": "Décimo primeiro elemento mais comum no cosmos.",
         "score": 50
       },
       {
         "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Massa atômica",
+        "value": "39,948 u",
+        "justification": "Curiosamente mais pesado que o potássio seguinte.",
+        "score": 40
       },
       {
         "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Densidade",
+        "value": "1,78 g/L",
+        "justification": "Mais denso que o nitrogênio e o oxigênio.",
+        "score": 2
       },
       {
         "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Raio atômico",
+        "value": "71 pm",
+        "justification": "Raio muito pequeno devido à forte atração nuclear.",
+        "score": 85
       },
       {
         "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Oxidação",
+        "value": "0",
+        "justification": "Estado de oxidação nulo e estável.",
+        "score": 1
       },
       {
         "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Condutividade elétrica",
+        "value": "Isolante (Plasma condutor)",
+        "justification": "Emite luz azul violeta quando ionizado.",
+        "score": 10
       },
       {
         "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Eletronegatividade",
+        "value": "N/A",
+        "justification": "Não atrai elétrons de outros elementos.",
+        "score": 1
       },
       {
         "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Estado físico",
+        "value": "Gás",
+        "justification": "Permanece gasoso em quase todas as condições terrestres.",
+        "score": 1
       },
       {
         "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Maior subnível energético",
+        "value": "3p⁶",
+        "justification": "Configuração de octeto completo e perfeita.",
+        "score": 18
       },
       {
         "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Distribuição eletrônica",
+        "value": "[Ne] 3s² 3p⁶",
+        "justification": "A definição química de estabilidade.",
+        "score": 100
       },
       {
         "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de prótons / Nº de elétrons",
+        "value": "18",
+        "justification": "Número atômico do Argônio.",
+        "score": 99
       },
       {
         "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de nêutrons",
+        "value": "22",
+        "justification": "Equilíbrio nuclear no isótopo mais comum Ar-40.",
+        "score": 22
       },
       {
         "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Radioatividade",
+        "value": "Estável",
+        "justification": "Núcleo altamente equilibrado e estável.",
+        "score": 100
       },
       {
         "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Aplicabilidade / Utilidade",
+        "value": "Extintores, Laser Azul, Isolamento Térmico",
+        "justification": "Usado em janelas duplas para evitar perda de calor.",
+        "score": 88
       },
       {
         "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Local de origem",
+        "value": "Escócia",
+        "justification": "Descoberto pelo químico Sir William Ramsay.",
+        "score": 80
       },
       {
         "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Curiosidade",
+        "value": "Atmosfera de Marte",
+        "justification": "Representa cerca de 1,9% da atmosfera marciana.",
+        "score": 95
       },
       {
         "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Origem do nome",
+        "value": "Argos (Preguiçoso)",
+        "justification": "Devido à sua total falta de reatividade química.",
+        "score": 95
       },
       {
         "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Descobridor",
+        "value": "Lord Rayleigh & William Ramsay",
+        "justification": "Descoberta que rendeu Prêmio Nobel.",
+        "score": 98
       },
       {
         "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ano de descoberta",
+        "value": "1894",
+        "justification": "Um dos últimos gases da atmosfera a ser identificado.",
+        "score": 90
       },
       {
         "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de fusão",
+        "value": "-189,3 °C",
+        "justification": "Fusão extremamente baixa, perto do zero absoluto.",
+        "score": 1
       },
       {
         "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de ebulição",
+        "value": "-185,8 °C",
+        "justification": "Permanece líquido apenas em temperaturas criogênicas.",
+        "score": 1
       }
     ]
   },
