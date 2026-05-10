@@ -15349,193 +15349,193 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
-            "id": 1,
-            "label": "Atributo 1",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 1,
+          "label": "Fraquezas",
+          "value": "Escassez extrema",
+          "justification": "Um dos metais mais caros e raros, com produção anual muito limitada.",
+          "score": 10
         },
         {
-            "id": 2,
-            "label": "Atributo 2",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 2,
+          "label": "Risco/Benefício à natureza",
+          "value": "Nobre e Bioestável",
+          "justification": "Metal inerte que não reage quimicamente em ambientes biológicos.",
+          "score": 95
         },
         {
-            "id": 3,
-            "label": "Atributo 3",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 3,
+          "label": "Risco à saúde",
+          "value": "Baixo (Metal)",
+          "justification": "O metal em si é inerte; alguns sais de platina podem ser tóxicos ou alérgicos.",
+          "score": 90
         },
         {
-            "id": 4,
-            "label": "Atributo 4",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 4,
+          "label": "Benefício",
+          "value": "Conversores Catalíticos, Joalheria, Quimioterapia",
+          "justification": "Fundamental para reduzir poluição automotiva e base para medicamentos como a cisplatina.",
+          "score": 99
         },
         {
-            "id": 5,
-            "label": "Atributo 5",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 5,
+          "label": "Nº de ligantes possíveis",
+          "value": "4, 6",
+          "justification": "Forma complexos de coordenação muito estáveis, especialmente quadrados planares e octaédricos.",
+          "score": 85
         },
         {
-            "id": 6,
-            "label": "Atributo 6",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 6,
+          "label": "Abundância na natureza",
+          "value": "0,005 ppm (crosta)",
+          "justification": "Um dos elementos menos abundantes na crosta terrestre.",
+          "score": 5
         },
         {
-            "id": 7,
-            "label": "Atributo 7",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 7,
+          "label": "Abundância no universo",
+          "value": "0,000000005%",
+          "justification": "Elemento pesado raro no cosmos.",
+          "score": 0.5
         },
         {
-            "id": 8,
-            "label": "Atributo 8",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 8,
+          "label": "Massa atômica",
+          "value": "195,08 u",
+          "justification": "Massa baseada em seus seis isótopos naturais.",
+          "score": 195
         },
         {
-            "id": 9,
-            "label": "Atributo 9",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 9,
+          "label": "Densidade",
+          "value": "21,45 g/cm³",
+          "justification": "Metal densíssimo, o terceiro mais denso da tabela periódica.",
+          "score": 214
         },
         {
-            "id": 10,
-            "label": "Atributo 10",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 10,
+          "label": "Raio atômico",
+          "value": "139 pm",
+          "justification": "Raio metálico compacto, conferindo-lhe grande densidade.",
+          "score": 139
         },
         {
-            "id": 11,
-            "label": "Atributo 11",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 11,
+          "label": "Oxidação",
+          "value": "0, +2, +4, +5, +6",
+          "justification": "Os estados +2 e +4 são os mais comuns e úteis quimicamente.",
+          "score": 70
         },
         {
-            "id": 12,
-            "label": "Atributo 12",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 12,
+          "label": "Condutividade elétrica",
+          "value": "Boa (Metal)",
+          "justification": "Excelente condutor, muito usado em contatos elétricos de precisão.",
+          "score": 35
         },
         {
-            "id": 13,
-            "label": "Atributo 13",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 13,
+          "label": "Eletronegatividade",
+          "value": "2,28 (Pauling)",
+          "justification": "Alta eletronegatividade para um metal, próxima à do ouro.",
+          "score": 23
         },
         {
-            "id": 14,
-            "label": "Atributo 14",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 14,
+          "label": "Estado físico",
+          "value": "Sólido",
+          "justification": "Metal branco-cinzentado, denso, maleável e altamente ductível.",
+          "score": 50
         },
         {
-            "id": 15,
-            "label": "Atributo 15",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 15,
+          "label": "Maior subnível energético",
+          "value": "5d⁹",
+          "justification": "Apresenta uma configuração irregular onde um elétron 6s migra para o 5d.",
+          "score": 58
         },
         {
-            "id": 16,
-            "label": "Atributo 16",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 16,
+          "label": "Distribuição eletrônica",
+          "value": "[Xe] 4f¹⁴ 5d⁹ 6s¹",
+          "justification": "Configuração fundamental que explica sua alta reatividade catalítica.",
+          "score": 98
         },
         {
-            "id": 17,
-            "label": "Atributo 17",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 17,
+          "label": "Nº de prótons / Nº de elétrons",
+          "value": "78",
+          "justification": "Identidade atômica da Platina.",
+          "score": 99
         },
         {
-            "id": 18,
-            "label": "Atributo 18",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 18,
+          "label": "Nº de nêutrons",
+          "value": "117",
+          "justification": "Diferença média entre massa e número atômico.",
+          "score": 117
         },
         {
-            "id": 19,
-            "label": "Atributo 19",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 19,
+          "label": "Radioatividade",
+          "value": "Estável / Pt-190 (vida longa)",
+          "justification": "Apenas o isótopo Pt-190 é radioativo, com meia-vida de 650 bilhões de anos.",
+          "score": 100
         },
         {
-            "id": 20,
-            "label": "Atributo 20",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 20,
+          "label": "Aplicabilidade / Utilidade",
+          "value": "Catalisadores, Marcapassos, Joias",
+          "justification": "Crucial para a tecnologia médica e para a limpeza do ar que respiramos.",
+          "score": 99
         },
         {
-            "id": 21,
-            "label": "Atributo 21",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 21,
+          "label": "Local de origem",
+          "value": "América do Sul (Colômbia/Equador)",
+          "justification": "Conhecida por povos pré-colombianos antes da colonização europeia.",
+          "score": 100
         },
         {
-            "id": 22,
-            "label": "Atributo 22",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 22,
+          "label": "Curiosidade",
+          "value": "Ouro Menor",
+          "justification": "Conquistadores espanhóis a chamavam de 'platina' (pratinha), considerando-a uma impureza indesejada do ouro.",
+          "score": 100
         },
         {
-            "id": 23,
-            "label": "Atributo 23",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 23,
+          "label": "Origem do name",
+          "value": "Plata (Prata)",
+          "justification": "Devido à sua semelhança visual com a prata.",
+          "score": 95
         },
         {
-            "id": 24,
-            "label": "Atributo 24",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 24,
+          "label": "Descobridor",
+          "value": "Antonio de Ulloa",
+          "justification": "Militar e cientista espanhol que trouxe as primeiras amostras para a Europa.",
+          "score": 85
         },
         {
-            "id": 25,
-            "label": "Atributo 25",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 25,
+          "label": "Ano de descoberta",
+          "value": "1735",
+          "justification": "Redescoberta cientificamente para o mundo ocidental no século XVIII.",
+          "score": 90
         },
         {
-            "id": 26,
-            "label": "Atributo 26",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 26,
+          "label": "Ponto de fusão",
+          "value": "1768 °C",
+          "justification": "Ponto de fusão elevado, exigindo fornos potentes para fundição.",
+          "score": 95
         },
         {
-            "id": 27,
-            "label": "Atributo 27",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 27,
+          "label": "Ponto de ebulição",
+          "value": "3825 °C",
+          "justification": "Ponto de ebulição muito alto.",
+          "score": 38
         }
     ]
 },
