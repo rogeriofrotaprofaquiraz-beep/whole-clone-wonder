@@ -12641,115 +12641,115 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         },
         {
           "id": 12,
-            "label": "Atributo 12",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "label": "Condutividade elétrica",
+          "value": "Baixa (Metal)",
+          "justification": "Propriedades condutoras típicas da série dos lantanídeos.",
+          "score": 15
         },
         {
-            "id": 13,
-            "label": "Atributo 13",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 13,
+          "label": "Eletronegatividade",
+          "value": "1,20 (Pauling)",
+          "justification": "Valor baixo, metal eletropositivo.",
+          "score": 11
         },
         {
-            "id": 14,
-            "label": "Atributo 14",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 14,
+          "label": "Estado físico",
+          "value": "Sólido",
+          "justification": "Metal branco-prateado, macio e ductível.",
+          "score": 50
         },
         {
-            "id": 15,
-            "label": "Atributo 15",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 15,
+          "label": "Maior subnível energético",
+          "value": "4f⁷",
+          "justification": "Possui uma camada 4f semi-preenchida e um elétron no 5d, o que o torna único.",
+          "score": 48
         },
         {
-            "id": 16,
-            "label": "Atributo 16",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 16,
+          "label": "Distribuição eletrônica",
+          "value": "[Xe] 4f⁷ 5d¹ 6s²",
+          "justification": "Configuração que explica sua estabilidade e magnetismo.",
+          "score": 97
         },
         {
-            "id": 17,
-            "label": "Atributo 17",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 17,
+          "label": "Nº de prótons / Nº de elétrons",
+          "value": "64",
+          "justification": "Identidade atômica do Gadolínio.",
+          "score": 99
         },
         {
-            "id": 18,
-            "label": "Atributo 18",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 18,
+          "label": "Nº de nêutrons",
+          "value": "94",
+          "justification": "Média baseada nos sete isótopos estáveis naturais.",
+          "score": 94
         },
         {
-            "id": 19,
-            "label": "Atributo 19",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 19,
+          "label": "Radioatividade",
+          "value": "Estável / Gd-152 (vida longa)",
+          "justification": "Gd-152 tem uma meia-vida de 110 trilhões de anos.",
+          "score": 99
         },
         {
-            "id": 20,
-            "label": "Atributo 20",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 20,
+          "label": "Aplicabilidade / Utilidade",
+          "value": "Contrastes Médicos, Refrigeração Magnética",
+          "justification": "Capaz de resfriar ambientes via efeito magnetocalórico.",
+          "score": 96
         },
         {
-            "id": 21,
-            "label": "Atributo 21",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 21,
+          "label": "Local de origem",
+          "value": "Suíça",
+          "justification": "Isolado por Jean Charles Galissard de Marignac.",
+          "score": 85
         },
         {
-            "id": 22,
-            "label": "Atributo 22",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 22,
+          "label": "Curiosidade",
+          "value": "Supercondutor",
+          "justification": "Torna-se ferromagnético em temperaturas abaixo de 20 °C.",
+          "score": 100
         },
         {
-            "id": 23,
-            "label": "Atributo 23",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 23,
+          "label": "Origem do nome",
+          "value": "Johan Gadolin",
+          "justification": "Homenagem ao químico finlandês Johan Gadolin, pioneiro das terras raras.",
+          "score": 95
         },
         {
-            "id": 24,
-            "label": "Atributo 24",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 24,
+          "label": "Descobridor",
+          "value": "Jean Charles Galissard de Marignac",
+          "justification": "Químico suíço que primeiro isolou o óxido de gadolínio.",
+          "score": 90
         },
         {
-            "id": 25,
-            "label": "Atributo 25",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 25,
+          "label": "Ano de descoberta",
+          "value": "1880",
+          "justification": "Identificado via espectroscopia no mineral samarskita.",
+          "score": 92
         },
         {
-            "id": 26,
-            "label": "Atributo 26",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 26,
+          "label": "Ponto de fusão",
+          "value": "1313 °C",
+          "justification": "Ponto de fusão elevado para a série.",
+          "score": 96
         },
         {
-            "id": 27,
-            "label": "Atributo 27",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 27,
+          "label": "Ponto de ebulição",
+          "value": "3273 °C",
+          "justification": "Ponto de ebulição muito alto.",
+          "score": 32
         }
     ]
 },
