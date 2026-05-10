@@ -11767,84 +11767,84 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
-            "id": 1,
-            "label": "Atributo 1",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 1,
+          "label": "Fraquezas",
+          "value": "Reativo ao ar e água",
+          "justification": "Mancha rapidamente no ar e reage com água, necessitando armazenamento em óleo.",
+          "score": 30
         },
         {
-            "id": 2,
-            "label": "Atributo 2",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 2,
+          "label": "Risco/Benefício à natureza",
+          "value": "Baixa toxicidade",
+          "justification": "Geralmente pouco tóxico, mas deve ser manuseado com cuidado.",
+          "score": 85
         },
         {
-            "id": 3,
-            "label": "Atributo 3",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 3,
+          "label": "Risco à saúde",
+          "value": "Baixo",
+          "justification": "Seguro quando incorporado em dispositivos tecnológicos.",
+          "score": 90
         },
         {
-            "id": 4,
-            "label": "Atributo 4",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 4,
+          "label": "Benefício",
+          "value": "Ímãs Fortes, Lasers",
+          "justification": "Base dos ímãs permanentes mais poderosos conhecidos (NdFeB).",
+          "score": 100
         },
         {
-            "id": 5,
-            "label": "Atributo 5",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 5,
+          "label": "Nº de ligantes possíveis",
+          "value": "3",
+          "justification": "Estado de oxidação +3 é quase universal.",
+          "score": 60
         },
         {
-            "id": 6,
-            "label": "Atributo 6",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 6,
+          "label": "Abundância na natureza",
+          "value": "33 ppm (crosta)",
+          "justification": "Bastante comum para uma terra rara, comparável ao cobre.",
+          "score": 45
         },
         {
-            "id": 7,
-            "label": "Atributo 7",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 7,
+          "label": "Abundância no universo",
+          "value": "0,00000002%",
+          "justification": "Elemento pesado raro no cosmos.",
+          "score": 2
         },
         {
-            "id": 8,
-            "label": "Atributo 8",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 8,
+          "label": "Massa atômica",
+          "value": "144,24 u",
+          "justification": "Massa característica do neodímio natural.",
+          "score": 144
         },
         {
-            "id": 9,
-            "label": "Atributo 9",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 9,
+          "label": "Densidade",
+          "value": "7,01 g/cm³",
+          "justification": "Metal denso, o primeiro lantanídeo a ultrapassar 7 g/cm³.",
+          "score": 70
         },
         {
-            "id": 10,
-            "label": "Atributo 10",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 10,
+          "label": "Raio atômico",
+          "value": "181 pm",
+          "justification": "Tamanho atômico padrão para o grupo.",
+          "score": 181
         },
         {
-            "id": 11,
-            "label": "Atributo 11",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 11,
+          "label": "Oxidação",
+          "value": "+3",
+          "justification": "Quase exclusivamente +3.",
+          "score": 30
         },
         {
-            "id": 12,
+          "id": 12,
             "label": "Atributo 12",
             "value": "Em breve",
             "justification": "Dados sendo processados pela central elemental.",
