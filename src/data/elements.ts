@@ -23101,12 +23101,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "117": {
+  "Ts": {
     "number": 117,
-    "symbol": "Element",
-    "name": "Elemento 117",
-    "heroName": "Hero 117",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "Ts",
+    "name": "Tennesso",
+    "heroName": "Tennessine Halogen",
+    "heroDescription": "O herói da última fronteira dos halogênios, uma faísca rara na escuridão superpesada.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -23300,12 +23300,12 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         }
     ]
 },
-  "118": {
+  "Og": {
     "number": 118,
-    "symbol": "Element",
-    "name": "Elemento 118",
-    "heroName": "Hero 118",
-    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
+    "symbol": "Og",
+    "name": "Oganésson",
+    "heroName": "Oganesson Zenith",
+    "heroDescription": "O mestre final da tabela periódica, o herói do topo da pirâmide elemental.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
