@@ -10282,198 +10282,36 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "symbol": "Cs",
     "name": "Césio",
     "heroName": "Cesium Clock",
-    "heroDescription": "O maestro do tempo, um herói cujos relógios medem o segundo com precisão infinita.",
+    "heroDescription": "O mestre do tempo absoluto e guardião da precisão atômica, cujas vibrações definem o ritmo do universo tecnológico.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-        {
-            "id": 1,
-            "label": "Dado 1",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 2,
-            "label": "Dado 2",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 3,
-            "label": "Dado 3",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 4,
-            "label": "Dado 4",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 5,
-            "label": "Dado 5",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 6,
-            "label": "Dado 6",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 7,
-            "label": "Dado 7",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 8,
-            "label": "Dado 8",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 9,
-            "label": "Dado 9",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 10,
-            "label": "Dado 10",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 11,
-            "label": "Dado 11",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 12,
-            "label": "Dado 12",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 13,
-            "label": "Dado 13",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 14,
-            "label": "Dado 14",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 15,
-            "label": "Dado 15",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 16,
-            "label": "Dado 16",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 17,
-            "label": "Dado 17",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 18,
-            "label": "Dado 18",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 19,
-            "label": "Dado 19",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 20,
-            "label": "Dado 20",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 21,
-            "label": "Dado 21",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 22,
-            "label": "Dado 22",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 23,
-            "label": "Dado 23",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 24,
-            "label": "Dado 24",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 25,
-            "label": "Dado 25",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 26,
-            "label": "Dado 26",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        },
-        {
-            "id": 27,
-            "label": "Dado 27",
-            "value": "Processando",
-            "justification": "Característica em análise para o Césio.",
-            "score": 50
-        }
+      { "id": 1, "label": "Massa Atômica", "value": "132.91 u", "justification": "Massa atômica relativa do Césio.", "score": 44 },
+      { "id": 2, "label": "Abundância na Crosta", "value": "3 ppm", "justification": "Concentração média encontrada na crosta terrestre.", "score": 40 },
+      { "id": 3, "label": "Ponto de Fusão", "value": "28.4 °C", "justification": "Temperatura em que o elemento passa para o estado líquido.", "score": 60 },
+      { "id": 4, "label": "Ponto de Ebulição", "value": "671 °C", "justification": "Temperatura de vaporização característica.", "score": 70 },
+      { "id": 5, "label": "Densidade", "value": "1.93 g/cm³", "justification": "Massa volumétrica em condições padrão.", "score": 55 },
+      { "id": 6, "label": "Dureza de Mohs", "value": "0.2", "justification": "Resistência ao risco mecânico.", "score": 45 },
+      { "id": 7, "label": "Eletronegatividade", "value": "0.79", "justification": "Capacidade de atrair elétrons em ligações.", "score": 50 },
+      { "id": 8, "label": "Condutividade Térmica", "value": "Moderada", "justification": "Capacidade de transferência de calor.", "score": 50 },
+      { "id": 9, "label": "Condutividade Elétrica", "value": "Moderada", "justification": "Fluxo de elétrons através do material.", "score": 50 },
+      { "id": 10, "label": "Calor Específico", "value": "Baixo", "justification": "Energia para elevar a temperatura.", "score": 40 },
+      { "id": 11, "label": "Raio Atômico", "value": "Médio", "justification": "Tamanho efetivo do átomo.", "score": 50 },
+      { "id": 12, "label": "Energia de Ionização", "value": "Moderada", "justification": "Energia para remoção de elétrons.", "score": 60 },
+      { "id": 13, "label": "Estado Físico (CNTP)", "value": "Sólido", "justification": "Forma física em temperatura ambiente.", "score": 99 },
+      { "id": 14, "label": "Reatividade Química", "value": "Moderada", "justification": "Facilidade de participação em reações.", "score": 60 },
+      { "id": 15, "label": "Reciclabilidade", "value": "Alta", "justification": "Potencial de reutilização sustentável.", "score": 80 },
+      { "id": 16, "label": "Resistência à Corrosão", "value": "Boa", "justification": "Capacidade de resistir à oxidação.", "score": 75 },
+      { "id": 17, "label": "Refletividade", "value": "Metálica", "justification": "Capacidade de refletir radiação.", "score": 70 },
+      { "id": 18, "label": "Maleabilidade", "value": "Moderada", "justification": "Capacidade de ser moldado em lâminas.", "score": 60 },
+      { "id": 19, "label": "Dutibilidade", "value": "Moderada", "justification": "Capacidade de ser esticado em fios.", "score": 60 },
+      { "id": 20, "label": "Isótopos Estáveis", "value": "Sim", "justification": "Existência de variantes nucleares estáveis.", "score": 90 },
+      { "id": 21, "label": "Toxicidade", "value": "Baixa", "justification": "Impacto biológico em organismos vivos.", "score": 85 },
+      { "id": 22, "label": "Aplicações Tecnológicas", "value": "Várias", "justification": "Importância estratégica na indústria moderna.", "score": 95 },
+      { "id": 23, "label": "Magnético", "value": "Paramagnético", "justification": "Resposta a campos magnéticos externos.", "score": 20 },
+      { "id": 24, "label": "Custo de Produção", "value": "Variável", "justification": "Esforço econômico para extração e purificação.", "score": 50 },
+      { "id": 25, "label": "Risco à Natureza", "value": "Baixo", "justification": "Potencial de dano ambiental.", "score": 80 },
+      { "id": 26, "label": "Radioatividade", "value": "Nula", "justification": "Estabilidade nuclear natural.", "score": 100 },
+      { "id": 27, "label": "Origem do Nome", "value": "Histórica", "justification": "Etimologia baseada na descoberta.", "score": 80 }
     ]
 },
   "Ba": {
