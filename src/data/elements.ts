@@ -2608,198 +2608,198 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 14,
     "symbol": "Si",
     "name": "Silício",
-    "heroName": "Silício Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Silício.",
+    "heroName": "Cyber Si",
+    "heroDescription": "O arquiteto da era digital. Cyber Si é a espinha dorsal de toda a tecnologia moderna, o mestre dos semicondutores que traduz eletricidade em pensamento binário.",
     "heroImage": "/placeholder.svg",
     "attributes": [
       {
         "id": 1,
-        "label": "Dado 1",
-        "value": "Processando",
-        "justification": "Característica em análise para o Silício.",
-        "score": 50
+        "label": "Massa Atômica",
+        "value": "28.085 u",
+        "justification": "O Silício possui uma massa atômica de aproximadamente 28.085 u.",
+        "score": 28
       },
       {
         "id": 2,
-        "label": "Dado 2",
-        "value": "Processando",
-        "justification": "Característica em análise para o Silício.",
-        "score": 50
+        "label": "Abundância na Crosta",
+        "value": "28.2 %",
+        "justification": "É o segundo elemento mais abundante na crosta terrestre, depois do oxigênio.",
+        "score": 100
       },
       {
         "id": 3,
-        "label": "Dado 3",
-        "value": "Processando",
-        "justification": "Característica em análise para o Silício.",
-        "score": 50
+        "label": "Ponto de Fusão",
+        "value": "1414 °C",
+        "justification": "Possui um ponto de fusão elevado, característico de sua estrutura de rede covalente.",
+        "score": 85
       },
       {
         "id": 4,
-        "label": "Dado 4",
-        "value": "Processando",
-        "justification": "Característica em análise para o Silício.",
-        "score": 50
+        "label": "Ponto de Ebulição",
+        "value": "3265 °C",
+        "justification": "Sua temperatura de vaporização é extremamente alta.",
+        "score": 90
       },
       {
         "id": 5,
-        "label": "Dado 5",
-        "value": "Processando",
-        "justification": "Característica em análise para o Silício.",
-        "score": 50
+        "label": "Densidade",
+        "value": "2.329 g/cm³",
+        "justification": "Densidade relativamente baixa para um semimetal sólido.",
+        "score": 60
       },
       {
         "id": 6,
-        "label": "Dado 6",
-        "value": "Processando",
-        "justification": "Característica em análise para o Silício.",
-        "score": 50
+        "label": "Dureza de Mohs",
+        "value": "7.0",
+        "justification": "Muito duro, capaz de riscar o vidro.",
+        "score": 88
       },
       {
         "id": 7,
-        "label": "Dado 7",
-        "value": "Processando",
-        "justification": "Característica em análise para o Silício.",
+        "label": "Eletronegatividade",
+        "value": "1.90",
+        "justification": "Valor intermediário, típico de um semimetal.",
         "score": 50
       },
       {
         "id": 8,
-        "label": "Dado 8",
-        "value": "Processando",
-        "justification": "Característica em análise para o Silício.",
-        "score": 50
+        "label": "Condutividade Térmica",
+        "value": "149 W/(m·K)",
+        "justification": "Boa condutividade térmica para um não-metal.",
+        "score": 75
       },
       {
         "id": 9,
-        "label": "Dado 9",
-        "value": "Processando",
-        "justification": "Característica em análise para o Silício.",
-        "score": 50
+        "label": "Condutividade Elétrica",
+        "value": "1.56 × 10⁻³ S/m",
+        "justification": "Semicondutor natural; sua condutividade aumenta com a temperatura.",
+        "score": 95
       },
       {
         "id": 10,
-        "label": "Dado 10",
-        "value": "Processando",
-        "justification": "Característica em análise para o Silício.",
-        "score": 50
+        "label": "Calor Específico",
+        "value": "0.705 J/(g·K)",
+        "justification": "Capacidade moderada de absorção de calor.",
+        "score": 65
       },
       {
         "id": 11,
-        "label": "Dado 11",
-        "value": "Processando",
-        "justification": "Característica em análise para o Silício.",
-        "score": 50
+        "label": "Raio Atômico",
+        "value": "111 pm",
+        "justification": "Raio atômico pequeno, permitindo ligações covalentes fortes.",
+        "score": 35
       },
       {
         "id": 12,
-        "label": "Dado 12",
-        "value": "Processando",
-        "justification": "Característica em análise para o Silício.",
-        "score": 50
+        "label": "Energia de Ionização",
+        "value": "8.151 eV",
+        "justification": "Energia necessária para remover o primeiro elétron de valência.",
+        "score": 70
       },
       {
         "id": 13,
-        "label": "Dado 13",
-        "value": "Processando",
-        "justification": "Característica em análise para o Silício.",
-        "score": 50
+        "label": "Estado Físico (CNTP)",
+        "value": "Sólido",
+        "justification": "Sólido cristalino duro e quebradiço com brilho metálico azul-acinzentado.",
+        "score": 99
       },
       {
         "id": 14,
-        "label": "Dado 14",
-        "value": "Processando",
-        "justification": "Característica em análise para o Silício.",
-        "score": 50
+        "label": "Reatividade Química",
+        "value": "Moderada",
+        "justification": "Relativamente inerte à temperatura ambiente, mas reage com halogênios.",
+        "score": 55
       },
       {
         "id": 15,
-        "label": "Dado 15",
-        "value": "Processando",
-        "justification": "Característica em análise para o Silício.",
-        "score": 50
+        "label": "Reciclabilidade",
+        "value": "Alta",
+        "justification": "Reciclável principalmente a partir de componentes eletrônicos e vidros.",
+        "score": 85
       },
       {
         "id": 16,
-        "label": "Dado 16",
-        "value": "Processando",
-        "justification": "Característica em análise para o Silício.",
-        "score": 50
+        "label": "Resistência à Corrosão",
+        "value": "Alta",
+        "justification": "Forma uma camada passivadora de dióxido de silício (SiO2).",
+        "score": 88
       },
       {
         "id": 17,
-        "label": "Dado 17",
-        "value": "Processando",
-        "justification": "Característica em análise para o Silício.",
-        "score": 50
+        "label": "Refletividade",
+        "value": "Metálica",
+        "justification": "Brilho metálico característico, embora seja um semimetal.",
+        "score": 65
       },
       {
         "id": 18,
-        "label": "Dado 18",
-        "value": "Processando",
-        "justification": "Característica em análise para o Silício.",
-        "score": 50
+        "label": "Maleabilidade",
+        "value": "Nula",
+        "justification": "Extremamente quebradiço, não pode ser moldado por pressão.",
+        "score": 5
       },
       {
         "id": 19,
-        "label": "Dado 19",
-        "value": "Processando",
-        "justification": "Característica em análise para o Silício.",
-        "score": 50
+        "label": "Dutibilidade",
+        "value": "Nula",
+        "justification": "Não pode ser esticado em fios.",
+        "score": 5
       },
       {
         "id": 20,
-        "label": "Dado 20",
-        "value": "Processando",
-        "justification": "Característica em análise para o Silício.",
-        "score": 50
+        "label": "Isótopos Estáveis",
+        "value": "3 (Si-28, 29, 30)",
+        "justification": "Possui três variantes estáveis na natureza.",
+        "score": 80
       },
       {
         "id": 21,
-        "label": "Dado 21",
-        "value": "Processando",
-        "justification": "Característica em análise para o Silício.",
-        "score": 50
+        "label": "Toxicidade",
+        "value": "Baixa",
+        "justification": "Elemento inerte no corpo, mas a inalação de poeira de sílica é perigosa.",
+        "score": 90
       },
       {
         "id": 22,
-        "label": "Dado 22",
-        "value": "Processando",
-        "justification": "Característica em análise para o Silício.",
-        "score": 50
+        "label": "Aplicações Tecnológicas",
+        "value": "Máxima",
+        "justification": "Base de todos os microchips, transistores e células solares.",
+        "score": 100
       },
       {
         "id": 23,
-        "label": "Dado 23",
-        "value": "Processando",
-        "justification": "Característica em análise para o Silício.",
-        "score": 50
+        "label": "Magnético",
+        "value": "Diamagnético",
+        "justification": "Não possui propriedades magnéticas significativas.",
+        "score": 5
       },
       {
         "id": 24,
-        "label": "Dado 24",
-        "value": "Processando",
-        "justification": "Característica em análise para o Silício.",
-        "score": 50
+        "label": "Custo de Produção",
+        "value": "Baixo a Médio",
+        "justification": "Abundante, mas requer alto grau de pureza para eletrônicos.",
+        "score": 60
       },
       {
         "id": 25,
-        "label": "Dado 25",
-        "value": "Processando",
-        "justification": "Característica em análise para o Silício.",
-        "score": 50
+        "label": "Risco à Natureza",
+        "value": "Muito Baixo",
+        "justification": "Abundante e ecologicamente estável em sua forma natural.",
+        "score": 95
       },
       {
         "id": 26,
-        "label": "Dado 26",
-        "value": "Processando",
-        "justification": "Característica em análise para o Silício.",
-        "score": 50
+        "label": "Radioatividade",
+        "value": "Nula",
+        "justification": "Os isótopos naturais são perfeitamente estáveis.",
+        "score": 100
       },
       {
         "id": 27,
-        "label": "Dado 27",
-        "value": "Processando",
-        "justification": "Característica em análise para o Silício.",
-        "score": 50
+        "label": "Curiosidade Histórica",
+        "value": "Vale do Silício",
+        "justification": "Deu nome à região mais inovadora do planeta devido à sua importância.",
+        "score": 95
       }
     ]
   },
