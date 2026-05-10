@@ -11170,16 +11170,19 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
-            "id": 1,
-            "label": "Atributo 1",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 1,
+          "label": "Fraquezas",
+          "value": "Macio e reativo",
+          "justification": "Pode ser cortado com faca e oxida rapidamente no ar.",
+          "score": 30
         },
         {
-            "id": 2,
-            "label": "Atributo 2",
-            "value": "Em breve",
+          "id": 2,
+          "label": "Risco/Benefício à natureza",
+          "value": "Baixa toxicidade",
+          "justification": "Não possui papel biológico mas é pouco tóxico.",
+          "score": 85
+        },
             "justification": "Dados sendo processados pela central elemental.",
             "score": 50
         },
