@@ -22514,192 +22514,192 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "attributes": [
         {
             "id": 1,
-            "label": "Atributo 1",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Fraquezas",
+            "value": "Produção por Milissegundos",
+            "justification": "Desaparece em frações de segundo, tornando a observação um desafio extremo.",
+            "score": 1
         },
         {
             "id": 2,
-            "label": "Atributo 2",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
+            "label": "Risco/Benefício à natureza",
+            "value": "Irrelevante",
+            "justification": "Sem presença ambiental ou impacto biológico.",
             "score": 50
         },
         {
             "id": 3,
-            "label": "Atributo 3",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Risco à saúde",
+            "value": "Extremo",
+            "justification": "Radiação de alta intensidade em amostras microscópicas.",
+            "score": 1
         },
         {
             "id": 4,
-            "label": "Atributo 4",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Benefício",
+            "value": "Ilha de Estabilidade",
+            "justification": "Um dos elementos-chave na busca pela região de maior vida longa entre os superpesados.",
+            "score": 80
         },
         {
             "id": 5,
-            "label": "Atributo 5",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Nº de ligantes possíveis",
+            "value": "2, 4 (Teórico)",
+            "justification": "Como membro do grupo 14, sua química é prevista para seguir o padrão do Chumbo.",
+            "score": 40
         },
         {
             "id": 6,
-            "label": "Atributo 6",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Abundância na natureza",
+            "value": "Zero",
+            "justification": "Inexistente de forma natural.",
+            "score": 0
         },
         {
             "id": 7,
-            "label": "Atributo 7",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Abundância no universo",
+            "value": "Zero",
+            "justification": "Elemento puramente sintético.",
+            "score": 0
         },
         {
             "id": 8,
-            "label": "Atributo 8",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Massa atômica",
+            "value": "289 u",
+            "justification": "Massa do isótopo mais estável sintetizado.",
+            "score": 289
         },
         {
             "id": 9,
-            "label": "Atributo 9",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Densidade",
+            "value": "14 g/cm³ (Est.)",
+            "justification": "Densidade teórica estimada para o metal.",
+            "score": 100
         },
         {
             "id": 10,
-            "label": "Atributo 10",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Raio atômico",
+            "value": "180 pm (Est.)",
+            "justification": "Tamanho atômico estimado para o grupo 14.",
+            "score": 180
         },
         {
             "id": 11,
-            "label": "Atributo 11",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Oxidação",
+            "value": "+2, +4 (Est.)",
+            "justification": "O estado +2 deve ser dominante devido a fortes efeitos relativísticos.",
+            "score": 100
         },
         {
             "id": 12,
-            "label": "Atributo 12",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Condutividade elétrica",
+            "value": "Baixa (Teórica)",
+            "justification": "Suposto condutor metálico pobre ou semicondutor.",
+            "score": 30
         },
         {
             "id": 13,
-            "label": "Atributo 13",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Eletronegatividade",
+            "value": "Não definida",
+            "justification": "Propriedade ainda não mensurada.",
+            "score": 0
         },
         {
             "id": 14,
-            "label": "Atributo 14",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Estado físico",
+            "value": "Sólido (Teórico)",
+            "justification": "Deveria ser um metal denso, mas muito volátil.",
+            "score": 100
         },
         {
             "id": 15,
-            "label": "Atributo 15",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Maior subnível energético",
+            "value": "7p²",
+            "justification": "Dois elétrons na subcamada 7p de valência.",
+            "score": 20
         },
         {
             "id": 16,
-            "label": "Atributo 16",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Distribuição eletrônica",
+            "value": "[Rn] 5f¹⁴ 6d¹⁰ 7s² 7p²",
+            "justification": "Configuração que o coloca sob o Chumbo na tabela periódica.",
+            "score": 100
         },
         {
             "id": 17,
-            "label": "Atributo 17",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Nº de prótons / Nº de elétrons",
+            "value": "114",
+            "justification": "Identidade atômica do Fleróvio.",
+            "score": 100
         },
         {
             "id": 18,
-            "label": "Atributo 18",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Nº de nêutrons",
+            "value": "175",
+            "justification": "Número de nêutrons no isótopo Fl-289.",
+            "score": 175
         },
         {
             "id": 19,
-            "label": "Atributo 19",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Radioatividade",
+            "value": "Altíssima",
+            "justification": "Isótopo mais estável tem meia-vida de apenas 1,9 segundos.",
+            "score": 1
         },
         {
             "id": 20,
-            "label": "Atributo 20",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
+            "label": "Aplicabilidade / Utilidade",
+            "value": "Mapeamento Nuclear",
+            "justification": "Usado para verificar a estabilidade de núcleos ricos em nêutrons.",
             "score": 50
         },
         {
             "id": 21,
-            "label": "Atributo 21",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Local de origem",
+            "value": "Dubna, Rússia",
+            "justification": "Sintetizado no Laboratório Flerov de Reações Nucleares.",
+            "score": 100
         },
         {
             "id": 22,
-            "label": "Atributo 22",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Curiosidade",
+            "value": "Chumbo Nobre",
+            "justification": "Mesmo pertencendo ao grupo do chumbo, pode ser tão quimicamente inerte quanto um gás nobre.",
+            "score": 100
         },
         {
             "id": 23,
-            "label": "Atributo 23",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Origem do nome",
+            "value": "Georgy Flerov",
+            "justification": "Homenagem ao físico soviético pioneiro na pesquisa de fusão nuclear.",
+            "score": 100
         },
         {
             "id": 24,
-            "label": "Atributo 24",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Descobridor",
+            "value": "Yuri Oganessian e equipe",
+            "justification": "Equipe do JINR que sintetizou o elemento em 1998.",
+            "score": 100
         },
         {
             "id": 25,
-            "label": "Atributo 25",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Ano de descoberta",
+            "value": "1998",
+            "justification": "Ano da síntese inicial bem-sucedida.",
+            "score": 95
         },
         {
             "id": 26,
-            "label": "Atributo 26",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Ponto de fusão",
+            "value": "67 °C (Est.)",
+            "justification": "Estimativa de ponto de fusão extremamente baixo para um metal pesado.",
+            "score": 10
         },
         {
             "id": 27,
-            "label": "Atributo 27",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Ponto de ebulição",
+            "value": "150 °C (Est.)",
+            "justification": "Estimativa de ponto de ebulição muito baixo.",
+            "score": 10
         }
     ]
 },
