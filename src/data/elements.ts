@@ -14354,193 +14354,193 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
-            "id": 1,
-            "label": "Atributo 1",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 1,
+          "label": "Fraquezas",
+          "value": "Substituição industrial",
+          "justification": "Devido ao seu alto custo, indústrias buscam substitutos como o nióbio sempre que possível.",
+          "score": 30
         },
         {
-            "id": 2,
-            "label": "Atributo 2",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 2,
+          "label": "Risco/Benefício à natureza",
+          "value": "Bioinerte",
+          "justification": "Não reage com tecidos vivos, sendo ideal para implantes médicos sem causar rejeição.",
+          "score": 95
         },
         {
-            "id": 3,
-            "label": "Atributo 3",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 3,
+          "label": "Risco à saúde",
+          "value": "Inerte",
+          "justification": "Totalmente seguro para uso interno no corpo humano.",
+          "score": 100
         },
         {
-            "id": 4,
-            "label": "Atributo 4",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 4,
+          "label": "Benefício",
+          "value": "Capacitores de Celular, Implantes",
+          "justification": "Essencial para miniaturizar a eletrônica moderna e para a medicina ortopédica.",
+          "score": 98
         },
         {
-            "id": 5,
-            "label": "Atributo 5",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 5,
+          "label": "Nº de ligantes possíveis",
+          "value": "5",
+          "justification": "Estado de oxidação +5 é o mais comum e estável.",
+          "score": 75
         },
         {
-            "id": 6,
-            "label": "Atributo 6",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 6,
+          "label": "Abundância na natureza",
+          "value": "2,0 ppm (crosta)",
+          "justification": "Elemento relativamente raro, frequentemente encontrado com o nióbio.",
+          "score": 35
         },
         {
-            "id": 7,
-            "label": "Atributo 7",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 7,
+          "label": "Abundância no universo",
+          "value": "0,0000000008%",
+          "justification": "Elemento pesado raro no cosmos.",
+          "score": 0.5
         },
         {
-            "id": 8,
-            "label": "Atributo 8",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 8,
+          "label": "Massa atômica",
+          "value": "180,95 u",
+          "justification": "Massa baseada quase inteiramente no isótopo Ta-181.",
+          "score": 181
         },
         {
-            "id": 9,
-            "label": "Atributo 9",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 9,
+          "label": "Densidade",
+          "value": "16,69 g/cm³",
+          "justification": "Metal extremamente denso, mais que o dobro do ferro.",
+          "score": 167
         },
         {
-            "id": 10,
-            "label": "Atributo 10",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 10,
+          "label": "Raio atômico",
+          "value": "146 pm",
+          "justification": "Raio metálico compacto, contribuindo para sua densidade.",
+          "score": 146
         },
         {
-            "id": 11,
-            "label": "Atributo 11",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 11,
+          "label": "Oxidação",
+          "value": "-1, +2, +3, +4, +5",
+          "justification": "Apresenta versatilidade química, com +5 sendo predominante.",
+          "score": 60
         },
         {
-            "id": 12,
-            "label": "Atributo 12",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 12,
+          "label": "Condutividade elétrica",
+          "value": "Moderada (Metal)",
+          "justification": "Bom condutor, mas seu principal uso eletrônico é como isolante em capacitores (óxido).",
+          "score": 40
         },
         {
-            "id": 13,
-            "label": "Atributo 13",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 13,
+          "label": "Eletronegatividade",
+          "value": "1,5 (Pauling)",
+          "justification": "Eletropositividade típica de metais de transição do grupo 5.",
+          "score": 15
         },
         {
-            "id": 14,
-            "label": "Atributo 14",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 14,
+          "label": "Estado físico",
+          "value": "Sólido",
+          "justification": "Metal cinza-azulado, extremamente duro e resistente à corrosão por ácidos.",
+          "score": 50
         },
         {
-            "id": 15,
-            "label": "Atributo 15",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 15,
+          "label": "Maior subnível energético",
+          "value": "5d³",
+          "justification": "Terceiro elemento da série 5d.",
+          "score": 53
         },
         {
-            "id": 16,
-            "label": "Atributo 16",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 16,
+          "label": "Distribuição eletrônica",
+          "value": "[Xe] 4f¹⁴ 5d³ 6s²",
+          "justification": "Configuração fundamental do Tântalo.",
+          "score": 98
         },
         {
-            "id": 17,
-            "label": "Atributo 17",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 17,
+          "label": "Nº de prótons / Nº de elétrons",
+          "value": "73",
+          "justification": "Identidade atômica do Tântalo.",
+          "score": 99
         },
         {
-            "id": 18,
-            "label": "Atributo 18",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 18,
+          "label": "Nº de nêutrons",
+          "value": "108",
+          "justification": "Baseado no isótopo Ta-181.",
+          "score": 108
         },
         {
-            "id": 19,
-            "label": "Atributo 19",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 19,
+          "label": "Radioatividade",
+          "value": "Estável / Ta-180m (metaestável)",
+          "justification": "Ta-180m é o único isómero nuclear natural e é extremamente estável.",
+          "score": 100
         },
         {
-            "id": 20,
-            "label": "Atributo 20",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 20,
+          "label": "Aplicabilidade / Utilidade",
+          "value": "Smartphones, Próteses, Motores a Jato",
+          "justification": "Indispensável para capacitores de alta performance em eletrônicos portáteis.",
+          "score": 99
         },
         {
-            "id": 21,
-            "label": "Atributo 21",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 21,
+          "label": "Local de origem",
+          "value": "Suécia",
+          "justification": "Identificado por Anders Gustaf Ekeberg.",
+          "score": 85
         },
         {
-            "id": 22,
-            "label": "Atributo 22",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 22,
+          "label": "Curiosidade",
+          "value": "Resistência Extrema",
+          "justification": "É virtualmente imune ao ataque químico à temperatura ambiente, exceto pelo ácido fluorídrico.",
+          "score": 100
         },
         {
-            "id": 23,
-            "label": "Atributo 23",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 23,
+          "label": "Origem do nome",
+          "value": "Tântalo (Mitologia)",
+          "justification": "Homenagem ao personagem mitológico grego Tântalo, devido à sua 'incapacidade' de absorver ácidos.",
+          "score": 95
         },
         {
-            "id": 24,
-            "label": "Atributo 24",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 24,
+          "label": "Descobridor",
+          "value": "Anders Gustaf Ekeberg",
+          "justification": "Químico sueco que provou a distinção entre tântalo e nióbio.",
+          "score": 90
         },
         {
-            "id": 25,
-            "label": "Atributo 25",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 25,
+          "label": "Ano de descoberta",
+          "value": "1802",
+          "justification": "Descoberto no início do século XIX, mas frequentemente confundido com o nióbio por décadas.",
+          "score": 92
         },
         {
-            "id": 26,
-            "label": "Atributo 26",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 26,
+          "label": "Ponto de fusão",
+          "value": "3017 °C",
+          "justification": "Um dos pontos de fusão mais altos entre todos os metais.",
+          "score": 99
         },
         {
-            "id": 27,
-            "label": "Atributo 27",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 27,
+          "label": "Ponto de ebulição",
+          "value": "5458 °C",
+          "justification": "Ponto de ebulição extremamente elevado.",
+          "score": 55
         }
     ]
 },
@@ -14553,193 +14553,193 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
-            "id": 1,
-            "label": "Atributo 1",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 1,
+          "label": "Fraquezas",
+          "value": "Frágil à temperatura ambiente",
+          "justification": "É um metal muito duro e quebradiço, difícil de trabalhar sem calor.",
+          "score": 30
         },
         {
-            "id": 2,
-            "label": "Atributo 2",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 2,
+          "label": "Risco/Benefício à natureza",
+          "value": "Inerte",
+          "justification": "Metal estável que não representa ameaça tóxica significativa ao meio ambiente.",
+          "score": 85
         },
         {
-            "id": 3,
-            "label": "Atributo 3",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 3,
+          "label": "Risco à saúde",
+          "value": "Baixo",
+          "justification": "O pó pode ser irritante, mas o metal sólido é seguro.",
+          "score": 90
         },
         {
-            "id": 4,
-            "label": "Atributo 4",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 4,
+          "label": "Benefício",
+          "value": "Lâmpadas Incandescentes, Ferramentas de Corte",
+          "justification": "Sua resistência ao calor o torna vital para filamentos e brocas de alta velocidade.",
+          "score": 97
         },
         {
-            "id": 5,
-            "label": "Atributo 5",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 5,
+          "label": "Nº de ligantes possíveis",
+          "value": "6",
+          "justification": "Estado de oxidação +6 é o mais estável.",
+          "score": 80
         },
         {
-            "id": 6,
-            "label": "Atributo 6",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 6,
+          "label": "Abundância na natureza",
+          "value": "1,3 ppm (crosta)",
+          "justification": "Presente em minerais como a scheelita e a volframita.",
+          "score": 25
         },
         {
-            "id": 7,
-            "label": "Atributo 7",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 7,
+          "label": "Abundância no universo",
+          "value": "0,0000000005%",
+          "justification": "Elemento pesado muito raro no cosmos.",
+          "score": 0.5
         },
         {
-            "id": 8,
-            "label": "Atributo 8",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 8,
+          "label": "Massa atômica",
+          "value": "183,84 u",
+          "justification": "Massa baseada em cinco isótopos naturais.",
+          "score": 184
         },
         {
-            "id": 9,
-            "label": "Atributo 9",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 9,
+          "label": "Densidade",
+          "value": "19,25 g/cm³",
+          "justification": "Um dos metais mais densos, comparável ao ouro.",
+          "score": 193
         },
         {
-            "id": 10,
-            "label": "Atributo 10",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 10,
+          "label": "Raio atômico",
+          "value": "139 pm",
+          "justification": "Raio metálico compacto, contribuindo para sua dureza extrema.",
+          "score": 139
         },
         {
-            "id": 11,
-            "label": "Atributo 11",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 11,
+          "label": "Oxidação",
+          "value": "-2, -1, 0, +1, +2, +3, +4, +5, +6",
+          "justification": "Extrema versatilidade química.",
+          "score": 90
         },
         {
-            "id": 12,
-            "label": "Atributo 12",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 12,
+          "label": "Condutividade elétrica",
+          "value": "Boa (Metal)",
+          "justification": "Bom condutor de eletricidade, essencial para contatos elétricos.",
+          "score": 35
         },
         {
-            "id": 13,
-            "label": "Atributo 13",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 13,
+          "label": "Eletronegatividade",
+          "value": "2,36 (Pauling)",
+          "justification": "Valor relativamente alto para um metal de transição.",
+          "score": 24
         },
         {
-            "id": 14,
-            "label": "Atributo 14",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 14,
+          "label": "Estado físico",
+          "value": "Sólido",
+          "justification": "Metal cinza-claro a branco, com o maior ponto de fusão de todos os metais.",
+          "score": 50
         },
         {
-            "id": 15,
-            "label": "Atributo 15",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 15,
+          "label": "Maior subnível energético",
+          "value": "5d⁴",
+          "justification": "Quarto elemento da série 5d.",
+          "score": 54
         },
         {
-            "id": 16,
-            "label": "Atributo 16",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 16,
+          "label": "Distribuição eletrônica",
+          "value": "[Xe] 4f¹⁴ 5d⁴ 6s²",
+          "justification": "Configuração fundamental do Tungstênio.",
+          "score": 98
         },
         {
-            "id": 17,
-            "label": "Atributo 17",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 17,
+          "label": "Nº de prótons / Nº de elétrons",
+          "value": "74",
+          "justification": "Identidade atômica do Tungstênio.",
+          "score": 99
         },
         {
-            "id": 18,
-            "label": "Atributo 18",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 18,
+          "label": "Nº de nêutrons",
+          "value": "110",
+          "justification": "Diferença média baseada nos isótopos naturais.",
+          "score": 110
         },
         {
-            "id": 19,
-            "label": "Atributo 19",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 19,
+          "label": "Radioatividade",
+          "value": "Estável / W-180 (vida longa)",
+          "justification": "W-180 tem meia-vida de 1,8 quintilhão de anos.",
+          "score": 100
         },
         {
-            "id": 20,
-            "label": "Atributo 20",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 20,
+          "label": "Aplicabilidade / Utilidade",
+          "value": "Eletrodos TIG, Munição, Blindagem",
+          "justification": "Sua dureza e densidade são usadas em projéteis perfurantes e proteção contra radiação.",
+          "score": 98
         },
         {
-            "id": 21,
-            "label": "Atributo 21",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 21,
+          "label": "Local de origem",
+          "value": "Espanha",
+          "justification": "Isolado pelos irmãos Elhuyar.",
+          "score": 85
         },
         {
-            "id": 22,
-            "label": "Atributo 22",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 22,
+          "label": "Curiosidade",
+          "value": "Indestrutível",
+          "justification": "Tem o ponto de fusão mais alto (3422 °C) e a maior resistência à tração de qualquer metal a temperaturas acima de 1650 °C.",
+          "score": 100
         },
         {
-            "id": 23,
-            "label": "Atributo 23",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 23,
+          "label": "Origem do nome",
+          "value": "Tung sten (Pedra Pesada)",
+          "justification": "Termo sueco que descreve a densidade de seu minério.",
+          "score": 95
         },
         {
-            "id": 24,
-            "label": "Atributo 24",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 24,
+          "label": "Descobridor",
+          "value": "Juan José e Fausto Elhuyar",
+          "justification": "Irmãos espanhóis que isolaram o metal a partir da volframita.",
+          "score": 90
         },
         {
-            "id": 25,
-            "label": "Atributo 25",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 25,
+          "label": "Ano de descoberta",
+          "value": "1783",
+          "justification": "Isolado no final do século XVIII.",
+          "score": 92
         },
         {
-            "id": 26,
-            "label": "Atributo 26",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 26,
+          "label": "Ponto de fusão",
+          "value": "3422 °C",
+          "justification": "O mais alto ponto de fusão de todos os elementos metálicos.",
+          "score": 100
         },
         {
-            "id": 27,
-            "label": "Atributo 27",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 27,
+          "label": "Ponto de ebulição",
+          "value": "5555 °C",
+          "justification": "Ponto de ebulição extremamente elevado.",
+          "score": 56
         }
     ]
 },
@@ -14752,193 +14752,193 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
-            "id": 1,
-            "label": "Atributo 1",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 1,
+          "label": "Fraquezas",
+          "value": "Extrema raridade",
+          "justification": "É um dos elementos mais raros e caros da crosta terrestre.",
+          "score": 10
         },
         {
-            "id": 2,
-            "label": "Atributo 2",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 2,
+          "label": "Risco/Benefício à natureza",
+          "value": "Baixa toxicidade",
+          "justification": "Metal inerte, não apresenta riscos biológicos conhecidos em sua forma sólida.",
+          "score": 85
         },
         {
-            "id": 3,
-            "label": "Atributo 3",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 3,
+          "label": "Risco à saúde",
+          "value": "Baixo",
+          "justification": "Geralmente considerado seguro para manuseio.",
+          "score": 90
         },
         {
-            "id": 4,
-            "label": "Atributo 4",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 4,
+          "label": "Benefício",
+          "value": "Superligas, Contatos Elétricos",
+          "justification": "Sua resistência ao calor e desgaste é fundamental para a aviação moderna.",
+          "score": 96
         },
         {
-            "id": 5,
-            "label": "Atributo 5",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 5,
+          "label": "Nº de ligantes possíveis",
+          "value": "7",
+          "justification": "O estado de oxidação +7 é comum e estável para este metal.",
+          "score": 85
         },
         {
-            "id": 6,
-            "label": "Atributo 6",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 6,
+          "label": "Abundância na natureza",
+          "value": "0,0007 ppm (crosta)",
+          "justification": "Um dos elementos mais escassos que não são radioativos primordiais.",
+          "score": 5
         },
         {
-            "id": 7,
-            "label": "Atributo 7",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 7,
+          "label": "Abundância no universo",
+          "value": "0,0000000002%",
+          "justification": "Elemento extremamente raro no cosmos.",
+          "score": 0.1
         },
         {
-            "id": 8,
-            "label": "Atributo 8",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 8,
+          "label": "Massa atômica",
+          "value": "186,21 u",
+          "justification": "Massa baseada em dois isótopos naturais.",
+          "score": 186
         },
         {
-            "id": 9,
-            "label": "Atributo 9",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 9,
+          "label": "Densidade",
+          "value": "21,02 g/cm³",
+          "justification": "O quarto elemento mais denso da tabela periódica.",
+          "score": 210
         },
         {
-            "id": 10,
-            "label": "Atributo 10",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 10,
+          "label": "Raio atômico",
+          "value": "137 pm",
+          "justification": "Raio metálico reduzido, contribuindo para sua altíssima densidade.",
+          "score": 137
         },
         {
-            "id": 11,
-            "label": "Atributo 11",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 11,
+          "label": "Oxidação",
+          "value": "-1, 0, +1, +2, +3, +4, +5, +6, +7",
+          "justification": "Possui a maior gama de estados de oxidação de qualquer elemento.",
+          "score": 100
         },
         {
-            "id": 12,
-            "label": "Atributo 12",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 12,
+          "label": "Condutividade elétrica",
+          "value": "Boa (Metal)",
+          "justification": "Excelente condutor, mantém propriedades em altas temperaturas.",
+          "score": 30
         },
         {
-            "id": 13,
-            "label": "Atributo 13",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 13,
+          "label": "Eletronegatividade",
+          "value": "1,9 (Pauling)",
+          "justification": "Valor moderado para um metal de transição pesado.",
+          "score": 19
         },
         {
-            "id": 14,
-            "label": "Atributo 14",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 14,
+          "label": "Estado físico",
+          "value": "Sólido",
+          "justification": "Metal branco-prateado, brilhante e extremamente denso.",
+          "score": 50
         },
         {
-            "id": 15,
-            "label": "Atributo 15",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 15,
+          "label": "Maior subnível energético",
+          "value": "5d⁵",
+          "justification": "Quinto elemento da série 5d.",
+          "score": 55
         },
         {
-            "id": 16,
-            "label": "Atributo 16",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 16,
+          "label": "Distribuição eletrônica",
+          "value": "[Xe] 4f¹⁴ 5d⁵ 6s²",
+          "justification": "Configuração fundamental do Rênio.",
+          "score": 98
         },
         {
-            "id": 17,
-            "label": "Atributo 17",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 17,
+          "label": "Nº de prótons / Nº de elétrons",
+          "value": "75",
+          "justification": "Identidade atômica do Rênio.",
+          "score": 99
         },
         {
-            "id": 18,
-            "label": "Atributo 18",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 18,
+          "label": "Nº de nêutrons",
+          "value": "111",
+          "justification": "Média baseada no isótopo mais abundante Re-187.",
+          "score": 111
         },
         {
-            "id": 19,
-            "label": "Atributo 19",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 19,
+          "label": "Radioatividade",
+          "value": "Estável / Re-187 (vida longa)",
+          "justification": "Re-187 é radioativo mas tem meia-vida de 41 bilhões de anos.",
+          "score": 99
         },
         {
-            "id": 20,
-            "label": "Atributo 20",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 20,
+          "label": "Aplicabilidade / Utilidade",
+          "value": "Turbinas de Jato, Catalisadores de Platina",
+          "justification": "Crucial para a eficiência energética de motores de aeronaves.",
+          "score": 97
         },
         {
-            "id": 21,
-            "label": "Atributo 21",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 21,
+          "label": "Local de origem",
+          "value": "Alemanha",
+          "justification": "Descoberto por Ida Noddack, Walter Noddack e Otto Berg.",
+          "score": 85
         },
         {
-            "id": 22,
-            "label": "Atributo 22",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 22,
+          "label": "Curiosidade",
+          "value": "Último Natural",
+          "justification": "Foi o último elemento natural estável a ser descoberto na história.",
+          "score": 100
         },
         {
-            "id": 23,
-            "label": "Atributo 23",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 23,
+          "label": "Origem do nome",
+          "value": "Rhenus (Rio Reno)",
+          "justification": "Homenagem ao rio Reno na Alemanha.",
+          "score": 95
         },
         {
-            "id": 24,
-            "label": "Atributo 24",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 24,
+          "label": "Descobridor",
+          "value": "Ida Noddack e equipe",
+          "justification": "Uma das poucas mulheres a descobrir um elemento químico.",
+          "score": 95
         },
         {
-            "id": 25,
-            "label": "Atributo 25",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 25,
+          "label": "Ano de descoberta",
+          "value": "1925",
+          "justification": "Identificado por espectroscopia de raios-X.",
+          "score": 92
         },
         {
-            "id": 26,
-            "label": "Atributo 26",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 26,
+          "label": "Ponto de fusão",
+          "value": "3186 °C",
+          "justification": "O terceiro ponto de fusão mais alto entre todos os elementos.",
+          "score": 99
         },
         {
-            "id": 27,
-            "label": "Atributo 27",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 27,
+          "label": "Ponto de ebulição",
+          "value": "5596 °C",
+          "justification": "Ponto de ebulição extremamente elevado.",
+          "score": 56
         }
     ]
 },
@@ -14951,193 +14951,193 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
-            "id": 1,
-            "label": "Atributo 1",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 1,
+          "label": "Fraquezas",
+          "value": "Vapor tóxico",
+          "justification": "O tetróxido de ósmio (OsO₄) é altamente volátil e extremamente tóxico para olhos e pulmões.",
+          "score": 5
         },
         {
-            "id": 2,
-            "label": "Atributo 2",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 2,
+          "label": "Risco/Benefício à natureza",
+          "value": "Baixa toxicidade (Metal)",
+          "justification": "O metal em si é inerte, mas seus compostos oxidados são perigosos.",
+          "score": 85
         },
         {
-            "id": 3,
-            "label": "Atributo 3",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 3,
+          "label": "Risco à saúde",
+          "value": "Extremo (Vapores de Óxido)",
+          "justification": "Pode causar cegueira e danos pulmonares permanentes se inalado.",
+          "score": 1
         },
         {
-            "id": 4,
-            "label": "Atributo 4",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 4,
+          "label": "Benefício",
+          "value": "Contatos Elétricos, Pontas de Caneta",
+          "justification": "Sua dureza extrema o torna ideal para aplicações de alto desgaste.",
+          "score": 90
         },
         {
-            "id": 5,
-            "label": "Atributo 5",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 5,
+          "label": "Nº de ligantes possíveis",
+          "value": "8",
+          "justification": "Um dos poucos elementos capazes de atingir o estado de oxidação +8.",
+          "score": 95
         },
         {
-            "id": 6,
-            "label": "Atributo 6",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 6,
+          "label": "Abundância na natureza",
+          "value": "0,0015 ppm (crosta)",
+          "justification": "O elemento estável mais raro na crosta terrestre.",
+          "score": 2
         },
         {
-            "id": 7,
-            "label": "Atributo 7",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 7,
+          "label": "Abundância no universo",
+          "value": "0,0000000006%",
+          "justification": "Elemento pesado extremamente raro no cosmos.",
+          "score": 0.3
         },
         {
-            "id": 8,
-            "label": "Atributo 8",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 8,
+          "label": "Massa atômica",
+          "value": "190,23 u",
+          "justification": "Massa baseada em seus sete isótopos naturais.",
+          "score": 190
         },
         {
-            "id": 9,
-            "label": "Atributo 9",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 9,
+          "label": "Densidade",
+          "value": "22,59 g/cm³",
+          "justification": "O elemento mais denso conhecido, superando ligeiramente o irídio.",
+          "score": 226
         },
         {
-            "id": 10,
-            "label": "Atributo 10",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 10,
+          "label": "Raio atômico",
+          "value": "135 pm",
+          "justification": "Raio metálico muito compacto, explicando sua altíssima densidade.",
+          "score": 135
         },
         {
-            "id": 11,
-            "label": "Atributo 11",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 11,
+          "label": "Oxidação",
+          "value": "-2, -1, 0, +1, +2, +3, +4, +5, +6, +7, +8",
+          "justification": "Apresenta a maior gama de estados de oxidação da tabela periódica.",
+          "score": 100
         },
         {
-            "id": 12,
-            "label": "Atributo 12",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 12,
+          "label": "Condutividade elétrica",
+          "value": "Boa (Metal)",
+          "justification": "Bom condutor elétrico, mas raramente usado devido à toxicidade do óxido.",
+          "score": 30
         },
         {
-            "id": 13,
-            "label": "Atributo 13",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 13,
+          "label": "Eletronegatividade",
+          "value": "2,2 (Pauling)",
+          "justification": "Valor alto para um metal de transição pesado.",
+          "score": 22
         },
         {
-            "id": 14,
-            "label": "Atributo 14",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 14,
+          "label": "Estado físico",
+          "value": "Sólido",
+          "justification": "Metal azul-acinzentado, extremamente duro e quebradiço.",
+          "score": 50
         },
         {
-            "id": 15,
-            "label": "Atributo 15",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 15,
+          "label": "Maior subnível energético",
+          "value": "5d⁶",
+          "justification": "Sexto elemento da série 5d.",
+          "score": 56
         },
         {
-            "id": 16,
-            "label": "Atributo 16",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 16,
+          "label": "Distribuição eletrônica",
+          "value": "[Xe] 4f¹⁴ 5d⁶ 6s²",
+          "justification": "Configuração fundamental do Ósmio.",
+          "score": 98
         },
         {
-            "id": 17,
-            "label": "Atributo 17",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 17,
+          "label": "Nº de prótons / Nº de elétrons",
+          "value": "76",
+          "justification": "Identidade atômica do Ósmio.",
+          "score": 99
         },
         {
-            "id": 18,
-            "label": "Atributo 18",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 18,
+          "label": "Nº de nêutrons",
+          "value": "114",
+          "justification": "Média baseada nos isótopos estáveis naturais.",
+          "score": 114
         },
         {
-            "id": 19,
-            "label": "Atributo 19",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 19,
+          "label": "Radioatividade",
+          "value": "Estável / Os-186 (vida longa)",
+          "justification": "Os-186 tem meia-vida de 2 quatrilhões de anos; o resto é estável.",
+          "score": 100
         },
         {
-            "id": 20,
-            "label": "Atributo 20",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 20,
+          "label": "Aplicabilidade / Utilidade",
+          "value": "Agulhas de Toca-discos, Ligas de Alta Dureza",
+          "justification": "Usado onde a resistência ao atrito e dureza são críticas.",
+          "score": 92
         },
         {
-            "id": 21,
-            "label": "Atributo 21",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 21,
+          "label": "Local de origem",
+          "value": "Inglaterra",
+          "justification": "Identificado por Smithson Tennant em Londres.",
+          "score": 85
         },
         {
-            "id": 22,
-            "label": "Atributo 22",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 22,
+          "label": "Curiosidade",
+          "value": "O Mais Denso",
+          "justification": "Um tijolo de ósmio do tamanho de um smartphone pesaria cerca de 4 kg.",
+          "score": 100
         },
         {
-            "id": 23,
-            "label": "Atributo 23",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 23,
+          "label": "Origem do nome",
+          "value": "Osme (Cheiro)",
+          "justification": "Termo grego que reflete o odor forte e picante de seu óxido volátil.",
+          "score": 95
         },
         {
-            "id": 24,
-            "label": "Atributo 24",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 24,
+          "label": "Descobridor",
+          "value": "Smithson Tennant",
+          "justification": "Químico britânico que também descobriu o irídio no mesmo resíduo de platina.",
+          "score": 90
         },
         {
-            "id": 25,
-            "label": "Atributo 25",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 25,
+          "label": "Ano de descoberta",
+          "value": "1803",
+          "justification": "Identificado no resíduo negro da dissolução da platina em água régia.",
+          "score": 92
         },
         {
-            "id": 26,
-            "label": "Atributo 26",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 26,
+          "label": "Ponto de fusão",
+          "value": "3033 °C",
+          "justification": "Ponto de fusão extremamente alto.",
+          "score": 99
         },
         {
-            "id": 27,
-            "label": "Atributo 27",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 27,
+          "label": "Ponto de ebulição",
+          "value": "5012 °C",
+          "justification": "Ponto de ebulição extremamente elevado.",
+          "score": 50
         }
     ]
 },
@@ -15150,193 +15150,193 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
-            "id": 1,
-            "label": "Atributo 1",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 1,
+          "label": "Fraquezas",
+          "value": "Quebradiço",
+          "justification": "Metal extremamente duro mas difícil de trabalhar mecanicamente devido à sua fragilidade.",
+          "score": 30
         },
         {
-            "id": 2,
-            "label": "Atributo 2",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 2,
+          "label": "Risco/Benefício à natureza",
+          "value": "Nobre e Inerte",
+          "justification": "Sendo um dos metais mais resistentes à corrosão, não reage nem se dissolve facilmente na natureza.",
+          "score": 90
         },
         {
-            "id": 3,
-            "label": "Atributo 3",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 3,
+          "label": "Risco à saúde",
+          "value": "Inerte (Metal)",
+          "justification": "O metal sólido é seguro e não tóxico para manuseio comum.",
+          "score": 95
         },
         {
-            "id": 4,
-            "label": "Atributo 4",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 4,
+          "label": "Benefício",
+          "value": "Cadinhos, Velas de Ignição, Padrão de Metro",
+          "justification": "Crucial para equipamentos de laboratório que suportam calor extremo e corrosão química.",
+          "score": 97
         },
         {
-            "id": 5,
-            "label": "Atributo 5",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 5,
+          "label": "Nº de ligantes possíveis",
+          "value": "6",
+          "justification": "Estado de oxidação +4 é o mais comum, mas pode atingir +6.",
+          "score": 80
         },
         {
-            "id": 6,
-            "label": "Atributo 6",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 6,
+          "label": "Abundância na natureza",
+          "value": "0,001 ppm (crosta)",
+          "justification": "Extremamente raro, frequentemente encontrado junto com a platina.",
+          "score": 2
         },
         {
-            "id": 7,
-            "label": "Atributo 7",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 7,
+          "label": "Abundância no universo",
+          "value": "0,0000000006%",
+          "justification": "Elemento pesado muito raro no cosmos.",
+          "score": 0.3
         },
         {
-            "id": 8,
-            "label": "Atributo 8",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 8,
+          "label": "Massa atômica",
+          "value": "192,22 u",
+          "justification": "Massa baseada em seus dois isótopos naturais estáveis.",
+          "score": 192
         },
         {
-            "id": 9,
-            "label": "Atributo 9",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 9,
+          "label": "Densidade",
+          "value": "22,56 g/cm³",
+          "justification": "O segundo elemento mais denso, quase idêntico ao ósmio.",
+          "score": 226
         },
         {
-            "id": 10,
-            "label": "Atributo 10",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 10,
+          "label": "Raio atômico",
+          "value": "136 pm",
+          "justification": "Raio metálico compacto, explicando sua densidade fenomenal.",
+          "score": 136
         },
         {
-            "id": 11,
-            "label": "Atributo 11",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 11,
+          "label": "Oxidação",
+          "value": "-1, 0, +1, +2, +3, +4, +5, +6, +7, +8, +9",
+          "justification": "Apresenta uma vasta gama de estados de oxidação em laboratório.",
+          "score": 95
         },
         {
-            "id": 12,
-            "label": "Atributo 12",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 12,
+          "label": "Condutividade elétrica",
+          "value": "Boa (Metal)",
+          "justification": "Excelente condutor metálico, resistente ao desgaste elétrico.",
+          "score": 35
         },
         {
-            "id": 13,
-            "label": "Atributo 13",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 13,
+          "label": "Eletronegatividade",
+          "value": "2,2 (Pauling)",
+          "justification": "Alta eletronegatividade para um metal, característica do grupo da platina.",
+          "score": 22
         },
         {
-            "id": 14,
-            "label": "Atributo 14",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 14,
+          "label": "Estado físico",
+          "value": "Sólido",
+          "justification": "Metal branco-prateado, o mais resistente à corrosão de todos os metais conhecidos.",
+          "score": 50
         },
         {
-            "id": 15,
-            "label": "Atributo 15",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 15,
+          "label": "Maior subnível energético",
+          "value": "5d⁷",
+          "justification": "Sétimo elemento da série 5d.",
+          "score": 57
         },
         {
-            "id": 16,
-            "label": "Atributo 16",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 16,
+          "label": "Distribuição eletrônica",
+          "value": "[Xe] 4f¹⁴ 5d⁷ 6s²",
+          "justification": "Configuração fundamental do Irídio.",
+          "score": 98
         },
         {
-            "id": 17,
-            "label": "Atributo 17",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 17,
+          "label": "Nº de prótons / Nº de elétrons",
+          "value": "77",
+          "justification": "Identidade atômica do Irídio.",
+          "score": 99
         },
         {
-            "id": 18,
-            "label": "Atributo 18",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 18,
+          "label": "Nº de nêutrons",
+          "value": "115",
+          "justification": "Média baseada nos isótopos naturais Ir-191 e Ir-193.",
+          "score": 115
         },
         {
-            "id": 19,
-            "label": "Atributo 19",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 19,
+          "label": "Radioatividade",
+          "value": "Estável",
+          "justification": "O irídio natural consiste inteiramente em isótopos estáveis.",
+          "score": 100
         },
         {
-            "id": 20,
-            "label": "Atributo 20",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 20,
+          "label": "Aplicabilidade / Utilidade",
+          "value": "Ligas Aeroespaciais, Agulhas Médicas",
+          "justification": "Usado em situações de extrema demanda por resistência mecânica e química.",
+          "score": 96
         },
         {
-            "id": 21,
-            "label": "Atributo 21",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 21,
+          "label": "Local de origem",
+          "value": "Inglaterra",
+          "justification": "Descoberto por Smithson Tennant ao mesmo tempo que o ósmio.",
+          "score": 85
         },
         {
-            "id": 22,
-            "label": "Atributo 22",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 22,
+          "label": "Curiosidade",
+          "value": "Fronteira K-Pg",
+          "justification": "Uma camada rica em irídio em todo o mundo marca o impacto do asteroide que extinguiu os dinossauros.",
+          "score": 100
         },
         {
-            "id": 23,
-            "label": "Atributo 23",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 23,
+          "label": "Origem do nome",
+          "value": "Iris (Arco-íris)",
+          "justification": "Nomeado em homenagem à deusa grega do arco-íris devido às cores vibrantes de seus sais.",
+          "score": 95
         },
         {
-            "id": 24,
-            "label": "Atributo 24",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 24,
+          "label": "Descobridor",
+          "value": "Smithson Tennant",
+          "justification": "Químico britânico que isolou o elemento do resíduo de platina.",
+          "score": 90
         },
         {
-            "id": 25,
-            "label": "Atributo 25",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 25,
+          "label": "Ano de descoberta",
+          "value": "1803",
+          "justification": "Isolado na era pioneira da química dos metais nobres.",
+          "score": 92
         },
         {
-            "id": 26,
-            "label": "Atributo 26",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 26,
+          "label": "Ponto de fusão",
+          "value": "2446 °C",
+          "justification": "Ponto de fusão muito alto, metal refratário.",
+          "score": 98
         },
         {
-            "id": 27,
-            "label": "Atributo 27",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 27,
+          "label": "Ponto de ebulição",
+          "value": "4428 °C",
+          "justification": "Ponto de ebulição extremamente elevado.",
+          "score": 44
         }
     ]
 },
@@ -15349,193 +15349,193 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
-            "id": 1,
-            "label": "Atributo 1",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 1,
+          "label": "Fraquezas",
+          "value": "Escassez extrema",
+          "justification": "Um dos metais mais caros e raros, com produção anual muito limitada.",
+          "score": 10
         },
         {
-            "id": 2,
-            "label": "Atributo 2",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 2,
+          "label": "Risco/Benefício à natureza",
+          "value": "Nobre e Bioestável",
+          "justification": "Metal inerte que não reage quimicamente em ambientes biológicos.",
+          "score": 95
         },
         {
-            "id": 3,
-            "label": "Atributo 3",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 3,
+          "label": "Risco à saúde",
+          "value": "Baixo (Metal)",
+          "justification": "O metal em si é inerte; alguns sais de platina podem ser tóxicos ou alérgicos.",
+          "score": 90
         },
         {
-            "id": 4,
-            "label": "Atributo 4",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 4,
+          "label": "Benefício",
+          "value": "Conversores Catalíticos, Joalheria, Quimioterapia",
+          "justification": "Fundamental para reduzir poluição automotiva e base para medicamentos como a cisplatina.",
+          "score": 99
         },
         {
-            "id": 5,
-            "label": "Atributo 5",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 5,
+          "label": "Nº de ligantes possíveis",
+          "value": "4, 6",
+          "justification": "Forma complexos de coordenação muito estáveis, especialmente quadrados planares e octaédricos.",
+          "score": 85
         },
         {
-            "id": 6,
-            "label": "Atributo 6",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 6,
+          "label": "Abundância na natureza",
+          "value": "0,005 ppm (crosta)",
+          "justification": "Um dos elementos menos abundantes na crosta terrestre.",
+          "score": 5
         },
         {
-            "id": 7,
-            "label": "Atributo 7",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 7,
+          "label": "Abundância no universo",
+          "value": "0,000000005%",
+          "justification": "Elemento pesado raro no cosmos.",
+          "score": 0.5
         },
         {
-            "id": 8,
-            "label": "Atributo 8",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 8,
+          "label": "Massa atômica",
+          "value": "195,08 u",
+          "justification": "Massa baseada em seus seis isótopos naturais.",
+          "score": 195
         },
         {
-            "id": 9,
-            "label": "Atributo 9",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 9,
+          "label": "Densidade",
+          "value": "21,45 g/cm³",
+          "justification": "Metal densíssimo, o terceiro mais denso da tabela periódica.",
+          "score": 214
         },
         {
-            "id": 10,
-            "label": "Atributo 10",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 10,
+          "label": "Raio atômico",
+          "value": "139 pm",
+          "justification": "Raio metálico compacto, conferindo-lhe grande densidade.",
+          "score": 139
         },
         {
-            "id": 11,
-            "label": "Atributo 11",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 11,
+          "label": "Oxidação",
+          "value": "0, +2, +4, +5, +6",
+          "justification": "Os estados +2 e +4 são os mais comuns e úteis quimicamente.",
+          "score": 70
         },
         {
-            "id": 12,
-            "label": "Atributo 12",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 12,
+          "label": "Condutividade elétrica",
+          "value": "Boa (Metal)",
+          "justification": "Excelente condutor, muito usado em contatos elétricos de precisão.",
+          "score": 35
         },
         {
-            "id": 13,
-            "label": "Atributo 13",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 13,
+          "label": "Eletronegatividade",
+          "value": "2,28 (Pauling)",
+          "justification": "Alta eletronegatividade para um metal, próxima à do ouro.",
+          "score": 23
         },
         {
-            "id": 14,
-            "label": "Atributo 14",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 14,
+          "label": "Estado físico",
+          "value": "Sólido",
+          "justification": "Metal branco-cinzentado, denso, maleável e altamente ductível.",
+          "score": 50
         },
         {
-            "id": 15,
-            "label": "Atributo 15",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 15,
+          "label": "Maior subnível energético",
+          "value": "5d⁹",
+          "justification": "Apresenta uma configuração irregular onde um elétron 6s migra para o 5d.",
+          "score": 58
         },
         {
-            "id": 16,
-            "label": "Atributo 16",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 16,
+          "label": "Distribuição eletrônica",
+          "value": "[Xe] 4f¹⁴ 5d⁹ 6s¹",
+          "justification": "Configuração fundamental que explica sua alta reatividade catalítica.",
+          "score": 98
         },
         {
-            "id": 17,
-            "label": "Atributo 17",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 17,
+          "label": "Nº de prótons / Nº de elétrons",
+          "value": "78",
+          "justification": "Identidade atômica da Platina.",
+          "score": 99
         },
         {
-            "id": 18,
-            "label": "Atributo 18",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 18,
+          "label": "Nº de nêutrons",
+          "value": "117",
+          "justification": "Diferença média entre massa e número atômico.",
+          "score": 117
         },
         {
-            "id": 19,
-            "label": "Atributo 19",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 19,
+          "label": "Radioatividade",
+          "value": "Estável / Pt-190 (vida longa)",
+          "justification": "Apenas o isótopo Pt-190 é radioativo, com meia-vida de 650 bilhões de anos.",
+          "score": 100
         },
         {
-            "id": 20,
-            "label": "Atributo 20",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 20,
+          "label": "Aplicabilidade / Utilidade",
+          "value": "Catalisadores, Marcapassos, Joias",
+          "justification": "Crucial para a tecnologia médica e para a limpeza do ar que respiramos.",
+          "score": 99
         },
         {
-            "id": 21,
-            "label": "Atributo 21",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 21,
+          "label": "Local de origem",
+          "value": "América do Sul (Colômbia/Equador)",
+          "justification": "Conhecida por povos pré-colombianos antes da colonização europeia.",
+          "score": 100
         },
         {
-            "id": 22,
-            "label": "Atributo 22",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 22,
+          "label": "Curiosidade",
+          "value": "Ouro Menor",
+          "justification": "Conquistadores espanhóis a chamavam de 'platina' (pratinha), considerando-a uma impureza indesejada do ouro.",
+          "score": 100
         },
         {
-            "id": 23,
-            "label": "Atributo 23",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 23,
+          "label": "Origem do name",
+          "value": "Plata (Prata)",
+          "justification": "Devido à sua semelhança visual com a prata.",
+          "score": 95
         },
         {
-            "id": 24,
-            "label": "Atributo 24",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 24,
+          "label": "Descobridor",
+          "value": "Antonio de Ulloa",
+          "justification": "Militar e cientista espanhol que trouxe as primeiras amostras para a Europa.",
+          "score": 85
         },
         {
-            "id": 25,
-            "label": "Atributo 25",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 25,
+          "label": "Ano de descoberta",
+          "value": "1735",
+          "justification": "Redescoberta cientificamente para o mundo ocidental no século XVIII.",
+          "score": 90
         },
         {
-            "id": 26,
-            "label": "Atributo 26",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 26,
+          "label": "Ponto de fusão",
+          "value": "1768 °C",
+          "justification": "Ponto de fusão elevado, exigindo fornos potentes para fundição.",
+          "score": 95
         },
         {
-            "id": 27,
-            "label": "Atributo 27",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 27,
+          "label": "Ponto de ebulição",
+          "value": "3825 °C",
+          "justification": "Ponto de ebulição muito alto.",
+          "score": 38
         }
     ]
 },
@@ -15548,193 +15548,193 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
-            "id": 1,
-            "label": "Atributo 1",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 1,
+          "label": "Fraquezas",
+          "value": "Macio e Maleável",
+          "justification": "O ouro puro é muito macio para a maioria das aplicações práticas, exigindo ligas.",
+          "score": 30
         },
         {
-            "id": 2,
-            "label": "Atributo 2",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 2,
+          "label": "Risco/Benefício à natureza",
+          "value": "Inerte e Seguro",
+          "justification": "Metal quimicamente inerte que não se decompõe nem polui solo ou água.",
+          "score": 95
         },
         {
-            "id": 3,
-            "label": "Atributo 3",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 3,
+          "label": "Risco à saúde",
+          "value": "Inerte",
+          "justification": "Não reage com o corpo humano, sendo seguro para próteses e até consumo (em folha).",
+          "score": 100
         },
         {
-            "id": 4,
-            "label": "Atributo 4",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 4,
+          "label": "Benefício",
+          "value": "Eletrônica, Reservas Monetárias, Odontologia",
+          "justification": "Sua condutividade e resistência à corrosão o tornam indispensável para conexões digitais.",
+          "score": 100
         },
         {
-            "id": 5,
-            "label": "Atributo 5",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 5,
+          "label": "Nº de ligantes possíveis",
+          "value": "1, 3",
+          "justification": "Os estados de oxidação +1 e +3 são os mais estáveis.",
+          "score": 60
         },
         {
-            "id": 6,
-            "label": "Atributo 6",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 6,
+          "label": "Abundância na natureza",
+          "value": "0,004 ppm (crosta)",
+          "justification": "Elemento raro, mas amplamente distribuído em baixas concentrações.",
+          "score": 10
         },
         {
-            "id": 7,
-            "label": "Atributo 7",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 7,
+          "label": "Abundância no universo",
+          "value": "0,0000000006%",
+          "justification": "Elemento pesado raro no cosmos.",
+          "score": 0.5
         },
         {
-            "id": 8,
-            "label": "Atributo 8",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 8,
+          "label": "Massa atômica",
+          "value": "196,97 u",
+          "justification": "Massa baseada no único isótopo estável Au-197.",
+          "score": 197
         },
         {
-            "id": 9,
-            "label": "Atributo 9",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 9,
+          "label": "Densidade",
+          "value": "19,30 g/cm³",
+          "justification": "Metal extremamente denso, um dos mais pesados que ocorrem naturalmente.",
+          "score": 193
         },
         {
-            "id": 10,
-            "label": "Atributo 10",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 10,
+          "label": "Raio atômico",
+          "value": "144 pm",
+          "justification": "Raio metálico que permite compactação densa.",
+          "score": 144
         },
         {
-            "id": 11,
-            "label": "Atributo 11",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 11,
+          "label": "Oxidação",
+          "value": "-1, 0, +1, +2, +3, +5",
+          "justification": "Apresenta estados variados, com +3 sendo muito estável em complexos.",
+          "score": 65
         },
         {
-            "id": 12,
-            "label": "Atributo 12",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 12,
+          "label": "Condutividade elétrica",
+          "value": "Excelente (Metal)",
+          "justification": "O terceiro melhor condutor elétrico, superado apenas por prata e cobre.",
+          "score": 90
         },
         {
-            "id": 13,
-            "label": "Atributo 13",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 13,
+          "label": "Eletronegatividade",
+          "value": "2,54 (Pauling)",
+          "justification": "A mais alta eletronegatividade entre todos os metais.",
+          "score": 25
         },
         {
-            "id": 14,
-            "label": "Atributo 14",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 14,
+          "label": "Estado físico",
+          "value": "Sólido",
+          "justification": "Metal amarelo brilhante, o mais maleável e dúctil de todos.",
+          "score": 50
         },
         {
-            "id": 15,
-            "label": "Atributo 15",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 15,
+          "label": "Maior subnível energético",
+          "value": "5d¹⁰",
+          "justification": "Apresenta uma configuração irregular onde a camada 5d é completada migrando um elétron 6s.",
+          "score": 59
         },
         {
-            "id": 16,
-            "label": "Atributo 16",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 16,
+          "label": "Distribuição eletrônica",
+          "value": "[Xe] 4f¹⁴ 5d¹⁰ 6s¹",
+          "justification": "Configuração fundamental que explica sua estabilidade química e cor única.",
+          "score": 99
         },
         {
-            "id": 17,
-            "label": "Atributo 17",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 17,
+          "label": "Nº de prótons / Nº de elétrons",
+          "value": "79",
+          "justification": "Identidade atômica do Ouro.",
+          "score": 99
         },
         {
-            "id": 18,
-            "label": "Atributo 18",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 18,
+          "label": "Nº de nêutrons",
+          "value": "118",
+          "justification": "Baseado no único isótopo estável Au-197.",
+          "score": 118
         },
         {
-            "id": 19,
-            "label": "Atributo 19",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 19,
+          "label": "Radioatividade",
+          "value": "Totalmente Estável",
+          "justification": "O ouro natural não possui isótopos radioativos.",
+          "score": 100
         },
         {
-            "id": 20,
-            "label": "Atributo 20",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 20,
+          "label": "Aplicabilidade / Utilidade",
+          "value": "Conectores, Aeroespacial, Finanças",
+          "justification": "Vital para satélites (proteção térmica) e para a economia global.",
+          "score": 100
         },
         {
-            "id": 21,
-            "label": "Atributo 21",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 21,
+          "label": "Local de origem",
+          "value": "Conhecido desde a Antiguidade",
+          "justification": "Usado por praticamente todas as civilizações antigas devido à sua ocorrência nativa.",
+          "score": 100
         },
         {
-            "id": 22,
-            "label": "Atributo 22",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 22,
+          "label": "Curiosidade",
+          "value": "Ultra Maleabilidade",
+          "justification": "Um único grama de ouro pode ser batido em uma folha transparente de um metro quadrado.",
+          "score": 100
         },
         {
-            "id": 23,
-            "label": "Atributo 23",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 23,
+          "label": "Origem do nome",
+          "value": "Aurum (Brilho Aurora)",
+          "justification": "Termo latino que evoca o brilho do amanhecer.",
+          "score": 95
         },
         {
-            "id": 24,
-            "label": "Atributo 24",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 24,
+          "label": "Descobridor",
+          "value": "Desconhecido",
+          "justification": "Um dos primeiros metais a serem manipulados pelo homem pré-histórico.",
+          "score": 100
         },
         {
-            "id": 25,
-            "label": "Atributo 25",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 25,
+          "label": "Ano de descoberta",
+          "value": "~6000 a.C.",
+          "justification": "Evidências de uso desde a Idade do Cobre.",
+          "score": 100
         },
         {
-            "id": 26,
-            "label": "Atributo 26",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 26,
+          "label": "Ponto de fusão",
+          "value": "1064 °C",
+          "justification": "Ponto de fusão moderado, facilitando a metalurgia antiga.",
+          "score": 96
         },
         {
-            "id": 27,
-            "label": "Atributo 27",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 27,
+          "label": "Ponto de ebulição",
+          "value": "2856 °C",
+          "justification": "Ponto de ebulição elevado.",
+          "score": 28
         }
     ]
 },
@@ -15747,193 +15747,193 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
-            "id": 1,
-            "label": "Atributo 1",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 1,
+          "label": "Fraquezas",
+          "value": "Extrema toxicidade",
+          "justification": "O mercúrio e seus compostos são neurotoxinas potentes que se acumulam na cadeia alimentar.",
+          "score": 1
         },
         {
-            "id": 2,
-            "label": "Atributo 2",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 2,
+          "label": "Risco/Benefício à natureza",
+          "value": "Poluente Persistente",
+          "justification": "Bioacumula-se em peixes (metilmercúrio), representando um grave risco ambiental.",
+          "score": 5
         },
         {
-            "id": 3,
-            "label": "Atributo 3",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 3,
+          "label": "Risco à saúde",
+          "value": "Alto (Neurotóxico)",
+          "justification": "Causa danos cerebrais, renais e ao sistema nervoso central.",
+          "score": 1
         },
         {
-            "id": 4,
-            "label": "Atributo 4",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 4,
+          "label": "Benefício",
+          "value": "Termômetros, Amálgamas, Lâmpadas Fluorescentes",
+          "justification": "Único metal líquido a temperatura ambiente, vital para medição e iluminação eficiente.",
+          "score": 85
         },
         {
-            "id": 5,
-            "label": "Atributo 5",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 5,
+          "label": "Nº de ligantes possíveis",
+          "value": "2",
+          "justification": "Forma frequentemente complexos lineares com coordenação 2.",
+          "score": 50
         },
         {
-            "id": 6,
-            "label": "Atributo 6",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 6,
+          "label": "Abundância na natureza",
+          "value": "0,085 ppm (crosta)",
+          "justification": "Elemento raro, encontrado principalmente no mineral cinábrio (HgS).",
+          "score": 15
         },
         {
-            "id": 7,
-            "label": "Atributo 7",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 7,
+          "label": "Abundância no universo",
+          "value": "0,000000002%",
+          "justification": "Elemento pesado raro no cosmos.",
+          "score": 0.2
         },
         {
-            "id": 8,
-            "label": "Atributo 8",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 8,
+          "label": "Massa atômica",
+          "value": "200,59 u",
+          "justification": "Massa baseada na mistura de sete isótopos estáveis.",
+          "score": 201
         },
         {
-            "id": 9,
-            "label": "Atributo 9",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 9,
+          "label": "Densidade",
+          "value": "13,534 g/cm³ (Líquido)",
+          "justification": "Metal densíssimo, mesmo em seu estado líquido.",
+          "score": 135
         },
         {
-            "id": 10,
-            "label": "Atributo 10",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 10,
+          "label": "Raio atômico",
+          "value": "151 pm",
+          "justification": "Raio metálico típico para o final do bloco d.",
+          "score": 151
         },
         {
-            "id": 11,
-            "label": "Atributo 11",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 11,
+          "label": "Oxidação",
+          "value": "+1 (Hg₂²⁺), +2",
+          "justification": "Apresenta o estado único Hg₂²⁺ com ligação metal-metal.",
+          "score": 40
         },
         {
-            "id": 12,
-            "label": "Atributo 12",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 12,
+          "label": "Condutividade elétrica",
+          "value": "Moderada (Líquido)",
+          "justification": "Conduz eletricidade, sendo usado em interruptores de mercúrio.",
+          "score": 25
         },
         {
-            "id": 13,
-            "label": "Atributo 13",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 13,
+          "label": "Eletronegatividade",
+          "value": "2,00 (Pauling)",
+          "justification": "Valor moderado para um metal pesado.",
+          "score": 20
         },
         {
-            "id": 14,
-            "label": "Atributo 14",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 14,
+          "label": "Estado físico",
+          "value": "Líquido",
+          "justification": "O único metal que é líquido nas CNTP.",
+          "score": 100
         },
         {
-            "id": 15,
-            "label": "Atributo 15",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 15,
+          "label": "Maior subnível energético",
+          "value": "5d¹⁰",
+          "justification": "Finaliza o preenchimento da camada 5d.",
+          "score": 60
         },
         {
-            "id": 16,
-            "label": "Atributo 16",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 16,
+          "label": "Distribuição eletrônica",
+          "value": "[Xe] 4f¹⁴ 5d¹⁰ 6s²",
+          "justification": "Configuração eletrônica estável que explica seu baixo ponto de fusão.",
+          "score": 98
         },
         {
-            "id": 17,
-            "label": "Atributo 17",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 17,
+          "label": "Nº de prótons / Nº de elétrons",
+          "value": "80",
+          "justification": "Identidade atômica do Mercúrio.",
+          "score": 99
         },
         {
-            "id": 18,
-            "label": "Atributo 18",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 18,
+          "label": "Nº de nêutrons",
+          "value": "121",
+          "justification": "Diferença entre massa e número atômico.",
+          "score": 121
         },
         {
-            "id": 19,
-            "label": "Atributo 19",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 19,
+          "label": "Radioatividade",
+          "value": "Totalmente Estável",
+          "justification": "O mercúrio natural não possui isótopos radioativos primordiais.",
+          "score": 100
         },
         {
-            "id": 20,
-            "label": "Atributo 20",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 20,
+          "label": "Aplicabilidade / Utilidade",
+          "value": "Iluminação, Mineração de Ouro, Ciência",
+          "justification": "Sua capacidade de formar amálgamas é usada (apesar de riscos) na mineração.",
+          "score": 90
         },
         {
-            "id": 21,
-            "label": "Atributo 21",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 21,
+          "label": "Local de origem",
+          "value": "Conhecido desde a Antiguidade",
+          "justification": "Encontrado em túmulos egípcios datados de 1500 a.C.",
+          "score": 100
         },
         {
-            "id": 22,
-            "label": "Atributo 22",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 22,
+          "label": "Curiosidade",
+          "value": "Prata Viva",
+          "justification": "Antigamente chamado de 'hydrargyrum' (água de prata), daí seu símbolo Hg.",
+          "score": 100
         },
         {
-            "id": 23,
-            "label": "Atributo 23",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 23,
+          "label": "Origem do nome",
+          "value": "Mercúrio (Mitologia)",
+          "justification": "Homenagem ao deus romano Mercúrio, mensageiro veloz, devido à sua mobilidade.",
+          "score": 95
         },
         {
-            "id": 24,
-            "label": "Atributo 24",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 24,
+          "label": "Descobridor",
+          "value": "Desconhecido",
+          "justification": "Um dos sete metais conhecidos desde a história antiga.",
+          "score": 100
         },
         {
-            "id": 25,
-            "label": "Atributo 25",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 25,
+          "label": "Ano de descoberta",
+          "value": "~1500 a.C.",
+          "justification": "Primeiros registros de uso documentado.",
+          "score": 100
         },
         {
-            "id": 26,
-            "label": "Atributo 26",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 26,
+          "label": "Ponto de fusão",
+          "value": "-38,83 °C",
+          "justification": "O ponto de fusão mais baixo de todos os metais.",
+          "score": 100
         },
         {
-            "id": 27,
-            "label": "Atributo 27",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 27,
+          "label": "Ponto de ebulição",
+          "value": "356,7 °C",
+          "justification": "Ponto de ebulição baixo para um metal, facilitando a purificação.",
+          "score": 36
         }
     ]
 },
