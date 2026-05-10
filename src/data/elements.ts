@@ -7981,198 +7981,198 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 41,
     "symbol": "Nb",
     "name": "Nióbio",
-    "heroName": "Nióbio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Nióbio.",
+    "heroName": "Niobium Core",
+    "heroDescription": "O mestre da resistência extrema e das superligas. Niobium Core é o herói que torna o aço indestrutível e permite que os motores a jato alcancem os céus com leveza e força.",
     "heroImage": "/placeholder.svg",
     "attributes": [
       {
         "id": 1,
-        "label": "Dado 1",
-        "value": "Processando",
-        "justification": "Característica em análise para o Nióbio.",
-        "score": 50
+        "label": "Massa Atômica",
+        "value": "92.906 u",
+        "justification": "O Nióbio possui uma massa atômica de aproximadamente 92.906 u.",
+        "score": 93
       },
       {
         "id": 2,
-        "label": "Dado 2",
-        "value": "Processando",
-        "justification": "Característica em análise para o Nióbio.",
-        "score": 50
+        "label": "Abundância na Crosta",
+        "value": "20 ppm",
+        "justification": "Elemento estratégico, encontrado principalmente na columbita e pirocloro.",
+        "score": 45
       },
       {
         "id": 3,
-        "label": "Dado 3",
-        "value": "Processando",
-        "justification": "Característica em análise para o Nióbio.",
-        "score": 50
+        "label": "Ponto de Fusão",
+        "value": "2477 °C",
+        "justification": "Possui um ponto de fusão altíssimo, essencial para tecnologias aeroespaciais.",
+        "score": 98
       },
       {
         "id": 4,
-        "label": "Dado 4",
-        "value": "Processando",
-        "justification": "Característica em análise para o Nióbio.",
-        "score": 50
+        "label": "Ponto de Ebulição",
+        "value": "4744 °C",
+        "justification": "Uma das maiores temperaturas de vaporização entre os metais.",
+        "score": 99
       },
       {
         "id": 5,
-        "label": "Dado 5",
-        "value": "Processando",
-        "justification": "Característica em análise para o Nióbio.",
-        "score": 50
+        "label": "Densidade",
+        "value": "8.57 g/cm³",
+        "justification": "Metal denso, mas extremamente eficiente em pequenas quantidades.",
+        "score": 85
       },
       {
         "id": 6,
-        "label": "Dado 6",
-        "value": "Processando",
-        "justification": "Característica em análise para o Nióbio.",
-        "score": 50
+        "label": "Dureza de Mohs",
+        "value": "6.0",
+        "justification": "Metal muito duro, comparável ao aço temperado.",
+        "score": 80
       },
       {
         "id": 7,
-        "label": "Dado 7",
-        "value": "Processando",
-        "justification": "Característica em análise para o Nióbio.",
-        "score": 50
+        "label": "Eletronegatividade",
+        "value": "1.60",
+        "justification": "Valor típico que favorece a formação de óxidos estáveis e ligas complexas.",
+        "score": 40
       },
       {
         "id": 8,
-        "label": "Dado 8",
-        "value": "Processando",
-        "justification": "Característica em análise para o Nióbio.",
-        "score": 50
+        "label": "Condutividade Térmica",
+        "value": "53.7 W/(m·K)",
+        "justification": "Boa condutividade térmica para aplicações estruturais.",
+        "score": 60
       },
       {
         "id": 9,
-        "label": "Dado 9",
-        "value": "Processando",
-        "justification": "Característica em análise para o Nióbio.",
-        "score": 50
+        "label": "Condutividade Elétrica",
+        "value": "6.7 MS/m",
+        "justification": "Excelente condutor, tornando-se supercondutor em baixas temperaturas.",
+        "score": 90
       },
       {
         "id": 10,
-        "label": "Dado 10",
-        "value": "Processando",
-        "justification": "Característica em análise para o Nióbio.",
-        "score": 50
+        "label": "Calor Específico",
+        "value": "0.265 J/(g·K)",
+        "justification": "Capacidade térmica característica de metais refratários.",
+        "score": 45
       },
       {
         "id": 11,
-        "label": "Dado 11",
-        "value": "Processando",
-        "justification": "Característica em análise para o Nióbio.",
-        "score": 50
+        "label": "Raio Atômico",
+        "value": "146 pm",
+        "justification": "Tamanho atômico que facilita a dopagem em estruturas de aço.",
+        "score": 55
       },
       {
         "id": 12,
-        "label": "Dado 12",
-        "value": "Processando",
-        "justification": "Característica em análise para o Nióbio.",
-        "score": 50
+        "label": "Energia de Ionização",
+        "value": "6.758 eV",
+        "justification": "Energia necessária para remover o primeiro elétron.",
+        "score": 65
       },
       {
         "id": 13,
-        "label": "Dado 13",
-        "value": "Processando",
-        "justification": "Característica em análise para o Nióbio.",
-        "score": 50
+        "label": "Estado Físico (CNTP)",
+        "value": "Sólido",
+        "justification": "Metal cinza brilhante, maleável quando puro, que adquire pátina azulada.",
+        "score": 99
       },
       {
         "id": 14,
-        "label": "Dado 14",
-        "value": "Processando",
-        "justification": "Característica em análise para o Nióbio.",
-        "score": 50
+        "label": "Reatividade Química",
+        "value": "Baixa (Resistente)",
+        "justification": "Inerte a quase todos os ácidos e produtos químicos em temperatura ambiente.",
+        "score": 90
       },
       {
         "id": 15,
-        "label": "Dado 15",
-        "value": "Processando",
-        "justification": "Característica em análise para o Nióbio.",
-        "score": 50
+        "label": "Reciclabilidade",
+        "value": "Alta",
+        "justification": "Pode ser recuperado de superligas e componentes aeroespaciais.",
+        "score": 85
       },
       {
         "id": 16,
-        "label": "Dado 16",
-        "value": "Processando",
-        "justification": "Característica em análise para o Nióbio.",
-        "score": 50
+        "label": "Resistência à Corrosão",
+        "value": "Excepcional",
+        "justification": "Sua camada de óxido é extremamente estável e protetora.",
+        "score": 100
       },
       {
         "id": 17,
-        "label": "Dado 17",
-        "value": "Processando",
-        "justification": "Característica em análise para o Nióbio.",
-        "score": 50
+        "label": "Refletividade",
+        "value": "Moderada",
+        "justification": "Brilho metálico cinzento característico.",
+        "score": 70
       },
       {
         "id": 18,
-        "label": "Dado 18",
-        "value": "Processando",
-        "justification": "Característica em análise para o Nióbio.",
-        "score": 50
+        "label": "Maleabilidade",
+        "value": "Boa",
+        "justification": "Pode ser moldado e trefilado com relativa facilidade quando puro.",
+        "score": 80
       },
       {
         "id": 19,
-        "label": "Dado 19",
-        "value": "Processando",
-        "justification": "Característica em análise para o Nióbio.",
-        "score": 50
+        "label": "Dutibilidade",
+        "value": "Alta",
+        "justification": "Pode ser transformado em fios finos para imãs supercondutores.",
+        "score": 85
       },
       {
         "id": 20,
-        "label": "Dado 20",
-        "value": "Processando",
-        "justification": "Característica em análise para o Nióbio.",
-        "score": 50
+        "label": "Isótopos Estáveis",
+        "value": "1 (Nb-93)",
+        "justification": "Elemento monoisotópico na natureza.",
+        "score": 98
       },
       {
         "id": 21,
-        "label": "Dado 21",
-        "value": "Processando",
-        "justification": "Característica em análise para o Nióbio.",
-        "score": 50
+        "label": "Toxicidade",
+        "value": "Baixa",
+        "justification": "Geralmente considerado seguro e hipoalergênico.",
+        "score": 95
       },
       {
         "id": 22,
-        "label": "Dado 22",
-        "value": "Processando",
-        "justification": "Característica em análise para o Nióbio.",
-        "score": 50
+        "label": "Aplicações Tecnológicas",
+        "value": "Estratégica",
+        "justification": "Essencial para a indústria automobilística, espacial e em aparelhos de ressonância magnética (MRI).",
+        "score": 100
       },
       {
         "id": 23,
-        "label": "Dado 23",
-        "value": "Processando",
-        "justification": "Característica em análise para o Nióbio.",
-        "score": 50
+        "label": "Magnético",
+        "value": "Paramagnético",
+        "justification": "Magnetismo fraco à temperatura ambiente.",
+        "score": 15
       },
       {
         "id": 24,
-        "label": "Dado 24",
-        "value": "Processando",
-        "justification": "Característica em análise para o Nióbio.",
+        "label": "Custo de Produção",
+        "value": "Moderado",
+        "justification": "Produção dominada mundialmente pelo Brasil (90% do mercado).",
         "score": 50
       },
       {
         "id": 25,
-        "label": "Dado 25",
-        "value": "Processando",
-        "justification": "Característica em análise para o Nióbio.",
-        "score": 50
+        "label": "Risco à Natureza",
+        "value": "Baixo",
+        "justification": "Estável e de baixo impacto ambiental direto.",
+        "score": 92
       },
       {
         "id": 26,
-        "label": "Dado 26",
-        "value": "Processando",
-        "justification": "Característica em análise para o Nióbio.",
-        "score": 50
+        "label": "Radioatividade",
+        "value": "Nula",
+        "justification": "Isótopo natural Nb-93 é completamente estável.",
+        "score": 100
       },
       {
         "id": 27,
-        "label": "Dado 27",
-        "value": "Processando",
-        "justification": "Característica em análise para o Nióbio.",
-        "score": 50
+        "label": "Curiosidade Histórica",
+        "value": "Níobe",
+        "justification": "Nomeado em homenagem a Níobe, filha de Tântalo na mitologia grega, devido à sua semelhança química com o Tântalo.",
+        "score": 95
       }
     ]
   },
