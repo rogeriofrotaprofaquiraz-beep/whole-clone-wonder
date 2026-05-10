@@ -5394,198 +5394,397 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 27,
     "symbol": "Co",
     "name": "Cobalto",
-    "heroName": "Cobalto Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Cobalto.",
+    "heroName": "Cobalt Blue",
+    "heroDescription": "O mestre das superligas e das cores profundas, um herói essencial para as baterias do futuro e para a medicina nuclear.",
     "heroImage": "/placeholder.svg",
     "attributes": [
       {
         "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Fraquezas",
+        "value": "Risco de toxicidade por inalação",
+        "justification": "Pó de cobalto pode causar problemas pulmonares sérios.",
+        "score": 15
       },
       {
         "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Risco/Benefício à natureza",
+        "value": "Componente da Vitamina B12",
+        "justification": "Essencial para a síntese de DNA e metabolismo em animais.",
+        "score": 90
       },
       {
         "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Risco à saúde",
+        "value": "Dermatite de contato",
+        "justification": "Pode causar alergias de pele em indivíduos sensíveis.",
+        "score": 40
       },
       {
         "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Benefício",
+        "value": "Baterias de Lítio, Superligas, Câncer",
+        "justification": "Fundamental para carros elétricos e tratamento radioterápico.",
+        "score": 98
       },
       {
         "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de ligantes possíveis",
+        "value": "4, 6",
+        "justification": "Forma complexos coloridos, especialmente octaédricos.",
+        "score": 75
       },
       {
         "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Abundância na natureza",
+        "value": "25 ppm (crosta)",
+        "justification": "Relativamente raro, frequentemente encontrado com o cobre e níquel.",
+        "score": 40
       },
       {
         "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Abundância no universo",
+        "value": "0,0003%",
+        "justification": "Criado em explosões de supernovas tipo II.",
+        "score": 30
+      },
+      {
+        "id": 8,
+        "label": "Massa atômica",
+        "value": "58,933 u",
+        "justification": "Massa ligeiramente superior à do ferro.",
+        "score": 59
+      },
+      {
+        "id": 9,
+        "label": "Densidade",
+        "value": "8,90 g/cm³",
+        "justification": "Metal denso, similar ao cobre e níquel.",
+        "score": 89
+      },
+      {
+        "id": 10,
+        "label": "Raio atômico",
+        "value": "125 pm",
+        "justification": "Compacto, ideal para ligas metálicas resistentes.",
+        "score": 60
+      },
+      {
+        "id": 11,
+        "label": "Oxidação",
+        "value": "+2, +3",
+        "justification": "Os estados +2 e +3 dominam sua rica química de coordenação.",
+        "score": 85
+      },
+      {
+        "id": 12,
+        "label": "Condutividade elétrica",
+        "value": "Boa",
+        "justification": "Condutor metálico eficiente.",
+        "score": 65
+      },
+      {
+        "id": 13,
+        "label": "Eletronegatividade",
+        "value": "1,88",
+        "justification": "Valor típico dos metais de transição do grupo 9.",
+        "score": 55
+      },
+      {
+        "id": 14,
+        "label": "Estado físico",
+        "value": "Sólido",
+        "justification": "Metal duro, cinza-azulado e ferromagnético.",
+        "score": 80
+      },
+      {
+        "id": 15,
+        "label": "Maior subnível energético",
+        "value": "3d⁷",
+        "justification": "Sétimo elemento da primeira série de transição.",
+        "score": 27
+      },
+      {
+        "id": 16,
+        "label": "Distribuição eletrônica",
+        "value": "[Ar] 3d⁷ 4s²",
+        "justification": "Configuração que confere suas propriedades magnéticas.",
+        "score": 90
+      },
+      {
+        "id": 17,
+        "label": "Nº de prótons / Nº de elétrons",
+        "value": "27",
+        "justification": "Identidade do Cobalto.",
+        "score": 99
+      },
+      {
+        "id": 18,
+        "label": "Nº de nêutrons",
+        "value": "32",
+        "justification": "Equilíbrio nuclear no isótopo natural único Co-59.",
+        "score": 32
+      },
+      {
+        "id": 19,
+        "label": "Radioatividade",
+        "value": "Natural Estável / Isot. Co-60 Artif.",
+        "justification": "Co-59 é estável, mas Co-60 é uma fonte gama potente.",
+        "score": 80
+      },
+      {
+        "id": 20,
+        "label": "Aplicabilidade / Utilidade",
+        "value": "Motores de Avião, Smartphones, Medicina",
+        "justification": "Vital para tecnologia de ponta e saúde.",
+        "score": 98
+      },
+      {
+        "id": 21,
+        "label": "Local de origem",
+        "value": "Suécia",
+        "justification": "Isolado pelo químico Georg Brandt.",
+        "score": 80
+      },
+      {
+        "id": 22,
+        "label": "Curiosidade",
+        "value": "O 'Metal do Duende'",
+        "justification": "Mineradores alemães achavam que duendes (Kobolds) trocavam prata por esse metal.",
+        "score": 100
+      },
+      {
+        "id": 23,
+        "label": "Origem do nome",
+        "value": "Kobold (Duende)",
+        "justification": "Nome derivado da superstição de antigos mineradores.",
+        "score": 95
+      },
+      {
+        "id": 24,
+        "label": "Descobridor",
+        "value": "Georg Brandt",
+        "justification": "Primeiro a provar que a cor azul do vidro vinha do cobalto.",
+        "score": 90
+      },
+      {
+        "id": 25,
+        "label": "Ano de descoberta",
+        "value": "1735",
+        "justification": "Um dos primeiros metais a ser descoberto após a antiguidade.",
+        "score": 95
+      },
+      {
+        "id": 26,
+        "label": "Ponto de fusão",
+        "value": "1495 °C",
+        "justification": "Fusão elevada, característica de metais estruturais.",
+        "score": 14
+      },
+      {
+        "id": 27,
+        "label": "Ponto de ebulição",
+        "value": "2927 °C",
+        "justification": "Extremamente estável em altas temperaturas.",
+        "score": 29
+      }
+    ]
+  },
+  "Ni": {
+    "number": 28,
+    "symbol": "Ni",
+    "name": "Níquel",
+    "heroName": "Nickel Plate",
+    "heroDescription": "O mestre da durabilidade e das moedas do mundo, um herói versátil que protege o que é valioso contra a corrosão.",
+    "heroImage": "/placeholder.svg",
+    "attributes": [
+      {
+        "id": 1,
+        "label": "Fraquezas",
+        "value": "Alergia comum",
+        "justification": "Muitas pessoas desenvolvem dermatite ao contato prolongado.",
+        "score": 15
+      },
+      {
+        "id": 2,
+        "label": "Risco/Benefício à natureza",
+        "value": "Enzimas Vegetais",
+        "justification": "Algumas plantas precisam de níquel para processar ureia.",
+        "score": 75
+      },
+      {
+        "id": 3,
+        "label": "Risco à saúde",
+        "value": "Irritante e potencialmente cancerígeno",
+        "justification": "A inalação de compostos de níquel é perigosa.",
+        "score": 25
+      },
+      {
+        "id": 4,
+        "label": "Benefício",
+        "value": "Moedas, Baterias, Aço Inoxidável",
+        "justification": "Essencial para economia, eletrônicos e metalurgia.",
+        "score": 98
+      },
+      {
+        "id": 5,
+        "label": "Nº de ligantes possíveis",
+        "value": "4, 6",
+        "justification": "Forma complexos estáveis, sendo o tetracarbonilo famoso.",
+        "score": 60
+      },
+      {
+        "id": 6,
+        "label": "Abundância na natureza",
+        "value": "84 ppm (crosta)",
+        "justification": "Elemento comum, abundante no núcleo da Terra.",
+        "score": 80
+      },
+      {
+        "id": 7,
+        "label": "Abundância no universo",
+        "value": "0,006%",
+        "justification": "Abundante em meteoritos metálicos.",
         "score": 50
       },
       {
         "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Massa atômica",
+        "value": "58,693 u",
+        "justification": "Curiosamente mais leve que o cobalto precedente.",
+        "score": 58
       },
       {
         "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Densidade",
+        "value": "8,908 g/cm³",
+        "justification": "Metal denso e resistente.",
+        "score": 89
       },
       {
         "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Raio atômico",
+        "value": "124 pm",
+        "justification": "Tamanho compacto que favorece dureza.",
+        "score": 60
       },
       {
         "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Oxidação",
+        "value": "+2",
+        "justification": "Estado de oxidação quase onipresente em sua química.",
+        "score": 92
       },
       {
         "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Condutividade elétrica",
+        "value": "Boa",
+        "justification": "Conduz bem a eletricidade.",
+        "score": 70
       },
       {
         "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Eletronegatividade",
+        "value": "1,91",
+        "justification": "Eletronegatividade elevada para um metal de transição.",
+        "score": 55
       },
       {
         "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Estado físico",
+        "value": "Sólido",
+        "justification": "Metal branco-prateado, duro e maleável.",
+        "score": 85
       },
       {
         "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Maior subnível energético",
+        "value": "3d⁸",
+        "justification": "Oitavo elemento da primeira série de transição.",
+        "score": 28
       },
       {
         "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Distribuição eletrônica",
+        "value": "[Ar] 3d⁸ 4s²",
+        "justification": "Configuração que resulta em propriedades ferromagnéticas.",
+        "score": 90
       },
       {
         "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de prótons / Nº de elétrons",
+        "value": "28",
+        "justification": "Número que define o Níquel.",
+        "score": 99
       },
       {
         "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de nêutrons",
+        "value": "31",
+        "justification": "Número médio de nêutrons em seus isótopos.",
+        "score": 31
       },
       {
         "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Radioatividade",
+        "value": "Estável",
+        "justification": "Possui cinco isótopos naturais estáveis.",
+        "score": 100
       },
       {
         "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Aplicabilidade / Utilidade",
+        "value": "Moedas, Baterias recarregáveis, Turbinas",
+        "justification": "Essencial para o armazenamento de energia e aviação.",
+        "score": 97
       },
       {
         "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Local de origem",
+        "value": "Suécia",
+        "justification": "Isolado por Axel Fredrik Cronstedt.",
+        "score": 80
       },
       {
         "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Curiosidade",
+        "value": "Núcleo Planetário",
+        "justification": "Forma o núcleo da Terra junto com o ferro.",
+        "score": 100
       },
       {
         "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Origem do nome",
+        "value": "Kupfernickel (Cobre falso)",
+        "justification": "Nome dado por mineiros que achavam que era cobre amaldiçoado.",
+        "score": 95
       },
       {
         "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Descobridor",
+        "value": "Axel Fredrik Cronstedt",
+        "justification": "Cientista sueco que desmistificou o 'cobre falso'.",
+        "score": 90
       },
       {
         "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ano de descoberta",
+        "value": "1751",
+        "justification": "Identificado como um novo elemento metálico puro.",
+        "score": 95
       },
       {
         "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de fusão",
+        "value": "1455 °C",
+        "justification": "Alta resistência mecânica ao calor.",
+        "score": 14
       },
       {
         "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de ebulição",
+        "value": "2913 °C",
+        "justification": "Ebulição típica de metais de transição densos.",
+        "score": 29
       }
     ]
   },
