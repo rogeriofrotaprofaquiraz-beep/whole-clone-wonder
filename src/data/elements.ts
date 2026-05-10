@@ -14951,189 +14951,189 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
-            "id": 1,
-            "label": "Atributo 1",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 1,
+          "label": "Fraquezas",
+          "value": "Vapor tóxico",
+          "justification": "O tetróxido de ósmio (OsO₄) é altamente volátil e extremamente tóxico para olhos e pulmões.",
+          "score": 5
         },
         {
-            "id": 2,
-            "label": "Atributo 2",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 2,
+          "label": "Risco/Benefício à natureza",
+          "value": "Baixa toxicidade (Metal)",
+          "justification": "O metal em si é inerte, mas seus compostos oxidados são perigosos.",
+          "score": 85
         },
         {
-            "id": 3,
-            "label": "Atributo 3",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 3,
+          "label": "Risco à saúde",
+          "value": "Extremo (Vapores de Óxido)",
+          "justification": "Pode causar cegueira e danos pulmonares permanentes se inalado.",
+          "score": 1
         },
         {
-            "id": 4,
-            "label": "Atributo 4",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 4,
+          "label": "Benefício",
+          "value": "Contatos Elétricos, Pontas de Caneta",
+          "justification": "Sua dureza extrema o torna ideal para aplicações de alto desgaste.",
+          "score": 90
         },
         {
-            "id": 5,
-            "label": "Atributo 5",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 5,
+          "label": "Nº de ligantes possíveis",
+          "value": "8",
+          "justification": "Um dos poucos elementos capazes de atingir o estado de oxidação +8.",
+          "score": 95
         },
         {
-            "id": 6,
-            "label": "Atributo 6",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 6,
+          "label": "Abundância na natureza",
+          "value": "0,0015 ppm (crosta)",
+          "justification": "O elemento estável mais raro na crosta terrestre.",
+          "score": 2
         },
         {
-            "id": 7,
-            "label": "Atributo 7",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 7,
+          "label": "Abundância no universo",
+          "value": "0,0000000006%",
+          "justification": "Elemento pesado extremamente raro no cosmos.",
+          "score": 0.3
         },
         {
-            "id": 8,
-            "label": "Atributo 8",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 8,
+          "label": "Massa atômica",
+          "value": "190,23 u",
+          "justification": "Massa baseada em seus sete isótopos naturais.",
+          "score": 190
         },
         {
-            "id": 9,
-            "label": "Atributo 9",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 9,
+          "label": "Densidade",
+          "value": "22,59 g/cm³",
+          "justification": "O elemento mais denso conhecido, superando ligeiramente o irídio.",
+          "score": 226
         },
         {
-            "id": 10,
-            "label": "Atributo 10",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 10,
+          "label": "Raio atômico",
+          "value": "135 pm",
+          "justification": "Raio metálico muito compacto, explicando sua altíssima densidade.",
+          "score": 135
         },
         {
-            "id": 11,
-            "label": "Atributo 11",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 11,
+          "label": "Oxidação",
+          "value": "-2, -1, 0, +1, +2, +3, +4, +5, +6, +7, +8",
+          "justification": "Apresenta a maior gama de estados de oxidação da tabela periódica.",
+          "score": 100
         },
         {
-            "id": 12,
-            "label": "Atributo 12",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 12,
+          "label": "Condutividade elétrica",
+          "value": "Boa (Metal)",
+          "justification": "Bom condutor elétrico, mas raramente usado devido à toxicidade do óxido.",
+          "score": 30
         },
         {
-            "id": 13,
-            "label": "Atributo 13",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 13,
+          "label": "Eletronegatividade",
+          "value": "2,2 (Pauling)",
+          "justification": "Valor alto para um metal de transição pesado.",
+          "score": 22
         },
         {
-            "id": 14,
-            "label": "Atributo 14",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 14,
+          "label": "Estado físico",
+          "value": "Sólido",
+          "justification": "Metal azul-acinzentado, extremamente duro e quebradiço.",
+          "score": 50
         },
         {
-            "id": 15,
-            "label": "Atributo 15",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 15,
+          "label": "Maior subnível energético",
+          "value": "5d⁶",
+          "justification": "Sexto elemento da série 5d.",
+          "score": 56
         },
         {
-            "id": 16,
-            "label": "Atributo 16",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 16,
+          "label": "Distribuição eletrônica",
+          "value": "[Xe] 4f¹⁴ 5d⁶ 6s²",
+          "justification": "Configuração fundamental do Ósmio.",
+          "score": 98
         },
         {
-            "id": 17,
-            "label": "Atributo 17",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 17,
+          "label": "Nº de prótons / Nº de elétrons",
+          "value": "76",
+          "justification": "Identidade atômica do Ósmio.",
+          "score": 99
         },
         {
-            "id": 18,
-            "label": "Atributo 18",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 18,
+          "label": "Nº de nêutrons",
+          "value": "114",
+          "justification": "Média baseada nos isótopos estáveis naturais.",
+          "score": 114
         },
         {
-            "id": 19,
-            "label": "Atributo 19",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 19,
+          "label": "Radioatividade",
+          "value": "Estável / Os-186 (vida longa)",
+          "justification": "Os-186 tem meia-vida de 2 quatrilhões de anos; o resto é estável.",
+          "score": 100
         },
         {
-            "id": 20,
-            "label": "Atributo 20",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 20,
+          "label": "Aplicabilidade / Utilidade",
+          "value": "Agulhas de Toca-discos, Ligas de Alta Dureza",
+          "justification": "Usado onde a resistência ao atrito e dureza são críticas.",
+          "score": 92
         },
         {
-            "id": 21,
-            "label": "Atributo 21",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 21,
+          "label": "Local de origem",
+          "value": "Inglaterra",
+          "justification": "Identificado por Smithson Tennant em Londres.",
+          "score": 85
         },
         {
-            "id": 22,
-            "label": "Atributo 22",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 22,
+          "label": "Curiosidade",
+          "value": "O Mais Denso",
+          "justification": "Um tijolo de ósmio do tamanho de um smartphone pesaria cerca de 4 kg.",
+          "score": 100
         },
         {
-            "id": 23,
-            "label": "Atributo 23",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 23,
+          "label": "Origem do nome",
+          "value": "Osme (Cheiro)",
+          "justification": "Termo grego que reflete o odor forte e picante de seu óxido volátil.",
+          "score": 95
         },
         {
-            "id": 24,
-            "label": "Atributo 24",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 24,
+          "label": "Descobridor",
+          "value": "Smithson Tennant",
+          "justification": "Químico britânico que também descobriu o irídio no mesmo resíduo de platina.",
+          "score": 90
         },
         {
-            "id": 25,
-            "label": "Atributo 25",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 25,
+          "label": "Ano de descoberta",
+          "value": "1803",
+          "justification": "Identificado no resíduo negro da dissolução da platina em água régia.",
+          "score": 92
         },
         {
-            "id": 26,
-            "label": "Atributo 26",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 26,
+          "label": "Ponto de fusão",
+          "value": "3033 °C",
+          "justification": "Ponto de fusão extremamente alto.",
+          "score": 99
         },
         {
-            "id": 27,
+          "id": 27,
             "label": "Atributo 27",
             "value": "Em breve",
             "justification": "Dados sendo processados pela central elemental.",
