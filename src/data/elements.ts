@@ -9175,201 +9175,201 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 47,
     "symbol": "Ag",
     "name": "Prata",
-    "heroName": "Silver Mirror",
-    "heroDescription": "O deus da beleza e da condutividade, um herói que reflete a luz e ativa imagens.",
+    "heroName": "Silver Flash",
+    "heroDescription": "O condutor supremo e mestre do brilho absoluto. Silver Flash é o herói que transporta energia sem perdas e purifica o mundo com seu toque antibacteriano.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-        {
-            "id": 1,
-            "label": "Dado 1",
-            "value": "Processando",
-            "justification": "Característica em análise para a Prata.",
-            "score": 50
-        },
-        {
-            "id": 2,
-            "label": "Dado 2",
-            "value": "Processando",
-            "justification": "Característica em análise para a Prata.",
-            "score": 50
-        },
-        {
-            "id": 3,
-            "label": "Dado 3",
-            "value": "Processando",
-            "justification": "Característica em análise para a Prata.",
-            "score": 50
-        },
-        {
-            "id": 4,
-            "label": "Dado 4",
-            "value": "Processando",
-            "justification": "Característica em análise para a Prata.",
-            "score": 50
-        },
-        {
-            "id": 5,
-            "label": "Dado 5",
-            "value": "Processando",
-            "justification": "Característica em análise para a Prata.",
-            "score": 50
-        },
-        {
-            "id": 6,
-            "label": "Dado 6",
-            "value": "Processando",
-            "justification": "Característica em análise para a Prata.",
-            "score": 50
-        },
-        {
-            "id": 7,
-            "label": "Dado 7",
-            "value": "Processando",
-            "justification": "Característica em análise para a Prata.",
-            "score": 50
-        },
-        {
-            "id": 8,
-            "label": "Dado 8",
-            "value": "Processando",
-            "justification": "Característica em análise para a Prata.",
-            "score": 50
-        },
-        {
-            "id": 9,
-            "label": "Dado 9",
-            "value": "Processando",
-            "justification": "Característica em análise para a Prata.",
-            "score": 50
-        },
-        {
-            "id": 10,
-            "label": "Dado 10",
-            "value": "Processando",
-            "justification": "Característica em análise para a Prata.",
-            "score": 50
-        },
-        {
-            "id": 11,
-            "label": "Dado 11",
-            "value": "Processando",
-            "justification": "Característica em análise para a Prata.",
-            "score": 50
-        },
-        {
-            "id": 12,
-            "label": "Dado 12",
-            "value": "Processando",
-            "justification": "Característica em análise para a Prata.",
-            "score": 50
-        },
-        {
-            "id": 13,
-            "label": "Dado 13",
-            "value": "Processando",
-            "justification": "Característica em análise para a Prata.",
-            "score": 50
-        },
-        {
-            "id": 14,
-            "label": "Dado 14",
-            "value": "Processando",
-            "justification": "Característica em análise para a Prata.",
-            "score": 50
-        },
-        {
-            "id": 15,
-            "label": "Dado 15",
-            "value": "Processando",
-            "justification": "Característica em análise para a Prata.",
-            "score": 50
-        },
-        {
-            "id": 16,
-            "label": "Dado 16",
-            "value": "Processando",
-            "justification": "Característica em análise para a Prata.",
-            "score": 50
-        },
-        {
-            "id": 17,
-            "label": "Dado 17",
-            "value": "Processando",
-            "justification": "Característica em análise para a Prata.",
-            "score": 50
-        },
-        {
-            "id": 18,
-            "label": "Dado 18",
-            "value": "Processando",
-            "justification": "Característica em análise para a Prata.",
-            "score": 50
-        },
-        {
-            "id": 19,
-            "label": "Dado 19",
-            "value": "Processando",
-            "justification": "Característica em análise para a Prata.",
-            "score": 50
-        },
-        {
-            "id": 20,
-            "label": "Dado 20",
-            "value": "Processando",
-            "justification": "Característica em análise para a Prata.",
-            "score": 50
-        },
-        {
-            "id": 21,
-            "label": "Dado 21",
-            "value": "Processando",
-            "justification": "Característica em análise para a Prata.",
-            "score": 50
-        },
-        {
-            "id": 22,
-            "label": "Dado 22",
-            "value": "Processando",
-            "justification": "Característica em análise para a Prata.",
-            "score": 50
-        },
-        {
-            "id": 23,
-            "label": "Dado 23",
-            "value": "Processando",
-            "justification": "Característica em análise para a Prata.",
-            "score": 50
-        },
-        {
-            "id": 24,
-            "label": "Dado 24",
-            "value": "Processando",
-            "justification": "Característica em análise para a Prata.",
-            "score": 50
-        },
-        {
-            "id": 25,
-            "label": "Dado 25",
-            "value": "Processando",
-            "justification": "Característica em análise para a Prata.",
-            "score": 50
-        },
-        {
-            "id": 26,
-            "label": "Dado 26",
-            "value": "Processando",
-            "justification": "Característica em análise para a Prata.",
-            "score": 50
-        },
-        {
-            "id": 27,
-            "label": "Dado 27",
-            "value": "Processando",
-            "justification": "Característica em análise para a Prata.",
-            "score": 50
-        }
+      {
+        "id": 1,
+        "label": "Massa Atômica",
+        "value": "107.87 u",
+        "justification": "A Prata possui uma massa atômica de aproximadamente 107.87 u.",
+        "score": 108
+      },
+      {
+        "id": 2,
+        "label": "Abundância na Crosta",
+        "value": "0.075 ppm",
+        "justification": "Metal precioso raro, cerca de 20 vezes mais abundante que o ouro.",
+        "score": 40
+      },
+      {
+        "id": 3,
+        "label": "Ponto de Fusão",
+        "value": "961.8 °C",
+        "justification": "Possui um ponto de fusão moderado para um metal de transição.",
+        "score": 96
+      },
+      {
+        "id": 4,
+        "label": "Ponto de Ebulição",
+        "value": "2162 °C",
+        "justification": "Sua temperatura de vaporização é elevada.",
+        "score": 85
+      },
+      {
+        "id": 5,
+        "label": "Densidade",
+        "value": "10.49 g/cm³",
+        "justification": "Metal denso, mas mais leve que o chumbo.",
+        "score": 88
+      },
+      {
+        "id": 6,
+        "label": "Dureza de Mohs",
+        "value": "2.5",
+        "justification": "Metal relativamente macio, mais duro que o ouro mas mais macio que o cobre.",
+        "score": 25
+      },
+      {
+        "id": 7,
+        "label": "Eletronegatividade",
+        "value": "1.93",
+        "justification": "Eletronegatividade moderada, característica de metais nobres.",
+        "score": 55
+      },
+      {
+        "id": 8,
+        "label": "Condutividade Térmica",
+        "value": "429 W/(m·K)",
+        "justification": "A maior condutividade térmica de todos os metais.",
+        "score": 100
+      },
+      {
+        "id": 9,
+        "label": "Condutividade Elétrica",
+        "value": "63 MS/m",
+        "justification": "O melhor condutor elétrico conhecido, superando o cobre.",
+        "score": 100
+      },
+      {
+        "id": 10,
+        "label": "Calor Específico",
+        "value": "0.235 J/(g·K)",
+        "justification": "Capacidade térmica característica de metais pesados.",
+        "score": 40
+      },
+      {
+        "id": 11,
+        "label": "Raio Atômico",
+        "value": "144 pm",
+        "justification": "Tamanho atômico médio.",
+        "score": 60
+      },
+      {
+        "id": 12,
+        "label": "Energia de Ionização",
+        "value": "7.576 eV",
+        "justification": "Energia necessária para remover o primeiro elétron.",
+        "score": 75
+      },
+      {
+        "id": 13,
+        "label": "Estado Físico (CNTP)",
+        "value": "Sólido",
+        "justification": "Metal de cor branca brilhante, o metal mais reflexivo da tabela.",
+        "score": 99
+      },
+      {
+        "id": 14,
+        "label": "Reatividade Química",
+        "value": "Baixa (Nobre)",
+        "justification": "Não oxida facilmente no ar, mas reage com compostos de enxofre (escurecimento).",
+        "score": 80
+      },
+      {
+        "id": 15,
+        "label": "Reciclabilidade",
+        "value": "Máxima",
+        "justification": "Altamente valorizado e intensamente reciclado em todo o mundo.",
+        "score": 100
+      },
+      {
+        "id": 16,
+        "label": "Resistência à Corrosão",
+        "value": "Alta",
+        "justification": "Excelente resistência à oxidação e à maioria dos ácidos orgânicos.",
+        "score": 90
+      },
+      {
+        "id": 17,
+        "label": "Refletividade",
+        "value": "Máxima (Visível)",
+        "justification": "O elemento que melhor reflete a luz visível (cerca de 95%).",
+        "score": 100
+      },
+      {
+        "id": 18,
+        "label": "Maleabilidade",
+        "value": "Muito Alta",
+        "justification": "Um dos metais mais maleáveis, superado apenas pelo ouro.",
+        "score": 95
+      },
+      {
+        "id": 19,
+        "label": "Dutibilidade",
+        "value": "Muito Alta",
+        "justification": "Pode ser esticado em fios extremamente finos.",
+        "score": 95
+      },
+      {
+        "id": 20,
+        "label": "Isótopos Estáveis",
+        "value": "2 (Ag-107, 109)",
+        "justification": "A prata natural é composta por dois isótopos quase na mesma proporção.",
+        "score": 90
+      },
+      {
+        "id": 21,
+        "label": "Toxicidade",
+        "value": "Baixa (Antimicrobiano)",
+        "justification": "Segura para humanos, mas letal para bactérias e fungos (oligodinamismo).",
+        "score": 100
+      },
+      {
+        "id": 22,
+        "label": "Aplicações Tecnológicas",
+        "value": "Crítica",
+        "justification": "Indispensável para eletrônica, painéis solares e purificação de água.",
+        "score": 100
+      },
+      {
+        "id": 23,
+        "label": "Magnético",
+        "value": "Diamagnético",
+        "justification": "Não possui propriedades magnéticas; é ligeiramente repelida por ímãs.",
+        "score": 5
+      },
+      {
+        "id": 24,
+        "label": "Custo de Produção",
+        "value": "Precioso",
+        "justification": "Metal com alto valor de mercado e custo de mineração significativo.",
+        "score": 20
+      },
+      {
+        "id": 25,
+        "label": "Risco à Natureza",
+        "value": "Baixo",
+        "justification": "Elemento estável, embora nanopartículas de prata devem ser geridas.",
+        "score": 95
+      },
+      {
+        "id": 26,
+        "label": "Radioatividade",
+        "value": "Nula",
+        "justification": "Isótopos naturais são estáveis.",
+        "score": 100
+      },
+      {
+        "id": 27,
+        "label": "Curiosidade Histórica",
+        "value": "Argentina",
+        "justification": "O país Argentina recebeu seu nome devido ao termo latim para prata (argentum).",
+        "score": 95
+      }
     ]
-},
+  },
   "Cd": {
     "number": 48,
     "symbol": "Cd",
