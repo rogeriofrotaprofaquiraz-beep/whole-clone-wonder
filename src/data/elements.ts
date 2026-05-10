@@ -15134,10 +15134,10 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         },
         {
           "id": 27,
-            "label": "Atributo 27",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "label": "Ponto de ebulição",
+          "value": "5012 °C",
+          "justification": "Ponto de ebulição extremamente elevado.",
+          "score": 50
         }
     ]
 },
