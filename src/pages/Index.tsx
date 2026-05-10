@@ -124,7 +124,7 @@ const ElementCard = ({ element }: { element: PeriodicElement }) => {
 
 const Index = () => {
   const [selectedSymbol, setSelectedSymbol] = useState<string>("H");
-  const selectedElement = ELEMENTS_DATA[selectedSymbol] && ELEMENTS_DATA[selectedSymbol].symbol !== "Element" ? ELEMENTS_DATA[selectedSymbol] : ELEMENTS_DATA["H"];
+  const selectedElement = (ELEMENTS_DATA[selectedSymbol] && ELEMENTS_DATA[selectedSymbol].symbol !== "Element") ? ELEMENTS_DATA[selectedSymbol] : ELEMENTS_DATA["H"];
 
   // Tabela Periódica Completa com agrupamentos por cores e estrutura fiel ao PDF
   const periodicTableLayout = [
