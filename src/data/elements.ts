@@ -7384,198 +7384,198 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 38,
     "symbol": "Sr",
     "name": "Estrôncio",
-    "heroName": "Estrôncio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Estrôncio.",
+    "heroName": "Strontium Spark",
+    "heroDescription": "O mestre das cores escarlates e guardião da saúde óssea, um herói que ilumina o céu festivo com cor intensa.",
     "heroImage": "/placeholder.svg",
     "attributes": [
       {
         "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Fraquezas",
+        "value": "Reativo ao ar",
+        "justification": "Como metal alcalino-terroso, reage com oxigênio e umidade.",
+        "score": 15
       },
       {
         "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Risco/Benefício à natureza",
+        "value": "Neutro",
+        "justification": "Não possui papel biológico significativo.",
+        "score": 70
       },
       {
         "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Risco à saúde",
+        "value": "Estrôncio-90 (Radioativo)",
+        "justification": "Isótopo radioativo perigoso que se deposita nos ossos.",
+        "score": 5
       },
       {
         "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Benefício",
+        "value": "Fogos de Artifício, Saúde Óssea",
+        "justification": "Cor vermelha brilhante e uso medicinal em doenças ósseas.",
+        "score": 88
       },
       {
         "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de ligantes possíveis",
+        "value": "2",
+        "justification": "Forma ligações iônicas como Sr²⁺.",
+        "score": 35
       },
       {
         "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Abundância na natureza",
+        "value": "360 ppm (crosta)",
+        "justification": "Bastante comum na crosta terrestre.",
+        "score": 75
       },
       {
         "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Abundância no universo",
+        "value": "0,000008%",
+        "justification": "Elemento raro no cosmos.",
+        "score": 5
       },
       {
         "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Massa atômica",
+        "value": "87,62 u",
+        "justification": "Massa moderada.",
+        "score": 87
       },
       {
         "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Densidade",
+        "value": "2,64 g/cm³",
+        "justification": "Densidade baixa para um metal.",
+        "score": 26
       },
       {
         "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Raio atômico",
+        "value": "215 pm",
+        "justification": "Grande raio atômico, típico de alcalino-terrosos pesados.",
+        "score": 85
       },
       {
         "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Oxidação",
+        "value": "+2",
+        "justification": "Estado de oxidação estável.",
+        "score": 95
       },
       {
         "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Condutividade elétrica",
+        "value": "Boa",
+        "justification": "Conduz eletricidade como um metal alcalino-terroso.",
+        "score": 60
       },
       {
         "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Eletronegatividade",
+        "value": "0,95",
+        "justification": "Baixa, perde elétrons facilmente.",
+        "score": 15
       },
       {
         "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Estado físico",
+        "value": "Sólido",
+        "justification": "Metal prateado, macio e maleável.",
+        "score": 40
       },
       {
         "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Maior subnível energético",
+        "value": "5s²",
+        "justification": "Define sua posição no grupo 2.",
+        "score": 38
       },
       {
         "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Distribuição eletrônica",
+        "value": "[Kr] 5s²",
+        "justification": "Configuração estável para perda de elétrons.",
+        "score": 92
       },
       {
         "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de prótons / Nº de elétrons",
+        "value": "38",
+        "justification": "Número atômico do Estrôncio.",
+        "score": 99
       },
       {
         "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Nº de nêutrons",
+        "value": "50",
+        "justification": "Número de nêutrons no isótopo principal Sr-88.",
         "score": 50
       },
       {
         "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Radioatividade",
+        "value": "Estável / Estrôncio-90",
+        "justification": "Estrôncio natural é estável, mas isótopos artificiais são radioativos.",
+        "score": 75
       },
       {
         "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Aplicabilidade / Utilidade",
+        "value": "Fogos de artifício, Medicamentos (Ranelato de estrôncio)",
+        "justification": "Uso em pirotecnia e tratamento de osteoporose.",
+        "score": 90
       },
       {
         "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Local de origem",
+        "value": "Escócia",
+        "justification": "Nomeado em homenagem a uma vila escocesa (Strontian).",
+        "score": 80
       },
       {
         "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Curiosidade",
+        "value": "Brilho Escarlate",
+        "justification": "A luz vermelha em fogos de artifício é produzida por sais de estrôncio.",
+        "score": 100
       },
       {
         "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Origem do nome",
+        "value": "Strontian",
+        "justification": "Vila na Escócia onde foi descoberto.",
+        "score": 95
       },
       {
         "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Descobridor",
+        "value": "Adair Crawford",
+        "justification": "Químico escocês que identificou the mineral.",
+        "score": 85
       },
       {
         "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ano de descoberta",
+        "value": "1790",
+        "justification": "Identificado inicialmente em minerais locais.",
+        "score": 92
       },
       {
         "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de fusão",
+        "value": "777 °C",
+        "justification": "Fusão elevada, metal refratário.",
+        "score": 77
       },
       {
         "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de ebulição",
+        "value": "1382 °C",
+        "justification": "Ponto de ebulição alto.",
+        "score": 13
       }
     ]
   },
