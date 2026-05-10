@@ -15747,193 +15747,193 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
-            "id": 1,
-            "label": "Atributo 1",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 1,
+          "label": "Fraquezas",
+          "value": "Extrema toxicidade",
+          "justification": "O mercúrio e seus compostos são neurotoxinas potentes que se acumulam na cadeia alimentar.",
+          "score": 1
         },
         {
-            "id": 2,
-            "label": "Atributo 2",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 2,
+          "label": "Risco/Benefício à natureza",
+          "value": "Poluente Persistente",
+          "justification": "Bioacumula-se em peixes (metilmercúrio), representando um grave risco ambiental.",
+          "score": 5
         },
         {
-            "id": 3,
-            "label": "Atributo 3",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 3,
+          "label": "Risco à saúde",
+          "value": "Alto (Neurotóxico)",
+          "justification": "Causa danos cerebrais, renais e ao sistema nervoso central.",
+          "score": 1
         },
         {
-            "id": 4,
-            "label": "Atributo 4",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 4,
+          "label": "Benefício",
+          "value": "Termômetros, Amálgamas, Lâmpadas Fluorescentes",
+          "justification": "Único metal líquido a temperatura ambiente, vital para medição e iluminação eficiente.",
+          "score": 85
         },
         {
-            "id": 5,
-            "label": "Atributo 5",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 5,
+          "label": "Nº de ligantes possíveis",
+          "value": "2",
+          "justification": "Forma frequentemente complexos lineares com coordenação 2.",
+          "score": 50
         },
         {
-            "id": 6,
-            "label": "Atributo 6",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 6,
+          "label": "Abundância na natureza",
+          "value": "0,085 ppm (crosta)",
+          "justification": "Elemento raro, encontrado principalmente no mineral cinábrio (HgS).",
+          "score": 15
         },
         {
-            "id": 7,
-            "label": "Atributo 7",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 7,
+          "label": "Abundância no universo",
+          "value": "0,000000002%",
+          "justification": "Elemento pesado raro no cosmos.",
+          "score": 0.2
         },
         {
-            "id": 8,
-            "label": "Atributo 8",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 8,
+          "label": "Massa atômica",
+          "value": "200,59 u",
+          "justification": "Massa baseada na mistura de sete isótopos estáveis.",
+          "score": 201
         },
         {
-            "id": 9,
-            "label": "Atributo 9",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 9,
+          "label": "Densidade",
+          "value": "13,534 g/cm³ (Líquido)",
+          "justification": "Metal densíssimo, mesmo em seu estado líquido.",
+          "score": 135
         },
         {
-            "id": 10,
-            "label": "Atributo 10",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 10,
+          "label": "Raio atômico",
+          "value": "151 pm",
+          "justification": "Raio metálico típico para o final do bloco d.",
+          "score": 151
         },
         {
-            "id": 11,
-            "label": "Atributo 11",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 11,
+          "label": "Oxidação",
+          "value": "+1 (Hg₂²⁺), +2",
+          "justification": "Apresenta o estado único Hg₂²⁺ com ligação metal-metal.",
+          "score": 40
         },
         {
-            "id": 12,
-            "label": "Atributo 12",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 12,
+          "label": "Condutividade elétrica",
+          "value": "Moderada (Líquido)",
+          "justification": "Conduz eletricidade, sendo usado em interruptores de mercúrio.",
+          "score": 25
         },
         {
-            "id": 13,
-            "label": "Atributo 13",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 13,
+          "label": "Eletronegatividade",
+          "value": "2,00 (Pauling)",
+          "justification": "Valor moderado para um metal pesado.",
+          "score": 20
         },
         {
-            "id": 14,
-            "label": "Atributo 14",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 14,
+          "label": "Estado físico",
+          "value": "Líquido",
+          "justification": "O único metal que é líquido nas CNTP.",
+          "score": 100
         },
         {
-            "id": 15,
-            "label": "Atributo 15",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 15,
+          "label": "Maior subnível energético",
+          "value": "5d¹⁰",
+          "justification": "Finaliza o preenchimento da camada 5d.",
+          "score": 60
         },
         {
-            "id": 16,
-            "label": "Atributo 16",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 16,
+          "label": "Distribuição eletrônica",
+          "value": "[Xe] 4f¹⁴ 5d¹⁰ 6s²",
+          "justification": "Configuração eletrônica estável que explica seu baixo ponto de fusão.",
+          "score": 98
         },
         {
-            "id": 17,
-            "label": "Atributo 17",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 17,
+          "label": "Nº de prótons / Nº de elétrons",
+          "value": "80",
+          "justification": "Identidade atômica do Mercúrio.",
+          "score": 99
         },
         {
-            "id": 18,
-            "label": "Atributo 18",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 18,
+          "label": "Nº de nêutrons",
+          "value": "121",
+          "justification": "Diferença entre massa e número atômico.",
+          "score": 121
         },
         {
-            "id": 19,
-            "label": "Atributo 19",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 19,
+          "label": "Radioatividade",
+          "value": "Totalmente Estável",
+          "justification": "O mercúrio natural não possui isótopos radioativos primordiais.",
+          "score": 100
         },
         {
-            "id": 20,
-            "label": "Atributo 20",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 20,
+          "label": "Aplicabilidade / Utilidade",
+          "value": "Iluminação, Mineração de Ouro, Ciência",
+          "justification": "Sua capacidade de formar amálgamas é usada (apesar de riscos) na mineração.",
+          "score": 90
         },
         {
-            "id": 21,
-            "label": "Atributo 21",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 21,
+          "label": "Local de origem",
+          "value": "Conhecido desde a Antiguidade",
+          "justification": "Encontrado em túmulos egípcios datados de 1500 a.C.",
+          "score": 100
         },
         {
-            "id": 22,
-            "label": "Atributo 22",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 22,
+          "label": "Curiosidade",
+          "value": "Prata Viva",
+          "justification": "Antigamente chamado de 'hydrargyrum' (água de prata), daí seu símbolo Hg.",
+          "score": 100
         },
         {
-            "id": 23,
-            "label": "Atributo 23",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 23,
+          "label": "Origem do nome",
+          "value": "Mercúrio (Mitologia)",
+          "justification": "Homenagem ao deus romano Mercúrio, mensageiro veloz, devido à sua mobilidade.",
+          "score": 95
         },
         {
-            "id": 24,
-            "label": "Atributo 24",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 24,
+          "label": "Descobridor",
+          "value": "Desconhecido",
+          "justification": "Um dos sete metais conhecidos desde a história antiga.",
+          "score": 100
         },
         {
-            "id": 25,
-            "label": "Atributo 25",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 25,
+          "label": "Ano de descoberta",
+          "value": "~1500 a.C.",
+          "justification": "Primeiros registros de uso documentado.",
+          "score": 100
         },
         {
-            "id": 26,
-            "label": "Atributo 26",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 26,
+          "label": "Ponto de fusão",
+          "value": "-38,83 °C",
+          "justification": "O ponto de fusão mais baixo de todos os metais.",
+          "score": 100
         },
         {
-            "id": 27,
-            "label": "Atributo 27",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 27,
+          "label": "Ponto de ebulição",
+          "value": "356,7 °C",
+          "justification": "Ponto de ebulição baixo para um metal, facilitando a purificação.",
+          "score": 36
         }
     ]
 },
