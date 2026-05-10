@@ -9971,201 +9971,201 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 51,
     "symbol": "Sb",
     "name": "Antimônio",
-    "heroName": "Antimony Guard",
-    "heroDescription": "O protetor contra o fogo, um herói que impede que materiais ardam.",
+    "heroName": "Antimony Flame",
+    "heroDescription": "O mestre do fogo contido e herói da segurança. Antimony Flame é o protetor que impede que as chamas se espalhem, fortalecendo baterias e eletrônicos com sua resistência lendária.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-        {
-            "id": 1,
-            "label": "Dado 1",
-            "value": "Processando",
-            "justification": "Característica em análise para o Antimônio.",
-            "score": 50
-        },
-        {
-            "id": 2,
-            "label": "Dado 2",
-            "value": "Processando",
-            "justification": "Característica em análise para o Antimônio.",
-            "score": 50
-        },
-        {
-            "id": 3,
-            "label": "Dado 3",
-            "value": "Processando",
-            "justification": "Característica em análise para o Antimônio.",
-            "score": 50
-        },
-        {
-            "id": 4,
-            "label": "Dado 4",
-            "value": "Processando",
-            "justification": "Característica em análise para o Antimônio.",
-            "score": 50
-        },
-        {
-            "id": 5,
-            "label": "Dado 5",
-            "value": "Processando",
-            "justification": "Característica em análise para o Antimônio.",
-            "score": 50
-        },
-        {
-            "id": 6,
-            "label": "Dado 6",
-            "value": "Processando",
-            "justification": "Característica em análise para o Antimônio.",
-            "score": 50
-        },
-        {
-            "id": 7,
-            "label": "Dado 7",
-            "value": "Processando",
-            "justification": "Característica em análise para o Antimônio.",
-            "score": 50
-        },
-        {
-            "id": 8,
-            "label": "Dado 8",
-            "value": "Processando",
-            "justification": "Característica em análise para o Antimônio.",
-            "score": 50
-        },
-        {
-            "id": 9,
-            "label": "Dado 9",
-            "value": "Processando",
-            "justification": "Característica em análise para o Antimônio.",
-            "score": 50
-        },
-        {
-            "id": 10,
-            "label": "Dado 10",
-            "value": "Processando",
-            "justification": "Característica em análise para o Antimônio.",
-            "score": 50
-        },
-        {
-            "id": 11,
-            "label": "Dado 11",
-            "value": "Processando",
-            "justification": "Característica em análise para o Antimônio.",
-            "score": 50
-        },
-        {
-            "id": 12,
-            "label": "Dado 12",
-            "value": "Processando",
-            "justification": "Característica em análise para o Antimônio.",
-            "score": 50
-        },
-        {
-            "id": 13,
-            "label": "Dado 13",
-            "value": "Processando",
-            "justification": "Característica em análise para o Antimônio.",
-            "score": 50
-        },
-        {
-            "id": 14,
-            "label": "Dado 14",
-            "value": "Processando",
-            "justification": "Característica em análise para o Antimônio.",
-            "score": 50
-        },
-        {
-            "id": 15,
-            "label": "Dado 15",
-            "value": "Processando",
-            "justification": "Característica em análise para o Antimônio.",
-            "score": 50
-        },
-        {
-            "id": 16,
-            "label": "Dado 16",
-            "value": "Processando",
-            "justification": "Característica em análise para o Antimônio.",
-            "score": 50
-        },
-        {
-            "id": 17,
-            "label": "Dado 17",
-            "value": "Processando",
-            "justification": "Característica em análise para o Antimônio.",
-            "score": 50
-        },
-        {
-            "id": 18,
-            "label": "Dado 18",
-            "value": "Processando",
-            "justification": "Característica em análise para o Antimônio.",
-            "score": 50
-        },
-        {
-            "id": 19,
-            "label": "Dado 19",
-            "value": "Processando",
-            "justification": "Característica em análise para o Antimônio.",
-            "score": 50
-        },
-        {
-            "id": 20,
-            "label": "Dado 20",
-            "value": "Processando",
-            "justification": "Característica em análise para o Antimônio.",
-            "score": 50
-        },
-        {
-            "id": 21,
-            "label": "Dado 21",
-            "value": "Processando",
-            "justification": "Característica em análise para o Antimônio.",
-            "score": 50
-        },
-        {
-            "id": 22,
-            "label": "Dado 22",
-            "value": "Processando",
-            "justification": "Característica em análise para o Antimônio.",
-            "score": 50
-        },
-        {
-            "id": 23,
-            "label": "Dado 23",
-            "value": "Processando",
-            "justification": "Característica em análise para o Antimônio.",
-            "score": 50
-        },
-        {
-            "id": 24,
-            "label": "Dado 24",
-            "value": "Processando",
-            "justification": "Característica em análise para o Antimônio.",
-            "score": 50
-        },
-        {
-            "id": 25,
-            "label": "Dado 25",
-            "value": "Processando",
-            "justification": "Característica em análise para o Antimônio.",
-            "score": 50
-        },
-        {
-            "id": 26,
-            "label": "Dado 26",
-            "value": "Processando",
-            "justification": "Característica em análise para o Antimônio.",
-            "score": 50
-        },
-        {
-            "id": 27,
-            "label": "Dado 27",
-            "value": "Processando",
-            "justification": "Característica em análise para o Antimônio.",
-            "score": 50
-        }
+      {
+        "id": 1,
+        "label": "Massa Atômica",
+        "value": "121.76 u",
+        "justification": "O Antimônio possui uma massa atômica de aproximadamente 121.76 u.",
+        "score": 122
+      },
+      {
+        "id": 2,
+        "label": "Abundância na Crosta",
+        "value": "0.2 ppm",
+        "justification": "Elemento raro, encontrado principalmente na estibina (Sb2S3).",
+        "score": 20
+      },
+      {
+        "id": 3,
+        "label": "Ponto de Fusão",
+        "value": "630.6 °C",
+        "justification": "Possui um ponto de fusão moderado para um semimetal.",
+        "score": 63
+      },
+      {
+        "id": 4,
+        "label": "Ponto de Ebulição",
+        "value": "1587 °C",
+        "justification": "Sua temperatura de vaporização é relativamente baixa.",
+        "score": 75
+      },
+      {
+        "id": 5,
+        "label": "Densidade",
+        "value": "6.68 g/cm³",
+        "justification": "Densidade moderada, similar à do magnésio pesado ou zinco.",
+        "score": 67
+      },
+      {
+        "id": 6,
+        "label": "Dureza de Mohs",
+        "value": "3.0",
+        "justification": "Semimetal relativamente macio, mas quebradiço.",
+        "score": 30
+      },
+      {
+        "id": 7,
+        "label": "Eletronegatividade",
+        "value": "2.05",
+        "justification": "Valor intermediário que reflete seu caráter semimetálico.",
+        "score": 55
+      },
+      {
+        "id": 8,
+        "label": "Condutividade Térmica",
+        "value": "24.4 W/(m·K)",
+        "justification": "Condutividade térmica baixa em comparação aos metais.",
+        "score": 40
+      },
+      {
+        "id": 9,
+        "label": "Condutividade Elétrica",
+        "value": "2.5 MS/m",
+        "justification": "Pobre condutor elétrico, mas sua condutividade pode ser ajustada.",
+        "score": 45
+      },
+      {
+        "id": 10,
+        "label": "Calor Específico",
+        "value": "0.207 J/(g·K)",
+        "justification": "Baixa capacidade térmica.",
+        "score": 35
+      },
+      {
+        "id": 11,
+        "label": "Raio Atômico",
+        "value": "140 pm",
+        "justification": "Tamanho atômico moderado.",
+        "score": 60
+      },
+      {
+        "id": 12,
+        "label": "Energia de Ionização",
+        "value": "8.608 eV",
+        "justification": "Energia de ionização elevada, característica de elementos do bloco p.",
+        "score": 80
+      },
+      {
+        "id": 13,
+        "label": "Estado Físico (CNTP)",
+        "value": "Sólido",
+        "justification": "Semimetal cristalino azul-esbranquiçado, brilhante e muito quebradiço.",
+        "score": 99
+      },
+      {
+        "id": 14,
+        "label": "Reatividade Química",
+        "value": "Moderada",
+        "justification": "Estável à temperatura ambiente, mas oxida-se quando aquecido.",
+        "score": 60
+      },
+      {
+        "id": 15,
+        "label": "Reciclabilidade",
+        "value": "Alta",
+        "justification": "Muito recuperado de baterias de chumbo-ácido exaustas.",
+        "score": 85
+      },
+      {
+        "id": 16,
+        "label": "Resistência à Corrosão",
+        "value": "Boa",
+        "justification": "Resistente a muitos ácidos diluídos e álcalis.",
+        "score": 75
+      },
+      {
+        "id": 17,
+        "label": "Refletividade",
+        "value": "Alta",
+        "justification": "Apresenta um brilho metálico pronunciado.",
+        "score": 70
+      },
+      {
+        "id": 18,
+        "label": "Maleabilidade",
+        "value": "Nula",
+        "justification": "Extremamente quebradiço, pulveriza-se sob impacto.",
+        "score": 5
+      },
+      {
+        "id": 19,
+        "label": "Dutibilidade",
+        "value": "Nula",
+        "justification": "Não pode ser esticado em fios devido à sua fragilidade.",
+        "score": 5
+      },
+      {
+        "id": 20,
+        "label": "Isótopos Estáveis",
+        "value": "2 (Sb-121, 123)",
+        "justification": "A mistura natural de dois isótopos estáveis define sua massa média.",
+        "score": 90
+      },
+      {
+        "id": 21,
+        "label": "Toxicidade",
+        "value": "Alta",
+        "justification": "Quimicamente similar ao arsênio, seus compostos são venenosos.",
+        "score": 20
+      },
+      {
+        "id": 22,
+        "label": "Aplicações Tecnológicas",
+        "value": "Alta",
+        "justification": "Indispensável em retardantes de chama, semicondutores e endurecimento do chumbo.",
+        "score": 95
+      },
+      {
+        "id": 23,
+        "label": "Magnético",
+        "value": "Diamagnético",
+        "justification": "Resposta magnética fraca.",
+        "score": 10
+      },
+      {
+        "id": 24,
+        "label": "Custo de Produção",
+        "value": "Moderado",
+        "justification": "Preço de mercado estável, com fornecimento global concentrado.",
+        "score": 50
+      },
+      {
+        "id": 25,
+        "label": "Risco à Natureza",
+        "value": "Moderado",
+        "justification": "O descarte inadequado de retardantes de chama pode contaminar o ecossistema.",
+        "score": 40
+      },
+      {
+        "id": 26,
+        "label": "Radioatividade",
+        "value": "Nula",
+        "justification": "Isótopos naturais são perfeitamente estáveis.",
+        "score": 100
+      },
+      {
+        "id": 27,
+        "label": "Curiosidade Histórica",
+        "value": "Maquiagem",
+        "justification": "Seu mineral (estibina) era usado desde o antigo Egito como cosmético para os olhos (kohl).",
+        "score": 95
+      }
     ]
-},
+  },
   "Te": {
     "number": 52,
     "symbol": "Te",
