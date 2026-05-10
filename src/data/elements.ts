@@ -9374,201 +9374,201 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 48,
     "symbol": "Cd",
     "name": "Cádmio",
-    "heroName": "Cadmium Poison",
-    "heroDescription": "O herói controverso, poderoso mas perigoso, um alerta sobre toxicidade industrial.",
+    "heroName": "Cadmium Toxic",
+    "heroDescription": "O herói da energia duradoura e mestre das barreiras. Cadmium Toxic é o guardião das baterias e o escudo contra nêutrons, um guerreiro que exige respeito e manuseio cuidadoso.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-        {
-            "id": 1,
-            "label": "Dado 1",
-            "value": "Processando",
-            "justification": "Característica em análise para o Cádmio.",
-            "score": 50
-        },
-        {
-            "id": 2,
-            "label": "Dado 2",
-            "value": "Processando",
-            "justification": "Característica em análise para o Cádmio.",
-            "score": 50
-        },
-        {
-            "id": 3,
-            "label": "Dado 3",
-            "value": "Processando",
-            "justification": "Característica em análise para o Cádmio.",
-            "score": 50
-        },
-        {
-            "id": 4,
-            "label": "Dado 4",
-            "value": "Processando",
-            "justification": "Característica em análise para o Cádmio.",
-            "score": 50
-        },
-        {
-            "id": 5,
-            "label": "Dado 5",
-            "value": "Processando",
-            "justification": "Característica em análise para o Cádmio.",
-            "score": 50
-        },
-        {
-            "id": 6,
-            "label": "Dado 6",
-            "value": "Processando",
-            "justification": "Característica em análise para o Cádmio.",
-            "score": 50
-        },
-        {
-            "id": 7,
-            "label": "Dado 7",
-            "value": "Processando",
-            "justification": "Característica em análise para o Cádmio.",
-            "score": 50
-        },
-        {
-            "id": 8,
-            "label": "Dado 8",
-            "value": "Processando",
-            "justification": "Característica em análise para o Cádmio.",
-            "score": 50
-        },
-        {
-            "id": 9,
-            "label": "Dado 9",
-            "value": "Processando",
-            "justification": "Característica em análise para o Cádmio.",
-            "score": 50
-        },
-        {
-            "id": 10,
-            "label": "Dado 10",
-            "value": "Processando",
-            "justification": "Característica em análise para o Cádmio.",
-            "score": 50
-        },
-        {
-            "id": 11,
-            "label": "Dado 11",
-            "value": "Processando",
-            "justification": "Característica em análise para o Cádmio.",
-            "score": 50
-        },
-        {
-            "id": 12,
-            "label": "Dado 12",
-            "value": "Processando",
-            "justification": "Característica em análise para o Cádmio.",
-            "score": 50
-        },
-        {
-            "id": 13,
-            "label": "Dado 13",
-            "value": "Processando",
-            "justification": "Característica em análise para o Cádmio.",
-            "score": 50
-        },
-        {
-            "id": 14,
-            "label": "Dado 14",
-            "value": "Processando",
-            "justification": "Característica em análise para o Cádmio.",
-            "score": 50
-        },
-        {
-            "id": 15,
-            "label": "Dado 15",
-            "value": "Processando",
-            "justification": "Característica em análise para o Cádmio.",
-            "score": 50
-        },
-        {
-            "id": 16,
-            "label": "Dado 16",
-            "value": "Processando",
-            "justification": "Característica em análise para o Cádmio.",
-            "score": 50
-        },
-        {
-            "id": 17,
-            "label": "Dado 17",
-            "value": "Processando",
-            "justification": "Característica em análise para o Cádmio.",
-            "score": 50
-        },
-        {
-            "id": 18,
-            "label": "Dado 18",
-            "value": "Processando",
-            "justification": "Característica em análise para o Cádmio.",
-            "score": 50
-        },
-        {
-            "id": 19,
-            "label": "Dado 19",
-            "value": "Processando",
-            "justification": "Característica em análise para o Cádmio.",
-            "score": 50
-        },
-        {
-            "id": 20,
-            "label": "Dado 20",
-            "value": "Processando",
-            "justification": "Característica em análise para o Cádmio.",
-            "score": 50
-        },
-        {
-            "id": 21,
-            "label": "Dado 21",
-            "value": "Processando",
-            "justification": "Característica em análise para o Cádmio.",
-            "score": 50
-        },
-        {
-            "id": 22,
-            "label": "Dado 22",
-            "value": "Processando",
-            "justification": "Característica em análise para o Cádmio.",
-            "score": 50
-        },
-        {
-            "id": 23,
-            "label": "Dado 23",
-            "value": "Processando",
-            "justification": "Característica em análise para o Cádmio.",
-            "score": 50
-        },
-        {
-            "id": 24,
-            "label": "Dado 24",
-            "value": "Processando",
-            "justification": "Característica em análise para o Cádmio.",
-            "score": 50
-        },
-        {
-            "id": 25,
-            "label": "Dado 25",
-            "value": "Processando",
-            "justification": "Característica em análise para o Cádmio.",
-            "score": 50
-        },
-        {
-            "id": 26,
-            "label": "Dado 26",
-            "value": "Processando",
-            "justification": "Característica em análise para o Cádmio.",
-            "score": 50
-        },
-        {
-            "id": 27,
-            "label": "Dado 27",
-            "value": "Processando",
-            "justification": "Característica em análise para o Cádmio.",
-            "score": 50
-        }
+      {
+        "id": 1,
+        "label": "Massa Atômica",
+        "value": "112.41 u",
+        "justification": "O Cádmio possui uma massa atômica de aproximadamente 112.41 u.",
+        "score": 112
+      },
+      {
+        "id": 2,
+        "label": "Abundância na Crosta",
+        "value": "0.15 ppm",
+        "justification": "Elemento raro, geralmente encontrado em minérios de zinco.",
+        "score": 25
+      },
+      {
+        "id": 3,
+        "label": "Ponto de Fusão",
+        "value": "321.1 °C",
+        "justification": "Possui um ponto de fusão baixo para um metal de transição.",
+        "score": 32
+      },
+      {
+        "id": 4,
+        "label": "Ponto de Ebulição",
+        "value": "767 °C",
+        "justification": "Temperatura de vaporização relativamente baixa, facilitando seu refino.",
+        "score": 77
+      },
+      {
+        "id": 5,
+        "label": "Densidade",
+        "value": "8.65 g/cm³",
+        "justification": "Metal denso, similar ao ferro e ao cobre.",
+        "score": 86
+      },
+      {
+        "id": 6,
+        "label": "Dureza de Mohs",
+        "value": "2.0",
+        "justification": "Metal muito macio, pode ser cortado com uma faca.",
+        "score": 20
+      },
+      {
+        "id": 7,
+        "label": "Eletronegatividade",
+        "value": "1.69",
+        "justification": "Valor típico de metais do grupo 12.",
+        "score": 45
+      },
+      {
+        "id": 8,
+        "label": "Condutividade Térmica",
+        "value": "96.6 W/(m·K)",
+        "justification": "Condutividade térmica razoável.",
+        "score": 65
+      },
+      {
+        "id": 9,
+        "label": "Condutividade Elétrica",
+        "value": "13.8 MS/m",
+        "justification": "Bom condutor elétrico.",
+        "score": 70
+      },
+      {
+        "id": 10,
+        "label": "Calor Específico",
+        "value": "0.232 J/(g·K)",
+        "justification": "Baixa capacidade térmica.",
+        "score": 40
+      },
+      {
+        "id": 11,
+        "label": "Raio Atômico",
+        "value": "151 pm",
+        "justification": "Raio atômico moderado.",
+        "score": 60
+      },
+      {
+        "id": 12,
+        "label": "Energia de Ionização",
+        "value": "8.993 eV",
+        "justification": "Energia necessária para remover o primeiro elétron.",
+        "score": 85
+      },
+      {
+        "id": 13,
+        "label": "Estado Físico (CNTP)",
+        "value": "Sólido",
+        "justification": "Metal branco-azulado, maleável e brilhante.",
+        "score": 99
+      },
+      {
+        "id": 14,
+        "label": "Reatividade Química",
+        "value": "Moderada",
+        "justification": "Lentamente atacado pelo ar úmido; dissolve-se rapidamente em ácidos.",
+        "score": 60
+      },
+      {
+        "id": 15,
+        "label": "Reciclabilidade",
+        "value": "Média",
+        "justification": "Reciclado principalmente de baterias Ni-Cd, mas com rigorosos controles ambientais.",
+        "score": 60
+      },
+      {
+        "id": 16,
+        "label": "Resistência à Corrosão",
+        "value": "Excepcional",
+        "justification": "Excelente para galvanoplastia, protegendo outros metais em ambientes marinhos.",
+        "score": 95
+      },
+      {
+        "id": 17,
+        "label": "Refletividade",
+        "value": "Metálica",
+        "justification": "Brilho metálico característico.",
+        "score": 60
+      },
+      {
+        "id": 18,
+        "label": "Maleabilidade",
+        "value": "Alta",
+        "justification": "Pode ser facilmente moldado em folhas.",
+        "score": 85
+      },
+      {
+        "id": 19,
+        "label": "Dutibilidade",
+        "value": "Boa",
+        "justification": "Pode ser esticado em fios.",
+        "score": 75
+      },
+      {
+        "id": 20,
+        "label": "Isótopos Estáveis",
+        "value": "6 (Cd-106, 108, 110, 111, 112, 114)",
+        "justification": "Possui uma ampla variedade de isótopos naturais estáveis.",
+        "score": 95
+      },
+      {
+        "id": 21,
+        "label": "Toxicidade",
+        "value": "Extrema",
+        "justification": "Metal pesado altamente tóxico; o acúmulo no corpo causa danos severos aos rins e ossos (itai-itai).",
+        "score": 1
+      },
+      {
+        "id": 22,
+        "label": "Aplicações Tecnológicas",
+        "value": "Alta",
+        "justification": "Vital para baterias recarregáveis, painéis solares (CdTe) e controle de nêutrons em reatores.",
+        "score": 90
+      },
+      {
+        "id": 23,
+        "label": "Magnético",
+        "value": "Diamagnético",
+        "justification": "Repelido fracamente por campos magnéticos.",
+        "score": 5
+      },
+      {
+        "id": 24,
+        "label": "Custo de Produção",
+        "value": "Moderado",
+        "justification": "Geralmente obtido como subproduto da mineração de zinco.",
+        "score": 50
+      },
+      {
+        "id": 25,
+        "label": "Risco à Natureza",
+        "value": "Extremo",
+        "justification": "Grave poluente ambiental; deve ser descartado com rigorosa segurança.",
+        "score": 1
+      },
+      {
+        "id": 26,
+        "label": "Radioatividade",
+        "value": "Nula (Isótopos naturais)",
+        "justification": "Isótopos naturais são estáveis ou têm meia-vida imensa.",
+        "score": 100
+      },
+      {
+        "id": 27,
+        "label": "Curiosidade Histórica",
+        "value": "Calamina",
+        "justification": "Descoberto como uma impureza na calamina (minério de zinco) pelo químico Friedrich Stromeyer.",
+        "score": 85
+      }
     ]
-},
+  },
   "In": {
     "number": 49,
     "symbol": "In",
