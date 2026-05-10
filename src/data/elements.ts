@@ -3006,8 +3006,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 16,
     "symbol": "S",
     "name": "Enxofre",
-    "heroName": "Enxofre Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Enxofre.",
+    "heroName": "Brimstone Lord",
+    "heroDescription": "O mestre dos vulcões e das forjas terrestres. Brimstone Lord controla as profundezas da terra, usando o fogo e o enxofre para moldar a própria vida e a indústria química.",
     "heroImage": "/placeholder.svg",
     "attributes": [
       {
