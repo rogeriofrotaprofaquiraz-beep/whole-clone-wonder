@@ -8379,201 +8379,201 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 43,
     "symbol": "Tc",
     "name": "Tecnécio",
-    "heroName": "Technetium Trace",
-    "heroDescription": "O espião radioativo, um herói que revela tumores ocultos em corpos humanos.",
+    "heroName": "Technetium Ray",
+    "heroDescription": "O pioneiro sintético e mestre da visão interna. Technetium Ray é o herói que atravessa a matéria com seu brilho gama, revelando os segredos ocultos no corpo humano.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-        {
-            "id": 1,
-            "label": "Dado 1",
-            "value": "Processando",
-            "justification": "Característica em análise para o Tecnécio.",
-            "score": 50
-        },
-        {
-            "id": 2,
-            "label": "Dado 2",
-            "value": "Processando",
-            "justification": "Característica em análise para o Tecnécio.",
-            "score": 50
-        },
-        {
-            "id": 3,
-            "label": "Dado 3",
-            "value": "Processando",
-            "justification": "Característica em análise para o Tecnécio.",
-            "score": 50
-        },
-        {
-            "id": 4,
-            "label": "Dado 4",
-            "value": "Processando",
-            "justification": "Característica em análise para o Tecnécio.",
-            "score": 50
-        },
-        {
-            "id": 5,
-            "label": "Dado 5",
-            "value": "Processando",
-            "justification": "Característica em análise para o Tecnécio.",
-            "score": 50
-        },
-        {
-            "id": 6,
-            "label": "Dado 6",
-            "value": "Processando",
-            "justification": "Característica em análise para o Tecnécio.",
-            "score": 50
-        },
-        {
-            "id": 7,
-            "label": "Dado 7",
-            "value": "Processando",
-            "justification": "Característica em análise para o Tecnécio.",
-            "score": 50
-        },
-        {
-            "id": 8,
-            "label": "Dado 8",
-            "value": "Processando",
-            "justification": "Característica em análise para o Tecnécio.",
-            "score": 50
-        },
-        {
-            "id": 9,
-            "label": "Dado 9",
-            "value": "Processando",
-            "justification": "Característica em análise para o Tecnécio.",
-            "score": 50
-        },
-        {
-            "id": 10,
-            "label": "Dado 10",
-            "value": "Processando",
-            "justification": "Característica em análise para o Tecnécio.",
-            "score": 50
-        },
-        {
-            "id": 11,
-            "label": "Dado 11",
-            "value": "Processando",
-            "justification": "Característica em análise para o Tecnécio.",
-            "score": 50
-        },
-        {
-            "id": 12,
-            "label": "Dado 12",
-            "value": "Processando",
-            "justification": "Característica em análise para o Tecnécio.",
-            "score": 50
-        },
-        {
-            "id": 13,
-            "label": "Dado 13",
-            "value": "Processando",
-            "justification": "Característica em análise para o Tecnécio.",
-            "score": 50
-        },
-        {
-            "id": 14,
-            "label": "Dado 14",
-            "value": "Processando",
-            "justification": "Característica em análise para o Tecnécio.",
-            "score": 50
-        },
-        {
-            "id": 15,
-            "label": "Dado 15",
-            "value": "Processando",
-            "justification": "Característica em análise para o Tecnécio.",
-            "score": 50
-        },
-        {
-            "id": 16,
-            "label": "Dado 16",
-            "value": "Processando",
-            "justification": "Característica em análise para o Tecnécio.",
-            "score": 50
-        },
-        {
-            "id": 17,
-            "label": "Dado 17",
-            "value": "Processando",
-            "justification": "Característica em análise para o Tecnécio.",
-            "score": 50
-        },
-        {
-            "id": 18,
-            "label": "Dado 18",
-            "value": "Processando",
-            "justification": "Característica em análise para o Tecnécio.",
-            "score": 50
-        },
-        {
-            "id": 19,
-            "label": "Dado 19",
-            "value": "Processando",
-            "justification": "Característica em análise para o Tecnécio.",
-            "score": 50
-        },
-        {
-            "id": 20,
-            "label": "Dado 20",
-            "value": "Processando",
-            "justification": "Característica em análise para o Tecnécio.",
-            "score": 50
-        },
-        {
-            "id": 21,
-            "label": "Dado 21",
-            "value": "Processando",
-            "justification": "Característica em análise para o Tecnécio.",
-            "score": 50
-        },
-        {
-            "id": 22,
-            "label": "Dado 22",
-            "value": "Processando",
-            "justification": "Característica em análise para o Tecnécio.",
-            "score": 50
-        },
-        {
-            "id": 23,
-            "label": "Dado 23",
-            "value": "Processando",
-            "justification": "Característica em análise para o Tecnécio.",
-            "score": 50
-        },
-        {
-            "id": 24,
-            "label": "Dado 24",
-            "value": "Processando",
-            "justification": "Característica em análise para o Tecnécio.",
-            "score": 50
-        },
-        {
-            "id": 25,
-            "label": "Dado 25",
-            "value": "Processando",
-            "justification": "Característica em análise para o Tecnécio.",
-            "score": 50
-        },
-        {
-            "id": 26,
-            "label": "Dado 26",
-            "value": "Processando",
-            "justification": "Característica em análise para o Tecnécio.",
-            "score": 50
-        },
-        {
-            "id": 27,
-            "label": "Dado 27",
-            "value": "Processando",
-            "justification": "Característica em análise para o Tecnécio.",
-            "score": 50
-        }
+      {
+        "id": 1,
+        "label": "Massa Atômica",
+        "value": "98 u",
+        "justification": "Massa do isótopo mais estável (Tc-98), embora o Tc-99m seja o mais usado.",
+        "score": 98
+      },
+      {
+        "id": 2,
+        "label": "Abundância na Natureza",
+        "value": "Vestigial",
+        "justification": "Não ocorre naturalmente na Terra de forma significativa; quase todo o tecnécio é produzido artificialmente.",
+        "score": 1
+      },
+      {
+        "id": 3,
+        "label": "Ponto de Fusão",
+        "value": "2157 °C",
+        "justification": "Possui um ponto de fusão elevado, típico de metais de transição refratários.",
+        "score": 88
+      },
+      {
+        "id": 4,
+        "label": "Ponto de Ebulição",
+        "value": "4265 °C",
+        "justification": "Sua temperatura de vaporização é muito alta.",
+        "score": 92
+      },
+      {
+        "id": 5,
+        "label": "Densidade",
+        "value": "11.0 g/cm³",
+        "justification": "Metal denso, similar à densidade do chumbo.",
+        "score": 85
+      },
+      {
+        "id": 6,
+        "label": "Dureza de Mohs",
+        "value": "5.0 (Est.)",
+        "justification": "Dureza moderada para um metal de transição.",
+        "score": 60
+      },
+      {
+        "id": 7,
+        "label": "Eletronegatividade",
+        "value": "1.9",
+        "justification": "Valor moderado, similar ao do ferro e manganês.",
+        "score": 50
+      },
+      {
+        "id": 8,
+        "label": "Condutividade Térmica",
+        "value": "50.6 W/(m·K)",
+        "justification": "Condutividade térmica razoável.",
+        "score": 55
+      },
+      {
+        "id": 9,
+        "label": "Condutividade Elétrica",
+        "value": "6.7 MS/m",
+        "justification": "Condutor metálico eficiente.",
+        "score": 60
+      },
+      {
+        "id": 10,
+        "label": "Calor Específico",
+        "value": "0.21 J/(g·K)",
+        "justification": "Baixa capacidade térmica.",
+        "score": 40
+      },
+      {
+        "id": 11,
+        "label": "Raio Atômico",
+        "value": "136 pm",
+        "justification": "Raio atômico compacto.",
+        "score": 55
+      },
+      {
+        "id": 12,
+        "label": "Energia de Ionização",
+        "value": "7.28 eV",
+        "justification": "Energia necessária para remover o primeiro elétron.",
+        "score": 70
+      },
+      {
+        "id": 13,
+        "label": "Estado Físico (CNTP)",
+        "value": "Sólido",
+        "justification": "Metal cinza prateado, que escurece lentamente em ar úmido.",
+        "score": 99
+      },
+      {
+        "id": 14,
+        "label": "Reatividade Química",
+        "value": "Moderada",
+        "justification": "Dissolve-se em água régia e ácido nítrico concentrado.",
+        "score": 65
+      },
+      {
+        "id": 15,
+        "label": "Reciclabilidade",
+        "value": "Baixa",
+        "justification": "Difícil de reciclar devido à sua radioatividade.",
+        "score": 10
+      },
+      {
+        "id": 16,
+        "label": "Resistência à Corrosão",
+        "value": "Excepcional (Superficial)",
+        "justification": "O íon pertecnetato (TcO4-) é um inibidor de corrosão extremamente poderoso para o aço.",
+        "score": 95
+      },
+      {
+        "id": 17,
+        "label": "Refletividade",
+        "value": "Metálica",
+        "justification": "Brilho metálico cinzento característico.",
+        "score": 70
+      },
+      {
+        "id": 18,
+        "label": "Maleabilidade",
+        "value": "Nula (Frágil)",
+        "justification": "Geralmente quebradiço, não é adequado para moldagem mecânica.",
+        "score": 10
+      },
+      {
+        "id": 19,
+        "label": "Dutibilidade",
+        "value": "Nula",
+        "justification": "Não pode ser transformado em fios.",
+        "score": 5
+      },
+      {
+        "id": 20,
+        "label": "Isótopos Estáveis",
+        "value": "0",
+        "justification": "É o elemento mais leve que não possui nenhum isótopo estável.",
+        "score": 1
+      },
+      {
+        "id": 21,
+        "label": "Toxicidade",
+        "value": "Moderada (Radioativa)",
+        "justification": "O perigo principal é a exposição à radiação ionizante.",
+        "score": 30
+      },
+      {
+        "id": 22,
+        "label": "Aplicações Tecnológicas",
+        "value": "Alta",
+        "justification": "Dominado pela medicina nuclear, especialmente em cintilografias (Tc-99m).",
+        "score": 98
+      },
+      {
+        "id": 23,
+        "label": "Magnético",
+        "value": "Paramagnético",
+        "justification": "Resposta magnética fraca.",
+        "score": 15
+      },
+      {
+        "id": 24,
+        "label": "Custo de Produção",
+        "value": "Extremo",
+        "justification": "Deve ser produzido em reatores nucleares ou aceleradores.",
+        "score": 5
+      },
+      {
+        "id": 25,
+        "label": "Risco à Natureza",
+        "value": "Moderado",
+        "justification": "Deve ser gerido com cuidado devido ao seu longo tempo de decaimento (Tc-99).",
+        "score": 50
+      },
+      {
+        "id": 26,
+        "label": "Radioatividade",
+        "value": "Total",
+        "justification": "Todos os seus isótopos são radioativos.",
+        "score": 100
+      },
+      {
+        "id": 27,
+        "label": "Curiosidade Histórica",
+        "value": "Artificial",
+        "justification": "Foi o primeiro elemento a ser produzido artificialmente pelo homem.",
+        "score": 100
+      }
     ]
-},
+  },
   "Ru": {
     "number": 44,
     "symbol": "Ru",
