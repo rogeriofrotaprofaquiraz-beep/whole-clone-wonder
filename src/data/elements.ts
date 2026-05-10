@@ -16345,192 +16345,192 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "attributes": [
         {
             "id": 1,
-            "label": "Atributo 1",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Fraquezas",
+            "value": "Baixa Dureza",
+            "justification": "Metal quebradiço, fácil de pulverizar sob pressão.",
+            "score": 15
         },
         {
             "id": 2,
-            "label": "Atributo 2",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Risco/Benefício à natureza",
+            "value": "Ecológico (Metal 'Verde')",
+            "justification": "Substituto seguro e não tóxico para o chumbo em muitas aplicações.",
+            "score": 85
         },
         {
             "id": 3,
-            "label": "Atributo 3",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Risco à saúde",
+            "value": "Muito Baixo",
+            "justification": "Surpreendentemente seguro para consumo humano em medicamentos estomacais.",
+            "score": 95
         },
         {
             "id": 4,
-            "label": "Atributo 4",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Benefício",
+            "value": "Medicinal e Fusíveis",
+            "justification": "Base do Pepto-Bismol e ligas de baixo ponto de fusão para segurança.",
+            "score": 90
         },
         {
             "id": 5,
-            "label": "Atributo 5",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Nº de ligantes possíveis",
+            "value": "3, 5",
+            "justification": "Forma compostos principalmente no estado de oxidação +3.",
+            "score": 45
         },
         {
             "id": 6,
-            "label": "Atributo 6",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Abundância na natureza",
+            "value": "0,008 ppm",
+            "justification": "Raro na crosta, similar à abundância da prata.",
+            "score": 8
         },
         {
             "id": 7,
-            "label": "Atributo 7",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Abundância no universo",
+            "value": "0,00000007%",
+            "justification": "Um dos elementos pesados menos comuns no cosmos.",
+            "score": 0.1
         },
         {
             "id": 8,
-            "label": "Atributo 8",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Massa atômica",
+            "value": "208,98 u",
+            "justification": "Massa do seu único isótopo que ocorre naturalmente.",
+            "score": 209
         },
         {
             "id": 9,
-            "label": "Atributo 9",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Densidade",
+            "value": "9,78 g/cm³",
+            "justification": "Metal pesado, mas menos denso que o chumbo ou o mercúrio.",
+            "score": 98
         },
         {
             "id": 10,
-            "label": "Atributo 10",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Raio atômico",
+            "value": "156 pm",
+            "justification": "Raio atômico padrão para o grupo 15, período 6.",
+            "score": 156
         },
         {
             "id": 11,
-            "label": "Atributo 11",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Oxidação",
+            "value": "+3, +5",
+            "justification": "O estado +3 é o mais estável e comum quimicamente.",
+            "score": 35
         },
         {
             "id": 12,
-            "label": "Atributo 12",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Condutividade elétrica",
+            "value": "Pobre",
+            "justification": "Possui uma das menores condutividades térmicas e elétricas entre os metais.",
+            "score": 5
         },
         {
             "id": 13,
-            "label": "Atributo 13",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Eletronegatividade",
+            "value": "2,02 (Pauling)",
+            "justification": "Valor moderadamente alto para um metal.",
+            "score": 25
         },
         {
             "id": 14,
-            "label": "Atributo 14",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Estado físico",
+            "value": "Sólido",
+            "justification": "Metal cristalino com um brilho rosado característico.",
+            "score": 100
         },
         {
             "id": 15,
-            "label": "Atributo 15",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Maior subnível energético",
+            "value": "6p³",
+            "justification": "Três elétrons ocupam o subnível 6p.",
+            "score": 60
         },
         {
             "id": 16,
-            "label": "Atributo 16",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Distribuição eletrônica",
+            "value": "[Xe] 4f¹⁴ 5d¹⁰ 6s² 6p³",
+            "justification": "Configuração que o coloca no grupo do nitrogênio e fósforo.",
+            "score": 98
         },
         {
             "id": 17,
-            "label": "Atributo 17",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Nº de prótons / Nº de elétrons",
+            "value": "83",
+            "justification": "Número atômico que o tornava 'o último elemento estável' até 2003.",
+            "score": 100
         },
         {
             "id": 18,
-            "label": "Atributo 18",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Nº de nêutrons",
+            "value": "126",
+            "justification": "Número 'mágico' de nêutrons que confere estabilidade ao núcleo.",
+            "score": 126
         },
         {
             "id": 19,
-            "label": "Atributo 19",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Radioatividade",
+            "value": "Levemente Radioativo",
+            "justification": "Sua meia-vida é 1 bilhão de vezes a idade do universo; na prática, é estável.",
+            "score": 99
         },
         {
             "id": 20,
-            "label": "Atributo 20",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Aplicabilidade / Utilidade",
+            "value": "Sistemas de Segurança",
+            "justification": "Usado em sprinklers de incêndio devido ao seu baixo ponto de fusão.",
+            "score": 85
         },
         {
             "id": 21,
-            "label": "Atributo 21",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Local de origem",
+            "value": "Alemanha",
+            "justification": "Conhecido desde a Idade Média, mas frequentemente confundido com chumbo.",
+            "score": 80
         },
         {
             "id": 22,
-            "label": "Atributo 22",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Curiosidade",
+            "value": "Cristais Arco-Íris",
+            "justification": "Forma cristais com cores incríveis devido à oxidação superficial.",
+            "score": 100
         },
         {
             "id": 23,
-            "label": "Atributo 23",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Origem do nome",
+            "value": "Wismut (Alemão)",
+            "justification": "Significa 'massa branca', referindo-se à sua aparência original.",
+            "score": 90
         },
         {
             "id": 24,
-            "label": "Atributo 24",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Descobridor",
+            "value": "Claude Geoffroy",
+            "justification": "Provou em 1753 que o bismuto era um elemento distinto do chumbo.",
+            "score": 85
         },
         {
             "id": 25,
-            "label": "Atributo 25",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Ano de descoberta",
+            "value": "1753",
+            "justification": "Ano da identificação científica definitiva.",
+            "score": 85
         },
         {
             "id": 26,
-            "label": "Atributo 26",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Ponto de fusão",
+            "value": "271,4 °C",
+            "justification": "Um dos pontos de fusão mais baixos entre os metais não alcalinos.",
+            "score": 27
         },
         {
             "id": 27,
-            "label": "Atributo 27",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Ponto de ebulição",
+            "value": "1564 °C",
+            "justification": "Temperatura na qual se torna gasoso.",
+            "score": 16
         }
     ]
 },
