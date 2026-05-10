@@ -7782,198 +7782,198 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 40,
     "symbol": "Zr",
     "name": "Zircônio",
-    "heroName": "Zircônio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Zircônio.",
+    "heroName": "Zircon Reactor",
+    "heroDescription": "O guardião da energia nuclear e mestre da invulnerabilidade química. Zircon Reactor é o herói que resiste às condições mais extremas, protegendo os núcleos de energia com seu escudo eterno.",
     "heroImage": "/placeholder.svg",
     "attributes": [
       {
         "id": 1,
-        "label": "Dado 1",
-        "value": "Processando",
-        "justification": "Característica em análise para o Zircônio.",
-        "score": 50
+        "label": "Massa Atômica",
+        "value": "91.224 u",
+        "justification": "O Zircônio possui uma massa atômica de aproximadamente 91.224 u.",
+        "score": 91
       },
       {
         "id": 2,
-        "label": "Dado 2",
-        "value": "Processando",
-        "justification": "Característica em análise para o Zircônio.",
-        "score": 50
+        "label": "Abundância na Crosta",
+        "value": "165 ppm",
+        "justification": "Mais abundante que o cobre e o chumbo, encontrado principalmente no mineral zircão.",
+        "score": 75
       },
       {
         "id": 3,
-        "label": "Dado 3",
-        "value": "Processando",
-        "justification": "Característica em análise para o Zircônio.",
-        "score": 50
+        "label": "Ponto de Fusão",
+        "value": "1855 °C",
+        "justification": "Possui um ponto de fusão muito elevado, ideal para aplicações de alta temperatura.",
+        "score": 90
       },
       {
         "id": 4,
-        "label": "Dado 4",
-        "value": "Processando",
-        "justification": "Característica em análise para o Zircônio.",
-        "score": 50
+        "label": "Ponto de Ebulição",
+        "value": "4409 °C",
+        "justification": "Sua temperatura de vaporização é extremamente alta.",
+        "score": 95
       },
       {
         "id": 5,
-        "label": "Dado 5",
-        "value": "Processando",
-        "justification": "Característica em análise para o Zircônio.",
-        "score": 50
+        "label": "Densidade",
+        "value": "6.52 g/cm³",
+        "justification": "Metal denso, mas com excelente relação resistência-peso.",
+        "score": 65
       },
       {
         "id": 6,
-        "label": "Dado 6",
-        "value": "Processando",
-        "justification": "Característica em análise para o Zircônio.",
-        "score": 50
+        "label": "Dureza de Mohs",
+        "value": "5.0",
+        "justification": "Metal duro e resistente ao desgaste mecânico.",
+        "score": 60
       },
       {
         "id": 7,
-        "label": "Dado 7",
-        "value": "Processando",
-        "justification": "Característica em análise para o Zircônio.",
-        "score": 50
+        "label": "Eletronegatividade",
+        "value": "1.33",
+        "justification": "Valor típico dos metais de transição do grupo 4.",
+        "score": 35
       },
       {
         "id": 8,
-        "label": "Dado 8",
-        "value": "Processando",
-        "justification": "Característica em análise para o Zircônio.",
-        "score": 50
+        "label": "Condutividade Térmica",
+        "value": "22.7 W/(m·K)",
+        "justification": "Condutividade térmica baixa, útil em barreiras térmicas.",
+        "score": 40
       },
       {
         "id": 9,
-        "label": "Dado 9",
-        "value": "Processando",
-        "justification": "Característica em análise para o Zircônio.",
-        "score": 50
+        "label": "Condutividade Elétrica",
+        "value": "2.4 MS/m",
+        "justification": "Condutor metálico razoável.",
+        "score": 45
       },
       {
         "id": 10,
-        "label": "Dado 10",
-        "value": "Processando",
-        "justification": "Característica em análise para o Zircônio.",
-        "score": 50
+        "label": "Calor Específico",
+        "value": "0.278 J/(g·K)",
+        "justification": "Capacidade térmica característica de metais pesados.",
+        "score": 48
       },
       {
         "id": 11,
-        "label": "Dado 11",
-        "value": "Processando",
-        "justification": "Característica em análise para o Zircônio.",
-        "score": 50
+        "label": "Raio Atômico",
+        "value": "160 pm",
+        "justification": "Tamanho atômico que permite formar ligas metálicas muito estáveis.",
+        "score": 65
       },
       {
         "id": 12,
-        "label": "Dado 12",
-        "value": "Processando",
-        "justification": "Característica em análise para o Zircônio.",
-        "score": 50
+        "label": "Energia de Ionização",
+        "value": "6.634 eV",
+        "justification": "Energia necessária para remover o primeiro elétron.",
+        "score": 62
       },
       {
         "id": 13,
-        "label": "Dado 13",
-        "value": "Processando",
-        "justification": "Característica em análise para o Zircônio.",
-        "score": 50
+        "label": "Estado Físico (CNTP)",
+        "value": "Sólido",
+        "justification": "Metal branco-acinzentado brilhante, altamente resistente à corrosão.",
+        "score": 99
       },
       {
         "id": 14,
-        "label": "Dado 14",
-        "value": "Processando",
-        "justification": "Característica em análise para o Zircônio.",
-        "score": 50
+        "label": "Reatividade Química",
+        "value": "Baixa (Passivado)",
+        "justification": "Forma uma camada de óxido extremamente estável que o protege de quase todos os ácidos.",
+        "score": 85
       },
       {
         "id": 15,
-        "label": "Dado 15",
-        "value": "Processando",
-        "justification": "Característica em análise para o Zircônio.",
-        "score": 50
+        "label": "Reciclabilidade",
+        "value": "Alta",
+        "justification": "Amplamente reciclado em indústrias químicas e nucleares.",
+        "score": 90
       },
       {
         "id": 16,
-        "label": "Dado 16",
-        "value": "Processando",
-        "justification": "Característica em análise para o Zircônio.",
-        "score": 50
+        "label": "Resistência à Corrosão",
+        "value": "Excepcional",
+        "justification": "Resiste a ácidos, álcalis e água salgada melhor que quase qualquer outro metal.",
+        "score": 100
       },
       {
         "id": 17,
-        "label": "Dado 17",
-        "value": "Processando",
-        "justification": "Característica em análise para o Zircônio.",
-        "score": 50
+        "label": "Refletividade",
+        "value": "Alta",
+        "justification": "Bom refletor de luz, usado em instrumentos ópticos.",
+        "score": 80
       },
       {
         "id": 18,
-        "label": "Dado 18",
-        "value": "Processando",
-        "justification": "Característica em análise para o Zircônio.",
-        "score": 50
+        "label": "Maleabilidade",
+        "value": "Moderada",
+        "justification": "Pode ser trabalhado a quente e a frio.",
+        "score": 60
       },
       {
         "id": 19,
-        "label": "Dado 19",
-        "value": "Processando",
-        "justification": "Característica em análise para o Zircônio.",
-        "score": 50
+        "label": "Dutibilidade",
+        "value": "Boa",
+        "justification": "Pode ser esticado em fios, essencial para grades de reatores.",
+        "score": 75
       },
       {
         "id": 20,
-        "label": "Dado 20",
-        "value": "Processando",
-        "justification": "Característica em análise para o Zircônio.",
-        "score": 50
+        "label": "Isótopos Estáveis",
+        "value": "5 (Zr-90, 91, 92, 94, 96)",
+        "justification": "Possui uma das maiores variedades de isótopos estáveis.",
+        "score": 95
       },
       {
         "id": 21,
-        "label": "Dado 21",
-        "value": "Processando",
-        "justification": "Característica em análise para o Zircônio.",
-        "score": 50
+        "label": "Toxicidade",
+        "value": "Muito Baixa",
+        "justification": "Considerado biologicamente inerte.",
+        "score": 95
       },
       {
         "id": 22,
-        "label": "Dado 22",
-        "value": "Processando",
-        "justification": "Característica em análise para o Zircônio.",
-        "score": 50
+        "label": "Aplicações Tecnológicas",
+        "value": "Crítica",
+        "justification": "Essencial para o revestimento de combustível nuclear devido à baixa absorção de nêutrons.",
+        "score": 100
       },
       {
         "id": 23,
-        "label": "Dado 23",
-        "value": "Processando",
-        "justification": "Característica em análise para o Zircônio.",
-        "score": 50
+        "label": "Magnético",
+        "value": "Paramagnético",
+        "justification": "Resposta magnética muito fraca.",
+        "score": 10
       },
       {
         "id": 24,
-        "label": "Dado 24",
-        "value": "Processando",
-        "justification": "Característica em análise para o Zircônio.",
-        "score": 50
+        "label": "Custo de Produção",
+        "value": "Moderado a Alto",
+        "justification": "A separação do háfnio (seu 'gêmeo' químico) é difícil e dispendiosa.",
+        "score": 40
       },
       {
         "id": 25,
-        "label": "Dado 25",
-        "value": "Processando",
-        "justification": "Característica em análise para o Zircônio.",
-        "score": 50
+        "label": "Risco à Natureza",
+        "value": "Mínimo",
+        "justification": "Elemento estável e não tóxico para o ecossistema.",
+        "score": 98
       },
       {
         "id": 26,
-        "label": "Dado 26",
-        "value": "Processando",
-        "justification": "Característica em análise para o Zircônio.",
-        "score": 50
+        "label": "Radioatividade",
+        "value": "Nula (Isótopos naturais)",
+        "justification": "Isótopos naturais são estáveis ou têm meia-vida extremamente longa.",
+        "score": 100
       },
       {
         "id": 27,
-        "label": "Dado 27",
-        "value": "Processando",
-        "justification": "Característica em análise para o Zircônio.",
-        "score": 50
+        "label": "Curiosidade Histórica",
+        "value": "Zircônia Cúbica",
+        "justification": "Seu óxido é a imitação de diamante mais popular do mundo devido ao seu brilho.",
+        "score": 90
       }
     ]
   },
