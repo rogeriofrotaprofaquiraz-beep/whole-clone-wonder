@@ -19529,192 +19529,192 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "attributes": [
         {
             "id": 1,
-            "label": "Atributo 1",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Fraquezas",
+            "value": "Produção em Microgramas",
+            "justification": "Tão raro que só pode ser visto a olho nu em quantidades minúsculas.",
+            "score": 1
         },
         {
             "id": 2,
-            "label": "Atributo 2",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
+            "label": "Risco/Benefício à natureza",
+            "value": "Neutro",
+            "justification": "Sem impacto ambiental devido à sua raridade extrema.",
             "score": 50
         },
         {
             "id": 3,
-            "label": "Atributo 3",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Risco à saúde",
+            "value": "Extremo",
+            "justification": "Altamente radiotóxico, deve ser manuseado com robôs.",
+            "score": 1
         },
         {
             "id": 4,
-            "label": "Atributo 4",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Benefício",
+            "value": "Análise Química Avançada",
+            "justification": "Usado para testar limites de teorias químicas em laboratório.",
+            "score": 60
         },
         {
             "id": 5,
-            "label": "Atributo 5",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Nº de ligantes possíveis",
+            "value": "3",
+            "justification": "O estado de oxidação +3 é o mais importante e estável.",
+            "score": 30
         },
         {
             "id": 6,
-            "label": "Atributo 6",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Abundância na natureza",
+            "value": "Zero",
+            "justification": "Inexistente de forma natural.",
+            "score": 0
         },
         {
             "id": 7,
-            "label": "Atributo 7",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Abundância no universo",
+            "value": "Indetectável",
+            "justification": "Elemento exclusivamente de laboratório.",
+            "score": 0
         },
         {
             "id": 8,
-            "label": "Atributo 8",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Massa atômica",
+            "value": "252 u",
+            "justification": "Massa do isótopo mais comum produzido em reatores.",
+            "score": 252
         },
         {
             "id": 9,
-            "label": "Atributo 9",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Densidade",
+            "value": "8,84 g/cm³",
+            "justification": "Metal densíssimo, propriedades baseadas em tendências do grupo.",
+            "score": 88
         },
         {
             "id": 10,
-            "label": "Atributo 10",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Raio atômico",
+            "value": "186 pm",
+            "justification": "Tamanho atômico similar ao califórnio.",
+            "score": 186
         },
         {
             "id": 11,
-            "label": "Atributo 11",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Oxidação",
+            "value": "+2, +3, +4",
+            "justification": "Química de coordenação complexa.",
+            "score": 90
         },
         {
             "id": 12,
-            "label": "Atributo 12",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Condutividade elétrica",
+            "value": "Baixa",
+            "justification": "Condutor metálico típico.",
+            "score": 20
         },
         {
             "id": 13,
-            "label": "Atributo 13",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Eletronegatividade",
+            "value": "1,3 (Pauling)",
+            "justification": "Consistente com os actinídeos vizinhos.",
+            "score": 13
         },
         {
             "id": 14,
-            "label": "Atributo 14",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Estado físico",
+            "value": "Sólido",
+            "justification": "Metal macio e prateado.",
+            "score": 100
         },
         {
             "id": 15,
-            "label": "Atributo 15",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Maior subnível energético",
+            "value": "5f¹¹",
+            "justification": "Onze elétrons na subcamada 5f.",
+            "score": 110
         },
         {
             "id": 16,
-            "label": "Atributo 16",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Distribuição eletrônica",
+            "value": "[Rn] 5f¹¹ 7s²",
+            "justification": "Configuração que o posiciona entre os actinídeos pesados.",
+            "score": 100
         },
         {
             "id": 17,
-            "label": "Atributo 17",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Nº de prótons / Nº de elétrons",
+            "value": "99",
+            "justification": "Identidade atômica do Enstênio.",
+            "score": 100
         },
         {
             "id": 18,
-            "label": "Atributo 18",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Nº de nêutrons",
+            "value": "153",
+            "justification": "Número de nêutrons no isótopo Es-252.",
+            "score": 153
         },
         {
             "id": 19,
-            "label": "Atributo 19",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Radioatividade",
+            "value": "Altíssima",
+            "justification": "Isótopo Es-253 tem meia-vida de apenas 20 dias.",
+            "score": 1
         },
         {
             "id": 20,
-            "label": "Atributo 20",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
+            "label": "Aplicabilidade / Utilidade",
+            "value": "Pesquisa Atômica",
+            "justification": "Principalmente para estudar a estrutura nuclear de elementos pesados.",
             "score": 50
         },
         {
             "id": 21,
-            "label": "Atributo 21",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Local de origem",
+            "value": "Atol de Eniwetok",
+            "justification": "Descoberto nos detritos da primeira explosão de bomba de hidrogênio (Mike).",
+            "score": 100
         },
         {
             "id": 22,
-            "label": "Atributo 22",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Curiosidade",
+            "value": "Nascido do Fogo",
+            "justification": "Descoberto secretamente nos resíduos de testes termonucleares no Pacífico.",
+            "score": 100
         },
         {
             "id": 23,
-            "label": "Atributo 23",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Origem do nome",
+            "value": "Albert Einstein",
+            "justification": "Homenagem póstuma ao físico mais famoso do século XX.",
+            "score": 100
         },
         {
             "id": 24,
-            "label": "Atributo 24",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Descobridor",
+            "value": "Albert Ghiorso e equipe",
+            "justification": "Identificado por análise química de corais contaminados.",
+            "score": 100
         },
         {
             "id": 25,
-            "label": "Atributo 25",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Ano de descoberta",
+            "value": "1952",
+            "justification": "Revelado ao mundo anos depois de sua descoberta secreta.",
+            "score": 95
         },
         {
             "id": 26,
-            "label": "Atributo 26",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Ponto de fusão",
+            "value": "860 °C",
+            "justification": "Ponto de fusão moderado.",
+            "score": 65
         },
         {
             "id": 27,
-            "label": "Atributo 27",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Ponto de ebulição",
+            "value": "996 °C (Est.)",
+            "justification": "Volátil em temperaturas relativamente baixas para um metal.",
+            "score": 40
         }
     ]
 },
