@@ -2614,191 +2614,191 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "attributes": [
       {
         "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 1",
+        "value": "Processando",
+        "justification": "Característica em análise para o Silício.",
         "score": 50
       },
       {
         "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 2",
+        "value": "Processando",
+        "justification": "Característica em análise para o Silício.",
         "score": 50
       },
       {
         "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 3",
+        "value": "Processando",
+        "justification": "Característica em análise para o Silício.",
         "score": 50
       },
       {
         "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 4",
+        "value": "Processando",
+        "justification": "Característica em análise para o Silício.",
         "score": 50
       },
       {
         "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 5",
+        "value": "Processando",
+        "justification": "Característica em análise para o Silício.",
         "score": 50
       },
       {
         "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 6",
+        "value": "Processando",
+        "justification": "Característica em análise para o Silício.",
         "score": 50
       },
       {
         "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 7",
+        "value": "Processando",
+        "justification": "Característica em análise para o Silício.",
         "score": 50
       },
       {
         "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 8",
+        "value": "Processando",
+        "justification": "Característica em análise para o Silício.",
         "score": 50
       },
       {
         "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 9",
+        "value": "Processando",
+        "justification": "Característica em análise para o Silício.",
         "score": 50
       },
       {
         "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 10",
+        "value": "Processando",
+        "justification": "Característica em análise para o Silício.",
         "score": 50
       },
       {
         "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 11",
+        "value": "Processando",
+        "justification": "Característica em análise para o Silício.",
         "score": 50
       },
       {
         "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 12",
+        "value": "Processando",
+        "justification": "Característica em análise para o Silício.",
         "score": 50
       },
       {
         "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 13",
+        "value": "Processando",
+        "justification": "Característica em análise para o Silício.",
         "score": 50
       },
       {
         "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 14",
+        "value": "Processando",
+        "justification": "Característica em análise para o Silício.",
         "score": 50
       },
       {
         "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 15",
+        "value": "Processando",
+        "justification": "Característica em análise para o Silício.",
         "score": 50
       },
       {
         "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 16",
+        "value": "Processando",
+        "justification": "Característica em análise para o Silício.",
         "score": 50
       },
       {
         "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 17",
+        "value": "Processando",
+        "justification": "Característica em análise para o Silício.",
         "score": 50
       },
       {
         "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 18",
+        "value": "Processando",
+        "justification": "Característica em análise para o Silício.",
         "score": 50
       },
       {
         "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 19",
+        "value": "Processando",
+        "justification": "Característica em análise para o Silício.",
         "score": 50
       },
       {
         "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 20",
+        "value": "Processando",
+        "justification": "Característica em análise para o Silício.",
         "score": 50
       },
       {
         "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 21",
+        "value": "Processando",
+        "justification": "Característica em análise para o Silício.",
         "score": 50
       },
       {
         "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 22",
+        "value": "Processando",
+        "justification": "Característica em análise para o Silício.",
         "score": 50
       },
       {
         "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 23",
+        "value": "Processando",
+        "justification": "Característica em análise para o Silício.",
         "score": 50
       },
       {
         "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 24",
+        "value": "Processando",
+        "justification": "Característica em análise para o Silício.",
         "score": 50
       },
       {
         "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 25",
+        "value": "Processando",
+        "justification": "Característica em análise para o Silício.",
         "score": 50
       },
       {
         "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 26",
+        "value": "Processando",
+        "justification": "Característica em análise para o Silício.",
         "score": 50
       },
       {
         "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 27",
+        "value": "Processando",
+        "justification": "Característica em análise para o Silício.",
         "score": 50
       }
     ]
@@ -7589,191 +7589,191 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "attributes": [
       {
         "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 1",
+        "value": "Processando",
+        "justification": "Característica em análise para o Ítrio.",
         "score": 50
       },
       {
         "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 2",
+        "value": "Processando",
+        "justification": "Característica em análise para o Ítrio.",
         "score": 50
       },
       {
         "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 3",
+        "value": "Processando",
+        "justification": "Característica em análise para o Ítrio.",
         "score": 50
       },
       {
         "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 4",
+        "value": "Processando",
+        "justification": "Característica em análise para o Ítrio.",
         "score": 50
       },
       {
         "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 5",
+        "value": "Processando",
+        "justification": "Característica em análise para o Ítrio.",
         "score": 50
       },
       {
         "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 6",
+        "value": "Processando",
+        "justification": "Característica em análise para o Ítrio.",
         "score": 50
       },
       {
         "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 7",
+        "value": "Processando",
+        "justification": "Característica em análise para o Ítrio.",
         "score": 50
       },
       {
         "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 8",
+        "value": "Processando",
+        "justification": "Característica em análise para o Ítrio.",
         "score": 50
       },
       {
         "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 9",
+        "value": "Processando",
+        "justification": "Característica em análise para o Ítrio.",
         "score": 50
       },
       {
         "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 10",
+        "value": "Processando",
+        "justification": "Característica em análise para o Ítrio.",
         "score": 50
       },
       {
         "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 11",
+        "value": "Processando",
+        "justification": "Característica em análise para o Ítrio.",
         "score": 50
       },
       {
         "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 12",
+        "value": "Processando",
+        "justification": "Característica em análise para o Ítrio.",
         "score": 50
       },
       {
         "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 13",
+        "value": "Processando",
+        "justification": "Característica em análise para o Ítrio.",
         "score": 50
       },
       {
         "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 14",
+        "value": "Processando",
+        "justification": "Característica em análise para o Ítrio.",
         "score": 50
       },
       {
         "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 15",
+        "value": "Processando",
+        "justification": "Característica em análise para o Ítrio.",
         "score": 50
       },
       {
         "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 16",
+        "value": "Processando",
+        "justification": "Característica em análise para o Ítrio.",
         "score": 50
       },
       {
         "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 17",
+        "value": "Processando",
+        "justification": "Característica em análise para o Ítrio.",
         "score": 50
       },
       {
         "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 18",
+        "value": "Processando",
+        "justification": "Característica em análise para o Ítrio.",
         "score": 50
       },
       {
         "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 19",
+        "value": "Processando",
+        "justification": "Característica em análise para o Ítrio.",
         "score": 50
       },
       {
         "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 20",
+        "value": "Processando",
+        "justification": "Característica em análise para o Ítrio.",
         "score": 50
       },
       {
         "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 21",
+        "value": "Processando",
+        "justification": "Característica em análise para o Ítrio.",
         "score": 50
       },
       {
         "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 22",
+        "value": "Processando",
+        "justification": "Característica em análise para o Ítrio.",
         "score": 50
       },
       {
         "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 23",
+        "value": "Processando",
+        "justification": "Característica em análise para o Ítrio.",
         "score": 50
       },
       {
         "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 24",
+        "value": "Processando",
+        "justification": "Característica em análise para o Ítrio.",
         "score": 50
       },
       {
         "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 25",
+        "value": "Processando",
+        "justification": "Característica em análise para o Ítrio.",
         "score": 50
       },
       {
         "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 26",
+        "value": "Processando",
+        "justification": "Característica em análise para o Ítrio.",
         "score": 50
       },
       {
         "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 27",
+        "value": "Processando",
+        "justification": "Característica em análise para o Ítrio.",
         "score": 50
       }
     ]
@@ -7788,191 +7788,191 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "attributes": [
       {
         "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 1",
+        "value": "Processando",
+        "justification": "Característica em análise para o Zircônio.",
         "score": 50
       },
       {
         "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 2",
+        "value": "Processando",
+        "justification": "Característica em análise para o Zircônio.",
         "score": 50
       },
       {
         "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 3",
+        "value": "Processando",
+        "justification": "Característica em análise para o Zircônio.",
         "score": 50
       },
       {
         "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 4",
+        "value": "Processando",
+        "justification": "Característica em análise para o Zircônio.",
         "score": 50
       },
       {
         "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 5",
+        "value": "Processando",
+        "justification": "Característica em análise para o Zircônio.",
         "score": 50
       },
       {
         "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 6",
+        "value": "Processando",
+        "justification": "Característica em análise para o Zircônio.",
         "score": 50
       },
       {
         "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 7",
+        "value": "Processando",
+        "justification": "Característica em análise para o Zircônio.",
         "score": 50
       },
       {
         "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 8",
+        "value": "Processando",
+        "justification": "Característica em análise para o Zircônio.",
         "score": 50
       },
       {
         "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 9",
+        "value": "Processando",
+        "justification": "Característica em análise para o Zircônio.",
         "score": 50
       },
       {
         "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 10",
+        "value": "Processando",
+        "justification": "Característica em análise para o Zircônio.",
         "score": 50
       },
       {
         "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 11",
+        "value": "Processando",
+        "justification": "Característica em análise para o Zircônio.",
         "score": 50
       },
       {
         "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 12",
+        "value": "Processando",
+        "justification": "Característica em análise para o Zircônio.",
         "score": 50
       },
       {
         "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 13",
+        "value": "Processando",
+        "justification": "Característica em análise para o Zircônio.",
         "score": 50
       },
       {
         "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 14",
+        "value": "Processando",
+        "justification": "Característica em análise para o Zircônio.",
         "score": 50
       },
       {
         "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 15",
+        "value": "Processando",
+        "justification": "Característica em análise para o Zircônio.",
         "score": 50
       },
       {
         "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 16",
+        "value": "Processando",
+        "justification": "Característica em análise para o Zircônio.",
         "score": 50
       },
       {
         "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 17",
+        "value": "Processando",
+        "justification": "Característica em análise para o Zircônio.",
         "score": 50
       },
       {
         "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 18",
+        "value": "Processando",
+        "justification": "Característica em análise para o Zircônio.",
         "score": 50
       },
       {
         "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 19",
+        "value": "Processando",
+        "justification": "Característica em análise para o Zircônio.",
         "score": 50
       },
       {
         "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 20",
+        "value": "Processando",
+        "justification": "Característica em análise para o Zircônio.",
         "score": 50
       },
       {
         "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 21",
+        "value": "Processando",
+        "justification": "Característica em análise para o Zircônio.",
         "score": 50
       },
       {
         "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 22",
+        "value": "Processando",
+        "justification": "Característica em análise para o Zircônio.",
         "score": 50
       },
       {
         "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 23",
+        "value": "Processando",
+        "justification": "Característica em análise para o Zircônio.",
         "score": 50
       },
       {
         "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 24",
+        "value": "Processando",
+        "justification": "Característica em análise para o Zircônio.",
         "score": 50
       },
       {
         "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 25",
+        "value": "Processando",
+        "justification": "Característica em análise para o Zircônio.",
         "score": 50
       },
       {
         "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 26",
+        "value": "Processando",
+        "justification": "Característica em análise para o Zircônio.",
         "score": 50
       },
       {
         "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 27",
+        "value": "Processando",
+        "justification": "Característica em análise para o Zircônio.",
         "score": 50
       }
     ]
@@ -7987,191 +7987,191 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "attributes": [
       {
         "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 1",
+        "value": "Processando",
+        "justification": "Característica em análise para o Nióbio.",
         "score": 50
       },
       {
         "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 2",
+        "value": "Processando",
+        "justification": "Característica em análise para o Nióbio.",
         "score": 50
       },
       {
         "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 3",
+        "value": "Processando",
+        "justification": "Característica em análise para o Nióbio.",
         "score": 50
       },
       {
         "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 4",
+        "value": "Processando",
+        "justification": "Característica em análise para o Nióbio.",
         "score": 50
       },
       {
         "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 5",
+        "value": "Processando",
+        "justification": "Característica em análise para o Nióbio.",
         "score": 50
       },
       {
         "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 6",
+        "value": "Processando",
+        "justification": "Característica em análise para o Nióbio.",
         "score": 50
       },
       {
         "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 7",
+        "value": "Processando",
+        "justification": "Característica em análise para o Nióbio.",
         "score": 50
       },
       {
         "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 8",
+        "value": "Processando",
+        "justification": "Característica em análise para o Nióbio.",
         "score": 50
       },
       {
         "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 9",
+        "value": "Processando",
+        "justification": "Característica em análise para o Nióbio.",
         "score": 50
       },
       {
         "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 10",
+        "value": "Processando",
+        "justification": "Característica em análise para o Nióbio.",
         "score": 50
       },
       {
         "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 11",
+        "value": "Processando",
+        "justification": "Característica em análise para o Nióbio.",
         "score": 50
       },
       {
         "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 12",
+        "value": "Processando",
+        "justification": "Característica em análise para o Nióbio.",
         "score": 50
       },
       {
         "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 13",
+        "value": "Processando",
+        "justification": "Característica em análise para o Nióbio.",
         "score": 50
       },
       {
         "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 14",
+        "value": "Processando",
+        "justification": "Característica em análise para o Nióbio.",
         "score": 50
       },
       {
         "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 15",
+        "value": "Processando",
+        "justification": "Característica em análise para o Nióbio.",
         "score": 50
       },
       {
         "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 16",
+        "value": "Processando",
+        "justification": "Característica em análise para o Nióbio.",
         "score": 50
       },
       {
         "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 17",
+        "value": "Processando",
+        "justification": "Característica em análise para o Nióbio.",
         "score": 50
       },
       {
         "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 18",
+        "value": "Processando",
+        "justification": "Característica em análise para o Nióbio.",
         "score": 50
       },
       {
         "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 19",
+        "value": "Processando",
+        "justification": "Característica em análise para o Nióbio.",
         "score": 50
       },
       {
         "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 20",
+        "value": "Processando",
+        "justification": "Característica em análise para o Nióbio.",
         "score": 50
       },
       {
         "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 21",
+        "value": "Processando",
+        "justification": "Característica em análise para o Nióbio.",
         "score": 50
       },
       {
         "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 22",
+        "value": "Processando",
+        "justification": "Característica em análise para o Nióbio.",
         "score": 50
       },
       {
         "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 23",
+        "value": "Processando",
+        "justification": "Característica em análise para o Nióbio.",
         "score": 50
       },
       {
         "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 24",
+        "value": "Processando",
+        "justification": "Característica em análise para o Nióbio.",
         "score": 50
       },
       {
         "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 25",
+        "value": "Processando",
+        "justification": "Característica em análise para o Nióbio.",
         "score": 50
       },
       {
         "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 26",
+        "value": "Processando",
+        "justification": "Característica em análise para o Nióbio.",
         "score": 50
       },
       {
         "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Dado 27",
+        "value": "Processando",
+        "justification": "Característica em análise para o Nióbio.",
         "score": 50
       }
     ]
