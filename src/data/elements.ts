@@ -15548,46 +15548,46 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
-            "id": 1,
-            "label": "Atributo 1",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 1,
+          "label": "Fraquezas",
+          "value": "Macio e Maleável",
+          "justification": "O ouro puro é muito macio para a maioria das aplicações práticas, exigindo ligas.",
+          "score": 30
         },
         {
-            "id": 2,
-            "label": "Atributo 2",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 2,
+          "label": "Risco/Benefício à natureza",
+          "value": "Inerte e Seguro",
+          "justification": "Metal quimicamente inerte que não se decompõe nem polui solo ou água.",
+          "score": 95
         },
         {
-            "id": 3,
-            "label": "Atributo 3",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 3,
+          "label": "Risco à saúde",
+          "value": "Inerte",
+          "justification": "Não reage com o corpo humano, sendo seguro para próteses e até consumo (em folha).",
+          "score": 100
         },
         {
-            "id": 4,
-            "label": "Atributo 4",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 4,
+          "label": "Benefício",
+          "value": "Eletrônica, Reservas Monetárias, Odontologia",
+          "justification": "Sua condutividade e resistência à corrosão o tornam indispensável para conexões digitais.",
+          "score": 100
         },
         {
-            "id": 5,
-            "label": "Atributo 5",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 5,
+          "label": "Nº de ligantes possíveis",
+          "value": "1, 3",
+          "justification": "Os estados de oxidação +1 e +3 são os mais estáveis.",
+          "score": 60
         },
         {
-            "id": 6,
-            "label": "Atributo 6",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 6,
+          "label": "Abundância na natureza",
+          "value": "0,004 ppm (crosta)",
+          "justification": "Elemento raro, mas amplamente distribuído em baixas concentrações.",
+          "score": 10
         },
         {
             "id": 7,
