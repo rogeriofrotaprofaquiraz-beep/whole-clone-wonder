@@ -11,7 +11,7 @@ const ElementCard = ({ element }: { element: PeriodicElement }) => {
 
   return (
     <div className={`
-      relative p-5 rounded-3xl w-full max-w-md text-white font-sans shadow-[0_20px_50px_rgba(0,0,0,0.5)] 
+      relative p-6 rounded-[2.5rem] w-full max-w-lg text-white font-sans shadow-[0_25px_60px_rgba(0,0,0,0.6)] 
       animate-in fade-in zoom-in duration-500 border border-white/10 overflow-hidden
       ${isGas ? 'backdrop-blur-xl bg-white/5 shadow-[0_0_40px_rgba(59,130,246,0.2)]' : 'bg-slate-900/90'}
     `}>
