@@ -11304,59 +11304,59 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
         },
         {
           "id": 20,
-            "label": "Atributo 20",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "label": "Aplicabilidade / Utilidade",
+          "value": "Fósforos (Iluminação), Catalisadores",
+          "justification": "Uso crítico em baterias híbridas e refino de petróleo.",
+          "score": 92
         },
         {
-            "id": 21,
-            "label": "Atributo 21",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 21,
+          "label": "Local de origem",
+          "value": "Suécia",
+          "justification": "Identificado no mineral de Bastnäs.",
+          "score": 80
         },
         {
-            "id": 22,
-            "label": "Atributo 22",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 22,
+          "label": "Curiosidade",
+          "value": "Baterias Híbridas",
+          "justification": "Um carro híbrido médio contém cerca de 10-15 kg de lantânio.",
+          "score": 100
         },
         {
-            "id": 23,
-            "label": "Atributo 23",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 23,
+          "label": "Origem do nome",
+          "value": "Lanthanein (Estar escondido)",
+          "justification": "Termo grego que reflete a dificuldade de isolá-lo.",
+          "score": 95
         },
         {
-            "id": 24,
-            "label": "Atributo 24",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 24,
+          "label": "Descobridor",
+          "value": "Carl Gustaf Mosander",
+          "justification": "Químico sueco que isolou o elemento a partir do nitrato de cério.",
+          "score": 88
         },
         {
-            "id": 25,
-            "label": "Atributo 25",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 25,
+          "label": "Ano de descoberta",
+          "value": "1839",
+          "justification": "Um dos primeiros lantanídeos a serem isolados.",
+          "score": 92
         },
         {
-            "id": 26,
-            "label": "Atributo 26",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 26,
+          "label": "Ponto de fusão",
+          "value": "920 °C",
+          "justification": "Fusão moderada para um metal raro.",
+          "score": 92
         },
         {
-            "id": 27,
-            "label": "Atributo 27",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 27,
+          "label": "Ponto de ebulição",
+          "value": "3464 °C",
+          "justification": "Ponto de ebulição extremamente elevado.",
+          "score": 34
         }
     ]
 },
