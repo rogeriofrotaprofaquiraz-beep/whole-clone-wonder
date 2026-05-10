@@ -5788,202 +5788,202 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
       }
     ]
   },
-  "Ni": {
-    "number": 28,
-    "symbol": "Ni",
-    "name": "Níquel",
-    "heroName": "Níquel Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Níquel.",
+  "Cu": {
+    "number": 29,
+    "symbol": "Cu",
+    "name": "Cobre",
+    "heroName": "Copper Circuit",
+    "heroDescription": "O condutor supremo e mestre da energia, um herói que conecta o mundo através de fios invisíveis de poder e comunicação.",
     "heroImage": "/placeholder.svg",
     "attributes": [
       {
         "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Fraquezas",
+        "value": "Oxidação superficial (Zinabre)",
+        "justification": "Desenvolve uma pátina verde em contato com o ar úmido.",
+        "score": 30
       },
       {
         "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Risco/Benefício à natureza",
+        "value": "Antimicrobiano Natural",
+        "justification": "Elimina bactérias e vírus em superfícies de contato.",
+        "score": 95
       },
       {
         "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Risco à saúde",
+        "value": "Toxicidade em altas doses",
+        "justification": "O excesso pode causar danos ao fígado e rins.",
+        "score": 45
       },
       {
         "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Benefício",
+        "value": "Eletrônica, Fiação, Moedas",
+        "justification": "Fundamental para a infraestrutura elétrica global.",
+        "score": 100
       },
       {
         "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de ligantes possíveis",
+        "value": "2, 4, 6",
+        "justification": "Forma complexos estáveis, especialmente em solução aquosa.",
+        "score": 70
       },
       {
         "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Abundância na natureza",
+        "value": "60 ppm (crosta)",
+        "justification": "Elemento moderadamente abundante, essencial para a civilização.",
+        "score": 60
       },
       {
         "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Abundância no universo",
+        "value": "0,00007%",
+        "justification": "Sintetizado em estrelas massivas via captura de nêutrons.",
+        "score": 25
       },
       {
         "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Massa atômica",
+        "value": "63,546 u",
+        "justification": "Massa moderada, entre o níquel e o zinco.",
+        "score": 63
       },
       {
         "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Densidade",
+        "value": "8,96 g/cm³",
+        "justification": "Metal denso, excelente condutor térmico e elétrico.",
+        "score": 89
       },
       {
         "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Raio atômico",
+        "value": "128 pm",
+        "justification": "Compacto, favorecendo alta condutividade.",
+        "score": 65
       },
       {
         "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Oxidação",
+        "value": "+1, +2",
+        "justification": "Os estados cuproso (+1) e cúprico (+2) são os mais comuns.",
+        "score": 85
       },
       {
         "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Condutividade elétrica",
+        "value": "Excelente (Segunda maior)",
+        "justification": "Apenas a prata supera o cobre em condutividade.",
+        "score": 99
       },
       {
         "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Eletronegatividade",
+        "value": "1,90",
+        "justification": "Valor elevado que reflete sua nobreza relativa.",
+        "score": 55
       },
       {
         "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Estado físico",
+        "value": "Sólido",
+        "justification": "Metal de cor avermelhada característica, maleável e dúctil.",
+        "score": 90
       },
       {
         "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Maior subnível energético",
+        "value": "3d¹⁰",
+        "justification": "Configuração anômala para preencher o orbital d completamente.",
+        "score": 29
       },
       {
         "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Distribuição eletrônica",
+        "value": "[Ar] 3d¹⁰ 4s¹",
+        "justification": "Promove um elétron do 4s para estabilizar o subnível 3d.",
+        "score": 98
       },
       {
         "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de prótons / Nº de elétrons",
+        "value": "29",
+        "justification": "Identidade atômica do Cobre.",
+        "score": 99
       },
       {
         "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de nêutrons",
+        "value": "34",
+        "justification": "Equilíbrio nuclear nos isótopos naturais Cu-63 e Cu-65.",
+        "score": 34
       },
       {
         "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Radioatividade",
+        "value": "Estável",
+        "justification": "O cobre natural é perfeitamente estável.",
+        "score": 100
       },
       {
         "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Aplicabilidade / Utilidade",
+        "value": "Fios Elétricos, Tubulações, Esculturas",
+        "justification": "Onipresente na vida moderna e na arte.",
+        "score": 100
       },
       {
         "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Local de origem",
+        "value": "Mundial (Conhecido desde a Antiguidade)",
+        "justification": "Um dos primeiros metais trabalhados pelo homem.",
+        "score": 100
       },
       {
         "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Curiosidade",
+        "value": "Sangue Azul",
+        "justification": "Moluscos e crustáceos usam hemocianina (com cobre) para respirar.",
+        "score": 100
       },
       {
         "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Origem do nome",
+        "value": "Cuprum (Chipre)",
+        "justification": "Ilha mediterrânea famosa por suas minas de cobre na antiguidade.",
+        "score": 95
       },
       {
         "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Descobridor",
+        "value": "Desconhecido",
+        "justification": "Usado há mais de 10.000 anos por civilizações antigas.",
+        "score": 100
       },
       {
         "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ano de descoberta",
+        "value": "~9000 a.C.",
+        "justification": "O primeiro metal a ser fundido e moldado.",
+        "score": 100
       },
       {
         "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de fusão",
+        "value": "1084 °C",
+        "justification": "Fusão acessível para fundição antiga.",
+        "score": 10
       },
       {
         "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de ebulição",
+        "value": "2562 °C",
+        "justification": "Alta estabilidade em estado líquido.",
+        "score": 25
       }
     ]
   },
