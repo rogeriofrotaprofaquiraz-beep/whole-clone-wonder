@@ -12364,84 +12364,84 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
-            "id": 1,
-            "label": "Atributo 1",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 1,
+          "label": "Fraquezas",
+          "value": "Altamente reativo",
+          "justification": "O mais reativo dos lantanídeos, oxida-se instantaneamente no ar e reage vigorosamente com água.",
+          "score": 20
         },
         {
-            "id": 2,
-            "label": "Atributo 2",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 2,
+          "label": "Risco/Benefício à natureza",
+          "value": "Baixa toxicidade",
+          "justification": "Geralmente pouco tóxico, mas seu manuseio exige precaução extrema devido à reatividade.",
+          "score": 85
         },
         {
-            "id": 3,
-            "label": "Atributo 3",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 3,
+          "label": "Risco à saúde",
+          "value": "Baixo",
+          "justification": "Não possui papel biológico conhecido.",
+          "score": 90
         },
         {
-            "id": 4,
-            "label": "Atributo 4",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 4,
+          "label": "Benefício",
+          "value": "Telas de TV, LEDs, Notas de Euro",
+          "justification": "Essencial para produzir a cor vermelha em telas e para segurança contra falsificação.",
+          "score": 98
         },
         {
-            "id": 5,
-            "label": "Atributo 5",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 5,
+          "label": "Nº de ligantes possíveis",
+          "value": "2, 3",
+          "justification": "Estado +2 é excepcionalmente estável para um lantanídeo.",
+          "score": 75
         },
         {
-            "id": 6,
-            "label": "Atributo 6",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 6,
+          "label": "Abundância na natureza",
+          "value": "1,8 ppm (crosta)",
+          "justification": "Um dos lantanídeos menos abundantes.",
+          "score": 30
         },
         {
-            "id": 7,
-            "label": "Atributo 7",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 7,
+          "label": "Abundância no universo",
+          "value": "0,000000005%",
+          "justification": "Elemento muito raro no cosmos.",
+          "score": 1
         },
         {
-            "id": 8,
-            "label": "Atributo 8",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 8,
+          "label": "Massa atômica",
+          "value": "151,96 u",
+          "justification": "Massa baseada em dois isótopos naturais.",
+          "score": 152
         },
         {
-            "id": 9,
-            "label": "Atributo 9",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 9,
+          "label": "Densidade",
+          "value": "5,24 g/cm³",
+          "justification": "O lantanídeo menos denso, devido ao seu grande raio atômico.",
+          "score": 52
         },
         {
-            "id": 10,
-            "label": "Atributo 10",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 10,
+          "label": "Raio atômico",
+          "value": "199 pm",
+          "justification": "O maior raio atômico entre todos os lantanídeos.",
+          "score": 199
         },
         {
-            "id": 11,
-            "label": "Atributo 11",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 11,
+          "label": "Oxidação",
+          "value": "+2, +3",
+          "justification": "Capacidade única de alternar entre +2 e +3 com facilidade.",
+          "score": 50
         },
         {
-            "id": 12,
+          "id": 12,
             "label": "Atributo 12",
             "value": "Em breve",
             "justification": "Dados sendo processados pela central elemental.",
