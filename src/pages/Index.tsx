@@ -124,7 +124,7 @@ const ElementCard = ({ element }: { element: PeriodicElement }) => {
 
 const Index = () => {
   const [selectedSymbol, setSelectedSymbol] = useState<string>("H");
-  const selectedElement = ELEMENTS_DATA[selectedSymbol];
+  const selectedElement = (ELEMENTS_DATA[selectedSymbol] && ELEMENTS_DATA[selectedSymbol].symbol !== "Element" && ELEMENTS_DATA[selectedSymbol].symbol !== "Elemento") ? ELEMENTS_DATA[selectedSymbol] : ELEMENTS_DATA["H"];
 
   // Tabela Periódica Completa com agrupamentos por cores e estrutura fiel ao PDF
   const periodicTableLayout = [
@@ -190,7 +190,7 @@ const Index = () => {
             {periodicTableLayout.map((row, rIdx) => (
               <React.Fragment key={rIdx}>
                 {row.map((symbol, sIdx) => {
-                  const isAvailable = symbol && ELEMENTS_DATA[symbol];
+                  const isAvailable = symbol && ELEMENTS_DATA[symbol] && ELEMENTS_DATA[symbol].symbol !== "Element" && ELEMENTS_DATA[symbol].symbol !== "Elemento";
                   const categoryStyle = getElementCategoryColor(symbol, rIdx, sIdx);
                   const categoryName = getCategoryName(symbol, rIdx, sIdx);
                   
