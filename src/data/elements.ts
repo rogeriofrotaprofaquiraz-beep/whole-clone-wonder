@@ -16942,192 +16942,192 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "attributes": [
         {
             "id": 1,
-            "label": "Atributo 1",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Fraquezas",
+            "value": "Gás radioativo",
+            "justification": "Invisível e inodoro, pode se acumular em porões sem ser notado.",
+            "score": 1
         },
         {
             "id": 2,
-            "label": "Atributo 2",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Risco/Benefício à natureza",
+            "value": "Poluente Geológico",
+            "justification": "Ocorre naturalmente no solo e nas rochas como subproduto do rádio.",
+            "score": 5
         },
         {
             "id": 3,
-            "label": "Atributo 3",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Risco à saúde",
+            "value": "Alto (Câncer)",
+            "justification": "Segunda maior causa de câncer de pulmão no mundo.",
+            "score": 1
         },
         {
             "id": 4,
-            "label": "Atributo 4",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Benefício",
+            "value": "Traçador Geológico",
+            "justification": "Usado para prever terremotos e estudar movimentos de massas de ar.",
+            "score": 60
         },
         {
             "id": 5,
-            "label": "Atributo 5",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Nº de ligantes possíveis",
+            "value": "0 (Gás Nobre)",
+            "justification": "Extremamente inerte, forma compostos apenas sob condições extremas.",
+            "score": 1
         },
         {
             "id": 6,
-            "label": "Atributo 6",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Abundância na natureza",
+            "value": "Muito Baixa",
+            "justification": "Gás raro na atmosfera, mas comum em certas formações rochosas.",
+            "score": 10
         },
         {
             "id": 7,
-            "label": "Atributo 7",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Abundância no universo",
+            "value": "Desprezível",
+            "justification": "Elemento pesado e instável raro no cosmos.",
+            "score": 0.1
         },
         {
             "id": 8,
-            "label": "Atributo 8",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Massa atômica",
+            "value": "222 u",
+            "justification": "Massa do seu isótopo mais comum e duradouro.",
+            "score": 222
         },
         {
             "id": 9,
-            "label": "Atributo 9",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Densidade",
+            "value": "9,73 g/L (Gás)",
+            "justification": "Um dos gases mais densos conhecidos.",
+            "score": 10
         },
         {
             "id": 10,
-            "label": "Atributo 10",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Raio atômico",
+            "value": "120 pm",
+            "justification": "Tamanho atômico reduzido devido à contração do núcleo.",
+            "score": 120
         },
         {
             "id": 11,
-            "label": "Atributo 11",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Oxidação",
+            "value": "0, +2",
+            "justification": "Geralmente neutro, mas pode formar fluoretos de radônio.",
+            "score": 10
         },
         {
             "id": 12,
-            "label": "Atributo 12",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Condutividade elétrica",
+            "value": "Isolante",
+            "justification": "Como gás nobre, não conduz eletricidade em condições normais.",
+            "score": 1
         },
         {
             "id": 13,
-            "label": "Atributo 13",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Eletronegatividade",
+            "value": "Não definida",
+            "justification": "Quimicamente inerte na maioria das condições.",
+            "score": 1
         },
         {
             "id": 14,
-            "label": "Atributo 14",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Estado físico",
+            "value": "Gás",
+            "justification": "Gás incolor e denso à temperatura ambiente.",
+            "score": 100
         },
         {
             "id": 15,
-            "label": "Atributo 15",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Maior subnível energético",
+            "value": "6p⁶",
+            "justification": "Camada de valência completa, definindo sua natureza de gás nobre.",
+            "score": 100
         },
         {
             "id": 16,
-            "label": "Atributo 16",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Distribuição eletrônica",
+            "value": "[Xe] 4f¹⁴ 5d¹⁰ 6s² 6p⁶",
+            "justification": "Configuração eletrônica de máxima estabilidade (octeto).",
+            "score": 100
         },
         {
             "id": 17,
-            "label": "Atributo 17",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Nº de prótons / Nº de elétrons",
+            "value": "86",
+            "justification": "Número atômico que define o Radônio.",
+            "score": 100
         },
         {
             "id": 18,
-            "label": "Atributo 18",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Nº de nêutrons",
+            "value": "136",
+            "justification": "Número de nêutrons no isótopo Rn-222.",
+            "score": 136
         },
         {
             "id": 19,
-            "label": "Atributo 19",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Radioatividade",
+            "value": "Altamente Radioativo",
+            "justification": "Emite partículas alfa e decai em elementos sólidos radioativos.",
+            "score": 1
         },
         {
             "id": 20,
-            "label": "Atributo 20",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
+            "label": "Aplicabilidade / Utilidade",
+            "value": "Terapia de Câncer",
+            "justification": "Historicamente usado em sementes radioativas para tratamento de tumores.",
             "score": 50
         },
         {
             "id": 21,
-            "label": "Atributo 21",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Local de origem",
+            "value": "Alemanha",
+            "justification": "Descoberto por Friedrich Dorn ao estudar o decaimento do rádio.",
+            "score": 80
         },
         {
             "id": 22,
-            "label": "Atributo 22",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Curiosidade",
+            "value": "Gás Fosforescente",
+            "justification": "Em estado líquido ou sólido, brilha intensamente devido à radiação.",
+            "score": 100
         },
         {
             "id": 23,
-            "label": "Atributo 23",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Origem do nome",
+            "value": "Radium (Rádio)",
+            "justification": "Nomeado por ser um produto do decaimento do rádio.",
+            "score": 90
         },
         {
             "id": 24,
-            "label": "Atributo 24",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Descobridor",
+            "value": "Friedrich Ernst Dorn",
+            "justification": "Identificou o gás como um novo elemento radioativo em 1900.",
+            "score": 85
         },
         {
             "id": 25,
-            "label": "Atributo 25",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Ano de descoberta",
+            "value": "1900",
+            "justification": "Uma das primeiras descobertas de gases radioativos.",
+            "score": 90
         },
         {
             "id": 26,
-            "label": "Atributo 26",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Ponto de fusão",
+            "value": "-71 °C",
+            "justification": "Ponto de fusão baixo, típico de gases nobres pesados.",
+            "score": 10
         },
         {
             "id": 27,
-            "label": "Atributo 27",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Ponto de ebulição",
+            "value": "-61,7 °C",
+            "justification": "Vaporiza-se rapidamente em temperaturas muito baixas.",
+            "score": 5
         }
     ]
 },
