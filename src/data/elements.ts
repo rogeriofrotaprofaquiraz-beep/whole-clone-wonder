@@ -8180,15323 +8180,15323 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 42,
     "symbol": "Mo",
     "name": "Molibdênio",
-    "heroName": "Molibdênio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Molibdênio.",
+    "heroName": "Molybdenum Steel",
+    "heroDescription": "O fortificador de metais, um herói que permite turbinas de avião a temperaturas extremas.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
+},
   "Tc": {
     "number": 43,
     "symbol": "Tc",
     "name": "Tecnécio",
-    "heroName": "Tecnécio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Tecnécio.",
+    "heroName": "Technetium Trace",
+    "heroDescription": "O espião radioativo, um herói que revela tumores ocultos em corpos humanos.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
+},
   "Ru": {
     "number": 44,
     "symbol": "Ru",
     "name": "Rutênio",
-    "heroName": "Rutênio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Rutênio.",
+    "heroName": "Ruthenium Catalyst",
+    "heroDescription": "O acelerador reacional, um herói que torna possível a indústria química moderna.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
+},
   "Rh": {
     "number": 45,
     "symbol": "Rh",
     "name": "Ródio",
-    "heroName": "Ródio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Ródio.",
+    "heroName": "Rhodium Convert",
+    "heroDescription": "O purificador do ar automotivo, um herói que reduz a poluição dos escapamentos.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
+},
   "Pd": {
     "number": 46,
     "symbol": "Pd",
     "name": "Paládio",
-    "heroName": "Paládio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Paládio.",
+    "heroName": "Palladium Bridge",
+    "heroDescription": "O maestro das reações químicas, um herói que purifica o ar e catalisa transformações.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
+},
   "Ag": {
     "number": 47,
     "symbol": "Ag",
     "name": "Prata",
-    "heroName": "Prata Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Prata.",
+    "heroName": "Silver Mirror",
+    "heroDescription": "O deus da beleza e da condutividade, um herói que reflete a luz e ativa imagens.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
+},
   "Cd": {
     "number": 48,
     "symbol": "Cd",
     "name": "Cádmio",
-    "heroName": "Cádmio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Cádmio.",
+    "heroName": "Cadmium Poison",
+    "heroDescription": "O herói controverso, poderoso mas perigoso, um alerta sobre toxicidade industrial.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
+},
   "In": {
     "number": 49,
     "symbol": "In",
     "name": "Índio",
-    "heroName": "Índio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Índio.",
+    "heroName": "Indium Touch",
+    "heroDescription": "O condutor transparente, um herói invisível que torna possível as telas sensíveis ao toque.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
+},
   "Sn": {
     "number": 50,
     "symbol": "Sn",
     "name": "Estanho",
-    "heroName": "Estanho Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Estanho.",
+    "heroName": "Tin Soldier",
+    "heroDescription": "O metal do bronze e da soldagem, um herói que une os metais desde a antiguidade.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
+},
   "Sb": {
     "number": 51,
     "symbol": "Sb",
     "name": "Antimônio",
-    "heroName": "Antimônio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Antimônio.",
+    "heroName": "Antimony Guard",
+    "heroDescription": "O protetor contra o fogo, um herói que impede que materiais ardam.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
+},
   "Te": {
     "number": 52,
     "symbol": "Te",
     "name": "Telúrio",
-    "heroName": "Telúrio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Telúrio.",
+    "heroName": "Tellurium Memory",
+    "heroDescription": "O mestre do armazenamento óptico, um herói que guarda bilhões de bits em discos.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
+},
   "I": {
     "number": 53,
     "symbol": "I",
     "name": "Iodo",
-    "heroName": "Iodo Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Iodo.",
+    "heroName": "Iodine Shield",
+    "heroDescription": "O guardião da tireóide, um herói que protege a saúde através de uma gota.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
+},
   "Xe": {
     "number": 54,
     "symbol": "Xe",
     "name": "Xenônio",
-    "heroName": "Xenônio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Xenônio.",
+    "heroName": "Xenon Bright",
+    "heroDescription": "O iluminador mais raro, um herói que cria os faróis mais intensos.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
+},
   "Cs": {
     "number": 55,
     "symbol": "Cs",
     "name": "Césio",
-    "heroName": "Césio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Césio.",
+    "heroName": "Cesium Clock",
+    "heroDescription": "O maestro do tempo, um herói cujos relógios medem o segundo com precisão infinita.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
+},
   "Ba": {
     "number": 56,
     "symbol": "Ba",
     "name": "Bário",
-    "heroName": "Bário Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Bário.",
+    "heroName": "Barium Reveal",
+    "heroDescription": "O detetor de anomalias, um herói que ilumina o que está escondido no trato digestivo.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "La": {
+},
+  "57": {
     "number": 57,
-    "symbol": "La",
-    "name": "Lantânio",
-    "heroName": "Lantânio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Lantânio.",
+    "symbol": "Element",
+    "name": "Elemento 57",
+    "heroName": "Hero 57",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Ce": {
+},
+  "58": {
     "number": 58,
-    "symbol": "Ce",
-    "name": "Cério",
-    "heroName": "Cério Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Cério.",
+    "symbol": "Element",
+    "name": "Elemento 58",
+    "heroName": "Hero 58",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Pr": {
+},
+  "59": {
     "number": 59,
-    "symbol": "Pr",
-    "name": "Praseodímio",
-    "heroName": "Praseodímio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Praseodímio.",
+    "symbol": "Element",
+    "name": "Elemento 59",
+    "heroName": "Hero 59",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Nd": {
+},
+  "60": {
     "number": 60,
-    "symbol": "Nd",
-    "name": "Neodímio",
-    "heroName": "Neodímio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Neodímio.",
+    "symbol": "Element",
+    "name": "Elemento 60",
+    "heroName": "Hero 60",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Pm": {
+},
+  "61": {
     "number": 61,
-    "symbol": "Pm",
-    "name": "Promécio",
-    "heroName": "Promécio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Promécio.",
+    "symbol": "Element",
+    "name": "Elemento 61",
+    "heroName": "Hero 61",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Sm": {
+},
+  "62": {
     "number": 62,
-    "symbol": "Sm",
-    "name": "Samário",
-    "heroName": "Samário Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Samário.",
+    "symbol": "Element",
+    "name": "Elemento 62",
+    "heroName": "Hero 62",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Eu": {
+},
+  "63": {
     "number": 63,
-    "symbol": "Eu",
-    "name": "Európio",
-    "heroName": "Európio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Európio.",
+    "symbol": "Element",
+    "name": "Elemento 63",
+    "heroName": "Hero 63",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Gd": {
+},
+  "64": {
     "number": 64,
-    "symbol": "Gd",
-    "name": "Gadolínio",
-    "heroName": "Gadolínio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Gadolínio.",
+    "symbol": "Element",
+    "name": "Elemento 64",
+    "heroName": "Hero 64",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Tb": {
+},
+  "65": {
     "number": 65,
-    "symbol": "Tb",
-    "name": "Térbio",
-    "heroName": "Térbio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Térbio.",
+    "symbol": "Element",
+    "name": "Elemento 65",
+    "heroName": "Hero 65",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Dy": {
+},
+  "66": {
     "number": 66,
-    "symbol": "Dy",
-    "name": "Disprósio",
-    "heroName": "Disprósio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Disprósio.",
+    "symbol": "Element",
+    "name": "Elemento 66",
+    "heroName": "Hero 66",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Ho": {
+},
+  "67": {
     "number": 67,
-    "symbol": "Ho",
-    "name": "Hólmio",
-    "heroName": "Hólmio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Hólmio.",
+    "symbol": "Element",
+    "name": "Elemento 67",
+    "heroName": "Hero 67",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Er": {
+},
+  "68": {
     "number": 68,
-    "symbol": "Er",
-    "name": "Érbio",
-    "heroName": "Érbio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Érbio.",
+    "symbol": "Element",
+    "name": "Elemento 68",
+    "heroName": "Hero 68",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Tm": {
+},
+  "69": {
     "number": 69,
-    "symbol": "Tm",
-    "name": "Túlio",
-    "heroName": "Túlio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Túlio.",
+    "symbol": "Element",
+    "name": "Elemento 69",
+    "heroName": "Hero 69",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Yb": {
+},
+  "70": {
     "number": 70,
-    "symbol": "Yb",
-    "name": "Itérbio",
-    "heroName": "Itérbio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Itérbio.",
+    "symbol": "Element",
+    "name": "Elemento 70",
+    "heroName": "Hero 70",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Lu": {
+},
+  "71": {
     "number": 71,
-    "symbol": "Lu",
-    "name": "Lutécio",
-    "heroName": "Lutécio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Lutécio.",
+    "symbol": "Element",
+    "name": "Elemento 71",
+    "heroName": "Hero 71",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Hf": {
+},
+  "72": {
     "number": 72,
-    "symbol": "Hf",
-    "name": "Háfnio",
-    "heroName": "Háfnio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Háfnio.",
+    "symbol": "Element",
+    "name": "Elemento 72",
+    "heroName": "Hero 72",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Ta": {
+},
+  "73": {
     "number": 73,
-    "symbol": "Ta",
-    "name": "Tântalo",
-    "heroName": "Tântalo Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Tântalo.",
+    "symbol": "Element",
+    "name": "Elemento 73",
+    "heroName": "Hero 73",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "W": {
+},
+  "74": {
     "number": 74,
-    "symbol": "W",
-    "name": "Tungstênio",
-    "heroName": "Tungstênio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Tungstênio.",
+    "symbol": "Element",
+    "name": "Elemento 74",
+    "heroName": "Hero 74",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Re": {
+},
+  "75": {
     "number": 75,
-    "symbol": "Re",
-    "name": "Rênio",
-    "heroName": "Rênio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Rênio.",
+    "symbol": "Element",
+    "name": "Elemento 75",
+    "heroName": "Hero 75",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Os": {
+},
+  "76": {
     "number": 76,
-    "symbol": "Os",
-    "name": "Ósmio",
-    "heroName": "Ósmio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Ósmio.",
+    "symbol": "Element",
+    "name": "Elemento 76",
+    "heroName": "Hero 76",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Ir": {
+},
+  "77": {
     "number": 77,
-    "symbol": "Ir",
-    "name": "Irídio",
-    "heroName": "Irídio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Irídio.",
+    "symbol": "Element",
+    "name": "Elemento 77",
+    "heroName": "Hero 77",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Pt": {
+},
+  "78": {
     "number": 78,
-    "symbol": "Pt",
-    "name": "Platina",
-    "heroName": "Platina Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Platina.",
+    "symbol": "Element",
+    "name": "Elemento 78",
+    "heroName": "Hero 78",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Au": {
+},
+  "79": {
     "number": 79,
-    "symbol": "Au",
-    "name": "Ouro",
-    "heroName": "Ouro Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Ouro.",
+    "symbol": "Element",
+    "name": "Elemento 79",
+    "heroName": "Hero 79",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Hg": {
+},
+  "80": {
     "number": 80,
-    "symbol": "Hg",
-    "name": "Mercúrio",
-    "heroName": "Mercúrio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Mercúrio.",
+    "symbol": "Element",
+    "name": "Elemento 80",
+    "heroName": "Hero 80",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Tl": {
+},
+  "81": {
     "number": 81,
-    "symbol": "Tl",
-    "name": "Tálio",
-    "heroName": "Tálio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Tálio.",
+    "symbol": "Element",
+    "name": "Elemento 81",
+    "heroName": "Hero 81",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Pb": {
+},
+  "82": {
     "number": 82,
-    "symbol": "Pb",
-    "name": "Chumbo",
-    "heroName": "Chumbo Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Chumbo.",
+    "symbol": "Element",
+    "name": "Elemento 82",
+    "heroName": "Hero 82",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Bi": {
+},
+  "83": {
     "number": 83,
-    "symbol": "Bi",
-    "name": "Bismuto",
-    "heroName": "Bismuto Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Bismuto.",
+    "symbol": "Element",
+    "name": "Elemento 83",
+    "heroName": "Hero 83",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Po": {
+},
+  "84": {
     "number": 84,
-    "symbol": "Po",
-    "name": "Polônio",
-    "heroName": "Polônio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Polônio.",
+    "symbol": "Element",
+    "name": "Elemento 84",
+    "heroName": "Hero 84",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "At": {
+},
+  "85": {
     "number": 85,
-    "symbol": "At",
-    "name": "Astato",
-    "heroName": "Astato Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Astato.",
+    "symbol": "Element",
+    "name": "Elemento 85",
+    "heroName": "Hero 85",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Rn": {
+},
+  "86": {
     "number": 86,
-    "symbol": "Rn",
-    "name": "Radônio",
-    "heroName": "Radônio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Radônio.",
+    "symbol": "Element",
+    "name": "Elemento 86",
+    "heroName": "Hero 86",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Fr": {
+},
+  "87": {
     "number": 87,
-    "symbol": "Fr",
-    "name": "Frâncio",
-    "heroName": "Frâncio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Frâncio.",
+    "symbol": "Element",
+    "name": "Elemento 87",
+    "heroName": "Hero 87",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Ra": {
+},
+  "88": {
     "number": 88,
-    "symbol": "Ra",
-    "name": "Rádio",
-    "heroName": "Rádio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Rádio.",
+    "symbol": "Element",
+    "name": "Elemento 88",
+    "heroName": "Hero 88",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Ac": {
+},
+  "89": {
     "number": 89,
-    "symbol": "Ac",
-    "name": "Actínio",
-    "heroName": "Actínio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Actínio.",
+    "symbol": "Element",
+    "name": "Elemento 89",
+    "heroName": "Hero 89",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Th": {
+},
+  "90": {
     "number": 90,
-    "symbol": "Th",
-    "name": "Tório",
-    "heroName": "Tório Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Tório.",
+    "symbol": "Element",
+    "name": "Elemento 90",
+    "heroName": "Hero 90",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Pa": {
+},
+  "91": {
     "number": 91,
-    "symbol": "Pa",
-    "name": "Protactínio",
-    "heroName": "Protactínio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Protactínio.",
+    "symbol": "Element",
+    "name": "Elemento 91",
+    "heroName": "Hero 91",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "U": {
+},
+  "92": {
     "number": 92,
-    "symbol": "U",
-    "name": "Urânio",
-    "heroName": "Urânio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Urânio.",
+    "symbol": "Element",
+    "name": "Elemento 92",
+    "heroName": "Hero 92",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Np": {
+},
+  "93": {
     "number": 93,
-    "symbol": "Np",
-    "name": "Netúnio",
-    "heroName": "Netúnio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Netúnio.",
+    "symbol": "Element",
+    "name": "Elemento 93",
+    "heroName": "Hero 93",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Pu": {
+},
+  "94": {
     "number": 94,
-    "symbol": "Pu",
-    "name": "Plutônio",
-    "heroName": "Plutônio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Plutônio.",
+    "symbol": "Element",
+    "name": "Elemento 94",
+    "heroName": "Hero 94",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Am": {
+},
+  "95": {
     "number": 95,
-    "symbol": "Am",
-    "name": "Amerício",
-    "heroName": "Amerício Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Amerício.",
+    "symbol": "Element",
+    "name": "Elemento 95",
+    "heroName": "Hero 95",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Cm": {
+},
+  "96": {
     "number": 96,
-    "symbol": "Cm",
-    "name": "Cúrio",
-    "heroName": "Cúrio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Cúrio.",
+    "symbol": "Element",
+    "name": "Elemento 96",
+    "heroName": "Hero 96",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Bk": {
+},
+  "97": {
     "number": 97,
-    "symbol": "Bk",
-    "name": "Berquélio",
-    "heroName": "Berquélio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Berquélio.",
+    "symbol": "Element",
+    "name": "Elemento 97",
+    "heroName": "Hero 97",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Cf": {
+},
+  "98": {
     "number": 98,
-    "symbol": "Cf",
-    "name": "Califórnio",
-    "heroName": "Califórnio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Califórnio.",
+    "symbol": "Element",
+    "name": "Elemento 98",
+    "heroName": "Hero 98",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Es": {
+},
+  "99": {
     "number": 99,
-    "symbol": "Es",
-    "name": "Enstênio",
-    "heroName": "Enstênio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Enstênio.",
+    "symbol": "Element",
+    "name": "Elemento 99",
+    "heroName": "Hero 99",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Fm": {
+},
+  "100": {
     "number": 100,
-    "symbol": "Fm",
-    "name": "Férmio",
-    "heroName": "Férmio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Férmio.",
+    "symbol": "Element",
+    "name": "Elemento 100",
+    "heroName": "Hero 100",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Md": {
+},
+  "101": {
     "number": 101,
-    "symbol": "Md",
-    "name": "Mendelévio",
-    "heroName": "Mendelévio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Mendelévio.",
+    "symbol": "Element",
+    "name": "Elemento 101",
+    "heroName": "Hero 101",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "No": {
+},
+  "102": {
     "number": 102,
-    "symbol": "No",
-    "name": "Nobélio",
-    "heroName": "Nobélio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Nobélio.",
+    "symbol": "Element",
+    "name": "Elemento 102",
+    "heroName": "Hero 102",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Lr": {
+},
+  "103": {
     "number": 103,
-    "symbol": "Lr",
-    "name": "Laurêncio",
-    "heroName": "Laurêncio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Laurêncio.",
+    "symbol": "Element",
+    "name": "Elemento 103",
+    "heroName": "Hero 103",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Rf": {
+},
+  "104": {
     "number": 104,
-    "symbol": "Rf",
-    "name": "Rutherfórdio",
-    "heroName": "Rutherfórdio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Rutherfórdio.",
+    "symbol": "Element",
+    "name": "Elemento 104",
+    "heroName": "Hero 104",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Db": {
+},
+  "105": {
     "number": 105,
-    "symbol": "Db",
-    "name": "Dúbnio",
-    "heroName": "Dúbnio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Dúbnio.",
+    "symbol": "Element",
+    "name": "Elemento 105",
+    "heroName": "Hero 105",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Sg": {
+},
+  "106": {
     "number": 106,
-    "symbol": "Sg",
-    "name": "Seabórgio",
-    "heroName": "Seabórgio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Seabórgio.",
+    "symbol": "Element",
+    "name": "Elemento 106",
+    "heroName": "Hero 106",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Bh": {
+},
+  "107": {
     "number": 107,
-    "symbol": "Bh",
-    "name": "Bóhrio",
-    "heroName": "Bóhrio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Bóhrio.",
+    "symbol": "Element",
+    "name": "Elemento 107",
+    "heroName": "Hero 107",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Hs": {
+},
+  "108": {
     "number": 108,
-    "symbol": "Hs",
-    "name": "Hássio",
-    "heroName": "Hássio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Hássio.",
+    "symbol": "Element",
+    "name": "Elemento 108",
+    "heroName": "Hero 108",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Mt": {
+},
+  "109": {
     "number": 109,
-    "symbol": "Mt",
-    "name": "Meitnério",
-    "heroName": "Meitnério Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Meitnério.",
+    "symbol": "Element",
+    "name": "Elemento 109",
+    "heroName": "Hero 109",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Ds": {
+},
+  "110": {
     "number": 110,
-    "symbol": "Ds",
-    "name": "Darmstádio",
-    "heroName": "Darmstádio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Darmstádio.",
+    "symbol": "Element",
+    "name": "Elemento 110",
+    "heroName": "Hero 110",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Rg": {
+},
+  "111": {
     "number": 111,
-    "symbol": "Rg",
-    "name": "Roentgênio",
-    "heroName": "Roentgênio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Roentgênio.",
+    "symbol": "Element",
+    "name": "Elemento 111",
+    "heroName": "Hero 111",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Cn": {
+},
+  "112": {
     "number": 112,
-    "symbol": "Cn",
-    "name": "Copernício",
-    "heroName": "Copernício Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Copernício.",
+    "symbol": "Element",
+    "name": "Elemento 112",
+    "heroName": "Hero 112",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Nh": {
+},
+  "113": {
     "number": 113,
-    "symbol": "Nh",
-    "name": "Nihônio",
-    "heroName": "Nihônio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Nihônio.",
+    "symbol": "Element",
+    "name": "Elemento 113",
+    "heroName": "Hero 113",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Fl": {
+},
+  "114": {
     "number": 114,
-    "symbol": "Fl",
-    "name": "Fleróvio",
-    "heroName": "Fleróvio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Fleróvio.",
+    "symbol": "Element",
+    "name": "Elemento 114",
+    "heroName": "Hero 114",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Mc": {
+},
+  "115": {
     "number": 115,
-    "symbol": "Mc",
-    "name": "Moscóvio",
-    "heroName": "Moscóvio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Moscóvio.",
+    "symbol": "Element",
+    "name": "Elemento 115",
+    "heroName": "Hero 115",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Lv": {
+},
+  "116": {
     "number": 116,
-    "symbol": "Lv",
-    "name": "Livermório",
-    "heroName": "Livermório Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Livermório.",
+    "symbol": "Element",
+    "name": "Elemento 116",
+    "heroName": "Hero 116",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Ts": {
+},
+  "117": {
     "number": 117,
-    "symbol": "Ts",
-    "name": "Tennesso",
-    "heroName": "Tennesso Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Tennesso.",
+    "symbol": "Element",
+    "name": "Elemento 117",
+    "heroName": "Hero 117",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  },
-  "Og": {
+},
+  "118": {
     "number": 118,
-    "symbol": "Og",
-    "name": "Oganessono",
-    "heroName": "Oganessono Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Oganessono.",
+    "symbol": "Element",
+    "name": "Elemento 118",
+    "heroName": "Hero 118",
+    "heroDescription": "Um poderoso herói elemental em desenvolvimento.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-      {
-        "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      },
-      {
-        "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
-      }
+        {
+            "id": 1,
+            "label": "Atributo 1",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 2,
+            "label": "Atributo 2",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 3,
+            "label": "Atributo 3",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 4,
+            "label": "Atributo 4",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 5,
+            "label": "Atributo 5",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 6,
+            "label": "Atributo 6",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 7,
+            "label": "Atributo 7",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 8,
+            "label": "Atributo 8",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 9,
+            "label": "Atributo 9",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 10,
+            "label": "Atributo 10",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 11,
+            "label": "Atributo 11",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 12,
+            "label": "Atributo 12",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 13,
+            "label": "Atributo 13",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 14,
+            "label": "Atributo 14",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 15,
+            "label": "Atributo 15",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 16,
+            "label": "Atributo 16",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 17,
+            "label": "Atributo 17",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 18,
+            "label": "Atributo 18",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 19,
+            "label": "Atributo 19",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 20,
+            "label": "Atributo 20",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 21,
+            "label": "Atributo 21",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 22,
+            "label": "Atributo 22",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 23,
+            "label": "Atributo 23",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 24,
+            "label": "Atributo 24",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 25,
+            "label": "Atributo 25",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 26,
+            "label": "Atributo 26",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        },
+        {
+            "id": 27,
+            "label": "Atributo 27",
+            "value": "Em breve",
+            "justification": "Dados sendo processados pela central elemental.",
+            "score": 50
+        }
     ]
-  }
+},
 };
