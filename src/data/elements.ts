@@ -2807,198 +2807,198 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 15,
     "symbol": "P",
     "name": "Fósforo",
-    "heroName": "Fósforo Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Fósforo.",
-    "heroImage": "/placeholder.svg",
+    "heroName": "Phosphorus Spark",
+    "heroDescription": "O portador da luz biológica, peça fundamental do código da vida e motor da energia celular.",
+    "heroImage": "https://cvbgrjauqjawrsyknhyj.supabase.co/storage/v1/object/public/files/uploads/higtSN3xyfWHqjML33VUnzcwd6r2/1777989733444-0qqq6-15_fosforo.mp4",
     "attributes": [
       {
         "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Fraquezas",
+        "value": "Altamente inflamável (Branco)",
+        "justification": "O fósforo branco entra em combustão espontânea com o ar.",
+        "score": 10
       },
       {
         "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Risco/Benefício à natureza",
+        "value": "Nutriente vital / Eutrofização",
+        "justification": "Essencial para plantas, mas o excesso polui águas.",
+        "score": 60
       },
       {
         "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Risco à saúde",
+        "value": "Tóxico (Branco) / Vital (Compostos)",
+        "justification": "Puro é perigoso, mas em fosfatos é base da vida.",
         "score": 50
       },
       {
         "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Benefício",
+        "value": "Fertilizantes, DNA, ATP",
+        "justification": "Sem fósforo, não existiria vida como a conhecemos.",
+        "score": 100
       },
       {
         "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de ligantes possíveis",
+        "value": "3, 5",
+        "justification": "Versatilidade para formar estruturas complexas como o DNA.",
+        "score": 85
       },
       {
         "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Abundância na natureza",
+        "value": "1000 ppm (crosta)",
+        "justification": "Décimo primeiro elemento mais comum na crosta terrestre.",
+        "score": 75
       },
       {
         "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Abundância no universo",
+        "value": "0,0007%",
+        "justification": "Criado em explosões de supernovas massivas.",
+        "score": 40
       },
       {
         "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Massa atômica",
+        "value": "30,974 u",
+        "justification": "Massa moderada, típica de não-metais do 3º período.",
+        "score": 31
       },
       {
         "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Densidade",
+        "value": "1,82 g/cm³ (Branco)",
+        "justification": "Relativamente baixa para um sólido.",
+        "score": 18
       },
       {
         "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Raio atômico",
+        "value": "110 pm",
+        "justification": "Tamanho ideal para pontes de fosfato estáveis.",
         "score": 50
       },
       {
         "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Oxidação",
+        "value": "+5, +3, -3",
+        "justification": "Estados variados permitem funções biológicas diversas.",
+        "score": 70
       },
       {
         "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Condutividade elétrica",
+        "value": "Isolante",
+        "justification": "Como não-metal, não conduz eletricidade.",
+        "score": 1
       },
       {
         "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Eletronegatividade",
+        "value": "2,19",
+        "justification": "Similar ao hidrogênio, facilita ligações orgânicas.",
+        "score": 55
       },
       {
         "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Estado físico",
+        "value": "Sólido",
+        "justification": "Sólido em temperatura ambiente em todas as formas alotrópicas.",
+        "score": 20
       },
       {
         "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Maior subnível energético",
+        "value": "3p³",
+        "justification": "Define sua reatividade e posição no grupo 15.",
+        "score": 15
       },
       {
         "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Distribuição eletrônica",
+        "value": "[Ne] 3s² 3p³",
+        "justification": "Configuração que permite a expansão do octeto.",
+        "score": 90
       },
       {
         "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de prótons / Nº de elétrons",
+        "value": "15",
+        "justification": "Identidade atômica do Fósforo.",
+        "score": 99
       },
       {
         "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de nêutrons",
+        "value": "16",
+        "justification": "Equilíbrio para o isótopo estável P-31.",
+        "score": 16
       },
       {
         "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Radioatividade",
+        "value": "Estável",
+        "justification": "P-31 é o único isótopo natural e é estável.",
+        "score": 100
       },
       {
         "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Aplicabilidade / Utilidade",
+        "value": "Fertilizantes, explosivos, fósforos de segurança",
+        "justification": "Uso massivo na agricultura mundial.",
+        "score": 95
       },
       {
         "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Local de origem",
+        "value": "Hamburgo, Alemanha",
+        "justification": "Descoberto a partir da destilação de urina.",
+        "score": 100
       },
       {
         "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Curiosidade",
+        "value": "Bioluminescência (Fogo frio)",
+        "justification": "O nome significa 'portador de luz' em grego.",
+        "score": 98
       },
       {
         "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Origem do nome",
+        "value": "Phosphoros (Portador de luz)",
+        "justification": "Devido à emissão de luz do fósforo branco.",
+        "score": 95
       },
       {
         "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Descobridor",
+        "value": "Hennig Brand",
+        "justification": "O primeiro a descobrir um elemento cientificamente.",
+        "score": 100
       },
       {
         "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ano de descoberta",
+        "value": "1669",
+        "justification": "Um marco na alquimia virando química.",
+        "score": 99
       },
       {
         "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de fusão",
+        "value": "44,15 °C (Branco)",
+        "justification": "Fusão baixa facilita a manipulação.",
+        "score": 44
       },
       {
         "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de ebulição",
+        "value": "280,5 °C",
+        "justification": "Ebulição moderada para um não-metal sólido.",
+        "score": 28
       }
     ]
   },
