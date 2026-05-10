@@ -15590,46 +15590,46 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
           "score": 10
         },
         {
-            "id": 7,
-            "label": "Atributo 7",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 7,
+          "label": "Abundância no universo",
+          "value": "0,0000000006%",
+          "justification": "Elemento pesado raro no cosmos.",
+          "score": 0.5
         },
         {
-            "id": 8,
-            "label": "Atributo 8",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 8,
+          "label": "Massa atômica",
+          "value": "196,97 u",
+          "justification": "Massa baseada no único isótopo estável Au-197.",
+          "score": 197
         },
         {
-            "id": 9,
-            "label": "Atributo 9",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 9,
+          "label": "Densidade",
+          "value": "19,30 g/cm³",
+          "justification": "Metal extremamente denso, um dos mais pesados que ocorrem naturalmente.",
+          "score": 193
         },
         {
-            "id": 10,
-            "label": "Atributo 10",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 10,
+          "label": "Raio atômico",
+          "value": "144 pm",
+          "justification": "Raio metálico que permite compactação densa.",
+          "score": 144
         },
         {
-            "id": 11,
-            "label": "Atributo 11",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 11,
+          "label": "Oxidação",
+          "value": "-1, 0, +1, +2, +3, +5",
+          "justification": "Apresenta estados variados, com +3 sendo muito estável em complexos.",
+          "score": 65
         },
         {
-            "id": 12,
-            "label": "Atributo 12",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 12,
+          "label": "Condutividade elétrica",
+          "value": "Excelente (Metal)",
+          "justification": "O terceiro melhor condutor elétrico, superado apenas por prata e cobre.",
+          "score": 90
         },
         {
             "id": 13,
