@@ -13359,193 +13359,193 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
-            "id": 1,
-            "label": "Atributo 1",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 1,
+          "label": "Fraquezas",
+          "value": "Oxidação lenta",
+          "justification": "Embora estável no ar seco, oxida-se lentamente em condições úmidas.",
+          "score": 40
         },
         {
-            "id": 2,
-            "label": "Atributo 2",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 2,
+          "label": "Risco/Benefício à natureza",
+          "value": "Baixa toxicidade",
+          "justification": "Não possui papel biológico conhecido; é considerado ambientalmente pouco perigoso.",
+          "score": 85
         },
         {
-            "id": 3,
-            "label": "Atributo 3",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 3,
+          "label": "Risco à saúde",
+          "value": "Baixo",
+          "justification": "Seguro em manuseio comum e amplamente utilizado em medicina nuclear.",
+          "score": 90
         },
         {
-            "id": 4,
-            "label": "Atributo 4",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 4,
+          "label": "Benefício",
+          "value": "Fibras Ópticas, Lasers Médicos",
+          "justification": "O doping de érbio em fibras ópticas permite a amplificação de longo alcance da internet.",
+          "score": 99
         },
         {
-            "id": 5,
-            "label": "Atributo 5",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 5,
+          "label": "Nº de ligantes possíveis",
+          "value": "3",
+          "justification": "Estado de oxidação +3 é o padrão para este lantanídeo.",
+          "score": 60
         },
         {
-            "id": 6,
-            "label": "Atributo 6",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 6,
+          "label": "Abundância na natureza",
+          "value": "2,8 ppm (crosta)",
+          "justification": "Mais abundante que o iodo, apesar de ser uma 'terra rara'.",
+          "score": 35
         },
         {
-            "id": 7,
-            "label": "Atributo 7",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 7,
+          "label": "Abundância no universo",
+          "value": "0,000000001%",
+          "justification": "Elemento pesado raro no cosmos.",
+          "score": 0.8
         },
         {
-            "id": 8,
-            "label": "Atributo 8",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 8,
+          "label": "Massa atômica",
+          "value": "167,26 u",
+          "justification": "Massa baseada em seus seis isótopos estáveis naturais.",
+          "score": 167
         },
         {
-            "id": 9,
-            "label": "Atributo 9",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 9,
+          "label": "Densidade",
+          "value": "9,066 g/cm³",
+          "justification": "Metal denso, ultrapassando a marca de 9 g/cm³ na série.",
+          "score": 91
         },
         {
-            "id": 10,
-            "label": "Atributo 10",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 10,
+          "label": "Raio atômico",
+          "value": "175 pm",
+          "justification": "Tamanho atômico reduzido pela contração lantanídica contínua.",
+          "score": 175
         },
         {
-            "id": 11,
-            "label": "Atributo 11",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 11,
+          "label": "Oxidação",
+          "value": "+3",
+          "justification": "Estado de oxidação estável e predominante.",
+          "score": 30
         },
         {
-            "id": 12,
-            "label": "Atributo 12",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 12,
+          "label": "Condutividade elétrica",
+          "value": "Baixa (Metal)",
+          "justification": "Propriedades metálicas típicas para os lantanídeos pesados.",
+          "score": 15
         },
         {
-            "id": 13,
-            "label": "Atributo 13",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 13,
+          "label": "Eletronegatividade",
+          "value": "1,24 (Pauling)",
+          "justification": "Baixa eletronegatividade, metal eletropositivo.",
+          "score": 12
         },
         {
-            "id": 14,
-            "label": "Atributo 14",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 14,
+          "label": "Estado físico",
+          "value": "Sólido",
+          "justification": "Metal prateado, maleável e relativamente estável.",
+          "score": 50
         },
         {
-            "id": 15,
-            "label": "Atributo 15",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 15,
+          "label": "Maior subnível energético",
+          "value": "4f¹²",
+          "justification": "Doze elétrons no subnível 4f.",
+          "score": 52
         },
         {
-            "id": 16,
-            "label": "Atributo 16",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 16,
+          "label": "Distribuição eletrônica",
+          "value": "[Xe] 4f¹² 6s²",
+          "justification": "Configuração fundamental do Érbio.",
+          "score": 96
         },
         {
-            "id": 17,
-            "label": "Atributo 17",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 17,
+          "label": "Nº de prótons / Nº de elétrons",
+          "value": "68",
+          "justification": "Identidade atômica do Érbio.",
+          "score": 99
         },
         {
-            "id": 18,
-            "label": "Atributo 18",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 18,
+          "label": "Nº de nêutrons",
+          "value": "99",
+          "justification": "Diferença média entre massa e número atômico.",
+          "score": 99
         },
         {
-            "id": 19,
-            "label": "Atributo 19",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 19,
+          "label": "Radioatividade",
+          "value": "Estável",
+          "justification": "O érbio natural consiste em seis isótopos estáveis.",
+          "score": 100
         },
         {
-            "id": 20,
-            "label": "Atributo 20",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 20,
+          "label": "Aplicabilidade / Utilidade",
+          "value": "Amplificadores Ópticos, Filtros de Vidro",
+          "justification": "Crucial para a infraestrutura global de fibra óptica e lasers de infravermelho.",
+          "score": 98
         },
         {
-            "id": 21,
-            "label": "Atributo 21",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 21,
+          "label": "Local de origem",
+          "value": "Suécia",
+          "justification": "Descoberto por Carl Gustaf Mosander na vila de Ytterby.",
+          "score": 85
         },
         {
-            "id": 22,
-            "label": "Atributo 22",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 22,
+          "label": "Curiosidade",
+          "value": "Vidro Rosa",
+          "justification": "O óxido de érbio é usado para dar uma cor rosa característica a vidros e esmaltes.",
+          "score": 100
         },
         {
-            "id": 23,
-            "label": "Atributo 23",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 23,
+          "label": "Origem do nome",
+          "value": "Ytterby",
+          "justification": "Mais um elemento nomeado em homenagem à vila sueca de Ytterby.",
+          "score": 95
         },
         {
-            "id": 24,
-            "label": "Atributo 24",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 24,
+          "label": "Descobridor",
+          "value": "Carl Gustaf Mosander",
+          "justification": "Famoso químico sueco que isolou vários lantanídeos.",
+          "score": 90
         },
         {
-            "id": 25,
-            "label": "Atributo 25",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 25,
+          "label": "Ano de descoberta",
+          "value": "1843",
+          "justification": "Isolado juntamente com o térbio da 'itria'.",
+          "score": 92
         },
         {
-            "id": 26,
-            "label": "Atributo 26",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 26,
+          "label": "Ponto de fusão",
+          "value": "1529 °C",
+          "justification": "Ponto de fusão elevado para a série.",
+          "score": 98
         },
         {
-            "id": 27,
-            "label": "Atributo 27",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 27,
+          "label": "Ponto de ebulição",
+          "value": "2868 °C",
+          "justification": "Ponto de ebulição elevado.",
+          "score": 28
         }
     ]
 },
