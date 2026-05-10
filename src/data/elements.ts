@@ -9573,201 +9573,201 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 49,
     "symbol": "In",
     "name": "Índio",
-    "heroName": "Indium Touch",
-    "heroDescription": "O condutor transparente, um herói invisível que torna possível as telas sensíveis ao toque.",
+    "heroName": "Indium Screen",
+    "heroDescription": "O herói da visão digital e mestre do toque. Indium Screen é o elemento que torna as telas sensíveis e transparentes, conectando a humanidade ao mundo virtual com sua condutividade mágica.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-        {
-            "id": 1,
-            "label": "Dado 1",
-            "value": "Processando",
-            "justification": "Característica em análise para o Índio.",
-            "score": 50
-        },
-        {
-            "id": 2,
-            "label": "Dado 2",
-            "value": "Processando",
-            "justification": "Característica em análise para o Índio.",
-            "score": 50
-        },
-        {
-            "id": 3,
-            "label": "Dado 3",
-            "value": "Processando",
-            "justification": "Característica em análise para o Índio.",
-            "score": 50
-        },
-        {
-            "id": 4,
-            "label": "Dado 4",
-            "value": "Processando",
-            "justification": "Característica em análise para o Índio.",
-            "score": 50
-        },
-        {
-            "id": 5,
-            "label": "Dado 5",
-            "value": "Processando",
-            "justification": "Característica em análise para o Índio.",
-            "score": 50
-        },
-        {
-            "id": 6,
-            "label": "Dado 6",
-            "value": "Processando",
-            "justification": "Característica em análise para o Índio.",
-            "score": 50
-        },
-        {
-            "id": 7,
-            "label": "Dado 7",
-            "value": "Processando",
-            "justification": "Característica em análise para o Índio.",
-            "score": 50
-        },
-        {
-            "id": 8,
-            "label": "Dado 8",
-            "value": "Processando",
-            "justification": "Característica em análise para o Índio.",
-            "score": 50
-        },
-        {
-            "id": 9,
-            "label": "Dado 9",
-            "value": "Processando",
-            "justification": "Característica em análise para o Índio.",
-            "score": 50
-        },
-        {
-            "id": 10,
-            "label": "Dado 10",
-            "value": "Processando",
-            "justification": "Característica em análise para o Índio.",
-            "score": 50
-        },
-        {
-            "id": 11,
-            "label": "Dado 11",
-            "value": "Processando",
-            "justification": "Característica em análise para o Índio.",
-            "score": 50
-        },
-        {
-            "id": 12,
-            "label": "Dado 12",
-            "value": "Processando",
-            "justification": "Característica em análise para o Índio.",
-            "score": 50
-        },
-        {
-            "id": 13,
-            "label": "Dado 13",
-            "value": "Processando",
-            "justification": "Característica em análise para o Índio.",
-            "score": 50
-        },
-        {
-            "id": 14,
-            "label": "Dado 14",
-            "value": "Processando",
-            "justification": "Característica em análise para o Índio.",
-            "score": 50
-        },
-        {
-            "id": 15,
-            "label": "Dado 15",
-            "value": "Processando",
-            "justification": "Característica em análise para o Índio.",
-            "score": 50
-        },
-        {
-            "id": 16,
-            "label": "Dado 16",
-            "value": "Processando",
-            "justification": "Característica em análise para o Índio.",
-            "score": 50
-        },
-        {
-            "id": 17,
-            "label": "Dado 17",
-            "value": "Processando",
-            "justification": "Característica em análise para o Índio.",
-            "score": 50
-        },
-        {
-            "id": 18,
-            "label": "Dado 18",
-            "value": "Processando",
-            "justification": "Característica em análise para o Índio.",
-            "score": 50
-        },
-        {
-            "id": 19,
-            "label": "Dado 19",
-            "value": "Processando",
-            "justification": "Característica em análise para o Índio.",
-            "score": 50
-        },
-        {
-            "id": 20,
-            "label": "Dado 20",
-            "value": "Processando",
-            "justification": "Característica em análise para o Índio.",
-            "score": 50
-        },
-        {
-            "id": 21,
-            "label": "Dado 21",
-            "value": "Processando",
-            "justification": "Característica em análise para o Índio.",
-            "score": 50
-        },
-        {
-            "id": 22,
-            "label": "Dado 22",
-            "value": "Processando",
-            "justification": "Característica em análise para o Índio.",
-            "score": 50
-        },
-        {
-            "id": 23,
-            "label": "Dado 23",
-            "value": "Processando",
-            "justification": "Característica em análise para o Índio.",
-            "score": 50
-        },
-        {
-            "id": 24,
-            "label": "Dado 24",
-            "value": "Processando",
-            "justification": "Característica em análise para o Índio.",
-            "score": 50
-        },
-        {
-            "id": 25,
-            "label": "Dado 25",
-            "value": "Processando",
-            "justification": "Característica em análise para o Índio.",
-            "score": 50
-        },
-        {
-            "id": 26,
-            "label": "Dado 26",
-            "value": "Processando",
-            "justification": "Característica em análise para o Índio.",
-            "score": 50
-        },
-        {
-            "id": 27,
-            "label": "Dado 27",
-            "value": "Processando",
-            "justification": "Característica em análise para o Índio.",
-            "score": 50
-        }
+      {
+        "id": 1,
+        "label": "Massa Atômica",
+        "value": "114.82 u",
+        "justification": "O Índio possui uma massa atômica de aproximadamente 114.82 u.",
+        "score": 115
+      },
+      {
+        "id": 2,
+        "label": "Abundância na Crosta",
+        "value": "0.25 ppm",
+        "justification": "Elemento raro, comparável à prata em escassez, obtido principalmente de resíduos de zinco.",
+        "score": 20
+      },
+      {
+        "id": 3,
+        "label": "Ponto de Fusão",
+        "value": "156.6 °C",
+        "justification": "Possui um ponto de fusão muito baixo para um metal, ideal para soldas especiais.",
+        "score": 16
+      },
+      {
+        "id": 4,
+        "label": "Ponto de Ebulição",
+        "value": "2072 °C",
+        "justification": "Sua temperatura de vaporização é moderada.",
+        "score": 80
+      },
+      {
+        "id": 5,
+        "label": "Densidade",
+        "value": "7.31 g/cm³",
+        "justification": "Densidade similar à do ferro e estanho.",
+        "score": 73
+      },
+      {
+        "id": 6,
+        "label": "Dureza de Mohs",
+        "value": "1.2",
+        "justification": "Extremamente macio, pode ser riscado com a unha e mastigado como chiclete.",
+        "score": 10
+      },
+      {
+        "id": 7,
+        "label": "Eletronegatividade",
+        "value": "1.78",
+        "justification": "Valor típico dos metais do bloco p do grupo 13.",
+        "score": 45
+      },
+      {
+        "id": 8,
+        "label": "Condutividade Térmica",
+        "value": "81.8 W/(m·K)",
+        "justification": "Boa condutividade térmica, usado em interfaces térmicas de alta performance.",
+        "score": 70
+      },
+      {
+        "id": 9,
+        "label": "Condutividade Elétrica",
+        "value": "12.0 MS/m",
+        "justification": "Bom condutor metálico.",
+        "score": 75
+      },
+      {
+        "id": 10,
+        "label": "Calor Específico",
+        "value": "0.233 J/(g·K)",
+        "justification": "Baixa capacidade térmica.",
+        "score": 40
+      },
+      {
+        "id": 11,
+        "label": "Raio Atômico",
+        "value": "167 pm",
+        "justification": "Tamanho atômico que facilita a formação de ligas maleáveis.",
+        "score": 65
+      },
+      {
+        "id": 12,
+        "label": "Energia de Ionização",
+        "value": "5.786 eV",
+        "justification": "Baixa energia de ionização, facilitando a perda de elétrons.",
+        "score": 55
+      },
+      {
+        "id": 13,
+        "label": "Estado Físico (CNTP)",
+        "value": "Sólido",
+        "justification": "Metal branco-prateado, brilhante e extremamente dúctil.",
+        "score": 99
+      },
+      {
+        "id": 14,
+        "label": "Reatividade Química",
+        "value": "Baixa",
+        "justification": "Estável no ar e na água; dissolve-se em ácidos minerais.",
+        "score": 70
+      },
+      {
+        "id": 15,
+        "label": "Reciclabilidade",
+        "value": "Alta",
+        "justification": "Muito recuperado de descartes de telas de LCD e smartphones.",
+        "score": 85
+      },
+      {
+        "id": 16,
+        "label": "Resistência à Corrosão",
+        "value": "Boa",
+        "justification": "Resistente à oxidação em condições normais.",
+        "score": 80
+      },
+      {
+        "id": 17,
+        "label": "Refletividade",
+        "value": "Alta",
+        "justification": "Excelente refletor de luz, similar à prata, mas não mancha tão facilmente.",
+        "score": 85
+      },
+      {
+        "id": 18,
+        "label": "Maleabilidade",
+        "value": "Extrema",
+        "justification": "Permanece maleável mesmo em temperaturas próximas ao zero absoluto.",
+        "score": 100
+      },
+      {
+        "id": 19,
+        "label": "Dutibilidade",
+        "value": "Máxima",
+        "justification": "Pode ser deformado plasticamente quase sem limites.",
+        "score": 100
+      },
+      {
+        "id": 20,
+        "label": "Isótopos Estáveis",
+        "value": "2 (In-113, 115)",
+        "justification": "O In-115 é ligeiramente radioativo, mas com meia-vida trilhões de vezes a idade do universo.",
+        "score": 90
+      },
+      {
+        "id": 21,
+        "label": "Toxicidade",
+        "value": "Baixa",
+        "justification": "Geralmente considerado seguro no manuseio metálico, mas compostos devem ser evitados.",
+        "score": 90
+      },
+      {
+        "id": 22,
+        "label": "Aplicações Tecnológicas",
+        "value": "Crítica",
+        "justification": "Essencial para o Óxido de Índio e Estanho (ITO) usado em telas touchscreen.",
+        "score": 100
+      },
+      {
+        "id": 23,
+        "label": "Magnético",
+        "value": "Diamagnético",
+        "justification": "Repelido fracamente por campos magnéticos.",
+        "score": 5
+      },
+      {
+        "id": 24,
+        "label": "Custo de Produção",
+        "value": "Alto",
+        "justification": "Preço elevado devido à raridade e alta demanda tecnológica.",
+        "score": 25
+      },
+      {
+        "id": 25,
+        "label": "Risco à Natureza",
+        "value": "Baixo",
+        "justification": "Elemento estável com baixo impacto ambiental direto.",
+        "score": 92
+      },
+      {
+        "id": 26,
+        "label": "Radioatividade",
+        "value": "Quase Nula",
+        "justification": "O isótopo In-115 é radioativo, mas de forma insignificante na prática.",
+        "score": 99
+      },
+      {
+        "id": 27,
+        "label": "Curiosidade Histórica",
+        "value": "Indigo",
+        "justification": "Nomeado devido à linha espectral azul indigo brilhante que emite.",
+        "score": 95
+      }
     ]
-},
+  },
   "Sn": {
     "number": 50,
     "symbol": "Sn",
