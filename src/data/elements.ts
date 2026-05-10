@@ -3603,198 +3603,198 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 19,
     "symbol": "K",
     "name": "Potássio",
-    "heroName": "Potássio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Potássio.",
+    "heroName": "Potassium Pulse",
+    "heroDescription": "O condutor da energia vital e mestre dos sinais elétricos, essencial para o ritmo do coração e da vida.",
     "heroImage": "/placeholder.svg",
     "attributes": [
       {
         "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Fraquezas",
+        "value": "Extrema reatividade com água",
+        "justification": "Explode violentamente ao contato com umidade.",
+        "score": 10
       },
       {
         "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Risco/Benefício à natureza",
+        "value": "Fertilizante essencial",
+        "justification": "Nutriente indispensável para o crescimento vegetal.",
+        "score": 95
       },
       {
         "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Risco à saúde",
+        "value": "Perigo de hiperpotassemia",
+        "justification": "O excesso no sangue pode parar o coração.",
+        "score": 30
       },
       {
         "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Benefício",
+        "value": "Contração muscular, Impulsos nervosos",
+        "justification": "Sem ele, o sistema nervoso não funcionaria.",
+        "score": 100
       },
       {
         "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de ligantes possíveis",
+        "value": "1",
+        "justification": "Metal alcalino com 1 elétron de valência.",
+        "score": 25
       },
       {
         "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Abundância na natureza",
+        "value": "2,1% (crosta)",
+        "justification": "Sétimo elemento mais comum na crosta terrestre.",
+        "score": 88
       },
       {
         "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Abundância no universo",
+        "value": "0,0003%",
+        "justification": "Criado em supernovas via processo de queima de oxigênio.",
+        "score": 45
       },
       {
         "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Massa atômica",
+        "value": "39,098 u",
+        "justification": "Massa moderada, similar ao cálcio e argônio.",
+        "score": 39
       },
       {
         "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Densidade",
+        "value": "0,862 g/cm³",
+        "justification": "Menos denso que a água, flutua enquanto reage.",
+        "score": 8
       },
       {
         "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Raio atômico",
+        "value": "227 pm",
+        "justification": "Um dos maiores raios atômicos da tabela.",
+        "score": 90
       },
       {
         "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Oxidação",
+        "value": "+1",
+        "justification": "Estado único e altamente estável em compostos.",
+        "score": 99
       },
       {
         "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Condutividade elétrica",
+        "value": "Bom condutor",
+        "justification": "Como metal, conduz eletricidade eficientemente.",
+        "score": 75
       },
       {
         "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Eletronegatividade",
+        "value": "0,82",
+        "justification": "Muito baixa, tende a perder elétrons facilmente.",
+        "score": 15
       },
       {
         "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Estado físico",
+        "value": "Sólido",
+        "justification": "Metal macio que pode ser cortado com uma faca.",
+        "score": 20
       },
       {
         "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Maior subnível energético",
+        "value": "4s¹",
+        "justification": "Define sua posição no início do 4º período.",
+        "score": 19
       },
       {
         "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Distribuição eletrônica",
+        "value": "[Ar] 4s¹",
+        "justification": "Configuração que explica sua alta reatividade.",
+        "score": 95
       },
       {
         "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de prótons / Nº de elétrons",
+        "value": "19",
+        "justification": "Identidade atômica do Potássio.",
+        "score": 99
       },
       {
         "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de nêutrons",
+        "value": "20",
+        "justification": "Equilíbrio nuclear no isótopo principal K-39.",
+        "score": 20
       },
       {
         "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
+        "label": "Radioatividade",
+        "value": "Ligeiramente Radioativo",
+        "justification": "O isótopo K-40 é natural e levemente instável.",
         "score": 50
       },
       {
         "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Aplicabilidade / Utilidade",
+        "value": "Sabões, Vidros, Explosivos",
+        "justification": "Uso diversificado na indústria química básica.",
+        "score": 90
       },
       {
         "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Local de origem",
+        "value": "Inglaterra",
+        "justification": "Isolado via eletrólise por Humphry Davy.",
+        "score": 85
       },
       {
         "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Curiosidade",
+        "value": "Rico em Bananas",
+        "justification": "Alimento famoso por ajudar na prevenção de cãibras.",
+        "score": 98
       },
       {
         "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Origem do nome",
+        "value": "Pot-ash (Cinzas de pote)",
+        "justification": "Antiga forma de extrair carbonato de potássio.",
+        "score": 90
       },
       {
         "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Descobridor",
+        "value": "Sir Humphry Davy",
+        "justification": "O gênio da eletrólise que isolou vários metais.",
+        "score": 95
       },
       {
         "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ano de descoberta",
+        "value": "1807",
+        "justification": "Primeiro metal isolado por meio da eletricidade.",
+        "score": 98
       },
       {
         "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de fusão",
+        "value": "63,38 °C",
+        "justification": "Muito baixo para um metal, derrete em banho-maria.",
+        "score": 63
       },
       {
         "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de ebulição",
+        "value": "759 °C",
+        "justification": "Ebulição relativamente baixa comparada a outros metais.",
+        "score": 75
       }
     ]
   },
