@@ -16544,192 +16544,192 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "attributes": [
         {
             "id": 1,
-            "label": "Atributo 1",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Fraquezas",
+            "value": "Extrema Radioatividade",
+            "justification": "Tão radioativo que um pedaço visível se vaporizaria pelo próprio calor gerado.",
+            "score": 1
         },
         {
             "id": 2,
-            "label": "Atributo 2",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Risco/Benefício à natureza",
+            "value": "Perigo Radiológico",
+            "justification": "Não ocorre significativamente na natureza, mas é um subproduto perigoso do urânio.",
+            "score": 5
         },
         {
             "id": 3,
-            "label": "Atributo 3",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Risco à saúde",
+            "value": "Crítico (Lethal)",
+            "justification": "Uma das substâncias mais tóxicas conhecidas devido à emissão de partículas alfa.",
+            "score": 1
         },
         {
             "id": 4,
-            "label": "Atributo 4",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Benefício",
+            "value": "Fontes de Calor Espaciais",
+            "justification": "Usado em geradores termoelétricos para naves espaciais de longa distância.",
+            "score": 80
         },
         {
             "id": 5,
-            "label": "Atributo 5",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Nº de ligantes possíveis",
+            "value": "2, 4, 6",
+            "justification": "Sua química é complexa e difícil de estudar devido à radioatividade.",
+            "score": 30
         },
         {
             "id": 6,
-            "label": "Atributo 6",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Abundância na natureza",
+            "value": "Vestígios",
+            "justification": "Extremamente raro, encontrado apenas em minérios de urânio.",
+            "score": 1
         },
         {
             "id": 7,
-            "label": "Atributo 7",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Abundância no universo",
+            "value": "Desprezível",
+            "justification": "Elemento instável com vida curta, raro em todo o cosmos.",
+            "score": 0.1
         },
         {
             "id": 8,
-            "label": "Atributo 8",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Massa atômica",
+            "value": "209 u",
+            "justification": "Massa do seu isótopo mais estável (Po-209).",
+            "score": 209
         },
         {
             "id": 9,
-            "label": "Atributo 9",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Densidade",
+            "value": "9,196 g/cm³",
+            "justification": "Metal denso, similar ao bismuto.",
+            "score": 92
         },
         {
             "id": 10,
-            "label": "Atributo 10",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Raio atômico",
+            "value": "167 pm",
+            "justification": "Tamanho atômico característico do final do período 6.",
+            "score": 167
         },
         {
             "id": 11,
-            "label": "Atributo 11",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Oxidação",
+            "value": "-2, +2, +4, +6",
+            "justification": "Apresenta uma ampla gama de estados de oxidação.",
+            "score": 45
         },
         {
             "id": 12,
-            "label": "Atributo 12",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Condutividade elétrica",
+            "value": "Moderada",
+            "justification": "Metalóide com propriedades condutoras típicas.",
+            "score": 15
         },
         {
             "id": 13,
-            "label": "Atributo 13",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Eletronegatividade",
+            "value": "2,0 (Pauling)",
+            "justification": "Valor similar ao selênio e telúrio.",
+            "score": 20
         },
         {
             "id": 14,
-            "label": "Atributo 14",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Estado físico",
+            "value": "Sólido",
+            "justification": "Metal prateado que brilha com uma luz azulada devido à radiação.",
+            "score": 100
         },
         {
             "id": 15,
-            "label": "Atributo 15",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Maior subnível energético",
+            "value": "6p⁴",
+            "justification": "Possui quatro elétrons no subnível 6p.",
+            "score": 60
         },
         {
             "id": 16,
-            "label": "Atributo 16",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Distribuição eletrônica",
+            "value": "[Xe] 4f¹⁴ 5d¹⁰ 6s² 6p⁴",
+            "justification": "Configuração que o coloca no grupo dos calcogênios.",
+            "score": 98
         },
         {
             "id": 17,
-            "label": "Atributo 17",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Nº de prótons / Nº de elétrons",
+            "value": "84",
+            "justification": "Número atômico que define o Polônio.",
+            "score": 100
         },
         {
             "id": 18,
-            "label": "Atributo 18",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Nº de nêutrons",
+            "value": "125",
+            "justification": "Número de nêutrons em seu isótopo Po-209.",
+            "score": 125
         },
         {
             "id": 19,
-            "label": "Atributo 19",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Radioatividade",
+            "value": "Altamente Instável",
+            "justification": "Todos os seus isótopos são radioativos com meias-vidas curtas.",
+            "score": 1
         },
         {
             "id": 20,
-            "label": "Atributo 20",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Aplicabilidade / Utilidade",
+            "value": "Escovas Antiestáticas",
+            "justification": "Usado em pequenas quantidades para eliminar carga estática em processos industriais.",
+            "score": 60
         },
         {
             "id": 21,
-            "label": "Atributo 21",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Local de origem",
+            "value": "França",
+            "justification": "Isolado pela primeira vez por Marie e Pierre Curie em Paris.",
+            "score": 95
         },
         {
             "id": 22,
-            "label": "Atributo 22",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Curiosidade",
+            "value": "Brilho Espontâneo",
+            "justification": "O ar ao redor do polônio brilha devido à intensa radiação.",
+            "score": 100
         },
         {
             "id": 23,
-            "label": "Atributo 23",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Origem do nome",
+            "value": "Polônia",
+            "justification": "Homenagem ao país natal de Marie Curie.",
+            "score": 100
         },
         {
             "id": 24,
-            "label": "Atributo 24",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Descobridor",
+            "value": "Marie e Pierre Curie",
+            "justification": "Pioneiros no estudo da radioatividade.",
+            "score": 100
         },
         {
             "id": 25,
-            "label": "Atributo 25",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Ano de descoberta",
+            "value": "1898",
+            "justification": "Uma das descobertas mais famosas da ciência moderna.",
+            "score": 95
         },
         {
             "id": 26,
-            "label": "Atributo 26",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Ponto de fusão",
+            "value": "254 °C",
+            "justification": "Ponto de fusão relativamente baixo.",
+            "score": 25
         },
         {
             "id": 27,
-            "label": "Atributo 27",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Ponto de ebulição",
+            "value": "962 °C",
+            "justification": "Vaporiza-se facilmente em altas temperaturas.",
+            "score": 10
         }
     ]
 },
