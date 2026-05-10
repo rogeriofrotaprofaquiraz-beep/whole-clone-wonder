@@ -5195,198 +5195,198 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 26,
     "symbol": "Fe",
     "name": "Ferro",
-    "heroName": "Iron Guardian",
-    "heroDescription": "A espinha dorsal da civilização, mestre do magnetismo e da resistência inquebrável.",
+    "heroName": "Iron Core",
+    "heroDescription": "O pilar da civilização e mestre do magnetismo, um herói cujo sangue corre nas veias do planeta e de todos os seres vivos.",
     "heroImage": "https://cvbgrjauqjawrsyknhyj.supabase.co/storage/v1/object/public/files/uploads/higtSN3xyfWHqjML33VUnzcwd6r2/1777817322180-0ipir-ChatGPT_Image_25_de_jan._de_2026__22_11_07.png",
     "attributes": [
       {
         "id": 1,
         "label": "Fraquezas",
-        "value": "Oxidação (Ferrugem)",
-        "justification": "Corrói facilmente em contato com oxigênio e umidade.",
-        "score": 40
+        "value": "Vulnerável à oxidação (Ferrugem)",
+        "justification": "Desintegra-se na presença de umidade e oxigênio sem proteção.",
+        "score": 5
       },
       {
         "id": 2,
         "label": "Risco/Benefício à natureza",
-        "value": "Essencial e reciclável",
-        "justification": "Fundamental para a vida (hemoglobina) e altamente reciclável.",
+        "value": "Ciclo Vital do Ferro",
+        "justification": "Essencial para o transporte de elétrons e oxigênio na biosfera.",
         "score": 95
       },
       {
         "id": 3,
         "label": "Risco à saúde",
-        "value": "Baixo (essencial)",
-        "justification": "Necessário para o transporte de oxigênio no sangue.",
-        "score": 90
+        "value": "Anemia ou Hemocromatose",
+        "justification": "Tanto a falta quanto o excesso são prejudiciais ao organismo.",
+        "score": 45
       },
       {
         "id": 4,
         "label": "Benefício",
-        "value": "Estruturas, ferramentas, transporte",
-        "justification": "O metal mais usado na história da humanidade.",
+        "value": "Construção Civil, Hemoglobina",
+        "justification": "Base da infraestrutura mundial e do transporte de oxigênio no sangue.",
         "score": 100
       },
       {
         "id": 5,
         "label": "Nº de ligantes possíveis",
-        "value": "Complexo",
-        "justification": "Forma diversas ligas como o aço.",
+        "value": "4, 5, 6",
+        "justification": "O complexo heme coordena o O₂ através de 6 sítios de ligação.",
         "score": 85
       },
       {
         "id": 6,
         "label": "Abundância na natureza",
-        "value": "5% na crosta",
-        "justification": "Quarto elemento mais abundante na crosta terrestre.",
-        "score": 80
+        "value": "5,6% (crosta) / 35% (Terra total)",
+        "justification": "O elemento mais abundante na massa total da Terra.",
+        "score": 100
       },
       {
         "id": 7,
         "label": "Abundância no universo",
-        "value": "Comum",
-        "justification": "Produzido em estrelas massivas no fim da vida.",
-        "score": 70
+        "value": "0,11%",
+        "justification": "Produto final da fusão estelar antes do colapso em supernova.",
+        "score": 80
       },
       {
         "id": 8,
         "label": "Massa atômica",
         "value": "55,845 u",
-        "justification": "Massa média.",
-        "score": 50
+        "justification": "Massa média dos isótopos naturais, sendo o Fe-56 o mais comum.",
+        "score": 56
       },
       {
         "id": 9,
         "label": "Densidade",
-        "value": "7,874 g/cm³",
-        "justification": "Metal denso e sólido.",
+        "value": "7,87 g/cm³",
+        "justification": "Metal pesado que define o padrão para densidade industrial.",
         "score": 78
       },
       {
         "id": 10,
         "label": "Raio atômico",
         "value": "126 pm",
-        "justification": "Tamanho médio para um metal de transição.",
-        "score": 45
+        "justification": "Raio ideal para formar estruturas cristalinas robustas.",
+        "score": 65
       },
       {
         "id": 11,
         "label": "Oxidação",
-        "value": "+2, +3",
-        "justification": "Estados de oxidação muito comuns e estáveis.",
-        "score": 60
+        "value": "+2, +3, +6",
+        "justification": "Ferroso (+2) e Férrico (+3) são fundamentais na química terrestre.",
+        "score": 90
       },
       {
         "id": 12,
         "label": "Condutividade elétrica",
-        "value": "Condutor",
-        "justification": "Bom condutor, embora inferior ao cobre.",
-        "score": 70
+        "value": "Moderada",
+        "justification": "Conduz bem, mas não tanto quanto o cobre ou alumínio.",
+        "score": 60
       },
       {
         "id": 13,
         "label": "Eletronegatividade",
         "value": "1,83",
-        "justification": "Valor típico de metais.",
-        "score": 40
+        "justification": "Valor moderado que favorece ligações metálicas e iônicas.",
+        "score": 50
       },
       {
         "id": 14,
         "label": "Estado físico",
         "value": "Sólido",
-        "justification": "Sólido metálico à temperatura ambiente.",
+        "justification": "Metal cinza brilhante, ferromagnético à temperatura ambiente.",
         "score": 100
       },
       {
         "id": 15,
         "label": "Maior subnível energético",
         "value": "3d⁶",
-        "justification": "Metal de transição com subnível d incompleto.",
-        "score": 60
+        "justification": "O sexto elemento do bloco d da primeira série.",
+        "score": 26
       },
       {
         "id": 16,
         "label": "Distribuição eletrônica",
         "value": "[Ar] 3d⁶ 4s²",
-        "justification": "Configuração clássica de transição.",
-        "score": 75
+        "justification": "Configuração que gera o momento magnético do ferro.",
+        "score": 95
       },
       {
         "id": 17,
-        "label": "Nº prótons/elétrons",
+        "label": "Nº de prótons / Nº de elétrons",
         "value": "26",
-        "justification": "Posição central na tabela.",
-        "score": 26
+        "justification": "Número que define a essência do Ferro.",
+        "score": 99
       },
       {
         "id": 18,
-        "label": "Nº nêutrons",
+        "label": "Nº de nêutrons",
         "value": "30",
-        "justification": "Isótopo mais estável (Fe-56).",
+        "justification": "Equilíbrio nuclear no isótopo mais abundante Fe-56.",
         "score": 30
       },
       {
         "id": 19,
         "label": "Radioatividade",
         "value": "Estável",
-        "justification": "Altamente estável.",
+        "justification": "Núcleo extremamente estável, o 'fundo do poço' da energia nuclear.",
         "score": 100
       },
       {
         "id": 20,
-        "label": "Aplicabilidade",
-        "value": "Indústria pesada, aço",
-        "justification": "Base da infraestrutura moderna.",
+        "label": "Aplicabilidade / Utilidade",
+        "value": "Aço, Máquinas, Ferramentas, Sangue",
+        "justification": "Sem o ferro, a tecnologia e a respiração parariam.",
         "score": 100
       },
       {
         "id": 21,
         "label": "Local de origem",
-        "value": "Antiguidade",
-        "justification": "Conhecido desde os primórdios da humanidade.",
+        "value": "Mundial (Conhecido desde a Antiguidade)",
+        "justification": "Um dos primeiros metais usados pela humanidade.",
         "score": 100
       },
       {
         "id": 22,
         "label": "Curiosidade",
-        "value": "Ferromagnetismo",
-        "justification": "Propriedades magnéticas únicas.",
-        "score": 95
+        "value": "O Núcleo da Terra",
+        "justification": "O núcleo do nosso planeta é composto majoritariamente por ferro líquido e sólido.",
+        "score": 100
       },
       {
         "id": 23,
         "label": "Origem do nome",
-        "value": "Ferrum (Latim)",
-        "justification": "Origem clássica e universal.",
-        "score": 90
+        "value": "Ferrum",
+        "justification": "Palavra latina que deu origem ao símbolo Fe.",
+        "score": 95
       },
       {
         "id": 24,
         "label": "Descobridor",
         "value": "Desconhecido",
-        "justification": "Usado desde a pré-história.",
-        "score": 50
+        "justification": "Usado por egípcios e sumérios em meteoritos há 5000 anos.",
+        "score": 100
       },
       {
         "id": 25,
         "label": "Ano de descoberta",
         "value": "~3500 a.C.",
-        "justification": "Um dos metais mais antigos.",
+        "justification": "A 'Idade do Ferro' marcou uma revolução na história humana.",
         "score": 100
       },
       {
         "id": 26,
         "label": "Ponto de fusão",
         "value": "1538 °C",
-        "justification": "Ponto de fusão elevado.",
-        "score": 85
+        "justification": "Alta temperatura de fusão, essencial para forjas.",
+        "score": 15
       },
       {
         "id": 27,
         "label": "Ponto de ebulição",
         "value": "2862 °C",
-        "justification": "Ponto de ebulição muito alto.",
-        "score": 90
+        "justification": "Ebulição típica de metais de transição robustos.",
+        "score": 28
       }
     ]
   },
