@@ -3802,198 +3802,198 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 20,
     "symbol": "Ca",
     "name": "Cálcio",
-    "heroName": "Cálcio Hero",
-    "heroDescription": "Um poderoso herói baseado no elemento Cálcio.",
+    "heroName": "Calcium Titan",
+    "heroDescription": "A fortaleza da vida e arquiteto da estrutura biológica, mantendo o equilíbrio e a solidez do corpo humano.",
     "heroImage": "/placeholder.svg",
     "attributes": [
       {
         "id": 1,
-        "label": "Atributo 1",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Fraquezas",
+        "value": "Reativo em estado puro",
+        "justification": "Metal alcalino-terroso que reage com o ar e a água.",
+        "score": 15
       },
       {
         "id": 2,
-        "label": "Atributo 2",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Risco/Benefício à natureza",
+        "value": "Regulador de acidez",
+        "justification": "Usado para corrigir o pH do solo na agricultura.",
+        "score": 90
       },
       {
         "id": 3,
-        "label": "Atributo 3",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Risco à saúde",
+        "value": "Cálculos renais",
+        "justification": "O excesso pode se cristalizar nos rins.",
+        "score": 40
       },
       {
         "id": 4,
-        "label": "Atributo 4",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Benefício",
+        "value": "Ossos, Dentes, Coagulação",
+        "justification": "Essencial para a integridade do esqueleto.",
+        "score": 100
       },
       {
         "id": 5,
-        "label": "Atributo 5",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de ligantes possíveis",
+        "value": "2",
+        "justification": "Forma ligações iônicas estáveis como Ca²⁺.",
+        "score": 30
       },
       {
         "id": 6,
-        "label": "Atributo 6",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Abundância na natureza",
+        "value": "3,4% (crosta)",
+        "justification": "Quinto elemento mais abundante na crosta terrestre.",
+        "score": 92
       },
       {
         "id": 7,
-        "label": "Atributo 7",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Abundância no universo",
+        "value": "0,007%",
+        "justification": "Sintetizado em supernovas pelo processo de captura alfa.",
+        "score": 55
       },
       {
         "id": 8,
-        "label": "Atributo 8",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Massa atômica",
+        "value": "40,078 u",
+        "justification": "Cerca do triplo da massa do carbono.",
+        "score": 40
       },
       {
         "id": 9,
-        "label": "Atributo 9",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Densidade",
+        "value": "1,54 g/cm³",
+        "justification": "Leve para um metal estrutural.",
+        "score": 15
       },
       {
         "id": 10,
-        "label": "Atributo 10",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Raio atômico",
+        "value": "197 pm",
+        "justification": "Raio atômico grande, típico de alcalino-terrosos.",
+        "score": 75
       },
       {
         "id": 11,
-        "label": "Atributo 11",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Oxidação",
+        "value": "+2",
+        "justification": "Estado de oxidação quase onipresente na natureza.",
+        "score": 98
       },
       {
         "id": 12,
-        "label": "Atributo 12",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Condutividade elétrica",
+        "value": "Bom condutor",
+        "justification": "Embora pouco usado para isso, é um metal condutivo.",
+        "score": 70
       },
       {
         "id": 13,
-        "label": "Atributo 13",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Eletronegatividade",
+        "value": "1,00",
+        "justification": "Baixa eletronegatividade, característica metálica.",
+        "score": 20
       },
       {
         "id": 14,
-        "label": "Atributo 14",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Estado físico",
+        "value": "Sólido",
+        "justification": "Metal prateado e razoavelmente duro.",
+        "score": 30
       },
       {
         "id": 15,
-        "label": "Atributo 15",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Maior subnível energético",
+        "value": "4s²",
+        "justification": "Define sua posição no grupo 2.",
+        "score": 20
       },
       {
         "id": 16,
-        "label": "Atributo 16",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Distribuição eletrônica",
+        "value": "[Ar] 4s²",
+        "justification": "Configuração que explica sua estabilidade como íon Ca²⁺.",
+        "score": 95
       },
       {
         "id": 17,
-        "label": "Atributo 17",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de prótons / Nº de elétrons",
+        "value": "20",
+        "justification": "Número atômico do Cálcio.",
+        "score": 99
       },
       {
         "id": 18,
-        "label": "Atributo 18",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Nº de nêutrons",
+        "value": "20",
+        "justification": "Equilíbrio nuclear no isótopo Ca-40.",
+        "score": 20
       },
       {
         "id": 19,
-        "label": "Atributo 19",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Radioatividade",
+        "value": "Estável",
+        "justification": "A maioria dos isótopos naturais são perfeitamente estáveis.",
+        "score": 100
       },
       {
         "id": 20,
-        "label": "Atributo 20",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Aplicabilidade / Utilidade",
+        "value": "Cimento, Gesso, Laticínios",
+        "justification": "Base da construção civil e nutrição humana.",
+        "score": 98
       },
       {
         "id": 21,
-        "label": "Atributo 21",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Local de origem",
+        "value": "Inglaterra",
+        "justification": "Também isolado por Humphry Davy via eletrólise.",
+        "score": 85
       },
       {
         "id": 22,
-        "label": "Atributo 22",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Curiosidade",
+        "value": "Pedra de Calcário",
+        "justification": "Formada por restos de conchas e esqueletos marinhos.",
+        "score": 95
       },
       {
         "id": 23,
-        "label": "Atributo 23",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Origem do nome",
+        "value": "Calx (Cal/Pedra)",
+        "justification": "Termo latino para cal, usada em construções desde Roma.",
+        "score": 90
       },
       {
         "id": 24,
-        "label": "Atributo 24",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Descobridor",
+        "value": "Sir Humphry Davy",
+        "justification": "O químico que desvendou a natureza dos alcalino-terrosos.",
+        "score": 95
       },
       {
         "id": 25,
-        "label": "Atributo 25",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ano de descoberta",
+        "value": "1808",
+        "justification": "Isolado logo após o potássio e sódio.",
+        "score": 98
       },
       {
         "id": 26,
-        "label": "Atributo 26",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de fusão",
+        "value": "842 °C",
+        "justification": "Fusão alta para um metal leve.",
+        "score": 84
       },
       {
         "id": 27,
-        "label": "Atributo 27",
-        "value": "Em breve",
-        "justification": "Dados sendo processados pela central elemental.",
-        "score": 50
+        "label": "Ponto de ebulição",
+        "value": "1484 °C",
+        "justification": "Ponto de ebulição elevado, típico de metais.",
+        "score": 14
       }
     ]
   },
