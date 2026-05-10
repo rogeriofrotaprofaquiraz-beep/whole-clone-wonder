@@ -11369,84 +11369,84 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
-            "id": 1,
-            "label": "Atributo 1",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 1,
+          "label": "Fraquezas",
+          "value": "Oxidação rápida",
+          "justification": "O metal mais reativo das terras raras, oxida-se rapidamente no ar.",
+          "score": 25
         },
         {
-            "id": 2,
-            "label": "Atributo 2",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 2,
+          "label": "Risco/Benefício à natureza",
+          "value": "Abundante",
+          "justification": "O mais abundante dos elementos de terra rara.",
+          "score": 85
         },
         {
-            "id": 3,
-            "label": "Atributo 3",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 3,
+          "label": "Risco à saúde",
+          "value": "Baixo",
+          "justification": "Considerado não tóxico em manuseio comum.",
+          "score": 90
         },
         {
-            "id": 4,
-            "label": "Atributo 4",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 4,
+          "label": "Benefício",
+          "value": "Pedra de isqueiro, Catalisadores",
+          "justification": "Essencial para reduzir emissões em carros e criar faíscas.",
+          "score": 96
         },
         {
-            "id": 5,
-            "label": "Atributo 5",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 5,
+          "label": "Nº de ligantes possíveis",
+          "value": "3, 4",
+          "justification": "Exibe estados de oxidação +3 e +4.",
+          "score": 70
         },
         {
-            "id": 6,
-            "label": "Atributo 6",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 6,
+          "label": "Abundância na natureza",
+          "value": "66 ppm (crosta)",
+          "justification": "Mais abundante que o cobre na crosta terrestre.",
+          "score": 50
         },
         {
-            "id": 7,
-            "label": "Atributo 7",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 7,
+          "label": "Abundância no universo",
+          "value": "0,0000001%",
+          "justification": "Relativamente comum entre as terras raras no cosmos.",
+          "score": 10
         },
         {
-            "id": 8,
-            "label": "Atributo 8",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 8,
+          "label": "Massa atômica",
+          "value": "140,11 u",
+          "justification": "Massa característica do grupo dos lantanídeos.",
+          "score": 140
         },
         {
-            "id": 9,
-            "label": "Atributo 9",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 9,
+          "label": "Densidade",
+          "value": "6,77 g/cm³",
+          "justification": "Metal denso típico do período 6.",
+          "score": 68
         },
         {
-            "id": 10,
-            "label": "Atributo 10",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 10,
+          "label": "Raio atômico",
+          "value": "181 pm",
+          "justification": "Raio atômico grande, permitindo diversas ligações.",
+          "score": 181
         },
         {
-            "id": 11,
-            "label": "Atributo 11",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 11,
+          "label": "Oxidação",
+          "value": "+3, +4",
+          "justification": "Pode atuar como um forte agente oxidante no estado +4.",
+          "score": 40
         },
         {
-            "id": 12,
+          "id": 12,
             "label": "Atributo 12",
             "value": "Em breve",
             "justification": "Dados sendo processados pela central elemental.",
