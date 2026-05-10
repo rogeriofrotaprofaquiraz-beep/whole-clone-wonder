@@ -8976,201 +8976,201 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 46,
     "symbol": "Pd",
     "name": "Paládio",
-    "heroName": "Palladium Bridge",
-    "heroDescription": "O maestro das reações químicas, um herói que purifica o ar e catalisa transformações.",
+    "heroName": "Palladium Guard",
+    "heroDescription": "O mestre da purificação e herói da mobilidade sustentável. Palladium Guard é o metal nobre que absorve hidrogênio como uma esponja, protegendo o planeta contra emissões tóxicas.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-        {
-            "id": 1,
-            "label": "Dado 1",
-            "value": "Processando",
-            "justification": "Característica em análise para o Paládio.",
-            "score": 50
-        },
-        {
-            "id": 2,
-            "label": "Dado 2",
-            "value": "Processando",
-            "justification": "Característica em análise para o Paládio.",
-            "score": 50
-        },
-        {
-            "id": 3,
-            "label": "Dado 3",
-            "value": "Processando",
-            "justification": "Característica em análise para o Paládio.",
-            "score": 50
-        },
-        {
-            "id": 4,
-            "label": "Dado 4",
-            "value": "Processando",
-            "justification": "Característica em análise para o Paládio.",
-            "score": 50
-        },
-        {
-            "id": 5,
-            "label": "Dado 5",
-            "value": "Processando",
-            "justification": "Característica em análise para o Paládio.",
-            "score": 50
-        },
-        {
-            "id": 6,
-            "label": "Dado 6",
-            "value": "Processando",
-            "justification": "Característica em análise para o Paládio.",
-            "score": 50
-        },
-        {
-            "id": 7,
-            "label": "Dado 7",
-            "value": "Processando",
-            "justification": "Característica em análise para o Paládio.",
-            "score": 50
-        },
-        {
-            "id": 8,
-            "label": "Dado 8",
-            "value": "Processando",
-            "justification": "Característica em análise para o Paládio.",
-            "score": 50
-        },
-        {
-            "id": 9,
-            "label": "Dado 9",
-            "value": "Processando",
-            "justification": "Característica em análise para o Paládio.",
-            "score": 50
-        },
-        {
-            "id": 10,
-            "label": "Dado 10",
-            "value": "Processando",
-            "justification": "Característica em análise para o Paládio.",
-            "score": 50
-        },
-        {
-            "id": 11,
-            "label": "Dado 11",
-            "value": "Processando",
-            "justification": "Característica em análise para o Paládio.",
-            "score": 50
-        },
-        {
-            "id": 12,
-            "label": "Dado 12",
-            "value": "Processando",
-            "justification": "Característica em análise para o Paládio.",
-            "score": 50
-        },
-        {
-            "id": 13,
-            "label": "Dado 13",
-            "value": "Processando",
-            "justification": "Característica em análise para o Paládio.",
-            "score": 50
-        },
-        {
-            "id": 14,
-            "label": "Dado 14",
-            "value": "Processando",
-            "justification": "Característica em análise para o Paládio.",
-            "score": 50
-        },
-        {
-            "id": 15,
-            "label": "Dado 15",
-            "value": "Processando",
-            "justification": "Característica em análise para o Paládio.",
-            "score": 50
-        },
-        {
-            "id": 16,
-            "label": "Dado 16",
-            "value": "Processando",
-            "justification": "Característica em análise para o Paládio.",
-            "score": 50
-        },
-        {
-            "id": 17,
-            "label": "Dado 17",
-            "value": "Processando",
-            "justification": "Característica em análise para o Paládio.",
-            "score": 50
-        },
-        {
-            "id": 18,
-            "label": "Dado 18",
-            "value": "Processando",
-            "justification": "Característica em análise para o Paládio.",
-            "score": 50
-        },
-        {
-            "id": 19,
-            "label": "Dado 19",
-            "value": "Processando",
-            "justification": "Característica em análise para o Paládio.",
-            "score": 50
-        },
-        {
-            "id": 20,
-            "label": "Dado 20",
-            "value": "Processando",
-            "justification": "Característica em análise para o Paládio.",
-            "score": 50
-        },
-        {
-            "id": 21,
-            "label": "Dado 21",
-            "value": "Processando",
-            "justification": "Característica em análise para o Paládio.",
-            "score": 50
-        },
-        {
-            "id": 22,
-            "label": "Dado 22",
-            "value": "Processando",
-            "justification": "Característica em análise para o Paládio.",
-            "score": 50
-        },
-        {
-            "id": 23,
-            "label": "Dado 23",
-            "value": "Processando",
-            "justification": "Característica em análise para o Paládio.",
-            "score": 50
-        },
-        {
-            "id": 24,
-            "label": "Dado 24",
-            "value": "Processando",
-            "justification": "Característica em análise para o Paládio.",
-            "score": 50
-        },
-        {
-            "id": 25,
-            "label": "Dado 25",
-            "value": "Processando",
-            "justification": "Característica em análise para o Paládio.",
-            "score": 50
-        },
-        {
-            "id": 26,
-            "label": "Dado 26",
-            "value": "Processando",
-            "justification": "Característica em análise para o Paládio.",
-            "score": 50
-        },
-        {
-            "id": 27,
-            "label": "Dado 27",
-            "value": "Processando",
-            "justification": "Característica em análise para o Paládio.",
-            "score": 50
-        }
+      {
+        "id": 1,
+        "label": "Massa Atômica",
+        "value": "106.42 u",
+        "justification": "O Paládio possui uma massa atômica de aproximadamente 106.42 u.",
+        "score": 106
+      },
+      {
+        "id": 2,
+        "label": "Abundância na Crosta",
+        "value": "0.015 ppm",
+        "justification": "Metal raro do grupo da platina, mas mais comum que o ródio.",
+        "score": 25
+      },
+      {
+        "id": 3,
+        "label": "Ponto de Fusão",
+        "value": "1554.9 °C",
+        "justification": "O menor ponto de fusão entre os metais do grupo da platina.",
+        "score": 88
+      },
+      {
+        "id": 4,
+        "label": "Ponto de Ebulição",
+        "value": "2963 °C",
+        "justification": "Temperatura de vaporização moderada para um metal nobre.",
+        "score": 82
+      },
+      {
+        "id": 5,
+        "label": "Densidade",
+        "value": "12.02 g/cm³",
+        "justification": "O menos denso dos metais do grupo da platina.",
+        "score": 89
+      },
+      {
+        "id": 6,
+        "label": "Dureza de Mohs",
+        "value": "4.75",
+        "justification": "Metal relativamente macio, similar à dureza da platina.",
+        "score": 65
+      },
+      {
+        "id": 7,
+        "label": "Eletronegatividade",
+        "value": "2.20",
+        "justification": "Valor típico de metais nobres, conferindo estabilidade química.",
+        "score": 60
+      },
+      {
+        "id": 8,
+        "label": "Condutividade Térmica",
+        "value": "71.8 W/(m·K)",
+        "justification": "Condutividade térmica razoável.",
+        "score": 65
+      },
+      {
+        "id": 9,
+        "label": "Condutividade Elétrica",
+        "value": "9.5 MS/m",
+        "justification": "Bom condutor metálico.",
+        "score": 70
+      },
+      {
+        "id": 10,
+        "label": "Calor Específico",
+        "value": "0.244 J/(g·K)",
+        "justification": "Capacidade térmica característica de metais pesados.",
+        "score": 45
+      },
+      {
+        "id": 11,
+        "label": "Raio Atômico",
+        "value": "137 pm",
+        "justification": "Tamanho ideal para interagir com o hidrogênio.",
+        "score": 60
+      },
+      {
+        "id": 12,
+        "label": "Energia de Ionização",
+        "value": "8.337 eV",
+        "justification": "Energia necessária para remover o primeiro elétron.",
+        "score": 80
+      },
+      {
+        "id": 13,
+        "label": "Estado Físico (CNTP)",
+        "value": "Sólido",
+        "justification": "Metal branco-prateado, brilhante e dúctil.",
+        "score": 99
+      },
+      {
+        "id": 14,
+        "label": "Reatividade Química",
+        "value": "Baixa (Resistente)",
+        "justification": "Resiste à oxidação em condições normais, mas é atacado por ácidos nítrico e sulfúrico quentes.",
+        "score": 85
+      },
+      {
+        "id": 15,
+        "label": "Reciclabilidade",
+        "value": "Máxima",
+        "justification": "Muito valioso e amplamente recuperado de eletrônicos e catalisadores.",
+        "score": 100
+      },
+      {
+        "id": 16,
+        "label": "Resistência à Corrosão",
+        "value": "Alta",
+        "justification": "Excelente resistência à corrosão atmosférica.",
+        "score": 95
+      },
+      {
+        "id": 17,
+        "label": "Refletividade",
+        "value": "Alta",
+        "justification": "Excelente brilho prateado, usado em joalheria.",
+        "score": 85
+      },
+      {
+        "id": 18,
+        "label": "Maleabilidade",
+        "value": "Alta",
+        "justification": "Muito fácil de trabalhar e moldar.",
+        "score": 90
+      },
+      {
+        "id": 19,
+        "label": "Dutibilidade",
+        "value": "Excelente",
+        "justification": "Pode ser esticado em fios finíssimos, como o ouro.",
+        "score": 95
+      },
+      {
+        "id": 20,
+        "label": "Isótopos Estáveis",
+        "value": "6 (Pd-102, 104, 105, 106, 108, 110)",
+        "justification": "Possui uma ampla gama de isótopos naturais.",
+        "score": 96
+      },
+      {
+        "id": 21,
+        "label": "Toxicidade",
+        "value": "Baixa",
+        "justification": "Metal nobre inerte e seguro para o contato humano e em implantes dentários.",
+        "score": 95
+      },
+      {
+        "id": 22,
+        "label": "Aplicações Tecnológicas",
+        "value": "Crítica",
+        "justification": "Indispensável para conversores catalíticos e purificação de hidrogênio.",
+        "score": 100
+      },
+      {
+        "id": 23,
+        "label": "Magnético",
+        "value": "Paramagnético",
+        "justification": "Resposta magnética fraca.",
+        "score": 15
+      },
+      {
+        "id": 24,
+        "label": "Custo de Produção",
+        "value": "Muito Alto",
+        "justification": "Metal precioso com alta demanda industrial e joalheira.",
+        "score": 10
+      },
+      {
+        "id": 25,
+        "label": "Risco à Natureza",
+        "value": "Baixo",
+        "justification": "Elemento estável e protetor ambiental via catalisadores.",
+        "score": 98
+      },
+      {
+        "id": 26,
+        "label": "Radioatividade",
+        "value": "Nula",
+        "justification": "Isótopos naturais são perfeitamente estáveis.",
+        "score": 100
+      },
+      {
+        "id": 27,
+        "label": "Curiosidade Histórica",
+        "value": "Palas",
+        "justification": "Nomeado em homenagem ao asteroide Palas, descoberto pouco antes do elemento.",
+        "score": 90
+      }
     ]
-},
+  },
   "Ag": {
     "number": 47,
     "symbol": "Ag",
