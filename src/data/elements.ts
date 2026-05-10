@@ -18733,192 +18733,192 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "attributes": [
         {
             "id": 1,
-            "label": "Atributo 1",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Fraquezas",
+            "value": "Emissor de Raios Gama",
+            "justification": "Sua radiação gama exige blindagem de chumbo para manuseio seguro.",
+            "score": 1
         },
         {
             "id": 2,
-            "label": "Atributo 2",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Risco/Benefício à natureza",
+            "value": "Benéfico (Uso doméstico)",
+            "justification": "Salva milhares de vidas anualmente em detectores de fumaça.",
+            "score": 90
         },
         {
             "id": 3,
-            "label": "Atributo 3",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Risco à saúde",
+            "value": "Alto (Inalação)",
+            "justification": "Perigoso se o detector de fumaça for quebrado e o elemento inalado.",
+            "score": 10
         },
         {
             "id": 4,
-            "label": "Atributo 4",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Benefício",
+            "value": "Segurança Residencial",
+            "justification": "O isótopo Am-241 é o componente chave dos detectores de fumaça iônicos.",
+            "score": 100
         },
         {
             "id": 5,
-            "label": "Atributo 5",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Nº de ligantes possíveis",
+            "value": "3",
+            "justification": "O estado de oxidação +3 é o mais comum e estável.",
+            "score": 30
         },
         {
             "id": 6,
-            "label": "Atributo 6",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Abundância na natureza",
+            "value": "Zero",
+            "justification": "Não ocorre naturalmente; produzido por bombardeamento de plutônio.",
+            "score": 0
         },
         {
             "id": 7,
-            "label": "Atributo 7",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Abundância no universo",
+            "value": "Indetectável",
+            "justification": "Elemento puramente sintético.",
+            "score": 0
         },
         {
             "id": 8,
-            "label": "Atributo 8",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Massa atômica",
+            "value": "243 u",
+            "justification": "Massa do seu isótopo de vida mais longa.",
+            "score": 243
         },
         {
             "id": 9,
-            "label": "Atributo 9",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Densidade",
+            "value": "13,67 g/cm³",
+            "justification": "Metal denso, similar ao mercúrio em densidade.",
+            "score": 100
         },
         {
             "id": 10,
-            "label": "Atributo 10",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Raio atômico",
+            "value": "173 pm",
+            "justification": "Tamanho atômico padrão para os actinídeos.",
+            "score": 173
         },
         {
             "id": 11,
-            "label": "Atributo 11",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Oxidação",
+            "value": "+2, +3, +4, +5, +6",
+            "justification": "Apresenta uma química de oxidação variada e complexa.",
+            "score": 100
         },
         {
             "id": 12,
-            "label": "Atributo 12",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Condutividade elétrica",
+            "value": "Baixa",
+            "justification": "Condutor metálico pobre.",
+            "score": 15
         },
         {
             "id": 13,
-            "label": "Atributo 13",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Eletronegatividade",
+            "value": "1,3 (Pauling)",
+            "justification": "Baixa, similar aos demais actinídeos.",
+            "score": 13
         },
         {
             "id": 14,
-            "label": "Atributo 14",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Estado físico",
+            "value": "Sólido",
+            "justification": "Metal prateado brilhante que perde o brilho ao ar seco.",
+            "score": 100
         },
         {
             "id": 15,
-            "label": "Atributo 15",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Maior subnível energético",
+            "value": "5f⁷",
+            "justification": "Subnível 5f preenchido pela metade, conferindo estabilidade relativa.",
+            "score": 70
         },
         {
             "id": 16,
-            "label": "Atributo 16",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Distribuição eletrônica",
+            "value": "[Rn] 5f⁷ 7s²",
+            "justification": "Configuração que o assemelha ao Európio nas Terras Raras.",
+            "score": 100
         },
         {
             "id": 17,
-            "label": "Atributo 17",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Nº de prótons / Nº de elétrons",
+            "value": "95",
+            "justification": "Identidade atômica do Amerício.",
+            "score": 100
         },
         {
             "id": 18,
-            "label": "Atributo 18",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Nº de nêutrons",
+            "value": "148",
+            "justification": "Número de nêutrons no isótopo Am-243.",
+            "score": 148
         },
         {
             "id": 19,
-            "label": "Atributo 19",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Radioatividade",
+            "value": "Moderada / Alta",
+            "justification": "Am-241 tem uma meia-vida de 432 anos.",
+            "score": 60
         },
         {
             "id": 20,
-            "label": "Atributo 20",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Aplicabilidade / Utilidade",
+            "value": "Detectores de Fumaça",
+            "justification": "Sua principal aplicação prática no cotidiano humano.",
+            "score": 100
         },
         {
             "id": 21,
-            "label": "Atributo 21",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Local de origem",
+            "value": "Chicago, EUA",
+            "justification": "Sintetizado durante o Projeto Manhattan no Laboratório Metalúrgico.",
+            "score": 100
         },
         {
             "id": 22,
-            "label": "Atributo 22",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Curiosidade",
+            "value": "Elemento em Casa",
+            "justification": "É o único elemento transurânico que a maioria das pessoas tem em casa.",
+            "score": 100
         },
         {
             "id": 23,
-            "label": "Atributo 23",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Origem do nome",
+            "value": "Américas",
+            "justification": "Homenagem ao continente americano, em analogia ao Európio.",
+            "score": 100
         },
         {
             "id": 24,
-            "label": "Atributo 24",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Descobridor",
+            "value": "Glenn Seaborg e equipe",
+            "justification": "Descoberto em 1944 como parte das pesquisas nucleares de guerra.",
+            "score": 100
         },
         {
             "id": 25,
-            "label": "Atributo 25",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Ano de descoberta",
+            "value": "1944",
+            "justification": "Descoberto em segredo durante a Segunda Guerra Mundial.",
+            "score": 95
         },
         {
             "id": 26,
-            "label": "Atributo 26",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Ponto de fusão",
+            "value": "1176 °C",
+            "justification": "Ponto de fusão relativamente alto para o grupo.",
+            "score": 85
         },
         {
             "id": 27,
-            "label": "Atributo 27",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Ponto de ebulição",
+            "value": "2011 °C",
+            "justification": "Vaporiza-se em temperaturas moderadamente altas para um metal.",
+            "score": 70
         }
     ]
 },
