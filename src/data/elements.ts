@@ -17141,192 +17141,192 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "attributes": [
         {
             "id": 1,
-            "label": "Atributo 1",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Fraquezas",
+            "value": "Extrema Instabilidade",
+            "justification": "O elemento é tão instável que desaparece em poucos minutos (meia-vida de 22 min).",
+            "score": 1
         },
         {
             "id": 2,
-            "label": "Atributo 2",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Risco/Benefício à natureza",
+            "value": "Vestígios Radioativos",
+            "justification": "Ocorre naturalmente em quantidades ínfimas como parte de cadeias de decaimento.",
+            "score": 2
         },
         {
             "id": 3,
-            "label": "Atributo 3",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Risco à saúde",
+            "value": "Crítico",
+            "justification": "Radioatividade extrema que destrói células instantaneamente.",
+            "score": 1
         },
         {
             "id": 4,
-            "label": "Atributo 4",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Benefício",
+            "value": "Pesquisa Atômica",
+            "justification": "Usado para entender a estabilidade de núcleos pesados no limite da tabela periódica.",
+            "score": 40
         },
         {
             "id": 5,
-            "label": "Atributo 5",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Nº de ligantes possíveis",
+            "value": "1",
+            "justification": "Como metal alcalino, tende a perder um elétron para formar ligações.",
+            "score": 10
         },
         {
             "id": 6,
-            "label": "Atributo 6",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Abundância na natureza",
+            "value": "Quase inexistente",
+            "justification": "Estima-se que existam menos de 30g de frâncio na crosta terrestre em qualquer momento.",
+            "score": 1
         },
         {
             "id": 7,
-            "label": "Atributo 7",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Abundância no universo",
+            "value": "Indetectável",
+            "justification": "Não sobrevive tempo suficiente para ser detectado no espaço sideral.",
+            "score": 0.1
         },
         {
             "id": 8,
-            "label": "Atributo 8",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Massa atômica",
+            "value": "223 u",
+            "justification": "Massa do seu isótopo mais 'estável'.",
+            "score": 223
         },
         {
             "id": 9,
-            "label": "Atributo 9",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Densidade",
+            "value": "≈ 1,87 g/cm³",
+            "justification": "Densidade estimada baseada em tendências dos metais alcalinos.",
+            "score": 18
         },
         {
             "id": 10,
-            "label": "Atributo 10",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Raio atômico",
+            "value": "≈ 348 pm",
+            "justification": "Estimado como o maior átomo da tabela periódica em seu estado fundamental.",
+            "score": 348
         },
         {
             "id": 11,
-            "label": "Atributo 11",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Oxidação",
+            "value": "+1",
+            "justification": "Estado de oxidação único e característico do grupo 1.",
+            "score": 100
         },
         {
             "id": 12,
-            "label": "Atributo 12",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Condutividade elétrica",
+            "value": "Alta (Teórica)",
+            "justification": "Deveria ser um excelente condutor, mas sua vida curta impede testes práticos.",
+            "score": 90
         },
         {
             "id": 13,
-            "label": "Atributo 13",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Eletronegatividade",
+            "value": "0,7 (Pauling)",
+            "justification": "O elemento menos eletronegativo de todos, perdendo elétrons com extrema facilidade.",
+            "score": 7
         },
         {
             "id": 14,
-            "label": "Atributo 14",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Estado físico",
+            "value": "Sólido (Instável)",
+            "justification": "Metal alcalino altamente reativo que derrete próximo à temperatura ambiente.",
+            "score": 80
         },
         {
             "id": 15,
-            "label": "Atributo 15",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Maior subnível energético",
+            "value": "7s¹",
+            "justification": "Um único elétron na sétima camada de energia.",
+            "score": 10
         },
         {
             "id": 16,
-            "label": "Atributo 16",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Distribuição eletrônica",
+            "value": "[Rn] 7s¹",
+            "justification": "Configuração clássica de um metal alcalino no início do período 7.",
+            "score": 100
         },
         {
             "id": 17,
-            "label": "Atributo 17",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Nº de prótons / Nº de elétrons",
+            "value": "87",
+            "justification": "Número de prótons que define o Frâncio.",
+            "score": 100
         },
         {
             "id": 18,
-            "label": "Atributo 18",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Nº de nêutrons",
+            "value": "136",
+            "justification": "Número de nêutrons no isótopo Fr-223.",
+            "score": 136
         },
         {
             "id": 19,
-            "label": "Atributo 19",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Radioatividade",
+            "value": "Máxima Instabilidade",
+            "justification": "Elemento de vida mais curta entre os primeiros 101 da tabela periódica.",
+            "score": 1
         },
         {
             "id": 20,
-            "label": "Atributo 20",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Aplicabilidade / Utilidade",
+            "value": "Pesquisa Espectroscópica",
+            "justification": "Usado para estudar a força nuclear fraca através de armadilhas magnéticas.",
+            "score": 45
         },
         {
             "id": 21,
-            "label": "Atributo 21",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Local de origem",
+            "value": "França",
+            "justification": "Descoberto no Instituto Curie em Paris.",
+            "score": 95
         },
         {
             "id": 22,
-            "label": "Atributo 22",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Curiosidade",
+            "value": "Metal que se auto-destrói",
+            "justification": "O calor de sua própria radioatividade vaporizaria qualquer amostra visível.",
+            "score": 100
         },
         {
             "id": 23,
-            "label": "Atributo 23",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Origem do nome",
+            "value": "França",
+            "justification": "Homenagem ao país de sua descoberta.",
+            "score": 100
         },
         {
             "id": 24,
-            "label": "Atributo 24",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Descobridor",
+            "value": "Marguerite Perey",
+            "justification": "Foi assistente de Marie Curie e descobriu o frâncio sozinha.",
+            "score": 100
         },
         {
             "id": 25,
-            "label": "Atributo 25",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Ano de descoberta",
+            "value": "1939",
+            "justification": "O último elemento natural a ser descoberto na natureza.",
+            "score": 95
         },
         {
             "id": 26,
-            "label": "Atributo 26",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Ponto de fusão",
+            "value": "27 °C",
+            "justification": "Derreteria na mão, se não fosse fatal segurá-lo.",
+            "score": 5
         },
         {
             "id": 27,
-            "label": "Atributo 27",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Ponto de ebulição",
+            "value": "677 °C",
+            "justification": "Ponto de ebulição baixo, típico do final do grupo 1.",
+            "score": 10
         }
     ]
 },
