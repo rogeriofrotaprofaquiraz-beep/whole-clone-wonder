@@ -16743,192 +16743,192 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "attributes": [
         {
             "id": 1,
-            "label": "Atributo 1",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Fraquezas",
+            "value": "Vida Efêmera",
+            "justification": "Seu isótopo mais estável tem uma meia-vida de apenas 8,1 horas.",
+            "score": 1
         },
         {
             "id": 2,
-            "label": "Atributo 2",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Risco/Benefício à natureza",
+            "value": "Radioisótopo Raro",
+            "justification": "Quase não existe na natureza, desaparecendo rapidamente após ser formado.",
+            "score": 5
         },
         {
             "id": 3,
-            "label": "Atributo 3",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Risco à saúde",
+            "value": "Extremo",
+            "justification": "Altamente radioativo; acumula-se na tireoide como o iodo.",
+            "score": 1
         },
         {
             "id": 4,
-            "label": "Atributo 4",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Benefício",
+            "value": "Radioterapia de Câncer",
+            "justification": "Estudado para tratamento de tumores específicos através de partículas alfa.",
+            "score": 85
         },
         {
             "id": 5,
-            "label": "Atributo 5",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Nº de ligantes possíveis",
+            "value": "1, 3, 5, 7",
+            "justification": "Segue o padrão dos halogênios em seus estados de oxidação.",
+            "score": 35
         },
         {
             "id": 6,
-            "label": "Atributo 6",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Abundância na natureza",
+            "value": "< 28 gramas",
+            "justification": "Estima-se que exista menos de 30g de astato em toda a crosta terrestre.",
+            "score": 1
         },
         {
             "id": 7,
-            "label": "Atributo 7",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Abundância no universo",
+            "value": "Indetectável",
+            "justification": "Um dos elementos mais raros de todo o universo observável.",
+            "score": 0.1
         },
         {
             "id": 8,
-            "label": "Atributo 8",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Massa atômica",
+            "value": "210 u",
+            "justification": "Massa do isótopo sintético mais estável.",
+            "score": 210
         },
         {
             "id": 9,
-            "label": "Atributo 9",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Densidade",
+            "value": "≈ 7 g/cm³",
+            "justification": "Densidade estimada baseada em tendências do grupo.",
+            "score": 70
         },
         {
             "id": 10,
-            "label": "Atributo 10",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Raio atômico",
+            "value": "≈ 145 pm",
+            "justification": "Estimado como o maior raio entre os halogênios.",
+            "score": 145
         },
         {
             "id": 11,
-            "label": "Atributo 11",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Oxidação",
+            "value": "-1, +1, +3, +5",
+            "justification": "Comportamento similar ao iodo, mas com tendências metálicas.",
+            "score": 40
         },
         {
             "id": 12,
-            "label": "Atributo 12",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Condutividade elétrica",
+            "value": "Muito Baixa",
+            "justification": "Provavelmente um semicondutor ou isolante.",
+            "score": 2
         },
         {
             "id": 13,
-            "label": "Atributo 13",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Eletronegatividade",
+            "value": "2,2 (Pauling)",
+            "justification": "O halogênio menos eletronegativo de todos.",
+            "score": 45
         },
         {
             "id": 14,
-            "label": "Atributo 14",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Estado físico",
+            "value": "Sólido (Estimado)",
+            "justification": "Provavelmente um sólido escuro que se auto-vaporiza pela radiação.",
+            "score": 95
         },
         {
             "id": 15,
-            "label": "Atributo 15",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Maior subnível energético",
+            "value": "6p⁵",
+            "justification": "Falta apenas um elétron para completar a camada de valência.",
+            "score": 60
         },
         {
             "id": 16,
-            "label": "Atributo 16",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Distribuição eletrônica",
+            "value": "[Xe] 4f¹⁴ 5d¹⁰ 6s² 6p⁵",
+            "justification": "Configuração clássica de um halogênio pesado.",
+            "score": 98
         },
         {
             "id": 17,
-            "label": "Atributo 17",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Nº de prótons / Nº de elétrons",
+            "value": "85",
+            "justification": "Identidade atômica do Astato.",
+            "score": 100
         },
         {
             "id": 18,
-            "label": "Atributo 18",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Nº de nêutrons",
+            "value": "125",
+            "justification": "Número de nêutrons no isótopo At-210.",
+            "score": 125
         },
         {
             "id": 19,
-            "label": "Atributo 19",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Radioatividade",
+            "value": "Extremamente Instável",
+            "justification": "Nenhum isótopo dura mais que algumas horas.",
+            "score": 1
         },
         {
             "id": 20,
-            "label": "Atributo 20",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Aplicabilidade / Utilidade",
+            "value": "Medicina Nuclear",
+            "justification": "Usado em pesquisas avançadas para tratar micrometástases.",
+            "score": 75
         },
         {
             "id": 21,
-            "label": "Atributo 21",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Local de origem",
+            "value": "Califórnia, EUA",
+            "justification": "Sintetizado pela primeira vez na Universidade de Berkeley.",
+            "score": 90
         },
         {
             "id": 22,
-            "label": "Atributo 22",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Curiosidade",
+            "value": "O Elemento Invisível",
+            "justification": "Nunca ninguém viu uma amostra pura de astato a olho nu.",
+            "score": 100
         },
         {
             "id": 23,
-            "label": "Atributo 23",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Origem do nome",
+            "value": "Astatos (Grego)",
+            "justification": "Significa 'instável', descrevendo sua natureza radioativa.",
+            "score": 100
         },
         {
             "id": 24,
-            "label": "Atributo 24",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Descobridor",
+            "value": "Dale Corson e equipe",
+            "justification": "Produzido artificialmente bombardeando bismuto com partículas alfa.",
+            "score": 90
         },
         {
             "id": 25,
-            "label": "Atributo 25",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Ano de descoberta",
+            "value": "1940",
+            "justification": "Descoberto pouco antes da entrada dos EUA na Segunda Guerra.",
+            "score": 90
         },
         {
             "id": 26,
-            "label": "Atributo 26",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Ponto de fusão",
+            "value": "302 °C (Est.)",
+            "justification": "Ponto de fusão estimado baseado no iodo.",
+            "score": 30
         },
         {
             "id": 27,
-            "label": "Atributo 27",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+            "label": "Ponto de ebulição",
+            "value": "337 °C (Est.)",
+            "justification": "Ponto de ebulição muito próximo ao de fusão.",
+            "score": 5
         }
     ]
 },
