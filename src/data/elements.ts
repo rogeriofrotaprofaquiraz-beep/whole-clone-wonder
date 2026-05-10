@@ -11205,49 +11205,42 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
           "score": 60
         },
         {
-            "id": 5,
-            "label": "Atributo 5",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 6,
+          "label": "Abundância na natureza",
+          "value": "39 ppm (crosta)",
+          "justification": "Mais comum que a prata ou o chumbo na crosta terrestre.",
+          "score": 45
         },
         {
-            "id": 6,
-            "label": "Atributo 6",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 7,
+          "label": "Abundância no universo",
+          "value": "0,00000005%",
+          "justification": "Elemento pesado raro no cosmos.",
+          "score": 5
         },
         {
-            "id": 7,
-            "label": "Atributo 7",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 8,
+          "label": "Massa atômica",
+          "value": "138,90 u",
+          "justification": "Início da série dos lantanídeos.",
+          "score": 139
         },
         {
-            "id": 8,
-            "label": "Atributo 8",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 9,
+          "label": "Densidade",
+          "value": "6,162 g/cm³",
+          "justification": "Densidade moderada para um metal de terra rara.",
+          "score": 62
         },
         {
-            "id": 9,
-            "label": "Atributo 9",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
+          "id": 10,
+          "label": "Raio atômico",
+          "value": "187 pm",
+          "justification": "Raio atômico grande, típico do início do período.",
+          "score": 187
         },
         {
-            "id": 10,
-            "label": "Atributo 10",
-            "value": "Em breve",
-            "justification": "Dados sendo processados pela central elemental.",
-            "score": 50
-        },
-        {
-            "id": 11,
+          "id": 11,
             "label": "Atributo 11",
             "value": "Em breve",
             "justification": "Dados sendo processados pela central elemental.",
