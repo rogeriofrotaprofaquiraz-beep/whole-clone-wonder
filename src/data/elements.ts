@@ -9772,201 +9772,201 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 50,
     "symbol": "Sn",
     "name": "Estanho",
-    "heroName": "Tin Soldier",
-    "heroDescription": "O metal do bronze e da soldagem, um herói que une os metais desde a antiguidade.",
+    "heroName": "Tin Guardian",
+    "heroDescription": "O herói da preservação e mestre das ligas ancestrais. Tin Guardian é o protetor dos metais contra a corrosão e o pilar do bronze, unindo o passado ao futuro tecnológico.",
     "heroImage": "/placeholder.svg",
     "attributes": [
-        {
-            "id": 1,
-            "label": "Dado 1",
-            "value": "Processando",
-            "justification": "Característica em análise para o Estanho.",
-            "score": 50
-        },
-        {
-            "id": 2,
-            "label": "Dado 2",
-            "value": "Processando",
-            "justification": "Característica em análise para o Estanho.",
-            "score": 50
-        },
-        {
-            "id": 3,
-            "label": "Dado 3",
-            "value": "Processando",
-            "justification": "Característica em análise para o Estanho.",
-            "score": 50
-        },
-        {
-            "id": 4,
-            "label": "Dado 4",
-            "value": "Processando",
-            "justification": "Característica em análise para o Estanho.",
-            "score": 50
-        },
-        {
-            "id": 5,
-            "label": "Dado 5",
-            "value": "Processando",
-            "justification": "Característica em análise para o Estanho.",
-            "score": 50
-        },
-        {
-            "id": 6,
-            "label": "Dado 6",
-            "value": "Processando",
-            "justification": "Característica em análise para o Estanho.",
-            "score": 50
-        },
-        {
-            "id": 7,
-            "label": "Dado 7",
-            "value": "Processando",
-            "justification": "Característica em análise para o Estanho.",
-            "score": 50
-        },
-        {
-            "id": 8,
-            "label": "Dado 8",
-            "value": "Processando",
-            "justification": "Característica em análise para o Estanho.",
-            "score": 50
-        },
-        {
-            "id": 9,
-            "label": "Dado 9",
-            "value": "Processando",
-            "justification": "Característica em análise para o Estanho.",
-            "score": 50
-        },
-        {
-            "id": 10,
-            "label": "Dado 10",
-            "value": "Processando",
-            "justification": "Característica em análise para o Estanho.",
-            "score": 50
-        },
-        {
-            "id": 11,
-            "label": "Dado 11",
-            "value": "Processando",
-            "justification": "Característica em análise para o Estanho.",
-            "score": 50
-        },
-        {
-            "id": 12,
-            "label": "Dado 12",
-            "value": "Processando",
-            "justification": "Característica em análise para o Estanho.",
-            "score": 50
-        },
-        {
-            "id": 13,
-            "label": "Dado 13",
-            "value": "Processando",
-            "justification": "Característica em análise para o Estanho.",
-            "score": 50
-        },
-        {
-            "id": 14,
-            "label": "Dado 14",
-            "value": "Processando",
-            "justification": "Característica em análise para o Estanho.",
-            "score": 50
-        },
-        {
-            "id": 15,
-            "label": "Dado 15",
-            "value": "Processando",
-            "justification": "Característica em análise para o Estanho.",
-            "score": 50
-        },
-        {
-            "id": 16,
-            "label": "Dado 16",
-            "value": "Processando",
-            "justification": "Característica em análise para o Estanho.",
-            "score": 50
-        },
-        {
-            "id": 17,
-            "label": "Dado 17",
-            "value": "Processando",
-            "justification": "Característica em análise para o Estanho.",
-            "score": 50
-        },
-        {
-            "id": 18,
-            "label": "Dado 18",
-            "value": "Processando",
-            "justification": "Característica em análise para o Estanho.",
-            "score": 50
-        },
-        {
-            "id": 19,
-            "label": "Dado 19",
-            "value": "Processando",
-            "justification": "Característica em análise para o Estanho.",
-            "score": 50
-        },
-        {
-            "id": 20,
-            "label": "Dado 20",
-            "value": "Processando",
-            "justification": "Característica em análise para o Estanho.",
-            "score": 50
-        },
-        {
-            "id": 21,
-            "label": "Dado 21",
-            "value": "Processando",
-            "justification": "Característica em análise para o Estanho.",
-            "score": 50
-        },
-        {
-            "id": 22,
-            "label": "Dado 22",
-            "value": "Processando",
-            "justification": "Característica em análise para o Estanho.",
-            "score": 50
-        },
-        {
-            "id": 23,
-            "label": "Dado 23",
-            "value": "Processando",
-            "justification": "Característica em análise para o Estanho.",
-            "score": 50
-        },
-        {
-            "id": 24,
-            "label": "Dado 24",
-            "value": "Processando",
-            "justification": "Característica em análise para o Estanho.",
-            "score": 50
-        },
-        {
-            "id": 25,
-            "label": "Dado 25",
-            "value": "Processando",
-            "justification": "Característica em análise para o Estanho.",
-            "score": 50
-        },
-        {
-            "id": 26,
-            "label": "Dado 26",
-            "value": "Processando",
-            "justification": "Característica em análise para o Estanho.",
-            "score": 50
-        },
-        {
-            "id": 27,
-            "label": "Dado 27",
-            "value": "Processando",
-            "justification": "Característica em análise para o Estanho.",
-            "score": 50
-        }
+      {
+        "id": 1,
+        "label": "Massa Atômica",
+        "value": "118.71 u",
+        "justification": "O Estanho possui uma massa atômica de aproximadamente 118.71 u.",
+        "score": 119
+      },
+      {
+        "id": 2,
+        "label": "Abundância na Crosta",
+        "value": "2.3 ppm",
+        "justification": "Elemento moderadamente raro, extraído principalmente da cassiterita.",
+        "score": 35
+      },
+      {
+        "id": 3,
+        "label": "Ponto de Fusão",
+        "value": "231.9 °C",
+        "justification": "Possui um ponto de fusão muito baixo, ideal para soldas e fundição fácil.",
+        "score": 23
+      },
+      {
+        "id": 4,
+        "label": "Ponto de Ebulição",
+        "value": "2602 °C",
+        "justification": "Temperatura de vaporização elevada, permitindo uma ampla faixa no estado líquido.",
+        "score": 85
+      },
+      {
+        "id": 5,
+        "label": "Densidade",
+        "value": "7.26 g/cm³ (Branco)",
+        "justification": "Densidade moderada, similar à do ferro.",
+        "score": 73
+      },
+      {
+        "id": 6,
+        "label": "Dureza de Mohs",
+        "value": "1.5",
+        "justification": "Metal muito macio e fácil de cortar.",
+        "score": 15
+      },
+      {
+        "id": 7,
+        "label": "Eletronegatividade",
+        "value": "1.96",
+        "justification": "Valor típico de metais do grupo 14, similar ao germânio.",
+        "score": 50
+      },
+      {
+        "id": 8,
+        "label": "Condutividade Térmica",
+        "value": "66.8 W/(m·K)",
+        "justification": "Condutividade térmica razoável.",
+        "score": 60
+      },
+      {
+        "id": 9,
+        "label": "Condutividade Elétrica",
+        "value": "9.1 MS/m",
+        "justification": "Bom condutor metálico.",
+        "score": 70
+      },
+      {
+        "id": 10,
+        "label": "Calor Específico",
+        "value": "0.227 J/(g·K)",
+        "justification": "Baixa capacidade térmica.",
+        "score": 40
+      },
+      {
+        "id": 11,
+        "label": "Raio Atômico",
+        "value": "140 pm",
+        "justification": "Tamanho atômico que favorece la formação de ligas metálicas estáveis.",
+        "score": 60
+      },
+      {
+        "id": 12,
+        "label": "Energia de Ionização",
+        "value": "7.344 eV",
+        "justification": "Energia necessária para remover o primeiro elétron.",
+        "score": 70
+      },
+      {
+        "id": 13,
+        "label": "Estado Físico (CNTP)",
+        "value": "Sólido",
+        "justification": "Metal prateado brilhante (Estanho Branco), que pode se transformar em pó cinza (Estanho Cinza) no frio intenso.",
+        "score": 99
+      },
+      {
+        "id": 14,
+        "label": "Reatividade Química",
+        "value": "Baixa",
+        "justification": "Não oxida facilmente no ar, sendo usado para revestir outros metais (folha de flandres).",
+        "score": 80
+      },
+      {
+        "id": 15,
+        "label": "Reciclabilidade",
+        "value": "Alta",
+        "justification": "Amplamente reciclado de latas de conserva e componentes eletrônicos.",
+        "score": 90
+      },
+      {
+        "id": 16,
+        "label": "Resistência à Corrosão",
+        "value": "Excelente",
+        "justification": "Altamente resistente à água e a ácidos orgânicos fracos.",
+        "score": 95
+      },
+      {
+        "id": 17,
+        "label": "Refletividade",
+        "value": "Alta",
+        "justification": "Bom refletor, historicamente usado em espelhos.",
+        "score": 80
+      },
+      {
+        "id": 18,
+        "label": "Maleabilidade",
+        "value": "Muito Alta",
+        "justification": "Pode ser martelado em folhas finíssimas (papel de estanho).",
+        "score": 95
+      },
+      {
+        "id": 19,
+        "label": "Dutibilidade",
+        "value": "Moderada",
+        "justification": "Pode ser esticado em fios, mas é menos dúctil que o cobre.",
+        "score": 65
+      },
+      {
+        "id": 20,
+        "label": "Isótopos Estáveis",
+        "value": "10",
+        "justification": "O elemento com o maior número de isótopos estáveis em toda a tabela periódica.",
+        "score": 100
+      },
+      {
+        "id": 21,
+        "label": "Toxicidade",
+        "value": "Baixa (Metálico)",
+        "justification": "Metal inerte e seguro para embalagens de alimentos, mas compostos organoestânicos são tóxicos.",
+        "score": 90
+      },
+      {
+        "id": 22,
+        "label": "Aplicações Tecnológicas",
+        "value": "Alta",
+        "justification": "Essencial para soldas eletrônicas, revestimentos anticorrosivos e na fabricação de vidro plano.",
+        "score": 95
+      },
+      {
+        "id": 23,
+        "label": "Magnético",
+        "value": "Paramagnético",
+        "justification": "Resposta magnética insignificante.",
+        "score": 5
+      },
+      {
+        "id": 24,
+        "label": "Custo de Produção",
+        "value": "Moderado",
+        "justification": "Preço de mercado estável, com produção industrial bem estabelecida.",
+        "score": 55
+      },
+      {
+        "id": 25,
+        "label": "Risco à Natureza",
+        "value": "Baixo",
+        "justification": "Metal estável e de baixo impacto ambiental direto.",
+        "score": 92
+      },
+      {
+        "id": 26,
+        "label": "Radioatividade",
+        "value": "Nula",
+        "justification": "Isótopos naturais são perfeitamente estáveis.",
+        "score": 100
+      },
+      {
+        "id": 27,
+        "label": "Curiosidade Histórica",
+        "value": "Bronze",
+        "justification": "Sua liga com o cobre deu início à Idade do Bronze, transformando a história humana.",
+        "score": 100
+      }
     ]
-},
+  },
   "Sb": {
     "number": 51,
     "symbol": "Sb",
