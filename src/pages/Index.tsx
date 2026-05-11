@@ -6,7 +6,8 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { BattleSystem } from "@/components/game/BattleSystem";
 import { ElementQuiz } from "@/components/game/ElementQuiz";
-import { Swords, Brain, LayoutGrid, Info } from 'lucide-react';
+import { AdminPanel } from "@/components/game/AdminPanel";
+import { Swords, Brain, LayoutGrid, Settings } from 'lucide-react';
 
 const ElementCard = ({ element }: { element: PeriodicElement }) => {
   const isGas = ["Gás", "Gás incolor", "Gás nobre"].some(type => 
@@ -196,6 +197,9 @@ const Index = () => {
           <TabsTrigger value="quiz" className="px-8 py-4 rounded-xl data-[state=active]:bg-purple-600 font-bold transition-all gap-2">
             <Brain className="w-5 h-5" /> DESAFIO
           </TabsTrigger>
+          <TabsTrigger value="admin" className="px-8 py-4 rounded-xl data-[state=active]:bg-slate-700 font-bold transition-all gap-2">
+            <Settings className="w-5 h-5" /> ADMIN
+          </TabsTrigger>
         </TabsList>
 
         <TabsContent value="collection" className="w-full animate-in fade-in zoom-in-95 duration-500">
@@ -318,6 +322,10 @@ const Index = () => {
 
         <TabsContent value="quiz" className="w-full animate-in fade-in slide-in-from-left-10 duration-500">
           <ElementQuiz />
+        </TabsContent>
+
+        <TabsContent value="admin" className="w-full animate-in fade-in slide-in-from-bottom-10 duration-500">
+          <AdminPanel />
         </TabsContent>
       </Tabs>
 
