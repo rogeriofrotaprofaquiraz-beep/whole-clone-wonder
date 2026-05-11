@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { supabase } from "@/integrations/supabase/client";
 import { ELEMENTS_DATA, PeriodicElement } from '../data/elements';
 import { Card, CardContent } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Button } from "@/components/ui/button";
 import { BattleSystem } from "@/components/game/BattleSystem";
 import { ElementQuiz } from "@/components/game/ElementQuiz";
 import { AdminPanel } from "@/components/game/AdminPanel";
-import { Swords, Brain, LayoutGrid, Settings } from 'lucide-react';
+import { AuthSystem } from "@/components/game/AuthSystem";
+import { Swords, Brain, LayoutGrid, Settings, LogOut, User as UserIcon } from 'lucide-react';
+import { toast } from "sonner";
 
 const ElementCard = ({ element }: { element: PeriodicElement }) => {
   const isGas = ["Gás", "Gás incolor", "Gás nobre"].some(type => 
@@ -129,6 +133,27 @@ const ElementCard = ({ element }: { element: PeriodicElement }) => {
 
 const Index = () => {
   const [selectedSymbol, setSelectedSymbol] = useState<string>("H");
+  const [session, setSession] = useState<any>(null);
+  const [showAuth, setShowAuth] = useState(false);
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+    });
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+      if (session) setShowAuth(false);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    toast.success("Até logo, Herói!");
+  };
+
   const selectedElement = (ELEMENTS_DATA[selectedSymbol] && ELEMENTS_DATA[selectedSymbol].symbol !== "Element" && ELEMENTS_DATA[selectedSymbol].symbol !== "Elemento") ? ELEMENTS_DATA[selectedSymbol] : ELEMENTS_DATA["H"];
 
   // Tabela Periódica Completa com agrupamentos por cores e estrutura fiel ao PDF
@@ -175,6 +200,26 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-slate-950 p-4 md:p-8 flex flex-col items-center justify-start font-sans text-white overflow-hidden">
+      <div className="w-full max-w-[1440px] flex justify-end mb-4">
+        {session ? (
+          <div className="flex items-center gap-4 bg-slate-900/50 p-2 px-4 rounded-2xl border border-white/10 backdrop-blur-xl">
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
+                <UserIcon className="w-4 h-4" />
+              </div>
+              <span className="text-sm font-black italic">{session.user.user_metadata?.username || session.user.email}</span>
+            </div>
+            <Button variant="ghost" size="sm" onClick={handleLogout} className="text-red-400 hover:text-red-300 hover:bg-red-400/10">
+              <LogOut className="w-4 h-4" />
+            </Button>
+          </div>
+        ) : (
+          <Button onClick={() => setShowAuth(true)} className="bg-blue-600 hover:bg-blue-700 font-bold rounded-xl">
+            ENTRAR / REGISTRAR
+          </Button>
+        )}
+      </div>
+
       <header className="mb-12 text-center relative">
         <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px] pointer-events-none"></div>
         <h1 className="text-5xl md:text-8xl font-black italic tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 mb-4 animate-in fade-in slide-in-from-top-10 duration-1000">
@@ -328,6 +373,21 @@ const Index = () => {
           <AdminPanel />
         </TabsContent>
       </Tabs>
+
+      {showAuth && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 animate-in fade-in duration-300">
+          <div className="relative w-full max-w-md">
+            <Button 
+              variant="ghost" 
+              onClick={() => setShowAuth(false)} 
+              className="absolute -top-12 right-0 text-white hover:bg-white/10"
+            >
+              FECHAR
+            </Button>
+            <AuthSystem onAuthSuccess={() => setShowAuth(false)} />
+          </div>
+        </div>
+      )}
 
       <footer className="mt-12 text-slate-600 text-[10px] flex flex-col items-center gap-2 pb-8">
         <p>© 2026 Elemental Heroes Game - Baseado em Dados Científicos Reais</p>
