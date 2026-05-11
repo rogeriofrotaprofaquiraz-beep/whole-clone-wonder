@@ -6,7 +6,8 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { BattleSystem } from "@/components/game/BattleSystem";
 import { ElementQuiz } from "@/components/game/ElementQuiz";
-import { Swords, Brain, LayoutGrid, Info } from 'lucide-react';
+import { AdminPanel } from "@/components/game/AdminPanel";
+import { Swords, Brain, LayoutGrid, Settings } from 'lucide-react';
 
 const ElementCard = ({ element }: { element: PeriodicElement }) => {
   const isGas = ["Gás", "Gás incolor", "Gás nobre"].some(type => 
