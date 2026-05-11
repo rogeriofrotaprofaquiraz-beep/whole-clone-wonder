@@ -10,7 +10,8 @@ import { BattleSystem } from "@/components/game/BattleSystem";
 import { ElementQuiz } from "@/components/game/ElementQuiz";
 import { AdminPanel } from "@/components/game/AdminPanel";
 import { AuthSystem } from "@/components/game/AuthSystem";
-import { Swords, Brain, LayoutGrid, Settings, LogOut, User as UserIcon } from 'lucide-react';
+import { Ranking } from "@/components/game/Ranking";
+import { Swords, Brain, LayoutGrid, Settings, LogOut, User as UserIcon, Trophy } from 'lucide-react';
 import { toast } from "sonner";
 
 const ElementCard = ({ element }: { element: PeriodicElement }) => {
@@ -18,40 +19,61 @@ const ElementCard = ({ element }: { element: PeriodicElement }) => {
     element.attributes.find(a => a.label === "Estado físico")?.value.toString().includes(type)
   );
 
+  const getRarityColor = (rarity: string) => {
+    switch (rarity) {
+      case 'Lendário': return 'bg-yellow-500 text-black shadow-[0_0_20px_rgba(234,179,8,0.5)]';
+      case 'Épico': return 'bg-purple-600 text-white shadow-[0_0_15px_rgba(147,51,234,0.5)]';
+      case 'Raro': return 'bg-blue-600 text-white';
+      case 'Incomum': return 'bg-green-600 text-white';
+      default: return 'bg-slate-600 text-white';
+    }
+  };
+
+  const calculateRarity = (element: PeriodicElement) => {
+    const avg = element.attributes.reduce((acc, curr) => acc + curr.score, 0) / 27;
+    if (avg > 85) return 'Lendário';
+    if (avg > 70) return 'Épico';
+    if (avg > 50) return 'Raro';
+    if (avg > 30) return 'Incomum';
+    return 'Comum';
+  };
+
+  const rarity = element.rarity || calculateRarity(element);
+
   return (
     <div className={`
-      relative p-6 rounded-[2.5rem] w-full max-w-lg text-white font-sans shadow-[0_25px_60px_rgba(0,0,0,0.6)] 
-      animate-in fade-in zoom-in duration-500 border border-white/10 overflow-hidden
-      ${isGas ? 'backdrop-blur-xl bg-white/5 shadow-[0_0_40px_rgba(59,130,246,0.2)]' : 'bg-slate-900/90'}
+      relative p-8 rounded-[3rem] w-full max-w-lg text-white font-sans shadow-[0_35px_80px_rgba(0,0,0,0.8)] 
+      animate-in fade-in zoom-in duration-700 border-2 border-white/20 overflow-hidden group
+      ${isGas ? 'backdrop-blur-2xl bg-slate-900/40' : 'bg-slate-900'}
     `}>
-      {/* 3D Texture Overlay */}
-      <div className="absolute inset-0 opacity-10 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+      {/* Carbon Fiber / Grid Pattern */}
+      <div className="absolute inset-0 opacity-20 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
       
-      {/* Decorative Glows */}
-      <div className={`absolute -top-20 -right-20 w-40 h-40 rounded-full blur-[80px] pointer-events-none opacity-50 ${isGas ? 'bg-blue-400' : 'bg-purple-600'}`}></div>
-      <div className={`absolute -bottom-20 -left-20 w-40 h-40 rounded-full blur-[80px] pointer-events-none opacity-30 ${isGas ? 'bg-cyan-300' : 'bg-blue-600'}`}></div>
+      {/* Inner Border Glow */}
+      <div className="absolute inset-2 rounded-[2.5rem] border border-white/5 pointer-events-none"></div>
 
-      <div className="relative flex justify-between items-start mb-4">
+      <div className="relative flex justify-between items-center mb-6">
         <div className="z-10">
-          <h2 className="text-3xl font-black tracking-tighter italic uppercase text-transparent bg-clip-text bg-gradient-to-r from-white via-white/80 to-white/40 drop-shadow-sm">
+          <Badge className={`${getRarityColor(rarity)} mb-2 font-black italic tracking-widest text-[10px]`}>
+            {rarity.toUpperCase()}
+          </Badge>
+          <h2 className="text-4xl font-black tracking-tighter italic uppercase leading-none drop-shadow-2xl">
             {element.name}
           </h2>
-          <p className="text-[10px] font-bold tracking-[0.2em] text-blue-400/80 uppercase">{element.heroName}</p>
+          <p className="text-[11px] font-black tracking-[0.3em] text-blue-400 uppercase mt-1 opacity-80">{element.heroName}</p>
         </div>
         <div className="flex flex-col items-end z-10">
-          <span className="bg-blue-600 px-3 py-1 rounded-lg text-sm font-black border border-white/20 mb-2 shadow-[0_0_15px_rgba(37,99,235,0.4)]">
-            #{element.number}
-          </span>
-          <span className="text-4xl font-black leading-none bg-clip-text text-transparent bg-gradient-to-b from-blue-400 to-blue-600 drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
-            {element.symbol}
-          </span>
+          <div className="w-14 h-14 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center border-2 border-white/20 shadow-xl rotate-3 group-hover:rotate-0 transition-transform duration-500">
+            <span className="text-3xl font-black italic">{element.symbol}</span>
+          </div>
+          <span className="text-[10px] font-black mt-2 bg-black/40 px-2 py-0.5 rounded-full text-white/60">#{element.number}</span>
         </div>
       </div>
       
       <div className={`
-        h-[480px] rounded-2xl mb-4 flex items-start justify-center overflow-hidden relative group 
-        border border-white/10 shadow-[inset_0_0_20px_rgba(0,0,0,0.5)]
-        ${isGas ? 'bg-gradient-to-b from-blue-900/20 to-black/40' : 'bg-slate-950'}
+        h-[520px] rounded-3xl mb-6 flex items-start justify-center overflow-hidden relative group/img
+        border-2 border-white/10 shadow-[inset_0_0_40px_rgba(0,0,0,0.8)]
+        ${isGas ? 'bg-gradient-to-b from-blue-900/40 via-slate-900 to-black' : 'bg-slate-950'}
       `}>
         {element.heroImage.endsWith('.mp4') ? (
           <video 
@@ -60,56 +82,55 @@ const ElementCard = ({ element }: { element: PeriodicElement }) => {
             loop 
             muted 
             playsInline
-            className={`
-              w-full h-full object-contain object-top transition-all duration-1000 group-hover:scale-110
-              ${isGas ? 'opacity-80 blur-[1px] group-hover:blur-0' : 'opacity-100'}
-            `}
+            className="w-full h-full object-contain object-top transition-transform duration-1000 group-hover/img:scale-110 opacity-90 group-hover/img:opacity-100"
           />
         ) : (
           <img 
             src={element.heroImage} 
             alt={element.heroName}
-            className="w-full h-full object-contain object-top transition-transform duration-1000 group-hover:scale-110" 
+            className="w-full h-full object-contain object-top transition-transform duration-1000 group-hover/img:scale-110" 
           />
         )}
         
         {/* State specific overlays */}
         {isGas && (
-          <div className="absolute inset-0 bg-blue-400/5 mix-blend-overlay pointer-events-none animate-pulse"></div>
+          <div className="absolute inset-0 bg-blue-500/10 mix-blend-screen pointer-events-none animate-pulse"></div>
         )}
 
-        <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black/60 to-transparent pointer-events-none"></div>
-        <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 via-black/60 to-transparent">
-          <p className="text-xs italic text-white/90 leading-relaxed font-light drop-shadow-md">
+        {/* Cinematic Overlays */}
+        <div className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-black/80 to-transparent pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black via-black/80 to-transparent">
+          <div className="w-12 h-1 bg-blue-500 mb-3 rounded-full opacity-50"></div>
+          <p className="text-sm italic text-white/90 leading-relaxed font-medium drop-shadow-xl line-clamp-3">
             "{element.heroDescription}"
           </p>
         </div>
       </div>
 
-      <ScrollArea className="h-64 pr-3 custom-scrollbar">
-        <div className="space-y-2">
+      <ScrollArea className="h-72 pr-4 custom-scrollbar bg-black/20 rounded-2xl p-4 border border-white/5">
+        <div className="space-y-3">
           {element.attributes.map((attr) => (
-            <div key={attr.id} className="group relative bg-white/5 border border-white/5 rounded-xl p-2 hover:bg-white/10 hover:border-white/20 transition-all duration-300">
-              <div className="flex justify-between items-start mb-1">
-                <span className="text-[10px] font-bold text-white/40 uppercase tracking-wider">{attr.label}</span>
-                <span className="text-xs font-black text-blue-300 drop-shadow-sm">{attr.value}</span>
+            <div key={attr.id} className="group/attr relative bg-white/5 border border-white/5 rounded-2xl p-3 hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+              <div className="flex justify-between items-center mb-2">
+                <span className="text-[10px] font-black text-white/40 uppercase tracking-widest">{attr.label}</span>
+                <span className="text-xs font-black text-blue-300 bg-blue-500/10 px-2 py-0.5 rounded-lg border border-blue-500/20">{attr.value}</span>
               </div>
               
-              <div className="flex items-center gap-2">
-                <div className="flex-1 bg-black/40 h-1.5 rounded-full overflow-hidden p-[1px]">
+              <div className="flex items-center gap-3">
+                <div className="flex-1 bg-black/60 h-2 rounded-full overflow-hidden p-[1px] border border-white/5">
                   <div 
-                    className={`h-full rounded-full transition-all duration-1000 ease-out shadow-[0_0_8px_rgba(0,0,0,0.5)]
-                      ${attr.score > 80 ? 'bg-gradient-to-r from-emerald-500 to-green-400' : 
-                        attr.score > 50 ? 'bg-gradient-to-r from-blue-500 to-cyan-400' : 
-                        'bg-gradient-to-r from-amber-500 to-orange-400'}`}
+                    className={`h-full rounded-full transition-all duration-1500 ease-out shadow-[0_0_12px_rgba(0,0,0,0.8)]
+                      ${attr.score > 80 ? 'bg-gradient-to-r from-emerald-500 via-green-400 to-emerald-300' : 
+                        attr.score > 50 ? 'bg-gradient-to-r from-blue-600 via-cyan-400 to-blue-400' : 
+                        'bg-gradient-to-r from-orange-600 via-amber-400 to-orange-400'}`}
                     style={{ width: `${attr.score}%` }}
                   ></div>
                 </div>
-                <span className="text-[10px] font-mono font-bold text-white/30 w-5 text-right">{attr.score}</span>
+                <span className="text-xs font-mono font-black text-white/50 w-6 text-right">{attr.score}</span>
               </div>
               
-              <div className="max-h-0 overflow-hidden group-hover:max-h-20 transition-all duration-500 ease-in-out">
-                <p className="text-[9px] text-blue-200/60 mt-2 italic leading-tight border-t border-white/5 pt-2">
+              <div className="max-h-0 overflow-hidden group-hover/attr:max-h-24 transition-all duration-500 ease-in-out">
+                <p className="text-[10px] text-blue-200/60 mt-3 italic leading-relaxed border-t border-white/10 pt-3">
                   {attr.justification}
                 </p>
               </div>
@@ -118,12 +139,12 @@ const ElementCard = ({ element }: { element: PeriodicElement }) => {
         </div>
       </ScrollArea>
       
-      <div className="mt-4 flex justify-between items-center px-2 py-3 bg-white/5 rounded-2xl border border-white/5">
+      <div className="mt-6 flex justify-between items-center px-6 py-5 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-[2rem] border-2 border-white/10 shadow-2xl">
         <div className="flex flex-col">
-          <span className="text-[9px] font-bold text-white/30 uppercase tracking-[0.2em]">Poder Total</span>
-          <span className="text-xs text-blue-400/60 font-mono tracking-tighter">ESTADO: {isGas ? 'GASOSO' : 'SÓLIDO'}</span>
+          <span className="text-[10px] font-black text-white/40 uppercase tracking-[0.3em]">Nível de Poder</span>
+          <span className="text-xs text-blue-400 font-black italic tracking-tighter">DOMÍNIO: {isGas ? 'GASOSO' : 'SÓLIDO'}</span>
         </div>
-        <div className="text-3xl font-black italic text-transparent bg-clip-text bg-gradient-to-br from-blue-400 to-blue-700 drop-shadow-md">
+        <div className="text-5xl font-black italic text-transparent bg-clip-text bg-gradient-to-br from-white via-blue-400 to-blue-600 drop-shadow-[0_4px_12px_rgba(37,99,235,0.6)]">
           {(element.attributes.reduce((acc, curr) => acc + curr.score, 0) / 27).toFixed(1)}
         </div>
       </div>
@@ -241,6 +262,9 @@ const Index = () => {
           </TabsTrigger>
           <TabsTrigger value="quiz" className="px-8 py-4 rounded-xl data-[state=active]:bg-purple-600 font-bold transition-all gap-2">
             <Brain className="w-5 h-5" /> DESAFIO
+          </TabsTrigger>
+          <TabsTrigger value="ranking" className="px-8 py-4 rounded-xl data-[state=active]:bg-yellow-600 font-bold transition-all gap-2 text-white">
+            <Trophy className="w-5 h-5" /> RANKING
           </TabsTrigger>
           <TabsTrigger value="admin" className="px-8 py-4 rounded-xl data-[state=active]:bg-slate-700 font-bold transition-all gap-2">
             <Settings className="w-5 h-5" /> ADMIN
@@ -367,6 +391,10 @@ const Index = () => {
 
         <TabsContent value="quiz" className="w-full animate-in fade-in slide-in-from-left-10 duration-500">
           <ElementQuiz />
+        </TabsContent>
+
+        <TabsContent value="ranking" className="w-full animate-in fade-in slide-in-from-top-10 duration-500">
+          <Ranking />
         </TabsContent>
 
         <TabsContent value="admin" className="w-full animate-in fade-in slide-in-from-bottom-10 duration-500">
