@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { supabase } from "@/integrations/supabase/client";
 import { ELEMENTS_DATA, PeriodicElement } from '@/data/elements';
 import { Button } from "@/components/ui/button";
-import { Swords, Trophy, RefreshCw, ChevronRight } from 'lucide-react';
+import { Card, CardContent } from "@/components/ui/card";
+import { Swords, Trophy, RefreshCw, ChevronRight, User, Users } from 'lucide-react';
 import { toast } from "sonner";
 
 const ATTRIBUTES_TO_COMPARE = [
@@ -14,14 +16,29 @@ const ATTRIBUTES_TO_COMPARE = [
 ];
 
 export const BattleSystem = () => {
+  const [session, setSession] = useState<any>(null);
   const [playerCard, setPlayerCard] = useState<PeriodicElement | null>(null);
   const [cpuCard, setCpuCard] = useState<PeriodicElement | null>(null);
   const [gameState, setGameState] = useState<'selecting' | 'battle' | 'result'>('selecting');
   const [winner, setWinner] = useState<'player' | 'cpu' | 'draw' | null>(null);
   const [selectedAttr, setSelectedAttr] = useState<string | null>(null);
   const [score, setScore] = useState({ player: 0, cpu: 0 });
+  const [multiplayerMatch, setMultiplayerMatch] = useState<any>(null);
+  const [opponent, setOpponent] = useState<any>(null);
 
   const allSymbols = Object.keys(ELEMENTS_DATA);
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+    });
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
 
   const getRandomElement = () => {
     const symbols = allSymbols;
@@ -37,6 +54,84 @@ export const BattleSystem = () => {
     setGameState('battle');
     setWinner(null);
     setSelectedAttr(null);
+    setMultiplayerMatch(null);
+    setOpponent(null);
+  };
+
+  const findMultiplayerMatch = async () => {
+    if (!session) {
+      toast.error("Você precisa estar logado para jogar multiplayer!");
+      return;
+    }
+
+    toast.info("Procurando oponentes...");
+    
+    // Tenta encontrar uma partida esperando
+    const { data: waitingMatch, error } = await supabase
+      .from('matches')
+      .select('*')
+      .eq('status', 'waiting')
+      .neq('player1_id', session.user.id)
+      .limit(1)
+      .single();
+
+    if (waitingMatch) {
+      // Entrar na partida
+      const { data: joinedMatch, error: joinError } = await supabase
+        .from('matches')
+        .update({ 
+          player2_id: session.user.id,
+          status: 'active',
+          current_turn: waitingMatch.player1_id
+        })
+        .eq('id', waitingMatch.id)
+        .select()
+        .single();
+
+      if (joinError) {
+        toast.error("Erro ao entrar na partida.");
+        return;
+      }
+
+      setMultiplayerMatch(joinedMatch);
+      toast.success("Partida encontrada!");
+      startNewGame();
+    } else {
+      // Criar nova partida esperando
+      const { data: newMatch, error: createError } = await supabase
+        .from('matches')
+        .insert({
+          player1_id: session.user.id,
+          status: 'waiting'
+        })
+        .select()
+        .single();
+
+      if (createError) {
+        toast.error("Erro ao criar partida.");
+        return;
+      }
+
+      setMultiplayerMatch(newMatch);
+      toast.info("Aguardando oponente...");
+      
+      // Inscreve no Realtime para saber quando alguém entrar
+      const channel = supabase
+        .channel(`match:${newMatch.id}`)
+        .on('postgres_changes', { 
+          event: 'UPDATE', 
+          schema: 'public', 
+          table: 'matches',
+          filter: `id=eq.${newMatch.id}`
+        }, (payload) => {
+          if (payload.new.status === 'active') {
+            setMultiplayerMatch(payload.new);
+            toast.success("Oponente entrou!");
+            startNewGame();
+          }
+        })
+        .subscribe();
+    }
   };
 
   const calculatePowerTotal = (element: PeriodicElement) => {
@@ -80,20 +175,28 @@ export const BattleSystem = () => {
         <div className="w-20 h-20 bg-blue-600/20 rounded-full flex items-center justify-center mb-6 animate-pulse">
           <Swords className="w-10 h-10 text-blue-400" />
         </div>
-        <h2 className="text-3xl font-black italic mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">SUPER TRUNFO ELEMENTAR</h2>
-        <p className="text-slate-400 mb-8 max-w-md">Desafie a CPU em uma batalha de atributos químicos. Quem dominará a tabela periódica?</p>
-        <Button size="lg" onClick={startNewGame} className="bg-blue-600 hover:bg-blue-700 font-bold px-8 py-6 text-lg rounded-2xl shadow-[0_0_20px_rgba(37,99,235,0.4)] transition-all hover:scale-105">
-          INICIAR BATALHA
-        </Button>
+        <h2 className="text-3xl font-black italic mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 uppercase">Elemental Heroes - Batalha</h2>
+        <p className="text-slate-400 mb-8 max-w-md">Escolha seu modo de jogo e prove ser o mestre dos elementos.</p>
+        
+        <div className="flex flex-col sm:flex-row gap-4">
+          <Button size="lg" onClick={startNewGame} className="bg-blue-600 hover:bg-blue-700 font-bold px-8 py-6 text-lg rounded-2xl shadow-[0_0_20px_rgba(37,99,235,0.4)] transition-all hover:scale-105">
+            <User className="mr-2" /> VS CPU
+          </Button>
+          <Button size="lg" onClick={findMultiplayerMatch} variant="outline" className="border-white/10 hover:bg-white/5 font-bold px-8 py-6 text-lg rounded-2xl transition-all hover:scale-105">
+            <Users className="mr-2" /> MULTIPLAYER (BETA)
+          </Button>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="flex flex-col gap-8 w-full max-w-5xl mx-auto p-4">
+    <div className="flex flex-col gap-8 w-full max-w-5xl mx-auto p-4 animate-in fade-in duration-700">
       <div className="flex justify-between items-center bg-slate-900/80 p-4 rounded-2xl border border-white/10 backdrop-blur-md">
         <div className="flex flex-col items-start">
-          <span className="text-[10px] font-bold text-blue-400 uppercase tracking-widest">JOGADOR</span>
+          <span className="text-[10px] font-bold text-blue-400 uppercase tracking-widest">
+            {session?.user?.user_metadata?.username || "VOCÊ"}
+          </span>
           <span className="text-3xl font-black">{score.player}</span>
         </div>
         <div className="flex flex-col items-center">
@@ -102,9 +205,14 @@ export const BattleSystem = () => {
             <span className="text-xl font-black italic">VS</span>
             <Trophy className={`w-6 h-6 ${score.cpu > score.player ? 'text-yellow-400' : 'text-slate-600'}`} />
           </div>
+          {multiplayerMatch && (
+            <Badge variant="outline" className="mt-1 text-[8px] animate-pulse">MODO MULTIPLAYER</Badge>
+          )}
         </div>
         <div className="flex flex-col items-end">
-          <span className="text-[10px] font-bold text-red-400 uppercase tracking-widest">CPU</span>
+          <span className="text-[10px] font-bold text-red-400 uppercase tracking-widest">
+            {multiplayerMatch ? "OPONENTE" : "CPU"}
+          </span>
           <span className="text-3xl font-black">{score.cpu}</span>
         </div>
       </div>
@@ -143,7 +251,7 @@ export const BattleSystem = () => {
           </div>
         </div>
 
-        {/* CPU Card */}
+        {/* CPU/Opponent Card */}
         <div className="relative">
           <div className="absolute -inset-1 bg-gradient-to-r from-red-600 to-purple-500 rounded-[2.5rem] blur opacity-25"></div>
           <div className="relative p-4 rounded-[2.5rem] bg-slate-900 border border-white/10 overflow-hidden">
