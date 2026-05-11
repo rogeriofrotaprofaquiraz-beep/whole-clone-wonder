@@ -195,7 +195,7 @@ export const AdminPanel = () => {
                   <Textarea 
                     value={formData.heroDescription} 
                     onChange={e => handleInputChange('heroDescription', e.target.value)}
-                    className="bg-black/40 border-white/10 h-24 italic"
+                    className="bg-black/40 border-white/10 h-24 italic text-white"
                   />
                 </div>
               </div>
@@ -211,12 +211,16 @@ export const AdminPanel = () => {
                   <Input 
                     value={formData.heroImage} 
                     onChange={e => handleInputChange('heroImage', e.target.value)}
-                    className="bg-black/40 border-white/10 text-[10px] h-10"
+                    className="bg-black/40 border-white/10 text-[10px] h-10 text-white"
                   />
                 </div>
                 {formData.heroImage && (
                   <div className="aspect-[3/4] rounded-3xl bg-black/60 overflow-hidden border-2 border-white/10 shadow-2xl relative group">
-                    <img src={formData.heroImage} className="w-full h-full object-contain" alt="Preview" />
+                    {formData.heroImage.endsWith('.mp4') ? (
+                      <video src={formData.heroImage} autoPlay loop muted playsInline className="w-full h-full object-contain" />
+                    ) : (
+                      <img src={formData.heroImage} className="w-full h-full object-contain" alt="Preview" />
+                    )}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
                        <span className="text-[10px] font-black italic text-white/60">PREVIEW DA CARTA</span>
                     </div>
