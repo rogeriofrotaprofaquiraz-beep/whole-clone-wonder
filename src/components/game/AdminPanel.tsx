@@ -29,6 +29,7 @@ export const AdminPanel = () => {
     heroName: "",
     heroDescription: "",
     heroImage: "",
+    rarity: "Comum",
     attributes: ATTRIBUTE_LABELS.map((label, index) => ({
       id: index + 1,
       label,
@@ -37,6 +38,8 @@ export const AdminPanel = () => {
       score: 50
     }))
   });
+
+  const rarities: PeriodicElement['rarity'][] = ['Comum', 'Incomum', 'Raro', 'Épico', 'Lendário'];
 
   const handleInputChange = (field: keyof PeriodicElement, value: any) => {
     setFormData(prev => ({ ...prev, [field]: value }));
