@@ -309,6 +309,7 @@ const Index = () => {
             </div>
           )}
         </div>
+          </div>
         </TabsContent>
 
         <TabsContent value="battle" className="w-full animate-in fade-in slide-in-from-right-10 duration-500">
