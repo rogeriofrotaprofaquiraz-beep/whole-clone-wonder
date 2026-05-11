@@ -323,6 +323,10 @@ const Index = () => {
         <TabsContent value="quiz" className="w-full animate-in fade-in slide-in-from-left-10 duration-500">
           <ElementQuiz />
         </TabsContent>
+
+        <TabsContent value="admin" className="w-full animate-in fade-in slide-in-from-bottom-10 duration-500">
+          <AdminPanel />
+        </TabsContent>
       </Tabs>
 
       <footer className="mt-12 text-slate-600 text-[10px] flex flex-col items-center gap-2 pb-8">
