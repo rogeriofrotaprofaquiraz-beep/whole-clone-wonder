@@ -3008,7 +3008,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Enxofre",
     "heroName": "Brimstone Lord",
     "heroDescription": "O mestre dos vulcões e das forjas terrestres. Brimstone Lord controla as profundezas da terra, usando o fogo e o enxofre para moldar a própria vida e a indústria química.",
-    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Phosphorus%20Spark%2C%20representing%20the%20chemical%20element%20F%C3%B3sforo%2C%20O%20portador%20da%20luz%20biol%C3%B3gica%2C%20pe%C3%A7a%20fundamental%20do%20c%C3%B3digo%20da%20vida%20e%20motor%20da%20energia%20celular.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20F%C3%B3sforo%20properties%20with%20emerald%20green%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Brimstone%20Lord%2C%20representing%20the%20chemical%20element%20Enxofre%2C%20O%20mestre%20dos%20vulc%C3%B5es%20e%20das%20forjas%20terrestres.%20Brimstone%20Lord%20controla%20as%20profundezas%20da%20terra%2C%20usando%20o%20fogo%20e%20o%20enxofre%20para%20moldar%20a%20pr%C3%B3pria%20vida%20e%20a%20ind%C3%BAstria%20qu%C3%ADmica.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Enxofre%20properties%20with%20bright%20yellow%20and%20volcanic%20orange%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
       {
         "id": 1,
