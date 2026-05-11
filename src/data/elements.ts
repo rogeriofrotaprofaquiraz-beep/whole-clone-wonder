@@ -3406,7 +3406,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Argônio",
     "heroName": "Argon Shield",
     "heroDescription": "O guardião da inércia e protetor invisível, capaz de envolver o mundo em um escudo de estabilidade absoluta.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20called%20Argon%20Shield%20representing%20the%20element%20Argon%2C%20wearing%20translucent%20gaseous%20blue%20armor%2C%20holding%20a%20stable%20energy%20shield%2C%20stable%20and%20inert%20aura%2C%20highly%20detailed%2C%20comic%20book%20style%2C%20neon%20lighting%2C%208k?width=600&height=800&nologo=true",
     "attributes": [
       {
         "id": 1,
