@@ -133,6 +133,27 @@ const ElementCard = ({ element }: { element: PeriodicElement }) => {
 
 const Index = () => {
   const [selectedSymbol, setSelectedSymbol] = useState<string>("H");
+  const [session, setSession] = useState<any>(null);
+  const [showAuth, setShowAuth] = useState(false);
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+    });
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+      if (session) setShowAuth(false);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    toast.success("Até logo, Herói!");
+  };
+
   const selectedElement = (ELEMENTS_DATA[selectedSymbol] && ELEMENTS_DATA[selectedSymbol].symbol !== "Element" && ELEMENTS_DATA[selectedSymbol].symbol !== "Elemento") ? ELEMENTS_DATA[selectedSymbol] : ELEMENTS_DATA["H"];
 
   // Tabela Periódica Completa com agrupamentos por cores e estrutura fiel ao PDF
