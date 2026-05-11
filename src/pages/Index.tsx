@@ -200,6 +200,26 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-slate-950 p-4 md:p-8 flex flex-col items-center justify-start font-sans text-white overflow-hidden">
+      <div className="w-full max-w-[1440px] flex justify-end mb-4">
+        {session ? (
+          <div className="flex items-center gap-4 bg-slate-900/50 p-2 px-4 rounded-2xl border border-white/10 backdrop-blur-xl">
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
+                <UserIcon className="w-4 h-4" />
+              </div>
+              <span className="text-sm font-black italic">{session.user.user_metadata?.username || session.user.email}</span>
+            </div>
+            <Button variant="ghost" size="sm" onClick={handleLogout} className="text-red-400 hover:text-red-300 hover:bg-red-400/10">
+              <LogOut className="w-4 h-4" />
+            </Button>
+          </div>
+        ) : (
+          <Button onClick={() => setShowAuth(true)} className="bg-blue-600 hover:bg-blue-700 font-bold rounded-xl">
+            ENTRAR / REGISTRAR
+          </Button>
+        )}
+      </div>
+
       <header className="mb-12 text-center relative">
         <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px] pointer-events-none"></div>
         <h1 className="text-5xl md:text-8xl font-black italic tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 mb-4 animate-in fade-in slide-in-from-top-10 duration-1000">
