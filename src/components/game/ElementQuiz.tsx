@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ELEMENTS_DATA } from '@/data/elements';
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Brain, CheckCircle2, XCircle, Trophy, ArrowRight } from 'lucide-react';
 import { toast } from "sonner";
