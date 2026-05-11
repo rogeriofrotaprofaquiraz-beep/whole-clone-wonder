@@ -125,10 +125,10 @@ export const AdminPanel = () => {
         <CardHeader className="flex flex-row items-center justify-between border-b border-white/5">
           <CardTitle className="text-xl font-black italic uppercase tracking-tighter">Laboratório de Heróis</CardTitle>
           <div className="flex gap-2">
-            <Button size="sm" variant="outline" className="border-blue-600/30 text-blue-400 font-bold" onClick={() => toast.info("Geração de 118 heróis iniciada em segundo plano...")}>
+            <Button size="sm" variant="outline" className="border-blue-600/30 text-blue-400 font-bold" onClick={generateAllHeros}>
               <Wand2 className="w-4 h-4 mr-2" /> GERAR TUDO (IA)
             </Button>
-            <Button size="sm" onClick={saveElement} className="bg-blue-600 hover:bg-blue-700 font-bold">
+            <Button size="sm" onClick={saveElement} className="bg-blue-600 hover:bg-blue-700 font-bold text-white">
               <Save className="w-4 h-4 mr-2" /> ATUALIZAR
             </Button>
           </div>
