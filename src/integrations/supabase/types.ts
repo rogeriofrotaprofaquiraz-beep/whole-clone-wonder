@@ -14,7 +14,172 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      match_moves: {
+        Row: {
+          attribute_selected: string
+          card_symbol: string
+          created_at: string
+          id: string
+          match_id: string
+          player_id: string
+          round_number: number
+        }
+        Insert: {
+          attribute_selected: string
+          card_symbol: string
+          created_at?: string
+          id?: string
+          match_id: string
+          player_id: string
+          round_number: number
+        }
+        Update: {
+          attribute_selected?: string
+          card_symbol?: string
+          created_at?: string
+          id?: string
+          match_id?: string
+          player_id?: string
+          round_number?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "match_moves_match_id_fkey"
+            columns: ["match_id"]
+            isOneToOne: false
+            referencedRelation: "matches"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "match_moves_player_id_fkey"
+            columns: ["player_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      matches: {
+        Row: {
+          created_at: string
+          current_turn: string | null
+          id: string
+          player1_id: string
+          player2_id: string | null
+          status: string
+          updated_at: string
+          winner_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          current_turn?: string | null
+          id?: string
+          player1_id: string
+          player2_id?: string | null
+          status?: string
+          updated_at?: string
+          winner_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          current_turn?: string | null
+          id?: string
+          player1_id?: string
+          player2_id?: string | null
+          status?: string
+          updated_at?: string
+          winner_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "matches_current_turn_fkey"
+            columns: ["current_turn"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "matches_player1_id_fkey"
+            columns: ["player1_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "matches_player2_id_fkey"
+            columns: ["player2_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "matches_winner_id_fkey"
+            columns: ["winner_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          id: string
+          level: number | null
+          updated_at: string
+          username: string | null
+          xp: number | null
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          id: string
+          level?: number | null
+          updated_at?: string
+          username?: string | null
+          xp?: number | null
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          id?: string
+          level?: number | null
+          updated_at?: string
+          username?: string | null
+          xp?: number | null
+        }
+        Relationships: []
+      }
+      user_collection: {
+        Row: {
+          acquired_at: string
+          element_symbol: string
+          id: string
+          user_id: string
+        }
+        Insert: {
+          acquired_at?: string
+          element_symbol: string
+          id?: string
+          user_id: string
+        }
+        Update: {
+          acquired_at?: string
+          element_symbol?: string
+          id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_collection_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
