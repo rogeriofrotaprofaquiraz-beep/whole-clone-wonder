@@ -2610,7 +2610,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Silício",
     "heroName": "Cyber Si",
     "heroDescription": "O arquiteto da era digital. Cyber Si é a espinha dorsal de toda a tecnologia moderna, o mestre dos semicondutores que traduz eletricidade em pensamento binário.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Hydrogen%20Genesis%2C%20representing%20the%20chemical%20element%20Hidrog%C3%AAnio%2C%20O%20primeiro%20elemento%2C%20fa%C3%ADsca%20primordial%20das%20estrelas%20e%20combust%C3%ADvel%20do%20futuro%20infinito.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Hidrog%C3%AAnio%20properties%20with%20emerald%20green%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
       {
         "id": 1,
@@ -3008,7 +3008,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Enxofre",
     "heroName": "Brimstone Lord",
     "heroDescription": "O mestre dos vulcões e das forjas terrestres. Brimstone Lord controla as profundezas da terra, usando o fogo e o enxofre para moldar a própria vida e a indústria química.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Phosphorus%20Spark%2C%20representing%20the%20chemical%20element%20F%C3%B3sforo%2C%20O%20portador%20da%20luz%20biol%C3%B3gica%2C%20pe%C3%A7a%20fundamental%20do%20c%C3%B3digo%20da%20vida%20e%20motor%20da%20energia%20celular.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20F%C3%B3sforo%20properties%20with%20emerald%20green%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
       {
         "id": 1,
@@ -3207,7 +3207,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Cloro",
     "heroName": "Chlorine Guard",
     "heroDescription": "O mestre da purificação e temido guerreiro gasoso, essencial para a higiene e a segurança da vida.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Chlorine%20Guard%2C%20representing%20the%20chemical%20element%20Cloro%2C%20O%20mestre%20da%20purifica%C3%A7%C3%A3o%20e%20temido%20guerreiro%20gasoso%2C%20essencial%20para%20a%20higiene%20e%20a%20seguran%C3%A7a%20da%20vida.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Cloro%20properties%20with%20lime%20green%20glowing%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
       {
         "id": 1,
@@ -3605,7 +3605,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Potássio",
     "heroName": "Potassium Pulse",
     "heroDescription": "O condutor da energia vital e mestre dos sinais elétricos, essencial para o ritmo do coração e da vida.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Argon%20Shield%2C%20representing%20the%20chemical%20element%20Arg%C3%B4nio%2C%20O%20guardi%C3%A3o%20da%20in%C3%A9rcia%20e%20protetor%20invis%C3%ADvel%2C%20capaz%20de%20envolver%20o%20mundo%20em%20um%20escudo%20de%20estabilidade%20absoluta.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Arg%C3%B4nio%20properties%20with%20sky%20blue%20and%20purple%20neon%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
       {
         "id": 1,
@@ -3804,7 +3804,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Cálcio",
     "heroName": "Calcium Titan",
     "heroDescription": "A fortaleza da vida e arquiteto da estrutura biológica, mantendo o equilíbrio e a solidez do corpo humano.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Calcium%20Titan%2C%20representing%20the%20chemical%20element%20C%C3%A1lcio%2C%20A%20fortaleza%20da%20vida%20e%20arquiteto%20da%20estrutura%20biol%C3%B3gica%2C%20mantendo%20o%20equil%C3%ADbrio%20e%20a%20solidez%20do%20corpo%20humano.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20C%C3%A1lcio%20properties%20with%20orange%20and%20yellow%20metallic%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
       {
         "id": 1,
@@ -4003,7 +4003,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Escândio",
     "heroName": "Scandium Wing",
     "heroDescription": "O pioneiro dos metais de transição, um herói leve e resistente que domina os céus com ligas aeroespaciais avançadas.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Scandium%20Wing%2C%20representing%20the%20chemical%20element%20Esc%C3%A2ndio%2C%20O%20pioneiro%20dos%20metais%20de%20transi%C3%A7%C3%A3o%2C%20um%20her%C3%B3i%20leve%20e%20resistente%20que%20domina%20os%20c%C3%A9us%20com%20ligas%20aeroespaciais%20avan%C3%A7adas.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Esc%C3%A2ndio%20properties%20with%20metallic%20blue%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
       {
         "id": 1,
@@ -4202,7 +4202,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Titânio",
     "heroName": "Titanium Shield",
     "heroDescription": "O indestrutível guerreiro de prata, mestre da resistência e compatibilidade biológica, o metal dos deuses modernos.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Titanium%20Shield%2C%20representing%20the%20chemical%20element%20Tit%C3%A2nio%2C%20O%20indestrut%C3%ADvel%20guerreiro%20de%20prata%2C%20mestre%20da%20resist%C3%AAncia%20e%20compatibilidade%20biol%C3%B3gica%2C%20o%20metal%20dos%20deuses%20modernos.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Tit%C3%A2nio%20properties%20with%20metallic%20blue%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
       {
         "id": 1,
@@ -4401,7 +4401,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Vanádio",
     "heroName": "Vanadium Vanguard",
     "heroDescription": "O mestre das cores e da resistência mecânica, um herói versátil que fortalece as estruturas mais profundas do mundo moderno.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Vanadium%20Vanguard%2C%20representing%20the%20chemical%20element%20Van%C3%A1dio%2C%20O%20mestre%20das%20cores%20e%20da%20resist%C3%AAncia%20mec%C3%A2nica%2C%20um%20her%C3%B3i%20vers%C3%A1til%20que%20fortalece%20as%20estruturas%20mais%20profundas%20do%20mundo%20moderno.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Van%C3%A1dio%20properties%20with%20metallic%20blue%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
       {
         "id": 1,
@@ -4600,7 +4600,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Cromo",
     "heroName": "Chrome Blade",
     "heroDescription": "O mestre do brilho e da proteção, um herói inoxidável que confere beleza e resistência eterna a tudo o que toca.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Chrome%20Blade%2C%20representing%20the%20chemical%20element%20Cromo%2C%20O%20mestre%20do%20brilho%20e%20da%20prote%C3%A7%C3%A3o%2C%20um%20her%C3%B3i%20inoxid%C3%A1vel%20que%20confere%20beleza%20e%20resist%C3%AAncia%20eterna%20a%20tudo%20o%20que%20toca.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Cromo%20properties%20with%20metallic%20blue%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
       {
         "id": 1,
@@ -4799,7 +4799,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Manganês",
     "heroName": "Manganese Forge",
     "heroDescription": "O arquiteto da liga inquebrável, um herói que transforma o ferro comum em aço supremo através da força e do sacrifício químico.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Manganese%20Forge%2C%20representing%20the%20chemical%20element%20Mangan%C3%AAs%2C%20O%20arquiteto%20da%20liga%20inquebr%C3%A1vel%2C%20um%20her%C3%B3i%20que%20transforma%20o%20ferro%20comum%20em%20a%C3%A7o%20supremo%20atrav%C3%A9s%20da%20for%C3%A7a%20e%20do%20sacrif%C3%ADcio%20qu%C3%ADmico.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Mangan%C3%AAs%20properties%20with%20metallic%20blue%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
       {
         "id": 1,
@@ -4998,7 +4998,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Ferro",
     "heroName": "Iron Core",
     "heroDescription": "O pilar da civilização e mestre do magnetismo, um herói cujo sangue corre nas veias do planeta e de todos os seres vivos.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Iron%20Core%2C%20representing%20the%20chemical%20element%20Ferro%2C%20O%20pilar%20da%20civiliza%C3%A7%C3%A3o%20e%20mestre%20do%20magnetismo%2C%20um%20her%C3%B3i%20cujo%20sangue%20corre%20nas%20veias%20do%20planeta%20e%20de%20todos%20os%20seres%20vivos.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Ferro%20properties%20with%20metallic%20blue%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
       {
         "id": 1,
@@ -5197,7 +5197,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Cobalto",
     "heroName": "Cobalt Blue",
     "heroDescription": "O mestre das superligas e das cores profundas, um herói essencial para as baterias do futuro e para a medicina nuclear.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Cobalt%20Blue%2C%20representing%20the%20chemical%20element%20Cobalto%2C%20O%20mestre%20das%20superligas%20e%20das%20cores%20profundas%2C%20um%20her%C3%B3i%20essencial%20para%20as%20baterias%20do%20futuro%20e%20para%20a%20medicina%20nuclear.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Cobalto%20properties%20with%20metallic%20blue%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
       {
         "id": 1,
@@ -5396,7 +5396,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Níquel",
     "heroName": "Nickel Plate",
     "heroDescription": "O mestre da durabilidade e das moedas do mundo, um herói versátil que protege o que é valioso contra a corrosão.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Nickel%20Plate%2C%20representing%20the%20chemical%20element%20N%C3%ADquel%2C%20O%20mestre%20da%20durabilidade%20e%20das%20moedas%20do%20mundo%2C%20um%20her%C3%B3i%20vers%C3%A1til%20que%20protege%20o%20que%20%C3%A9%20valioso%20contra%20a%20corros%C3%A3o.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20N%C3%ADquel%20properties%20with%20metallic%20blue%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
       {
         "id": 1,
@@ -5595,7 +5595,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Cobre",
     "heroName": "Copper Circuit",
     "heroDescription": "O condutor supremo e mestre da energia, um herói que conecta o mundo através de fios invisíveis de poder e comunicação.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Copper%20Circuit%2C%20representing%20the%20chemical%20element%20Cobre%2C%20O%20condutor%20supremo%20e%20mestre%20da%20energia%2C%20um%20her%C3%B3i%20que%20conecta%20o%20mundo%20atrav%C3%A9s%20de%20fios%20invis%C3%ADveis%20de%20poder%20e%20comunica%C3%A7%C3%A3o.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Cobre%20properties%20with%20metallic%20blue%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
       {
         "id": 1,
@@ -5794,7 +5794,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Zinco",
     "heroName": "Zinc Protector",
     "heroDescription": "O mestre da galvanização e guardião da saúde celular, um herói que protege os metais contra a ferrugem e fortalece o sistema imunológico.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Zinc%20Protector%2C%20representing%20the%20chemical%20element%20Zinco%2C%20O%20mestre%20da%20galvaniza%C3%A7%C3%A3o%20e%20guardi%C3%A3o%20da%20sa%C3%BAde%20celular%2C%20um%20her%C3%B3i%20que%20protege%20os%20metais%20contra%20a%20ferrugem%20e%20fortalece%20o%20sistema%20imunol%C3%B3gico.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Zinco%20properties%20with%20metallic%20blue%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
       {
         "id": 1,
@@ -5993,7 +5993,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Gálio",
     "heroName": "Gallium Melter",
     "heroDescription": "O mestre da liquidez e dos semicondutores, um herói que derrete em suas mãos mas brilha na tecnologia moderna.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Gallium%20Melter%2C%20representing%20the%20chemical%20element%20G%C3%A1lio%2C%20O%20mestre%20da%20liquidez%20e%20dos%20semicondutores%2C%20um%20her%C3%B3i%20que%20derrete%20em%20suas%20m%C3%A3os%20mas%20brilha%20na%20tecnologia%20moderna.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20G%C3%A1lio%20properties%20with%20indigo%20and%20violet%20chrome%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
       {
         "id": 1,
@@ -6192,7 +6192,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Germânio",
     "heroName": "Germanium Core",
     "heroDescription": "O pioneiro da eletrônica e mestre do infravermelho, o herói que abriu as portas para a era digital.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Germanium%20Core%2C%20representing%20the%20chemical%20element%20Germ%C3%A2nio%2C%20O%20pioneiro%20da%20eletr%C3%B4nica%20e%20mestre%20do%20infravermelho%2C%20o%20her%C3%B3i%20que%20abriu%20as%20portas%20para%20a%20era%20digital.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Germ%C3%A2nio%20properties%20with%20teal%20and%20cyan%20energy%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
       {
         "id": 1,
@@ -6391,7 +6391,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Arsênio",
     "heroName": "Arsenic Shadow",
     "heroDescription": "O mestre dos venenos e da dualidade, um herói temido mas essencial para a microeletrônica avançada.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Arsenic%20Shadow%2C%20representing%20the%20chemical%20element%20Ars%C3%AAnio%2C%20O%20mestre%20dos%20venenos%20e%20da%20dualidade%2C%20um%20her%C3%B3i%20temido%20mas%20essencial%20para%20a%20microeletr%C3%B4nica%20avan%C3%A7ada.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Ars%C3%AAnio%20properties%20with%20teal%20and%20cyan%20energy%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
       {
         "id": 1,
@@ -6590,7 +6590,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Selênio",
     "heroName": "Selenium Ray",
     "heroDescription": "O mestre da luz e da visão elétrica, um herói que transforma o brilho do sol em sinais eletrônicos.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Selenium%20Ray%2C%20representing%20the%20chemical%20element%20Sel%C3%AAnio%2C%20O%20mestre%20da%20luz%20e%20da%20vis%C3%A3o%20el%C3%A9trica%2C%20um%20her%C3%B3i%20que%20transforma%20o%20brilho%20do%20sol%20em%20sinais%20eletr%C3%B4nicos.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Sel%C3%AAnio%20properties%20with%20emerald%20green%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
       {
         "id": 1,
@@ -6789,7 +6789,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Bromo",
     "heroName": "Bromine Liquid",
     "heroDescription": "O único não-metal líquido e mestre dos retardantes de chama, um herói denso e reativo que protege o mundo do fogo.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Bromine%20Liquid%2C%20representing%20the%20chemical%20element%20Bromo%2C%20O%20%C3%BAnico%20n%C3%A3o-metal%20l%C3%ADquido%20e%20mestre%20dos%20retardantes%20de%20chama%2C%20um%20her%C3%B3i%20denso%20e%20reativo%20que%20protege%20o%20mundo%20do%20fogo.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Bromo%20properties%20with%20lime%20green%20glowing%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
       {
         "id": 1,
@@ -6988,7 +6988,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Criptônio",
     "heroName": "Krypton Glow",
     "heroDescription": "O guardião do brilho intenso e mestre do vácuo, um herói nobre que ilumina as pistas e as cirurgias de precisão.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Krypton%20Glow%2C%20representing%20the%20chemical%20element%20Cript%C3%B4nio%2C%20O%20guardi%C3%A3o%20do%20brilho%20intenso%20e%20mestre%20do%20v%C3%A1cuo%2C%20um%20her%C3%B3i%20nobre%20que%20ilumina%20as%20pistas%20e%20as%20cirurgias%20de%20precis%C3%A3o.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Cript%C3%B4nio%20properties%20with%20sky%20blue%20and%20purple%20neon%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
       {
         "id": 1,
@@ -7187,7 +7187,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Rubídio",
     "heroName": "Rubidium Pulse",
     "heroDescription": "O senhor do ritmo cardíaco eletrônico, um herói que controla corações artificiais e mantém a precisão dos relógios atômicos.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Rubidium%20Pulse%2C%20representing%20the%20chemical%20element%20Rub%C3%ADdio%2C%20O%20senhor%20do%20ritmo%20card%C3%ADaco%20eletr%C3%B4nico%2C%20um%20her%C3%B3i%20que%20controla%20cora%C3%A7%C3%B5es%20artificiais%20e%20mant%C3%A9m%20a%20precis%C3%A3o%20dos%20rel%C3%B3gios%20at%C3%B4micos.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Rub%C3%ADdio%20properties%20with%20golden%20amber%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
       {
         "id": 1,
@@ -7386,7 +7386,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Estrôncio",
     "heroName": "Strontium Spark",
     "heroDescription": "O mestre das cores escarlates e guardião da saúde óssea, um herói que ilumina o céu festivo com cor intensa.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Strontium%20Spark%2C%20representing%20the%20chemical%20element%20Estr%C3%B4ncio%2C%20O%20mestre%20das%20cores%20escarlates%20e%20guardi%C3%A3o%20da%20sa%C3%BAde%20%C3%B3ssea%2C%20um%20her%C3%B3i%20que%20ilumina%20o%20c%C3%A9u%20festivo%20com%20cor%20intensa.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Estr%C3%B4ncio%20properties%20with%20orange%20and%20yellow%20metallic%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
       {
         "id": 1,
@@ -7585,7 +7585,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Ítrio",
     "heroName": "Yttrium Laser",
     "heroDescription": "O mestre da luz focalizada e da supercondutividade. Yttrium Laser é o elemento que transforma cerâmicas em condutores perfeitos e cristais em lasers de alta potência.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Yttrium%20Laser%2C%20representing%20the%20chemical%20element%20%C3%8Dtrio%2C%20O%20mestre%20da%20luz%20focalizada%20e%20da%20supercondutividade.%20Yttrium%20Laser%20%C3%A9%20o%20elemento%20que%20transforma%20cer%C3%A2micas%20em%20condutores%20perfeitos%20e%20cristais%20em%20lasers%20de%20alta%20pot%C3%AAncia.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20%C3%8Dtrio%20properties%20with%20metallic%20blue%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
       {
         "id": 1,
@@ -7784,7 +7784,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Zircônio",
     "heroName": "Zircon Reactor",
     "heroDescription": "O guardião da energia nuclear e mestre da invulnerabilidade química. Zircon Reactor é o herói que resiste às condições mais extremas, protegendo os núcleos de energia com seu escudo eterno.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Zircon%20Reactor%2C%20representing%20the%20chemical%20element%20Zirc%C3%B4nio%2C%20O%20guardi%C3%A3o%20da%20energia%20nuclear%20e%20mestre%20da%20invulnerabilidade%20qu%C3%ADmica.%20Zircon%20Reactor%20%C3%A9%20o%20her%C3%B3i%20que%20resiste%20%C3%A0s%20condi%C3%A7%C3%B5es%20mais%20extremas%2C%20protegendo%20os%20n%C3%BAcleos%20de%20energia%20com%20seu%20escudo%20eterno.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Zirc%C3%B4nio%20properties%20with%20metallic%20blue%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
       {
         "id": 1,
@@ -7983,7 +7983,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Nióbio",
     "heroName": "Niobium Core",
     "heroDescription": "O mestre da resistência extrema e das superligas. Niobium Core é o herói que torna o aço indestrutível e permite que os motores a jato alcancem os céus com leveza e força.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Niobium%20Core%2C%20representing%20the%20chemical%20element%20Ni%C3%B3bio%2C%20O%20mestre%20da%20resist%C3%AAncia%20extrema%20e%20das%20superligas.%20Niobium%20Core%20%C3%A9%20o%20her%C3%B3i%20que%20torna%20o%20a%C3%A7o%20indestrut%C3%ADvel%20e%20permite%20que%20os%20motores%20a%20jato%20alcancem%20os%20c%C3%A9us%20com%20leveza%20e%20for%C3%A7a.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Ni%C3%B3bio%20properties%20with%20metallic%20blue%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
       {
         "id": 1,
@@ -8182,7 +8182,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Molibdênio",
     "heroName": "Molybdenum Shield",
     "heroDescription": "O herói da resistência térmica e pilar biológico. Molybdenum Shield é o mestre das altas temperaturas e catalisador essencial para a vida, garantindo que as estruturas resistam ao calor e à degradação.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Molybdenum%20Shield%2C%20representing%20the%20chemical%20element%20Molibd%C3%AAnio%2C%20O%20her%C3%B3i%20da%20resist%C3%AAncia%20t%C3%A9rmica%20e%20pilar%20biol%C3%B3gico.%20Molybdenum%20Shield%20%C3%A9%20o%20mestre%20das%20altas%20temperaturas%20e%20catalisador%20essencial%20para%20a%20vida%2C%20garantindo%20que%20as%20estruturas%20resistam%20ao%20calor%20e%20%C3%A0%20degrada%C3%A7%C3%A3o.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Molibd%C3%AAnio%20properties%20with%20metallic%20blue%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
       {
         "id": 1,
@@ -8381,7 +8381,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Tecnécio",
     "heroName": "Technetium Ray",
     "heroDescription": "O pioneiro sintético e mestre da visão interna. Technetium Ray é o herói que atravessa a matéria com seu brilho gama, revelando os segredos ocultos no corpo humano.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Technetium%20Ray%2C%20representing%20the%20chemical%20element%20Tecn%C3%A9cio%2C%20O%20pioneiro%20sint%C3%A9tico%20e%20mestre%20da%20vis%C3%A3o%20interna.%20Technetium%20Ray%20%C3%A9%20o%20her%C3%B3i%20que%20atravessa%20a%20mat%C3%A9ria%20com%20seu%20brilho%20gama%2C%20revelando%20os%20segredos%20ocultos%20no%20corpo%20humano.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Tecn%C3%A9cio%20properties%20with%20metallic%20blue%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
       {
         "id": 1,
@@ -8580,7 +8580,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Rutênio",
     "heroName": "Ruthenium Catalyst",
     "heroDescription": "O mestre da precisão química e herói da durabilidade. Ruthenium Catalyst é o especialista em acelerar reações complexas e proteger contatos elétricos com sua dureza inabalável.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Ruthenium%20Catalyst%2C%20representing%20the%20chemical%20element%20Rut%C3%AAnio%2C%20O%20mestre%20da%20precis%C3%A3o%20qu%C3%ADmica%20e%20her%C3%B3i%20da%20durabilidade.%20Ruthenium%20Catalyst%20%C3%A9%20o%20especialista%20em%20acelerar%20rea%C3%A7%C3%B5es%20complexas%20e%20proteger%20contatos%20el%C3%A9tricos%20com%20sua%20dureza%20inabal%C3%A1vel.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Rut%C3%AAnio%20properties%20with%20metallic%20blue%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
       {
         "id": 1,
@@ -8779,7 +8779,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Ródio",
     "heroName": "Rhodium Shine",
     "heroDescription": "O herói do brilho eterno e protetor dos ares. Rhodium Shine é o metal mais precioso do mundo, um guardião que limpa as emissões e reflete a luz com perfeição inigualável.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Rhodium%20Shine%2C%20representing%20the%20chemical%20element%20R%C3%B3dio%2C%20O%20her%C3%B3i%20do%20brilho%20eterno%20e%20protetor%20dos%20ares.%20Rhodium%20Shine%20%C3%A9%20o%20metal%20mais%20precioso%20do%20mundo%2C%20um%20guardi%C3%A3o%20que%20limpa%20as%20emiss%C3%B5es%20e%20reflete%20a%20luz%20com%20perfei%C3%A7%C3%A3o%20inigual%C3%A1vel.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20R%C3%B3dio%20properties%20with%20metallic%20blue%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
       {
         "id": 1,
@@ -8978,7 +8978,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Paládio",
     "heroName": "Palladium Guard",
     "heroDescription": "O mestre da purificação e herói da mobilidade sustentável. Palladium Guard é o metal nobre que absorve hidrogênio como uma esponja, protegendo o planeta contra emissões tóxicas.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Palladium%20Guard%2C%20representing%20the%20chemical%20element%20Pal%C3%A1dio%2C%20O%20mestre%20da%20purifica%C3%A7%C3%A3o%20e%20her%C3%B3i%20da%20mobilidade%20sustent%C3%A1vel.%20Palladium%20Guard%20%C3%A9%20o%20metal%20nobre%20que%20absorve%20hidrog%C3%AAnio%20como%20uma%20esponja%2C%20protegendo%20o%20planeta%20contra%20emiss%C3%B5es%20t%C3%B3xicas.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Pal%C3%A1dio%20properties%20with%20metallic%20blue%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
       {
         "id": 1,
@@ -9177,7 +9177,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Prata",
     "heroName": "Silver Flash",
     "heroDescription": "O condutor supremo e mestre do brilho absoluto. Silver Flash é o herói que transporta energia sem perdas e purifica o mundo com seu toque antibacteriano.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Silver%20Flash%2C%20representing%20the%20chemical%20element%20Prata%2C%20O%20condutor%20supremo%20e%20mestre%20do%20brilho%20absoluto.%20Silver%20Flash%20%C3%A9%20o%20her%C3%B3i%20que%20transporta%20energia%20sem%20perdas%20e%20purifica%20o%20mundo%20com%20seu%20toque%20antibacteriano.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Prata%20properties%20with%20metallic%20blue%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
       {
         "id": 1,
@@ -9376,7 +9376,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Cádmio",
     "heroName": "Cadmium Toxic",
     "heroDescription": "O herói da energia duradoura e mestre das barreiras. Cadmium Toxic é o guardião das baterias e o escudo contra nêutrons, um guerreiro que exige respeito e manuseio cuidadoso.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Cadmium%20Toxic%2C%20representing%20the%20chemical%20element%20C%C3%A1dmio%2C%20O%20her%C3%B3i%20da%20energia%20duradoura%20e%20mestre%20das%20barreiras.%20Cadmium%20Toxic%20%C3%A9%20o%20guardi%C3%A3o%20das%20baterias%20e%20o%20escudo%20contra%20n%C3%AAutrons%2C%20um%20guerreiro%20que%20exige%20respeito%20e%20manuseio%20cuidadoso.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20C%C3%A1dmio%20properties%20with%20metallic%20blue%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
       {
         "id": 1,
@@ -9575,7 +9575,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Índio",
     "heroName": "Indium Screen",
     "heroDescription": "O herói da visão digital e mestre do toque. Indium Screen é o elemento que torna as telas sensíveis e transparentes, conectando a humanidade ao mundo virtual com sua condutividade mágica.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Indium%20Screen%2C%20representing%20the%20chemical%20element%20%C3%8Dndio%2C%20O%20her%C3%B3i%20da%20vis%C3%A3o%20digital%20e%20mestre%20do%20toque.%20Indium%20Screen%20%C3%A9%20o%20elemento%20que%20torna%20as%20telas%20sens%C3%ADveis%20e%20transparentes%2C%20conectando%20a%20humanidade%20ao%20mundo%20virtual%20com%20sua%20condutividade%20m%C3%A1gica.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20%C3%8Dndio%20properties%20with%20indigo%20and%20violet%20chrome%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
       {
         "id": 1,
@@ -9774,7 +9774,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Estanho",
     "heroName": "Tin Guardian",
     "heroDescription": "O herói da preservação e mestre das ligas ancestrais. Tin Guardian é o protetor dos metais contra a corrosão e o pilar do bronze, unindo o passado ao futuro tecnológico.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Tin%20Guardian%2C%20representing%20the%20chemical%20element%20Estanho%2C%20O%20her%C3%B3i%20da%20preserva%C3%A7%C3%A3o%20e%20mestre%20das%20ligas%20ancestrais.%20Tin%20Guardian%20%C3%A9%20o%20protetor%20dos%20metais%20contra%20a%20corros%C3%A3o%20e%20o%20pilar%20do%20bronze%2C%20unindo%20o%20passado%20ao%20futuro%20tecnol%C3%B3gico.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Estanho%20properties%20with%20indigo%20and%20violet%20chrome%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
       {
         "id": 1,
@@ -9973,7 +9973,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Antimônio",
     "heroName": "Antimony Flame",
     "heroDescription": "O mestre do fogo contido e herói da segurança. Antimony Flame é o protetor que impede que as chamas se espalhem, fortalecendo baterias e eletrônicos com sua resistência lendária.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Antimony%20Flame%2C%20representing%20the%20chemical%20element%20Antim%C3%B4nio%2C%20O%20mestre%20do%20fogo%20contido%20e%20her%C3%B3i%20da%20seguran%C3%A7a.%20Antimony%20Flame%20%C3%A9%20o%20protetor%20que%20impede%20que%20as%20chamas%20se%20espalhem%2C%20fortalecendo%20baterias%20e%20eletr%C3%B4nicos%20com%20sua%20resist%C3%AAncia%20lend%C3%A1ria.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Antim%C3%B4nio%20properties%20with%20teal%20and%20cyan%20energy%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
       {
         "id": 1,
@@ -10172,7 +10172,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Telúrio",
     "heroName": "Tellurium Memory",
     "heroDescription": "O mestre do armazenamento óptico e fotocondutividade, um herói que converte luz em energia e guarda dados com precisão semicondutora.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Tellurium%20Memory%2C%20representing%20the%20chemical%20element%20Tel%C3%BArio%2C%20O%20mestre%20do%20armazenamento%20%C3%B3ptico%20e%20fotocondutividade%2C%20um%20her%C3%B3i%20que%20converte%20luz%20em%20energia%20e%20guarda%20dados%20com%20precis%C3%A3o%20semicondutora.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Tel%C3%BArio%20properties%20with%20teal%20and%20cyan%20energy%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
       { "id": 1, "label": "Massa Atômica", "value": "127.60 u", "justification": "Massa atômica relativa do Telúrio.", "score": 43 },
       { "id": 2, "label": "Abundância na Crosta", "value": "0.001 ppm", "justification": "Concentração média encontrada na crosta terrestre.", "score": 40 },
@@ -10209,7 +10209,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Iodo",
     "heroName": "Iodine Shield",
     "heroDescription": "O sentinela da saúde e guardião da tireoide, essencial para o equilíbrio metabólico e mestre da sublimação purificadora.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Iodine%20Shield%2C%20representing%20the%20chemical%20element%20Iodo%2C%20O%20sentinela%20da%20sa%C3%BAde%20e%20guardi%C3%A3o%20da%20tireoide%2C%20essencial%20para%20o%20equil%C3%ADbrio%20metab%C3%B3lico%20e%20mestre%20da%20sublima%C3%A7%C3%A3o%20purificadora.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Iodo%20properties%20with%20lime%20green%20glowing%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
       { "id": 1, "label": "Massa Atômica", "value": "126.90 u", "justification": "Massa atômica relativa do Iodo.", "score": 42 },
       { "id": 2, "label": "Abundância na Crosta", "value": "0.45 ppm", "justification": "Concentração média encontrada na crosta terrestre.", "score": 40 },
@@ -10246,7 +10246,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Xenônio",
     "heroName": "Xenon Bright",
     "heroDescription": "O iluminador nobre e motor de íons cósmicos, um herói que rasga a escuridão com luz intensa e impulsiona naves rumo às estrelas.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Xenon%20Bright%2C%20representing%20the%20chemical%20element%20Xen%C3%B4nio%2C%20O%20iluminador%20nobre%20e%20motor%20de%20%C3%ADons%20c%C3%B3smicos%2C%20um%20her%C3%B3i%20que%20rasga%20a%20escurid%C3%A3o%20com%20luz%20intensa%20e%20impulsiona%20naves%20rumo%20%C3%A0s%20estrelas.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Xen%C3%B4nio%20properties%20with%20sky%20blue%20and%20purple%20neon%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
       { "id": 1, "label": "Massa Atômica", "value": "131.29 u", "justification": "Massa atômica relativa do Xenônio.", "score": 44 },
       { "id": 2, "label": "Abundância na Crosta", "value": "0.00001 ppm", "justification": "Concentração média encontrada na crosta terrestre.", "score": 40 },
@@ -10283,7 +10283,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Césio",
     "heroName": "Cesium Clock",
     "heroDescription": "O mestre do tempo absoluto e guardião da precisão atômica, cujas vibrações definem o ritmo do universo tecnológico.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Cesium%20Clock%2C%20representing%20the%20chemical%20element%20C%C3%A9sio%2C%20O%20mestre%20do%20tempo%20absoluto%20e%20guardi%C3%A3o%20da%20precis%C3%A3o%20at%C3%B4mica%2C%20cujas%20vibra%C3%A7%C3%B5es%20definem%20o%20ritmo%20do%20universo%20tecnol%C3%B3gico.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20C%C3%A9sio%20properties%20with%20golden%20amber%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
       { "id": 1, "label": "Massa Atômica", "value": "132.91 u", "justification": "Massa atômica relativa do Césio.", "score": 44 },
       { "id": 2, "label": "Abundância na Crosta", "value": "3 ppm", "justification": "Concentração média encontrada na crosta terrestre.", "score": 40 },
@@ -10320,7 +10320,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Bário",
     "heroName": "Barium Vision",
     "heroDescription": "O revelador de contrastes e mestre da transparência interna, capaz de tornar visível o invisível através de raios-X e diagnósticos.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Barium%20Vision%2C%20representing%20the%20chemical%20element%20B%C3%A1rio%2C%20O%20revelador%20de%20contrastes%20e%20mestre%20da%20transpar%C3%AAncia%20interna%2C%20capaz%20de%20tornar%20vis%C3%ADvel%20o%20invis%C3%ADvel%20atrav%C3%A9s%20de%20raios-X%20e%20diagn%C3%B3sticos.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20B%C3%A1rio%20properties%20with%20orange%20and%20yellow%20metallic%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
       { "id": 1, "label": "Massa Atômica", "value": "137.33 u", "justification": "Massa atômica relativa do Bário.", "score": 46 },
       { "id": 2, "label": "Abundância na Crosta", "value": "425 ppm", "justification": "Concentração média encontrada na crosta terrestre.", "score": 40 },
@@ -10357,7 +10357,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Lantânio",
     "heroName": "Lanthanum Luminous",
     "heroDescription": "O mestre da luz branca e da ótica, um herói que clareia o caminho com precisão científica.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Lanthanum%20Luminous%2C%20representing%20the%20chemical%20element%20Lant%C3%A2nio%2C%20O%20mestre%20da%20luz%20branca%20e%20da%20%C3%B3tica%2C%20um%20her%C3%B3i%20que%20clareia%20o%20caminho%20com%20precis%C3%A3o%20cient%C3%ADfica.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Lant%C3%A2nio%20properties%20with%20fuchsia%20and%20pink%20crystalline%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
           "id": 1,
@@ -10556,7 +10556,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Cério",
     "heroName": "Cerium Spark",
     "heroDescription": "O mestre da ignição e das ligas metálicas, um herói que brilha sob pressão.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Cerium%20Spark%2C%20representing%20the%20chemical%20element%20C%C3%A9rio%2C%20O%20mestre%20da%20igni%C3%A7%C3%A3o%20e%20das%20ligas%20met%C3%A1licas%2C%20um%20her%C3%B3i%20que%20brilha%20sob%20press%C3%A3o.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20C%C3%A9rio%20properties%20with%20fuchsia%20and%20pink%20crystalline%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
           "id": 1,
@@ -10755,7 +10755,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Praseodímio",
     "heroName": "Praseodymium Green",
     "heroDescription": "O mestre do vidro verde e dos ímãs poderosos, um herói que une força magnética e elegância ótica.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Praseodymium%20Green%2C%20representing%20the%20chemical%20element%20Praseod%C3%ADmio%2C%20O%20mestre%20do%20vidro%20verde%20e%20dos%20%C3%ADm%C3%A3s%20poderosos%2C%20um%20her%C3%B3i%20que%20une%20for%C3%A7a%20magn%C3%A9tica%20e%20eleg%C3%A2ncia%20%C3%B3tica.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Praseod%C3%ADmio%20properties%20with%20fuchsia%20and%20pink%20crystalline%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
       { "id": 1, "label": "Massa Atômica", "value": "140.91 u", "justification": "Massa atômica relativa do Praseodímio.", "score": 47 },
       { "id": 2, "label": "Abundância na Crosta", "value": "9.2 ppm", "justification": "Concentração média na crosta terrestre.", "score": 40 },
@@ -10792,7 +10792,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Neodímio",
     "heroName": "Neodymium Force",
     "heroDescription": "O titã dos ímãs permanentes e mestre do magnetismo supremo, herói que sustenta a tecnologia moderna com sua força invisível.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Neodymium%20Force%2C%20representing%20the%20chemical%20element%20Neod%C3%ADmio%2C%20O%20tit%C3%A3%20dos%20%C3%ADm%C3%A3s%20permanentes%20e%20mestre%20do%20magnetismo%20supremo%2C%20her%C3%B3i%20que%20sustenta%20a%20tecnologia%20moderna%20com%20sua%20for%C3%A7a%20invis%C3%ADvel.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Neod%C3%ADmio%20properties%20with%20fuchsia%20and%20pink%20crystalline%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
       { "id": 1, "label": "Massa Atômica", "value": "144.24 u", "justification": "Massa atômica relativa do Neodímio.", "score": 48 },
       { "id": 2, "label": "Abundância na Crosta", "value": "41.5 ppm", "justification": "Concentração média na crosta terrestre.", "score": 40 },
@@ -10829,7 +10829,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Promécio",
     "heroName": "Promethium Glow",
     "heroDescription": "O portador da luz eterna e mestre da luminescência atômica, herói que brilha na escuridão com energia radioativa.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Promethium%20Glow%2C%20representing%20the%20chemical%20element%20Prom%C3%A9cio%2C%20O%20portador%20da%20luz%20eterna%20e%20mestre%20da%20luminesc%C3%AAncia%20at%C3%B4mica%2C%20her%C3%B3i%20que%20brilha%20na%20escurid%C3%A3o%20com%20energia%20radioativa.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Prom%C3%A9cio%20properties%20with%20fuchsia%20and%20pink%20crystalline%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
       { "id": 1, "label": "Massa Atômica", "value": "145 u", "justification": "Massa atômica relativa do Promécio.", "score": 48 },
       { "id": 2, "label": "Abundância na Crosta", "value": "0 ppm", "justification": "Concentração média na crosta terrestre.", "score": 40 },
@@ -10866,7 +10866,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Samário",
     "heroName": "Samarium Spark",
     "heroDescription": "O especialista em resistências extremas e mestre dos ímãs térmicos, herói que mantém sua força mesmo no calor das batalhas.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Samarium%20Spark%2C%20representing%20the%20chemical%20element%20Sam%C3%A1rio%2C%20O%20especialista%20em%20resist%C3%AAncias%20extremas%20e%20mestre%20dos%20%C3%ADm%C3%A3s%20t%C3%A9rmicos%2C%20her%C3%B3i%20que%20mant%C3%A9m%20sua%20for%C3%A7a%20mesmo%20no%20calor%20das%20batalhas.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Sam%C3%A1rio%20properties%20with%20fuchsia%20and%20pink%20crystalline%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
       { "id": 1, "label": "Massa Atômica", "value": "150.36 u", "justification": "Massa atômica relativa do Samário.", "score": 50 },
       { "id": 2, "label": "Abundância na Crosta", "value": "7.05 ppm", "justification": "Concentração média na crosta terrestre.", "score": 40 },
@@ -10903,7 +10903,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Európio",
     "heroName": "Europium Light",
     "heroDescription": "O mestre das cores vivas e guardião da autenticidade, herói que ilumina as telas do mundo e protege as moedas da falsificação.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Europium%20Light%2C%20representing%20the%20chemical%20element%20Eur%C3%B3pio%2C%20O%20mestre%20das%20cores%20vivas%20e%20guardi%C3%A3o%20da%20autenticidade%2C%20her%C3%B3i%20que%20ilumina%20as%20telas%20do%20mundo%20e%20protege%20as%20moedas%20da%20falsifica%C3%A7%C3%A3o.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Eur%C3%B3pio%20properties%20with%20fuchsia%20and%20pink%20crystalline%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
       { "id": 1, "label": "Massa Atômica", "value": "151.96 u", "justification": "Massa atômica relativa do Európio.", "score": 51 },
       { "id": 2, "label": "Abundância na Crosta", "value": "2.1 ppm", "justification": "Concentração média na crosta terrestre.", "score": 40 },
@@ -10940,7 +10940,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Gadovínio",
     "heroName": "Gadolinium Vision",
     "heroDescription": "O mestre do contraste magnético e guardião do frio extremo, herói que revela segredos médicos e domina a refrigeração do futuro.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Gadolinium%20Vision%2C%20representing%20the%20chemical%20element%20Gadov%C3%ADnio%2C%20O%20mestre%20do%20contraste%20magn%C3%A9tico%20e%20guardi%C3%A3o%20do%20frio%20extremo%2C%20her%C3%B3i%20que%20revela%20segredos%20m%C3%A9dicos%20e%20domina%20a%20refrigera%C3%A7%C3%A3o%20do%20futuro.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Gadov%C3%ADnio%20properties%20with%20fuchsia%20and%20pink%20crystalline%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
       { "id": 1, "label": "Massa Atômica", "value": "157.25 u", "justification": "Massa atômica relativa do Gadolínio.", "score": 52 },
       { "id": 2, "label": "Abundância na Crosta", "value": "6.2 ppm", "justification": "Concentração média na crosta terrestre.", "score": 40 },
@@ -10977,7 +10977,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Térbio",
     "heroName": "Lumina Térbio",
     "heroDescription": "O mestre da fluorescência e das telas coloridas, capaz de transformar energia em brilho esmeralda.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Lumina%20T%C3%A9rbio%2C%20representing%20the%20chemical%20element%20T%C3%A9rbio%2C%20O%20mestre%20da%20fluoresc%C3%AAncia%20e%20das%20telas%20coloridas%2C%20capaz%20de%20transformar%20energia%20em%20brilho%20esmeralda.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20T%C3%A9rbio%20properties%20with%20fuchsia%20and%20pink%20crystalline%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
           "id": 1,
@@ -11176,7 +11176,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Disprósio",
     "heroName": "Disprósio Magneticus",
     "heroDescription": "O guardião da resistência magnética extrema, essencial para os motores que movem o futuro.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Dispr%C3%B3sio%20Magneticus%2C%20representing%20the%20chemical%20element%20Dispr%C3%B3sio%2C%20O%20guardi%C3%A3o%20da%20resist%C3%AAncia%20magn%C3%A9tica%20extrema%2C%20essencial%20para%20os%20motores%20que%20movem%20o%20futuro.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Dispr%C3%B3sio%20properties%20with%20fuchsia%20and%20pink%20crystalline%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
           "id": 1,
@@ -11375,7 +11375,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Hólmio",
     "heroName": "Hólmio Laser",
     "heroDescription": "O herói da precisão absoluta, mestre das radiações infravermelhas e cirurgias de luz.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20H%C3%B3lmio%20Laser%2C%20representing%20the%20chemical%20element%20H%C3%B3lmio%2C%20O%20her%C3%B3i%20da%20precis%C3%A3o%20absoluta%2C%20mestre%20das%20radia%C3%A7%C3%B5es%20infravermelhas%20e%20cirurgias%20de%20luz.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20H%C3%B3lmio%20properties%20with%20fuchsia%20and%20pink%20crystalline%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
           "id": 1,
@@ -11574,7 +11574,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Érbio",
     "heroName": "Érbio Óptico",
     "heroDescription": "O mensageiro das profundezas, amplificando as vozes do mundo através dos fios de luz.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20%C3%89rbio%20%C3%93ptico%2C%20representing%20the%20chemical%20element%20%C3%89rbio%2C%20O%20mensageiro%20das%20profundezas%2C%20amplificando%20as%20vozes%20do%20mundo%20atrav%C3%A9s%20dos%20fios%20de%20luz.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20%C3%89rbio%20properties%20with%20fuchsia%20and%20pink%20crystalline%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
           "id": 1,
@@ -11773,7 +11773,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Túlio",
     "heroName": "Túlio Radiante",
     "heroDescription": "O herói da visão invisível, capaz de gerar raios-X em dispositivos portáteis para salvar vidas.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20T%C3%BAlio%20Radiante%2C%20representing%20the%20chemical%20element%20T%C3%BAlio%2C%20O%20her%C3%B3i%20da%20vis%C3%A3o%20invis%C3%ADvel%2C%20capaz%20de%20gerar%20raios-X%20em%20dispositivos%20port%C3%A1teis%20para%20salvar%20vidas.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20T%C3%BAlio%20properties%20with%20fuchsia%20and%20pink%20crystalline%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
           "id": 1,
@@ -11972,7 +11972,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Itérbio",
     "heroName": "Itérbio Quantum",
     "heroDescription": "O mestre da precisão atômica e do tempo infinito, a pulsação dos relógios mais precisos da Terra.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20It%C3%A9rbio%20Quantum%2C%20representing%20the%20chemical%20element%20It%C3%A9rbio%2C%20O%20mestre%20da%20precis%C3%A3o%20at%C3%B4mica%20e%20do%20tempo%20infinito%2C%20a%20pulsa%C3%A7%C3%A3o%20dos%20rel%C3%B3gios%20mais%20precisos%20da%20Terra.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20It%C3%A9rbio%20properties%20with%20fuchsia%20and%20pink%20crystalline%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
           "id": 1,
@@ -12171,7 +12171,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Lutécio",
     "heroName": "Lutécio Sideral",
     "heroDescription": "O herói das altas energias, capaz de converter radiação em luz visível para diagnósticos espaciais.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Lut%C3%A9cio%20Sideral%2C%20representing%20the%20chemical%20element%20Lut%C3%A9cio%2C%20O%20her%C3%B3i%20das%20altas%20energias%2C%20capaz%20de%20converter%20radia%C3%A7%C3%A3o%20em%20luz%20vis%C3%ADvel%20para%20diagn%C3%B3sticos%20espaciais.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Lut%C3%A9cio%20properties%20with%20fuchsia%20and%20pink%20crystalline%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
           "id": 1,
@@ -12370,7 +12370,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Háfnio",
     "heroName": "Háfnio Reactor",
     "heroDescription": "O escudo das correntes nucleares, capaz de absorver nêutrons e manter o equilíbrio atômico.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20H%C3%A1fnio%20Reactor%2C%20representing%20the%20chemical%20element%20H%C3%A1fnio%2C%20O%20escudo%20das%20correntes%20nucleares%2C%20capaz%20de%20absorver%20n%C3%AAutrons%20e%20manter%20o%20equil%C3%ADbrio%20at%C3%B4mico.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20H%C3%A1fnio%20properties%20with%20metallic%20blue%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
           "id": 1,
@@ -12569,7 +12569,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Tântalo",
     "heroName": "Tântalo Eterno",
     "heroDescription": "O guardião da energia minúscula, mestre dos capacitores que sustentam a era digital móvel.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20T%C3%A2ntalo%20Eterno%2C%20representing%20the%20chemical%20element%20T%C3%A2ntalo%2C%20O%20guardi%C3%A3o%20da%20energia%20min%C3%BAscula%2C%20mestre%20dos%20capacitores%20que%20sustentam%20a%20era%20digital%20m%C3%B3vel.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20T%C3%A2ntalo%20properties%20with%20metallic%20blue%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
           "id": 1,
@@ -12768,7 +12768,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Tungstênio",
     "heroName": "Tungstênio Invictus",
     "heroDescription": "O herói inquebrável, dono do ponto de fusão supremo, capaz de brilhar intensamente sem nunca derreter.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Tungst%C3%AAnio%20Invictus%2C%20representing%20the%20chemical%20element%20Tungst%C3%AAnio%2C%20O%20her%C3%B3i%20inquebr%C3%A1vel%2C%20dono%20do%20ponto%20de%20fus%C3%A3o%20supremo%2C%20capaz%20de%20brilhar%20intensamente%20sem%20nunca%20derreter.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Tungst%C3%AAnio%20properties%20with%20metallic%20blue%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
           "id": 1,
@@ -12967,7 +12967,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Rênio",
     "heroName": "Rênio Flame",
     "heroDescription": "O mestre das superligas e do calor infernal, forjando os motores de aviões que cruzam os céus.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20R%C3%AAnio%20Flame%2C%20representing%20the%20chemical%20element%20R%C3%AAnio%2C%20O%20mestre%20das%20superligas%20e%20do%20calor%20infernal%2C%20forjando%20os%20motores%20de%20avi%C3%B5es%20que%20cruzam%20os%20c%C3%A9us.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20R%C3%AAnio%20properties%20with%20metallic%20blue%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
           "id": 1,
@@ -13166,7 +13166,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Ósmio",
     "heroName": "Ósmio Denso",
     "heroDescription": "O herói de peso inigualável, o elemento mais denso da natureza e mestre da resistência extrema.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20%C3%93smio%20Denso%2C%20representing%20the%20chemical%20element%20%C3%93smio%2C%20O%20her%C3%B3i%20de%20peso%20inigual%C3%A1vel%2C%20o%20elemento%20mais%20denso%20da%20natureza%20e%20mestre%20da%20resist%C3%AAncia%20extrema.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20%C3%93smio%20properties%20with%20metallic%20blue%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
           "id": 1,
@@ -13365,7 +13365,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Irídio",
     "heroName": "Irídio Impact",
     "heroDescription": "O sobrevivente do cosmos, o guardião que marca a fronteira entre as eras dos dinossauros e dos mamíferos.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Ir%C3%ADdio%20Impact%2C%20representing%20the%20chemical%20element%20Ir%C3%ADdio%2C%20O%20sobrevivente%20do%20cosmos%2C%20o%20guardi%C3%A3o%20que%20marca%20a%20fronteira%20entre%20as%20eras%20dos%20dinossauros%20e%20dos%20mam%C3%ADferos.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Ir%C3%ADdio%20properties%20with%20metallic%20blue%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
           "id": 1,
@@ -13564,7 +13564,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Platina",
     "heroName": "Platina Preciosa",
     "heroDescription": "A rainha da catálise e da pureza, limpando o ar do planeta enquanto brilha com elegância inabalável.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Platina%20Preciosa%2C%20representing%20the%20chemical%20element%20Platina%2C%20A%20rainha%20da%20cat%C3%A1lise%20e%20da%20pureza%2C%20limpando%20o%20ar%20do%20planeta%20enquanto%20brilha%20com%20eleg%C3%A2ncia%20inabal%C3%A1vel.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Platina%20properties%20with%20metallic%20blue%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
           "id": 1,
@@ -13763,7 +13763,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Ouro",
     "heroName": "Ouro Soberano",
     "heroDescription": "O monarca da eternidade e da condutividade, o metal que nunca oxida e sustenta a glória e a tecnologia.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Ouro%20Soberano%2C%20representing%20the%20chemical%20element%20Ouro%2C%20O%20monarca%20da%20eternidade%20e%20da%20condutividade%2C%20o%20metal%20que%20nunca%20oxida%20e%20sustenta%20a%20gl%C3%B3ria%20e%20a%20tecnologia.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Ouro%20properties%20with%20metallic%20blue%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
           "id": 1,
@@ -13962,7 +13962,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Mercúrio",
     "heroName": "Mercúrio Líquido",
     "heroDescription": "O mensageiro fluido da temperatura, mestre das formas mutáveis e único metal que dança em estado líquido.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Merc%C3%BArio%20L%C3%ADquido%2C%20representing%20the%20chemical%20element%20Merc%C3%BArio%2C%20O%20mensageiro%20fluido%20da%20temperatura%2C%20mestre%20das%20formas%20mut%C3%A1veis%20e%20%C3%BAnico%20metal%20que%20dan%C3%A7a%20em%20estado%20l%C3%ADquido.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Merc%C3%BArio%20properties%20with%20metallic%20blue%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
           "id": 1,
@@ -14161,7 +14161,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Tálio",
     "heroName": "Tálio Fantasma",
     "heroDescription": "O mestre da furtividade e dos venenos invisíveis, capaz de se ocultar enquanto detecta o infravermelho.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20T%C3%A1lio%20Fantasma%2C%20representing%20the%20chemical%20element%20T%C3%A1lio%2C%20O%20mestre%20da%20furtividade%20e%20dos%20venenos%20invis%C3%ADveis%2C%20capaz%20de%20se%20ocultar%20enquanto%20detecta%20o%20infravermelho.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20T%C3%A1lio%20properties%20with%20indigo%20and%20violet%20chrome%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
             "id": 1,
@@ -14360,7 +14360,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Chumbo",
     "heroName": "Chumbo Pesado",
     "heroDescription": "O escudo protetor contra o invisível, a barreira final contra as radiações que ameaçam a vida.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Chumbo%20Pesado%2C%20representing%20the%20chemical%20element%20Chumbo%2C%20O%20escudo%20protetor%20contra%20o%20invis%C3%ADvel%2C%20a%20barreira%20final%20contra%20as%20radia%C3%A7%C3%B5es%20que%20amea%C3%A7am%20a%20vida.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Chumbo%20properties%20with%20indigo%20and%20violet%20chrome%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
             "id": 1,
@@ -14559,7 +14559,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Bismuto",
     "heroName": "Bismuto Cristal",
     "heroDescription": "O alquimista das cores arco-íris, o herói metálico mais ecológico e mestre da levitação diamagnética.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Bismuto%20Cristal%2C%20representing%20the%20chemical%20element%20Bismuto%2C%20O%20alquimista%20das%20cores%20arco-%C3%ADris%2C%20o%20her%C3%B3i%20met%C3%A1lico%20mais%20ecol%C3%B3gico%20e%20mestre%20da%20levita%C3%A7%C3%A3o%20diamagn%C3%A9tica.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Bismuto%20properties%20with%20indigo%20and%20violet%20chrome%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
             "id": 1,
@@ -14758,7 +14758,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Polônio",
     "heroName": "Polônio Estelar",
     "heroDescription": "A centelha azul do vácuo, o herói intensamente radioativo que aquece as sondas espaciais no frio eterno.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Pol%C3%B4nio%20Estelar%2C%20representing%20the%20chemical%20element%20Pol%C3%B4nio%2C%20A%20centelha%20azul%20do%20v%C3%A1cuo%2C%20o%20her%C3%B3i%20intensamente%20radioativo%20que%20aquece%20as%20sondas%20espaciais%20no%20frio%20eterno.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Pol%C3%B4nio%20properties%20with%20teal%20and%20cyan%20energy%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
             "id": 1,
@@ -14957,7 +14957,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Astato",
     "heroName": "Astatínio Fugaz",
     "heroDescription": "A sombra mais rara da Terra, um herói que brilha por um instante antes de desaparecer no mistério.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Astat%C3%ADnio%20Fugaz%2C%20representing%20the%20chemical%20element%20Astato%2C%20A%20sombra%20mais%20rara%20da%20Terra%2C%20um%20her%C3%B3i%20que%20brilha%20por%20um%20instante%20antes%20de%20desaparecer%20no%20mist%C3%A9rio.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Astato%20properties%20with%20lime%20green%20glowing%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
             "id": 1,
@@ -15156,7 +15156,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Radônio",
     "heroName": "Radônio Invisível",
     "heroDescription": "O fantasma das profundezas terrestres, um gás nobre e radioativo que emana silenciosamente do solo.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Rad%C3%B4nio%20Invis%C3%ADvel%2C%20representing%20the%20chemical%20element%20Rad%C3%B4nio%2C%20O%20fantasma%20das%20profundezas%20terrestres%2C%20um%20g%C3%A1s%20nobre%20e%20radioativo%20que%20emana%20silenciosamente%20do%20solo.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Rad%C3%B4nio%20properties%20with%20sky%20blue%20and%20purple%20neon%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
             "id": 1,
@@ -15355,7 +15355,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Frâncio",
     "heroName": "Frâncio Efêmero",
     "heroDescription": "O rei da instabilidade, o elemento natural mais instável que explode ao menor contato com a água.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Fr%C3%A2ncio%20Ef%C3%AAmero%2C%20representing%20the%20chemical%20element%20Fr%C3%A2ncio%2C%20O%20rei%20da%20instabilidade%2C%20o%20elemento%20natural%20mais%20inst%C3%A1vel%20que%20explode%20ao%20menor%20contato%20com%20a%20%C3%A1gua.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Fr%C3%A2ncio%20properties%20with%20golden%20amber%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
             "id": 1,
@@ -15554,7 +15554,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Rádio",
     "heroName": "Rádio Brilhante",
     "heroDescription": "O herói que iluminou a ciência, o legado eterno de Marie Curie e o mestre da luminescência atômica.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20R%C3%A1dio%20Brilhante%2C%20representing%20the%20chemical%20element%20R%C3%A1dio%2C%20O%20her%C3%B3i%20que%20iluminou%20a%20ci%C3%AAncia%2C%20o%20legado%20eterno%20de%20Marie%20Curie%20e%20o%20mestre%20da%20luminesc%C3%AAncia%20at%C3%B4mica.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20R%C3%A1dio%20properties%20with%20orange%20and%20yellow%20metallic%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
             "id": 1,
@@ -15753,7 +15753,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Actínio",
     "heroName": "Actínio Ativo",
     "heroDescription": "O precursor da luz nuclear, capaz de brilhar no escuro com um azul etéreo e intenso.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Act%C3%ADnio%20Ativo%2C%20representing%20the%20chemical%20element%20Act%C3%ADnio%2C%20O%20precursor%20da%20luz%20nuclear%2C%20capaz%20de%20brilhar%20no%20escuro%20com%20um%20azul%20et%C3%A9reo%20e%20intenso.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Act%C3%ADnio%20properties%20with%20deep%20violet%20and%20dark%20energy%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
             "id": 1,
@@ -15952,7 +15952,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Tório",
     "heroName": "Tório Sustentável",
     "heroDescription": "O gigante da energia verde do futuro, mais abundante que o urânio e mestre dos reatores seguros.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20T%C3%B3rio%20Sustent%C3%A1vel%2C%20representing%20the%20chemical%20element%20T%C3%B3rio%2C%20O%20gigante%20da%20energia%20verde%20do%20futuro%2C%20mais%20abundante%20que%20o%20ur%C3%A2nio%20e%20mestre%20dos%20reatores%20seguros.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20T%C3%B3rio%20properties%20with%20deep%20violet%20and%20dark%20energy%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
             "id": 1,
@@ -16151,7 +16151,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Protactínio",
     "heroName": "Protactínio Ancestral",
     "heroDescription": "O elo perdido dos actinídeos, mestre das transformações atômicas lentas e profundas.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Protact%C3%ADnio%20Ancestral%2C%20representing%20the%20chemical%20element%20Protact%C3%ADnio%2C%20O%20elo%20perdido%20dos%20actin%C3%ADdeos%2C%20mestre%20das%20transforma%C3%A7%C3%B5es%20at%C3%B4micas%20lentas%20e%20profundas.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Protact%C3%ADnio%20properties%20with%20deep%20violet%20and%20dark%20energy%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
             "id": 1,
@@ -16350,7 +16350,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Urânio",
     "heroName": "Urânio Fissão",
     "heroDescription": "O titã do núcleo, a fonte suprema de poder e destruição, capaz de iluminar cidades ou mudar o curso da história.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Ur%C3%A2nio%20Fiss%C3%A3o%2C%20representing%20the%20chemical%20element%20Ur%C3%A2nio%2C%20O%20tit%C3%A3%20do%20n%C3%BAcleo%2C%20a%20fonte%20suprema%20de%20poder%20e%20destrui%C3%A7%C3%A3o%2C%20capaz%20de%20iluminar%20cidades%20ou%20mudar%20o%20curso%20da%20hist%C3%B3ria.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Ur%C3%A2nio%20properties%20with%20deep%20violet%20and%20dark%20energy%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
             "id": 1,
@@ -16549,7 +16549,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Netúnio",
     "heroName": "Neptúnio Voyager",
     "heroDescription": "O primeiro herói além do urânio, o navegador dos elementos transurânicos artificiais.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Nept%C3%BAnio%20Voyager%2C%20representing%20the%20chemical%20element%20Net%C3%BAnio%2C%20O%20primeiro%20her%C3%B3i%20al%C3%A9m%20do%20ur%C3%A2nio%2C%20o%20navegador%20dos%20elementos%20transur%C3%A2nicos%20artificiais.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Net%C3%BAnio%20properties%20with%20deep%20violet%20and%20dark%20energy%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
             "id": 1,
@@ -16748,7 +16748,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Plutônio",
     "heroName": "Plutônio Alfa",
     "heroDescription": "O motor do sistema solar, alimentando as naves que exploram os confins do espaço com seu calor atômico.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Plut%C3%B4nio%20Alfa%2C%20representing%20the%20chemical%20element%20Plut%C3%B4nio%2C%20O%20motor%20do%20sistema%20solar%2C%20alimentando%20as%20naves%20que%20exploram%20os%20confins%20do%20espa%C3%A7o%20com%20seu%20calor%20at%C3%B4mico.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Plut%C3%B4nio%20properties%20with%20deep%20violet%20and%20dark%20energy%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
             "id": 1,
@@ -16947,7 +16947,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Amerício",
     "heroName": "Amerício Alerta",
     "heroDescription": "O sentinela silencioso, presente em cada casa para detectar a ameaça invisível da fumaça.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Amer%C3%ADcio%20Alerta%2C%20representing%20the%20chemical%20element%20Amer%C3%ADcio%2C%20O%20sentinela%20silencioso%2C%20presente%20em%20cada%20casa%20para%20detectar%20a%20amea%C3%A7a%20invis%C3%ADvel%20da%20fuma%C3%A7a.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Amer%C3%ADcio%20properties%20with%20deep%20violet%20and%20dark%20energy%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
             "id": 1,
@@ -17146,7 +17146,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Cúrio",
     "heroName": "Cúrio Radioativo",
     "heroDescription": "O mestre do bombardeio de partículas, capaz de gerar calor intenso a partir de sua própria existência.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20C%C3%BArio%20Radioativo%2C%20representing%20the%20chemical%20element%20C%C3%BArio%2C%20O%20mestre%20do%20bombardeio%20de%20part%C3%ADculas%2C%20capaz%20de%20gerar%20calor%20intenso%20a%20partir%20de%20sua%20pr%C3%B3pria%20exist%C3%AAncia.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20C%C3%BArio%20properties%20with%20deep%20violet%20and%20dark%20energy%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
             "id": 1,
@@ -17345,7 +17345,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Berquélio",
     "heroName": "Berquélio Sintético",
     "heroDescription": "O herói dos laboratórios de Berkeley, forjado na chama dos aceleradores de partículas.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Berqu%C3%A9lio%20Sint%C3%A9tico%2C%20representing%20the%20chemical%20element%20Berqu%C3%A9lio%2C%20O%20her%C3%B3i%20dos%20laborat%C3%B3rios%20de%20Berkeley%2C%20forjado%20na%20chama%20dos%20aceleradores%20de%20part%C3%ADculas.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Berqu%C3%A9lio%20properties%20with%20deep%20violet%20and%20dark%20energy%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
             "id": 1,
@@ -17544,7 +17544,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Califórnio",
     "heroName": "Califórnio Neutrônico",
     "heroDescription": "O canhão de nêutrons, capaz de iniciar reatores e encontrar tesouros escondidos sob a terra.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Calif%C3%B3rnio%20Neutr%C3%B4nico%2C%20representing%20the%20chemical%20element%20Calif%C3%B3rnio%2C%20O%20canh%C3%A3o%20de%20n%C3%AAutrons%2C%20capaz%20de%20iniciar%20reatores%20e%20encontrar%20tesouros%20escondidos%20sob%20a%20terra.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Calif%C3%B3rnio%20properties%20with%20deep%20violet%20and%20dark%20energy%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
             "id": 1,
@@ -17743,7 +17743,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Enstênio",
     "heroName": "Einstênio Relativo",
     "heroDescription": "O gênio atômico, nomeado em honra à mente mais brilhante, nascido do fogo das explosões térmicas.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Einst%C3%AAnio%20Relativo%2C%20representing%20the%20chemical%20element%20Enst%C3%AAnio%2C%20O%20g%C3%AAnio%20at%C3%B4mico%2C%20nomeado%20em%20honra%20%C3%A0%20mente%20mais%20brilhante%2C%20nascido%20do%20fogo%20das%20explos%C3%B5es%20t%C3%A9rmicas.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Enst%C3%AAnio%20properties%20with%20deep%20violet%20and%20dark%20energy%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
             "id": 1,
@@ -17942,7 +17942,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Férmio",
     "heroName": "Férmio Quântico",
     "heroDescription": "O mestre dos processos nucleares rápidos, o limite final dos elementos que podem ser criados por bombardeio.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20F%C3%A9rmio%20Qu%C3%A2ntico%2C%20representing%20the%20chemical%20element%20F%C3%A9rmio%2C%20O%20mestre%20dos%20processos%20nucleares%20r%C3%A1pidos%2C%20o%20limite%20final%20dos%20elementos%20que%20podem%20ser%20criados%20por%20bombardeio.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20F%C3%A9rmio%20properties%20with%20deep%20violet%20and%20dark%20energy%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
             "id": 1,
@@ -18141,7 +18141,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Mendelévio",
     "heroName": "Mendelévio Tabela",
     "heroDescription": "O arquiteto da ordem, o herói que reconhece a beleza da organização elemental russa.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Mendel%C3%A9vio%20Tabela%2C%20representing%20the%20chemical%20element%20Mendel%C3%A9vio%2C%20O%20arquiteto%20da%20ordem%2C%20o%20her%C3%B3i%20que%20reconhece%20a%20beleza%20da%20organiza%C3%A7%C3%A3o%20elemental%20russa.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Mendel%C3%A9vio%20properties%20with%20deep%20violet%20and%20dark%20energy%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
             "id": 1,
@@ -18340,7 +18340,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Nobélio",
     "heroName": "Nobélio Dinâmico",
     "heroDescription": "O herói do prêmio supremo, forjado no choque entre átomos pesados e sonhos de descoberta.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Nob%C3%A9lio%20Din%C3%A2mico%2C%20representing%20the%20chemical%20element%20Nob%C3%A9lio%2C%20O%20her%C3%B3i%20do%20pr%C3%AAmio%20supremo%2C%20forjado%20no%20choque%20entre%20%C3%A1tomos%20pesados%20e%20sonhos%20de%20descoberta.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Nob%C3%A9lio%20properties%20with%20deep%20violet%20and%20dark%20energy%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
             "id": 1,
@@ -18539,7 +18539,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Laurêncio",
     "heroName": "Laurêncio Cíclotron",
     "heroDescription": "O caçador do fim da linha dos actinídeos, mestre dos aceleradores circulares de energia.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Laur%C3%AAncio%20C%C3%ADclotron%2C%20representing%20the%20chemical%20element%20Laur%C3%AAncio%2C%20O%20ca%C3%A7ador%20do%20fim%20da%20linha%20dos%20actin%C3%ADdeos%2C%20mestre%20dos%20aceleradores%20circulares%20de%20energia.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Laur%C3%AAncio%20properties%20with%20deep%20violet%20and%20dark%20energy%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
             "id": 1,
@@ -18738,7 +18738,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Rutherfórdio",
     "heroName": "Rutherfórdio Nuclear",
     "heroDescription": "O herói do núcleo central, o primeiro dos elementos superpesados a desafiar as leis da estabilidade.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Rutherf%C3%B3rdio%20Nuclear%2C%20representing%20the%20chemical%20element%20Rutherf%C3%B3rdio%2C%20O%20her%C3%B3i%20do%20n%C3%BAcleo%20central%2C%20o%20primeiro%20dos%20elementos%20superpesados%20a%20desafiar%20as%20leis%20da%20estabilidade.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Rutherf%C3%B3rdio%20properties%20with%20metallic%20blue%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
             "id": 1,
@@ -18937,7 +18937,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Dúbnio",
     "heroName": "Dúbnio Pesado",
     "heroDescription": "O gigante da colaboração russa, uma ponte estável na fronteira do desconhecido atômico.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20D%C3%BAbnio%20Pesado%2C%20representing%20the%20chemical%20element%20D%C3%BAbnio%2C%20O%20gigante%20da%20colabora%C3%A7%C3%A3o%20russa%2C%20uma%20ponte%20est%C3%A1vel%20na%20fronteira%20do%20desconhecido%20at%C3%B4mico.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20D%C3%BAbnio%20properties%20with%20metallic%20blue%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
             "id": 1,
@@ -19136,7 +19136,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Seabórgio",
     "heroName": "Seabórgio Eterno",
     "heroDescription": "O mestre das sínteses impossíveis, o único herói nomeado em honra a um cientista ainda vivo em sua criação.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Seab%C3%B3rgio%20Eterno%2C%20representing%20the%20chemical%20element%20Seab%C3%B3rgio%2C%20O%20mestre%20das%20s%C3%ADnteses%20imposs%C3%ADveis%2C%20o%20%C3%BAnico%20her%C3%B3i%20nomeado%20em%20honra%20a%20um%20cientista%20ainda%20vivo%20em%20sua%20cria%C3%A7%C3%A3o.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Seab%C3%B3rgio%20properties%20with%20metallic%20blue%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
             "id": 1,
@@ -19335,7 +19335,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Bóhrio",
     "heroName": "Bóhrio Órbita",
     "heroDescription": "O guardião da estrutura atômica moderna, mestre das camadas onde os elétrons dançam.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20B%C3%B3hrio%20%C3%93rbita%2C%20representing%20the%20chemical%20element%20B%C3%B3hrio%2C%20O%20guardi%C3%A3o%20da%20estrutura%20at%C3%B4mica%20moderna%2C%20mestre%20das%20camadas%20onde%20os%20el%C3%A9trons%20dan%C3%A7am.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20B%C3%B3hrio%20properties%20with%20metallic%20blue%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
             "id": 1,
@@ -19534,7 +19534,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Hássio",
     "heroName": "Hássio Denso",
     "heroDescription": "O titã superpesado, mestre da densidade teórica que desafia os limites da matéria sólida.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20H%C3%A1ssio%20Denso%2C%20representing%20the%20chemical%20element%20H%C3%A1ssio%2C%20O%20tit%C3%A3%20superpesado%2C%20mestre%20da%20densidade%20te%C3%B3rica%20que%20desafia%20os%20limites%20da%20mat%C3%A9ria%20s%C3%B3lida.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20H%C3%A1ssio%20properties%20with%20metallic%20blue%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
             "id": 1,
@@ -19733,7 +19733,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Meitnério",
     "heroName": "Meitnério Brilhante",
     "heroDescription": "A heroína da fissão descoberta, o reconhecimento tardio de uma das mentes mais brilhantes da física.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Meitn%C3%A9rio%20Brilhante%2C%20representing%20the%20chemical%20element%20Meitn%C3%A9rio%2C%20A%20hero%C3%ADna%20da%20fiss%C3%A3o%20descoberta%2C%20o%20reconhecimento%20tardio%20de%20uma%20das%20mentes%20mais%20brilhantes%20da%20f%C3%ADsica.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Meitn%C3%A9rio%20properties%20with%20metallic%20blue%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
             "id": 1,
@@ -19932,7 +19932,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Darmstádtio",
     "heroName": "Darmstádtio Heavy",
     "heroDescription": "O colosso das terras alemãs, forjado na precisão dos aceleradores de íons pesados.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Darmst%C3%A1dtio%20Heavy%2C%20representing%20the%20chemical%20element%20Darmst%C3%A1dtio%2C%20O%20colosso%20das%20terras%20alem%C3%A3s%2C%20forjado%20na%20precis%C3%A3o%20dos%20aceleradores%20de%20%C3%ADons%20pesados.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Darmst%C3%A1dtio%20properties%20with%20metallic%20blue%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
             "id": 1,
@@ -20131,7 +20131,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Roentgênio",
     "heroName": "Roentgênio X",
     "heroDescription": "O herói dos raios invisíveis, capaz de atravessar a matéria com o poder da radiação diagnóstica.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Roentg%C3%AAnio%20X%2C%20representing%20the%20chemical%20element%20Roentg%C3%AAnio%2C%20O%20her%C3%B3i%20dos%20raios%20invis%C3%ADveis%2C%20capaz%20de%20atravessar%20a%20mat%C3%A9ria%20com%20o%20poder%20da%20radia%C3%A7%C3%A3o%20diagn%C3%B3stica.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Roentg%C3%AAnio%20properties%20with%20metallic%20blue%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
             "id": 1,
@@ -20330,7 +20330,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Copernício",
     "heroName": "Copernício Estelar",
     "heroDescription": "O herói que colocou o sol no centro de tudo, brilhando como um metal volátil no fim da linha do bloco d.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Copern%C3%ADcio%20Estelar%2C%20representing%20the%20chemical%20element%20Copern%C3%ADcio%2C%20O%20her%C3%B3i%20que%20colocou%20o%20sol%20no%20centro%20de%20tudo%2C%20brilhando%20como%20um%20metal%20vol%C3%A1til%20no%20fim%20da%20linha%20do%20bloco%20d.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Copern%C3%ADcio%20properties%20with%20metallic%20blue%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
             "id": 1,
@@ -20529,7 +20529,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Nipônio",
     "heroName": "Nipônio Nascente",
     "heroDescription": "A luz do sol nascente, o primeiro herói descoberto nas terras do Japão.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Nip%C3%B4nio%20Nascente%2C%20representing%20the%20chemical%20element%20Nip%C3%B4nio%2C%20A%20luz%20do%20sol%20nascente%2C%20o%20primeiro%20her%C3%B3i%20descoberto%20nas%20terras%20do%20Jap%C3%A3o.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Nip%C3%B4nio%20properties%20with%20indigo%20and%20violet%20chrome%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
             "id": 1,
@@ -20728,7 +20728,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Fleróvio",
     "heroName": "Fleróvio Instável",
     "heroDescription": "O buscador da ilha de estabilidade, flutuando no mar de núcleos radioativos efêmeros.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Fler%C3%B3vio%20Inst%C3%A1vel%2C%20representing%20the%20chemical%20element%20Fler%C3%B3vio%2C%20O%20buscador%20da%20ilha%20de%20estabilidade%2C%20flutuando%20no%20mar%20de%20n%C3%BAcleos%20radioativos%20ef%C3%AAmeros.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Fler%C3%B3vio%20properties%20with%20indigo%20and%20violet%20chrome%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
             "id": 1,
@@ -20927,7 +20927,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Moscóvio",
     "heroName": "Moscóvio Exótico",
     "heroDescription": "O mestre da gravidade teórica e das camadas nucleares misteriosas, vindo do coração da Rússia.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Mosc%C3%B3vio%20Ex%C3%B3tico%2C%20representing%20the%20chemical%20element%20Mosc%C3%B3vio%2C%20O%20mestre%20da%20gravidade%20te%C3%B3rica%20e%20das%20camadas%20nucleares%20misteriosas%2C%20vindo%20do%20cora%C3%A7%C3%A3o%20da%20R%C3%BAssia.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Mosc%C3%B3vio%20properties%20with%20indigo%20and%20violet%20chrome%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
             "id": 1,
@@ -21126,7 +21126,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Livermório",
     "heroName": "Livermório Lab",
     "heroDescription": "O herói da síntese colaborativa global, unindo nações no laboratório da descoberta atômica.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Liverm%C3%B3rio%20Lab%2C%20representing%20the%20chemical%20element%20Liverm%C3%B3rio%2C%20O%20her%C3%B3i%20da%20s%C3%ADntese%20colaborativa%20global%2C%20unindo%20na%C3%A7%C3%B5es%20no%20laborat%C3%B3rio%20da%20descoberta%20at%C3%B4mica.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Liverm%C3%B3rio%20properties%20with%20indigo%20and%20violet%20chrome%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
             "id": 1,
@@ -21325,7 +21325,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Tennesso",
     "heroName": "Tennesso Halógeno",
     "heroDescription": "O último dos halogênios, uma faísca rara que brilha por milissegundos antes de se tornar lenda.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Tennesso%20Hal%C3%B3geno%2C%20representing%20the%20chemical%20element%20Tennesso%2C%20O%20%C3%BAltimo%20dos%20halog%C3%AAnios%2C%20uma%20fa%C3%ADsca%20rara%20que%20brilha%20por%20milissegundos%20antes%20de%20se%20tornar%20lenda.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Tennesso%20properties%20with%20lime%20green%20glowing%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
             "id": 1,
@@ -21524,7 +21524,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Oganésson",
     "heroName": "Oganésson Zenith",
     "heroDescription": "O mestre supremo da tabela periódica, o ponto final da jornada elemental e guardião do topo da pirâmide.",
-    "heroImage": "/placeholder.svg",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Ogan%C3%A9sson%20Zenith%2C%20representing%20the%20chemical%20element%20Ogan%C3%A9sson%2C%20O%20mestre%20supremo%20da%20tabela%20peri%C3%B3dica%2C%20o%20ponto%20final%20da%20jornada%20elemental%20e%20guardi%C3%A3o%20do%20topo%20da%20pir%C3%A2mide.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Ogan%C3%A9sson%20properties%20with%20sky%20blue%20and%20purple%20neon%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
         {
             "id": 1,
