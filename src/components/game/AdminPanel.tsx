@@ -144,7 +144,7 @@ export const AdminPanel = () => {
                       type="number" 
                       value={formData.number} 
                       onChange={e => handleInputChange('number', parseInt(e.target.value))}
-                      className="bg-black/40 border-white/10 font-black h-12"
+                      className="bg-black/40 border-white/10 font-black h-12 text-white"
                     />
                   </div>
                   <div className="space-y-2">
@@ -152,7 +152,7 @@ export const AdminPanel = () => {
                     <Input 
                       value={formData.symbol} 
                       onChange={e => handleInputChange('symbol', e.target.value)}
-                      className="bg-black/40 border-white/10 font-black h-12 text-center text-xl"
+                      className="bg-black/40 border-white/10 font-black h-12 text-center text-xl text-white"
                     />
                   </div>
                   <div className="space-y-2">
@@ -160,7 +160,7 @@ export const AdminPanel = () => {
                     <Input 
                       value={formData.name} 
                       onChange={e => handleInputChange('name', e.target.value)}
-                      className="bg-black/40 border-white/10 font-black h-12"
+                      className="bg-black/40 border-white/10 font-black h-12 text-white"
                     />
                   </div>
                 </div>
