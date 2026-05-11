@@ -21,8 +21,8 @@ const ATTRIBUTE_LABELS = [
 ];
 
 export const AdminPanel = () => {
-  const [editingSymbol, setEditingSymbol] = useState<string>("");
-  const [formData, setFormData] = useState<Partial<PeriodicElement>>({
+  const [editingSymbol, setEditingSymbol] = useState<string>("H");
+  const [formData, setFormData] = useState<Partial<PeriodicElement>>(ELEMENTS_DATA["H"] || {
     number: 0,
     symbol: "",
     name: "",
@@ -50,14 +50,20 @@ export const AdminPanel = () => {
   };
 
   const generateAIPrompt = () => {
-    if (!formData.name || !formData.heroName) {
-      toast.error("Preencha o nome do elemento e do herói primeiro!");
+    if (!formData.name || !formData.symbol) {
+      toast.error("Preencha o nome do elemento e o símbolo primeiro!");
       return;
     }
-    const prompt = `A cinematic superhero character named ${formData.heroName}, representing the chemical element ${formData.name}, ${formData.heroDescription}, wearing high-tech power suit inspired by ${formData.name} properties, highly detailed, digital art, masterpiece, comic book style, 8k resolution`;
+    const prompt = `A cinematic high-quality superhero character named ${formData.heroName || formData.name + ' Hero'}, representing the chemical element ${formData.name} (Symbol: ${formData.symbol}), ${formData.heroDescription || 'Master of ' + formData.name}. Style: glowing symbol ${formData.symbol} in a circular emblem on chest, flowing epic cape, atmospheric lighting, detailed metallic suit, majestic pose, hyper-realistic, 8k resolution.`;
     const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?width=600&height=800&nologo=true`;
     handleInputChange('heroImage', imageUrl);
-    toast.success("Prompt de imagem gerado com sucesso!");
+    toast.success("Novo design de herói gerado com sucesso!");
+  };
+
+  const generateAllHeros = () => {
+    toast.info("Iniciando geração de prompts para todos os 118 heróis...");
+    // In a real app, this would iterate and save. Here we show how the prompt would be structured.
+    console.log("Generating prompts for all elements with the new style...");
   };
 
   const saveElement = () => {
@@ -65,14 +71,17 @@ export const AdminPanel = () => {
       toast.error("Símbolo é obrigatório!");
       return;
     }
-    console.log("Saving element:", formData);
-    toast.success(`Elemento ${formData.symbol} salvo com sucesso! (Simulado)`);
+    // Update local data for this session
+    if (formData.symbol) {
+      ELEMENTS_DATA[formData.symbol] = formData as PeriodicElement;
+    }
+    toast.success(`Elemento ${formData.symbol} atualizado na memória com sucesso!`);
   };
 
   const loadElement = (symbol: string) => {
     const element = ELEMENTS_DATA[symbol];
     if (element) {
-      setFormData(element);
+      setFormData({...element});
       setEditingSymbol(symbol);
     }
   };
@@ -116,10 +125,10 @@ export const AdminPanel = () => {
         <CardHeader className="flex flex-row items-center justify-between border-b border-white/5">
           <CardTitle className="text-xl font-black italic uppercase tracking-tighter">Laboratório de Heróis</CardTitle>
           <div className="flex gap-2">
-            <Button size="sm" variant="outline" className="border-blue-600/30 text-blue-400 font-bold" onClick={() => toast.info("Geração de 118 heróis iniciada em segundo plano...")}>
+            <Button size="sm" variant="outline" className="border-blue-600/30 text-blue-400 font-bold" onClick={generateAllHeros}>
               <Wand2 className="w-4 h-4 mr-2" /> GERAR TUDO (IA)
             </Button>
-            <Button size="sm" onClick={saveElement} className="bg-blue-600 hover:bg-blue-700 font-bold">
+            <Button size="sm" onClick={saveElement} className="bg-blue-600 hover:bg-blue-700 font-bold text-white">
               <Save className="w-4 h-4 mr-2" /> ATUALIZAR
             </Button>
           </div>
@@ -135,7 +144,7 @@ export const AdminPanel = () => {
                       type="number" 
                       value={formData.number} 
                       onChange={e => handleInputChange('number', parseInt(e.target.value))}
-                      className="bg-black/40 border-white/10 font-black h-12"
+                      className="bg-black/40 border-white/10 font-black h-12 text-white"
                     />
                   </div>
                   <div className="space-y-2">
@@ -143,7 +152,7 @@ export const AdminPanel = () => {
                     <Input 
                       value={formData.symbol} 
                       onChange={e => handleInputChange('symbol', e.target.value)}
-                      className="bg-black/40 border-white/10 font-black h-12 text-center text-xl"
+                      className="bg-black/40 border-white/10 font-black h-12 text-center text-xl text-white"
                     />
                   </div>
                   <div className="space-y-2">
@@ -151,7 +160,7 @@ export const AdminPanel = () => {
                     <Input 
                       value={formData.name} 
                       onChange={e => handleInputChange('name', e.target.value)}
-                      className="bg-black/40 border-white/10 font-black h-12"
+                      className="bg-black/40 border-white/10 font-black h-12 text-white"
                     />
                   </div>
                 </div>
@@ -186,7 +195,7 @@ export const AdminPanel = () => {
                   <Textarea 
                     value={formData.heroDescription} 
                     onChange={e => handleInputChange('heroDescription', e.target.value)}
-                    className="bg-black/40 border-white/10 h-24 italic"
+                    className="bg-black/40 border-white/10 h-24 italic text-white"
                   />
                 </div>
               </div>
@@ -202,12 +211,18 @@ export const AdminPanel = () => {
                   <Input 
                     value={formData.heroImage} 
                     onChange={e => handleInputChange('heroImage', e.target.value)}
-                    className="bg-black/40 border-white/10 text-[10px] h-10"
+                    className="bg-black/40 border-white/10 text-[10px] h-10 text-white"
                   />
                 </div>
                 {formData.heroImage && (
                   <div className="aspect-[3/4] rounded-3xl bg-black/60 overflow-hidden border-2 border-white/10 shadow-2xl relative group">
-                    <img src={formData.heroImage} className="w-full h-full object-contain" alt="Preview" />
+                    <div className="w-full h-full animate-float">
+                      {formData.heroImage.endsWith('.mp4') ? (
+                        <video src={formData.heroImage} autoPlay loop muted playsInline className="w-full h-full object-contain" />
+                      ) : (
+                        <img src={formData.heroImage} className="w-full h-full object-contain" alt="Preview" />
+                      )}
+                    </div>
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
                        <span className="text-[10px] font-black italic text-white/60">PREVIEW DA CARTA</span>
                     </div>
@@ -251,7 +266,7 @@ export const AdminPanel = () => {
                           placeholder="Ex: 1.008 u" 
                           value={attr.value} 
                           onChange={e => handleAttributeChange(index, 'value', e.target.value)}
-                          className="bg-black/40 border-white/10 text-sm font-bold"
+                          className="bg-black/40 border-white/10 text-sm font-bold text-white"
                         />
                       </div>
                       <div className="space-y-1">
@@ -260,7 +275,7 @@ export const AdminPanel = () => {
                           placeholder="Conecte a propriedade química ao poder do herói..." 
                           value={attr.justification} 
                           onChange={e => handleAttributeChange(index, 'justification', e.target.value)}
-                          className="bg-black/40 border-white/10 text-[10px] h-16 italic"
+                          className="bg-black/40 border-white/10 text-[10px] h-16 italic text-white"
                         />
                       </div>
                     </div>
