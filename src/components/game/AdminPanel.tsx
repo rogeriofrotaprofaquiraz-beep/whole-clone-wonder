@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
-import { Plus, Save, Wand2, Trash2, List } from 'lucide-react';
+import { Plus, Save, Wand2, Trash2, List, Settings } from 'lucide-react';
 
 const ATTRIBUTE_LABELS = [
   "Fraquezas", "Risco/Benefício à natureza", "Risco à saúde", "Benefício",
@@ -39,8 +39,6 @@ export const AdminPanel = () => {
     }))
   });
 
-  const rarities: PeriodicElement['rarity'][] = ['Comum', 'Incomum', 'Raro', 'Épico', 'Lendário'];
-
   const handleInputChange = (field: keyof PeriodicElement, value: any) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
@@ -67,7 +65,6 @@ export const AdminPanel = () => {
       toast.error("Símbolo é obrigatório!");
       return;
     }
-    // In a real app, this would be an API call
     console.log("Saving element:", formData);
     toast.success(`Elemento ${formData.symbol} salvo com sucesso! (Simulado)`);
   };
@@ -88,11 +85,10 @@ export const AdminPanel = () => {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 p-4 max-w-[1600px] mx-auto animate-in fade-in duration-700">
-      {/* Sidebar: List */}
       <Card className="bg-slate-900/50 border-white/10 backdrop-blur-xl h-[800px] flex flex-col">
         <CardHeader className="border-b border-white/5">
-          <CardTitle className="flex items-center gap-2 text-xl font-black italic">
-            <List className="w-5 h-5 text-blue-400" /> GERENCIAR ELEMENTOS
+          <CardTitle className="flex items-center gap-2 text-xl font-black italic uppercase tracking-tighter">
+            <List className="w-5 h-5 text-blue-400" /> Biblioteca Elemental
           </CardTitle>
         </CardHeader>
         <CardContent className="p-0 flex-1 overflow-hidden">
@@ -102,10 +98,10 @@ export const AdminPanel = () => {
                 <button
                   key={symbol}
                   onClick={() => loadElement(symbol)}
-                  className={`p-2 rounded-lg border text-xs font-bold transition-all ${
+                  className={`p-2 rounded-lg border text-xs font-black transition-all ${
                     editingSymbol === symbol 
-                      ? 'bg-blue-600 border-white text-white' 
-                      : 'bg-white/5 border-white/5 hover:border-white/20 text-slate-400'
+                      ? 'bg-blue-600 border-white text-white scale-110 z-10 shadow-lg' 
+                      : 'bg-white/5 border-white/5 hover:border-white/20 text-slate-500'
                   }`}
                 >
                   {symbol}
@@ -116,117 +112,158 @@ export const AdminPanel = () => {
         </CardContent>
       </Card>
 
-      {/* Main Content: Form */}
       <Card className="lg:col-span-2 bg-slate-900/50 border-white/10 backdrop-blur-xl">
         <CardHeader className="flex flex-row items-center justify-between border-b border-white/5">
-          <CardTitle className="text-xl font-black italic">EDITOR DE HERÓI</CardTitle>
+          <CardTitle className="text-xl font-black italic uppercase tracking-tighter">Laboratório de Heróis</CardTitle>
           <div className="flex gap-2">
-            <Badge variant="outline" className="text-blue-400 border-blue-400/30">Média: {calculateAverage()}</Badge>
-            <Button size="sm" onClick={saveElement} className="bg-green-600 hover:bg-green-700">
-              <Save className="w-4 h-4 mr-2" /> SALVAR
+            <Button size="sm" variant="outline" className="border-blue-600/30 text-blue-400 font-bold" onClick={() => toast.info("Geração de 118 heróis iniciada em segundo plano...")}>
+              <Wand2 className="w-4 h-4 mr-2" /> GERAR TUDO (IA)
+            </Button>
+            <Button size="sm" onClick={saveElement} className="bg-blue-600 hover:bg-blue-700 font-bold">
+              <Save className="w-4 h-4 mr-2" /> ATUALIZAR
             </Button>
           </div>
         </CardHeader>
         <CardContent className="p-6">
           <ScrollArea className="h-[650px] pr-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-              <div className="space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+              <div className="space-y-6">
                 <div className="grid grid-cols-3 gap-4">
                   <div className="space-y-2">
-                    <Label>Nº Atômico</Label>
+                    <Label className="text-[10px] font-black uppercase tracking-widest text-slate-500">Nº Atômico</Label>
                     <Input 
                       type="number" 
                       value={formData.number} 
                       onChange={e => handleInputChange('number', parseInt(e.target.value))}
-                      className="bg-white/5 border-white/10"
+                      className="bg-black/40 border-white/10 font-black h-12"
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label>Símbolo</Label>
+                    <Label className="text-[10px] font-black uppercase tracking-widest text-slate-500">Símbolo</Label>
                     <Input 
                       value={formData.symbol} 
                       onChange={e => handleInputChange('symbol', e.target.value)}
-                      className="bg-white/5 border-white/10"
+                      className="bg-black/40 border-white/10 font-black h-12 text-center text-xl"
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label>Nome</Label>
+                    <Label className="text-[10px] font-black uppercase tracking-widest text-slate-500">Nome</Label>
                     <Input 
                       value={formData.name} 
                       onChange={e => handleInputChange('name', e.target.value)}
-                      className="bg-white/5 border-white/10"
+                      className="bg-black/40 border-white/10 font-black h-12"
                     />
                   </div>
                 </div>
+                
+                <div className="space-y-3">
+                  <Label className="text-[10px] font-black uppercase tracking-widest text-slate-500">Raridade da Carta</Label>
+                  <div className="flex gap-2 flex-wrap">
+                    {['Comum', 'Incomum', 'Raro', 'Épico', 'Lendário'].map(r => (
+                      <Button
+                        key={r}
+                        size="sm"
+                        variant={formData.rarity === r ? 'default' : 'outline'}
+                        className={`text-[10px] font-black italic px-4 ${formData.rarity === r ? 'bg-blue-600 border-white' : 'border-white/5 bg-white/5'}`}
+                        onClick={() => handleInputChange('rarity', r)}
+                      >
+                        {r.toUpperCase()}
+                      </Button>
+                    ))}
+                  </div>
+                </div>
+
                 <div className="space-y-2">
-                  <Label>Nome do Herói</Label>
+                  <Label className="text-[10px] font-black uppercase tracking-widest text-slate-500">Nome do Herói</Label>
                   <Input 
                     value={formData.heroName} 
                     onChange={e => handleInputChange('heroName', e.target.value)}
-                    className="bg-white/5 border-white/10"
+                    className="bg-black/40 border-white/10 h-12 font-bold italic text-blue-400"
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label>Descrição do Herói</Label>
+                  <Label className="text-[10px] font-black uppercase tracking-widest text-slate-500">Grito de Guerra / Descrição</Label>
                   <Textarea 
                     value={formData.heroDescription} 
                     onChange={e => handleInputChange('heroDescription', e.target.value)}
-                    className="bg-white/5 border-white/10 h-24"
+                    className="bg-black/40 border-white/10 h-24 italic"
                   />
                 </div>
               </div>
 
               <div className="space-y-4">
                 <div className="space-y-2">
-                  <Label className="flex justify-between">
-                    URL da Imagem / Vídeo
-                    <Button variant="link" size="sm" onClick={generateAIPrompt} className="h-auto p-0 text-blue-400">
-                      <Wand2 className="w-3 h-3 mr-1" /> Gerar com IA
+                  <Label className="flex justify-between text-[10px] font-black uppercase tracking-widest text-slate-500">
+                    Avatar Cinematográfico
+                    <Button variant="link" size="sm" onClick={generateAIPrompt} className="h-auto p-0 text-blue-400 font-black italic">
+                      <Wand2 className="w-3 h-3 mr-1" /> GERAR IMAGEM
                     </Button>
                   </Label>
                   <Input 
                     value={formData.heroImage} 
                     onChange={e => handleInputChange('heroImage', e.target.value)}
-                    className="bg-white/5 border-white/10"
+                    className="bg-black/40 border-white/10 text-[10px] h-10"
                   />
                 </div>
                 {formData.heroImage && (
-                  <div className="aspect-[3/4] rounded-xl bg-black/40 overflow-hidden border border-white/10">
+                  <div className="aspect-[3/4] rounded-3xl bg-black/60 overflow-hidden border-2 border-white/10 shadow-2xl relative group">
                     <img src={formData.heroImage} className="w-full h-full object-contain" alt="Preview" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                       <span className="text-[10px] font-black italic text-white/60">PREVIEW DA CARTA</span>
+                    </div>
                   </div>
                 )}
               </div>
             </div>
 
-            <div className="space-y-6">
-              <h3 className="text-lg font-black italic border-b border-white/5 pb-2">ATRIBUTOS (27 CRITÉRIOS)</h3>
+            <div className="space-y-8 pb-20">
+              <div className="flex items-center justify-between border-b border-white/10 pb-4">
+                <h3 className="text-xl font-black italic uppercase tracking-tighter flex items-center gap-2">
+                   <Settings className="w-5 h-5 text-blue-400" /> Matriz de Atributos
+                </h3>
+                <Badge className="bg-blue-600/20 text-blue-400 border-blue-600/30 px-4 py-1 text-lg font-black italic">
+                   POWER: {calculateAverage()}
+                </Badge>
+              </div>
+
               <div className="grid grid-cols-1 gap-4">
                 {formData.attributes?.map((attr, index) => (
-                  <div key={attr.id} className="p-4 bg-white/5 rounded-xl border border-white/5 space-y-3">
+                  <div key={attr.id} className="p-5 bg-white/5 rounded-2xl border border-white/5 space-y-4 hover:bg-white/10 transition-colors group">
                     <div className="flex justify-between items-center">
-                      <span className="text-xs font-black uppercase text-blue-400">{attr.label}</span>
-                      <div className="flex items-center gap-2">
-                        <Label className="text-[10px] text-slate-500">SCORE:</Label>
+                      <div className="flex flex-col">
+                        <span className="text-[10px] font-black uppercase tracking-widest text-blue-400/60">Critério #{attr.id}</span>
+                        <span className="text-sm font-black italic text-white uppercase">{attr.label}</span>
+                      </div>
+                      <div className="flex items-center gap-3 bg-black/40 p-2 rounded-xl border border-white/5">
+                        <Label className="text-[10px] font-black text-slate-500 uppercase">Score</Label>
                         <Input 
                           type="number" 
                           value={attr.score} 
                           onChange={e => handleAttributeChange(index, 'score', parseInt(e.target.value))}
-                          className="w-16 h-8 bg-black/40 border-white/10 text-xs"
+                          className="w-16 h-8 bg-blue-600/20 border-blue-600/30 text-xs font-black text-blue-400 text-center"
                         />
                       </div>
                     </div>
-                    <Input 
-                      placeholder="Valor (ex: 1.008 u, Altamente reativo...)" 
-                      value={attr.value} 
-                      onChange={e => handleAttributeChange(index, 'value', e.target.value)}
-                      className="bg-black/40 border-white/10 text-sm"
-                    />
-                    <Textarea 
-                      placeholder="Justificativa científica para o herói..." 
-                      value={attr.justification} 
-                      onChange={e => handleAttributeChange(index, 'justification', e.target.value)}
-                      className="bg-black/40 border-white/10 text-xs h-16"
-                    />
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="space-y-1">
+                        <Label className="text-[9px] font-black uppercase text-slate-600">Valor Nominal</Label>
+                        <Input 
+                          placeholder="Ex: 1.008 u" 
+                          value={attr.value} 
+                          onChange={e => handleAttributeChange(index, 'value', e.target.value)}
+                          className="bg-black/40 border-white/10 text-sm font-bold"
+                        />
+                      </div>
+                      <div className="space-y-1">
+                        <Label className="text-[9px] font-black uppercase text-slate-600">Justificativa Lore/Ciência</Label>
+                        <Textarea 
+                          placeholder="Conecte a propriedade química ao poder do herói..." 
+                          value={attr.justification} 
+                          onChange={e => handleAttributeChange(index, 'justification', e.target.value)}
+                          className="bg-black/40 border-white/10 text-[10px] h-16 italic"
+                        />
+                      </div>
+                    </div>
                   </div>
                 ))}
               </div>
