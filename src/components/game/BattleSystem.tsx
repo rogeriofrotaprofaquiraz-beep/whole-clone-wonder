@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { supabase } from "@/integrations/supabase/client";
 import { ELEMENTS_DATA, PeriodicElement } from '@/data/elements';
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Swords, Trophy, RefreshCw, ChevronRight, User, Users } from 'lucide-react';
 import { toast } from "sonner";
