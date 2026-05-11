@@ -21,8 +21,8 @@ const ATTRIBUTE_LABELS = [
 ];
 
 export const AdminPanel = () => {
-  const [editingSymbol, setEditingSymbol] = useState<string>("");
-  const [formData, setFormData] = useState<Partial<PeriodicElement>>({
+  const [editingSymbol, setEditingSymbol] = useState<string>("H");
+  const [formData, setFormData] = useState<Partial<PeriodicElement>>(ELEMENTS_DATA["H"] || {
     number: 0,
     symbol: "",
     name: "",
@@ -50,14 +50,20 @@ export const AdminPanel = () => {
   };
 
   const generateAIPrompt = () => {
-    if (!formData.name || !formData.heroName) {
-      toast.error("Preencha o nome do elemento e do herói primeiro!");
+    if (!formData.name || !formData.symbol) {
+      toast.error("Preencha o nome do elemento e o símbolo primeiro!");
       return;
     }
-    const prompt = `A cinematic superhero character named ${formData.heroName}, representing the chemical element ${formData.name}, ${formData.heroDescription}, wearing high-tech power suit inspired by ${formData.name} properties, highly detailed, digital art, masterpiece, comic book style, 8k resolution`;
+    const prompt = `A cinematic high-quality superhero character named ${formData.heroName || formData.name + ' Hero'}, representing the chemical element ${formData.name} (Symbol: ${formData.symbol}), ${formData.heroDescription || 'Master of ' + formData.name}. Style: glowing symbol ${formData.symbol} in a circular emblem on chest, flowing epic cape, atmospheric lighting, detailed metallic suit, majestic pose, hyper-realistic, 8k resolution.`;
     const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?width=600&height=800&nologo=true`;
     handleInputChange('heroImage', imageUrl);
-    toast.success("Prompt de imagem gerado com sucesso!");
+    toast.success("Novo design de herói gerado com sucesso!");
+  };
+
+  const generateAllHeros = () => {
+    toast.info("Iniciando geração de prompts para todos os 118 heróis...");
+    // In a real app, this would iterate and save. Here we show how the prompt would be structured.
+    console.log("Generating prompts for all elements with the new style...");
   };
 
   const saveElement = () => {
@@ -65,14 +71,17 @@ export const AdminPanel = () => {
       toast.error("Símbolo é obrigatório!");
       return;
     }
-    console.log("Saving element:", formData);
-    toast.success(`Elemento ${formData.symbol} salvo com sucesso! (Simulado)`);
+    // Update local data for this session
+    if (formData.symbol) {
+      ELEMENTS_DATA[formData.symbol] = formData as PeriodicElement;
+    }
+    toast.success(`Elemento ${formData.symbol} atualizado na memória com sucesso!`);
   };
 
   const loadElement = (symbol: string) => {
     const element = ELEMENTS_DATA[symbol];
     if (element) {
-      setFormData(element);
+      setFormData({...element});
       setEditingSymbol(symbol);
     }
   };
