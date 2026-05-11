@@ -3,6 +3,10 @@ import { ELEMENTS_DATA, PeriodicElement } from '../data/elements';
 import { Card, CardContent } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Badge } from "@/components/ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { BattleSystem } from "@/components/game/BattleSystem";
+import { ElementQuiz } from "@/components/game/ElementQuiz";
+import { Swords, Brain, LayoutGrid, Info } from 'lucide-react';
 
 const ElementCard = ({ element }: { element: PeriodicElement }) => {
   const isGas = ["Gás", "Gás incolor", "Gás nobre"].some(type => 
@@ -170,17 +174,32 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-slate-950 p-4 md:p-8 flex flex-col items-center justify-start font-sans text-white overflow-hidden">
-      <header className="mb-8 text-center">
-        <h1 className="text-4xl md:text-6xl font-black italic tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 mb-2">
+      <header className="mb-12 text-center relative">
+        <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px] pointer-events-none"></div>
+        <h1 className="text-5xl md:text-8xl font-black italic tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 mb-4 animate-in fade-in slide-in-from-top-10 duration-1000">
           ELEMENTAL HEROES
         </h1>
-        <p className="text-slate-400 text-sm md:text-base max-w-2xl">
-          Explore os 118 elementos da Tabela Periódica como super-heróis lendários. 
-          Compare seus 27 atributos e descubra o pilar da civilização.
+        <p className="text-slate-400 text-sm md:text-lg max-w-3xl mx-auto leading-relaxed opacity-80">
+          A fronteira final da ciência e do entretenimento. Domine os 118 elementos da Tabela Periódica, 
+          evolua suas estratégias no sistema de batalha e torne-se um Mestre Elemental.
         </p>
       </header>
 
-      <div className="flex flex-col lg:flex-row gap-12 items-start justify-center w-full max-w-[1400px]">
+      <Tabs defaultValue="collection" className="w-full max-w-[1440px] flex flex-col items-center">
+        <TabsList className="bg-slate-900/60 border border-white/10 p-1 rounded-2xl mb-12 h-auto gap-2 backdrop-blur-xl">
+          <TabsTrigger value="collection" className="px-8 py-4 rounded-xl data-[state=active]:bg-blue-600 font-bold transition-all gap-2">
+            <LayoutGrid className="w-5 h-5" /> COLEÇÃO
+          </TabsTrigger>
+          <TabsTrigger value="battle" className="px-8 py-4 rounded-xl data-[state=active]:bg-red-600 font-bold transition-all gap-2">
+            <Swords className="w-5 h-5" /> BATALHA
+          </TabsTrigger>
+          <TabsTrigger value="quiz" className="px-8 py-4 rounded-xl data-[state=active]:bg-purple-600 font-bold transition-all gap-2">
+            <Brain className="w-5 h-5" /> DESAFIO
+          </TabsTrigger>
+        </TabsList>
+
+        <TabsContent value="collection" className="w-full animate-in fade-in zoom-in-95 duration-500">
+          <div className="flex flex-col lg:flex-row gap-12 items-start justify-center w-full">
         {/* Lado Esquerdo: Tabela Periódica (Mini) */}
         <div className="flex-1 bg-slate-900/40 p-4 md:p-8 rounded-[2rem] border border-white/5 backdrop-blur-2xl shadow-[0_0_50px_rgba(0,0,0,0.3)] relative overflow-hidden group">
           {/* Grid Background Effect */}
@@ -290,9 +309,19 @@ const Index = () => {
             </div>
           )}
         </div>
-      </div>
+          </div>
+        </TabsContent>
 
-      <footer className="mt-12 text-slate-600 text-[10px] flex flex-col items-center gap-2">
+        <TabsContent value="battle" className="w-full animate-in fade-in slide-in-from-right-10 duration-500">
+          <BattleSystem />
+        </TabsContent>
+
+        <TabsContent value="quiz" className="w-full animate-in fade-in slide-in-from-left-10 duration-500">
+          <ElementQuiz />
+        </TabsContent>
+      </Tabs>
+
+      <footer className="mt-12 text-slate-600 text-[10px] flex flex-col items-center gap-2 pb-8">
         <p>© 2026 Elemental Heroes Game - Baseado em Dados Científicos Reais</p>
         <div className="flex gap-4">
           <span>118 Elementos</span>
