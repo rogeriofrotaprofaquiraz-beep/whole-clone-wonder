@@ -262,6 +262,9 @@ const Index = () => {
           <TabsTrigger value="quiz" className="px-8 py-4 rounded-xl data-[state=active]:bg-purple-600 font-bold transition-all gap-2">
             <Brain className="w-5 h-5" /> DESAFIO
           </TabsTrigger>
+          <TabsTrigger value="ranking" className="px-8 py-4 rounded-xl data-[state=active]:bg-yellow-600 font-bold transition-all gap-2 text-white">
+            <Trophy className="w-5 h-5" /> RANKING
+          </TabsTrigger>
           <TabsTrigger value="admin" className="px-8 py-4 rounded-xl data-[state=active]:bg-slate-700 font-bold transition-all gap-2">
             <Settings className="w-5 h-5" /> ADMIN
           </TabsTrigger>
