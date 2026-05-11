@@ -10,7 +10,8 @@ import { BattleSystem } from "@/components/game/BattleSystem";
 import { ElementQuiz } from "@/components/game/ElementQuiz";
 import { AdminPanel } from "@/components/game/AdminPanel";
 import { AuthSystem } from "@/components/game/AuthSystem";
-import { Swords, Brain, LayoutGrid, Settings, LogOut, User as UserIcon } from 'lucide-react';
+import { Ranking } from "@/components/game/Ranking";
+import { Swords, Brain, LayoutGrid, Settings, LogOut, User as UserIcon, Trophy } from 'lucide-react';
 import { toast } from "sonner";
 
 const ElementCard = ({ element }: { element: PeriodicElement }) => {
