@@ -54,6 +54,13 @@ export type Database = {
             foreignKeyName: "match_moves_player_id_fkey"
             columns: ["player_id"]
             isOneToOne: false
+            referencedRelation: "leaderboard"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "match_moves_player_id_fkey"
+            columns: ["player_id"]
+            isOneToOne: false
             referencedRelation: "profiles"
             referencedColumns: ["id"]
           },
@@ -62,31 +69,43 @@ export type Database = {
       matches: {
         Row: {
           created_at: string
+          current_round: number | null
           current_turn: string | null
           id: string
+          match_type: string | null
           player1_id: string
           player2_id: string | null
+          room_code: string | null
           status: string
+          total_rounds: number | null
           updated_at: string
           winner_id: string | null
         }
         Insert: {
           created_at?: string
+          current_round?: number | null
           current_turn?: string | null
           id?: string
+          match_type?: string | null
           player1_id: string
           player2_id?: string | null
+          room_code?: string | null
           status?: string
+          total_rounds?: number | null
           updated_at?: string
           winner_id?: string | null
         }
         Update: {
           created_at?: string
+          current_round?: number | null
           current_turn?: string | null
           id?: string
+          match_type?: string | null
           player1_id?: string
           player2_id?: string | null
+          room_code?: string | null
           status?: string
+          total_rounds?: number | null
           updated_at?: string
           winner_id?: string | null
         }
@@ -95,7 +114,21 @@ export type Database = {
             foreignKeyName: "matches_current_turn_fkey"
             columns: ["current_turn"]
             isOneToOne: false
+            referencedRelation: "leaderboard"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "matches_current_turn_fkey"
+            columns: ["current_turn"]
+            isOneToOne: false
             referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "matches_player1_id_fkey"
+            columns: ["player1_id"]
+            isOneToOne: false
+            referencedRelation: "leaderboard"
             referencedColumns: ["id"]
           },
           {
@@ -109,7 +142,21 @@ export type Database = {
             foreignKeyName: "matches_player2_id_fkey"
             columns: ["player2_id"]
             isOneToOne: false
+            referencedRelation: "leaderboard"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "matches_player2_id_fkey"
+            columns: ["player2_id"]
+            isOneToOne: false
             referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "matches_winner_id_fkey"
+            columns: ["winner_id"]
+            isOneToOne: false
+            referencedRelation: "leaderboard"
             referencedColumns: ["id"]
           },
           {
@@ -127,8 +174,12 @@ export type Database = {
           created_at: string
           id: string
           level: number | null
+          losses: number | null
+          rank_points: number | null
+          streak: number | null
           updated_at: string
           username: string | null
+          wins: number | null
           xp: number | null
         }
         Insert: {
@@ -136,8 +187,12 @@ export type Database = {
           created_at?: string
           id: string
           level?: number | null
+          losses?: number | null
+          rank_points?: number | null
+          streak?: number | null
           updated_at?: string
           username?: string | null
+          wins?: number | null
           xp?: number | null
         }
         Update: {
@@ -145,8 +200,12 @@ export type Database = {
           created_at?: string
           id?: string
           level?: number | null
+          losses?: number | null
+          rank_points?: number | null
+          streak?: number | null
           updated_at?: string
           username?: string | null
+          wins?: number | null
           xp?: number | null
         }
         Relationships: []
@@ -175,6 +234,13 @@ export type Database = {
             foreignKeyName: "user_collection_user_id_fkey"
             columns: ["user_id"]
             isOneToOne: false
+            referencedRelation: "leaderboard"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "user_collection_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
             referencedRelation: "profiles"
             referencedColumns: ["id"]
           },
@@ -182,7 +248,36 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      leaderboard: {
+        Row: {
+          avatar_url: string | null
+          id: string | null
+          level: number | null
+          losses: number | null
+          rank_points: number | null
+          username: string | null
+          wins: number | null
+        }
+        Insert: {
+          avatar_url?: string | null
+          id?: string | null
+          level?: number | null
+          losses?: number | null
+          rank_points?: number | null
+          username?: string | null
+          wins?: number | null
+        }
+        Update: {
+          avatar_url?: string | null
+          id?: string | null
+          level?: number | null
+          losses?: number | null
+          rank_points?: number | null
+          username?: string | null
+          wins?: number | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       [_ in never]: never
