@@ -1,9 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { ELEMENTS_DATA, PeriodicElement } from '../data/elements';
-import { Card, CardContent } from "@/components/ui/card";
+import React, { useState } from 'react';
+import { ELEMENTS_DATA, PeriodicElement } from '@/data/elements';
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
 import { Swords, Trophy, RefreshCw, ChevronRight } from 'lucide-react';
 import { toast } from "sonner";
 
