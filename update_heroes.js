@@ -1,4 +1,4 @@
-const fs = require('fs');
+import fs from 'fs';
 
 const heroUpdates = {
   "Tb": { heroName: "Lumina Térbio", heroDescription: "O mestre da fluorescência e das telas coloridas, capaz de transformar energia em brilho esmeralda." },
@@ -32,7 +32,7 @@ const heroUpdates = {
   "Np": { heroName: "Neptúnio Voyager", heroDescription: "O primeiro herói além do urânio, o navegador dos elementos transurânicos artificiais." },
   "Pu": { heroName: "Plutônio Alfa", heroDescription: "O motor do sistema solar, alimentando as naves que exploram os confins do espaço com seu calor atômico." },
   "Am": { heroName: "Amerício Alerta", heroDescription: "O sentinela silencioso, presente em cada casa para detectar a ameaça invisível da fumaça." },
-  "Cm": { heroName: "Cúrio Radiativo", heroDescription: "O mestre do bombardeio de partículas, capaz de gerar calor intenso a partir de sua própria existência." },
+  "Cm": { heroName: "Cúrio Radioativo", heroDescription: "O mestre do bombardeio de partículas, capaz de gerar calor intenso a partir de sua própria existência." },
   "Bk": { heroName: "Berquélio Sintético", heroDescription: "O herói dos laboratórios de Berkeley, forjado na chama dos aceleradores de partículas." },
   "Cf": { heroName: "Califórnio Neutrônico", heroDescription: "O canhão de nêutrons, capaz de iniciar reatores e encontrar tesouros escondidos sob a terra." },
   "Es": { heroName: "Einstênio Relativo", heroDescription: "O gênio atômico, nomeado em honra à mente mais brilhante, nascido do fogo das explosões térmicas." },
