@@ -3605,7 +3605,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Potássio",
     "heroName": "Potassium Pulse",
     "heroDescription": "O condutor da energia vital e mestre dos sinais elétricos, essencial para o ritmo do coração e da vida.",
-    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Argon%20Shield%2C%20representing%20the%20chemical%20element%20Arg%C3%B4nio%2C%20O%20guardi%C3%A3o%20da%20in%C3%A9rcia%20e%20protetor%20invis%C3%ADvel%2C%20capaz%20de%20envolver%20o%20mundo%20em%20um%20escudo%20de%20estabilidade%20absoluta.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Arg%C3%B4nio%20properties%20with%20sky%20blue%20and%20purple%20neon%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Potassium%20Pulse%2C%20representing%20the%20chemical%20element%20Pot%C3%A1ssio%2C%20O%20condutor%20da%20energia%20vital%20e%20mestre%20dos%20sinais%20el%C3%A9tricos%2C%20essencial%20para%20o%20ritmo%20do%20cora%C3%A7%C3%A3o%20e%20da%20vida.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Pot%C3%A1ssio%20properties%20with%20violet%20and%20silver%20electric%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
       {
         "id": 1,
