@@ -2610,7 +2610,7 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "name": "Silício",
     "heroName": "Cyber Si",
     "heroDescription": "O arquiteto da era digital. Cyber Si é a espinha dorsal de toda a tecnologia moderna, o mestre dos semicondutores que traduz eletricidade em pensamento binário.",
-    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Hydrogen%20Genesis%2C%20representing%20the%20chemical%20element%20Hidrog%C3%AAnio%2C%20O%20primeiro%20elemento%2C%20fa%C3%ADsca%20primordial%20das%20estrelas%20e%20combust%C3%ADvel%20do%20futuro%20infinito.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Hidrog%C3%AAnio%20properties%20with%20emerald%20green%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
+    "heroImage": "https://image.pollinations.ai/prompt/A%20cinematic%20superhero%20character%20named%20Cyber%20Si%2C%20representing%20the%20chemical%20element%20Sil%C3%ADcio%2C%20O%20arquiteto%20da%20era%20digital.%20Cyber%20Si%20%C3%A9%20a%20espinha%20dorsal%20de%20toda%20a%20tecnologia%20moderna%2C%20o%20mestre%20dos%20semicondutores%20que%20traduz%20eletricidade%20em%20pensamento%20bin%C3%A1rio.%2C%20wearing%20high-tech%20power%20suit%20inspired%20by%20Sil%C3%ADcio%20properties%20with%20cyan%20and%20silver%20circuitry%20highlights%2C%20highly%20detailed%2C%20digital%20art%2C%20masterpiece%2C%20comic%20book%20style%2C%20centered%20composition%2C%20action%20pose%2C%208k%20resolution?width=600&height=800&nologo=true",
     "attributes": [
       {
         "id": 1,
