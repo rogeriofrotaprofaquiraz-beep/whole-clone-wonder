@@ -13,6 +13,7 @@ export interface PeriodicElement {
   heroName: string;
   heroDescription: string;
   heroImage: string;
+  rarity?: 'Comum' | 'Incomum' | 'Raro' | 'Épico' | 'Lendário';
   attributes: ElementAttribute[];
 }
 
