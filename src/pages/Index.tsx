@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { supabase } from "@/integrations/supabase/client";
 import { ELEMENTS_DATA, PeriodicElement } from '../data/elements';
 import { Card, CardContent } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Button } from "@/components/ui/button";
 import { BattleSystem } from "@/components/game/BattleSystem";
 import { ElementQuiz } from "@/components/game/ElementQuiz";
 import { AdminPanel } from "@/components/game/AdminPanel";
-import { Swords, Brain, LayoutGrid, Settings } from 'lucide-react';
+import { AuthSystem } from "@/components/game/AuthSystem";
+import { Swords, Brain, LayoutGrid, Settings, LogOut, User as UserIcon } from 'lucide-react';
+import { toast } from "sonner";
 
 const ElementCard = ({ element }: { element: PeriodicElement }) => {
   const isGas = ["Gás", "Gás incolor", "Gás nobre"].some(type => 
