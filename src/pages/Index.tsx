@@ -75,22 +75,25 @@ const ElementCard = ({ element }: { element: PeriodicElement }) => {
         border-2 border-white/10 shadow-[inset_0_0_40px_rgba(0,0,0,0.8)]
         ${isGas ? 'bg-gradient-to-b from-blue-900/40 via-slate-900 to-black' : 'bg-slate-950'}
       `}>
-        {element.heroImage.endsWith('.mp4') ? (
-          <video 
-            src={element.heroImage} 
-            autoPlay 
-            loop 
-            muted 
-            playsInline
-            className="w-full h-full object-contain object-top transition-transform duration-1000 group-hover/img:scale-110 opacity-90 group-hover/img:opacity-100"
-          />
-        ) : (
-          <img 
-            src={element.heroImage} 
-            alt={element.heroName}
-            className="w-full h-full object-contain object-top transition-transform duration-1000 group-hover/img:scale-110" 
-          />
-        )}
+        {/* Floating Animation for Heros */}
+        <div className="w-full h-full animate-float transition-all duration-1000 group-hover/img:scale-105">
+          {element.heroImage.endsWith('.mp4') ? (
+            <video 
+              src={element.heroImage} 
+              autoPlay 
+              loop 
+              muted 
+              playsInline
+              className="w-full h-full object-contain object-top opacity-90 group-hover/img:opacity-100"
+            />
+          ) : (
+            <img 
+              src={element.heroImage} 
+              alt={element.heroName}
+              className="w-full h-full object-contain object-top" 
+            />
+          )}
+        </div>
         
         {/* State specific overlays */}
         {isGas && (
