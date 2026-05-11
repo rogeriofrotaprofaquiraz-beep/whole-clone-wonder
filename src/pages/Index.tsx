@@ -3,6 +3,10 @@ import { ELEMENTS_DATA, PeriodicElement } from '../data/elements';
 import { Card, CardContent } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Badge } from "@/components/ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { BattleSystem } from "@/components/game/BattleSystem";
+import { ElementQuiz } from "@/components/game/ElementQuiz";
+import { Swords, Brain, LayoutGrid, Info } from 'lucide-react';
 
 const ElementCard = ({ element }: { element: PeriodicElement }) => {
   const isGas = ["Gás", "Gás incolor", "Gás nobre"].some(type => 
