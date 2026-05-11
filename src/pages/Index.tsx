@@ -52,22 +52,24 @@ const ElementCard = ({ element }: { element: PeriodicElement }) => {
       {/* Inner Border Glow */}
       <div className="absolute inset-2 rounded-[2.5rem] border border-white/5 pointer-events-none"></div>
 
-      <div className="relative flex justify-between items-center mb-6">
-        <div className="z-10">
-          <Badge className={`${getRarityColor(rarity)} mb-2 font-black italic tracking-widest text-[10px]`}>
+      {/* Symbol & Number (Style Carta MOV) */}
+      <div className="relative flex justify-between items-start mb-6 z-10">
+        <div className="w-16 h-16 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center border border-white/20 shadow-xl group-hover:scale-110 transition-transform duration-500">
+          <span className="text-4xl font-black italic drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]">{element.symbol}</span>
+        </div>
+        <div className="text-right">
+          <span className="text-4xl font-black italic opacity-50 block leading-none">#{element.number}</span>
+          <Badge className={`${getRarityColor(rarity)} mt-2 font-black italic tracking-widest text-[10px]`}>
             {rarity.toUpperCase()}
           </Badge>
-          <h2 className="text-4xl font-black tracking-tighter italic uppercase leading-none drop-shadow-2xl">
-            {element.name}
-          </h2>
-          <p className="text-[11px] font-black tracking-[0.3em] text-blue-400 uppercase mt-1 opacity-80">{element.heroName}</p>
         </div>
-        <div className="flex flex-col items-end z-10">
-          <div className="w-14 h-14 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center border-2 border-white/20 shadow-xl rotate-3 group-hover:rotate-0 transition-transform duration-500">
-            <span className="text-3xl font-black italic">{element.symbol}</span>
-          </div>
-          <span className="text-[10px] font-black mt-2 bg-black/40 px-2 py-0.5 rounded-full text-white/60">#{element.number}</span>
-        </div>
+      </div>
+
+      <div className="relative mb-6 z-10">
+        <h2 className="text-4xl font-black tracking-tighter italic uppercase leading-none drop-shadow-2xl">
+          {element.name}
+        </h2>
+        <p className="text-[11px] font-black tracking-[0.3em] text-blue-400 uppercase mt-1 opacity-80">{element.heroName}</p>
       </div>
       
       <div className={`
@@ -100,9 +102,14 @@ const ElementCard = ({ element }: { element: PeriodicElement }) => {
           <div className="absolute inset-0 bg-blue-500/10 mix-blend-screen pointer-events-none animate-pulse"></div>
         )}
 
+        {/* QR Code Placeholder (Carta MOV Style) */}
+        <div className="absolute bottom-6 right-6 w-16 h-16 bg-white p-1 rounded-lg shadow-xl z-20 opacity-80 group-hover:opacity-100 transition-opacity">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://lovable.dev" alt="QR Code" className="w-full h-full" />
+        </div>
+
         {/* Cinematic Overlays */}
         <div className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-black/80 to-transparent pointer-events-none"></div>
-        <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black via-black/80 to-transparent">
+        <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black via-black/80 to-transparent pr-24">
           <div className="w-12 h-1 bg-blue-500 mb-3 rounded-full opacity-50"></div>
           <p className="text-sm italic text-white/90 leading-relaxed font-medium drop-shadow-xl line-clamp-3">
             "{element.heroDescription}"
