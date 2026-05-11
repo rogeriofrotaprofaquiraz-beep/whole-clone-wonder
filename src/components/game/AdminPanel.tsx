@@ -264,7 +264,7 @@ export const AdminPanel = () => {
                           placeholder="Ex: 1.008 u" 
                           value={attr.value} 
                           onChange={e => handleAttributeChange(index, 'value', e.target.value)}
-                          className="bg-black/40 border-white/10 text-sm font-bold"
+                          className="bg-black/40 border-white/10 text-sm font-bold text-white"
                         />
                       </div>
                       <div className="space-y-1">
@@ -273,7 +273,7 @@ export const AdminPanel = () => {
                           placeholder="Conecte a propriedade química ao poder do herói..." 
                           value={attr.justification} 
                           onChange={e => handleAttributeChange(index, 'justification', e.target.value)}
-                          className="bg-black/40 border-white/10 text-[10px] h-16 italic"
+                          className="bg-black/40 border-white/10 text-[10px] h-16 italic text-white"
                         />
                       </div>
                     </div>
