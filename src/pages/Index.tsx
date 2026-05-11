@@ -374,6 +374,21 @@ const Index = () => {
         </TabsContent>
       </Tabs>
 
+      {showAuth && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 animate-in fade-in duration-300">
+          <div className="relative w-full max-w-md">
+            <Button 
+              variant="ghost" 
+              onClick={() => setShowAuth(false)} 
+              className="absolute -top-12 right-0 text-white hover:bg-white/10"
+            >
+              FECHAR
+            </Button>
+            <AuthSystem onAuthSuccess={() => setShowAuth(false)} />
+          </div>
+        </div>
+      )}
+
       <footer className="mt-12 text-slate-600 text-[10px] flex flex-col items-center gap-2 pb-8">
         <p>© 2026 Elemental Heroes Game - Baseado em Dados Científicos Reais</p>
         <div className="flex gap-4">
