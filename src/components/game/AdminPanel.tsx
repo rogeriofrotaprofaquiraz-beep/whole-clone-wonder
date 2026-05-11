@@ -216,11 +216,13 @@ export const AdminPanel = () => {
                 </div>
                 {formData.heroImage && (
                   <div className="aspect-[3/4] rounded-3xl bg-black/60 overflow-hidden border-2 border-white/10 shadow-2xl relative group">
-                    {formData.heroImage.endsWith('.mp4') ? (
-                      <video src={formData.heroImage} autoPlay loop muted playsInline className="w-full h-full object-contain" />
-                    ) : (
-                      <img src={formData.heroImage} className="w-full h-full object-contain" alt="Preview" />
-                    )}
+                    <div className="w-full h-full animate-float">
+                      {formData.heroImage.endsWith('.mp4') ? (
+                        <video src={formData.heroImage} autoPlay loop muted playsInline className="w-full h-full object-contain" />
+                      ) : (
+                        <img src={formData.heroImage} className="w-full h-full object-contain" alt="Preview" />
+                      )}
+                    </div>
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
                        <span className="text-[10px] font-black italic text-white/60">PREVIEW DA CARTA</span>
                     </div>
