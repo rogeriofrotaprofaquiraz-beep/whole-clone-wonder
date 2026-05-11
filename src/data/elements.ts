@@ -10975,8 +10975,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 65,
     "symbol": "Tb",
     "name": "Térbio",
-    "heroName": "Terbium Lumina",
-    "heroDescription": "O mestre da fluorescência verde e do armazenamento magneto-óptico.",
+    "heroName": "Lumina Térbio",
+    "heroDescription": "O mestre da fluorescência e das telas coloridas, capaz de transformar energia em brilho esmeralda.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -11174,8 +11174,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 66,
     "symbol": "Dy",
     "name": "Disprósio",
-    "heroName": "Dysprosium Magneto",
-    "heroDescription": "O mestre da resistência térmica magnética, essencial para carros elétricos.",
+    "heroName": "Disprósio Magneticus",
+    "heroDescription": "O guardião da resistência magnética extrema, essencial para os motores que movem o futuro.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -11373,8 +11373,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 67,
     "symbol": "Ho",
     "name": "Hólmio",
-    "heroName": "Holmium Laser",
-    "heroDescription": "O mestre dos campos magnéticos mais fortes e das cirurgias a laser.",
+    "heroName": "Hólmio Laser",
+    "heroDescription": "O herói da precisão absoluta, mestre das radiações infravermelhas e cirurgias de luz.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -11572,8 +11572,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 68,
     "symbol": "Er",
     "name": "Érbio",
-    "heroName": "Erbium Fiber",
-    "heroDescription": "O mestre da amplificação de sinais em fibras ópticas, o herói da internet global.",
+    "heroName": "Érbio Óptico",
+    "heroDescription": "O mensageiro das profundezas, amplificando as vozes do mundo através dos fios de luz.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -11771,8 +11771,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 69,
     "symbol": "Tm",
     "name": "Túlio",
-    "heroName": "Thulium Beam",
-    "heroDescription": "O mestre das máquinas de raio-X portáteis e dos lasers cirúrgicos avançados.",
+    "heroName": "Túlio Radiante",
+    "heroDescription": "O herói da visão invisível, capaz de gerar raios-X em dispositivos portáteis para salvar vidas.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -11970,8 +11970,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 70,
     "symbol": "Yb",
     "name": "Itérbio",
-    "heroName": "Ytterbium Clock",
-    "heroDescription": "O mestre da precisão temporal e dos relógios atômicos mais exatos do mundo.",
+    "heroName": "Itérbio Quantum",
+    "heroDescription": "O mestre da precisão atômica e do tempo infinito, a pulsação dos relógios mais precisos da Terra.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -12169,8 +12169,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 71,
     "symbol": "Lu",
     "name": "Lutécio",
-    "heroName": "Lutetium Peak",
-    "heroDescription": "O mestre do topo dos lantanídeos, o herói da datação radioativa e da medicina nuclear.",
+    "heroName": "Lutécio Sideral",
+    "heroDescription": "O herói das altas energias, capaz de converter radiação em luz visível para diagnósticos espaciais.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -12368,8 +12368,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 72,
     "symbol": "Hf",
     "name": "Háfnio",
-    "heroName": "Hafnium Shield",
-    "heroDescription": "O mestre do controle nuclear e dos processadores ultra-rápidos.",
+    "heroName": "Háfnio Reactor",
+    "heroDescription": "O escudo das correntes nucleares, capaz de absorver nêutrons e manter o equilíbrio atômico.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -12567,8 +12567,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 73,
     "symbol": "Ta",
     "name": "Tântalo",
-    "heroName": "Tantalum Core",
-    "heroDescription": "O mestre da resistência à corrosão e dos capacitores minúsculos em smartphones.",
+    "heroName": "Tântalo Eterno",
+    "heroDescription": "O guardião da energia minúscula, mestre dos capacitores que sustentam a era digital móvel.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -12766,8 +12766,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 74,
     "symbol": "W",
     "name": "Tungstênio",
-    "heroName": "Wolfram Strength",
-    "heroDescription": "O herói com o ponto de fusão mais alto de todos os metais, indestrutível sob calor extremo.",
+    "heroName": "Tungstênio Invictus",
+    "heroDescription": "O herói inquebrável, dono do ponto de fusão supremo, capaz de brilhar intensamente sem nunca derreter.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -12965,8 +12965,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 75,
     "symbol": "Re",
     "name": "Rênio",
-    "heroName": "Rhenium Jet",
-    "heroDescription": "O mestre das superligas para turbinas de aviões e catalisadores industriais.",
+    "heroName": "Rênio Flame",
+    "heroDescription": "O mestre das superligas e do calor infernal, forjando os motores de aviões que cruzam os céus.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -13164,8 +13164,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 76,
     "symbol": "Os",
     "name": "Ósmio",
-    "heroName": "Osmium Density",
-    "heroDescription": "O herói mais denso de todos, o pilar inabalável da tabela periódica.",
+    "heroName": "Ósmio Denso",
+    "heroDescription": "O herói de peso inigualável, o elemento mais denso da natureza e mestre da resistência extrema.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -13363,8 +13363,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 77,
     "symbol": "Ir",
     "name": "Irídio",
-    "heroName": "Iridium Impact",
-    "heroDescription": "O mestre da resistência extrema e sobrevivente do impacto que mudou a história da Terra.",
+    "heroName": "Irídio Impact",
+    "heroDescription": "O sobrevivente do cosmos, o guardião que marca a fronteira entre as eras dos dinossauros e dos mamíferos.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -13562,8 +13562,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 78,
     "symbol": "Pt",
     "name": "Platina",
-    "heroName": "Platinum Noble",
-    "heroDescription": "O herói da nobreza absoluta e catalisador da purificação ambiental.",
+    "heroName": "Platina Preciosa",
+    "heroDescription": "A rainha da catálise e da pureza, limpando o ar do planeta enquanto brilha com elegância inabalável.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -13761,8 +13761,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 79,
     "symbol": "Au",
     "name": "Ouro",
-    "heroName": "Gold Monarch",
-    "heroDescription": "O rei do brilho eterno e condutor supremo da era digital.",
+    "heroName": "Ouro Soberano",
+    "heroDescription": "O monarca da eternidade e da condutividade, o metal que nunca oxida e sustenta a glória e a tecnologia.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -13960,8 +13960,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 80,
     "symbol": "Hg",
     "name": "Mercúrio",
-    "heroName": "Mercury Fluid",
-    "heroDescription": "O mestre da fluidez metálica e mensageiro da temperatura.",
+    "heroName": "Mercúrio Líquido",
+    "heroDescription": "O mensageiro fluido da temperatura, mestre das formas mutáveis e único metal que dança em estado líquido.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -14159,8 +14159,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 81,
     "symbol": "Tl",
     "name": "Tálio",
-    "heroName": "Thallium Shadow",
-    "heroDescription": "O mestre da invisibilidade tóxica e dos sensores infravermelhos.",
+    "heroName": "Tálio Fantasma",
+    "heroDescription": "O mestre da furtividade e dos venenos invisíveis, capaz de se ocultar enquanto detecta o infravermelho.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -14358,8 +14358,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 82,
     "symbol": "Pb",
     "name": "Chumbo",
-    "heroName": "Plumbum Guard",
-    "heroDescription": "O herói protetor contra a radiação e base das baterias ancestrais.",
+    "heroName": "Chumbo Pesado",
+    "heroDescription": "O escudo protetor contra o invisível, a barreira final contra as radiações que ameaçam a vida.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -14557,8 +14557,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 83,
     "symbol": "Bi",
     "name": "Bismuto",
-    "heroName": "Bismuth Crystal",
-    "heroDescription": "O mestre das cores iridescentes e protetor do sistema digestivo.",
+    "heroName": "Bismuto Cristal",
+    "heroDescription": "O alquimista das cores arco-íris, o herói metálico mais ecológico e mestre da levitação diamagnética.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -14756,8 +14756,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 84,
     "symbol": "Po",
     "name": "Polônio",
-    "heroName": "Polonium Alpha",
-    "heroDescription": "O herói radioativo letal, fonte de calor no vácuo do espaço.",
+    "heroName": "Polônio Estelar",
+    "heroDescription": "A centelha azul do vácuo, o herói intensamente radioativo que aquece as sondas espaciais no frio eterno.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -14955,8 +14955,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 85,
     "symbol": "At",
     "name": "Astato",
-    "heroName": "Astatine Ghost",
-    "heroDescription": "O herói mais raro da Terra, um fantasma radioativo de vida curtíssima.",
+    "heroName": "Astatínio Fugaz",
+    "heroDescription": "A sombra mais rara da Terra, um herói que brilha por um instante antes de desaparecer no mistério.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -15154,8 +15154,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 86,
     "symbol": "Rn",
     "name": "Radônio",
-    "heroName": "Radon Phantom",
-    "heroDescription": "O gás invisível que surge das profundezas, silencioso e radioativo.",
+    "heroName": "Radônio Invisível",
+    "heroDescription": "O fantasma das profundezas terrestres, um gás nobre e radioativo que emana silenciosamente do solo.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -15353,8 +15353,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 87,
     "symbol": "Fr",
     "name": "Frâncio",
-    "heroName": "Francium Flash",
-    "heroDescription": "O herói ultra-instável, o metal alcalino que mal existe antes de desaparecer.",
+    "heroName": "Frâncio Efêmero",
+    "heroDescription": "O rei da instabilidade, o elemento natural mais instável que explode ao menor contato com a água.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -15552,8 +15552,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 88,
     "symbol": "Ra",
     "name": "Rádio",
-    "heroName": "Radium Glow",
-    "heroDescription": "A heroína pioneira do brilho eterno, que revelou os segredos do núcleo atômico.",
+    "heroName": "Rádio Brilhante",
+    "heroDescription": "O herói que iluminou a ciência, o legado eterno de Marie Curie e o mestre da luminescência atômica.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -15751,8 +15751,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 89,
     "symbol": "Ac",
     "name": "Actínio",
-    "heroName": "Actinium Ray",
-    "heroDescription": "O mestre da luminescência azulada e precursor da série dos actinídeos.",
+    "heroName": "Actínio Ativo",
+    "heroDescription": "O precursor da luz nuclear, capaz de brilhar no escuro com um azul etéreo e intenso.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -15950,8 +15950,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 90,
     "symbol": "Th",
     "name": "Tório",
-    "heroName": "Thorium Power",
-    "heroDescription": "O herói do futuro energético, combustível nuclear limpo e abundante.",
+    "heroName": "Tório Sustentável",
+    "heroDescription": "O gigante da energia verde do futuro, mais abundante que o urânio e mestre dos reatores seguros.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -16149,8 +16149,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 91,
     "symbol": "Pa",
     "name": "Protactínio",
-    "heroName": "Protactinium Ghost",
-    "heroDescription": "O elo perdido radioativo, denso e extremamente raro.",
+    "heroName": "Protactínio Ancestral",
+    "heroDescription": "O elo perdido dos actinídeos, mestre das transformações atômicas lentas e profundas.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -16348,8 +16348,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 92,
     "symbol": "U",
     "name": "Urânio",
-    "heroName": "Uranium Titan",
-    "heroDescription": "O gigante da energia nuclear, o herói cujo núcleo sustenta cidades inteiras.",
+    "heroName": "Urânio Fissão",
+    "heroDescription": "O titã do núcleo, a fonte suprema de poder e destruição, capaz de iluminar cidades ou mudar o curso da história.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -16547,8 +16547,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 93,
     "symbol": "Np",
     "name": "Netúnio",
-    "heroName": "Neptunium Voyager",
-    "heroDescription": "O primeiro elemento transurânico, mensageiro das profundezas do reator nuclear.",
+    "heroName": "Neptúnio Voyager",
+    "heroDescription": "O primeiro herói além do urânio, o navegador dos elementos transurânicos artificiais.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -16746,8 +16746,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 94,
     "symbol": "Pu",
     "name": "Plutônio",
-    "heroName": "Plutonium Force",
-    "heroDescription": "O herói da potência concentrada e das missões espaciais de longa duração.",
+    "heroName": "Plutônio Alfa",
+    "heroDescription": "O motor do sistema solar, alimentando as naves que exploram os confins do espaço com seu calor atômico.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -16945,8 +16945,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 95,
     "symbol": "Am",
     "name": "Amerício",
-    "heroName": "Americium Guard",
-    "heroDescription": "O sentinela invisível em cada lar, o herói detector de fumaça.",
+    "heroName": "Amerício Alerta",
+    "heroDescription": "O sentinela silencioso, presente em cada casa para detectar a ameaça invisível da fumaça.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -17144,8 +17144,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 96,
     "symbol": "Cm",
     "name": "Cúrio",
-    "heroName": "Curium Spark",
-    "heroDescription": "O herói radioativo que alimenta experimentos científicos em Marte.",
+    "heroName": "Cúrio Radioativo",
+    "heroDescription": "O mestre do bombardeio de partículas, capaz de gerar calor intenso a partir de sua própria existência.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -17343,8 +17343,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 97,
     "symbol": "Bk",
     "name": "Berquélio",
-    "heroName": "Berkelium Beam",
-    "heroDescription": "O herói da síntese avançada, elo para a criação de novos mundos elementais.",
+    "heroName": "Berquélio Sintético",
+    "heroDescription": "O herói dos laboratórios de Berkeley, forjado na chama dos aceleradores de partículas.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -17542,8 +17542,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 98,
     "symbol": "Cf",
     "name": "Califórnio",
-    "heroName": "Californium Neutron",
-    "heroDescription": "O mestre da emissão de nêutrons, o herói que detecta camadas de ouro e prata.",
+    "heroName": "Califórnio Neutrônico",
+    "heroDescription": "O canhão de nêutrons, capaz de iniciar reatores e encontrar tesouros escondidos sob a terra.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -17741,8 +17741,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 99,
     "symbol": "Es",
     "name": "Enstênio",
-    "heroName": "Einsteinium Genius",
-    "heroDescription": "O herói nascido da força termonuclear, tributo ao gênio da relatividade.",
+    "heroName": "Einstênio Relativo",
+    "heroDescription": "O gênio atômico, nomeado em honra à mente mais brilhante, nascido do fogo das explosões térmicas.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -17940,8 +17940,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 100,
     "symbol": "Fm",
     "name": "Férmio",
-    "heroName": "Fermium Core",
-    "heroDescription": "O mestre do centésimo degrau elemental, herói da física quântica aplicada.",
+    "heroName": "Férmio Quântico",
+    "heroDescription": "O mestre dos processos nucleares rápidos, o limite final dos elementos que podem ser criados por bombardeio.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -18139,8 +18139,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 101,
     "symbol": "Md",
     "name": "Mendelévio",
-    "heroName": "Mendelevium Father",
-    "heroDescription": "O herói que honra o arquiteto da tabela periódica.",
+    "heroName": "Mendelévio Tabela",
+    "heroDescription": "O arquiteto da ordem, o herói que reconhece a beleza da organização elemental russa.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -18338,8 +18338,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 102,
     "symbol": "No",
     "name": "Nobélio",
-    "heroName": "Nobelium Prize",
-    "heroDescription": "O herói da excelência científica e da paz atômica.",
+    "heroName": "Nobélio Dinâmico",
+    "heroDescription": "O herói do prêmio supremo, forjado no choque entre átomos pesados e sonhos de descoberta.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -18537,8 +18537,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 103,
     "symbol": "Lr",
     "name": "Laurêncio",
-    "heroName": "Lawrencium Cyclotron",
-    "heroDescription": "O herói que marca o fim da série dos actinídeos com força acelerada.",
+    "heroName": "Laurêncio Cíclotron",
+    "heroDescription": "O caçador do fim da linha dos actinídeos, mestre dos aceleradores circulares de energia.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -18736,8 +18736,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 104,
     "symbol": "Rf",
     "name": "Rutherfórdio",
-    "heroName": "Rutherfordium Nucleus",
-    "heroDescription": "O primeiro herói dos transactinídeos, explorador do núcleo central.",
+    "heroName": "Rutherfórdio Nuclear",
+    "heroDescription": "O herói do núcleo central, o primeiro dos elementos superpesados a desafiar as leis da estabilidade.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -18935,8 +18935,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 105,
     "symbol": "Db",
     "name": "Dúbnio",
-    "heroName": "Dubnium Heavy",
-    "heroDescription": "O herói da colaboração científica internacional nas profundezas atômicas.",
+    "heroName": "Dúbnio Pesado",
+    "heroDescription": "O gigante da colaboração russa, uma ponte estável na fronteira do desconhecido atômico.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -19134,8 +19134,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 106,
     "symbol": "Sg",
     "name": "Seabórgio",
-    "heroName": "Seaborgium Synth",
-    "heroDescription": "O herói que personifica a criação artificial de elementos superpesados.",
+    "heroName": "Seabórgio Eterno",
+    "heroDescription": "O mestre das sínteses impossíveis, o único herói nomeado em honra a um cientista ainda vivo em sua criação.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -19333,8 +19333,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 107,
     "symbol": "Bh",
     "name": "Bóhrio",
-    "heroName": "Bohrium Orbit",
-    "heroDescription": "O herói que honra o modelo atômico e a estrutura da matéria.",
+    "heroName": "Bóhrio Órbita",
+    "heroDescription": "O guardião da estrutura atômica moderna, mestre das camadas onde os elétrons dançam.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -19532,8 +19532,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 108,
     "symbol": "Hs",
     "name": "Hássio",
-    "heroName": "Hassium Core",
-    "heroDescription": "O herói da estabilidade efêmera no mar de instabilidade superpesada.",
+    "heroName": "Hássio Denso",
+    "heroDescription": "O titã superpesado, mestre da densidade teórica que desafia os limites da matéria sólida.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -19731,8 +19731,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 109,
     "symbol": "Mt",
     "name": "Meitnério",
-    "heroName": "Meitnerium Nuclei",
-    "heroDescription": "A heroína que desvendou o segredo da fissão nuclear.",
+    "heroName": "Meitnério Brilhante",
+    "heroDescription": "A heroína da fissão descoberta, o reconhecimento tardio de uma das mentes mais brilhantes da física.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -19930,8 +19930,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 110,
     "symbol": "Ds",
     "name": "Darmstádtio",
-    "heroName": "Darmstadtium Heavy",
-    "heroDescription": "O herói forjado no acelerador de íons pesados.",
+    "heroName": "Darmstádtio Heavy",
+    "heroDescription": "O colosso das terras alemãs, forjado na precisão dos aceleradores de íons pesados.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -20129,8 +20129,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 111,
     "symbol": "Rg",
     "name": "Roentgênio",
-    "heroName": "Roentgenium Ray",
-    "heroDescription": "O herói que atravessa a matéria com o poder dos raios-X.",
+    "heroName": "Roentgênio X",
+    "heroDescription": "O herói dos raios invisíveis, capaz de atravessar a matéria com o poder da radiação diagnóstica.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -20328,8 +20328,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 112,
     "symbol": "Cn",
     "name": "Copernício",
-    "heroName": "Copernicium Solar",
-    "heroDescription": "O herói que coloca o Sol no centro do nosso entendimento atômico.",
+    "heroName": "Copernício Estelar",
+    "heroDescription": "O herói que colocou o sol no centro de tudo, brilhando como um metal volátil no fim da linha do bloco d.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -20527,8 +20527,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 113,
     "symbol": "Nh",
     "name": "Nipônio",
-    "heroName": "Nihonium Sun",
-    "heroDescription": "O herói do sol nascente, a primeira luz elemental da Ásia.",
+    "heroName": "Nipônio Nascente",
+    "heroDescription": "A luz do sol nascente, o primeiro herói descoberto nas terras do Japão.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -20726,8 +20726,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 114,
     "symbol": "Fl",
     "name": "Fleróvio",
-    "heroName": "Flerovium Flight",
-    "heroDescription": "O herói que flutua na fronteira da ilha de estabilidade.",
+    "heroName": "Fleróvio Instável",
+    "heroDescription": "O buscador da ilha de estabilidade, flutuando no mar de núcleos radioativos efêmeros.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -20925,8 +20925,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 115,
     "symbol": "Mc",
     "name": "Moscóvio",
-    "heroName": "Moscovium Heavy",
-    "heroDescription": "O herói das colisões ultra-energéticas nas estepes da ciência.",
+    "heroName": "Moscóvio Exótico",
+    "heroDescription": "O mestre da gravidade teórica e das camadas nucleares misteriosas, vindo do coração da Rússia.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -21124,8 +21124,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 116,
     "symbol": "Lv",
     "name": "Livermório",
-    "heroName": "Livermorium Lab",
-    "heroDescription": "O herói da síntese colaborativa entre continentes.",
+    "heroName": "Livermório Lab",
+    "heroDescription": "O herói da síntese colaborativa global, unindo nações no laboratório da descoberta atômica.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -21323,8 +21323,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 117,
     "symbol": "Ts",
     "name": "Tennesso",
-    "heroName": "Tennessine Halogen",
-    "heroDescription": "O herói da última fronteira dos halogênios, uma faísca rara na escuridão superpesada.",
+    "heroName": "Tennesso Halógeno",
+    "heroDescription": "O último dos halogênios, uma faísca rara que brilha por milissegundos antes de se tornar lenda.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
@@ -21522,8 +21522,8 @@ export const ELEMENTS_DATA: Record<string, PeriodicElement> = {
     "number": 118,
     "symbol": "Og",
     "name": "Oganésson",
-    "heroName": "Oganesson Zenith",
-    "heroDescription": "O mestre final da tabela periódica, o herói do topo da pirâmide elemental.",
+    "heroName": "Oganésson Zenith",
+    "heroDescription": "O mestre supremo da tabela periódica, o ponto final da jornada elemental e guardião do topo da pirâmide.",
     "heroImage": "/placeholder.svg",
     "attributes": [
         {
