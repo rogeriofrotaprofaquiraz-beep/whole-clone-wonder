@@ -75,22 +75,25 @@ const ElementCard = ({ element }: { element: PeriodicElement }) => {
         border-2 border-white/10 shadow-[inset_0_0_40px_rgba(0,0,0,0.8)]
         ${isGas ? 'bg-gradient-to-b from-blue-900/40 via-slate-900 to-black' : 'bg-slate-950'}
       `}>
-        {element.heroImage.endsWith('.mp4') ? (
-          <video 
-            src={element.heroImage} 
-            autoPlay 
-            loop 
-            muted 
-            playsInline
-            className="w-full h-full object-contain object-top transition-transform duration-1000 group-hover/img:scale-110 opacity-90 group-hover/img:opacity-100"
-          />
-        ) : (
-          <img 
-            src={element.heroImage} 
-            alt={element.heroName}
-            className="w-full h-full object-contain object-top transition-transform duration-1000 group-hover/img:scale-110" 
-          />
-        )}
+        {/* Floating Animation for Heros */}
+        <div className="w-full h-full animate-float transition-all duration-1000 group-hover/img:scale-105">
+          {element.heroImage.endsWith('.mp4') ? (
+            <video 
+              src={element.heroImage} 
+              autoPlay 
+              loop 
+              muted 
+              playsInline
+              className="w-full h-full object-contain object-top opacity-90 group-hover/img:opacity-100"
+            />
+          ) : (
+            <img 
+              src={element.heroImage} 
+              alt={element.heroName}
+              className="w-full h-full object-contain object-top" 
+            />
+          )}
+        </div>
         
         {/* State specific overlays */}
         {isGas && (
@@ -426,10 +429,27 @@ const Index = () => {
         </div>
       </footer>
 
-      {/* Tailwind grid config for 18 columns */}
+      {/* Custom Styles */}
       <style>{`
         .grid-cols-18 {
           grid-template-columns: repeat(18, minmax(0, 1fr));
+        }
+        @keyframes float {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-20px); }
+        }
+        .animate-float {
+          animation: float 4s ease-in-out infinite;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: rgba(255, 255, 255, 0.02);
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: rgba(59, 130, 246, 0.5);
+          border-radius: 10px;
         }
       `}</style>
     </div>
