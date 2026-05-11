@@ -429,10 +429,27 @@ const Index = () => {
         </div>
       </footer>
 
-      {/* Tailwind grid config for 18 columns */}
+      {/* Custom Styles */}
       <style>{`
         .grid-cols-18 {
           grid-template-columns: repeat(18, minmax(0, 1fr));
+        }
+        @keyframes float {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-20px); }
+        }
+        .animate-float {
+          animation: float 4s ease-in-out infinite;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: rgba(255, 255, 255, 0.02);
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: rgba(59, 130, 246, 0.5);
+          border-radius: 10px;
         }
       `}</style>
     </div>
