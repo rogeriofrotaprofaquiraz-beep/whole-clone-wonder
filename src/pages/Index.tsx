@@ -309,9 +309,18 @@ const Index = () => {
             </div>
           )}
         </div>
-      </div>
+        </TabsContent>
 
-      <footer className="mt-12 text-slate-600 text-[10px] flex flex-col items-center gap-2">
+        <TabsContent value="battle" className="w-full animate-in fade-in slide-in-from-right-10 duration-500">
+          <BattleSystem />
+        </TabsContent>
+
+        <TabsContent value="quiz" className="w-full animate-in fade-in slide-in-from-left-10 duration-500">
+          <ElementQuiz />
+        </TabsContent>
+      </Tabs>
+
+      <footer className="mt-12 text-slate-600 text-[10px] flex flex-col items-center gap-2 pb-8">
         <p>© 2026 Elemental Heroes Game - Baseado em Dados Científicos Reais</p>
         <div className="flex gap-4">
           <span>118 Elementos</span>
