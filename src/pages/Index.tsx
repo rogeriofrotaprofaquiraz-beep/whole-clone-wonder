@@ -393,6 +393,10 @@ const Index = () => {
           <ElementQuiz />
         </TabsContent>
 
+        <TabsContent value="ranking" className="w-full animate-in fade-in slide-in-from-top-10 duration-500">
+          <Ranking />
+        </TabsContent>
+
         <TabsContent value="admin" className="w-full animate-in fade-in slide-in-from-bottom-10 duration-500">
           <AdminPanel />
         </TabsContent>
