@@ -75,9 +75,9 @@ export const AdminPanel = () => {
     Background: Cinematic realistic environment representing its natural origin: ${originAttr}, harmonized with frontal lighting. 
     Style: Fantastic realism, high definition, 8k, coherent element palette.`;
 
-    const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?width=800&height=1200&nologo=true&seed=${Math.floor(Math.random() * 1000000)}`;
+    const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt.trim())}?width=800&height=1200&nologo=true&seed=${Math.floor(Math.random() * 1000000)}`;
     handleInputChange('heroImage', imageUrl);
-    toast.success("Novo design de herói gerado em proporção 2:3 (6x9)!");
+    toast.success("Design de Herói Gerado! O link acima contém as instruções enviadas para a IA.");
   };
 
   const generateAllHeros = () => {
