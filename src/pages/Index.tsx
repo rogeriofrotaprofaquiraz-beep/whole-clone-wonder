@@ -73,12 +73,12 @@ const ElementCard = ({ element }: { element: PeriodicElement }) => {
       </div>
       
       <div className={`
-        h-[600px] rounded-2xl mb-4 flex items-start justify-center overflow-hidden relative group/img
-        border-2 border-white/10 shadow-[inset_0_0_40px_rgba(0,0,0,0.8)]
+        aspect-[2/3] w-full rounded-[2rem] mb-6 flex items-start justify-center overflow-hidden relative group/img
+        border-2 border-white/10 shadow-[0_0_40px_rgba(0,0,0,0.8)]
         ${isGas ? 'bg-gradient-to-b from-blue-900/40 via-slate-900 to-black' : 'bg-slate-950'}
       `}>
         {/* Floating Animation for Heros */}
-        <div className="w-full h-full animate-float transition-all duration-1000 group-hover/img:scale-105">
+        <div className="w-full h-full transition-all duration-1000 group-hover/img:scale-105">
           {element.heroImage.endsWith('.mp4') ? (
             <video 
               src={element.heroImage} 
@@ -93,6 +93,8 @@ const ElementCard = ({ element }: { element: PeriodicElement }) => {
               src={element.heroImage} 
               alt={element.heroName}
               className="w-full h-full object-cover" 
+              onLoad={(e) => (e.currentTarget.style.opacity = "1")}
+              style={{ opacity: 0 }}
             />
           )}
         </div>
@@ -103,14 +105,14 @@ const ElementCard = ({ element }: { element: PeriodicElement }) => {
         )}
 
         {/* QR Code Placeholder (Carta MOV Style) */}
-        <div className="absolute bottom-4 right-4 w-12 h-12 bg-white p-1 rounded-lg shadow-xl z-20 opacity-80 group-hover:opacity-100 transition-opacity">
+        <div className="absolute bottom-6 right-6 w-14 h-14 bg-white p-2 rounded-xl shadow-2xl z-20 opacity-80 group-hover:opacity-100 transition-opacity">
           <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://lovable.dev" alt="QR Code" className="w-full h-full" />
         </div>
 
         {/* Cinematic Overlays */}
-        <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-black/80 to-transparent pointer-events-none"></div>
-        <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black via-black/80 to-transparent pr-16">
-          <p className="text-[10px] italic text-white/90 leading-tight font-medium drop-shadow-xl line-clamp-2">
+        <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black/80 to-transparent pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black via-black/90 to-transparent pr-20">
+          <p className="text-[11px] italic text-white/90 leading-relaxed font-black drop-shadow-xl line-clamp-3 uppercase tracking-tight">
             "{element.heroDescription}"
           </p>
         </div>
