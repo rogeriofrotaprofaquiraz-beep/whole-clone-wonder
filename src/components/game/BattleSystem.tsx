@@ -314,18 +314,24 @@ export const BattleSystem = () => {
                          : 'bg-white/5 border-white/5 hover:bg-white/10 hover:border-white/20'
                      }`}
                    >
-                     <div className="flex flex-col items-start text-left">
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-blue-400/70">{attr.label}</span>
-                        <span className="text-xs font-bold uppercase tracking-tight line-clamp-1">{attr.value}</span>
+                     <div className="flex items-center gap-3">
+                        <CircleHelp className={`w-4 h-4 ${selectedAttr === attr.label ? 'text-white' : 'text-blue-400/50'}`} />
+                        <div className="flex flex-col items-start text-left">
+                           <span className="text-[10px] font-bold uppercase tracking-wider text-blue-400/70">{attr.label}</span>
+                           <span className="text-xs font-bold uppercase tracking-tight line-clamp-1">{attr.value}</span>
+                        </div>
                      </div>
                      <span className="text-sm font-black text-blue-300 ml-2">
                        {gameState === 'result' || selectedAttr === attr.label ? attr.score.toFixed(1) : '???'}
                      </span>
                    </button>
                    {(gameState === 'result' && selectedAttr === attr.label) && (
-                     <div className="p-3 rounded-xl bg-blue-500/10 border border-blue-500/20 text-[11px] leading-relaxed text-blue-200 animate-in slide-in-from-top-2 duration-300">
-                       <span className="font-bold block mb-1 uppercase tracking-tighter opacity-50">Justificativa:</span>
-                       {attr.justification}
+                     <div className="p-4 rounded-xl bg-blue-600/20 border-2 border-blue-400/30 text-xs leading-relaxed text-blue-100 animate-in slide-in-from-top-4 duration-500 shadow-xl">
+                       <div className="flex items-center gap-2 mb-2">
+                          <CircleHelp className="w-4 h-4 text-blue-400" />
+                          <span className="font-black uppercase tracking-tighter text-blue-400">Poder Analisado:</span>
+                       </div>
+                       <p className="italic font-medium">{attr.justification}</p>
                      </div>
                    )}
                  </div>
