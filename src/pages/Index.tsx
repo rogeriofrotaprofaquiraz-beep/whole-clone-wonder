@@ -53,23 +53,23 @@ const ElementCard = ({ element }: { element: PeriodicElement }) => {
       <div className="absolute inset-2 rounded-[1.5rem] border border-white/5 pointer-events-none"></div>
 
       {/* Symbol & Number (Style Carta MOV) */}
-      <div className="relative flex justify-between items-start mb-6 z-10">
-        <div className="w-16 h-16 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center border border-white/20 shadow-xl group-hover:scale-110 transition-transform duration-500">
-          <span className="text-4xl font-black italic drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]">{element.symbol}</span>
+      <div className="relative flex justify-between items-start mb-4 z-10">
+        <div className="w-12 h-12 bg-white/10 backdrop-blur-md rounded-xl flex items-center justify-center border border-white/20 shadow-xl group-hover:scale-110 transition-transform duration-500">
+          <span className="text-2xl font-black italic drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]">{element.symbol}</span>
         </div>
         <div className="text-right">
-          <span className="text-4xl font-black italic opacity-50 block leading-none">#{element.number}</span>
-          <Badge className={`${getRarityColor(rarity)} mt-2 font-black italic tracking-widest text-[10px]`}>
+          <span className="text-2xl font-black italic opacity-50 block leading-none">#{element.number}</span>
+          <Badge className={`${getRarityColor(rarity)} mt-1 font-black italic tracking-widest text-[8px] py-0 px-2`}>
             {rarity.toUpperCase()}
           </Badge>
         </div>
       </div>
 
-      <div className="relative mb-6 z-10">
-        <h2 className="text-4xl font-black tracking-tighter italic uppercase leading-none drop-shadow-2xl">
+      <div className="relative mb-4 z-10">
+        <h2 className="text-2xl font-black tracking-tighter italic uppercase leading-none drop-shadow-2xl">
           {element.name}
         </h2>
-        <p className="text-[11px] font-black tracking-[0.3em] text-blue-400 uppercase mt-1 opacity-80">{element.heroName}</p>
+        <p className="text-[9px] font-black tracking-[0.2em] text-blue-400 uppercase mt-0.5 opacity-80">{element.heroName}</p>
       </div>
       
       <div className={`
