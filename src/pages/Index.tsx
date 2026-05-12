@@ -73,7 +73,7 @@ const ElementCard = ({ element }: { element: PeriodicElement }) => {
       </div>
       
       <div className={`
-        h-[520px] rounded-3xl mb-6 flex items-start justify-center overflow-hidden relative group/img
+        flex-1 rounded-2xl mb-4 flex items-start justify-center overflow-hidden relative group/img
         border-2 border-white/10 shadow-[inset_0_0_40px_rgba(0,0,0,0.8)]
         ${isGas ? 'bg-gradient-to-b from-blue-900/40 via-slate-900 to-black' : 'bg-slate-950'}
       `}>
@@ -86,13 +86,13 @@ const ElementCard = ({ element }: { element: PeriodicElement }) => {
               loop 
               muted 
               playsInline
-              className="w-full h-full object-contain object-top opacity-90 group-hover/img:opacity-100"
+              className="w-full h-full object-cover opacity-90 group-hover/img:opacity-100"
             />
           ) : (
             <img 
               src={element.heroImage} 
               alt={element.heroName}
-              className="w-full h-full object-contain object-top" 
+              className="w-full h-full object-cover" 
             />
           )}
         </div>
@@ -103,21 +103,20 @@ const ElementCard = ({ element }: { element: PeriodicElement }) => {
         )}
 
         {/* QR Code Placeholder (Carta MOV Style) */}
-        <div className="absolute bottom-6 right-6 w-16 h-16 bg-white p-1 rounded-lg shadow-xl z-20 opacity-80 group-hover:opacity-100 transition-opacity">
+        <div className="absolute bottom-4 right-4 w-12 h-12 bg-white p-1 rounded-lg shadow-xl z-20 opacity-80 group-hover:opacity-100 transition-opacity">
           <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://lovable.dev" alt="QR Code" className="w-full h-full" />
         </div>
 
         {/* Cinematic Overlays */}
-        <div className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-black/80 to-transparent pointer-events-none"></div>
-        <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black via-black/80 to-transparent pr-24">
-          <div className="w-12 h-1 bg-blue-500 mb-3 rounded-full opacity-50"></div>
-          <p className="text-sm italic text-white/90 leading-relaxed font-medium drop-shadow-xl line-clamp-3">
+        <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-black/80 to-transparent pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black via-black/80 to-transparent pr-16">
+          <p className="text-[10px] italic text-white/90 leading-tight font-medium drop-shadow-xl line-clamp-2">
             "{element.heroDescription}"
           </p>
         </div>
       </div>
 
-      <ScrollArea className="h-72 pr-4 custom-scrollbar bg-black/20 rounded-2xl p-4 border border-white/5">
+      <ScrollArea className="h-32 mb-4 custom-scrollbar bg-black/20 rounded-xl p-3 border border-white/5">
         <div className="space-y-3">
           {element.attributes.map((attr) => (
             <div key={attr.id} className="group/attr relative bg-white/5 border border-white/5 rounded-2xl p-3 hover:bg-white/10 hover:border-white/20 transition-all duration-300">
