@@ -64,15 +64,17 @@ export const AdminPanel = () => {
     
     const randomGender = Math.random() > 0.5 ? "male" : "female";
     
-    const prompt = `Vertical cinematic high-quality ${randomGender} superhero character, full body shot from head to toe, centered, both feet clearly visible, no cropping at edges. 
-    The hero represents ${formData.name} (Symbol: ${formData.symbol}). 
-    Suit: ${texture} texture inspired by the element, glowing symbol "${formData.symbol}" in the center of the chest. 
-    Cape: translucent and glowing with ${texture} effects. 
-    Pose: majestic and confident hero floating slightly above the ground. 
-    Camera: slightly low angle for heroic effect, sharp focus on character. 
-    Lighting: strong cold frontal light, diffused natural ambient light, soft shadows. 
-    Background: hyper-realistic environment representing its origin: ${originAttr}. 
-    Style: fantastic realism, cinematic 8k, detailed textures, 2:3 aspect ratio.`;
+    const prompt = `Vertical card composition (2:3 ratio), cinematic 8k resolution. 
+    Character: A realistic ${randomGender} superhero representing the chemical element "${formData.name}". 
+    Features: Varied human traits, random hair style and color, confident expression, heroic and balanced pose. 
+    Composition: Full body shot from head to toe, centered, both right and left feet clearly visible, complete margins at top and bottom, no cropping. 
+    Camera: Slightly low angle for a heroic effect, sharp focus on character, shallow depth of field. 
+    Lighting: Strong cold frontal light highlighting suit textures and expression, diffused natural ambient light with soft shadows. 
+    Suit: ${texture} texture with luminosity coherent with element type, glowing symbol "${formData.symbol}" in the center of the chest. 
+    Cape: Glowing, translucent, and ${texture} texture with soft luminous edges. 
+    Background: High-definition cinematic realistic environment representing its natural origin: ${originAttr}. 
+    Movement: Hero floating slightly above the ground. 
+    Style: Fantastic realism, high definition, complete body details, coherent element palette.`;
 
     const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?width=600&height=900&nologo=true&seed=${Math.floor(Math.random() * 1000000)}`;
     handleInputChange('heroImage', imageUrl);
