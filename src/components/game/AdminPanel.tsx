@@ -64,7 +64,7 @@ export const AdminPanel = () => {
     
     const randomGender = Math.random() > 0.5 ? "male" : "female";
     
-    const prompt = `Vertical card composition (2:3 ratio), cinematic 8k resolution. 
+    const prompt = `Vertical card composition (9:30 ratio), extreme vertical format, cinematic 8k resolution. 
     Character: A realistic ${randomGender} superhero representing the chemical element "${formData.name}". 
     Features: Varied human traits, random hair style and color, confident expression, heroic and balanced pose. 
     Composition: Full body shot from head to toe, centered, both right and left feet clearly visible, complete margins at top and bottom, no cropping. 
@@ -76,9 +76,9 @@ export const AdminPanel = () => {
     Movement: Hero floating slightly above the ground. 
     Style: Fantastic realism, high definition, complete body details, coherent element palette.`;
 
-    const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?width=600&height=900&nologo=true&seed=${Math.floor(Math.random() * 1000000)}`;
+    const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?width=450&height=1500&nologo=true&seed=${Math.floor(Math.random() * 1000000)}`;
     handleInputChange('heroImage', imageUrl);
-    toast.success("Novo design de herói gerado seguindo os novos critérios!");
+    toast.success("Novo design de herói gerado seguindo a proporção 9:30!");
   };
 
   const generateAllHeros = () => {
