@@ -346,12 +346,12 @@ export const BattleSystem = () => {
                 <div className="text-4xl font-black text-slate-700">{gameState === 'result' ? cpuCard?.symbol : '?'}</div>
              </div>
 
-             <div className="h-56 rounded-2xl bg-slate-950 overflow-hidden mb-6 border border-white/5 shadow-inner flex items-center justify-center bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] flex-shrink-0">
+             <div className="h-80 rounded-2xl bg-slate-950 overflow-hidden mb-6 border border-white/10 shadow-[0_0_30px_rgba(0,0,0,0.5)] flex items-center justify-center bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] flex-shrink-0 relative">
                 {gameState === 'result' ? (
                   cpuCard?.heroImage?.endsWith('.mp4') ? (
-                    <video src={cpuCard.heroImage} autoPlay loop muted playsInline className="w-full h-full object-contain object-top animate-in fade-in duration-500" />
+                    <video src={cpuCard.heroImage} autoPlay loop muted playsInline className="w-full h-full object-cover animate-in fade-in duration-500" />
                   ) : (
-                    <img src={cpuCard?.heroImage} className="w-full h-full object-contain object-top animate-in fade-in duration-500" alt="" />
+                    <img src={cpuCard?.heroImage} className="w-full h-full object-cover animate-in fade-in duration-500" alt="" />
                   )
                 ) : (
                   <div className="flex flex-col items-center">
@@ -359,6 +359,9 @@ export const BattleSystem = () => {
                     <span className="text-xs font-black italic text-slate-700 uppercase tracking-widest animate-pulse">Aguardando Escolha</span>
                   </div>
                 )}
+                <div className="absolute top-2 right-2">
+                  <Badge className="bg-red-600 text-white border-white/20 font-black italic shadow-lg">OPONENTE</Badge>
+                </div>
              </div>
 
              <div className="flex-1 overflow-y-auto pr-2 custom-scrollbar space-y-2">
