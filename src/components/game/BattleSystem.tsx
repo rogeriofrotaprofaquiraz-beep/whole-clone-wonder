@@ -8,14 +8,10 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Swords, Trophy, RefreshCw, ChevronRight, User, Users, Key, Hash } from 'lucide-react';
 import { toast } from "sonner";
 
-const ATTRIBUTES_TO_COMPARE = [
-  "Massa atômica",
-  "Densidade",
-  "Raio atômico",
-  "Eletronegatividade",
-  "Abundância no universo",
-  "Poder Total"
-];
+// This is no longer a static list, we'll use the element's actual attributes
+// but we still want to filter to only the most relevant ones if needed
+// However, the user asked for all 27 points.
+
 
 export const BattleSystem = () => {
   const [session, setSession] = useState<any>(null);
@@ -277,10 +273,10 @@ export const BattleSystem = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
         {/* Player Card */}
-        <div className="relative group transition-all duration-500 hover:scale-[1.02]">
+        <div className="relative group transition-all duration-500 hover:scale-[1.01]">
           <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-[2.5rem] blur opacity-25 group-hover:opacity-50 transition-opacity"></div>
-          <div className="relative p-6 rounded-[2.5rem] bg-slate-900 border border-white/10 overflow-hidden shadow-2xl">
-             <div className="flex justify-between items-start mb-4">
+          <div className="relative p-6 rounded-[2.5rem] bg-slate-900 border border-white/10 overflow-hidden shadow-2xl flex flex-col h-[750px]">
+             <div className="flex justify-between items-start mb-4 flex-shrink-0">
                 <div>
                   <h3 className="text-3xl font-black italic uppercase text-white leading-none">{playerCard?.name}</h3>
                   <span className="text-[10px] font-bold text-blue-400 uppercase tracking-widest">{playerCard?.heroName}</span>
@@ -288,30 +284,51 @@ export const BattleSystem = () => {
                 <div className="text-4xl font-black text-blue-500">{playerCard?.symbol}</div>
              </div>
              
-             <div className="h-64 rounded-2xl bg-slate-950 overflow-hidden mb-6 border border-white/5 shadow-inner group/img relative">
-                <img src={playerCard?.heroImage} className="w-full h-full object-contain object-top transition-transform duration-700 group-hover/img:scale-110" alt="" />
+             <div className="h-56 rounded-2xl bg-slate-950 overflow-hidden mb-6 border border-white/5 shadow-inner group/img relative flex-shrink-0">
+                {playerCard?.heroImage?.endsWith('.mp4') ? (
+                  <video 
+                    src={playerCard.heroImage} 
+                    autoPlay 
+                    loop 
+                    muted 
+                    playsInline 
+                    className="w-full h-full object-contain object-top transition-transform duration-700 group-hover/img:scale-110"
+                  />
+                ) : (
+                  <img src={playerCard?.heroImage} className="w-full h-full object-contain object-top transition-transform duration-700 group-hover/img:scale-110" alt="" />
+                )}
                 <div className="absolute bottom-2 left-2">
                   <Badge className="bg-amber-500/20 text-amber-500 border-amber-500/30 font-black italic">RARO</Badge>
                 </div>
              </div>
 
-             <div className="grid grid-cols-1 gap-2">
-               {ATTRIBUTES_TO_COMPARE.map(attr => (
-                 <button
-                   key={attr}
-                   disabled={gameState !== 'battle'}
-                   onClick={() => handleBattle(attr)}
-                   className={`w-full flex justify-between items-center p-3 rounded-xl border transition-all ${
-                     selectedAttr === attr 
-                       ? 'bg-blue-600 border-white shadow-[0_0_20px_rgba(37,99,235,0.6)] scale-[1.03] z-10' 
-                       : 'bg-white/5 border-white/5 hover:bg-white/10 hover:border-white/20'
-                   }`}
-                 >
-                   <span className="text-xs font-bold uppercase tracking-wider">{attr}</span>
-                   <span className="text-sm font-black text-blue-300">
-                     {gameState === 'result' || selectedAttr === attr ? getAttrScore(playerCard!, attr).toFixed(1) : '???'}
-                   </span>
-                 </button>
+             <div className="flex-1 overflow-y-auto pr-2 custom-scrollbar space-y-2">
+               {playerCard?.attributes.map(attr => (
+                 <div key={attr.id} className="space-y-1">
+                   <button
+                     disabled={gameState !== 'battle'}
+                     onClick={() => handleBattle(attr.label)}
+                     className={`w-full flex justify-between items-center p-3 rounded-xl border transition-all ${
+                       selectedAttr === attr.label 
+                         ? 'bg-blue-600 border-white shadow-[0_0_20px_rgba(37,99,235,0.6)] scale-[1.02] z-10' 
+                         : 'bg-white/5 border-white/5 hover:bg-white/10 hover:border-white/20'
+                     }`}
+                   >
+                     <div className="flex flex-col items-start text-left">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-blue-400/70">{attr.label}</span>
+                        <span className="text-xs font-bold uppercase tracking-tight line-clamp-1">{attr.value}</span>
+                     </div>
+                     <span className="text-sm font-black text-blue-300 ml-2">
+                       {gameState === 'result' || selectedAttr === attr.label ? attr.score.toFixed(1) : '???'}
+                     </span>
+                   </button>
+                   {(gameState === 'result' && selectedAttr === attr.label) && (
+                     <div className="p-3 rounded-xl bg-blue-500/10 border border-blue-500/20 text-[11px] leading-relaxed text-blue-200 animate-in slide-in-from-top-2 duration-300">
+                       <span className="font-bold block mb-1 uppercase tracking-tighter opacity-50">Justificativa:</span>
+                       {attr.justification}
+                     </div>
+                   )}
+                 </div>
                ))}
              </div>
           </div>
@@ -320,8 +337,8 @@ export const BattleSystem = () => {
         {/* CPU/Opponent Card */}
         <div className="relative transition-all duration-500">
           <div className="absolute -inset-1 bg-gradient-to-r from-red-600 to-purple-500 rounded-[2.5rem] blur opacity-25"></div>
-          <div className="relative p-6 rounded-[2.5rem] bg-slate-900 border border-white/10 overflow-hidden shadow-2xl">
-             <div className="flex justify-between items-start mb-4">
+          <div className="relative p-6 rounded-[2.5rem] bg-slate-900 border border-white/10 overflow-hidden shadow-2xl flex flex-col h-[750px]">
+             <div className="flex justify-between items-start mb-4 flex-shrink-0">
                 <div className="opacity-40">
                   <h3 className="text-3xl font-black italic uppercase text-white leading-none">{gameState === 'result' ? cpuCard?.name : '??????'}</h3>
                   <span className="text-[10px] font-bold text-red-400 uppercase tracking-widest">OPONENTE MISTERIOSO</span>
@@ -329,9 +346,13 @@ export const BattleSystem = () => {
                 <div className="text-4xl font-black text-slate-700">{gameState === 'result' ? cpuCard?.symbol : '?'}</div>
              </div>
 
-             <div className="h-64 rounded-2xl bg-slate-950 overflow-hidden mb-6 border border-white/5 shadow-inner flex items-center justify-center bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]">
+             <div className="h-56 rounded-2xl bg-slate-950 overflow-hidden mb-6 border border-white/5 shadow-inner flex items-center justify-center bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] flex-shrink-0">
                 {gameState === 'result' ? (
-                  <img src={cpuCard?.heroImage} className="w-full h-full object-contain object-top animate-in fade-in duration-500" alt="" />
+                  cpuCard?.heroImage?.endsWith('.mp4') ? (
+                    <video src={cpuCard.heroImage} autoPlay loop muted playsInline className="w-full h-full object-contain object-top animate-in fade-in duration-500" />
+                  ) : (
+                    <img src={cpuCard?.heroImage} className="w-full h-full object-contain object-top animate-in fade-in duration-500" alt="" />
+                  )
                 ) : (
                   <div className="flex flex-col items-center">
                     <RefreshCw className="w-16 h-16 text-slate-800 animate-spin-slow mb-4" />
@@ -340,20 +361,37 @@ export const BattleSystem = () => {
                 )}
              </div>
 
-             <div className="grid grid-cols-1 gap-2">
-               {ATTRIBUTES_TO_COMPARE.map(attr => (
-                 <div
-                   key={attr}
-                   className={`w-full flex justify-between items-center p-3 rounded-xl border bg-white/5 border-white/5 transition-all ${
-                     selectedAttr === attr && winner === 'cpu' ? 'border-red-500 bg-red-500/20 shadow-[0_0_15px_rgba(239,68,68,0.3)]' : ''
-                   } ${gameState === 'result' && selectedAttr === attr ? 'scale-[1.03] z-10' : ''}`}
-                 >
-                   <span className="text-xs font-bold uppercase tracking-wider text-slate-500">{attr}</span>
-                   <span className="text-sm font-black text-slate-600">
-                     {gameState === 'result' ? getAttrScore(cpuCard!, attr).toFixed(1) : '???'}
-                   </span>
-                 </div>
-               ))}
+             <div className="flex-1 overflow-y-auto pr-2 custom-scrollbar space-y-2">
+               {(gameState === 'result' ? cpuCard?.attributes : playerCard?.attributes)?.map((attr, idx) => {
+                 const cpuAttr = gameState === 'result' ? attr : null;
+                 const isWinnerAttr = selectedAttr === attr.label && winner === 'cpu';
+                 
+                 return (
+                   <div key={idx} className="space-y-1">
+                     <div
+                       className={`w-full flex justify-between items-center p-3 rounded-xl border bg-white/5 border-white/5 transition-all ${
+                         isWinnerAttr ? 'border-red-500 bg-red-500/20 shadow-[0_0_15px_rgba(239,68,68,0.3)]' : ''
+                       } ${gameState === 'result' && selectedAttr === attr.label ? 'scale-[1.02] z-10' : ''}`}
+                     >
+                       <div className="flex flex-col items-start text-left">
+                          <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">{attr.label}</span>
+                          <span className="text-xs font-bold uppercase tracking-tight text-slate-400 line-clamp-1">
+                            {gameState === 'result' ? (attr.value) : '??????'}
+                          </span>
+                       </div>
+                       <span className="text-sm font-black text-slate-600 ml-2">
+                         {gameState === 'result' ? attr.score.toFixed(1) : '???'}
+                       </span>
+                     </div>
+                     {(gameState === 'result' && selectedAttr === attr.label) && (
+                       <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-[11px] leading-relaxed text-red-200 animate-in slide-in-from-top-2 duration-300">
+                         <span className="font-bold block mb-1 uppercase tracking-tighter opacity-50">Justificativa:</span>
+                         {attr.justification}
+                       </div>
+                     )}
+                   </div>
+                 );
+               })}
              </div>
           </div>
         </div>
