@@ -42,7 +42,7 @@ const ElementCard = ({ element }: { element: PeriodicElement }) => {
 
   return (
     <div className={`
-      relative p-8 rounded-[2rem] w-[400px] aspect-[9/30] text-white font-sans shadow-[0_35px_80px_rgba(0,0,0,0.8)] 
+      relative p-6 rounded-[2rem] w-[400px] h-[1333px] text-white font-sans shadow-[0_35px_80px_rgba(0,0,0,0.8)] 
       animate-in fade-in zoom-in duration-700 border-2 border-white/20 overflow-hidden group flex flex-col
       ${isGas ? 'backdrop-blur-2xl bg-slate-900/40' : 'bg-slate-900'}
     `}>
@@ -73,7 +73,7 @@ const ElementCard = ({ element }: { element: PeriodicElement }) => {
       </div>
       
       <div className={`
-        flex-1 rounded-2xl mb-4 flex items-start justify-center overflow-hidden relative group/img
+        h-[600px] rounded-2xl mb-4 flex items-start justify-center overflow-hidden relative group/img
         border-2 border-white/10 shadow-[inset_0_0_40px_rgba(0,0,0,0.8)]
         ${isGas ? 'bg-gradient-to-b from-blue-900/40 via-slate-900 to-black' : 'bg-slate-950'}
       `}>
@@ -116,7 +116,7 @@ const ElementCard = ({ element }: { element: PeriodicElement }) => {
         </div>
       </div>
 
-      <ScrollArea className="h-32 mb-4 custom-scrollbar bg-black/20 rounded-xl p-3 border border-white/5">
+      <ScrollArea className="flex-1 mb-4 custom-scrollbar bg-black/20 rounded-xl p-3 border border-white/5">
         <div className="space-y-3">
           {element.attributes.map((attr) => (
             <div key={attr.id} className="group/attr relative bg-white/5 border border-white/5 rounded-2xl p-3 hover:bg-white/10 hover:border-white/20 transition-all duration-300">
