@@ -42,38 +42,38 @@ const ElementCard = ({ element }: { element: PeriodicElement }) => {
 
   return (
     <div className={`
-      relative p-8 rounded-[3rem] w-full max-w-lg text-white font-sans shadow-[0_35px_80px_rgba(0,0,0,0.8)] 
-      animate-in fade-in zoom-in duration-700 border-2 border-white/20 overflow-hidden group
+      relative p-8 rounded-[2rem] w-[400px] aspect-[2/3] text-white font-sans shadow-[0_35px_80px_rgba(0,0,0,0.8)] 
+      animate-in fade-in zoom-in duration-700 border-2 border-white/20 overflow-hidden group flex flex-col
       ${isGas ? 'backdrop-blur-2xl bg-slate-900/40' : 'bg-slate-900'}
     `}>
       {/* Carbon Fiber / Grid Pattern */}
       <div className="absolute inset-0 opacity-20 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
       
       {/* Inner Border Glow */}
-      <div className="absolute inset-2 rounded-[2.5rem] border border-white/5 pointer-events-none"></div>
+      <div className="absolute inset-2 rounded-[1.5rem] border border-white/5 pointer-events-none"></div>
 
       {/* Symbol & Number (Style Carta MOV) */}
-      <div className="relative flex justify-between items-start mb-6 z-10">
-        <div className="w-16 h-16 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center border border-white/20 shadow-xl group-hover:scale-110 transition-transform duration-500">
-          <span className="text-4xl font-black italic drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]">{element.symbol}</span>
+      <div className="relative flex justify-between items-start mb-4 z-10">
+        <div className="w-12 h-12 bg-white/10 backdrop-blur-md rounded-xl flex items-center justify-center border border-white/20 shadow-xl group-hover:scale-110 transition-transform duration-500">
+          <span className="text-2xl font-black italic drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]">{element.symbol}</span>
         </div>
         <div className="text-right">
-          <span className="text-4xl font-black italic opacity-50 block leading-none">#{element.number}</span>
-          <Badge className={`${getRarityColor(rarity)} mt-2 font-black italic tracking-widest text-[10px]`}>
+          <span className="text-2xl font-black italic opacity-50 block leading-none">#{element.number}</span>
+          <Badge className={`${getRarityColor(rarity)} mt-1 font-black italic tracking-widest text-[8px] py-0 px-2`}>
             {rarity.toUpperCase()}
           </Badge>
         </div>
       </div>
 
-      <div className="relative mb-6 z-10">
-        <h2 className="text-4xl font-black tracking-tighter italic uppercase leading-none drop-shadow-2xl">
+      <div className="relative mb-4 z-10">
+        <h2 className="text-2xl font-black tracking-tighter italic uppercase leading-none drop-shadow-2xl">
           {element.name}
         </h2>
-        <p className="text-[11px] font-black tracking-[0.3em] text-blue-400 uppercase mt-1 opacity-80">{element.heroName}</p>
+        <p className="text-[9px] font-black tracking-[0.2em] text-blue-400 uppercase mt-0.5 opacity-80">{element.heroName}</p>
       </div>
       
       <div className={`
-        h-[520px] rounded-3xl mb-6 flex items-start justify-center overflow-hidden relative group/img
+        flex-1 rounded-2xl mb-4 flex items-start justify-center overflow-hidden relative group/img
         border-2 border-white/10 shadow-[inset_0_0_40px_rgba(0,0,0,0.8)]
         ${isGas ? 'bg-gradient-to-b from-blue-900/40 via-slate-900 to-black' : 'bg-slate-950'}
       `}>
@@ -86,13 +86,13 @@ const ElementCard = ({ element }: { element: PeriodicElement }) => {
               loop 
               muted 
               playsInline
-              className="w-full h-full object-contain object-top opacity-90 group-hover/img:opacity-100"
+              className="w-full h-full object-cover opacity-90 group-hover/img:opacity-100"
             />
           ) : (
             <img 
               src={element.heroImage} 
               alt={element.heroName}
-              className="w-full h-full object-contain object-top" 
+              className="w-full h-full object-cover" 
             />
           )}
         </div>
@@ -103,21 +103,20 @@ const ElementCard = ({ element }: { element: PeriodicElement }) => {
         )}
 
         {/* QR Code Placeholder (Carta MOV Style) */}
-        <div className="absolute bottom-6 right-6 w-16 h-16 bg-white p-1 rounded-lg shadow-xl z-20 opacity-80 group-hover:opacity-100 transition-opacity">
+        <div className="absolute bottom-4 right-4 w-12 h-12 bg-white p-1 rounded-lg shadow-xl z-20 opacity-80 group-hover:opacity-100 transition-opacity">
           <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://lovable.dev" alt="QR Code" className="w-full h-full" />
         </div>
 
         {/* Cinematic Overlays */}
-        <div className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-black/80 to-transparent pointer-events-none"></div>
-        <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black via-black/80 to-transparent pr-24">
-          <div className="w-12 h-1 bg-blue-500 mb-3 rounded-full opacity-50"></div>
-          <p className="text-sm italic text-white/90 leading-relaxed font-medium drop-shadow-xl line-clamp-3">
+        <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-black/80 to-transparent pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black via-black/80 to-transparent pr-16">
+          <p className="text-[10px] italic text-white/90 leading-tight font-medium drop-shadow-xl line-clamp-2">
             "{element.heroDescription}"
           </p>
         </div>
       </div>
 
-      <ScrollArea className="h-72 pr-4 custom-scrollbar bg-black/20 rounded-2xl p-4 border border-white/5">
+      <ScrollArea className="h-32 mb-4 custom-scrollbar bg-black/20 rounded-xl p-3 border border-white/5">
         <div className="space-y-3">
           {element.attributes.map((attr) => (
             <div key={attr.id} className="group/attr relative bg-white/5 border border-white/5 rounded-2xl p-3 hover:bg-white/10 hover:border-white/20 transition-all duration-300">
@@ -149,12 +148,12 @@ const ElementCard = ({ element }: { element: PeriodicElement }) => {
         </div>
       </ScrollArea>
       
-      <div className="mt-6 flex justify-between items-center px-6 py-5 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-[2rem] border-2 border-white/10 shadow-2xl">
+      <div className="mt-auto flex justify-between items-center px-4 py-3 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-2xl border border-white/10 shadow-xl">
         <div className="flex flex-col">
-          <span className="text-[10px] font-black text-white/40 uppercase tracking-[0.3em]">Nível de Poder</span>
-          <span className="text-xs text-blue-400 font-black italic tracking-tighter">DOMÍNIO: {isGas ? 'GASOSO' : 'SÓLIDO'}</span>
+          <span className="text-[8px] font-black text-white/40 uppercase tracking-[0.2em]">Nível de Poder</span>
+          <span className="text-[10px] text-blue-400 font-black italic tracking-tighter">DOMÍNIO: {isGas ? 'GASOSO' : 'SÓLIDO'}</span>
         </div>
-        <div className="text-5xl font-black italic text-transparent bg-clip-text bg-gradient-to-br from-white via-blue-400 to-blue-600 drop-shadow-[0_4px_12px_rgba(37,99,235,0.6)]">
+        <div className="text-3xl font-black italic text-transparent bg-clip-text bg-gradient-to-br from-white via-blue-400 to-blue-600 drop-shadow-[0_2px_8px_rgba(37,99,235,0.6)]">
           {(element.attributes.reduce((acc, curr) => acc + curr.score, 0) / 27).toFixed(1)}
         </div>
       </div>

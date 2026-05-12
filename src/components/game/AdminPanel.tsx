@@ -54,10 +54,31 @@ export const AdminPanel = () => {
       toast.error("Preencha o nome do elemento e o símbolo primeiro!");
       return;
     }
-    const prompt = `A cinematic high-quality superhero character named ${formData.heroName || formData.name + ' Hero'}, representing the chemical element ${formData.name} (Symbol: ${formData.symbol}), ${formData.heroDescription || 'Master of ' + formData.name}. Style: glowing symbol ${formData.symbol} in a circular emblem on chest, flowing epic cape, atmospheric lighting, detailed metallic suit, majestic pose, hyper-realistic, 8k resolution.`;
-    const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?width=600&height=800&nologo=true`;
+
+    const stateAttr = formData.attributes?.find(a => a.label === "Estado físico")?.value || "Sólido";
+    const originAttr = formData.attributes?.find(a => a.label === "Local de origem")?.value || "Natureza";
+    
+    let texture = "metallic and solid";
+    if (stateAttr.toString().toLowerCase().includes("gás")) texture = "gaseous and glowing";
+    if (stateAttr.toString().toLowerCase().includes("líquido")) texture = "liquid and flowing";
+    
+    const randomGender = Math.random() > 0.5 ? "male" : "female";
+    
+    const prompt = `Vertical card composition (2:3 ratio), cinematic 8k resolution. 
+    Character: A realistic ${randomGender} superhero representing the chemical element "${formData.name}". 
+    Features: Varied human traits, random hair style and color, confident expression, heroic and balanced pose. 
+    Composition: Full body shot from head to toe, centered, both right and left feet clearly visible, complete margins at top and bottom, no cropping. 
+    Camera: Slightly low angle for a heroic effect, sharp focus on character, shallow depth of field. 
+    Lighting: Strong cold frontal light highlighting suit textures and expression, diffused natural ambient light with soft shadows. 
+    Suit: ${texture} texture with luminosity coherent with element type, glowing symbol "${formData.symbol}" in the center of the chest. 
+    Cape: Glowing, translucent, and ${texture} texture with soft luminous edges. 
+    Background: High-definition cinematic realistic environment representing its natural origin: ${originAttr}. 
+    Movement: Hero floating slightly above the ground. 
+    Style: Fantastic realism, high definition, complete body details, coherent element palette.`;
+
+    const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?width=600&height=900&nologo=true&seed=${Math.floor(Math.random() * 1000000)}`;
     handleInputChange('heroImage', imageUrl);
-    toast.success("Novo design de herói gerado com sucesso!");
+    toast.success("Novo design de herói gerado seguindo os novos critérios!");
   };
 
   const generateAllHeros = () => {
@@ -203,9 +224,9 @@ export const AdminPanel = () => {
               <div className="space-y-4">
                 <div className="space-y-2">
                   <Label className="flex justify-between text-[10px] font-black uppercase tracking-widest text-slate-500">
-                    Avatar Cinematográfico
+                    Avatar Cinematográfico (6x9 / 2:3)
                     <Button variant="link" size="sm" onClick={generateAIPrompt} className="h-auto p-0 text-blue-400 font-black italic">
-                      <Wand2 className="w-3 h-3 mr-1" /> GERAR IMAGEM
+                      <Wand2 className="w-3 h-3 mr-1" /> GERAR COM NOVOS CRITÉRIOS
                     </Button>
                   </Label>
                   <Input 
@@ -215,16 +236,16 @@ export const AdminPanel = () => {
                   />
                 </div>
                 {formData.heroImage && (
-                  <div className="aspect-[3/4] rounded-3xl bg-black/60 overflow-hidden border-2 border-white/10 shadow-2xl relative group">
+                  <div className="aspect-[2/3] w-full rounded-2xl bg-black/60 overflow-hidden border-2 border-white/10 shadow-2xl relative group">
                     <div className="w-full h-full animate-float">
                       {formData.heroImage.endsWith('.mp4') ? (
-                        <video src={formData.heroImage} autoPlay loop muted playsInline className="w-full h-full object-contain" />
+                        <video src={formData.heroImage} autoPlay loop muted playsInline className="w-full h-full object-cover" />
                       ) : (
-                        <img src={formData.heroImage} className="w-full h-full object-contain" alt="Preview" />
+                        <img src={formData.heroImage} className="w-full h-full object-cover" alt="Preview" />
                       )}
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-                       <span className="text-[10px] font-black italic text-white/60">PREVIEW DA CARTA</span>
+                       <span className="text-[10px] font-black italic text-white/60 uppercase">Proporção 2:3 (6cm x 9cm)</span>
                     </div>
                   </div>
                 )}
