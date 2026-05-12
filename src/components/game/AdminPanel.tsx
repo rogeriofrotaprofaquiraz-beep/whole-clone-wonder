@@ -54,10 +54,29 @@ export const AdminPanel = () => {
       toast.error("Preencha o nome do elemento e o símbolo primeiro!");
       return;
     }
-    const prompt = `A cinematic high-quality superhero character named ${formData.heroName || formData.name + ' Hero'}, representing the chemical element ${formData.name} (Symbol: ${formData.symbol}), ${formData.heroDescription || 'Master of ' + formData.name}. Style: glowing symbol ${formData.symbol} in a circular emblem on chest, flowing epic cape, atmospheric lighting, detailed metallic suit, majestic pose, hyper-realistic, 8k resolution.`;
-    const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?width=600&height=800&nologo=true`;
+
+    const stateAttr = formData.attributes?.find(a => a.label === "Estado físico")?.value || "Sólido";
+    const originAttr = formData.attributes?.find(a => a.label === "Local de origem")?.value || "Natureza";
+    
+    let texture = "metallic and solid";
+    if (stateAttr.toString().toLowerCase().includes("gás")) texture = "gaseous and glowing";
+    if (stateAttr.toString().toLowerCase().includes("líquido")) texture = "liquid and flowing";
+    
+    const randomGender = Math.random() > 0.5 ? "male" : "female";
+    
+    const prompt = `Vertical cinematic high-quality ${randomGender} superhero character, full body shot from head to toe, centered, both feet clearly visible, no cropping at edges. 
+    The hero represents ${formData.name} (Symbol: ${formData.symbol}). 
+    Suit: ${texture} texture inspired by the element, glowing symbol "${formData.symbol}" in the center of the chest. 
+    Cape: translucent and glowing with ${texture} effects. 
+    Pose: majestic and confident hero floating slightly above the ground. 
+    Camera: slightly low angle for heroic effect, sharp focus on character. 
+    Lighting: strong cold frontal light, diffused natural ambient light, soft shadows. 
+    Background: hyper-realistic environment representing its origin: ${originAttr}. 
+    Style: fantastic realism, cinematic 8k, detailed textures, 2:3 aspect ratio.`;
+
+    const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?width=600&height=900&nologo=true&seed=${Math.floor(Math.random() * 1000000)}`;
     handleInputChange('heroImage', imageUrl);
-    toast.success("Novo design de herói gerado com sucesso!");
+    toast.success("Novo design de herói gerado seguindo os novos critérios!");
   };
 
   const generateAllHeros = () => {
