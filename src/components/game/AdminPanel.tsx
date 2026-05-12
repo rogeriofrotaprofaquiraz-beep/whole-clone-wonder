@@ -223,28 +223,46 @@ export const AdminPanel = () => {
               <div className="space-y-4">
                 <div className="space-y-2">
                   <Label className="flex justify-between text-[10px] font-black uppercase tracking-widest text-slate-500">
-                    Avatar Cinematográfico (6x9 / 2:3)
-                    <Button variant="link" size="sm" onClick={generateAIPrompt} className="h-auto p-0 text-blue-400 font-black italic">
-                      <Wand2 className="w-3 h-3 mr-1" /> GERAR COM NOVOS CRITÉRIOS
+                    Avatar do Herói (Gerado por IA)
+                    <Button variant="link" size="sm" onClick={generateAIPrompt} className="h-auto p-0 text-blue-400 font-black italic hover:text-blue-300">
+                      <Wand2 className="w-3 h-3 mr-1" /> GERAR NOVO DESIGN
                     </Button>
                   </Label>
-                  <Input 
-                    value={formData.heroImage} 
-                    onChange={e => handleInputChange('heroImage', e.target.value)}
-                    className="bg-black/40 border-white/10 text-[10px] h-10 text-white"
-                  />
+                  <div className="relative group">
+                    <Input 
+                      value={formData.heroImage} 
+                      onChange={e => handleInputChange('heroImage', e.target.value)}
+                      className="bg-black/40 border-white/10 text-[9px] h-10 text-white/40 font-mono pr-20"
+                      placeholder="URL da imagem será gerada aqui..."
+                    />
+                    <div className="absolute right-2 top-1/2 -translate-y-1/2 px-2 py-1 bg-blue-600/20 rounded-md text-[8px] font-black text-blue-400 border border-blue-500/30">
+                      POLLINATIONS AI
+                    </div>
+                  </div>
+                  <p className="text-[9px] text-slate-500 italic">
+                    Este endereço é um link direto para o motor de IA Pollinations, que cria a imagem em tempo real baseada nas características do elemento.
+                  </p>
                 </div>
                 {formData.heroImage && (
                   <div className="aspect-[9/30] w-full rounded-2xl bg-black/60 overflow-hidden border-2 border-white/10 shadow-2xl relative group">
-                    <div className="w-full h-full animate-float">
+                    <div className="w-full h-full">
                       {formData.heroImage.endsWith('.mp4') ? (
                         <video src={formData.heroImage} autoPlay loop muted playsInline className="w-full h-full object-cover" />
                       ) : (
-                        <img src={formData.heroImage} className="w-full h-full object-cover" alt="Preview" />
+                        <img 
+                          src={formData.heroImage} 
+                          className="w-full h-full object-cover transition-opacity duration-500" 
+                          alt="Preview"
+                          onLoad={(e) => (e.currentTarget.style.opacity = "1")}
+                          style={{ opacity: 0 }}
+                        />
                       )}
                     </div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-                       <span className="text-[10px] font-black italic text-white/60 uppercase">Proporção 30x9</span>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-4">
+                       <div className="flex flex-col">
+                         <span className="text-[10px] font-black italic text-white uppercase">Proporção 30x9</span>
+                         <span className="text-[8px] text-white/40 uppercase tracking-widest">Enquadramento Full Body</span>
+                       </div>
                     </div>
                   </div>
                 )}
