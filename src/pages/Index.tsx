@@ -42,15 +42,15 @@ const ElementCard = ({ element }: { element: PeriodicElement }) => {
 
   return (
     <div className={`
-      relative p-8 rounded-[3rem] w-full max-w-lg text-white font-sans shadow-[0_35px_80px_rgba(0,0,0,0.8)] 
-      animate-in fade-in zoom-in duration-700 border-2 border-white/20 overflow-hidden group
+      relative p-8 rounded-[2rem] w-[400px] aspect-[2/3] text-white font-sans shadow-[0_35px_80px_rgba(0,0,0,0.8)] 
+      animate-in fade-in zoom-in duration-700 border-2 border-white/20 overflow-hidden group flex flex-col
       ${isGas ? 'backdrop-blur-2xl bg-slate-900/40' : 'bg-slate-900'}
     `}>
       {/* Carbon Fiber / Grid Pattern */}
       <div className="absolute inset-0 opacity-20 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
       
       {/* Inner Border Glow */}
-      <div className="absolute inset-2 rounded-[2.5rem] border border-white/5 pointer-events-none"></div>
+      <div className="absolute inset-2 rounded-[1.5rem] border border-white/5 pointer-events-none"></div>
 
       {/* Symbol & Number (Style Carta MOV) */}
       <div className="relative flex justify-between items-start mb-6 z-10">
