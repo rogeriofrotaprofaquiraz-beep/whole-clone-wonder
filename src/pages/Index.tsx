@@ -42,7 +42,7 @@ const ElementCard = ({ element }: { element: PeriodicElement }) => {
 
   return (
     <div className={`
-      relative p-8 rounded-[2rem] w-[400px] aspect-[2/3] text-white font-sans shadow-[0_35px_80px_rgba(0,0,0,0.8)] 
+      relative p-8 rounded-[2rem] w-[400px] aspect-[9/30] text-white font-sans shadow-[0_35px_80px_rgba(0,0,0,0.8)] 
       animate-in fade-in zoom-in duration-700 border-2 border-white/20 overflow-hidden group flex flex-col
       ${isGas ? 'backdrop-blur-2xl bg-slate-900/40' : 'bg-slate-900'}
     `}>

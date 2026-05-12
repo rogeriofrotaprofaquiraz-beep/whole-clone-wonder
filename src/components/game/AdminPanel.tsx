@@ -64,7 +64,7 @@ export const AdminPanel = () => {
     
     const randomGender = Math.random() > 0.5 ? "male" : "female";
     
-    const prompt = `Vertical card composition (2:3 ratio), cinematic 8k resolution. 
+    const prompt = `Vertical card composition (9:30 ratio), extreme vertical format, cinematic 8k resolution. 
     Character: A realistic ${randomGender} superhero representing the chemical element "${formData.name}". 
     Features: Varied human traits, random hair style and color, confident expression, heroic and balanced pose. 
     Composition: Full body shot from head to toe, centered, both right and left feet clearly visible, complete margins at top and bottom, no cropping. 
@@ -76,9 +76,9 @@ export const AdminPanel = () => {
     Movement: Hero floating slightly above the ground. 
     Style: Fantastic realism, high definition, complete body details, coherent element palette.`;
 
-    const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?width=600&height=900&nologo=true&seed=${Math.floor(Math.random() * 1000000)}`;
+    const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?width=450&height=1500&nologo=true&seed=${Math.floor(Math.random() * 1000000)}`;
     handleInputChange('heroImage', imageUrl);
-    toast.success("Novo design de herói gerado seguindo os novos critérios!");
+    toast.success("Novo design de herói gerado seguindo a proporção 9:30!");
   };
 
   const generateAllHeros = () => {
@@ -236,7 +236,7 @@ export const AdminPanel = () => {
                   />
                 </div>
                 {formData.heroImage && (
-                  <div className="aspect-[2/3] w-full rounded-2xl bg-black/60 overflow-hidden border-2 border-white/10 shadow-2xl relative group">
+                  <div className="aspect-[9/30] w-full rounded-2xl bg-black/60 overflow-hidden border-2 border-white/10 shadow-2xl relative group">
                     <div className="w-full h-full animate-float">
                       {formData.heroImage.endsWith('.mp4') ? (
                         <video src={formData.heroImage} autoPlay loop muted playsInline className="w-full h-full object-cover" />
@@ -245,7 +245,7 @@ export const AdminPanel = () => {
                       )}
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-                       <span className="text-[10px] font-black italic text-white/60 uppercase">Proporção 2:3 (6cm x 9cm)</span>
+                       <span className="text-[10px] font-black italic text-white/60 uppercase">Proporção 30x9</span>
                     </div>
                   </div>
                 )}
