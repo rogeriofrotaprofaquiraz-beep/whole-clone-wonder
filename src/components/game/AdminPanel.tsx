@@ -224,9 +224,9 @@ export const AdminPanel = () => {
               <div className="space-y-4">
                 <div className="space-y-2">
                   <Label className="flex justify-between text-[10px] font-black uppercase tracking-widest text-slate-500">
-                    Avatar Cinematográfico
+                    Avatar Cinematográfico (6x9 / 2:3)
                     <Button variant="link" size="sm" onClick={generateAIPrompt} className="h-auto p-0 text-blue-400 font-black italic">
-                      <Wand2 className="w-3 h-3 mr-1" /> GERAR IMAGEM
+                      <Wand2 className="w-3 h-3 mr-1" /> GERAR COM NOVOS CRITÉRIOS
                     </Button>
                   </Label>
                   <Input 
