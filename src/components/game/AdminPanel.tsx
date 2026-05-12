@@ -64,21 +64,20 @@ export const AdminPanel = () => {
     
     const randomGender = Math.random() > 0.5 ? "male" : "female";
     
-    const prompt = `Vertical card composition (9:30 ratio), extreme vertical format, cinematic 8k resolution. 
+    const prompt = `Extreme vertical card composition (9:30 ratio), cinematic 8k resolution. 
     Character: A realistic ${randomGender} superhero representing the chemical element "${formData.name}". 
     Features: Varied human traits, random hair style and color, confident expression, heroic and balanced pose. 
-    Composition: Full body shot from head to toe, centered, both right and left feet clearly visible, complete margins at top and bottom, no cropping. 
-    Camera: Slightly low angle for a heroic effect, sharp focus on character, shallow depth of field. 
-    Lighting: Strong cold frontal light highlighting suit textures and expression, diffused natural ambient light with soft shadows. 
+    Composition: FULL BODY shot from head to toe, perfectly centered, both right and left feet clearly visible, complete margins at top and bottom, character is fully contained within the frame with no cropping of head or feet. 
+    Camera: Full-body position, slightly low angle for heroic effect, sharp focus, shallow depth of field. 
+    Lighting: Soft cinematic lighting with luminous glowing edges, balanced light and complete body details. 
     Suit: ${texture} texture with luminosity coherent with element type, glowing symbol "${formData.symbol}" in the center of the chest. 
     Cape: Glowing, translucent, and ${texture} texture with soft luminous edges. 
-    Background: High-definition cinematic realistic environment representing its natural origin: ${originAttr}. 
-    Movement: Hero floating slightly above the ground. 
-    Style: Fantastic realism, high definition, complete body details, coherent element palette.`;
+    Background: Cinematic realistic environment representing its natural origin: ${originAttr}, harmonized with frontal lighting. 
+    Style: Fantastic realism, high definition, coherent element palette, professional photography style.`;
 
     const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?width=450&height=1500&nologo=true&seed=${Math.floor(Math.random() * 1000000)}`;
     handleInputChange('heroImage', imageUrl);
-    toast.success("Novo design de herói gerado seguindo a proporção 9:30!");
+    toast.success("Novo design de herói gerado seguindo rigorosamente os critérios de enquadramento!");
   };
 
   const generateAllHeros = () => {
