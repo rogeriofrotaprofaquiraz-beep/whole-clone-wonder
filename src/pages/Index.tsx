@@ -148,12 +148,12 @@ const ElementCard = ({ element }: { element: PeriodicElement }) => {
         </div>
       </ScrollArea>
       
-      <div className="mt-6 flex justify-between items-center px-6 py-5 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-[2rem] border-2 border-white/10 shadow-2xl">
+      <div className="mt-auto flex justify-between items-center px-4 py-3 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-2xl border border-white/10 shadow-xl">
         <div className="flex flex-col">
-          <span className="text-[10px] font-black text-white/40 uppercase tracking-[0.3em]">Nível de Poder</span>
-          <span className="text-xs text-blue-400 font-black italic tracking-tighter">DOMÍNIO: {isGas ? 'GASOSO' : 'SÓLIDO'}</span>
+          <span className="text-[8px] font-black text-white/40 uppercase tracking-[0.2em]">Nível de Poder</span>
+          <span className="text-[10px] text-blue-400 font-black italic tracking-tighter">DOMÍNIO: {isGas ? 'GASOSO' : 'SÓLIDO'}</span>
         </div>
-        <div className="text-5xl font-black italic text-transparent bg-clip-text bg-gradient-to-br from-white via-blue-400 to-blue-600 drop-shadow-[0_4px_12px_rgba(37,99,235,0.6)]">
+        <div className="text-3xl font-black italic text-transparent bg-clip-text bg-gradient-to-br from-white via-blue-400 to-blue-600 drop-shadow-[0_2px_8px_rgba(37,99,235,0.6)]">
           {(element.attributes.reduce((acc, curr) => acc + curr.score, 0) / 27).toFixed(1)}
         </div>
       </div>
