@@ -284,7 +284,7 @@ export const BattleSystem = () => {
                 <div className="text-4xl font-black text-blue-500">{playerCard?.symbol}</div>
              </div>
              
-             <div className="h-56 rounded-2xl bg-slate-950 overflow-hidden mb-6 border border-white/5 shadow-inner group/img relative flex-shrink-0">
+             <div className="h-80 rounded-2xl bg-slate-950 overflow-hidden mb-6 border border-white/10 shadow-[0_0_30px_rgba(0,0,0,0.5)] group/img relative flex-shrink-0">
                 {playerCard?.heroImage?.endsWith('.mp4') ? (
                   <video 
                     src={playerCard.heroImage} 
@@ -292,13 +292,13 @@ export const BattleSystem = () => {
                     loop 
                     muted 
                     playsInline 
-                    className="w-full h-full object-contain object-top transition-transform duration-700 group-hover/img:scale-110"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-110"
                   />
                 ) : (
-                  <img src={playerCard?.heroImage} className="w-full h-full object-contain object-top transition-transform duration-700 group-hover/img:scale-110" alt="" />
+                  <img src={playerCard?.heroImage} className="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-110" alt="" />
                 )}
-                <div className="absolute bottom-2 left-2">
-                  <Badge className="bg-amber-500/20 text-amber-500 border-amber-500/30 font-black italic">RARO</Badge>
+                <div className="absolute top-2 right-2">
+                  <Badge className="bg-blue-600 text-white border-white/20 font-black italic shadow-lg">PLAYER</Badge>
                 </div>
              </div>
 
