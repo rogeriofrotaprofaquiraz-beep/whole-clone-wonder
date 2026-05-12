@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
-import { Swords, Trophy, RefreshCw, ChevronRight, User, Users, Key, Hash } from 'lucide-react';
+import { Swords, Trophy, RefreshCw, ChevronRight, User, Users, Key, Hash, CircleHelp } from 'lucide-react';
 import { toast } from "sonner";
 
 // This is no longer a static list, we'll use the element's actual attributes
