@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
-import { Swords, Trophy, RefreshCw, ChevronRight, User, Users, Key, Hash } from 'lucide-react';
+import { Swords, Trophy, RefreshCw, ChevronRight, User, Users, Key, Hash, CircleHelp } from 'lucide-react';
 import { toast } from "sonner";
 
 // This is no longer a static list, we'll use the element's actual attributes
@@ -284,7 +284,7 @@ export const BattleSystem = () => {
                 <div className="text-4xl font-black text-blue-500">{playerCard?.symbol}</div>
              </div>
              
-             <div className="h-56 rounded-2xl bg-slate-950 overflow-hidden mb-6 border border-white/5 shadow-inner group/img relative flex-shrink-0">
+             <div className="h-80 rounded-2xl bg-slate-950 overflow-hidden mb-6 border border-white/10 shadow-[0_0_30px_rgba(0,0,0,0.5)] group/img relative flex-shrink-0">
                 {playerCard?.heroImage?.endsWith('.mp4') ? (
                   <video 
                     src={playerCard.heroImage} 
@@ -292,13 +292,13 @@ export const BattleSystem = () => {
                     loop 
                     muted 
                     playsInline 
-                    className="w-full h-full object-contain object-top transition-transform duration-700 group-hover/img:scale-110"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-110"
                   />
                 ) : (
-                  <img src={playerCard?.heroImage} className="w-full h-full object-contain object-top transition-transform duration-700 group-hover/img:scale-110" alt="" />
+                  <img src={playerCard?.heroImage} className="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-110" alt="" />
                 )}
-                <div className="absolute bottom-2 left-2">
-                  <Badge className="bg-amber-500/20 text-amber-500 border-amber-500/30 font-black italic">RARO</Badge>
+                <div className="absolute top-2 right-2">
+                  <Badge className="bg-blue-600 text-white border-white/20 font-black italic shadow-lg">PLAYER</Badge>
                 </div>
              </div>
 
@@ -314,18 +314,24 @@ export const BattleSystem = () => {
                          : 'bg-white/5 border-white/5 hover:bg-white/10 hover:border-white/20'
                      }`}
                    >
-                     <div className="flex flex-col items-start text-left">
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-blue-400/70">{attr.label}</span>
-                        <span className="text-xs font-bold uppercase tracking-tight line-clamp-1">{attr.value}</span>
+                     <div className="flex items-center gap-3">
+                        <CircleHelp className={`w-4 h-4 ${selectedAttr === attr.label ? 'text-white' : 'text-blue-400/50'}`} />
+                        <div className="flex flex-col items-start text-left">
+                           <span className="text-[10px] font-bold uppercase tracking-wider text-blue-400/70">{attr.label}</span>
+                           <span className="text-xs font-bold uppercase tracking-tight line-clamp-1">{attr.value}</span>
+                        </div>
                      </div>
                      <span className="text-sm font-black text-blue-300 ml-2">
                        {gameState === 'result' || selectedAttr === attr.label ? attr.score.toFixed(1) : '???'}
                      </span>
                    </button>
                    {(gameState === 'result' && selectedAttr === attr.label) && (
-                     <div className="p-3 rounded-xl bg-blue-500/10 border border-blue-500/20 text-[11px] leading-relaxed text-blue-200 animate-in slide-in-from-top-2 duration-300">
-                       <span className="font-bold block mb-1 uppercase tracking-tighter opacity-50">Justificativa:</span>
-                       {attr.justification}
+                     <div className="p-4 rounded-xl bg-blue-600/20 border-2 border-blue-400/30 text-xs leading-relaxed text-blue-100 animate-in slide-in-from-top-4 duration-500 shadow-xl">
+                       <div className="flex items-center gap-2 mb-2">
+                          <CircleHelp className="w-4 h-4 text-blue-400" />
+                          <span className="font-black uppercase tracking-tighter text-blue-400">Poder Analisado:</span>
+                       </div>
+                       <p className="italic font-medium">{attr.justification}</p>
                      </div>
                    )}
                  </div>
@@ -346,12 +352,12 @@ export const BattleSystem = () => {
                 <div className="text-4xl font-black text-slate-700">{gameState === 'result' ? cpuCard?.symbol : '?'}</div>
              </div>
 
-             <div className="h-56 rounded-2xl bg-slate-950 overflow-hidden mb-6 border border-white/5 shadow-inner flex items-center justify-center bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] flex-shrink-0">
+             <div className="h-80 rounded-2xl bg-slate-950 overflow-hidden mb-6 border border-white/10 shadow-[0_0_30px_rgba(0,0,0,0.5)] flex items-center justify-center bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] flex-shrink-0 relative">
                 {gameState === 'result' ? (
                   cpuCard?.heroImage?.endsWith('.mp4') ? (
-                    <video src={cpuCard.heroImage} autoPlay loop muted playsInline className="w-full h-full object-contain object-top animate-in fade-in duration-500" />
+                    <video src={cpuCard.heroImage} autoPlay loop muted playsInline className="w-full h-full object-cover animate-in fade-in duration-500" />
                   ) : (
-                    <img src={cpuCard?.heroImage} className="w-full h-full object-contain object-top animate-in fade-in duration-500" alt="" />
+                    <img src={cpuCard?.heroImage} className="w-full h-full object-cover animate-in fade-in duration-500" alt="" />
                   )
                 ) : (
                   <div className="flex flex-col items-center">
@@ -359,11 +365,13 @@ export const BattleSystem = () => {
                     <span className="text-xs font-black italic text-slate-700 uppercase tracking-widest animate-pulse">Aguardando Escolha</span>
                   </div>
                 )}
+                <div className="absolute top-2 right-2">
+                  <Badge className="bg-red-600 text-white border-white/20 font-black italic shadow-lg">OPONENTE</Badge>
+                </div>
              </div>
 
              <div className="flex-1 overflow-y-auto pr-2 custom-scrollbar space-y-2">
                {(gameState === 'result' ? cpuCard?.attributes : playerCard?.attributes)?.map((attr, idx) => {
-                 const cpuAttr = gameState === 'result' ? attr : null;
                  const isWinnerAttr = selectedAttr === attr.label && winner === 'cpu';
                  
                  return (
@@ -373,20 +381,26 @@ export const BattleSystem = () => {
                          isWinnerAttr ? 'border-red-500 bg-red-500/20 shadow-[0_0_15px_rgba(239,68,68,0.3)]' : ''
                        } ${gameState === 'result' && selectedAttr === attr.label ? 'scale-[1.02] z-10' : ''}`}
                      >
-                       <div className="flex flex-col items-start text-left">
-                          <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">{attr.label}</span>
-                          <span className="text-xs font-bold uppercase tracking-tight text-slate-400 line-clamp-1">
-                            {gameState === 'result' ? (attr.value) : '??????'}
-                          </span>
+                       <div className="flex items-center gap-3">
+                          <CircleHelp className={`w-4 h-4 ${gameState === 'result' ? 'text-red-400/50' : 'text-slate-800'}`} />
+                          <div className="flex flex-col items-start text-left">
+                             <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">{attr.label}</span>
+                             <span className="text-xs font-bold uppercase tracking-tight text-slate-400 line-clamp-1">
+                               {gameState === 'result' ? (attr.value) : '??????'}
+                             </span>
+                          </div>
                        </div>
                        <span className="text-sm font-black text-slate-600 ml-2">
                          {gameState === 'result' ? attr.score.toFixed(1) : '???'}
                        </span>
                      </div>
                      {(gameState === 'result' && selectedAttr === attr.label) && (
-                       <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-[11px] leading-relaxed text-red-200 animate-in slide-in-from-top-2 duration-300">
-                         <span className="font-bold block mb-1 uppercase tracking-tighter opacity-50">Justificativa:</span>
-                         {attr.justification}
+                       <div className="p-4 rounded-xl bg-red-600/20 border-2 border-red-400/30 text-xs leading-relaxed text-red-100 animate-in slide-in-from-top-4 duration-500 shadow-xl">
+                         <div className="flex items-center gap-2 mb-2">
+                            <CircleHelp className="w-4 h-4 text-red-400" />
+                            <span className="font-black uppercase tracking-tighter text-red-400">Poder do Oponente:</span>
+                         </div>
+                         <p className="italic font-medium">{attr.justification}</p>
                        </div>
                      )}
                    </div>
