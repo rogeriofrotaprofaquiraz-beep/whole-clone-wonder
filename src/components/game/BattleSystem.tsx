@@ -372,7 +372,6 @@ export const BattleSystem = () => {
 
              <div className="flex-1 overflow-y-auto pr-2 custom-scrollbar space-y-2">
                {(gameState === 'result' ? cpuCard?.attributes : playerCard?.attributes)?.map((attr, idx) => {
-                 const cpuAttr = gameState === 'result' ? attr : null;
                  const isWinnerAttr = selectedAttr === attr.label && winner === 'cpu';
                  
                  return (
@@ -382,20 +381,26 @@ export const BattleSystem = () => {
                          isWinnerAttr ? 'border-red-500 bg-red-500/20 shadow-[0_0_15px_rgba(239,68,68,0.3)]' : ''
                        } ${gameState === 'result' && selectedAttr === attr.label ? 'scale-[1.02] z-10' : ''}`}
                      >
-                       <div className="flex flex-col items-start text-left">
-                          <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">{attr.label}</span>
-                          <span className="text-xs font-bold uppercase tracking-tight text-slate-400 line-clamp-1">
-                            {gameState === 'result' ? (attr.value) : '??????'}
-                          </span>
+                       <div className="flex items-center gap-3">
+                          <CircleHelp className={`w-4 h-4 ${gameState === 'result' ? 'text-red-400/50' : 'text-slate-800'}`} />
+                          <div className="flex flex-col items-start text-left">
+                             <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">{attr.label}</span>
+                             <span className="text-xs font-bold uppercase tracking-tight text-slate-400 line-clamp-1">
+                               {gameState === 'result' ? (attr.value) : '??????'}
+                             </span>
+                          </div>
                        </div>
                        <span className="text-sm font-black text-slate-600 ml-2">
                          {gameState === 'result' ? attr.score.toFixed(1) : '???'}
                        </span>
                      </div>
                      {(gameState === 'result' && selectedAttr === attr.label) && (
-                       <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-[11px] leading-relaxed text-red-200 animate-in slide-in-from-top-2 duration-300">
-                         <span className="font-bold block mb-1 uppercase tracking-tighter opacity-50">Justificativa:</span>
-                         {attr.justification}
+                       <div className="p-4 rounded-xl bg-red-600/20 border-2 border-red-400/30 text-xs leading-relaxed text-red-100 animate-in slide-in-from-top-4 duration-500 shadow-xl">
+                         <div className="flex items-center gap-2 mb-2">
+                            <CircleHelp className="w-4 h-4 text-red-400" />
+                            <span className="font-black uppercase tracking-tighter text-red-400">Poder do Oponente:</span>
+                         </div>
+                         <p className="italic font-medium">{attr.justification}</p>
                        </div>
                      )}
                    </div>
