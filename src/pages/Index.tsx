@@ -203,16 +203,22 @@ const Index = () => {
   ];
 
   const getElementCategoryColor = (symbol: string, rIdx: number, sIdx: number) => {
+    // Clasificação fiel à Tabela Periódica moderna (e baseada no PDF fornecido)
     if (["H", "C", "N", "O", "P", "S", "Se"].includes(symbol)) return "bg-emerald-500/20 text-emerald-400 border-emerald-500/50"; // Não metais
     if (["He", "Ne", "Ar", "Kr", "Xe", "Rn", "Og"].includes(symbol)) return "bg-sky-500/20 text-sky-400 border-sky-500/50"; // Gases Nobres
-    if (["Li", "Na", "K", "Rb", "Cs", "Fr"].includes(symbol)) return "bg-amber-500/20 text-amber-400 border-amber-500/50"; // Metais Alcalinos (Amarelo Ouro)
+    if (["Li", "Na", "K", "Rb", "Cs", "Fr"].includes(symbol)) return "bg-amber-500/20 text-amber-400 border-amber-500/50"; // Metais Alcalinos
     if (["Be", "Mg", "Ca", "Sr", "Ba", "Ra"].includes(symbol)) return "bg-orange-500/20 text-orange-400 border-orange-500/50"; // Alcalino Terrosos
     if (["B", "Si", "Ge", "As", "Sb", "Te", "Po"].includes(symbol)) return "bg-teal-500/20 text-teal-400 border-teal-500/50"; // Semimetais
     if (["F", "Cl", "Br", "I", "At", "Ts"].includes(symbol)) return "bg-lime-500/20 text-lime-400 border-lime-500/50"; // Halogênios
-    if (["Al", "Ga", "In", "Sn", "Tl", "Pb", "Bi", "Nh", "Fl", "Mc", "Lv"].includes(symbol)) return "bg-indigo-500/20 text-indigo-400 border-indigo-500/50"; // Outros Metais
-    if (rIdx >= 3 && rIdx <= 6 && sIdx >= 2 && sIdx <= 11) return "bg-blue-500/20 text-blue-400 border-blue-500/50"; // Metais de Transição
-    if (rIdx === 8) return "bg-fuchsia-500/20 text-fuchsia-400 border-fuchsia-500/50"; // Lantanídeos (Fúcsia vibrante)
-    if (rIdx === 9) return "bg-violet-600/20 text-violet-400 border-violet-600/50"; // Actinídeos (Violeta profundo)
+    if (["Al", "Ga", "In", "Sn", "Tl", "Pb", "Bi", "Nh", "Fl", "Mc", "Lv"].includes(symbol)) return "bg-indigo-500/20 text-indigo-400 border-indigo-500/50"; // Outros Metais (Metais do Bloco p)
+    
+    // Metais de Transição (Bloco d)
+    if ((rIdx >= 3 && rIdx <= 6 && sIdx >= 2 && sIdx <= 11) || ["Zn", "Cd", "Hg", "Cn"].includes(symbol)) return "bg-blue-500/20 text-blue-400 border-blue-500/50";
+    
+    // Lantanídeos e Actinídeos (Bloco f)
+    if (rIdx === 8 || symbol === "La-Lu") return "bg-fuchsia-500/20 text-fuchsia-400 border-fuchsia-500/50";
+    if (rIdx === 9 || symbol === "Ac-Lr") return "bg-violet-600/20 text-violet-400 border-violet-600/50";
+    
     return "bg-slate-800/40 text-slate-400 border-slate-700/50";
   };
 
