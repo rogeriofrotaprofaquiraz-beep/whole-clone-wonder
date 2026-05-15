@@ -310,24 +310,26 @@ const Index = () => {
         </p>
       </header>
 
-      <Tabs defaultValue="collection" className="w-full max-w-[1440px] flex flex-col items-center">
-        <TabsList className="bg-slate-900/60 border border-white/10 p-1 rounded-2xl mb-12 h-auto gap-2 backdrop-blur-xl">
-          <TabsTrigger value="collection" className="px-8 py-4 rounded-xl data-[state=active]:bg-blue-600 font-bold transition-all gap-2">
-            <LayoutGrid className="w-5 h-5" /> COLEÇÃO
-          </TabsTrigger>
-          <TabsTrigger value="battle" className="px-8 py-4 rounded-xl data-[state=active]:bg-red-600 font-bold transition-all gap-2">
-            <Swords className="w-5 h-5" /> BATALHA
-          </TabsTrigger>
-          <TabsTrigger value="quiz" className="px-8 py-4 rounded-xl data-[state=active]:bg-purple-600 font-bold transition-all gap-2">
-            <Brain className="w-5 h-5" /> DESAFIO
-          </TabsTrigger>
-          <TabsTrigger value="ranking" className="px-8 py-4 rounded-xl data-[state=active]:bg-yellow-600 font-bold transition-all gap-2 text-white">
-            <Trophy className="w-5 h-5" /> RANKING
-          </TabsTrigger>
-          <TabsTrigger value="admin" className="px-8 py-4 rounded-xl data-[state=active]:bg-slate-700 font-bold transition-all gap-2">
-            <Settings className="w-5 h-5" /> ADMIN
-          </TabsTrigger>
-        </TabsList>
+        <Tabs defaultValue="collection" value={activeTab} onValueChange={setActiveTab} className="w-full max-w-[1440px] flex flex-col items-center">
+          <TabsList className="bg-slate-900/60 border border-white/10 p-1 rounded-2xl mb-12 h-auto gap-2 backdrop-blur-xl">
+            <TabsTrigger value="collection" className="px-8 py-4 rounded-xl data-[state=active]:bg-blue-600 font-bold transition-all gap-2">
+              <LayoutGrid className="w-5 h-5" /> COLEÇÃO
+            </TabsTrigger>
+            <TabsTrigger value="battle" className="px-8 py-4 rounded-xl data-[state=active]:bg-red-600 font-bold transition-all gap-2">
+              <Swords className="w-5 h-5" /> BATALHA
+            </TabsTrigger>
+            <TabsTrigger value="quiz" className="px-8 py-4 rounded-xl data-[state=active]:bg-purple-600 font-bold transition-all gap-2">
+              <Brain className="w-5 h-5" /> DESAFIO
+            </TabsTrigger>
+            <TabsTrigger value="ranking" className="px-8 py-4 rounded-xl data-[state=active]:bg-yellow-600 font-bold transition-all gap-2 text-white">
+              <Trophy className="w-5 h-5" /> RANKING
+            </TabsTrigger>
+            {(userRole === 'admin' || userRole === 'teacher') && (
+              <TabsTrigger value="admin" className="px-8 py-4 rounded-xl data-[state=active]:bg-slate-700 font-bold transition-all gap-2">
+                <Settings className="w-5 h-5" /> {userRole === 'admin' ? 'ADMIN' : 'PROFESSOR'}
+              </TabsTrigger>
+            )}
+          </TabsList>
 
         <TabsContent value="collection" className="w-full animate-in fade-in zoom-in-95 duration-500">
           <div className="flex flex-col lg:flex-row gap-12 items-start justify-center w-full">
