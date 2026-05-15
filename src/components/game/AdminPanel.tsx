@@ -10,7 +10,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
-import { Plus, Save, Wand2, Trash2, List, Settings, History, Users, Shield } from 'lucide-react';
+import { Plus, Save, Wand2, Trash2, List, Settings, History, Users, Shield, User as UserIcon } from 'lucide-react';
 
 const ATTRIBUTE_LABELS = [
   "Fraquezas", "Risco/Benefício à natureza", "Risco à saúde", "Benefício",
