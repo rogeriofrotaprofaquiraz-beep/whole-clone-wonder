@@ -14,6 +14,48 @@ export type Database = {
   }
   public: {
     Tables: {
+      activity_logs: {
+        Row: {
+          action: string
+          created_at: string | null
+          id: string
+          metadata: Json | null
+          path: string | null
+          user_id: string | null
+        }
+        Insert: {
+          action: string
+          created_at?: string | null
+          id?: string
+          metadata?: Json | null
+          path?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          action?: string
+          created_at?: string | null
+          id?: string
+          metadata?: Json | null
+          path?: string | null
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "activity_logs_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "leaderboard"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "activity_logs_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       match_moves: {
         Row: {
           attribute_selected: string
@@ -176,6 +218,7 @@ export type Database = {
           level: number | null
           losses: number | null
           rank_points: number | null
+          role: string | null
           streak: number | null
           updated_at: string
           username: string | null
@@ -189,6 +232,7 @@ export type Database = {
           level?: number | null
           losses?: number | null
           rank_points?: number | null
+          role?: string | null
           streak?: number | null
           updated_at?: string
           username?: string | null
@@ -202,6 +246,7 @@ export type Database = {
           level?: number | null
           losses?: number | null
           rank_points?: number | null
+          role?: string | null
           streak?: number | null
           updated_at?: string
           username?: string | null

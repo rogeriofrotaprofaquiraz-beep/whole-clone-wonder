@@ -39,7 +39,8 @@ export const AuthSystem = ({ onAuthSuccess }: { onAuthSuccess: () => void }) => 
             .from('profiles')
             .insert({ 
               id: data.user.id, 
-              username: username || email.split('@')[0] 
+              username: username || email.split('@')[0],
+              role: 'student'
             });
           if (profileError) console.error("Erro ao criar perfil:", profileError);
         }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { supabase } from "@/integrations/supabase/client";
 import { ELEMENTS_DATA, PeriodicElement } from '../data/elements';
 import { Card, CardContent } from "@/components/ui/card";
@@ -11,7 +11,7 @@ import { ElementQuiz } from "@/components/game/ElementQuiz";
 import { AdminPanel } from "@/components/game/AdminPanel";
 import { AuthSystem } from "@/components/game/AuthSystem";
 import { Ranking } from "@/components/game/Ranking";
-import { Swords, Brain, LayoutGrid, Settings, LogOut, User as UserIcon, Trophy } from 'lucide-react';
+import { Swords, Brain, LayoutGrid, Settings, LogOut, User as UserIcon, Trophy, Users } from 'lucide-react';
 import { toast } from "sonner";
 
 const ElementCard = ({ element }: { element: PeriodicElement }) => {
@@ -166,20 +166,61 @@ const ElementCard = ({ element }: { element: PeriodicElement }) => {
 const Index = () => {
   const [selectedSymbol, setSelectedSymbol] = useState<string>("H");
   const [session, setSession] = useState<any>(null);
+  const [userRole, setUserRole] = useState<string | null>(null);
   const [showAuth, setShowAuth] = useState(false);
+  const [activeTab, setActiveTab] = useState("collection");
+
+  const logActivity = useCallback(async (action: string, path: string, metadata: any = {}) => {
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session?.user) return;
+
+    await supabase.from('activity_logs').insert({
+      user_id: session.user.id,
+      action,
+      path,
+      metadata
+    });
+  }, []);
+
+  const fetchUserRole = async (userId: string) => {
+    const { data, error } = await supabase
+      .from('profiles')
+      .select('role')
+      .eq('id', userId)
+      .single();
+    
+    if (data && !error) {
+      setUserRole(data.role);
+    }
+  };
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
+      if (session?.user) {
+        fetchUserRole(session.user.id);
+        logActivity('LOGIN', '/', { timestamp: new Date().toISOString() });
+      }
     });
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session);
-      if (session) setShowAuth(false);
+      if (session?.user) {
+        fetchUserRole(session.user.id);
+        setShowAuth(false);
+      } else {
+        setUserRole(null);
+      }
     });
 
     return () => subscription.unsubscribe();
-  }, []);
+  }, [logActivity]);
+
+  useEffect(() => {
+    if (session?.user) {
+      logActivity('TAB_CHANGE', activeTab);
+    }
+  }, [activeTab, session, logActivity]);
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
@@ -269,24 +310,26 @@ const Index = () => {
         </p>
       </header>
 
-      <Tabs defaultValue="collection" className="w-full max-w-[1440px] flex flex-col items-center">
-        <TabsList className="bg-slate-900/60 border border-white/10 p-1 rounded-2xl mb-12 h-auto gap-2 backdrop-blur-xl">
-          <TabsTrigger value="collection" className="px-8 py-4 rounded-xl data-[state=active]:bg-blue-600 font-bold transition-all gap-2">
-            <LayoutGrid className="w-5 h-5" /> COLEÇÃO
-          </TabsTrigger>
-          <TabsTrigger value="battle" className="px-8 py-4 rounded-xl data-[state=active]:bg-red-600 font-bold transition-all gap-2">
-            <Swords className="w-5 h-5" /> BATALHA
-          </TabsTrigger>
-          <TabsTrigger value="quiz" className="px-8 py-4 rounded-xl data-[state=active]:bg-purple-600 font-bold transition-all gap-2">
-            <Brain className="w-5 h-5" /> DESAFIO
-          </TabsTrigger>
-          <TabsTrigger value="ranking" className="px-8 py-4 rounded-xl data-[state=active]:bg-yellow-600 font-bold transition-all gap-2 text-white">
-            <Trophy className="w-5 h-5" /> RANKING
-          </TabsTrigger>
-          <TabsTrigger value="admin" className="px-8 py-4 rounded-xl data-[state=active]:bg-slate-700 font-bold transition-all gap-2">
-            <Settings className="w-5 h-5" /> ADMIN
-          </TabsTrigger>
-        </TabsList>
+        <Tabs defaultValue="collection" value={activeTab} onValueChange={setActiveTab} className="w-full max-w-[1440px] flex flex-col items-center">
+          <TabsList className="bg-slate-900/60 border border-white/10 p-1 rounded-2xl mb-12 h-auto gap-2 backdrop-blur-xl">
+            <TabsTrigger value="collection" className="px-8 py-4 rounded-xl data-[state=active]:bg-blue-600 font-bold transition-all gap-2">
+              <LayoutGrid className="w-5 h-5" /> COLEÇÃO
+            </TabsTrigger>
+            <TabsTrigger value="battle" className="px-8 py-4 rounded-xl data-[state=active]:bg-red-600 font-bold transition-all gap-2">
+              <Swords className="w-5 h-5" /> BATALHA
+            </TabsTrigger>
+            <TabsTrigger value="quiz" className="px-8 py-4 rounded-xl data-[state=active]:bg-purple-600 font-bold transition-all gap-2">
+              <Brain className="w-5 h-5" /> DESAFIO
+            </TabsTrigger>
+            <TabsTrigger value="ranking" className="px-8 py-4 rounded-xl data-[state=active]:bg-yellow-600 font-bold transition-all gap-2 text-white">
+              <Trophy className="w-5 h-5" /> RANKING
+            </TabsTrigger>
+            {(userRole === 'admin' || userRole === 'teacher') && (
+              <TabsTrigger value="admin" className="px-8 py-4 rounded-xl data-[state=active]:bg-slate-700 font-bold transition-all gap-2">
+                <Settings className="w-5 h-5" /> {userRole === 'admin' ? 'ADMIN' : 'PROFESSOR'}
+              </TabsTrigger>
+            )}
+          </TabsList>
 
         <TabsContent value="collection" className="w-full animate-in fade-in zoom-in-95 duration-500">
           <div className="flex flex-col lg:flex-row gap-12 items-start justify-center w-full">
@@ -414,9 +457,11 @@ const Index = () => {
           <Ranking />
         </TabsContent>
 
-        <TabsContent value="admin" className="w-full animate-in fade-in slide-in-from-bottom-10 duration-500">
-          <AdminPanel />
-        </TabsContent>
+        {(userRole === 'admin' || userRole === 'teacher') && (
+          <TabsContent value="admin" className="w-full animate-in fade-in slide-in-from-bottom-10 duration-500">
+            <AdminPanel userRole={userRole} />
+          </TabsContent>
+        )}
       </Tabs>
 
       {showAuth && (
