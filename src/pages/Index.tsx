@@ -166,20 +166,61 @@ const ElementCard = ({ element }: { element: PeriodicElement }) => {
 const Index = () => {
   const [selectedSymbol, setSelectedSymbol] = useState<string>("H");
   const [session, setSession] = useState<any>(null);
+  const [userRole, setUserRole] = useState<string | null>(null);
   const [showAuth, setShowAuth] = useState(false);
+  const [activeTab, setActiveTab] = useState("collection");
+
+  const logActivity = useCallback(async (action: string, path: string, metadata: any = {}) => {
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session?.user) return;
+
+    await supabase.from('activity_logs').insert({
+      user_id: session.user.id,
+      action,
+      path,
+      metadata
+    });
+  }, []);
+
+  const fetchUserRole = async (userId: string) => {
+    const { data, error } = await supabase
+      .from('profiles')
+      .select('role')
+      .eq('id', userId)
+      .single();
+    
+    if (data && !error) {
+      setUserRole(data.role);
+    }
+  };
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
+      if (session?.user) {
+        fetchUserRole(session.user.id);
+        logActivity('LOGIN', '/', { timestamp: new Date().toISOString() });
+      }
     });
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session);
-      if (session) setShowAuth(false);
+      if (session?.user) {
+        fetchUserRole(session.user.id);
+        setShowAuth(false);
+      } else {
+        setUserRole(null);
+      }
     });
 
     return () => subscription.unsubscribe();
-  }, []);
+  }, [logActivity]);
+
+  useEffect(() => {
+    if (session?.user) {
+      logActivity('TAB_CHANGE', activeTab);
+    }
+  }, [activeTab, session, logActivity]);
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
