@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ELEMENTS_DATA, PeriodicElement, ElementAttribute } from '@/data/elements';
+import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -7,8 +8,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Badge } from "@/components/ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
-import { Plus, Save, Wand2, Trash2, List, Settings } from 'lucide-react';
+import { Plus, Save, Wand2, Trash2, List, Settings, History, Users, Shield } from 'lucide-react';
 
 const ATTRIBUTE_LABELS = [
   "Fraquezas", "Risco/Benefício à natureza", "Risco à saúde", "Benefício",
@@ -20,7 +22,10 @@ const ATTRIBUTE_LABELS = [
   "Origem do nome", "Descobridor", "Ano de descoberta", "Ponto de fusão", "Ponto de ebulição"
 ];
 
-export const AdminPanel = () => {
+export const AdminPanel = ({ userRole }: { userRole?: string | null }) => {
+  const [logs, setLogs] = useState<any[]>([]);
+  const [profiles, setProfiles] = useState<any[]>([]);
+  const [activeSubTab, setActiveSubTab] = useState("editor");
   const [editingSymbol, setEditingSymbol] = useState<string>("H");
   const [formData, setFormData] = useState<Partial<PeriodicElement>>(ELEMENTS_DATA["H"] || {
     number: 0,
