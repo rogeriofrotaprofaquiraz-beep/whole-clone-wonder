@@ -457,9 +457,11 @@ const Index = () => {
           <Ranking />
         </TabsContent>
 
-        <TabsContent value="admin" className="w-full animate-in fade-in slide-in-from-bottom-10 duration-500">
-          <AdminPanel />
-        </TabsContent>
+        {(userRole === 'admin' || userRole === 'teacher') && (
+          <TabsContent value="admin" className="w-full animate-in fade-in slide-in-from-bottom-10 duration-500">
+            <AdminPanel userRole={userRole} />
+          </TabsContent>
+        )}
       </Tabs>
 
       {showAuth && (
