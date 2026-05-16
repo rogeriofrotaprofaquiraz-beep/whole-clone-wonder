@@ -11,7 +11,7 @@ import { ElementQuiz } from "@/components/game/ElementQuiz";
 import { AdminPanel } from "@/components/game/AdminPanel";
 import { AuthSystem } from "@/components/game/AuthSystem";
 import { Ranking } from "@/components/game/Ranking";
-import { Swords, Brain, LayoutGrid, Settings, LogOut, User as UserIcon, Trophy, Users } from 'lucide-react';
+import { Swords, Brain, LayoutGrid, Settings, LogOut, User as UserIcon, Trophy, Users, Shield } from 'lucide-react';
 import { toast } from "sonner";
 
 const ElementCard = ({ element }: { element: PeriodicElement }) => {
@@ -326,7 +326,7 @@ const Index = () => {
             </TabsTrigger>
             {(userRole === 'admin' || userRole === 'teacher') && (
               <TabsTrigger value="admin" className="px-8 py-4 rounded-xl data-[state=active]:bg-slate-700 font-bold transition-all gap-2">
-                <Settings className="w-5 h-5" /> {userRole === 'admin' ? 'ADMIN' : 'PROFESSOR'}
+                <Shield className="w-5 h-5 text-emerald-400" /> {userRole === 'admin' ? 'ADMINISTRADOR' : 'PROFESSOR'}
               </TabsTrigger>
             )}
           </TabsList>

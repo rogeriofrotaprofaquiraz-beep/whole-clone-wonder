@@ -25,7 +25,7 @@ const ATTRIBUTE_LABELS = [
 export const AdminPanel = ({ userRole }: { userRole?: string | null }) => {
   const [logs, setLogs] = useState<any[]>([]);
   const [profiles, setProfiles] = useState<any[]>([]);
-  const [activeSubTab, setActiveSubTab] = useState("editor");
+  const [activeSubTab, setActiveSubTab] = useState(userRole === 'admin' ? "users" : "editor");
   const [editingSymbol, setEditingSymbol] = useState<string>("H");
   const [formData, setFormData] = useState<Partial<PeriodicElement>>(ELEMENTS_DATA["H"] || {
     number: 0,
@@ -161,18 +161,18 @@ export const AdminPanel = ({ userRole }: { userRole?: string | null }) => {
     <div className="flex flex-col gap-8 p-4 max-w-[1600px] mx-auto animate-in fade-in duration-700">
       <Tabs value={activeSubTab} onValueChange={setActiveSubTab} className="w-full">
         <TabsList className="bg-slate-900/60 border border-white/10 p-1 rounded-xl mb-6 h-auto gap-2 backdrop-blur-xl">
+          {userRole === 'admin' && (
+            <TabsTrigger value="users" className="px-6 py-2 rounded-lg data-[state=active]:bg-emerald-600 font-bold transition-all gap-2">
+              <Users className="w-4 h-4" /> GESTÃO DE USUÁRIOS
+            </TabsTrigger>
+          )}
           <TabsTrigger value="editor" className="px-6 py-2 rounded-lg data-[state=active]:bg-blue-600 font-bold transition-all gap-2">
             <Settings className="w-4 h-4" /> EDITOR DE CARTAS
           </TabsTrigger>
           {userRole === 'admin' && (
-            <>
-              <TabsTrigger value="logs" className="px-6 py-2 rounded-lg data-[state=active]:bg-purple-600 font-bold transition-all gap-2">
-                <History className="w-4 h-4" /> LOGS DE ATIVIDADE
-              </TabsTrigger>
-              <TabsTrigger value="users" className="px-6 py-2 rounded-lg data-[state=active]:bg-emerald-600 font-bold transition-all gap-2">
-                <Users className="w-4 h-4" /> GESTÃO DE ACESSO
-              </TabsTrigger>
-            </>
+            <TabsTrigger value="logs" className="px-6 py-2 rounded-lg data-[state=active]:bg-purple-600 font-bold transition-all gap-2">
+              <History className="w-4 h-4" /> RASTREADOR (LOGS)
+            </TabsTrigger>
           )}
         </TabsList>
 

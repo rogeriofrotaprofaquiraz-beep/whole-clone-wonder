@@ -1,21 +1,20 @@
-O sistema de controle de acesso e logs de atividade foi implementado, mas ele só é visível para usuários com o nível de acesso "Administrador" ou "Professor". Como a tabela de perfis está vazia, nenhum usuário possui esse nível ainda.
+Ajustarei a interface para incluir um módulo explícito de "ADMINISTRADOR" ao lado do Ranking, focado na manutenção de usuários e acompanhamento de atividades.
 
-Vou ajustar o sistema para que o primeiro usuário que se cadastrar seja automaticamente definido como **Administrador**, permitindo que você visualize as abas de controle.
+### Alterações propostas
 
-### Alterações propostas:
+#### Interface (Frontend)
+- **src/pages/Index.tsx**: 
+    - Renomear a aba "ADMIN" para "**ADMINISTRADOR**" para alinhar com a solicitação do usuário.
+    - Alterar o ícone da aba para `Shield` (Escudo) para transmitir mais autoridade e clareza.
+    - Garantir que a aba esteja posicionada imediatamente após a aba "RANKING".
+- **src/components/game/AdminPanel.tsx**:
+    - Ajustar o `Tabs` interno para que, quando um Administrador acessar, a aba de "**GESTÃO DE ACESSO**" seja mais intuitiva ou a primeira, dependendo do contexto.
+    - Melhorar a visualização da lista de usuários para facilitar a "manutenção" solicitada (edição de níveis de acesso).
 
-1.  **Sistema de Autenticação (`AuthSystem.tsx`)**:
-    *   Adicionar uma verificação durante o cadastro: se for o primeiro usuário do sistema, atribuir automaticamente o papel de `admin`. Caso contrário, manter como `student`.
-    *   Isso garante que o proprietário do projeto (você) tenha acesso total ao criar a primeira conta.
+#### Funcionalidades (Backend/Lógica)
+- A lógica de rastreamento (logs) já está implementada; garantirei que o Administrador tenha acesso rápido a esses logs através do novo módulo.
 
-2.  **Painel Administrativo (`AdminPanel.tsx`)**:
-    *   Garantir que as abas "LOGS DE ATIVIDADE" e "GESTÃO DE ACESSO" estejam bem visíveis quando o usuário for um Administrador.
-    *   Melhorar o feedback visual para indicar que certas áreas são restritas.
-
-3.  **Fluxo de Usuário**:
-    *   Após o cadastro do primeiro usuário, a aba **ADMIN** aparecerá no topo da tela inicial (ao lado de COLEÇÃO, BATALHA, etc.).
-    *   Dentro da aba **ADMIN**, você encontrará as sub-abas para gerenciar usuários e ver o histórico.
-
-### Detalhes Técnicos:
-*   Usarei `supabase.from('profiles').select('id', { count: 'exact', head: true })` para verificar se a tabela está vazia no momento do cadastro.
-*   Atualizarei a lógica de renderização condicional em `Index.tsx` para garantir que a transição de estado após o login seja imediata.
+### Detalhes Técnicos
+- Utilizarei os componentes de UI existentes (`Tabs`, `Card`, `Button`).
+- A visibilidade continuará restrita a usuários com role `admin` ou `teacher`.
+- O Administrador poderá ver as ações de todos os usuários (rastreador) na sub-aba de Logs.
