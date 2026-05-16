@@ -203,10 +203,10 @@ const Index = () => {
       }
     });
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_event, session) => {
       setSession(session);
       if (session?.user) {
-        fetchUserRole(session.user.id);
+        await fetchUserRole(session.user.id);
         setShowAuth(false);
       } else {
         setUserRole(null);

@@ -1,37 +1,21 @@
-I will implement a robust multi-level access control system (Administrator, Teacher, Student) with integrated activity tracking.
+O sistema de controle de acesso e logs de atividade foi implementado, mas ele só é visível para usuários com o nível de acesso "Administrador" ou "Professor". Como a tabela de perfis está vazia, nenhum usuário possui esse nível ainda.
 
-### 1. Database Layer (Supabase Migration)
-*   **Profiles Update**: Add a `role` column to the `profiles` table with a default value of 'student'. Possible values: 'admin', 'teacher', 'student'.
-*   **Activity Logs Table**: Create a new `activity_logs` table to store user interactions.
-    *   `id` (uuid, primary key)
-    *   `user_id` (uuid, references profiles.id)
-    *   `action` (text, e.g., 'LOGIN', 'TAB_CHANGE', 'BATTLE_START')
-    *   `path` (text, current page/tab)
-    *   `metadata` (jsonb, for extra details)
-    *   `created_at` (timestamp)
-*   **Security (RLS)**:
-    *   `activity_logs`: Users can insert their own logs. Only users with the 'admin' role can read all logs.
-    *   `profiles`: Only 'admin' can update roles.
+Vou ajustar o sistema para que o primeiro usuário que se cadastrar seja automaticamente definido como **Administrador**, permitindo que você visualize as abas de controle.
 
-### 2. Frontend Access Control
-*   **Role Management**: Update the state management to fetch and store the user's role upon authentication.
-*   **Conditional Rendering**:
-    *   The "ADMIN" tab in the main interface will only be visible to users with the 'admin' role.
-    *   (Optional) Create specific views for 'teacher' if they need to manage their specific students.
-*   **Activity Tracker Utility**: Create a centralized function to log user actions to Supabase.
+### Alterações propostas:
 
-### 3. Administrator Monitoring Dashboard
-*   **Log Viewer**: Add a "User Activity" section within the `AdminPanel`.
-*   **Features**:
-    *   Filter logs by user.
-    *   Search by action type.
-    *   Timeline view of recent system interactions.
-    *   Ability for admins to manage user roles (promote a Student to Teacher or Admin).
+1.  **Sistema de Autenticação (`AuthSystem.tsx`)**:
+    *   Adicionar uma verificação durante o cadastro: se for o primeiro usuário do sistema, atribuir automaticamente o papel de `admin`. Caso contrário, manter como `student`.
+    *   Isso garante que o proprietário do projeto (você) tenha acesso total ao criar a primeira conta.
 
-### 4. Authentication Flow
-*   Update `AuthSystem` to properly initialize profiles with the default 'student' role.
-*   Ensure initial login correctly identifies the user's permissions.
+2.  **Painel Administrativo (`AdminPanel.tsx`)**:
+    *   Garantir que as abas "LOGS DE ATIVIDADE" e "GESTÃO DE ACESSO" estejam bem visíveis quando o usuário for um Administrador.
+    *   Melhorar o feedback visual para indicar que certas áreas são restritas.
 
-### Technical Details
-*   **Activity Logging**: I will implement a hook or use an effect in `Index.tsx` to automatically log tab changes.
-*   **Role-Based Access Control (RBAC)**: I'll use a `userRole` state derived from the `profiles` table to guard sensitive UI components.
+3.  **Fluxo de Usuário**:
+    *   Após o cadastro do primeiro usuário, a aba **ADMIN** aparecerá no topo da tela inicial (ao lado de COLEÇÃO, BATALHA, etc.).
+    *   Dentro da aba **ADMIN**, você encontrará as sub-abas para gerenciar usuários e ver o histórico.
+
+### Detalhes Técnicos:
+*   Usarei `supabase.from('profiles').select('id', { count: 'exact', head: true })` para verificar se a tabela está vazia no momento do cadastro.
+*   Atualizarei a lógica de renderização condicional em `Index.tsx` para garantir que a transição de estado após o login seja imediata.
