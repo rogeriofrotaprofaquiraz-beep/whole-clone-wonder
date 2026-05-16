@@ -35,12 +35,19 @@ export const AuthSystem = ({ onAuthSuccess }: { onAuthSuccess: () => void }) => 
         
         // Criar perfil
         if (data.user) {
+          // Verificar se é o primeiro usuário
+          const { count } = await supabase
+            .from('profiles')
+            .select('*', { count: 'exact', head: true });
+          
+          const isFirstUser = count === 0;
+
           const { error: profileError } = await supabase
             .from('profiles')
             .insert({ 
               id: data.user.id, 
               username: username || email.split('@')[0],
-              role: 'student'
+              role: isFirstUser ? 'admin' : 'student'
             });
           if (profileError) console.error("Erro ao criar perfil:", profileError);
         }
