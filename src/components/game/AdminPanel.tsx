@@ -173,6 +173,7 @@ export const AdminPanel = ({ userRole }: { userRole?: string | null }) => {
     }
   };
 
+
   const filteredProfiles = profiles.filter(p => 
     (p.username?.toLowerCase() || "").includes(searchTerm.toLowerCase()) || 
     (p.email?.toLowerCase() || "").includes(searchTerm.toLowerCase()) ||
