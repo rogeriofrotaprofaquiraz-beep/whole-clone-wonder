@@ -157,6 +157,8 @@ export const AdminPanel = ({ userRole }: { userRole?: string | null }) => {
       toast.success("Nível de acesso atualizado!");
       fetchProfiles();
     }
+  };
+
   const deleteUser = async (userId: string) => {
     if (!confirm("Tem certeza que deseja excluir este usuário? Esta ação não pode ser desfeita.")) return;
     
