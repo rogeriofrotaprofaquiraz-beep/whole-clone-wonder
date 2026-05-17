@@ -10,7 +10,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
-import { Plus, Save, Wand2, Trash2, List, Settings, History, Users, Shield, User as UserIcon } from 'lucide-react';
+import { Plus, Save, Wand2, Trash2, List, Settings, History, Users, Shield, User as UserIcon, Search, Activity, Trash } from 'lucide-react';
 
 const ATTRIBUTE_LABELS = [
   "Fraquezas", "Risco/Benefício à natureza", "Risco à saúde", "Benefício",
@@ -25,6 +25,8 @@ const ATTRIBUTE_LABELS = [
 export const AdminPanel = ({ userRole }: { userRole?: string | null }) => {
   const [logs, setLogs] = useState<any[]>([]);
   const [profiles, setProfiles] = useState<any[]>([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [logFilter, setLogFilter] = useState("all");
   const [activeSubTab, setActiveSubTab] = useState(userRole === 'admin' ? "users" : "editor");
   const [editingSymbol, setEditingSymbol] = useState<string>("H");
   const [formData, setFormData] = useState<Partial<PeriodicElement>>(ELEMENTS_DATA["H"] || {
@@ -155,7 +157,39 @@ export const AdminPanel = ({ userRole }: { userRole?: string | null }) => {
       toast.success("Nível de acesso atualizado!");
       fetchProfiles();
     }
+  const deleteUser = async (userId: string) => {
+    if (!confirm("Tem certeza que deseja excluir este usuário? Esta ação não pode ser desfeita.")) return;
+    
+    const { error } = await supabase
+      .from('profiles')
+      .delete()
+      .eq('id', userId);
+    
+    if (error) {
+      toast.error("Erro ao excluir usuário");
+    } else {
+      toast.success("Usuário removido do sistema");
+      fetchProfiles();
+    }
   };
+
+  const filteredProfiles = profiles.filter(p => 
+    (p.username?.toLowerCase() || "").includes(searchTerm.toLowerCase()) || 
+    (p.email?.toLowerCase() || "").includes(searchTerm.toLowerCase()) ||
+    p.id.includes(searchTerm)
+  );
+
+  const filteredLogs = logs.filter(log => {
+    if (logFilter === "all") return true;
+    return log.action === logFilter;
+  });
+
+  const stats = {
+    totalUsers: profiles.length,
+    admins: profiles.filter(p => p.role === 'admin').length,
+    activeToday: new Set(logs.filter(l => new Date(l.created_at).toDateString() === new Date().toDateString()).map(l => l.user_id)).size
+  };
+
 
   return (
     <div className="flex flex-col gap-8 p-4 max-w-[1600px] mx-auto animate-in fade-in duration-700">
@@ -163,7 +197,7 @@ export const AdminPanel = ({ userRole }: { userRole?: string | null }) => {
         <TabsList className="bg-slate-900/60 border border-white/10 p-1 rounded-xl mb-6 h-auto gap-2 backdrop-blur-xl">
           {userRole === 'admin' && (
             <TabsTrigger value="users" className="px-6 py-2 rounded-lg data-[state=active]:bg-emerald-600 font-bold transition-all gap-2">
-              <Users className="w-4 h-4" /> GESTÃO DE USUÁRIOS
+              <Users className="w-4 h-4" /> GERENCIAR USUÁRIOS
             </TabsTrigger>
           )}
           <TabsTrigger value="editor" className="px-6 py-2 rounded-lg data-[state=active]:bg-blue-600 font-bold transition-all gap-2">
@@ -171,7 +205,7 @@ export const AdminPanel = ({ userRole }: { userRole?: string | null }) => {
           </TabsTrigger>
           {userRole === 'admin' && (
             <TabsTrigger value="logs" className="px-6 py-2 rounded-lg data-[state=active]:bg-purple-600 font-bold transition-all gap-2">
-              <History className="w-4 h-4" /> RASTREADOR (LOGS)
+              <History className="w-4 h-4" /> RASTREAR ATIVIDADES
             </TabsTrigger>
           )}
         </TabsList>
@@ -394,25 +428,69 @@ export const AdminPanel = ({ userRole }: { userRole?: string | null }) => {
         {userRole === 'admin' && (
           <>
             <TabsContent value="logs">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                <Card className="bg-emerald-600/10 border-emerald-500/20">
+                  <CardContent className="pt-6">
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-black uppercase text-emerald-400">Usuários Totais</span>
+                      <Users className="w-4 h-4 text-emerald-400" />
+                    </div>
+                    <p className="text-3xl font-black mt-2">{stats.totalUsers}</p>
+                  </CardContent>
+                </Card>
+                <Card className="bg-blue-600/10 border-blue-500/20">
+                  <CardContent className="pt-6">
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-black uppercase text-blue-400">Ativos Hoje</span>
+                      <Activity className="w-4 h-4 text-blue-400" />
+                    </div>
+                    <p className="text-3xl font-black mt-2">{stats.activeToday}</p>
+                  </CardContent>
+                </Card>
+                <Card className="bg-purple-600/10 border-purple-500/20">
+                  <CardContent className="pt-6">
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-black uppercase text-purple-400">Administradores</span>
+                      <Shield className="w-4 h-4 text-purple-400" />
+                    </div>
+                    <p className="text-3xl font-black mt-2">{stats.admins}</p>
+                  </CardContent>
+                </Card>
+              </div>
+
               <Card className="bg-slate-900/50 border-white/10 backdrop-blur-xl">
-                <CardHeader className="flex flex-row items-center justify-between">
+                <CardHeader className="flex flex-row items-center justify-between space-y-0">
                   <CardTitle className="flex items-center gap-2">
-                    <History className="w-5 h-5 text-purple-400" /> Histórico de Atividade (Rastreador)
+                    <History className="w-5 h-5 text-purple-400" /> Histórico de Atividades
                   </CardTitle>
-                  <Button variant="outline" size="sm" onClick={fetchLogs}>Atualizar</Button>
+                  <div className="flex gap-2">
+                    <select 
+                      className="bg-black/40 border border-white/10 rounded-md text-xs px-2 py-1"
+                      value={logFilter}
+                      onChange={(e) => setLogFilter(e.target.value)}
+                    >
+                      <option value="all">Todos os Logs</option>
+                      <option value="LOGIN">Logins</option>
+                      <option value="TAB_CHANGE">Troca de Abas</option>
+                      <option value="VIEW_ELEMENT">Visualizações</option>
+                    </select>
+                    <Button variant="outline" size="sm" onClick={fetchLogs}>Atualizar</Button>
+                  </div>
                 </CardHeader>
                 <CardContent>
-                  <ScrollArea className="h-[600px]">
-                    <div className="space-y-4">
-                      {logs.map(log => (
-                        <div key={log.id} className="p-4 bg-white/5 rounded-xl border border-white/5 flex justify-between items-center">
+                  <ScrollArea className="h-[500px]">
+                    <div className="space-y-3">
+                      {filteredLogs.map(log => (
+                        <div key={log.id} className="p-3 bg-white/5 rounded-xl border border-white/5 flex justify-between items-center group hover:bg-white/10 transition-all">
                           <div className="flex flex-col">
-                            <span className="font-bold text-purple-400">{log.profiles?.username || log.profiles?.email}</span>
-                            <span className="text-sm text-white/80">{log.action} em <span className="text-blue-400 font-mono">{log.path}</span></span>
+                            <span className="font-bold text-xs text-purple-400">{log.profiles?.username || log.profiles?.email || 'Sistema'}</span>
+                            <span className="text-xs text-white/80">
+                              <Badge variant="outline" className="mr-2 text-[8px] h-4">{log.action}</Badge>
+                              {log.action === 'VIEW_ELEMENT' ? `Visualizou ${log.metadata?.symbol}` : log.action === 'TAB_CHANGE' ? `Navegou para ${log.metadata?.tab || log.path}` : log.action}
+                            </span>
                           </div>
                           <div className="text-right">
                             <span className="text-[10px] text-slate-500 block">{new Date(log.created_at).toLocaleString('pt-BR')}</span>
-                            {log.metadata && <Badge variant="outline" className="text-[8px] mt-1">META DATA</Badge>}
                           </div>
                         </div>
                       ))}
@@ -424,34 +502,56 @@ export const AdminPanel = ({ userRole }: { userRole?: string | null }) => {
 
             <TabsContent value="users">
               <Card className="bg-slate-900/50 border-white/10 backdrop-blur-xl">
-                <CardHeader className="flex flex-row items-center justify-between">
+                <CardHeader className="flex flex-row items-center justify-between space-y-0">
                   <CardTitle className="flex items-center gap-2">
-                    <Shield className="w-5 h-5 text-emerald-400" /> Controle de Acesso
+                    <Shield className="w-5 h-5 text-emerald-400" /> Gestão de Usuários
                   </CardTitle>
-                  <Button variant="outline" size="sm" onClick={fetchProfiles}>Atualizar</Button>
+                  <div className="flex gap-2">
+                    <div className="relative">
+                      <Search className="absolute left-2 top-1/2 -translate-y-1/2 w-3 h-3 text-slate-500" />
+                      <Input 
+                        placeholder="Buscar por nome ou e-mail..." 
+                        className="pl-8 h-8 text-xs bg-black/40 border-white/10 w-64"
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                      />
+                    </div>
+                    <Button variant="outline" size="sm" onClick={fetchProfiles}>Atualizar</Button>
+                  </div>
                 </CardHeader>
                 <CardContent>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {profiles.map(profile => (
-                      <div key={profile.id} className="p-4 bg-white/5 rounded-xl border border-white/5 space-y-4">
+                    {filteredProfiles.map(profile => (
+                      <div key={profile.id} className="p-4 bg-white/5 rounded-xl border border-white/5 space-y-4 relative group">
+                        <Button 
+                          variant="ghost" 
+                          size="icon" 
+                          className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 text-red-400 hover:text-red-300 hover:bg-red-400/10 transition-all h-8 w-8"
+                          onClick={() => deleteUser(profile.id)}
+                        >
+                          <Trash className="w-4 h-4" />
+                        </Button>
                         <div className="flex items-center gap-3">
                           <div className="w-10 h-10 bg-emerald-600/20 rounded-full flex items-center justify-center border border-emerald-500/30">
                             <UserIcon className="w-5 h-5 text-emerald-400" />
                           </div>
                           <div className="flex flex-col overflow-hidden">
-                            <span className="font-bold truncate">{profile.username || 'Sem nome'}</span>
-                            <span className="text-[10px] text-slate-500 truncate">{profile.id}</span>
+                            <span className="font-bold truncate text-sm">{profile.username || 'Sem nome'}</span>
+                            <span className="text-[9px] text-slate-500 truncate">{profile.email}</span>
                           </div>
                         </div>
                         <div className="flex flex-col gap-2">
-                          <Label className="text-[10px] uppercase text-slate-500">Nível de Acesso</Label>
+                          <div className="flex justify-between items-center">
+                            <Label className="text-[9px] uppercase text-slate-500">Nível de Acesso</Label>
+                            <span className="text-[8px] text-slate-600">Desde: {new Date(profile.created_at).toLocaleDateString()}</span>
+                          </div>
                           <div className="flex gap-2">
                             {['student', 'teacher', 'admin'].map(r => (
                               <Button
                                 key={r}
                                 size="sm"
                                 variant={profile.role === r ? 'default' : 'outline'}
-                                className={`text-[10px] h-7 flex-1 ${profile.role === r ? (r === 'admin' ? 'bg-red-600' : r === 'teacher' ? 'bg-blue-600' : 'bg-slate-600') : 'border-white/5'}`}
+                                className={`text-[9px] h-7 flex-1 font-black ${profile.role === r ? (r === 'admin' ? 'bg-red-600' : r === 'teacher' ? 'bg-blue-600' : 'bg-slate-600') : 'border-white/5'}`}
                                 onClick={() => updateUserRole(profile.id, r)}
                               >
                                 {r.toUpperCase()}

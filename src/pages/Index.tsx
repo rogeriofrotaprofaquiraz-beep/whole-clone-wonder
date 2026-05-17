@@ -167,6 +167,7 @@ const Index = () => {
   const [selectedSymbol, setSelectedSymbol] = useState<string>("H");
   const [session, setSession] = useState<any>(null);
   const [userRole, setUserRole] = useState<string | null>(null);
+  const [userProfile, setUserProfile] = useState<any>(null);
   const [showAuth, setShowAuth] = useState(false);
   const [activeTab, setActiveTab] = useState("collection");
 
@@ -185,12 +186,13 @@ const Index = () => {
   const fetchUserRole = async (userId: string) => {
     const { data, error } = await supabase
       .from('profiles')
-      .select('role')
+      .select('*')
       .eq('id', userId)
       .single();
     
     if (data && !error) {
       setUserRole(data.role);
+      setUserProfile(data);
     }
   };
 
@@ -218,9 +220,15 @@ const Index = () => {
 
   useEffect(() => {
     if (session?.user) {
-      logActivity('TAB_CHANGE', activeTab);
+      logActivity('TAB_CHANGE', activeTab, { tab: activeTab });
     }
   }, [activeTab, session, logActivity]);
+
+  useEffect(() => {
+    if (session?.user && selectedSymbol) {
+      logActivity('VIEW_ELEMENT', '/', { symbol: selectedSymbol });
+    }
+  }, [selectedSymbol, session, logActivity]);
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
