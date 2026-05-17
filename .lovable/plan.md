@@ -1,20 +1,32 @@
-Ajustarei a interface para incluir um módulo explícito de "ADMINISTRADOR" ao lado do Ranking, focado na manutenção de usuários e acompanhamento de atividades.
+O objetivo é implementar as funcionalidades de Gerenciamento de Usuários e Rastreamento de Atividades solicitadas, além de finalizar o Módulo Administrador para torná-lo funcional e profissional.
 
-### Alterações propostas
+### Alterações Propostas
 
-#### Interface (Frontend)
-- **src/pages/Index.tsx**: 
-    - Renomear a aba "ADMIN" para "**ADMINISTRADOR**" para alinhar com a solicitação do usuário.
-    - Alterar o ícone da aba para `Shield` (Escudo) para transmitir mais autoridade e clareza.
-    - Garantir que a aba esteja posicionada imediatamente após a aba "RANKING".
-- **src/components/game/AdminPanel.tsx**:
-    - Ajustar o `Tabs` interno para que, quando um Administrador acessar, a aba de "**GESTÃO DE ACESSO**" seja mais intuitiva ou a primeira, dependendo do contexto.
-    - Melhorar a visualização da lista de usuários para facilitar a "manutenção" solicitada (edição de níveis de acesso).
+#### 1. Módulo Administrador (AdminPanel.tsx)
+- **Renomeação Estrutural**:
+    - Renomear as abas para corresponder exatamente ao pedido: "GERENCIAR USUÁRIO" e "RASTREAR ATIVIDADE".
+    - Adicionar um painel de **Status do Sistema** (Dashboard) que mostre estatísticas rápidas: total de usuários, ações registradas hoje e nível de atividade.
+- **Gerenciamento de Usuários**:
+    - Adicionar uma barra de busca (Search) para filtrar usuários por nome ou e-mail.
+    - Exibir a data de criação da conta para melhor controle.
+    - Implementar a função de exclusão de usuário (com alerta de confirmação).
+- **Rastreador de Atividades**:
+    - Adicionar filtros por tipo de ação (Login, Mudança de Aba, Batalha, etc.).
+    - Melhorar a legibilidade dos logs, separando visualmente as ações automáticas das ações manuais.
 
-#### Funcionalidades (Backend/Lógica)
-- A lógica de rastreamento (logs) já está implementada; garantirei que o Administrador tenha acesso rápido a esses logs através do novo módulo.
+#### 2. Monitoramento de Atividade (Index.tsx)
+- **Logs Granulares**:
+    - Implementar logs para visualização de elementos específicos (ex: "Visualizou Hidrogênio").
+    - Registrar o início e fim de batalhas e quizzes.
+    - Garantir que todas as mudanças de aba sejam rastreadas com metadados úteis.
+- **Persistência e Segurança**:
+    - Verificar se os logs estão sendo inseridos corretamente no banco de dados.
+
+#### 3. Experiência de Usuário (AuthSystem.tsx)
+- Adicionar log de atividade específico para quando um novo usuário se registra.
 
 ### Detalhes Técnicos
-- Utilizarei os componentes de UI existentes (`Tabs`, `Card`, `Button`).
-- A visibilidade continuará restrita a usuários com role `admin` ou `teacher`.
-- O Administrador poderá ver as ações de todos os usuários (rastreador) na sub-aba de Logs.
+- Utilização de `lucide-react` para novos ícones (Search, Trash, Activity).
+- Uso de componentes `Input` e `Select` do Shadcn para filtros.
+- Refinamento das políticas de RLS no Supabase (se necessário) para garantir que apenas administradores vejam os dados sensíveis.
+- O termo "Publicar" será interpretado como a finalização da interface e ativação total dos logs em tempo real.

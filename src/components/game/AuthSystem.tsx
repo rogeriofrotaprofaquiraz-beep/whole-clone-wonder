@@ -50,6 +50,14 @@ export const AuthSystem = ({ onAuthSuccess }: { onAuthSuccess: () => void }) => 
               role: isFirstUser ? 'admin' : 'student'
             });
           if (profileError) console.error("Erro ao criar perfil:", profileError);
+          
+          // Log de registro
+          await supabase.from('activity_logs').insert({
+            user_id: data.user.id,
+            action: 'REGISTER',
+            path: '/auth',
+            metadata: { username: username || email.split('@')[0], role: isFirstUser ? 'admin' : 'student' }
+          });
         }
         
         toast.success("Conta criada! Verifique seu e-mail.");
