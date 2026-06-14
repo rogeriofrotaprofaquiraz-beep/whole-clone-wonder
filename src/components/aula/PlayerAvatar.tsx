@@ -16,6 +16,20 @@ import { Coins, Lock, Check, Upload, Sparkles, Zap, ShoppingBag, Loader2 } from 
 import { toast } from "sonner";
 
 type Element = { symbol: string; number: number; name: string; hero_name?: string | null; hero_image?: string | null; rarity?: string | null };
+type Appearance = Record<string, string>;
+type AvatarState = {
+  generated_url?: string | null;
+  photo_url?: string | null;
+  appearance?: Appearance | null;
+  unlocked_cards?: string[] | null;
+  current_card?: string | null;
+  unlocked?: string[] | null;
+  equipped?: Partial<Record<AvatarItem["slot"], string>> | null;
+};
+type WalletState = { coins: number; lifetime_coins?: number };
+type FunctionPayload = { error?: string } | null;
+
+const errorMessage = (error: unknown) => error instanceof Error ? error.message : String(error);
 
 const GENDERS = [{ id: "masculino", label: "Masculino" }, { id: "feminino", label: "Feminino" }];
 const BODIES = [{ id: "normal", label: "Normal" }, { id: "atletico", label: "Atlético" }, { id: "magro", label: "Magro" }, { id: "musculoso", label: "Musculoso" }];
@@ -40,7 +54,7 @@ function PickGrid({ value, onChange, options }: { value: string; onChange: (v: s
   );
 }
 
-export function AvatarDisplay({ avatar, size = 96 }: { avatar: any; size?: number }) {
+export function AvatarDisplay({ avatar, size = 96 }: { avatar: Pick<AvatarState, "generated_url" | "photo_url"> | null; size?: number }) {
   const url = avatar?.generated_url || avatar?.photo_url;
   if (url) {
     return <img src={url} alt="Avatar" style={{ width: size, height: size }} className="rounded-2xl object-cover border border-slate-700" />;
@@ -54,8 +68,8 @@ export function AvatarDisplay({ avatar, size = 96 }: { avatar: any; size?: numbe
 
 export function PlayerAvatar() {
   const [userId, setUserId] = useState<string | null>(null);
-  const [wallet, setWallet] = useState<any>(null);
-  const [avatar, setAvatar] = useState<any>(null);
+  const [wallet, setWallet] = useState<WalletState | null>(null);
+  const [avatar, setAvatar] = useState<AvatarState | null>(null);
   const [elements, setElements] = useState<Element[]>([]);
   const [loading, setLoading] = useState(true);
   const [admin, setAdmin] = useState(false);
@@ -66,10 +80,10 @@ export function PlayerAvatar() {
   const [tick, setTick] = useState(0);
 
   const appearance = avatar?.appearance ?? {};
-  const updateAppearance = (patch: Record<string, any>) => {
+  const updateAppearance = (patch: Appearance) => {
     if (!userId) return;
     const next = { ...appearance, ...patch };
-    setAvatar((a: any) => ({ ...a, appearance: next }));
+    setAvatar((a) => a ? ({ ...a, appearance: next }) : a);
     supabase.from("player_avatars").update({ appearance: next }).eq("user_id", userId);
   };
 
