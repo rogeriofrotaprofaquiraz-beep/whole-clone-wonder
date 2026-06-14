@@ -14,6 +14,7 @@ import { AuthSystem } from "@/components/game/AuthSystem";
 import { Ranking } from "@/components/game/Ranking";
 import { ElementList } from "@/components/game/ElementList";
 import { PlayerAvatar } from "@/components/aula/PlayerAvatar";
+import { ensureUserAccess } from "@/lib/ensureUserAccess";
 import { Swords, Brain, LayoutGrid, Settings, LogOut, User as UserIcon, Trophy, Users, Shield, List, GraduationCap, Dumbbell } from 'lucide-react';
 import { toast } from "sonner";
 
@@ -189,23 +190,15 @@ const Index = () => {
     });
   }, []);
 
-  const fetchUserRole = async (userId: string) => {
-    await supabase.rpc('ensure_current_user_access' as any);
-
+  const fetchUserRole = async (user: any) => {
+    const role = await ensureUserAccess(user);
     const { data: profile } = await supabase
       .from('profiles')
       .select('*')
-      .eq('id', userId)
+      .eq('id', user.id)
       .maybeSingle();
     if (profile) setUserProfile(profile);
-
-    const { data: roles } = await supabase
-      .from('user_roles')
-      .select('role')
-      .eq('user_id', userId);
-    const isAdmin = roles?.some(r => r.role === 'admin');
-    const isTeacher = roles?.some(r => r.role === 'moderator');
-    setUserRole(isAdmin ? 'admin' : isTeacher ? 'teacher' : 'user');
+    setUserRole(role);
   };
 
   useEffect(() => {
@@ -232,7 +225,7 @@ const Index = () => {
     supabase.auth.getSession().then(async ({ data: { session } }) => {
       setSession(session);
       if (session?.user) {
-        await fetchUserRole(session.user.id);
+        await fetchUserRole(session.user);
         logActivity('LOGIN', '/', { timestamp: new Date().toISOString() });
       }
       setAuthReady(true);
@@ -244,7 +237,7 @@ const Index = () => {
         setShowAuth(false);
         setAuthReady(false);
         setTimeout(() => {
-          fetchUserRole(session.user.id).finally(() => setAuthReady(true));
+          fetchUserRole(session.user).finally(() => setAuthReady(true));
         }, 0);
       } else {
         setUserRole(null);

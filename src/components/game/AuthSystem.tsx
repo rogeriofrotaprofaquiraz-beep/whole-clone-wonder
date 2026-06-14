@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { LogIn, UserPlus, LogOut, Chrome } from 'lucide-react';
 import { toast } from "sonner";
+import { ensureUserAccess } from "@/lib/ensureUserAccess";
 
 export const AuthSystem = ({ onAuthSuccess }: { onAuthSuccess: () => void }) => {
   const [isLogin, setIsLogin] = useState(true);
@@ -20,9 +21,9 @@ export const AuthSystem = ({ onAuthSuccess }: { onAuthSuccess: () => void }) => 
 
     try {
       if (isLogin) {
-        const { error } = await supabase.auth.signInWithPassword({ email, password });
+        const { data, error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) throw error;
-        await supabase.rpc('ensure_current_user_access' as any);
+        if (data.user) await ensureUserAccess(data.user);
         toast.success("Bem-vindo de volta!");
       } else {
         const { data, error } = await supabase.auth.signUp({ 
@@ -35,7 +36,7 @@ export const AuthSystem = ({ onAuthSuccess }: { onAuthSuccess: () => void }) => 
         if (error) throw error;
 
         if (data.user) {
-          await supabase.rpc('ensure_current_user_access' as any);
+          await ensureUserAccess(data.user);
           await supabase.from('activity_logs').insert({
             user_id: data.user.id,
             action: 'REGISTER',
