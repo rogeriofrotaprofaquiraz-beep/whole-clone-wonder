@@ -60,14 +60,38 @@ export const AdminPanel = ({ userRole }: { userRole?: string | null }) => {
   const [uploading, setUploading] = useState(false);
 
   const buildHeroPrompt = (el: Partial<PeriodicElement>) => {
-    const stateAttr = el.attributes?.find(a => a.label === "Estado físico")?.value || "Sólido";
-    const originAttr = el.attributes?.find(a => a.label === "Local de origem")?.value || "Natureza";
-    let texture = "metallic and solid";
-    if (stateAttr.toString().toLowerCase().includes("gás")) texture = "gaseous and glowing";
-    if (stateAttr.toString().toLowerCase().includes("líquido")) texture = "liquid and flowing";
-    const randomGender = Math.random() > 0.5 ? "male" : "female";
-    return `Professional cinematic full-body superhero portrait, 2:3 aspect ratio. Realistic ${randomGender} hero representing the chemical element "${el.name}" (symbol ${el.symbol}). Full body head-to-toe, centered, both feet visible. Heroic pose, rim lighting, ${texture} suit with glowing "${el.symbol}" emblem on chest, matching cape. Background: ${originAttr}. Fantastic realism, 8k, coherent element palette.`;
+    const stateAttr = (el.attributes?.find(a => a.label === "Estado físico")?.value || "Sólido").toString();
+    const originAttr = (el.attributes?.find(a => a.label === "Local de origem")?.value || "natural environment where this element is found or extracted").toString();
+    const colorAttr = (el.attributes?.find(a => a.label === "Cor")?.value || "").toString();
+    const s = stateAttr.toLowerCase();
+    const isGas = s.includes("gás") || s.includes("gas");
+    const isLiquid = s.includes("líquido") || s.includes("liquido") || s.includes("liquid");
+    const texture = isGas
+      ? "translucent gaseous shimmering texture, soft glowing particles, like the real gaseous element"
+      : isLiquid
+      ? "flowing liquid metallic texture with reflective ripples, like the real liquid element"
+      : "solid crystalline/metallic texture matching the raw mineral form of the real element";
+    const cape = isGas
+      ? "shiny, gaseous and translucent cape with soft colored light and luminous glowing edges"
+      : "luminous translucent cape with soft colored light and glowing edges";
+    const gender = Math.random() > 0.5 ? "male" : "female";
+    const hairColors = ["black","brown","blonde","red","white","silver","auburn"];
+    const hair = hairColors[Math.floor(Math.random()*hairColors.length)];
+    const palette = colorAttr ? `Color palette coherent with the real element (${colorAttr}).` : "Color palette matching the real element's natural appearance.";
+
+    return [
+      `Vertical trading card portrait, 2:3 aspect ratio (6cm x 9cm), cinematic fantastic realism, ultra high definition, 8k.`,
+      `FULL BODY SHOT of a realistic ${gender} superhero representing the chemical element "${el.name}" (symbol ${el.symbol}). Entire body visible from head to toe — both feet and head fully inside the frame with comfortable top and bottom margins. DO NOT CROP any part of the body.`,
+      `Camera: full-body framing, centered composition, slightly low angle for a heroic effect, shallow depth of field with sharp focus on the character.`,
+      `Lighting: strong cool frontal key light revealing suit texture and confident expression, soft diffuse ambient fill, gentle natural shadows.`,
+      `Character: hero standing on the ground or slightly floating, balanced heroic pose, confident expression. Random realistic human ethnicity and features. ${hair} hair with a defined hairstyle.`,
+      `Suit: texture as close as possible to the REAL natural appearance of the element — ${texture}. Glowing luminous "${el.symbol}" emblem centered on the chest. ${cape}.`,
+      `Background: ${originAttr} — the natural place where the element originates or is extracted, rendered in cinematic realism and harmonized with the frontal lighting.`,
+      palette,
+      `Style: fantastic realism, central focus, short depth of field, balanced light, complete body details, no cropping, no text, no watermark, no logo, no borders.`,
+    ].join(" ");
   };
+
 
   const generateAIPrompt = async () => {
     if (!formData.name || !formData.symbol) {
