@@ -118,9 +118,10 @@ export function PlayerAvatar() {
     const r = await buyItem(userId, item);
     if (!r.ok) return toast.error(r.reason!);
     await equipItem(userId, item);
-    toast.success(`${item.emoji} ${item.name} desbloqueado!`);
+    toast.success(`${item.emoji} ${item.name} desbloqueado${r.admin ? " (modo administrador)" : ""}!`);
     setTick((t) => t + 1);
   };
+
 
   const handleEquip = async (item: AvatarItem) => {
     if (eq[item.slot] === item.id) {
