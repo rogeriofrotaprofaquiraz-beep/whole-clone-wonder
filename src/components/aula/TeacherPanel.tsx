@@ -69,6 +69,23 @@ export function TeacherPanel({ userId }: { userId: string }) {
     }
   };
 
+  const generateTerms = async () => {
+    setGeneratingTerms(true);
+    try {
+      const { data, error } = await supabase.functions.invoke("generate-chem-terms", {
+        body: { area, count: 15, difficulty },
+      });
+      if (error) throw error;
+      if ((data as any)?.error) throw new Error((data as any).error);
+      toast.success(`${(data as any).inserted} termos adicionados!`);
+    } catch (e: any) {
+      toast.error(e.message || "Falha ao gerar termos");
+    } finally {
+      setGeneratingTerms(false);
+    }
+  };
+
+
   const createSession = async () => {
     if ((stats[area] ?? 0) < 1) {
       toast.error("Gere questões para essa área primeiro");
