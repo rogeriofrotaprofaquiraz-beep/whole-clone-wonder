@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { ELEMENTS_DATA, PeriodicElement } from '../data/elements';
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,7 +13,7 @@ import { AdminPanel } from "@/components/game/AdminPanel";
 import { AuthSystem } from "@/components/game/AuthSystem";
 import { Ranking } from "@/components/game/Ranking";
 import { ElementList } from "@/components/game/ElementList";
-import { Swords, Brain, LayoutGrid, Settings, LogOut, User as UserIcon, Trophy, Users, Shield, List } from 'lucide-react';
+import { Swords, Brain, LayoutGrid, Settings, LogOut, User as UserIcon, Trophy, Users, Shield, List, GraduationCap, Dumbbell } from 'lucide-react';
 import { toast } from "sonner";
 
 const ElementCard = ({ element }: { element: PeriodicElement }) => {
@@ -364,6 +365,12 @@ const Index = () => {
                 <Shield className="w-5 h-5 text-emerald-400" /> {userRole === 'admin' ? 'ADMINISTRADOR' : 'PROFESSOR'}
               </TabsTrigger>
             )}
+            <Link to="/aula" className="px-8 py-4 rounded-xl bg-gradient-to-r from-[#4C1D95] to-[#7C3AED] hover:from-[#3B1486] hover:to-[#6D28D9] font-bold transition-all gap-2 inline-flex items-center text-white">
+              <GraduationCap className="w-5 h-5" /> SALA DE AULA
+            </Link>
+            <Link to="/aula/treino" className="px-8 py-4 rounded-xl bg-gradient-to-r from-[#059669] to-[#10B981] hover:from-[#047857] hover:to-[#059669] font-bold transition-all gap-2 inline-flex items-center text-white">
+              <Dumbbell className="w-5 h-5" /> TREINO
+            </Link>
           </TabsList>
 
         <TabsContent value="collection" className="w-full animate-in fade-in zoom-in-95 duration-500">
