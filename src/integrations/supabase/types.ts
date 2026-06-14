@@ -68,6 +68,7 @@ export type Database = {
           id: string
           options: Json
           question: string
+          school_level: string
           topic: string | null
           updated_at: string
         }
@@ -82,6 +83,7 @@ export type Database = {
           id?: string
           options?: Json
           question: string
+          school_level?: string
           topic?: string | null
           updated_at?: string
         }
@@ -96,6 +98,7 @@ export type Database = {
           id?: string
           options?: Json
           question?: string
+          school_level?: string
           topic?: string | null
           updated_at?: string
         }
@@ -109,6 +112,7 @@ export type Database = {
           created_by: string | null
           difficulty: number
           id: string
+          school_level: string
           term: string
         }
         Insert: {
@@ -118,6 +122,7 @@ export type Database = {
           created_by?: string | null
           difficulty?: number
           id?: string
+          school_level?: string
           term: string
         }
         Update: {
@@ -127,6 +132,7 @@ export type Database = {
           created_by?: string | null
           difficulty?: number
           id?: string
+          school_level?: string
           term?: string
         }
         Relationships: []
