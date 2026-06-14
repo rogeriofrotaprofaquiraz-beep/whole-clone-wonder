@@ -22,6 +22,36 @@ const ATTRIBUTE_LABELS = [
   "Origem do nome", "Descobridor", "Ano de descoberta", "Ponto de fusão", "Ponto de ebulição"
 ];
 
+const defaultAttributes = (): ElementAttribute[] => ATTRIBUTE_LABELS.map((label, index) => ({
+  id: index + 1,
+  label,
+  value: "",
+  justification: "",
+  score: 50,
+}));
+
+const normalizeAttributes = (raw: any): ElementAttribute[] => {
+  let attrs = raw;
+  if (typeof attrs === "string") {
+    try { attrs = JSON.parse(attrs); } catch { attrs = []; }
+  }
+  if (!Array.isArray(attrs)) attrs = [];
+
+  const fallback = defaultAttributes();
+  return fallback.map((base, index) => {
+    const current = attrs[index] || attrs.find?.((a: any) => a?.label === base.label) || {};
+    return {
+      ...base,
+      ...current,
+      id: Number(current.id ?? base.id),
+      label: current.label ?? base.label,
+      value: current.value ?? "",
+      justification: current.justification ?? "",
+      score: Number(current.score ?? base.score) || 0,
+    };
+  });
+};
+
 export const AdminPanel = ({ userRole }: { userRole?: string | null }) => {
   const [logs, setLogs] = useState<any[]>([]);
   const [profiles, setProfiles] = useState<any[]>([]);
@@ -37,13 +67,7 @@ export const AdminPanel = ({ userRole }: { userRole?: string | null }) => {
     heroDescription: "",
     heroImage: "",
     rarity: "Comum",
-    attributes: ATTRIBUTE_LABELS.map((label, index) => ({
-      id: index + 1,
-      label,
-      value: "",
-      justification: "",
-      score: 50
-    }))
+    attributes: defaultAttributes()
   });
 
   const handleInputChange = (field: keyof PeriodicElement, value: any) => {
@@ -51,7 +75,7 @@ export const AdminPanel = ({ userRole }: { userRole?: string | null }) => {
   };
 
   const handleAttributeChange = (index: number, field: keyof ElementAttribute, value: any) => {
-    const newAttributes = [...(formData.attributes || [])];
+    const newAttributes = normalizeAttributes(formData.attributes);
     newAttributes[index] = { ...newAttributes[index], [field]: value };
     setFormData(prev => ({ ...prev, attributes: newAttributes }));
   };
@@ -60,9 +84,10 @@ export const AdminPanel = ({ userRole }: { userRole?: string | null }) => {
   const [uploading, setUploading] = useState(false);
 
   const buildHeroPrompt = (el: Partial<PeriodicElement>) => {
-    const stateAttr = (el.attributes?.find(a => a.label === "Estado físico")?.value || "Sólido").toString();
-    const originAttr = (el.attributes?.find(a => a.label === "Local de origem")?.value || "natural environment where this element is found or extracted").toString();
-    const colorAttr = (el.attributes?.find(a => a.label === "Cor")?.value || "").toString();
+    const attrs = normalizeAttributes(el.attributes);
+    const stateAttr = (attrs.find(a => a.label === "Estado físico")?.value || "Sólido").toString();
+    const originAttr = (attrs.find(a => a.label === "Local de origem")?.value || "natural environment where this element is found or extracted").toString();
+    const colorAttr = (attrs.find(a => a.label === "Cor")?.value || "").toString();
     const s = stateAttr.toLowerCase();
     const isGas = s.includes("gás") || s.includes("gas");
     const isLiquid = s.includes("líquido") || s.includes("liquido") || s.includes("liquid");
