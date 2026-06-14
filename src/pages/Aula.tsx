@@ -44,6 +44,11 @@ export default function Aula() {
           <Link to="/" className="text-white/60 text-sm underline">← Voltar ao app principal</Link>
         </div>
 
+        <Card className="p-6 mb-6 bg-gradient-to-r from-[#D97706] to-[#F59E0B] text-white border-0 cursor-pointer hover:scale-[1.01] transition" onClick={() => navigate("/aula/treino")}>
+          <h3 className="font-bold text-lg">🎮 Treino Solo</h3>
+          <p className="text-sm text-white/90">Pratique Forca, Caça-palavras e Memória por área — sem precisar de sala.</p>
+        </Card>
+
         <Card className="p-6 mb-6">
           <h3 className="font-bold text-lg mb-3 flex items-center gap-2"><LogIn /> Sou aluno — entrar com código</h3>
           <div className="flex gap-2">

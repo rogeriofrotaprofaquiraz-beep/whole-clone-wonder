@@ -20,6 +20,7 @@ export function TeacherPanel({ userId }: { userId: string }) {
   const [topic, setTopic] = useState("");
   const [difficulty, setDifficulty] = useState(2);
   const [generating, setGenerating] = useState(false);
+  const [generatingTerms, setGeneratingTerms] = useState(false);
   const [creating, setCreating] = useState(false);
   const [stats, setStats] = useState<Record<string, number>>({});
   const [sessions, setSessions] = useState<any[]>([]);
@@ -67,6 +68,23 @@ export function TeacherPanel({ userId }: { userId: string }) {
       setGenerating(false);
     }
   };
+
+  const generateTerms = async () => {
+    setGeneratingTerms(true);
+    try {
+      const { data, error } = await supabase.functions.invoke("generate-chem-terms", {
+        body: { area, count: 15, difficulty },
+      });
+      if (error) throw error;
+      if ((data as any)?.error) throw new Error((data as any).error);
+      toast.success(`${(data as any).inserted} termos adicionados!`);
+    } catch (e: any) {
+      toast.error(e.message || "Falha ao gerar termos");
+    } finally {
+      setGeneratingTerms(false);
+    }
+  };
+
 
   const createSession = async () => {
     if ((stats[area] ?? 0) < 1) {
@@ -139,9 +157,15 @@ export function TeacherPanel({ userId }: { userId: string }) {
             <Input type="range" min={1} max={5} value={difficulty} onChange={(e) => setDifficulty(+e.target.value)} />
           </div>
         </div>
-        <Button onClick={generateQuestions} disabled={generating} className="mt-4 w-full bg-[#D97706] hover:bg-[#B45309]">
-          {generating ? <><Loader2 className="animate-spin mr-2" />Gerando...</> : <><Sparkles className="mr-2" />Gerar com IA</>}
-        </Button>
+        <div className="grid grid-cols-2 gap-2 mt-4">
+          <Button onClick={generateQuestions} disabled={generating} className="bg-[#D97706] hover:bg-[#B45309]">
+            {generating ? <><Loader2 className="animate-spin mr-2" />Gerando...</> : <><Sparkles className="mr-2" />Gerar Quiz</>}
+          </Button>
+          <Button onClick={generateTerms} disabled={generatingTerms} className="bg-[#4C1D95] hover:bg-[#3B1486]">
+            {generatingTerms ? <><Loader2 className="animate-spin mr-2" />Gerando...</> : <><Sparkles className="mr-2" />Gerar Termos</>}
+          </Button>
+        </div>
+        <p className="text-xs text-muted-foreground mt-2">"Quiz" alimenta o Quiz competitivo. "Termos" alimenta Forca, Caça-palavras e Memória (treino solo).</p>
       </Card>
 
       <Card className="p-6">

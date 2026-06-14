@@ -101,6 +101,36 @@ export type Database = {
         }
         Relationships: []
       }
+      chem_terms: {
+        Row: {
+          area: Database["public"]["Enums"]["chem_area"]
+          clue: string
+          created_at: string
+          created_by: string | null
+          difficulty: number
+          id: string
+          term: string
+        }
+        Insert: {
+          area: Database["public"]["Enums"]["chem_area"]
+          clue: string
+          created_at?: string
+          created_by?: string | null
+          difficulty?: number
+          id?: string
+          term: string
+        }
+        Update: {
+          area?: Database["public"]["Enums"]["chem_area"]
+          clue?: string
+          created_at?: string
+          created_by?: string | null
+          difficulty?: number
+          id?: string
+          term?: string
+        }
+        Relationships: []
+      }
       elements: {
         Row: {
           attributes: Json
