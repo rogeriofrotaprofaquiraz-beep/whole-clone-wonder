@@ -178,7 +178,7 @@ export function PlayerAvatar() {
             </div>
           )}
           <Badge className="absolute top-2 right-2 bg-amber-500 text-black flex items-center gap-1">
-            <Coins size={12} />{admin ? <InfinityIcon size={12} /> : wallet?.coins ?? 0}
+            <Coins size={12} />{admin ? 99999 : wallet?.coins ?? 0}
           </Badge>
         </div>
         <div className="mt-3 flex items-center justify-between gap-2 bg-emerald-950/40 border border-emerald-800 rounded-lg px-3 py-2 text-emerald-300 text-sm">
