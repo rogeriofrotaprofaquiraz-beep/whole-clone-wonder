@@ -15,7 +15,7 @@ import { Ranking } from "@/components/game/Ranking";
 import { ElementList } from "@/components/game/ElementList";
 import { PlayerAvatar } from "@/components/aula/PlayerAvatar";
 import { ensureUserAccess } from "@/lib/ensureUserAccess";
-import { Swords, Brain, LayoutGrid, Settings, LogOut, User as UserIcon, Trophy, Users, Shield, List, GraduationCap, Dumbbell } from 'lucide-react';
+import { Swords, Brain, LayoutGrid, Settings, LogOut, User as UserIcon, Trophy, Users, Shield, List, GraduationCap, Dumbbell, Gamepad2, Atom, Activity } from 'lucide-react';
 import { toast } from "sonner";
 
 const ElementCard = ({ element }: { element: PeriodicElement }) => {
