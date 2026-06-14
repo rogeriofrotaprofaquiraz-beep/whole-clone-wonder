@@ -11,7 +11,7 @@ import {
   SHOP_ITEMS, AvatarItem,
   loadAvatar, loadWallet, buyItem, equipItem, isAdmin,
 } from "@/lib/playerEconomy";
-import { Coins, Lock, Check, Upload, Sparkles, Zap, Infinity as InfinityIcon, ShoppingBag, Loader2 } from "lucide-react";
+import { Coins, Lock, Check, Upload, Sparkles, Zap, ShoppingBag, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 
 type Element = { symbol: string; number: number; name: string; hero_name?: string | null; hero_image?: string | null; rarity?: string | null };
@@ -140,7 +140,15 @@ export function PlayerAvatar() {
       const { data, error } = await supabase.functions.invoke("generate-player-avatar", {
         body: { cardSymbol: currentCard.symbol, appearance, photoBase64 },
       });
-      if (error || (data as any)?.error) throw new Error(error?.message || (data as any).error);
+      if (error) {
+        const response = (error as any).context;
+        if (response instanceof Response) {
+          const payload = await response.json().catch(() => null);
+          throw new Error(payload?.error || error.message);
+        }
+        throw error;
+      }
+      if ((data as any)?.error) throw new Error((data as any).error);
       toast.success("Avatar gerado!");
       setTick((t) => t + 1);
     } catch (e: any) {

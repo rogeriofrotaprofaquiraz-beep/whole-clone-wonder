@@ -9,6 +9,13 @@ const safeUsername = (raw: string, userId: string) => {
 };
 
 export async function ensureUserAccess(user: { id: string; email?: string | null; user_metadata?: any }): Promise<AppRole> {
+  const { data: accessRoles, error: accessError } = await supabase.rpc("ensure_current_user_access");
+  if (!accessError && accessRoles?.length) {
+    if (accessRoles.some((r) => r.role === "admin")) return "admin";
+    if (accessRoles.some((r) => r.role === "moderator")) return "teacher";
+    return "user";
+  }
+
   const username = safeUsername(
     user.user_metadata?.username || user.user_metadata?.full_name || user.email || "jogador",
     user.id,
