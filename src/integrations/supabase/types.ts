@@ -56,6 +56,45 @@ export type Database = {
           },
         ]
       }
+      elements: {
+        Row: {
+          attributes: Json
+          created_at: string
+          hero_description: string | null
+          hero_image: string | null
+          hero_name: string | null
+          name: string
+          number: number
+          rarity: string | null
+          symbol: string
+          updated_at: string
+        }
+        Insert: {
+          attributes?: Json
+          created_at?: string
+          hero_description?: string | null
+          hero_image?: string | null
+          hero_name?: string | null
+          name: string
+          number: number
+          rarity?: string | null
+          symbol: string
+          updated_at?: string
+        }
+        Update: {
+          attributes?: Json
+          created_at?: string
+          hero_description?: string | null
+          hero_image?: string | null
+          hero_name?: string | null
+          name?: string
+          number?: number
+          rarity?: string | null
+          symbol?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       match_moves: {
         Row: {
           attribute_selected: string

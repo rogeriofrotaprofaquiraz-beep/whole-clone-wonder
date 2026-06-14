@@ -93,16 +93,27 @@ export const AdminPanel = ({ userRole }: { userRole?: string | null }) => {
     console.log("Generating prompts for all elements with the new style...");
   };
 
-  const saveElement = () => {
+  const saveElement = async () => {
     if (!formData.symbol) {
       toast.error("Símbolo é obrigatório!");
       return;
     }
-    // Update local data for this session
-    if (formData.symbol) {
-      ELEMENTS_DATA[formData.symbol] = formData as PeriodicElement;
+    const { error } = await supabase.from('elements').upsert({
+      symbol: formData.symbol,
+      number: formData.number ?? 0,
+      name: formData.name ?? '',
+      hero_name: formData.heroName ?? '',
+      hero_description: formData.heroDescription ?? '',
+      hero_image: formData.heroImage ?? '',
+      rarity: formData.rarity ?? 'Comum',
+      attributes: (formData.attributes ?? []) as any,
+    });
+    if (error) {
+      toast.error("Erro ao salvar: " + error.message);
+      return;
     }
-    toast.success(`Elemento ${formData.symbol} atualizado na memória com sucesso!`);
+    ELEMENTS_DATA[formData.symbol] = formData as PeriodicElement;
+    toast.success(`Elemento ${formData.symbol} salvo no banco!`);
   };
 
   const loadElement = (symbol: string) => {
