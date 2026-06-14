@@ -147,10 +147,13 @@ export function PlayerAvatar() {
       <div className="flex-1 min-w-0">
         <div className="font-bold text-sm truncate">Criar e melhorar meu Avatar</div>
         <div className="flex items-center gap-1 text-amber-600 font-black">
-          <Coins size={16} /> {wallet.coins} <span className="text-xs text-muted-foreground font-normal">moedas</span>
+          <Coins size={16} />
+          {admin ? <><InfinityIcon size={16} /> <span className="text-xs text-muted-foreground font-normal">crédito ilimitado</span></>
+                 : <>{wallet.coins} <span className="text-xs text-muted-foreground font-normal">moedas</span></>}
         </div>
-        <div className="text-xs text-muted-foreground">Total ganho: {wallet.lifetime_coins}</div>
+        <div className="text-xs text-muted-foreground">{admin ? "Modo administrador" : `Total ganho: ${wallet.lifetime_coins}`}</div>
       </div>
+
       <Dialog>
         <DialogTrigger asChild>
           <Button size="sm" variant="outline"><ShoppingBag size={14} className="mr-1" />Loja</Button>
