@@ -28,12 +28,15 @@ Deno.serve(async (req) => {
     const { data: isAdmin } = await admin.rpc("has_role", { _user_id: user.id, _role: "admin" });
     if (!isAdmin) return json({ error: "Forbidden — admin only" }, 403);
 
-    const { area, count = 15, difficulty = 2 } = await req.json();
+    const { area, count = 15, difficulty = 2, school_level = "medio" } = await req.json();
     if (!area || !AREA_LABELS[area]) return json({ error: "Invalid area" }, 400);
+    const level = school_level === "fundamental" ? "fundamental" : "medio";
+    const levelLabel = level === "fundamental" ? "Ensino Fundamental (linguagem simples, conceitos básicos)" : "Ensino Médio (rigor científico)";
     const n = Math.min(Math.max(parseInt(String(count)) || 15, 1), 30);
 
     const sys = `Você cria listas de termos de química em PT-BR para jogos educativos (forca, caça-palavras). Responda APENAS com JSON válido.`;
     const userPrompt = `Liste ${n} termos sobre ${AREA_LABELS[area]} adequados para jogos de palavras.
+Público: ${levelLabel}. Dificuldade: ${difficulty}/5.
 Regras:
 - Cada termo entre 4 e 14 letras
 - Use apenas letras (sem acentos, sem espaços, sem números, sem hífen)
@@ -67,7 +70,7 @@ Formato JSON:
 
     const clean = terms
       .map((t: any) => ({
-        area, difficulty, created_by: user.id,
+        area, difficulty, school_level: level, created_by: user.id,
         term: String(t.term || "").toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^A-Z]/g, ""),
         clue: String(t.clue || "").slice(0, 200),
       }))

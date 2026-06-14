@@ -29,17 +29,18 @@ Deno.serve(async (req) => {
     const { data: isAdmin } = await admin.rpc("has_role", { _user_id: user.id, _role: "admin" });
     if (!isAdmin) return json({ error: "Forbidden — admin only" }, 403);
 
-    const { area, count = 10, difficulty = 2, topic } = await req.json();
+    const { area, count = 10, difficulty = 2, topic, school_level = "medio" } = await req.json();
     if (!area || !AREA_LABELS[area]) return json({ error: "Invalid area" }, 400);
+    const level = school_level === "fundamental" ? "fundamental" : "medio";
+    const levelLabel = level === "fundamental" ? "Ensino Fundamental (linguagem acessível, sem fórmulas complexas)" : "Ensino Médio";
     const n = Math.min(Math.max(parseInt(String(count)) || 10, 1), 25);
 
-    const sys = `Você é um professor de química brasileiro criando questões de múltipla escolha para estudantes do ensino médio/técnico. Responda APENAS com JSON válido, sem markdown.`;
-    const userPrompt = `Crie ${n} questões objetivas em PORTUGUÊS sobre ${AREA_LABELS[area]}${topic ? ` — tópico específico: ${topic}` : ""}.
-Dificuldade: ${difficulty}/5.
-Cada questão deve ter EXATAMENTE 4 alternativas plausíveis e uma única correta.
-Inclua uma explicação curta (1-2 frases) da resposta correta.
+    const sys = `Você é um professor de química brasileiro criando questões de múltipla escolha. Responda APENAS com JSON válido, sem markdown.`;
+    const userPrompt = `Crie ${n} questões objetivas em PORTUGUÊS sobre ${AREA_LABELS[area]}${topic ? ` — tópico: ${topic}` : ""}.
+Público-alvo: ${levelLabel}. Dificuldade: ${difficulty}/5.
+Cada questão com EXATAMENTE 4 alternativas plausíveis e uma única correta. Inclua explicação curta.
 
-Retorne JSON no formato:
+Retorne JSON:
 { "questions": [ { "question": "...", "options": ["A","B","C","D"], "correct_index": 0, "explanation": "...", "topic": "..." } ] }`;
 
     const aiResp = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
@@ -66,7 +67,7 @@ Retorne JSON no formato:
     if (!questions.length) return json({ error: "Nenhuma questão gerada" }, 500);
 
     const rows = questions.slice(0, n).map((q: any) => ({
-      area, topic: q.topic ?? topic ?? null, difficulty,
+      area, topic: q.topic ?? topic ?? null, difficulty, school_level: level,
       question: String(q.question ?? "").trim(),
       options: Array.isArray(q.options) ? q.options.slice(0, 4).map(String) : [],
       correct_index: Math.max(0, Math.min(3, parseInt(q.correct_index) || 0)),
