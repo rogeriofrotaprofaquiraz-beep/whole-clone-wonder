@@ -177,6 +177,7 @@ const Index = () => {
   const [showAuth, setShowAuth] = useState(false);
   const [activeTab, setActiveTab] = useState("collection");
   const [authReady, setAuthReady] = useState(false);
+  const [adminEditSymbol, setAdminEditSymbol] = useState<string | null>(null);
 
   const logActivity = useCallback(async (action: string, path: string, metadata: any = {}) => {
     const { data: { session } } = await supabase.auth.getSession();
@@ -506,7 +507,11 @@ const Index = () => {
         </TabsContent>
 
         <TabsContent value="list" className="w-full animate-in fade-in slide-in-from-bottom-10 duration-500">
-          <ElementList onSelect={(sym) => { setSelectedSymbol(sym); setActiveTab('collection'); }} />
+          <ElementList
+            canManage={userRole === 'admin'}
+            onSelect={(sym) => { setSelectedSymbol(sym); setActiveTab('collection'); }}
+            onEdit={(sym) => { setAdminEditSymbol(sym); setSelectedSymbol(sym); setActiveTab('admin'); }}
+          />
         </TabsContent>
 
         <TabsContent value="battle" className="w-full animate-in fade-in slide-in-from-right-10 duration-500">
@@ -527,7 +532,7 @@ const Index = () => {
 
         {(userRole === 'admin' || userRole === 'teacher') && (
           <TabsContent value="admin" className="w-full animate-in fade-in slide-in-from-bottom-10 duration-500">
-            <AdminPanel userRole={userRole} />
+            <AdminPanel userRole={userRole} initialSymbol={adminEditSymbol} />
           </TabsContent>
         )}
         {userRole === 'admin' && (
