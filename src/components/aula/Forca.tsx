@@ -5,7 +5,9 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
 import { areaMeta, AreaValue, computeScore, LevelValue } from "@/lib/aula";
-import { RotateCcw, Skull, Trophy, Lightbulb, Timer } from "lucide-react";
+import { addCoins, coinsFor } from "@/lib/playerEconomy";
+import { ElementCardsPopup } from "@/components/aula/ElementCard";
+import { RotateCcw, Skull, Trophy, Lightbulb, Timer, Coins } from "lucide-react";
 
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 const MAX_ERRORS = 6;
@@ -76,16 +78,19 @@ export function Forca({ area, level, difficulty }: { area: AreaValue; level: Lev
     } else {
       setConsecutiveWrong(0);
       if ([...term].every((c) => new Set(next).has(c))) {
+        const elapsedMs = Date.now() - startedAt;
         const pts = computeScore({
-          difficulty,
-          elapsedMs: Date.now() - startedAt,
-          maxMs: 90_000,
+          difficulty, elapsedMs, maxMs: 90_000,
           penalty: (hintRevealed ? 0.4 : 0) + Math.min(0.3, errors * 0.05),
           correct: true,
         });
+        const coins = coinsFor(difficulty, elapsedMs);
         setScore((s) => s + pts);
         setWins((w) => w + 1);
-        toast.success(`Acertou! +${pts} pts`);
+        toast.success(`Acertou! +${pts} pts · +${coins} 🪙`);
+        supabase.auth.getUser().then(({ data }) => {
+          if (data.user) addCoins(data.user.id, coins).catch(() => {});
+        });
       }
     }
   };
