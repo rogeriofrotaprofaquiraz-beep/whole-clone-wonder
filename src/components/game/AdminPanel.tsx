@@ -209,15 +209,15 @@ export const AdminPanel = ({ userRole }: { userRole?: string | null }) => {
   const loadElement = (symbol: string) => {
     const element = ELEMENTS_DATA[symbol];
     if (element) {
-      setFormData({...element});
+      setFormData({ ...element, attributes: normalizeAttributes(element.attributes) });
       setEditingSymbol(symbol);
     }
   };
 
   const calculateAverage = () => {
-    if (!formData.attributes) return 0;
-    const total = formData.attributes.reduce((acc, curr) => acc + curr.score, 0);
-    return (total / formData.attributes.length).toFixed(1);
+    const attrs = normalizeAttributes(formData.attributes);
+    const total = attrs.reduce((acc, curr) => acc + (Number(curr.score) || 0), 0);
+    return (total / attrs.length).toFixed(1);
   };
 
   const fetchLogs = async () => {
@@ -499,7 +499,7 @@ export const AdminPanel = ({ userRole }: { userRole?: string | null }) => {
                     </div>
 
                     <div className="grid grid-cols-1 gap-4">
-                      {formData.attributes?.map((attr, index) => (
+                      {normalizeAttributes(formData.attributes).map((attr, index) => (
                         <div key={attr.id} className="p-5 bg-white/5 rounded-2xl border border-white/5 space-y-4 hover:bg-white/10 transition-colors group">
                           <div className="flex justify-between items-center">
                             <div className="flex flex-col">
