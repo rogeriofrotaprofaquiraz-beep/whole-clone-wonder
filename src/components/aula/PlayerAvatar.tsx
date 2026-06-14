@@ -11,6 +11,7 @@ import {
   SHOP_ITEMS, AvatarItem,
   loadAvatar, loadWallet, buyItem, equipItem, isAdmin,
 } from "@/lib/playerEconomy";
+import { ensureUserAccess } from "@/lib/ensureUserAccess";
 import { Coins, Lock, Check, Upload, Sparkles, Zap, ShoppingBag, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 
@@ -74,7 +75,12 @@ export function PlayerAvatar() {
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data }) => {
-      setUserId(data.user?.id ?? null);
+      if (!data.user) {
+        setUserId(null);
+        return;
+      }
+      setUserId(data.user.id);
+      ensureUserAccess(data.user).then((role) => setAdmin(role === "admin"));
     });
   }, []);
 
