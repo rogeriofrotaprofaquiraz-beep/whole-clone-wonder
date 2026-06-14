@@ -3,7 +3,7 @@ import { ELEMENTS_DATA, PeriodicElement } from '@/data/elements';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ArrowUpAZ, Hash, Search } from 'lucide-react';
+import { ArrowUpAZ, Hash, Pencil, Search, Trash2 } from 'lucide-react';
 
 type SortMode = 'atomic' | 'alpha';
 
@@ -43,7 +43,14 @@ const rarityStyle = (r: string) => {
   }
 };
 
-export const ElementList: React.FC<{ onSelect?: (symbol: string) => void }> = ({ onSelect }) => {
+type ElementListProps = {
+  onSelect?: (symbol: string) => void;
+  canManage?: boolean;
+  onEdit?: (symbol: string) => void;
+  onDelete?: (symbol: string) => void;
+};
+
+export const ElementList: React.FC<ElementListProps> = ({ onSelect, canManage = false, onEdit, onDelete }) => {
   const [sort, setSort] = useState<SortMode>('atomic');
   const [query, setQuery] = useState('');
 
@@ -104,7 +111,7 @@ export const ElementList: React.FC<{ onSelect?: (symbol: string) => void }> = ({
       </div>
 
       <div className="overflow-x-auto rounded-2xl border border-white/5">
-        <table className="w-full text-sm">
+        <table className="w-full min-w-[1120px] text-sm">
           <thead className="bg-slate-950/60 text-slate-400 uppercase text-xs tracking-widest">
             <tr>
               <th className="py-3 px-4 text-left font-bold">#</th>
@@ -115,6 +122,7 @@ export const ElementList: React.FC<{ onSelect?: (symbol: string) => void }> = ({
               <th className="py-3 px-4 text-left font-bold">Categoria</th>
               <th className="py-3 px-4 text-left font-bold">Raridade</th>
               <th className="py-3 px-4 text-left font-bold">Poder</th>
+              {canManage && <th className="py-3 px-4 text-left font-bold">Ações</th>}
             </tr>
           </thead>
           <tbody>
@@ -153,12 +161,45 @@ export const ElementList: React.FC<{ onSelect?: (symbol: string) => void }> = ({
                     </Badge>
                   </td>
                   <td className="py-3 px-4 font-black text-white">{power}</td>
+                  {canManage && (
+                    <td className="py-3 px-4">
+                      <div className="flex items-center gap-2">
+                        <Button
+                          type="button"
+                          variant="ghost"
+                          size="icon"
+                          title="Editar carta"
+                          className="h-8 w-8 text-slate-400 hover:text-blue-300 hover:bg-blue-500/10"
+                          onClick={(event) => {
+                            event.stopPropagation();
+                            (onEdit ?? onSelect)?.(el.symbol);
+                          }}
+                        >
+                          <Pencil className="w-4 h-4" />
+                        </Button>
+                        <Button
+                          type="button"
+                          variant="ghost"
+                          size="icon"
+                          title="Exclusão desativada para preservar a tabela periódica"
+                          disabled={!onDelete}
+                          className="h-8 w-8 text-red-400 hover:text-red-300 hover:bg-red-500/10 disabled:opacity-70 disabled:text-red-400"
+                          onClick={(event) => {
+                            event.stopPropagation();
+                            onDelete?.(el.symbol);
+                          }}
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </Button>
+                      </div>
+                    </td>
+                  )}
                 </tr>
               );
             })}
             {elements.length === 0 && (
               <tr>
-                <td colSpan={8} className="py-10 text-center text-slate-500 italic">
+                <td colSpan={canManage ? 9 : 8} className="py-10 text-center text-slate-500 italic">
                   Nenhum elemento encontrado.
                 </td>
               </tr>
