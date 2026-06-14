@@ -59,9 +59,21 @@ export function PlayerAvatar() {
   const [avatar, setAvatar] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [admin, setAdmin] = useState(false);
   const [tick, setTick] = useState(0);
 
   useEffect(() => {
+    supabase.auth.getUser().then(({ data }) => {
+      setUserId(data.user?.id ?? null);
+      setLoading(false);
+    });
+  }, []);
+
+  useEffect(() => {
+    if (!userId) return;
+    isAdmin(userId).then(setAdmin);
+  }, [userId]);
+
     supabase.auth.getUser().then(({ data }) => {
       setUserId(data.user?.id ?? null);
       setLoading(false);
