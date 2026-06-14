@@ -371,6 +371,9 @@ const Index = () => {
             <TabsTrigger value="ranking" className="px-8 py-4 rounded-xl data-[state=active]:bg-yellow-600 font-bold transition-all gap-2 text-white">
               <Trophy className="w-5 h-5" /> RANKING
             </TabsTrigger>
+            <TabsTrigger value="avatar" className="px-8 py-4 rounded-xl data-[state=active]:bg-emerald-600 font-bold transition-all gap-2">
+              <UserIcon className="w-5 h-5" /> AVATAR
+            </TabsTrigger>
             {(userRole === 'admin' || userRole === 'teacher') && (
               <TabsTrigger value="admin" className="px-8 py-4 rounded-xl data-[state=active]:bg-slate-700 font-bold transition-all gap-2">
                 <Shield className="w-5 h-5 text-emerald-400" /> {userRole === 'admin' ? 'ADMINISTRADOR' : 'PROFESSOR'}
@@ -512,6 +515,10 @@ const Index = () => {
 
         <TabsContent value="ranking" className="w-full animate-in fade-in slide-in-from-top-10 duration-500">
           <Ranking />
+        </TabsContent>
+
+        <TabsContent value="avatar" className="w-full max-w-2xl animate-in fade-in slide-in-from-bottom-10 duration-500">
+          <PlayerAvatar />
         </TabsContent>
 
         {(userRole === 'admin' || userRole === 'teacher') && (
