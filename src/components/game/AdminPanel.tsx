@@ -56,41 +56,82 @@ export const AdminPanel = ({ userRole }: { userRole?: string | null }) => {
     setFormData(prev => ({ ...prev, attributes: newAttributes }));
   };
 
-  const generateAIPrompt = () => {
+  const [generating, setGenerating] = useState(false);
+  const [uploading, setUploading] = useState(false);
+
+  const buildHeroPrompt = (el: Partial<PeriodicElement>) => {
+    const stateAttr = el.attributes?.find(a => a.label === "Estado físico")?.value || "Sólido";
+    const originAttr = el.attributes?.find(a => a.label === "Local de origem")?.value || "Natureza";
+    let texture = "metallic and solid";
+    if (stateAttr.toString().toLowerCase().includes("gás")) texture = "gaseous and glowing";
+    if (stateAttr.toString().toLowerCase().includes("líquido")) texture = "liquid and flowing";
+    const randomGender = Math.random() > 0.5 ? "male" : "female";
+    return `Professional cinematic full-body superhero portrait, 2:3 aspect ratio. Realistic ${randomGender} hero representing the chemical element "${el.name}" (symbol ${el.symbol}). Full body head-to-toe, centered, both feet visible. Heroic pose, rim lighting, ${texture} suit with glowing "${el.symbol}" emblem on chest, matching cape. Background: ${originAttr}. Fantastic realism, 8k, coherent element palette.`;
+  };
+
+  const generateAIPrompt = async () => {
     if (!formData.name || !formData.symbol) {
       toast.error("Preencha o nome do elemento e o símbolo primeiro!");
       return;
     }
-
-    const stateAttr = formData.attributes?.find(a => a.label === "Estado físico")?.value || "Sólido";
-    const originAttr = formData.attributes?.find(a => a.label === "Local de origem")?.value || "Natureza";
-    
-    let texture = "metallic and solid";
-    if (stateAttr.toString().toLowerCase().includes("gás")) texture = "gaseous and glowing";
-    if (stateAttr.toString().toLowerCase().includes("líquido")) texture = "liquid and flowing";
-    
-    const randomGender = Math.random() > 0.5 ? "male" : "female";
-    
-    const prompt = `Professional cinematic character portrait, 2:3 aspect ratio (6x9 proportion). 
-    Character: A realistic ${randomGender} superhero representing the chemical element "${formData.name}". 
-    Features: Varied human traits, confident expression, heroic and balanced pose. 
-    Composition: FULL BODY shot from head to toe, perfectly centered, both right and left feet clearly visible, complete margins at top and bottom, character is fully contained within the frame with no cropping. 
-    Camera: Full-body position, slightly low angle for heroic effect, sharp focus, shallow depth of field. 
-    Lighting: Soft cinematic lighting with luminous glowing edges (rim lighting), balanced light and complete body details. 
-    Suit: ${texture} texture with luminosity coherent with element type, glowing symbol "${formData.symbol}" in the center of the chest. 
-    Cape: Glowing, translucent, and ${texture} texture with soft luminous edges. 
-    Background: Cinematic realistic environment representing its natural origin: ${originAttr}, harmonized with frontal lighting. 
-    Style: Fantastic realism, high definition, 8k, coherent element palette.`;
-
-    const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt.trim())}?width=800&height=1200&nologo=true&seed=${Math.floor(Math.random() * 1000000)}`;
-    handleInputChange('heroImage', imageUrl);
-    toast.success("Design de Herói Gerado! O link acima contém as instruções enviadas para a IA.");
+    setGenerating(true);
+    try {
+      const { data, error } = await supabase.functions.invoke('generate-hero-image', {
+        body: { prompt: buildHeroPrompt(formData), symbol: formData.symbol },
+      });
+      if (error || (data as any)?.error) throw new Error(error?.message || (data as any).error);
+      handleInputChange('heroImage', (data as any).url);
+      toast.success("Imagem de herói gerada pela IA!");
+    } catch (e: any) {
+      toast.error("Erro ao gerar imagem: " + e.message);
+    } finally {
+      setGenerating(false);
+    }
   };
 
-  const generateAllHeros = () => {
-    toast.info("Iniciando geração de prompts para todos os 118 heróis...");
-    // In a real app, this would iterate and save. Here we show how the prompt would be structured.
-    console.log("Generating prompts for all elements with the new style...");
+  const handleImageUpload = async (file: File) => {
+    if (!formData.symbol) {
+      toast.error("Defina o símbolo do elemento primeiro!");
+      return;
+    }
+    setUploading(true);
+    try {
+      const ext = file.name.split('.').pop() || 'png';
+      const path = `${formData.symbol}/${Date.now()}.${ext}`;
+      const { error: upErr } = await supabase.storage.from('hero-images').upload(path, file, { upsert: true, contentType: file.type });
+      if (upErr) throw upErr;
+      const { data: signed } = await supabase.storage.from('hero-images').createSignedUrl(path, 60 * 60 * 24 * 365 * 5);
+      handleInputChange('heroImage', signed?.signedUrl ?? '');
+      toast.success("Imagem enviada!");
+    } catch (e: any) {
+      toast.error("Erro no upload: " + e.message);
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  const generateAllHeros = async () => {
+    const symbols = Object.keys(ELEMENTS_DATA);
+    toast.info(`Gerando imagens para ${symbols.length} heróis. Isso pode demorar...`);
+    let ok = 0, fail = 0;
+    for (const sym of symbols) {
+      const el = ELEMENTS_DATA[sym];
+      try {
+        const { data, error } = await supabase.functions.invoke('generate-hero-image', {
+          body: { prompt: buildHeroPrompt(el), symbol: sym },
+        });
+        if (error || (data as any)?.error) { fail++; continue; }
+        const url = (data as any).url;
+        await supabase.from('elements').upsert({
+          symbol: sym, number: el.number, name: el.name,
+          hero_name: el.heroName, hero_description: el.heroDescription,
+          hero_image: url, rarity: el.rarity, attributes: el.attributes as any,
+        });
+        ELEMENTS_DATA[sym].heroImage = url;
+        ok++;
+      } catch { fail++; }
+    }
+    toast.success(`Geração concluída: ${ok} sucesso, ${fail} falhas.`);
   };
 
   const saveElement = async () => {
