@@ -28,6 +28,7 @@ type AvatarState = {
 };
 type WalletState = { coins: number; lifetime_coins?: number };
 type FunctionPayload = { error?: string } | null;
+type FunctionInvokeError = Error & { context?: unknown };
 
 const errorMessage = (error: unknown) => error instanceof Error ? error.message : String(error);
 
@@ -116,7 +117,7 @@ export function PlayerAvatar() {
     supabase.from("elements")
       .select("symbol,number,name,hero_name,hero_image,rarity")
       .in("symbol", avatar.unlocked_cards)
-      .then(({ data }) => setElements((data as any) ?? []));
+      .then(({ data }) => setElements((data as Element[]) ?? []));
   }, [avatar?.unlocked_cards]);
 
   if (!userId) {
@@ -148,8 +149,8 @@ export function PlayerAvatar() {
       await supabase.from("player_avatars").update({ generated_url: signed?.signedUrl }).eq("user_id", userId);
       toast.success("Avatar enviado!");
       setTick((t) => t + 1);
-    } catch (e: any) {
-      toast.error("Erro no upload: " + e.message);
+    } catch (e: unknown) {
+      toast.error("Erro no upload: " + errorMessage(e));
     }
   };
 
@@ -161,18 +162,19 @@ export function PlayerAvatar() {
         body: { cardSymbol: currentCard.symbol, appearance, photoBase64 },
       });
       if (error) {
-        const response = (error as any).context;
+        const response = (error as FunctionInvokeError).context;
         if (response instanceof Response) {
-          const payload = await response.json().catch(() => null);
+          const payload = await response.json().catch(() => null) as FunctionPayload;
           throw new Error(payload?.error || error.message);
         }
         throw error;
       }
-      if ((data as any)?.error) throw new Error((data as any).error);
+      const payload = data as FunctionPayload;
+      if (payload?.error) throw new Error(payload.error);
       toast.success("Avatar gerado!");
       setTick((t) => t + 1);
-    } catch (e: any) {
-      toast.error("Erro: " + e.message);
+    } catch (e: unknown) {
+      toast.error("Erro: " + errorMessage(e));
     } finally {
       setGenerating(false);
     }
