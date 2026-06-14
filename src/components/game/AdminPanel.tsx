@@ -383,9 +383,9 @@ export const AdminPanel = ({ userRole }: { userRole?: string | null }) => {
                     <div className="space-y-4">
                       <div className="space-y-2">
                         <Label className="flex justify-between text-[10px] font-black uppercase tracking-widest text-slate-500">
-                          Avatar do Herói (Gerado por IA)
-                          <Button variant="link" size="sm" onClick={generateAIPrompt} className="h-auto p-0 text-blue-400 font-black italic hover:text-blue-300">
-                            <Wand2 className="w-3 h-3 mr-1" /> GERAR NOVO DESIGN
+                          Avatar do Herói
+                          <Button variant="link" size="sm" onClick={generateAIPrompt} disabled={generating} className="h-auto p-0 text-blue-400 font-black italic hover:text-blue-300">
+                            <Wand2 className="w-3 h-3 mr-1" /> {generating ? 'GERANDO...' : 'GERAR COM IA'}
                           </Button>
                         </Label>
                         <div className="relative group">
@@ -393,14 +393,24 @@ export const AdminPanel = ({ userRole }: { userRole?: string | null }) => {
                             value={formData.heroImage} 
                             onChange={e => handleInputChange('heroImage', e.target.value)}
                             className="bg-black/40 border-white/10 text-[9px] h-10 text-white/40 font-mono pr-20"
-                            placeholder="URL da imagem será gerada aqui..."
+                            placeholder="URL da imagem (gerada ou enviada)..."
                           />
                           <div className="absolute right-2 top-1/2 -translate-y-1/2 px-2 py-1 bg-blue-600/20 rounded-md text-[8px] font-black text-blue-400 border border-blue-500/30">
-                            POLLINATIONS AI
+                            LOVABLE AI
                           </div>
                         </div>
+                        <div className="flex items-center gap-2">
+                          <Input
+                            type="file"
+                            accept="image/*"
+                            disabled={uploading}
+                            onChange={(e) => { const f = e.target.files?.[0]; if (f) handleImageUpload(f); }}
+                            className="bg-black/40 border-white/10 text-[10px] h-9 text-white/60"
+                          />
+                          {uploading && <span className="text-[9px] text-blue-400 font-bold">ENVIANDO...</span>}
+                        </div>
                         <p className="text-[9px] text-slate-500 italic">
-                          Este endereço é um link direto para o motor de IA Pollinations, que cria a imagem em tempo real baseada nas características do elemento.
+                          Gere com IA, envie do computador, ou cole uma URL. As imagens são salvas no armazenamento do projeto.
                         </p>
                       </div>
                       {formData.heroImage && (
