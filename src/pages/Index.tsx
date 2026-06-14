@@ -13,12 +13,16 @@ import { AdminPanel } from "@/components/game/AdminPanel";
 import { AuthSystem } from "@/components/game/AuthSystem";
 import { Ranking } from "@/components/game/Ranking";
 import { ElementList } from "@/components/game/ElementList";
+import { PlayerAvatar } from "@/components/aula/PlayerAvatar";
+import { ensureUserAccess } from "@/lib/ensureUserAccess";
 import { Swords, Brain, LayoutGrid, Settings, LogOut, User as UserIcon, Trophy, Users, Shield, List, GraduationCap, Dumbbell } from 'lucide-react';
 import { toast } from "sonner";
 
 const ElementCard = ({ element }: { element: PeriodicElement }) => {
+  const attributes = Array.isArray(element.attributes) ? element.attributes : [];
+  const heroImage = element.heroImage || "/placeholder.svg";
   const isGas = ["Gás", "Gás incolor", "Gás nobre"].some(type => 
-    element.attributes.find(a => a.label === "Estado físico")?.value.toString().includes(type)
+    attributes.find(a => a.label === "Estado físico")?.value?.toString().includes(type)
   );
 
   const getRarityColor = (rarity: string) => {
@@ -32,7 +36,7 @@ const ElementCard = ({ element }: { element: PeriodicElement }) => {
   };
 
   const calculateRarity = (element: PeriodicElement) => {
-    const avg = element.attributes.reduce((acc, curr) => acc + curr.score, 0) / 27;
+    const avg = attributes.length ? attributes.reduce((acc, curr) => acc + (Number(curr.score) || 0), 0) / attributes.length : 0;
     if (avg > 85) return 'Lendário';
     if (avg > 70) return 'Épico';
     if (avg > 50) return 'Raro';
@@ -81,9 +85,9 @@ const ElementCard = ({ element }: { element: PeriodicElement }) => {
       `}>
         {/* Floating Animation for Heros */}
         <div className="w-full h-full transition-all duration-1000 group-hover/img:scale-105">
-          {element.heroImage.endsWith('.mp4') ? (
+          {heroImage.endsWith('.mp4') ? (
             <video 
-              src={element.heroImage} 
+              src={heroImage} 
               autoPlay 
               loop 
               muted 
@@ -92,7 +96,7 @@ const ElementCard = ({ element }: { element: PeriodicElement }) => {
             />
           ) : (
             <img 
-              src={element.heroImage} 
+              src={heroImage} 
               alt={element.heroName}
               className="w-full h-full object-cover" 
               onLoad={(e) => (e.currentTarget.style.opacity = "1")}
@@ -122,7 +126,7 @@ const ElementCard = ({ element }: { element: PeriodicElement }) => {
 
       <ScrollArea className="flex-1 mb-4 custom-scrollbar bg-black/20 rounded-xl p-3 border border-white/5">
         <div className="space-y-3">
-          {element.attributes.map((attr) => (
+          {attributes.map((attr) => (
             <div key={attr.id} className="group/attr relative bg-white/5 border border-white/5 rounded-2xl p-3 hover:bg-white/10 hover:border-white/20 transition-all duration-300">
               <div className="flex justify-between items-center mb-2">
                 <span className="text-[10px] font-black text-white/40 uppercase tracking-widest">{attr.label}</span>
@@ -158,7 +162,7 @@ const ElementCard = ({ element }: { element: PeriodicElement }) => {
           <span className="text-[10px] text-blue-400 font-black italic tracking-tighter">DOMÍNIO: {isGas ? 'GASOSO' : 'SÓLIDO'}</span>
         </div>
         <div className="text-3xl font-black italic text-transparent bg-clip-text bg-gradient-to-br from-white via-blue-400 to-blue-600 drop-shadow-[0_2px_8px_rgba(37,99,235,0.6)]">
-          {(element.attributes.reduce((acc, curr) => acc + curr.score, 0) / 27).toFixed(1)}
+          {(attributes.length ? attributes.reduce((acc, curr) => acc + (Number(curr.score) || 0), 0) / attributes.length : 0).toFixed(1)}
         </div>
       </div>
     </div>
@@ -172,6 +176,7 @@ const Index = () => {
   const [userProfile, setUserProfile] = useState<any>(null);
   const [showAuth, setShowAuth] = useState(false);
   const [activeTab, setActiveTab] = useState("collection");
+  const [authReady, setAuthReady] = useState(false);
 
   const logActivity = useCallback(async (action: string, path: string, metadata: any = {}) => {
     const { data: { session } } = await supabase.auth.getSession();
@@ -185,20 +190,15 @@ const Index = () => {
     });
   }, []);
 
-  const fetchUserRole = async (userId: string) => {
+  const fetchUserRole = async (user: any) => {
+    const role = await ensureUserAccess(user);
     const { data: profile } = await supabase
       .from('profiles')
       .select('*')
-      .eq('id', userId)
+      .eq('id', user.id)
       .maybeSingle();
     if (profile) setUserProfile(profile);
-
-    const { data: roles } = await supabase
-      .from('user_roles')
-      .select('role')
-      .eq('user_id', userId);
-    const isAdmin = roles?.some(r => r.role === 'admin');
-    setUserRole(isAdmin ? 'admin' : 'user');
+    setUserRole(role);
   };
 
   useEffect(() => {
@@ -222,21 +222,27 @@ const Index = () => {
       setSelectedSymbol(s => s);
     });
 
-    supabase.auth.getSession().then(({ data: { session } }) => {
+    supabase.auth.getSession().then(async ({ data: { session } }) => {
       setSession(session);
       if (session?.user) {
-        fetchUserRole(session.user.id);
+        await fetchUserRole(session.user);
         logActivity('LOGIN', '/', { timestamp: new Date().toISOString() });
       }
+      setAuthReady(true);
     });
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_event, session) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session);
       if (session?.user) {
-        await fetchUserRole(session.user.id);
         setShowAuth(false);
+        setAuthReady(false);
+        setTimeout(() => {
+          fetchUserRole(session.user).finally(() => setAuthReady(true));
+        }, 0);
       } else {
         setUserRole(null);
+        setUserProfile(null);
+        setAuthReady(true);
       }
     });
 
@@ -359,6 +365,9 @@ const Index = () => {
             </TabsTrigger>
             <TabsTrigger value="ranking" className="px-8 py-4 rounded-xl data-[state=active]:bg-yellow-600 font-bold transition-all gap-2 text-white">
               <Trophy className="w-5 h-5" /> RANKING
+            </TabsTrigger>
+            <TabsTrigger value="avatar" className="px-8 py-4 rounded-xl data-[state=active]:bg-emerald-600 font-bold transition-all gap-2">
+              <UserIcon className="w-5 h-5" /> AVATAR
             </TabsTrigger>
             {(userRole === 'admin' || userRole === 'teacher') && (
               <TabsTrigger value="admin" className="px-8 py-4 rounded-xl data-[state=active]:bg-slate-700 font-bold transition-all gap-2">
@@ -501,6 +510,10 @@ const Index = () => {
 
         <TabsContent value="ranking" className="w-full animate-in fade-in slide-in-from-top-10 duration-500">
           <Ranking />
+        </TabsContent>
+
+        <TabsContent value="avatar" className="w-full max-w-2xl animate-in fade-in slide-in-from-bottom-10 duration-500">
+          <PlayerAvatar />
         </TabsContent>
 
         {(userRole === 'admin' || userRole === 'teacher') && (

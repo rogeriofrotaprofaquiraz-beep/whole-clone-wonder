@@ -686,6 +686,12 @@ export type Database = {
       }
     }
     Functions: {
+      ensure_current_user_access: {
+        Args: never
+        Returns: {
+          role: Database["public"]["Enums"]["app_role"]
+        }[]
+      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]

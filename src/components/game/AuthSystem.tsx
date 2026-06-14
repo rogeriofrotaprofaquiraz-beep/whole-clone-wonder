@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { LogIn, UserPlus, LogOut, Chrome } from 'lucide-react';
 import { toast } from "sonner";
+import { ensureUserAccess } from "@/lib/ensureUserAccess";
 
 export const AuthSystem = ({ onAuthSuccess }: { onAuthSuccess: () => void }) => {
   const [isLogin, setIsLogin] = useState(true);
@@ -20,8 +21,9 @@ export const AuthSystem = ({ onAuthSuccess }: { onAuthSuccess: () => void }) => 
 
     try {
       if (isLogin) {
-        const { error } = await supabase.auth.signInWithPassword({ email, password });
+        const { data, error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) throw error;
+        if (data.user) await ensureUserAccess(data.user);
         toast.success("Bem-vindo de volta!");
       } else {
         const { data, error } = await supabase.auth.signUp({ 
@@ -32,37 +34,14 @@ export const AuthSystem = ({ onAuthSuccess }: { onAuthSuccess: () => void }) => 
           }
         });
         if (error) throw error;
-        
-        // Criar perfil
+
         if (data.user) {
-          // Verificar se é o primeiro usuário
-          const { count } = await supabase
-            .from('profiles')
-            .select('*', { count: 'exact', head: true });
-          
-          const isFirstUser = count === 0;
-
-          const { error: profileError } = await supabase
-            .from('profiles')
-            .insert({ 
-              id: data.user.id, 
-              username: username || email.split('@')[0],
-            });
-          if (profileError) console.error("Erro ao criar perfil:", profileError);
-
-          // First user becomes admin
-          if (isFirstUser) {
-            await supabase.from('user_roles').insert({ user_id: data.user.id, role: 'admin' });
-          } else {
-            await supabase.from('user_roles').insert({ user_id: data.user.id, role: 'user' });
-          }
-          
-          // Log de registro
+          await ensureUserAccess(data.user);
           await supabase.from('activity_logs').insert({
             user_id: data.user.id,
             action: 'REGISTER',
             path: '/auth',
-            metadata: { username: username || email.split('@')[0], isAdmin: isFirstUser }
+            metadata: { username: username || email.split('@')[0] }
           });
         }
         
