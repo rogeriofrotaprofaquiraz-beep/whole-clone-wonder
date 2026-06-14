@@ -418,6 +418,54 @@ export type Database = {
           },
         ]
       }
+      player_avatars: {
+        Row: {
+          background: string
+          equipped: Json
+          skin: string
+          unlocked: string[]
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          background?: string
+          equipped?: Json
+          skin?: string
+          unlocked?: string[]
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          background?: string
+          equipped?: Json
+          skin?: string
+          unlocked?: string[]
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      player_wallet: {
+        Row: {
+          coins: number
+          lifetime_coins: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          coins?: number
+          lifetime_coins?: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          coins?: number
+          lifetime_coins?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null
