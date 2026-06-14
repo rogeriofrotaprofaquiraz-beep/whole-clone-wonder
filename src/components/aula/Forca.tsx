@@ -148,6 +148,7 @@ export function Forca({ area, level, difficulty }: { area: AreaValue; level: Lev
               {won ? "🎉 Você acertou!" : `💀 Era ${term}`}
             </div>
             {!won && <div className="text-sm text-muted-foreground mt-1 italic">{current.clue}</div>}
+            <ElementCardsPopup text={`${term} ${current.clue ?? ""}`} />
             <Button onClick={() => pickNext(pool)} className="mt-3" style={{ background: meta.color }}>
               <RotateCcw size={14} className="mr-2" />Próxima palavra
             </Button>

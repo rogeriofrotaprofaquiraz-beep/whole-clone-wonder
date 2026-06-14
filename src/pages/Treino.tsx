@@ -7,6 +7,7 @@ import { AREAS, AreaValue, LEVELS, LevelValue, DIFFICULTIES } from "@/lib/aula";
 import { Forca } from "@/components/aula/Forca";
 import { CacaPalavras } from "@/components/aula/CacaPalavras";
 import { Memoria } from "@/components/aula/Memoria";
+import { PlayerAvatar } from "@/components/aula/PlayerAvatar";
 
 const GAMES = [
   { id: "forca", label: "Forca", emoji: "🎯" },
@@ -25,6 +26,9 @@ export default function Treino() {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-violet-50 p-4">
       <div className="max-w-4xl mx-auto">
         <Button variant="ghost" onClick={() => navigate("/aula")} className="mb-3"><ArrowLeft size={16} className="mr-1" />Voltar</Button>
+
+        <div className="mb-4"><PlayerAvatar /></div>
+
 
         <Card className="p-4 mb-4 space-y-4">
           <div>
