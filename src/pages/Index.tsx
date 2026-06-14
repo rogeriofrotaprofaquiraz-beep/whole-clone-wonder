@@ -530,6 +530,11 @@ const Index = () => {
             <AdminPanel userRole={userRole} />
           </TabsContent>
         )}
+        {userRole === 'admin' && (
+          <TabsContent value="tracking" className="w-full animate-in fade-in slide-in-from-bottom-10 duration-500">
+            <AdminPanel userRole={userRole} />
+          </TabsContent>
+        )}
       </Tabs>
 
       {showAuth && (
