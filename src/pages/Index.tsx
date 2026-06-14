@@ -350,37 +350,46 @@ const Index = () => {
       </header>
 
         <Tabs defaultValue="collection" value={activeTab} onValueChange={setActiveTab} className="w-full max-w-[1440px] flex flex-col items-center">
-          <TabsList className="bg-slate-900/60 border border-white/10 p-1 rounded-2xl mb-12 h-auto gap-2 backdrop-blur-xl">
-            <TabsTrigger value="collection" className="px-8 py-4 rounded-xl data-[state=active]:bg-blue-600 font-bold transition-all gap-2">
-              <LayoutGrid className="w-5 h-5" /> COLEÇÃO
-            </TabsTrigger>
-            <TabsTrigger value="list" className="px-8 py-4 rounded-xl data-[state=active]:bg-cyan-600 font-bold transition-all gap-2">
-              <List className="w-5 h-5" /> LISTA
-            </TabsTrigger>
-            <TabsTrigger value="battle" className="px-8 py-4 rounded-xl data-[state=active]:bg-red-600 font-bold transition-all gap-2">
-              <Swords className="w-5 h-5" /> BATALHA
-            </TabsTrigger>
-            <TabsTrigger value="quiz" className="px-8 py-4 rounded-xl data-[state=active]:bg-purple-600 font-bold transition-all gap-2">
-              <Brain className="w-5 h-5" /> DESAFIO
-            </TabsTrigger>
-            <TabsTrigger value="ranking" className="px-8 py-4 rounded-xl data-[state=active]:bg-yellow-600 font-bold transition-all gap-2 text-white">
-              <Trophy className="w-5 h-5" /> RANKING
-            </TabsTrigger>
-            <TabsTrigger value="avatar" className="px-8 py-4 rounded-xl data-[state=active]:bg-emerald-600 font-bold transition-all gap-2">
-              <UserIcon className="w-5 h-5" /> AVATAR
-            </TabsTrigger>
-            {(userRole === 'admin' || userRole === 'teacher') && (
-              <TabsTrigger value="admin" className="px-8 py-4 rounded-xl data-[state=active]:bg-slate-700 font-bold transition-all gap-2">
-                <Shield className="w-5 h-5 text-emerald-400" /> {userRole === 'admin' ? 'ADMINISTRADOR' : 'PROFESSOR'}
+          <TabsList className="bg-slate-950/70 border border-white/5 px-2 py-1.5 rounded-2xl mb-12 h-auto gap-1 backdrop-blur-xl flex flex-wrap justify-center">
+            {[
+              { value: "avatar", label: "Perfil", Icon: Users, color: "text-slate-200" },
+              { value: "battle", label: "Jogar", Icon: UserIcon, color: "text-slate-200" },
+              { value: "collection", label: "Jogos", Icon: Gamepad2, color: "text-slate-200" },
+              { value: "quiz", label: "Campeonato", Icon: Trophy, color: "text-slate-200" },
+              { value: "ranking", label: "Ranking", Icon: Trophy, color: "text-slate-200" },
+              { value: "list", label: "Heróis", Icon: Atom, color: "text-slate-200" },
+            ].map(({ value, label, Icon, color }) => (
+              <TabsTrigger key={value} value={value}
+                className={`px-4 py-2.5 rounded-xl font-semibold text-sm gap-1.5 transition-all data-[state=active]:bg-violet-600 data-[state=active]:text-white data-[state=inactive]:bg-transparent ${color} hover:text-white`}>
+                <Icon className="w-4 h-4" /> {label}
+              </TabsTrigger>
+            ))}
+            {userRole === 'teacher' && (
+              <TabsTrigger value="admin"
+                className="px-4 py-2.5 rounded-xl font-semibold text-sm gap-1.5 text-emerald-400 hover:text-emerald-300 data-[state=active]:bg-violet-600 data-[state=active]:text-white">
+                <GraduationCap className="w-4 h-4" /> Professor
               </TabsTrigger>
             )}
-            <Link to="/aula" className="px-8 py-4 rounded-xl bg-gradient-to-r from-[#4C1D95] to-[#7C3AED] hover:from-[#3B1486] hover:to-[#6D28D9] font-bold transition-all gap-2 inline-flex items-center text-white">
-              <GraduationCap className="w-5 h-5" /> SALA DE AULA
+            {userRole === 'admin' && (
+              <>
+                <TabsTrigger value="admin"
+                  className="px-4 py-2.5 rounded-xl font-semibold text-sm gap-1.5 text-amber-400 hover:text-amber-300 data-[state=active]:bg-violet-600 data-[state=active]:text-white">
+                  <Settings className="w-4 h-4" /> Admin
+                </TabsTrigger>
+                <TabsTrigger value="tracking"
+                  className="px-4 py-2.5 rounded-xl font-semibold text-sm gap-1.5 text-rose-400 hover:text-rose-300 data-[state=active]:bg-violet-600 data-[state=active]:text-white">
+                  <Activity className="w-4 h-4" /> Rastreamento
+                </TabsTrigger>
+              </>
+            )}
+            <Link to="/aula" className="px-4 py-2.5 rounded-xl text-sm font-semibold gap-1.5 inline-flex items-center text-violet-300 hover:text-white">
+              <GraduationCap className="w-4 h-4" /> Sala de Aula
             </Link>
-            <Link to="/aula/treino" className="px-8 py-4 rounded-xl bg-gradient-to-r from-[#059669] to-[#10B981] hover:from-[#047857] hover:to-[#059669] font-bold transition-all gap-2 inline-flex items-center text-white">
-              <Dumbbell className="w-5 h-5" /> TREINO
+            <Link to="/aula/treino" className="px-4 py-2.5 rounded-xl text-sm font-semibold gap-1.5 inline-flex items-center text-emerald-300 hover:text-white">
+              <Dumbbell className="w-4 h-4" /> Treino
             </Link>
           </TabsList>
+
 
         <TabsContent value="collection" className="w-full animate-in fade-in zoom-in-95 duration-500">
           <div className="flex flex-col lg:flex-row gap-12 items-start justify-center w-full">
