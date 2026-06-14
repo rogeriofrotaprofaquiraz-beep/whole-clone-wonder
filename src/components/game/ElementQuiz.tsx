@@ -56,7 +56,11 @@ export const ElementQuiz = () => {
     
     if (option === currentElement.heroName) {
       setScore(s => s + 1);
-      toast.success("Correto!");
+      const reward = 5;
+      toast.success(`Correto! +${reward} 🪙`);
+      supabase.auth.getUser().then(({ data }) => {
+        if (data.user) addCoins(data.user.id, reward).catch(() => {});
+      });
     } else {
       toast.error(`Incorreto! O herói era ${currentElement.heroName}`);
     }
