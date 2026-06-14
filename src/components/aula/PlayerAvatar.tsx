@@ -11,10 +11,26 @@ import {
   SHOP_ITEMS, AvatarItem,
   loadAvatar, loadWallet, buyItem, equipItem, isAdmin,
 } from "@/lib/playerEconomy";
-import { Coins, Lock, Check, Upload, Sparkles, Zap, Infinity as InfinityIcon, ShoppingBag, Loader2 } from "lucide-react";
+import { ensureUserAccess } from "@/lib/ensureUserAccess";
+import { Coins, Lock, Check, Upload, Sparkles, Zap, ShoppingBag, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 
 type Element = { symbol: string; number: number; name: string; hero_name?: string | null; hero_image?: string | null; rarity?: string | null };
+type Appearance = Record<string, string>;
+type AvatarState = {
+  generated_url?: string | null;
+  photo_url?: string | null;
+  appearance?: Appearance | null;
+  unlocked_cards?: string[] | null;
+  current_card?: string | null;
+  unlocked?: string[] | null;
+  equipped?: Partial<Record<AvatarItem["slot"], string>> | null;
+};
+type WalletState = { coins: number; lifetime_coins?: number };
+type FunctionPayload = { error?: string } | null;
+type FunctionInvokeError = Error & { context?: unknown };
+
+const errorMessage = (error: unknown) => error instanceof Error ? error.message : String(error);
 
 const GENDERS = [{ id: "masculino", label: "Masculino" }, { id: "feminino", label: "Feminino" }];
 const BODIES = [{ id: "normal", label: "Normal" }, { id: "atletico", label: "Atlético" }, { id: "magro", label: "Magro" }, { id: "musculoso", label: "Musculoso" }];
@@ -39,7 +55,7 @@ function PickGrid({ value, onChange, options }: { value: string; onChange: (v: s
   );
 }
 
-export function AvatarDisplay({ avatar, size = 96 }: { avatar: any; size?: number }) {
+export function AvatarDisplay({ avatar, size = 96 }: { avatar: Pick<AvatarState, "generated_url" | "photo_url"> | null; size?: number }) {
   const url = avatar?.generated_url || avatar?.photo_url;
   if (url) {
     return <img src={url} alt="Avatar" style={{ width: size, height: size }} className="rounded-2xl object-cover border border-slate-700" />;
@@ -53,8 +69,8 @@ export function AvatarDisplay({ avatar, size = 96 }: { avatar: any; size?: numbe
 
 export function PlayerAvatar() {
   const [userId, setUserId] = useState<string | null>(null);
-  const [wallet, setWallet] = useState<any>(null);
-  const [avatar, setAvatar] = useState<any>(null);
+  const [wallet, setWallet] = useState<WalletState | null>(null);
+  const [avatar, setAvatar] = useState<AvatarState | null>(null);
   const [elements, setElements] = useState<Element[]>([]);
   const [loading, setLoading] = useState(true);
   const [admin, setAdmin] = useState(false);
@@ -65,16 +81,21 @@ export function PlayerAvatar() {
   const [tick, setTick] = useState(0);
 
   const appearance = avatar?.appearance ?? {};
-  const updateAppearance = (patch: Record<string, any>) => {
+  const updateAppearance = (patch: Appearance) => {
     if (!userId) return;
     const next = { ...appearance, ...patch };
-    setAvatar((a: any) => ({ ...a, appearance: next }));
+    setAvatar((a) => a ? ({ ...a, appearance: next }) : a);
     supabase.from("player_avatars").update({ appearance: next }).eq("user_id", userId);
   };
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data }) => {
-      setUserId(data.user?.id ?? null);
+      if (!data.user) {
+        setUserId(null);
+        return;
+      }
+      setUserId(data.user.id);
+      ensureUserAccess(data.user).then((role) => setAdmin(role === "admin"));
     });
   }, []);
 
@@ -96,7 +117,7 @@ export function PlayerAvatar() {
     supabase.from("elements")
       .select("symbol,number,name,hero_name,hero_image,rarity")
       .in("symbol", avatar.unlocked_cards)
-      .then(({ data }) => setElements((data as any) ?? []));
+      .then(({ data }) => setElements((data as Element[]) ?? []));
   }, [avatar?.unlocked_cards]);
 
   if (!userId) {
@@ -128,8 +149,8 @@ export function PlayerAvatar() {
       await supabase.from("player_avatars").update({ generated_url: signed?.signedUrl }).eq("user_id", userId);
       toast.success("Avatar enviado!");
       setTick((t) => t + 1);
-    } catch (e: any) {
-      toast.error("Erro no upload: " + e.message);
+    } catch (e: unknown) {
+      toast.error("Erro no upload: " + errorMessage(e));
     }
   };
 
@@ -140,11 +161,20 @@ export function PlayerAvatar() {
       const { data, error } = await supabase.functions.invoke("generate-player-avatar", {
         body: { cardSymbol: currentCard.symbol, appearance, photoBase64 },
       });
-      if (error || (data as any)?.error) throw new Error(error?.message || (data as any).error);
+      if (error) {
+        const response = (error as FunctionInvokeError).context;
+        if (response instanceof Response) {
+          const payload = await response.json().catch(() => null) as FunctionPayload;
+          throw new Error(payload?.error || error.message);
+        }
+        throw error;
+      }
+      const payload = data as FunctionPayload;
+      if (payload?.error) throw new Error(payload.error);
       toast.success("Avatar gerado!");
       setTick((t) => t + 1);
-    } catch (e: any) {
-      toast.error("Erro: " + e.message);
+    } catch (e: unknown) {
+      toast.error("Erro: " + errorMessage(e));
     } finally {
       setGenerating(false);
     }

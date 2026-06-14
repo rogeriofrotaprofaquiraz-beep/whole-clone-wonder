@@ -2,15 +2,29 @@ import { supabase } from "@/integrations/supabase/client";
 import { loadAvatar, loadWallet } from "@/lib/playerEconomy";
 
 type AppRole = "admin" | "teacher" | "user";
+type UserMetadata = Record<string, unknown> | null | undefined;
+type AccessUser = { id: string; email?: string | null; user_metadata?: UserMetadata };
 
 const safeUsername = (raw: string, userId: string) => {
   const base = raw.split("@")[0]?.replace(/[^a-zA-Z0-9_]+/g, "_").slice(0, 30) || "jogador";
   return `${base}_${userId.slice(0, 8)}`;
 };
 
-export async function ensureUserAccess(user: { id: string; email?: string | null; user_metadata?: any }): Promise<AppRole> {
+const metadataText = (metadata: UserMetadata, key: string) => {
+  const value = metadata?.[key];
+  return typeof value === "string" ? value : undefined;
+};
+
+export async function ensureUserAccess(user: AccessUser): Promise<AppRole> {
+  const { data: accessRoles, error: accessError } = await supabase.rpc("ensure_current_user_access");
+  if (!accessError && accessRoles?.length) {
+    if (accessRoles.some((r) => r.role === "admin")) return "admin";
+    if (accessRoles.some((r) => r.role === "moderator")) return "teacher";
+    return "user";
+  }
+
   const username = safeUsername(
-    user.user_metadata?.username || user.user_metadata?.full_name || user.email || "jogador",
+    metadataText(user.user_metadata, "username") || metadataText(user.user_metadata, "full_name") || user.email || "jogador",
     user.id,
   );
 
