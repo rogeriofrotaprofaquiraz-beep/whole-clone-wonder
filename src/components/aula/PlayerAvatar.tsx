@@ -74,12 +74,6 @@ export function PlayerAvatar() {
     isAdmin(userId).then(setAdmin);
   }, [userId]);
 
-    supabase.auth.getUser().then(({ data }) => {
-      setUserId(data.user?.id ?? null);
-      setLoading(false);
-    });
-  }, []);
-
   useEffect(() => {
     if (!userId) return;
     setLoading(true);
