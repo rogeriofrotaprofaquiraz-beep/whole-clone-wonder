@@ -199,7 +199,7 @@ export function PlayerAvatar() {
                               ? <span className="text-violet-700 font-bold flex items-center gap-1"><Check size={12} />Equipado</span>
                               : <span className="text-emerald-700">Equipar</span>)
                           : <span className="text-amber-700 flex items-center gap-1">
-                              {wallet.coins < item.price && <Lock size={10} />}<Coins size={10} />{item.price}
+                              {!admin && wallet.coins < item.price && <Lock size={10} />}<Coins size={10} />{admin ? "grátis" : item.price}
                             </span>}
                       </div>
                     </button>
