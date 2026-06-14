@@ -162,7 +162,7 @@ export function PlayerAvatar() {
           <DialogHeader>
             <DialogTitle className="flex items-center justify-between">
               Loja do Avatar
-              <Badge className="bg-amber-500"><Coins size={12} className="mr-1" />{wallet.coins}</Badge>
+              <Badge className="bg-amber-500">{admin ? <><InfinityIcon size={12} className="mr-1" />ilimitado</> : <><Coins size={12} className="mr-1" />{wallet.coins}</>}</Badge>
             </DialogTitle>
           </DialogHeader>
 
