@@ -18,8 +18,10 @@ import { Swords, Brain, LayoutGrid, Settings, LogOut, User as UserIcon, Trophy, 
 import { toast } from "sonner";
 
 const ElementCard = ({ element }: { element: PeriodicElement }) => {
+  const attributes = Array.isArray(element.attributes) ? element.attributes : [];
+  const heroImage = element.heroImage || "/placeholder.svg";
   const isGas = ["Gás", "Gás incolor", "Gás nobre"].some(type => 
-    element.attributes.find(a => a.label === "Estado físico")?.value.toString().includes(type)
+    attributes.find(a => a.label === "Estado físico")?.value?.toString().includes(type)
   );
 
   const getRarityColor = (rarity: string) => {
@@ -33,7 +35,7 @@ const ElementCard = ({ element }: { element: PeriodicElement }) => {
   };
 
   const calculateRarity = (element: PeriodicElement) => {
-    const avg = element.attributes.reduce((acc, curr) => acc + curr.score, 0) / 27;
+    const avg = attributes.length ? attributes.reduce((acc, curr) => acc + (Number(curr.score) || 0), 0) / attributes.length : 0;
     if (avg > 85) return 'Lendário';
     if (avg > 70) return 'Épico';
     if (avg > 50) return 'Raro';
@@ -82,9 +84,9 @@ const ElementCard = ({ element }: { element: PeriodicElement }) => {
       `}>
         {/* Floating Animation for Heros */}
         <div className="w-full h-full transition-all duration-1000 group-hover/img:scale-105">
-          {element.heroImage.endsWith('.mp4') ? (
+          {heroImage.endsWith('.mp4') ? (
             <video 
-              src={element.heroImage} 
+              src={heroImage} 
               autoPlay 
               loop 
               muted 
@@ -93,7 +95,7 @@ const ElementCard = ({ element }: { element: PeriodicElement }) => {
             />
           ) : (
             <img 
-              src={element.heroImage} 
+              src={heroImage} 
               alt={element.heroName}
               className="w-full h-full object-cover" 
               onLoad={(e) => (e.currentTarget.style.opacity = "1")}
@@ -123,7 +125,7 @@ const ElementCard = ({ element }: { element: PeriodicElement }) => {
 
       <ScrollArea className="flex-1 mb-4 custom-scrollbar bg-black/20 rounded-xl p-3 border border-white/5">
         <div className="space-y-3">
-          {element.attributes.map((attr) => (
+          {attributes.map((attr) => (
             <div key={attr.id} className="group/attr relative bg-white/5 border border-white/5 rounded-2xl p-3 hover:bg-white/10 hover:border-white/20 transition-all duration-300">
               <div className="flex justify-between items-center mb-2">
                 <span className="text-[10px] font-black text-white/40 uppercase tracking-widest">{attr.label}</span>
@@ -159,7 +161,7 @@ const ElementCard = ({ element }: { element: PeriodicElement }) => {
           <span className="text-[10px] text-blue-400 font-black italic tracking-tighter">DOMÍNIO: {isGas ? 'GASOSO' : 'SÓLIDO'}</span>
         </div>
         <div className="text-3xl font-black italic text-transparent bg-clip-text bg-gradient-to-br from-white via-blue-400 to-blue-600 drop-shadow-[0_2px_8px_rgba(37,99,235,0.6)]">
-          {(element.attributes.reduce((acc, curr) => acc + curr.score, 0) / 27).toFixed(1)}
+          {(attributes.length ? attributes.reduce((acc, curr) => acc + (Number(curr.score) || 0), 0) / attributes.length : 0).toFixed(1)}
         </div>
       </div>
     </div>
