@@ -324,6 +324,9 @@ const Index = () => {
             <TabsTrigger value="collection" className="px-8 py-4 rounded-xl data-[state=active]:bg-blue-600 font-bold transition-all gap-2">
               <LayoutGrid className="w-5 h-5" /> COLEÇÃO
             </TabsTrigger>
+            <TabsTrigger value="list" className="px-8 py-4 rounded-xl data-[state=active]:bg-cyan-600 font-bold transition-all gap-2">
+              <List className="w-5 h-5" /> LISTA
+            </TabsTrigger>
             <TabsTrigger value="battle" className="px-8 py-4 rounded-xl data-[state=active]:bg-red-600 font-bold transition-all gap-2">
               <Swords className="w-5 h-5" /> BATALHA
             </TabsTrigger>
