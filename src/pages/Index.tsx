@@ -457,6 +457,10 @@ const Index = () => {
           </div>
         </TabsContent>
 
+        <TabsContent value="list" className="w-full animate-in fade-in slide-in-from-bottom-10 duration-500">
+          <ElementList onSelect={(sym) => { setSelectedSymbol(sym); setActiveTab('collection'); }} />
+        </TabsContent>
+
         <TabsContent value="battle" className="w-full animate-in fade-in slide-in-from-right-10 duration-500">
           <BattleSystem />
         </TabsContent>
