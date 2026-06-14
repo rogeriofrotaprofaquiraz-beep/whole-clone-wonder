@@ -201,6 +201,26 @@ const Index = () => {
   };
 
   useEffect(() => {
+    // Load element overrides from DB (admin edits visible to all users)
+    supabase.from('elements').select('*').then(({ data }) => {
+      data?.forEach((el: any) => {
+        if (ELEMENTS_DATA[el.symbol]) {
+          ELEMENTS_DATA[el.symbol] = {
+            ...ELEMENTS_DATA[el.symbol],
+            number: el.number,
+            name: el.name,
+            heroName: el.hero_name,
+            heroDescription: el.hero_description,
+            heroImage: el.hero_image,
+            rarity: el.rarity,
+            attributes: el.attributes,
+          };
+        }
+      });
+      // Force re-render
+      setSelectedSymbol(s => s);
+    });
+
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
       if (session?.user) {
