@@ -11,7 +11,8 @@ import { ElementQuiz } from "@/components/game/ElementQuiz";
 import { AdminPanel } from "@/components/game/AdminPanel";
 import { AuthSystem } from "@/components/game/AuthSystem";
 import { Ranking } from "@/components/game/Ranking";
-import { Swords, Brain, LayoutGrid, Settings, LogOut, User as UserIcon, Trophy, Users, Shield } from 'lucide-react';
+import { ElementList } from "@/components/game/ElementList";
+import { Swords, Brain, LayoutGrid, Settings, LogOut, User as UserIcon, Trophy, Users, Shield, List } from 'lucide-react';
 import { toast } from "sonner";
 
 const ElementCard = ({ element }: { element: PeriodicElement }) => {
@@ -323,6 +324,9 @@ const Index = () => {
             <TabsTrigger value="collection" className="px-8 py-4 rounded-xl data-[state=active]:bg-blue-600 font-bold transition-all gap-2">
               <LayoutGrid className="w-5 h-5" /> COLEÇÃO
             </TabsTrigger>
+            <TabsTrigger value="list" className="px-8 py-4 rounded-xl data-[state=active]:bg-cyan-600 font-bold transition-all gap-2">
+              <List className="w-5 h-5" /> LISTA
+            </TabsTrigger>
             <TabsTrigger value="battle" className="px-8 py-4 rounded-xl data-[state=active]:bg-red-600 font-bold transition-all gap-2">
               <Swords className="w-5 h-5" /> BATALHA
             </TabsTrigger>
@@ -451,6 +455,10 @@ const Index = () => {
           )}
         </div>
           </div>
+        </TabsContent>
+
+        <TabsContent value="list" className="w-full animate-in fade-in slide-in-from-bottom-10 duration-500">
+          <ElementList onSelect={(sym) => { setSelectedSymbol(sym); setActiveTab('collection'); }} />
         </TabsContent>
 
         <TabsContent value="battle" className="w-full animate-in fade-in slide-in-from-right-10 duration-500">
