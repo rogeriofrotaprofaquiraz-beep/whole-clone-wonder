@@ -52,7 +52,7 @@ const normalizeAttributes = (raw: any): ElementAttribute[] => {
   });
 };
 
-export const AdminPanel = ({ userRole }: { userRole?: string | null }) => {
+export const AdminPanel = ({ userRole, initialSymbol }: { userRole?: string | null; initialSymbol?: string | null }) => {
   const [logs, setLogs] = useState<any[]>([]);
   const [profiles, setProfiles] = useState<any[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -254,6 +254,13 @@ export const AdminPanel = ({ userRole }: { userRole?: string | null }) => {
       fetchProfiles();
     }
   }, [userRole]);
+
+  useEffect(() => {
+    if (initialSymbol && ELEMENTS_DATA[initialSymbol]) {
+      loadElement(initialSymbol);
+      setActiveSubTab('editor');
+    }
+  }, [initialSymbol]);
 
   const updateUserRole = async (userId: string, newRole: 'admin' | 'moderator' | 'user') => {
     // Remove any existing roles for this user, then insert the new one
