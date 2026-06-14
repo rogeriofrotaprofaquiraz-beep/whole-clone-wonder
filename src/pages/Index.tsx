@@ -13,6 +13,7 @@ import { AdminPanel } from "@/components/game/AdminPanel";
 import { AuthSystem } from "@/components/game/AuthSystem";
 import { Ranking } from "@/components/game/Ranking";
 import { ElementList } from "@/components/game/ElementList";
+import { PlayerAvatar } from "@/components/aula/PlayerAvatar";
 import { Swords, Brain, LayoutGrid, Settings, LogOut, User as UserIcon, Trophy, Users, Shield, List, GraduationCap, Dumbbell } from 'lucide-react';
 import { toast } from "sonner";
 
@@ -172,6 +173,7 @@ const Index = () => {
   const [userProfile, setUserProfile] = useState<any>(null);
   const [showAuth, setShowAuth] = useState(false);
   const [activeTab, setActiveTab] = useState("collection");
+  const [authReady, setAuthReady] = useState(false);
 
   const logActivity = useCallback(async (action: string, path: string, metadata: any = {}) => {
     const { data: { session } } = await supabase.auth.getSession();
@@ -186,6 +188,8 @@ const Index = () => {
   }, []);
 
   const fetchUserRole = async (userId: string) => {
+    await supabase.rpc('ensure_current_user_access' as any);
+
     const { data: profile } = await supabase
       .from('profiles')
       .select('*')
@@ -198,7 +202,8 @@ const Index = () => {
       .select('role')
       .eq('user_id', userId);
     const isAdmin = roles?.some(r => r.role === 'admin');
-    setUserRole(isAdmin ? 'admin' : 'user');
+    const isTeacher = roles?.some(r => r.role === 'moderator');
+    setUserRole(isAdmin ? 'admin' : isTeacher ? 'teacher' : 'user');
   };
 
   useEffect(() => {
@@ -222,21 +227,27 @@ const Index = () => {
       setSelectedSymbol(s => s);
     });
 
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-      if (session?.user) {
-        fetchUserRole(session.user.id);
-        logActivity('LOGIN', '/', { timestamp: new Date().toISOString() });
-      }
-    });
-
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_event, session) => {
+    supabase.auth.getSession().then(async ({ data: { session } }) => {
       setSession(session);
       if (session?.user) {
         await fetchUserRole(session.user.id);
+        logActivity('LOGIN', '/', { timestamp: new Date().toISOString() });
+      }
+      setAuthReady(true);
+    });
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+      if (session?.user) {
         setShowAuth(false);
+        setAuthReady(false);
+        setTimeout(() => {
+          fetchUserRole(session.user.id).finally(() => setAuthReady(true));
+        }, 0);
       } else {
         setUserRole(null);
+        setUserProfile(null);
+        setAuthReady(true);
       }
     });
 

@@ -40,16 +40,29 @@ export function PlayerAvatar() {
   const [userId, setUserId] = useState<string | null>(null);
   const [wallet, setWallet] = useState<any>(null);
   const [avatar, setAvatar] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [tick, setTick] = useState(0);
 
   useEffect(() => {
-    supabase.auth.getUser().then(({ data }) => setUserId(data.user?.id ?? null));
+    supabase.auth.getUser().then(({ data }) => {
+      setUserId(data.user?.id ?? null);
+      setLoading(false);
+    });
   }, []);
 
   useEffect(() => {
     if (!userId) return;
-    loadWallet(userId).then(setWallet);
-    loadAvatar(userId).then(setAvatar);
+    setLoading(true);
+    setError(null);
+    Promise.all([loadWallet(userId), loadAvatar(userId)])
+      .then(([walletData, avatarData]) => {
+        setWallet(walletData);
+        setAvatar(avatarData);
+        if (!walletData || !avatarData) setError("Não foi possível criar o avatar agora.");
+      })
+      .catch((e) => setError(e.message || "Erro ao carregar avatar."))
+      .finally(() => setLoading(false));
   }, [userId, tick]);
 
   // poll wallet every 4s so coins update after game wins
@@ -59,6 +72,10 @@ export function PlayerAvatar() {
     return () => clearInterval(id);
   }, [userId]);
 
+  if (loading) {
+    return <Card className="p-4 text-center text-sm text-muted-foreground">Carregando avatar...</Card>;
+  }
+
   if (!userId) {
     return (
       <Card className="p-4 text-center text-sm text-muted-foreground">
@@ -66,7 +83,10 @@ export function PlayerAvatar() {
       </Card>
     );
   }
-  if (!avatar || !wallet) return null;
+
+  if (error || !avatar || !wallet) {
+    return <Card className="p-4 text-center text-sm text-destructive">{error || "Avatar indisponível."}</Card>;
+  }
 
   const unlocked: string[] = avatar.unlocked ?? [];
   const eq = avatar.equipped ?? {};
@@ -101,7 +121,7 @@ export function PlayerAvatar() {
     <Card className="p-4 flex items-center gap-3">
       <AvatarDisplay avatar={avatar} size={72} />
       <div className="flex-1 min-w-0">
-        <div className="font-bold text-sm truncate">Meu Avatar</div>
+        <div className="font-bold text-sm truncate">Criar e melhorar meu Avatar</div>
         <div className="flex items-center gap-1 text-amber-600 font-black">
           <Coins size={16} /> {wallet.coins} <span className="text-xs text-muted-foreground font-normal">moedas</span>
         </div>
