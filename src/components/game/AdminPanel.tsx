@@ -130,12 +130,21 @@ export const AdminPanel = ({ userRole }: { userRole?: string | null }) => {
   };
 
   const fetchProfiles = async () => {
-    const { data, error } = await supabase
+    const { data: profilesData } = await supabase
       .from('profiles')
       .select('*')
       .order('username', { ascending: true });
-    
-    if (data && !error) setProfiles(data);
+    const { data: rolesData } = await supabase
+      .from('user_roles')
+      .select('user_id, role');
+
+    if (profilesData) {
+      const merged = profilesData.map(p => ({
+        ...p,
+        role: rolesData?.find(r => r.user_id === p.id)?.role ?? 'user',
+      }));
+      setProfiles(merged);
+    }
   };
 
   useEffect(() => {
@@ -145,12 +154,10 @@ export const AdminPanel = ({ userRole }: { userRole?: string | null }) => {
     }
   }, [userRole]);
 
-  const updateUserRole = async (userId: string, newRole: string) => {
-    const { error } = await supabase
-      .from('profiles')
-      .update({ role: newRole })
-      .eq('id', userId);
-    
+  const updateUserRole = async (userId: string, newRole: 'admin' | 'moderator' | 'user') => {
+    // Remove any existing roles for this user, then insert the new one
+    await supabase.from('user_roles').delete().eq('user_id', userId);
+    const { error } = await supabase.from('user_roles').insert({ user_id: userId, role: newRole });
     if (error) {
       toast.error("Erro ao atualizar nível de acesso");
     } else {
@@ -189,7 +196,7 @@ export const AdminPanel = ({ userRole }: { userRole?: string | null }) => {
 
   const stats = {
     totalUsers: profiles.length,
-    admins: profiles.filter(p => p.role === 'admin').length,
+    admins: profiles.filter((p: any) => p.role === 'admin').length,
     activeToday: new Set(logs.filter(l => new Date(l.created_at).toDateString() === new Date().toDateString()).map(l => l.user_id)).size
   };
 
@@ -549,12 +556,12 @@ export const AdminPanel = ({ userRole }: { userRole?: string | null }) => {
                             <span className="text-[8px] text-slate-600">Desde: {new Date(profile.created_at).toLocaleDateString()}</span>
                           </div>
                           <div className="flex gap-2">
-                            {['student', 'teacher', 'admin'].map(r => (
+                            {(['user', 'moderator', 'admin'] as const).map(r => (
                               <Button
                                 key={r}
                                 size="sm"
                                 variant={profile.role === r ? 'default' : 'outline'}
-                                className={`text-[9px] h-7 flex-1 font-black ${profile.role === r ? (r === 'admin' ? 'bg-red-600' : r === 'teacher' ? 'bg-blue-600' : 'bg-slate-600') : 'border-white/5'}`}
+                                className={`text-[9px] h-7 flex-1 font-black ${profile.role === r ? (r === 'admin' ? 'bg-red-600' : r === 'moderator' ? 'bg-blue-600' : 'bg-slate-600') : 'border-white/5'}`}
                                 onClick={() => updateUserRole(profile.id, r)}
                               >
                                 {r.toUpperCase()}

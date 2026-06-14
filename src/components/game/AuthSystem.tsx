@@ -47,16 +47,22 @@ export const AuthSystem = ({ onAuthSuccess }: { onAuthSuccess: () => void }) => 
             .insert({ 
               id: data.user.id, 
               username: username || email.split('@')[0],
-              role: isFirstUser ? 'admin' : 'student'
             });
           if (profileError) console.error("Erro ao criar perfil:", profileError);
+
+          // First user becomes admin
+          if (isFirstUser) {
+            await supabase.from('user_roles').insert({ user_id: data.user.id, role: 'admin' });
+          } else {
+            await supabase.from('user_roles').insert({ user_id: data.user.id, role: 'user' });
+          }
           
           // Log de registro
           await supabase.from('activity_logs').insert({
             user_id: data.user.id,
             action: 'REGISTER',
             path: '/auth',
-            metadata: { username: username || email.split('@')[0], role: isFirstUser ? 'admin' : 'student' }
+            metadata: { username: username || email.split('@')[0], isAdmin: isFirstUser }
           });
         }
         

@@ -185,16 +185,19 @@ const Index = () => {
   }, []);
 
   const fetchUserRole = async (userId: string) => {
-    const { data, error } = await supabase
+    const { data: profile } = await supabase
       .from('profiles')
       .select('*')
       .eq('id', userId)
-      .single();
-    
-    if (data && !error) {
-      setUserRole(data.role);
-      setUserProfile(data);
-    }
+      .maybeSingle();
+    if (profile) setUserProfile(profile);
+
+    const { data: roles } = await supabase
+      .from('user_roles')
+      .select('role')
+      .eq('user_id', userId);
+    const isAdmin = roles?.some(r => r.role === 'admin');
+    setUserRole(isAdmin ? 'admin' : 'user');
   };
 
   useEffect(() => {
