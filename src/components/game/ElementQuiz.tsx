@@ -5,6 +5,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Brain, CheckCircle2, XCircle, Trophy, ArrowRight } from 'lucide-react';
 import { toast } from "sonner";
+import { addCoins } from "@/lib/playerEconomy";
+import { supabase } from "@/integrations/supabase/client";
 
 export const ElementQuiz = () => {
   const [gameState, setGameState] = useState<'start' | 'playing' | 'end'>('start');
