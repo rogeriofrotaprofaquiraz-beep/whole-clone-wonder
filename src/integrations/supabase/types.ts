@@ -56,6 +56,51 @@ export type Database = {
           },
         ]
       }
+      chem_questions: {
+        Row: {
+          answer_text: string | null
+          area: Database["public"]["Enums"]["chem_area"]
+          correct_index: number
+          created_at: string
+          created_by: string | null
+          difficulty: number
+          explanation: string | null
+          id: string
+          options: Json
+          question: string
+          topic: string | null
+          updated_at: string
+        }
+        Insert: {
+          answer_text?: string | null
+          area: Database["public"]["Enums"]["chem_area"]
+          correct_index?: number
+          created_at?: string
+          created_by?: string | null
+          difficulty?: number
+          explanation?: string | null
+          id?: string
+          options?: Json
+          question: string
+          topic?: string | null
+          updated_at?: string
+        }
+        Update: {
+          answer_text?: string | null
+          area?: Database["public"]["Enums"]["chem_area"]
+          correct_index?: number
+          created_at?: string
+          created_by?: string | null
+          difficulty?: number
+          explanation?: string | null
+          id?: string
+          options?: Json
+          question?: string
+          topic?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       elements: {
         Row: {
           attributes: Json
@@ -94,6 +139,94 @@ export type Database = {
           updated_at?: string
         }
         Relationships: []
+      }
+      game_sessions: {
+        Row: {
+          area: Database["public"]["Enums"]["chem_area"]
+          code: string
+          created_at: string
+          current_question_id: string | null
+          current_round: number
+          id: string
+          mode: Database["public"]["Enums"]["game_mode"]
+          settings: Json
+          status: Database["public"]["Enums"]["session_status"]
+          teacher_id: string | null
+          total_rounds: number
+          updated_at: string
+        }
+        Insert: {
+          area?: Database["public"]["Enums"]["chem_area"]
+          code: string
+          created_at?: string
+          current_question_id?: string | null
+          current_round?: number
+          id?: string
+          mode?: Database["public"]["Enums"]["game_mode"]
+          settings?: Json
+          status?: Database["public"]["Enums"]["session_status"]
+          teacher_id?: string | null
+          total_rounds?: number
+          updated_at?: string
+        }
+        Update: {
+          area?: Database["public"]["Enums"]["chem_area"]
+          code?: string
+          created_at?: string
+          current_question_id?: string | null
+          current_round?: number
+          id?: string
+          mode?: Database["public"]["Enums"]["game_mode"]
+          settings?: Json
+          status?: Database["public"]["Enums"]["session_status"]
+          teacher_id?: string | null
+          total_rounds?: number
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "game_sessions_current_question_id_fkey"
+            columns: ["current_question_id"]
+            isOneToOne: false
+            referencedRelation: "chem_questions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      game_teams: {
+        Row: {
+          color: string
+          created_at: string
+          id: string
+          name: string
+          score: number
+          session_id: string
+        }
+        Insert: {
+          color?: string
+          created_at?: string
+          id?: string
+          name: string
+          score?: number
+          session_id: string
+        }
+        Update: {
+          color?: string
+          created_at?: string
+          id?: string
+          name?: string
+          score?: number
+          session_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "game_teams_session_id_fkey"
+            columns: ["session_id"]
+            isOneToOne: false
+            referencedRelation: "game_sessions"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       match_moves: {
         Row: {
@@ -291,6 +424,93 @@ export type Database = {
         }
         Relationships: []
       }
+      session_answers: {
+        Row: {
+          answer: Json
+          created_at: string
+          id: string
+          is_correct: boolean
+          points: number
+          question_id: string | null
+          round_number: number
+          session_id: string
+          team_id: string
+        }
+        Insert: {
+          answer: Json
+          created_at?: string
+          id?: string
+          is_correct?: boolean
+          points?: number
+          question_id?: string | null
+          round_number: number
+          session_id: string
+          team_id: string
+        }
+        Update: {
+          answer?: Json
+          created_at?: string
+          id?: string
+          is_correct?: boolean
+          points?: number
+          question_id?: string | null
+          round_number?: number
+          session_id?: string
+          team_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "session_answers_question_id_fkey"
+            columns: ["question_id"]
+            isOneToOne: false
+            referencedRelation: "chem_questions"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "session_answers_session_id_fkey"
+            columns: ["session_id"]
+            isOneToOne: false
+            referencedRelation: "game_sessions"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "session_answers_team_id_fkey"
+            columns: ["team_id"]
+            isOneToOne: false
+            referencedRelation: "game_teams"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      team_members: {
+        Row: {
+          display_name: string
+          id: string
+          joined_at: string
+          team_id: string
+        }
+        Insert: {
+          display_name: string
+          id?: string
+          joined_at?: string
+          team_id: string
+        }
+        Update: {
+          display_name?: string
+          id?: string
+          joined_at?: string
+          team_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "team_members_team_id_fkey"
+            columns: ["team_id"]
+            isOneToOne: false
+            referencedRelation: "game_teams"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       user_collection: {
         Row: {
           acquired_at: string
@@ -392,6 +612,14 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "moderator" | "user"
+      chem_area:
+        | "organica"
+        | "inorganica"
+        | "geral"
+        | "ambiental"
+        | "farmacologia"
+      game_mode: "quiz" | "forca" | "caca_palavras" | "cruzada" | "memoria"
+      session_status: "lobby" | "active" | "paused" | "finished"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -520,6 +748,15 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "moderator", "user"],
+      chem_area: [
+        "organica",
+        "inorganica",
+        "geral",
+        "ambiental",
+        "farmacologia",
+      ],
+      game_mode: ["quiz", "forca", "caca_palavras", "cruzada", "memoria"],
+      session_status: ["lobby", "active", "paused", "finished"],
     },
   },
 } as const
