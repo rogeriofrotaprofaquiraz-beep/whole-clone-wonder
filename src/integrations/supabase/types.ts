@@ -420,26 +420,41 @@ export type Database = {
       }
       player_avatars: {
         Row: {
+          appearance: Json
           background: string
+          current_card: string
           equipped: Json
+          generated_url: string | null
+          photo_url: string | null
           skin: string
           unlocked: string[]
+          unlocked_cards: string[]
           updated_at: string
           user_id: string
         }
         Insert: {
+          appearance?: Json
           background?: string
+          current_card?: string
           equipped?: Json
+          generated_url?: string | null
+          photo_url?: string | null
           skin?: string
           unlocked?: string[]
+          unlocked_cards?: string[]
           updated_at?: string
           user_id: string
         }
         Update: {
+          appearance?: Json
           background?: string
+          current_card?: string
           equipped?: Json
+          generated_url?: string | null
+          photo_url?: string | null
           skin?: string
           unlocked?: string[]
+          unlocked_cards?: string[]
           updated_at?: string
           user_id?: string
         }
