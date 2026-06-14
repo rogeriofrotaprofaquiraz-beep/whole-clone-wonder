@@ -7,13 +7,15 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
-import { AREAS, MODES, genCode, areaMeta, AreaValue } from "@/lib/aula";
+import { AREAS, MODES, genCode, areaMeta, AreaValue, LEVELS, LevelValue, DIFFICULTIES } from "@/lib/aula";
 import { Sparkles, Play, Copy, Loader2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { CsvImporter } from "@/components/aula/CsvImporter";
 
 export function TeacherPanel({ userId }: { userId: string }) {
   const navigate = useNavigate();
   const [area, setArea] = useState<AreaValue>("geral");
+  const [level, setLevel] = useState<LevelValue>("medio");
   const [mode, setMode] = useState("quiz");
   const [rounds, setRounds] = useState(10);
   const [count, setCount] = useState(10);
@@ -56,7 +58,7 @@ export function TeacherPanel({ userId }: { userId: string }) {
     setGenerating(true);
     try {
       const { data, error } = await supabase.functions.invoke("generate-chem-questions", {
-        body: { area, count, difficulty, topic: topic || undefined },
+        body: { area, count, difficulty, topic: topic || undefined, school_level: level },
       });
       if (error) throw error;
       if ((data as any)?.error) throw new Error((data as any).error);
@@ -73,7 +75,7 @@ export function TeacherPanel({ userId }: { userId: string }) {
     setGeneratingTerms(true);
     try {
       const { data, error } = await supabase.functions.invoke("generate-chem-terms", {
-        body: { area, count: 15, difficulty },
+        body: { area, count: 15, difficulty, school_level: level },
       });
       if (error) throw error;
       if ((data as any)?.error) throw new Error((data as any).error);
@@ -84,6 +86,7 @@ export function TeacherPanel({ userId }: { userId: string }) {
       setGeneratingTerms(false);
     }
   };
+
 
 
   const createSession = async () => {
@@ -145,6 +148,15 @@ export function TeacherPanel({ userId }: { userId: string }) {
             </Select>
           </div>
           <div>
+            <Label>Nível de ensino</Label>
+            <Select value={level} onValueChange={(v) => setLevel(v as LevelValue)}>
+              <SelectTrigger><SelectValue /></SelectTrigger>
+              <SelectContent>
+                {LEVELS.map((l) => <SelectItem key={l.value} value={l.value}>{l.emoji} {l.label}</SelectItem>)}
+              </SelectContent>
+            </Select>
+          </div>
+          <div>
             <Label>Tópico (opcional)</Label>
             <Input value={topic} onChange={(e) => setTopic(e.target.value)} placeholder="Ex: nomenclatura IUPAC" />
           </div>
@@ -152,9 +164,16 @@ export function TeacherPanel({ userId }: { userId: string }) {
             <Label>Quantidade ({count})</Label>
             <Input type="number" min={1} max={25} value={count} onChange={(e) => setCount(+e.target.value)} />
           </div>
-          <div>
-            <Label>Dificuldade ({difficulty}/5)</Label>
-            <Input type="range" min={1} max={5} value={difficulty} onChange={(e) => setDifficulty(+e.target.value)} />
+          <div className="md:col-span-2">
+            <Label>Dificuldade</Label>
+            <div className="flex flex-wrap gap-2 mt-1">
+              {DIFFICULTIES.map((d) => (
+                <button key={d.value} type="button" onClick={() => setDifficulty(d.value)}
+                  className={`px-3 py-1.5 rounded-md text-xs font-bold border-2 ${difficulty === d.value ? "bg-[#D97706] text-white border-[#D97706]" : "bg-white border-slate-200"}`}>
+                  {d.value}★ {d.label}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
         <div className="grid grid-cols-2 gap-2 mt-4">
@@ -167,6 +186,9 @@ export function TeacherPanel({ userId }: { userId: string }) {
         </div>
         <p className="text-xs text-muted-foreground mt-2">"Quiz" alimenta o Quiz competitivo. "Termos" alimenta Forca, Caça-palavras e Memória (treino solo).</p>
       </Card>
+
+      <CsvImporter onImported={loadStats} />
+
 
       <Card className="p-6">
         <h3 className="text-lg font-bold mb-4 flex items-center gap-2"><Play className="text-[#059669]" /> Nova Partida</h3>
