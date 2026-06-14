@@ -68,15 +68,23 @@ export async function loadAvatar(userId: string) {
   return created as any;
 }
 
+export async function isAdmin(userId: string) {
+  const { data } = await supabase.from("user_roles").select("role").eq("user_id", userId).eq("role", "admin").maybeSingle();
+  return !!data;
+}
+
 export async function buyItem(userId: string, item: AvatarItem) {
   const w = await loadWallet(userId);
   const a = await loadAvatar(userId);
   if ((a.unlocked ?? []).includes(item.id)) return { ok: false, reason: "Já desbloqueado" };
-  if ((w.coins ?? 0) < item.price) return { ok: false, reason: "Moedas insuficientes" };
+  const admin = await isAdmin(userId);
+  if (!admin && (w.coins ?? 0) < item.price) return { ok: false, reason: "Moedas insuficientes" };
   const unlocked = [...(a.unlocked ?? []), item.id];
-  await supabase.from("player_wallet").update({ coins: w.coins - item.price }).eq("user_id", userId);
+  if (!admin) {
+    await supabase.from("player_wallet").update({ coins: w.coins - item.price }).eq("user_id", userId);
+  }
   await supabase.from("player_avatars").update({ unlocked }).eq("user_id", userId);
-  return { ok: true };
+  return { ok: true, admin };
 }
 
 export async function equipItem(userId: string, item: AvatarItem) {
