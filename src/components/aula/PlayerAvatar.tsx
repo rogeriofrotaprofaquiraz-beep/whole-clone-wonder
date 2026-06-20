@@ -8,8 +8,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import {
-  SHOP_ITEMS, AvatarItem,
-  loadAvatar, loadWallet, buyItem, equipItem, isAdmin,
+  SHOP_ITEMS, AvatarItem, COIN_NAME, COIN_SYMBOL, COSTS,
+  loadAvatar, loadWallet, buyItem, equipItem, isAdmin, spendCoins,
 } from "@/lib/playerEconomy";
 import { ensureUserAccess } from "@/lib/ensureUserAccess";
 import { Coins, Lock, Check, Upload, Sparkles, Zap, ShoppingBag, Loader2, ChevronLeft, ChevronRight, User, Shirt, Backpack } from "lucide-react";
