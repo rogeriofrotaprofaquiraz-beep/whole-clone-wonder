@@ -72,7 +72,7 @@ export async function loadAvatar(userId: string) {
   if (data) return data as any;
   const { data: created } = await supabase
     .from("player_avatars")
-    .insert({ user_id: userId, equipped: { background: "bg_violet" }, unlocked: ["bg_violet"] })
+    .insert({ user_id: userId, equipped: { background: "bg_lab", outfit: "outfit_casual" }, unlocked: ["bg_lab", "outfit_casual"] })
     .select().single();
   return created as any;
 }
