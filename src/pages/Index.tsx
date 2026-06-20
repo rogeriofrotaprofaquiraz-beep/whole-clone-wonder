@@ -383,8 +383,12 @@ const Index = () => {
                 </TabsTrigger>
               </>
             )}
-            <Link to="/aula" className="px-4 py-2.5 rounded-xl text-sm font-semibold gap-1.5 inline-flex items-center text-violet-300 hover:text-white">
-              <GraduationCap className="w-4 h-4" /> Sala de Aula
+            <Link
+              to="/aula"
+              className="px-4 py-2.5 rounded-xl text-sm font-bold gap-1.5 inline-flex items-center text-white bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 shadow-lg shadow-violet-900/40"
+              title="Acesse o Painel do Professor para gerar questões e criar partidas"
+            >
+              <GraduationCap className="w-4 h-4" /> Painel do Professor
             </Link>
             <Link to="/aula/treino" className="px-4 py-2.5 rounded-xl text-sm font-semibold gap-1.5 inline-flex items-center text-emerald-300 hover:text-white">
               <Dumbbell className="w-4 h-4" /> Treino
