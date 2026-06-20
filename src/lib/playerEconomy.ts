@@ -91,8 +91,16 @@ export async function loadAvatar(userId: string) {
 }
 
 export async function isAdmin(userId: string) {
-  const { data } = await supabase.from("user_roles").select("role").eq("user_id", userId).eq("role", "admin").maybeSingle();
-  return !!data;
+  const { data, error } = await supabase.rpc("has_role", { _user_id: userId, _role: "admin" });
+  if (!error) return !!data;
+
+  const { data: roleData } = await supabase
+    .from("user_roles")
+    .select("role")
+    .eq("user_id", userId)
+    .eq("role", "admin")
+    .maybeSingle();
+  return !!roleData;
 }
 
 export async function buyItem(userId: string, item: AvatarItem) {
