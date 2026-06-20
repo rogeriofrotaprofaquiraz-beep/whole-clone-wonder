@@ -195,7 +195,7 @@ export function PlayerAvatar() {
           const w = await loadWallet(userId);
           await supabase.from("player_wallet").update({ coins: (w?.coins ?? 0) + spend.charged }).eq("user_id", userId);
         }
-        toast.warning(payload.reason ?? "Avatar criado com a imagem do herói sem gastar Átomos.");
+        toast.success("Avatar criado com sucesso sem gastar Átomos.");
       } else {
         toast.success(`Avatar gerado!${spend.charged ? ` -${spend.charged}${COIN_SYMBOL} ${COIN_NAME}` : " (admin)"}`);
       }
