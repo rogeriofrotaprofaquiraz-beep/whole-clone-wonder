@@ -189,6 +189,8 @@ export function TeacherPanel({ userId }: { userId: string }) {
       </Card>
 
       <CsvImporter onImported={loadStats} />
+      <JsonImporter onImported={loadStats} />
+
 
 
       <Card className="p-6">
