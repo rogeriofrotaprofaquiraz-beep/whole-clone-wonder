@@ -1,5 +1,18 @@
 import { supabase } from "@/integrations/supabase/client";
 
+/** Nome e símbolo da moeda do jogo. */
+export const COIN_NAME = "Átomos";
+export const COIN_NAME_SINGULAR = "Átomo";
+export const COIN_SYMBOL = "⚛";
+
+/** Custos das ações de personalização (em Átomos). Admin paga 0. */
+export const COSTS = {
+  generateAvatarAI: 50,   // Gerar avatar com IA
+  changeAppearance: 5,    // Cada alteração de gênero/corpo/pele/cabelo
+  uploadPhoto: 10,        // Upload de foto de referência
+  uploadAvatar: 20,       // Upload direto de imagem como avatar
+} as const;
+
 export type AvatarItem = {
   id: string;
   slot: "hat" | "glasses" | "outfit" | "background" | "accessory";
@@ -105,4 +118,17 @@ export async function equipItem(userId: string, item: AvatarItem) {
 
 export async function setSkin(userId: string, skin: string) {
   await supabase.from("player_avatars").update({ skin }).eq("user_id", userId);
+}
+
+/** Cobra moedas; admin não paga. Retorna { ok, reason?, admin }. */
+export async function spendCoins(userId: string, amount: number, reason: string) {
+  const admin = await isAdmin(userId);
+  if (admin) return { ok: true, admin: true, charged: 0 };
+  if (amount <= 0) return { ok: true, admin: false, charged: 0 };
+  const w = await loadWallet(userId);
+  if ((w?.coins ?? 0) < amount) {
+    return { ok: false, admin: false, charged: 0, reason: `${COIN_NAME} insuficientes para ${reason} (precisa ${amount}${COIN_SYMBOL})` };
+  }
+  await supabase.from("player_wallet").update({ coins: w.coins - amount }).eq("user_id", userId);
+  return { ok: true, admin: false, charged: amount };
 }

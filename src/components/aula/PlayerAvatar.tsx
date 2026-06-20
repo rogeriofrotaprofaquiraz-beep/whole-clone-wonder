@@ -8,8 +8,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import {
-  SHOP_ITEMS, AvatarItem,
-  loadAvatar, loadWallet, buyItem, equipItem, isAdmin,
+  SHOP_ITEMS, AvatarItem, COIN_NAME, COIN_SYMBOL, COSTS,
+  loadAvatar, loadWallet, buyItem, equipItem, isAdmin, spendCoins,
 } from "@/lib/playerEconomy";
 import { ensureUserAccess } from "@/lib/ensureUserAccess";
 import { Coins, Lock, Check, Upload, Sparkles, Zap, ShoppingBag, Loader2, ChevronLeft, ChevronRight, User, Shirt, Backpack } from "lucide-react";
@@ -81,11 +81,15 @@ export function PlayerAvatar() {
   const [tick, setTick] = useState(0);
 
   const appearance = avatar?.appearance ?? {};
-  const updateAppearance = (patch: Appearance) => {
+  const updateAppearance = async (patch: Appearance) => {
     if (!userId) return;
+    const spend = await spendCoins(userId, COSTS.changeAppearance, "alterar aparência");
+    if (!spend.ok) { toast.error(spend.reason!); return; }
     const next = { ...appearance, ...patch };
     setAvatar((a) => a ? ({ ...a, appearance: next }) : a);
-    supabase.from("player_avatars").update({ appearance: next }).eq("user_id", userId);
+    await supabase.from("player_avatars").update({ appearance: next }).eq("user_id", userId);
+    if (spend.charged > 0) toast.success(`-${spend.charged}${COIN_SYMBOL} ${COIN_NAME}`);
+    setTick((t) => t + 1);
   };
 
   useEffect(() => {
@@ -130,24 +134,30 @@ export function PlayerAvatar() {
   const currentCard = elements.find((e) => e.symbol === avatar.current_card) ?? elements[0];
 
   const handlePhotoFile = async (file: File) => {
+    if (!userId) return;
+    const spend = await spendCoins(userId, COSTS.uploadPhoto, "carregar foto");
+    if (!spend.ok) { toast.error(spend.reason!); return; }
     const reader = new FileReader();
     reader.onload = () => {
       const result = reader.result as string;
       setPhotoBase64(result);
-      toast.success("Foto carregada — clique em Gerar Avatar IA");
+      toast.success(`Foto carregada${spend.charged ? ` (-${spend.charged}${COIN_SYMBOL})` : ""} — clique em Gerar Avatar IA`);
     };
     reader.readAsDataURL(file);
+    setTick((t) => t + 1);
   };
 
   const handleUploadAvatar = async (file: File) => {
     try {
+      const spend = await spendCoins(userId!, COSTS.uploadAvatar, "enviar avatar");
+      if (!spend.ok) { toast.error(spend.reason!); return; }
       const ext = file.name.split(".").pop() || "png";
       const path = `${userId}/upload-${Date.now()}.${ext}`;
       const { error } = await supabase.storage.from("player-avatars").upload(path, file, { contentType: file.type, upsert: true });
       if (error) throw error;
       const { data: signed } = await supabase.storage.from("player-avatars").createSignedUrl(path, 60 * 60 * 24 * 365 * 5);
       await supabase.from("player_avatars").update({ generated_url: signed?.signedUrl }).eq("user_id", userId);
-      toast.success("Avatar enviado!");
+      toast.success(`Avatar enviado!${spend.charged ? ` -${spend.charged}${COIN_SYMBOL}` : ""}`);
       setTick((t) => t + 1);
     } catch (e: unknown) {
       toast.error("Erro no upload: " + errorMessage(e));
@@ -156,6 +166,9 @@ export function PlayerAvatar() {
 
   const handleGenerate = async () => {
     if (!currentCard) return toast.error("Selecione uma carta primeiro");
+    if (!userId) return;
+    const spend = await spendCoins(userId, COSTS.generateAvatarAI, "gerar avatar IA");
+    if (!spend.ok) { toast.error(spend.reason!); return; }
     setGenerating(true);
     try {
       const { data, error } = await supabase.functions.invoke("generate-player-avatar", {
@@ -171,9 +184,14 @@ export function PlayerAvatar() {
       }
       const payload = data as FunctionPayload;
       if (payload?.error) throw new Error(payload.error);
-      toast.success("Avatar gerado!");
+      toast.success(`Avatar gerado!${spend.charged ? ` -${spend.charged}${COIN_SYMBOL} ${COIN_NAME}` : " (admin)"}`);
       setTick((t) => t + 1);
     } catch (e: unknown) {
+      // Reembolsa em caso de falha
+      if (spend.charged > 0) {
+        const w = await loadWallet(userId);
+        await supabase.from("player_wallet").update({ coins: (w?.coins ?? 0) + spend.charged }).eq("user_id", userId);
+      }
       toast.error("Erro: " + errorMessage(e));
     } finally {
       setGenerating(false);
@@ -207,20 +225,21 @@ export function PlayerAvatar() {
               <div className="text-sm">Escolha uma carta e clique em <strong className="text-violet-300">Gerar Avatar IA</strong></div>
             </div>
           )}
-          <Badge className="absolute top-2 right-2 bg-amber-500 text-black flex items-center gap-1">
-            <Coins size={12} />{admin ? 99999 : wallet?.coins ?? 0}
+          <Badge className="absolute top-2 right-2 bg-amber-500 text-black flex items-center gap-1" title={`${COIN_NAME} — moeda do jogo`}>
+            <span className="text-sm leading-none">{COIN_SYMBOL}</span>{admin ? "∞" : wallet?.coins ?? 0}
           </Badge>
         </div>
         <div className="mt-3 flex items-center justify-between gap-2 bg-emerald-950/40 border border-emerald-800 rounded-lg px-3 py-2 text-emerald-300 text-sm">
           <span className="flex items-center gap-2"><Check size={14} /> Avatar desbloqueado</span>
+          <span className="text-xs text-amber-300">Saldo: {admin ? "∞" : wallet?.coins ?? 0}{COIN_SYMBOL} {COIN_NAME}</span>
         </div>
         <div className="mt-3 grid grid-cols-2 gap-2">
           <Button onClick={handleGenerate} disabled={generating} className="bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:opacity-90">
             {generating ? <Loader2 className="animate-spin mr-1" size={16} /> : <Sparkles size={16} className="mr-1" />}
-            Gerar Avatar IA
+            Gerar IA <span className="ml-1 text-xs opacity-80">({admin ? "grátis" : `${COSTS.generateAvatarAI}${COIN_SYMBOL}`})</span>
           </Button>
           <Button variant="outline" onClick={() => fileRef.current?.click()}>
-            <Upload size={16} className="mr-1" /> Upload
+            <Upload size={16} className="mr-1" /> Upload <span className="ml-1 text-xs opacity-70">({admin ? "grátis" : `${COSTS.uploadAvatar}${COIN_SYMBOL}`})</span>
           </Button>
           <input ref={fileRef} type="file" accept="image/*" hidden
                  onChange={(e) => e.target.files?.[0] && handleUploadAvatar(e.target.files[0])} />
