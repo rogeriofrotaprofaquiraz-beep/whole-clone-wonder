@@ -21,6 +21,18 @@ function toArea(v: any): AreaValue {
   return (VALID_AREAS.has(s as AreaValue) ? s : "geral") as AreaValue;
 }
 
+function isSchemaOnly(json: any): boolean {
+  // Estrutura tipo "elemental_heroes_estrutura": só descreve entidades/páginas, sem dados.
+  if (!json || typeof json !== "object") return false;
+  const hasPages = Array.isArray(json.pages);
+  const hasEntities =
+    Array.isArray(json.entities) &&
+    json.entities.every(
+      (e: any) => e && typeof e === "object" && "key_fields" in e && !("symbol" in e) && !("question" in e)
+    );
+  return hasPages && hasEntities;
+}
+
 function detect(json: any): Detected {
   const out: Detected = { elements: [], questions: [], terms: [] };
   // Base44 backup shape: { elements: [...], questions: [...] } or { data: { ... } }
@@ -41,6 +53,7 @@ function detect(json: any): Detected {
   }
   return out;
 }
+
 
 function normElement(e: any) {
   const number = Number(e.number ?? e.atomic_number ?? 0);
