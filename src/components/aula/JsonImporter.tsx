@@ -45,14 +45,14 @@ function detect(json: any): Detected {
 function normElement(e: any) {
   const number = Number(e.number ?? e.atomic_number ?? 0);
   const symbol = String(e.symbol ?? "").trim();
-  const { number: _n, symbol: _s, name, hero_name, description, image, image_url, ...rest } = e;
+  const { number: _n, symbol: _s, name, hero_name, hero_description, description, image, hero_image, image_url, ...rest } = e;
   return {
     number,
     symbol,
     name: name ?? hero_name ?? symbol,
     hero_name: hero_name ?? name ?? symbol,
-    description: description ?? null,
-    image_url: image_url ?? image ?? null,
+    hero_description: hero_description ?? description ?? null,
+    hero_image: hero_image ?? image_url ?? image ?? null,
     attributes: rest,
   };
 }
