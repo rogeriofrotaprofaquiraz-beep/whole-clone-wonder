@@ -191,7 +191,11 @@ export function PlayerAvatar() {
       const payload = data as FunctionPayload & { fallback?: boolean; reason?: string };
       if (payload?.error) throw new Error(payload.error);
       if (payload?.fallback) {
-        toast.warning(payload.reason ?? "Avatar offline gerado (sem créditos de IA).");
+        if (spend.charged > 0) {
+          const w = await loadWallet(userId);
+          await supabase.from("player_wallet").update({ coins: (w?.coins ?? 0) + spend.charged }).eq("user_id", userId);
+        }
+        toast.warning(payload.reason ?? "Avatar criado com a imagem do herói sem gastar Átomos.");
       } else {
         toast.success(`Avatar gerado!${spend.charged ? ` -${spend.charged}${COIN_SYMBOL} ${COIN_NAME}` : " (admin)"}`);
       }
