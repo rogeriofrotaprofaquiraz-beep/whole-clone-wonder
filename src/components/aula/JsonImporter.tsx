@@ -113,18 +113,17 @@ export function JsonImporter({ onImported }: { onImported?: () => void }) {
     try {
       const text = await file.text();
       const json = JSON.parse(text);
-      if (isSchemaOnly(json)) {
-        setDetected(null);
-        toast.error(
-          "Este JSON descreve apenas a estrutura do app (páginas/entidades), sem dados. Envie um backup com elementos, questões ou termos."
-        );
-        return;
-      }
+      const schemaOnly = isSchemaOnly(json);
       const d = detect(json);
       setDetected(d);
+      if (schemaOnly) {
+        toast.warning(
+          "JSON de estrutura detectado (sem dados). Você pode importar mesmo assim, mas nada será inserido."
+        );
+      }
       const total = d.elements.length + d.questions.length + d.terms.length;
-      if (!total) toast.error("Nenhum dado reconhecido no JSON");
-      else toast.success(`Detectado: ${d.elements.length} elementos, ${d.questions.length} questões, ${d.terms.length} termos`);
+      if (!total && !schemaOnly) toast.error("Nenhum dado reconhecido no JSON");
+      else if (total) toast.success(`Detectado: ${d.elements.length} elementos, ${d.questions.length} questões, ${d.terms.length} termos`);
     } catch (e: any) {
 
       toast.error("JSON inválido: " + e.message);
