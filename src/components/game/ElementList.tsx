@@ -53,24 +53,24 @@ type ElementListProps = {
 export const ElementList: React.FC<ElementListProps> = ({ onSelect, canManage = false, onEdit, onDelete }) => {
   const [sort, setSort] = useState<SortMode>('atomic');
   const [query, setQuery] = useState('');
+  const [categoryFilter, setCategoryFilter] = useState<string | null>(null);
 
   const elements = useMemo(() => {
     const list = Object.values(ELEMENTS_DATA).filter(
       (el) => el && el.symbol !== 'Element' && el.symbol !== 'Elemento' && el.name
     );
-    const filtered = query.trim()
-      ? list.filter((el) =>
-          [el.name, el.symbol, el.heroName].some((s) =>
-            s?.toLowerCase().includes(query.toLowerCase())
-          )
-        )
-      : list;
+    const filtered = list.filter((el) => {
+      if (categoryFilter && getCategoryName(el.symbol, el.number) !== categoryFilter) return false;
+      if (query.trim() && ![el.name, el.symbol, el.heroName].some((s) => s?.toLowerCase().includes(query.toLowerCase()))) return false;
+      return true;
+    });
     return [...filtered].sort((a, b) =>
       sort === 'atomic'
         ? a.number - b.number
         : a.name.localeCompare(b.name, 'pt-BR')
     );
-  }, [sort, query]);
+  }, [sort, query, categoryFilter]);
+
 
   return (
     <div className="w-full max-w-[1280px] mx-auto bg-slate-900/40 border border-white/10 rounded-3xl backdrop-blur-xl p-4 md:p-6 shadow-2xl">
