@@ -154,7 +154,16 @@ export const ElementList: React.FC<ElementListProps> = ({ onSelect, canManage = 
                   </td>
                   <td className="py-3 px-4 font-bold">{el.name}</td>
                   <td className="py-3 px-4 text-blue-300">{el.heroName}</td>
-                  <td className="py-3 px-4 text-slate-300">{category}</td>
+                  <td className="py-3 px-4">
+                    <button
+                      type="button"
+                      onClick={(e) => { e.stopPropagation(); setCategoryFilter((c) => c === category ? null : category); }}
+                      className={`text-left underline-offset-2 hover:underline transition-colors ${categoryFilter === category ? 'text-purple-300 font-bold' : 'text-slate-300 hover:text-purple-300'}`}
+                      title={categoryFilter === category ? 'Limpar filtro' : `Filtrar por ${category}`}
+                    >
+                      {category}
+                    </button>
+                  </td>
                   <td className="py-3 px-4">
                     <Badge variant="outline" className={`${rarityStyle(rarity)} font-bold`}>
                       {rarity}
