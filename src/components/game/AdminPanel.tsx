@@ -668,9 +668,11 @@ export const AdminPanel = ({ userRole, initialSymbol }: { userRole?: string | nu
                         onChange={(e) => setSearchTerm(e.target.value)}
                       />
                     </div>
-                    <Button variant="outline" size="sm" onClick={fetchProfiles}>Atualizar</Button>
-                  </div>
-                </CardHeader>
+                     <Button variant="outline" size="sm" onClick={() => grantAll(50)} className="text-amber-300 border-amber-500/40">+50 ⚛ Todos</Button>
+                     <Button variant="outline" size="sm" onClick={fetchProfiles}>Atualizar</Button>
+                   </div>
+                 </CardHeader>
+
                 <CardContent>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {filteredProfiles.map(profile => (
