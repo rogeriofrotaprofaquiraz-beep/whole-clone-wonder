@@ -81,11 +81,15 @@ export function PlayerAvatar() {
   const [tick, setTick] = useState(0);
 
   const appearance = avatar?.appearance ?? {};
-  const updateAppearance = (patch: Appearance) => {
+  const updateAppearance = async (patch: Appearance) => {
     if (!userId) return;
+    const spend = await spendCoins(userId, COSTS.changeAppearance, "alterar aparência");
+    if (!spend.ok) { toast.error(spend.reason!); return; }
     const next = { ...appearance, ...patch };
     setAvatar((a) => a ? ({ ...a, appearance: next }) : a);
-    supabase.from("player_avatars").update({ appearance: next }).eq("user_id", userId);
+    await supabase.from("player_avatars").update({ appearance: next }).eq("user_id", userId);
+    if (spend.charged > 0) toast.success(`-${spend.charged}${COIN_SYMBOL} ${COIN_NAME}`);
+    setTick((t) => t + 1);
   };
 
   useEffect(() => {
