@@ -11,6 +11,7 @@ import { AREAS, MODES, genCode, areaMeta, AreaValue, LEVELS, LevelValue, DIFFICU
 import { Sparkles, Play, Copy, Loader2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { CsvImporter } from "@/components/aula/CsvImporter";
+import { JsonImporter } from "@/components/aula/JsonImporter";
 
 export function TeacherPanel({ userId }: { userId: string }) {
   const navigate = useNavigate();
