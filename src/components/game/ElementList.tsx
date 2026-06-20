@@ -53,24 +53,24 @@ type ElementListProps = {
 export const ElementList: React.FC<ElementListProps> = ({ onSelect, canManage = false, onEdit, onDelete }) => {
   const [sort, setSort] = useState<SortMode>('atomic');
   const [query, setQuery] = useState('');
+  const [categoryFilter, setCategoryFilter] = useState<string | null>(null);
 
   const elements = useMemo(() => {
     const list = Object.values(ELEMENTS_DATA).filter(
       (el) => el && el.symbol !== 'Element' && el.symbol !== 'Elemento' && el.name
     );
-    const filtered = query.trim()
-      ? list.filter((el) =>
-          [el.name, el.symbol, el.heroName].some((s) =>
-            s?.toLowerCase().includes(query.toLowerCase())
-          )
-        )
-      : list;
+    const filtered = list.filter((el) => {
+      if (categoryFilter && getCategoryName(el.symbol, el.number) !== categoryFilter) return false;
+      if (query.trim() && ![el.name, el.symbol, el.heroName].some((s) => s?.toLowerCase().includes(query.toLowerCase()))) return false;
+      return true;
+    });
     return [...filtered].sort((a, b) =>
       sort === 'atomic'
         ? a.number - b.number
         : a.name.localeCompare(b.name, 'pt-BR')
     );
-  }, [sort, query]);
+  }, [sort, query, categoryFilter]);
+
 
   return (
     <div className="w-full max-w-[1280px] mx-auto bg-slate-900/40 border border-white/10 rounded-3xl backdrop-blur-xl p-4 md:p-6 shadow-2xl">
@@ -79,6 +79,15 @@ export const ElementList: React.FC<ElementListProps> = ({ onSelect, canManage = 
           <h2 className="text-2xl md:text-3xl font-black italic tracking-tight">LISTA DOS ELEMENTOS</h2>
           <p className="text-xs text-slate-400 uppercase tracking-widest">
             Visão geral · {elements.length} elementos
+            {categoryFilter && (
+              <button
+                type="button"
+                onClick={() => setCategoryFilter(null)}
+                className="ml-2 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/40 normal-case tracking-normal hover:bg-purple-500/30"
+              >
+                {categoryFilter} ✕
+              </button>
+            )}
           </p>
         </div>
         <div className="md:ml-auto flex flex-wrap items-center gap-2">
@@ -154,7 +163,16 @@ export const ElementList: React.FC<ElementListProps> = ({ onSelect, canManage = 
                   </td>
                   <td className="py-3 px-4 font-bold">{el.name}</td>
                   <td className="py-3 px-4 text-blue-300">{el.heroName}</td>
-                  <td className="py-3 px-4 text-slate-300">{category}</td>
+                  <td className="py-3 px-4">
+                    <button
+                      type="button"
+                      onClick={(e) => { e.stopPropagation(); setCategoryFilter((c) => c === category ? null : category); }}
+                      className={`text-left underline-offset-2 hover:underline transition-colors ${categoryFilter === category ? 'text-purple-300 font-bold' : 'text-slate-300 hover:text-purple-300'}`}
+                      title={categoryFilter === category ? 'Limpar filtro' : `Filtrar por ${category}`}
+                    >
+                      {category}
+                    </button>
+                  </td>
                   <td className="py-3 px-4">
                     <Badge variant="outline" className={`${rarityStyle(rarity)} font-bold`}>
                       {rarity}
