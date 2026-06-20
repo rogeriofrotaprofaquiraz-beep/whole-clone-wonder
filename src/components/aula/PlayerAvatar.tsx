@@ -171,8 +171,14 @@ export function PlayerAvatar() {
     if (!spend.ok) { toast.error(spend.reason!); return; }
     setGenerating(true);
     try {
+      const eqNow = (avatar?.equipped ?? {}) as Partial<Record<AvatarItem["slot"], string>>;
+      const equippedItems = {
+        outfit: SHOP_ITEMS.find((i) => i.id === eqNow.outfit) ?? null,
+        background: SHOP_ITEMS.find((i) => i.id === eqNow.background) ?? null,
+        accessory: SHOP_ITEMS.find((i) => i.id === eqNow.accessory) ?? null,
+      };
       const { data, error } = await supabase.functions.invoke("generate-player-avatar", {
-        body: { cardSymbol: currentCard.symbol, appearance, photoBase64 },
+        body: { cardSymbol: currentCard.symbol, appearance, photoBase64, equipped: equippedItems },
       });
       if (error) {
         const response = (error as FunctionInvokeError).context;
