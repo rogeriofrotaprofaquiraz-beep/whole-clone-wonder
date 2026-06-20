@@ -710,11 +710,24 @@ export const AdminPanel = ({ userRole, initialSymbol }: { userRole?: string | nu
                               >
                                 {r.toUpperCase()}
                               </Button>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    ))}
+                             ))}
+                           </div>
+                           <div className="mt-2 p-2 bg-amber-500/10 border border-amber-500/20 rounded-lg space-y-2">
+                             <div className="flex items-center justify-between">
+                               <Label className="text-[9px] uppercase text-amber-300">⚛ Átomos</Label>
+                               <span className="text-sm font-black text-amber-200">{profile.coins ?? 0}</span>
+                             </div>
+                             <div className="flex gap-1">
+                               {[10, 50, 100, 500].map(v => (
+                                 <Button key={v} size="sm" className="text-[9px] h-6 flex-1 bg-amber-600 hover:bg-amber-500 px-1" onClick={() => grantCoins(profile.id, v)}>+{v}</Button>
+                               ))}
+                               <Button size="sm" variant="outline" className="text-[9px] h-6 px-2 border-red-500/40 text-red-300" onClick={() => grantCoins(profile.id, -(profile.coins ?? 0))}>Zerar</Button>
+                             </div>
+                           </div>
+                         </div>
+                       </div>
+                     ))}
+
                   </div>
                 </CardContent>
               </Card>
