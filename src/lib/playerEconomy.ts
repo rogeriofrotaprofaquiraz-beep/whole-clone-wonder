@@ -119,3 +119,16 @@ export async function equipItem(userId: string, item: AvatarItem) {
 export async function setSkin(userId: string, skin: string) {
   await supabase.from("player_avatars").update({ skin }).eq("user_id", userId);
 }
+
+/** Cobra moedas; admin não paga. Retorna { ok, reason?, admin }. */
+export async function spendCoins(userId: string, amount: number, reason: string) {
+  const admin = await isAdmin(userId);
+  if (admin) return { ok: true, admin: true, charged: 0 };
+  if (amount <= 0) return { ok: true, admin: false, charged: 0 };
+  const w = await loadWallet(userId);
+  if ((w?.coins ?? 0) < amount) {
+    return { ok: false, admin: false, charged: 0, reason: `${COIN_NAME} insuficientes para ${reason} (precisa ${amount}${COIN_SYMBOL})` };
+  }
+  await supabase.from("player_wallet").update({ coins: w.coins - amount }).eq("user_id", userId);
+  return { ok: true, admin: false, charged: amount };
+}
