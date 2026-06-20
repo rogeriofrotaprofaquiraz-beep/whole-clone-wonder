@@ -225,20 +225,21 @@ export function PlayerAvatar() {
               <div className="text-sm">Escolha uma carta e clique em <strong className="text-violet-300">Gerar Avatar IA</strong></div>
             </div>
           )}
-          <Badge className="absolute top-2 right-2 bg-amber-500 text-black flex items-center gap-1">
-            <Coins size={12} />{admin ? 99999 : wallet?.coins ?? 0}
+          <Badge className="absolute top-2 right-2 bg-amber-500 text-black flex items-center gap-1" title={`${COIN_NAME} — moeda do jogo`}>
+            <span className="text-sm leading-none">{COIN_SYMBOL}</span>{admin ? "∞" : wallet?.coins ?? 0}
           </Badge>
         </div>
         <div className="mt-3 flex items-center justify-between gap-2 bg-emerald-950/40 border border-emerald-800 rounded-lg px-3 py-2 text-emerald-300 text-sm">
           <span className="flex items-center gap-2"><Check size={14} /> Avatar desbloqueado</span>
+          <span className="text-xs text-amber-300">Saldo: {admin ? "∞" : wallet?.coins ?? 0}{COIN_SYMBOL} {COIN_NAME}</span>
         </div>
         <div className="mt-3 grid grid-cols-2 gap-2">
           <Button onClick={handleGenerate} disabled={generating} className="bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:opacity-90">
             {generating ? <Loader2 className="animate-spin mr-1" size={16} /> : <Sparkles size={16} className="mr-1" />}
-            Gerar Avatar IA
+            Gerar IA <span className="ml-1 text-xs opacity-80">({admin ? "grátis" : `${COSTS.generateAvatarAI}${COIN_SYMBOL}`})</span>
           </Button>
           <Button variant="outline" onClick={() => fileRef.current?.click()}>
-            <Upload size={16} className="mr-1" /> Upload
+            <Upload size={16} className="mr-1" /> Upload <span className="ml-1 text-xs opacity-70">({admin ? "grátis" : `${COSTS.uploadAvatar}${COIN_SYMBOL}`})</span>
           </Button>
           <input ref={fileRef} type="file" accept="image/*" hidden
                  onChange={(e) => e.target.files?.[0] && handleUploadAvatar(e.target.files[0])} />
