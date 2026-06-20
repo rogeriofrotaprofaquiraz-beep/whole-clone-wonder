@@ -72,12 +72,50 @@ Deno.serve(async (req) => {
       }),
     });
 
+    // Fallback SVG quando os créditos de IA do workspace acabarem ou rate limit
+    const buildFallbackSvg = () => {
+      const bgPalette: Record<string, [string, string]> = {
+        bg_lab: ["#0F172A", "#1E3A8A"],
+        bg_space: ["#7C3AED", "#0F172A"],
+        bg_nature: ["#065F46", "#10B981"],
+        bg_city: ["#1F2937", "#6B7280"],
+        bg_abstract: ["#EC4899", "#F59E0B"],
+      };
+      const bgId = eq.background?.id ?? "bg_lab";
+      const [c1, c2] = bgPalette[bgId] ?? bgPalette.bg_lab;
+      const accEmoji = eq.accessory?.emoji ?? "";
+      const outfitEmoji = eq.outfit?.emoji ?? "";
+      return `<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600" width="400" height="600">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${c1}"/><stop offset="1" stop-color="${c2}"/></linearGradient></defs>
+  <rect width="400" height="600" fill="url(#g)"/>
+  <text x="200" y="240" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="180" fill="#fff" opacity="0.95">${el.symbol}</text>
+  <text x="200" y="300" text-anchor="middle" font-family="Arial,sans-serif" font-size="28" fill="#fff" opacity="0.85">${el.name}</text>
+  <text x="200" y="430" text-anchor="middle" font-size="100">${outfitEmoji}${accEmoji}</text>
+  <text x="200" y="560" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" fill="#fff" opacity="0.7">Avatar offline (sem créditos IA)</text>
+</svg>`;
+    };
+
+    const saveFallback = async (reason: string) => {
+      const svg = buildFallbackSvg();
+      const bytes = new TextEncoder().encode(svg);
+      const path = `${user.id}/${cardSymbol}-fallback-${Date.now()}.svg`;
+      await admin.storage.from("player-avatars").upload(path, bytes, { contentType: "image/svg+xml", upsert: true });
+      const { data: signed } = await admin.storage.from("player-avatars").createSignedUrl(path, 60 * 60 * 24 * 365 * 5);
+      const url = signed?.signedUrl;
+      await admin.from("player_avatars").update({
+        generated_url: url, current_card: cardSymbol, appearance: a,
+      }).eq("user_id", user.id);
+      return json({ url, path, fallback: true, reason });
+    };
+
     if (!aiResp.ok) {
       const text = await aiResp.text();
-      if (aiResp.status === 429) return json({ error: "Limite de requisições. Tente novamente em instantes." }, 429);
-      if (aiResp.status === 402) return json({ error: "Créditos de IA esgotados. Adicione créditos no workspace." }, 402);
+      if (aiResp.status === 402) return await saveFallback("Créditos de IA esgotados — avatar offline gerado.");
+      if (aiResp.status === 429) return await saveFallback("Limite de requisições — avatar offline gerado.");
       return json({ error: "AI error: " + text }, 500);
     }
+
 
     const aiData = await aiResp.json();
     const imageUrl: string | undefined = aiData.choices?.[0]?.message?.images?.[0]?.image_url?.url;
