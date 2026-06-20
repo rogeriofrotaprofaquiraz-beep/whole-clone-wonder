@@ -134,24 +134,30 @@ export function PlayerAvatar() {
   const currentCard = elements.find((e) => e.symbol === avatar.current_card) ?? elements[0];
 
   const handlePhotoFile = async (file: File) => {
+    if (!userId) return;
+    const spend = await spendCoins(userId, COSTS.uploadPhoto, "carregar foto");
+    if (!spend.ok) { toast.error(spend.reason!); return; }
     const reader = new FileReader();
     reader.onload = () => {
       const result = reader.result as string;
       setPhotoBase64(result);
-      toast.success("Foto carregada — clique em Gerar Avatar IA");
+      toast.success(`Foto carregada${spend.charged ? ` (-${spend.charged}${COIN_SYMBOL})` : ""} — clique em Gerar Avatar IA`);
     };
     reader.readAsDataURL(file);
+    setTick((t) => t + 1);
   };
 
   const handleUploadAvatar = async (file: File) => {
     try {
+      const spend = await spendCoins(userId!, COSTS.uploadAvatar, "enviar avatar");
+      if (!spend.ok) { toast.error(spend.reason!); return; }
       const ext = file.name.split(".").pop() || "png";
       const path = `${userId}/upload-${Date.now()}.${ext}`;
       const { error } = await supabase.storage.from("player-avatars").upload(path, file, { contentType: file.type, upsert: true });
       if (error) throw error;
       const { data: signed } = await supabase.storage.from("player-avatars").createSignedUrl(path, 60 * 60 * 24 * 365 * 5);
       await supabase.from("player_avatars").update({ generated_url: signed?.signedUrl }).eq("user_id", userId);
-      toast.success("Avatar enviado!");
+      toast.success(`Avatar enviado!${spend.charged ? ` -${spend.charged}${COIN_SYMBOL}` : ""}`);
       setTick((t) => t + 1);
     } catch (e: unknown) {
       toast.error("Erro no upload: " + errorMessage(e));
@@ -160,6 +166,9 @@ export function PlayerAvatar() {
 
   const handleGenerate = async () => {
     if (!currentCard) return toast.error("Selecione uma carta primeiro");
+    if (!userId) return;
+    const spend = await spendCoins(userId, COSTS.generateAvatarAI, "gerar avatar IA");
+    if (!spend.ok) { toast.error(spend.reason!); return; }
     setGenerating(true);
     try {
       const { data, error } = await supabase.functions.invoke("generate-player-avatar", {
@@ -175,9 +184,14 @@ export function PlayerAvatar() {
       }
       const payload = data as FunctionPayload;
       if (payload?.error) throw new Error(payload.error);
-      toast.success("Avatar gerado!");
+      toast.success(`Avatar gerado!${spend.charged ? ` -${spend.charged}${COIN_SYMBOL} ${COIN_NAME}` : " (admin)"}`);
       setTick((t) => t + 1);
     } catch (e: unknown) {
+      // Reembolsa em caso de falha
+      if (spend.charged > 0) {
+        const w = await loadWallet(userId);
+        await supabase.from("player_wallet").update({ coins: (w?.coins ?? 0) + spend.charged }).eq("user_id", userId);
+      }
       toast.error("Erro: " + errorMessage(e));
     } finally {
       setGenerating(false);
