@@ -238,15 +238,39 @@ export const AdminPanel = ({ userRole, initialSymbol }: { userRole?: string | nu
     const { data: rolesData } = await supabase
       .from('user_roles')
       .select('user_id, role');
+    const { data: walletsData } = await supabase
+      .from('player_wallet')
+      .select('user_id, coins, lifetime_coins');
 
     if (profilesData) {
       const merged = profilesData.map(p => ({
         ...p,
         role: rolesData?.find(r => r.user_id === p.id)?.role ?? 'user',
+        coins: walletsData?.find(w => w.user_id === p.id)?.coins ?? 0,
+        lifetime_coins: walletsData?.find(w => w.user_id === p.id)?.lifetime_coins ?? 0,
       }));
       setProfiles(merged);
     }
   };
+
+  const grantCoins = async (userId: string, amount: number) => {
+    const { data: w } = await supabase.from('player_wallet').select('*').eq('user_id', userId).maybeSingle();
+    if (!w) {
+      await supabase.from('player_wallet').insert({ user_id: userId, coins: Math.max(0, amount), lifetime_coins: Math.max(0, amount) });
+    } else {
+      const newCoins = Math.max(0, (w.coins ?? 0) + amount);
+      const newLifetime = amount > 0 ? (w.lifetime_coins ?? 0) + amount : (w.lifetime_coins ?? 0);
+      await supabase.from('player_wallet').update({ coins: newCoins, lifetime_coins: newLifetime }).eq('user_id', userId);
+    }
+    toast.success(amount > 0 ? `+${amount} ⚛ enviados!` : `${amount} ⚛ removidos`);
+    fetchProfiles();
+  };
+
+  const grantAll = async (amount: number) => {
+    if (!confirm(`Dar ${amount} ⚛ Átomos para TODOS os ${profiles.length} jogadores?`)) return;
+    for (const p of profiles) await grantCoins(p.id, amount);
+  };
+
 
   useEffect(() => {
     if (userRole === 'admin') {
@@ -644,9 +668,11 @@ export const AdminPanel = ({ userRole, initialSymbol }: { userRole?: string | nu
                         onChange={(e) => setSearchTerm(e.target.value)}
                       />
                     </div>
-                    <Button variant="outline" size="sm" onClick={fetchProfiles}>Atualizar</Button>
-                  </div>
-                </CardHeader>
+                     <Button variant="outline" size="sm" onClick={() => grantAll(50)} className="text-amber-300 border-amber-500/40">+50 ⚛ Todos</Button>
+                     <Button variant="outline" size="sm" onClick={fetchProfiles}>Atualizar</Button>
+                   </div>
+                 </CardHeader>
+
                 <CardContent>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {filteredProfiles.map(profile => (
@@ -684,11 +710,24 @@ export const AdminPanel = ({ userRole, initialSymbol }: { userRole?: string | nu
                               >
                                 {r.toUpperCase()}
                               </Button>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    ))}
+                             ))}
+                           </div>
+                           <div className="mt-2 p-2 bg-amber-500/10 border border-amber-500/20 rounded-lg space-y-2">
+                             <div className="flex items-center justify-between">
+                               <Label className="text-[9px] uppercase text-amber-300">⚛ Átomos</Label>
+                               <span className="text-sm font-black text-amber-200">{profile.coins ?? 0}</span>
+                             </div>
+                             <div className="flex gap-1">
+                               {[10, 50, 100, 500].map(v => (
+                                 <Button key={v} size="sm" className="text-[9px] h-6 flex-1 bg-amber-600 hover:bg-amber-500 px-1" onClick={() => grantCoins(profile.id, v)}>+{v}</Button>
+                               ))}
+                               <Button size="sm" variant="outline" className="text-[9px] h-6 px-2 border-red-500/40 text-red-300" onClick={() => grantCoins(profile.id, -(profile.coins ?? 0))}>Zerar</Button>
+                             </div>
+                           </div>
+                         </div>
+                       </div>
+                     ))}
+
                   </div>
                 </CardContent>
               </Card>
