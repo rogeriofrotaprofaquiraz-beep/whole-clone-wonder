@@ -83,30 +83,30 @@ Deno.serve(async (req) => {
 
     if (!aiResp.ok) {
       const text = await aiResp.text();
-      if (aiResp.status === 429) return new Response(JSON.stringify({ error: "Rate limit exceeded, try again later" }), { status: 429, headers: { ...corsHeaders, "Content-Type": "application/json" } });
-      if (aiResp.status === 402) return new Response(JSON.stringify({ error: "AI credits exhausted, please add credits" }), { status: 402, headers: { ...corsHeaders, "Content-Type": "application/json" } });
-      return new Response(JSON.stringify({ error: "AI error: " + text }), { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } });
+      if (aiResp.status === 429) return await saveFallback("Limite de IA atingido — avatar de herói offline criado.");
+      if (aiResp.status === 402) return await saveFallback("Créditos de IA esgotados — avatar de herói offline criado.");
+      return await saveFallback("A IA não retornou imagem agora — avatar de herói offline criado. " + text.slice(0, 160));
     }
 
     const aiData = await aiResp.json();
     const imageUrl: string | undefined = aiData.choices?.[0]?.message?.images?.[0]?.image_url?.url;
-    if (!imageUrl) return new Response(JSON.stringify({ error: "No image returned" }), { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } });
+    if (!imageUrl) return await saveFallback("A IA não retornou imagem agora — avatar de herói offline criado.");
 
     // imageUrl is data URL "data:image/png;base64,..."
     const match = imageUrl.match(/^data:(image\/\w+);base64,(.+)$/);
-    if (!match) return new Response(JSON.stringify({ error: "Invalid image format" }), { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } });
+    if (!match) return await saveFallback("Formato retornado pela IA inválido — avatar de herói offline criado.");
     const mime = match[1];
     const ext = mime.split("/")[1] || "png";
     const bytes = Uint8Array.from(atob(match[2]), c => c.charCodeAt(0));
 
     const path = `${symbol}/${Date.now()}.${ext}`;
     const { error: upErr } = await admin.storage.from("hero-images").upload(path, bytes, { contentType: mime, upsert: true });
-    if (upErr) return new Response(JSON.stringify({ error: "Upload failed: " + upErr.message }), { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } });
+    if (upErr) return json({ error: "Upload failed: " + upErr.message }, 500);
 
     const { data: signed } = await admin.storage.from("hero-images").createSignedUrl(path, 60 * 60 * 24 * 365 * 5);
 
-    return new Response(JSON.stringify({ url: signed?.signedUrl, path }), { headers: { ...corsHeaders, "Content-Type": "application/json" } });
+    return json({ url: signed?.signedUrl, path });
   } catch (e) {
-    return new Response(JSON.stringify({ error: String(e) }), { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } });
+    return json({ error: String(e) }, 500);
   }
 });
