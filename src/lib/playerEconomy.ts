@@ -1,5 +1,18 @@
 import { supabase } from "@/integrations/supabase/client";
 
+/** Nome e símbolo da moeda do jogo. */
+export const COIN_NAME = "Átomos";
+export const COIN_NAME_SINGULAR = "Átomo";
+export const COIN_SYMBOL = "⚛";
+
+/** Custos das ações de personalização (em Átomos). Admin paga 0. */
+export const COSTS = {
+  generateAvatarAI: 50,   // Gerar avatar com IA
+  changeAppearance: 5,    // Cada alteração de gênero/corpo/pele/cabelo
+  uploadPhoto: 10,        // Upload de foto de referência
+  uploadAvatar: 20,       // Upload direto de imagem como avatar
+} as const;
+
 export type AvatarItem = {
   id: string;
   slot: "hat" | "glasses" | "outfit" | "background" | "accessory";
