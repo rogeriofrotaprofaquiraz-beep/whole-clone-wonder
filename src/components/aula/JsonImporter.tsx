@@ -105,6 +105,7 @@ function normTerm(t: any, userId: string) {
 
 export function JsonImporter({ onImported }: { onImported?: () => void }) {
   const [detected, setDetected] = useState<Detected | null>(null);
+  const [schemaJson, setSchemaJson] = useState<any | null>(null);
   const [loading, setLoading] = useState(false);
   const [fileName, setFileName] = useState("");
 
@@ -116,29 +117,30 @@ export function JsonImporter({ onImported }: { onImported?: () => void }) {
       const schemaOnly = isSchemaOnly(json);
       const d = detect(json);
       setDetected(d);
+      setSchemaJson(schemaOnly ? json : null);
       if (schemaOnly) {
-        toast.warning(
-          "JSON de estrutura detectado (sem dados). Você pode importar mesmo assim, mas nada será inserido."
+        toast.success(
+          `Estrutura Base44 detectada: ${json.pages?.length ?? 0} páginas, ${json.entities?.length ?? 0} entidades`
         );
       }
       const total = d.elements.length + d.questions.length + d.terms.length;
       if (!total && !schemaOnly) toast.error("Nenhum dado reconhecido no JSON");
       else if (total) toast.success(`Detectado: ${d.elements.length} elementos, ${d.questions.length} questões, ${d.terms.length} termos`);
     } catch (e: any) {
-
       toast.error("JSON inválido: " + e.message);
       setDetected(null);
+      setSchemaJson(null);
     }
   };
 
   const doImport = async () => {
-    if (!detected) return;
+    if (!detected && !schemaJson) return;
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return toast.error("Faça login");
     setLoading(true);
     try {
       let total = 0;
-      if (detected.elements.length) {
+      if (detected?.elements.length) {
         const rows = detected.elements.map(normElement).filter((e) => e.symbol && e.number);
         const { error } = await supabase
           .from("elements")
@@ -146,7 +148,7 @@ export function JsonImporter({ onImported }: { onImported?: () => void }) {
         if (error) throw error;
         total += rows.length;
       }
-      if (detected.questions.length) {
+      if (detected?.questions.length) {
         const rows = detected.questions
           .map((q) => normQuestion(q, user.id))
           .filter((q) => q.question && q.options.length >= 2);
@@ -154,7 +156,7 @@ export function JsonImporter({ onImported }: { onImported?: () => void }) {
         if (error) throw error;
         total += rows.length;
       }
-      if (detected.terms.length) {
+      if (detected?.terms.length) {
         const rows = detected.terms
           .map((t) => normTerm(t, user.id))
           .filter((t) => t.term.length >= 3 && t.term.length <= 16 && t.clue);
@@ -162,8 +164,25 @@ export function JsonImporter({ onImported }: { onImported?: () => void }) {
         if (error) throw error;
         total += rows.length;
       }
+      if (schemaJson) {
+        const { error } = await supabase.from("app_blueprints").insert({
+          user_id: user.id,
+          app_name: schemaJson.app_name ?? null,
+          version: schemaJson.version ?? null,
+          exported_at: schemaJson.exported_at ?? null,
+          pages: schemaJson.pages ?? [],
+          entities: schemaJson.entities ?? [],
+          raw: schemaJson,
+        });
+        if (error) throw error;
+        total += (schemaJson.pages?.length ?? 0) + (schemaJson.entities?.length ?? 0);
+        toast.success(
+          `Estrutura salva: ${schemaJson.pages?.length ?? 0} páginas + ${schemaJson.entities?.length ?? 0} entidades`
+        );
+      }
       toast.success(`${total} registros importados`);
       setDetected(null);
+      setSchemaJson(null);
       setFileName("");
       onImported?.();
     } catch (e: any) {
