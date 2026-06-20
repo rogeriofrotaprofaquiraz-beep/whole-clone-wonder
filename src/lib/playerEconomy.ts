@@ -2,7 +2,7 @@ import { supabase } from "@/integrations/supabase/client";
 
 export type AvatarItem = {
   id: string;
-  slot: "hat" | "glasses" | "outfit" | "background";
+  slot: "hat" | "glasses" | "outfit" | "background" | "accessory";
   name: string;
   emoji: string;
   price: number;
@@ -11,26 +11,35 @@ export type AvatarItem = {
 export const SKIN_TONES = ["F2C9A0", "E8B58A", "C68863", "8D5524", "FFE0BD"];
 
 export const SHOP_ITEMS: AvatarItem[] = [
-  { id: "hat_grad", slot: "hat", name: "Chapéu de formando", emoji: "🎓", price: 30 },
-  { id: "hat_crown", slot: "hat", name: "Coroa", emoji: "👑", price: 120 },
-  { id: "hat_lab", slot: "hat", name: "Capacete", emoji: "👷", price: 50 },
-  { id: "glasses_nerd", slot: "glasses", name: "Óculos de Nerd", emoji: "🤓", price: 25 },
-  { id: "glasses_sun", slot: "glasses", name: "Óculos Escuros", emoji: "🕶️", price: 40 },
-  { id: "glasses_vr", slot: "glasses", name: "Óculos de Realidade Virtual", emoji: "🥽", price: 80 },
-  { id: "outfit_lab", slot: "outfit", name: "Jaleco", emoji: "🥼", price: 40 },
-  { id: "outfit_tie", slot: "outfit", name: "Gravata", emoji: "👔", price: 30 },
-  { id: "outfit_medal", slot: "outfit", name: "Medalha", emoji: "🏅", price: 60 },
-  { id: "bg_violet", slot: "background", name: "Fundo Roxo", emoji: "🟣", price: 0 },
-  { id: "bg_emerald", slot: "background", name: "Fundo Verde", emoji: "🟢", price: 20 },
-  { id: "bg_amber", slot: "background", name: "Fundo Âmbar", emoji: "🟠", price: 20 },
-  { id: "bg_galaxy", slot: "background", name: "Galáxia", emoji: "🌌", price: 100 },
+  // Roupa (outfit) - estilos
+  { id: "outfit_casual", slot: "outfit", name: "Casual", emoji: "👕", price: 0 },
+  { id: "outfit_cientista", slot: "outfit", name: "Cientista", emoji: "🥼", price: 40 },
+  { id: "outfit_heroi", slot: "outfit", name: "Herói", emoji: "🦸", price: 80 },
+  { id: "outfit_futurista", slot: "outfit", name: "Futurista", emoji: "🤖", price: 100 },
+  { id: "outfit_formal", slot: "outfit", name: "Formal", emoji: "👔", price: 50 },
+  // Cenário (background)
+  { id: "bg_lab", slot: "background", name: "Laboratório", emoji: "🧪", price: 0 },
+  { id: "bg_space", slot: "background", name: "Espaço", emoji: "🌌", price: 60 },
+  { id: "bg_nature", slot: "background", name: "Natureza", emoji: "🌳", price: 40 },
+  { id: "bg_city", slot: "background", name: "Cidade", emoji: "🏙️", price: 40 },
+  { id: "bg_abstract", slot: "background", name: "Abstrato", emoji: "🎨", price: 30 },
+  // Extras (acessórios)
+  { id: "acc_oculos", slot: "accessory", name: "Óculos", emoji: "👓", price: 40 },
+  { id: "acc_oculos_protecao", slot: "accessory", name: "Óculos de Proteção", emoji: "🥽", price: 60 },
+  { id: "acc_jaleco", slot: "accessory", name: "Jaleco", emoji: "🥼", price: 80 },
+  { id: "acc_luvas", slot: "accessory", name: "Luvas", emoji: "🧤", price: 30 },
+  { id: "acc_capa", slot: "accessory", name: "Capa de Herói", emoji: "🦸‍♂️", price: 150 },
+  { id: "acc_capacete", slot: "accessory", name: "Capacete", emoji: "⛑️", price: 120 },
+  { id: "acc_mascara", slot: "accessory", name: "Máscara", emoji: "🎭", price: 100 },
+  { id: "acc_mochila", slot: "accessory", name: "Mochila", emoji: "🎒", price: 70 },
 ];
 
 export const BG_STYLES: Record<string, string> = {
-  bg_violet: "linear-gradient(135deg,#4C1D95,#7C3AED)",
-  bg_emerald: "linear-gradient(135deg,#065F46,#10B981)",
-  bg_amber: "linear-gradient(135deg,#92400E,#F59E0B)",
-  bg_galaxy: "radial-gradient(circle at 30% 30%,#7C3AED,#0F172A 70%)",
+  bg_lab: "linear-gradient(135deg,#0F172A,#1E3A8A)",
+  bg_space: "radial-gradient(circle at 30% 30%,#7C3AED,#0F172A 70%)",
+  bg_nature: "linear-gradient(135deg,#065F46,#10B981)",
+  bg_city: "linear-gradient(135deg,#1F2937,#6B7280)",
+  bg_abstract: "linear-gradient(135deg,#EC4899,#F59E0B)",
 };
 
 /** Moedas por acerto: dificuldade × bônus de tempo (mesma curva do score). */
@@ -63,7 +72,7 @@ export async function loadAvatar(userId: string) {
   if (data) return data as any;
   const { data: created } = await supabase
     .from("player_avatars")
-    .insert({ user_id: userId, equipped: { background: "bg_violet" }, unlocked: ["bg_violet"] })
+    .insert({ user_id: userId, equipped: { background: "bg_lab", outfit: "outfit_casual" }, unlocked: ["bg_lab", "outfit_casual"] })
     .select().single();
   return created as any;
 }
