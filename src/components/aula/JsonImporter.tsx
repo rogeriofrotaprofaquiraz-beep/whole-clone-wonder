@@ -105,6 +105,7 @@ function normTerm(t: any, userId: string) {
 
 export function JsonImporter({ onImported }: { onImported?: () => void }) {
   const [detected, setDetected] = useState<Detected | null>(null);
+  const [schemaJson, setSchemaJson] = useState<any | null>(null);
   const [loading, setLoading] = useState(false);
   const [fileName, setFileName] = useState("");
 
@@ -116,29 +117,30 @@ export function JsonImporter({ onImported }: { onImported?: () => void }) {
       const schemaOnly = isSchemaOnly(json);
       const d = detect(json);
       setDetected(d);
+      setSchemaJson(schemaOnly ? json : null);
       if (schemaOnly) {
-        toast.warning(
-          "JSON de estrutura detectado (sem dados). Você pode importar mesmo assim, mas nada será inserido."
+        toast.success(
+          `Estrutura Base44 detectada: ${json.pages?.length ?? 0} páginas, ${json.entities?.length ?? 0} entidades`
         );
       }
       const total = d.elements.length + d.questions.length + d.terms.length;
       if (!total && !schemaOnly) toast.error("Nenhum dado reconhecido no JSON");
       else if (total) toast.success(`Detectado: ${d.elements.length} elementos, ${d.questions.length} questões, ${d.terms.length} termos`);
     } catch (e: any) {
-
       toast.error("JSON inválido: " + e.message);
       setDetected(null);
+      setSchemaJson(null);
     }
   };
 
   const doImport = async () => {
-    if (!detected) return;
+    if (!detected && !schemaJson) return;
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return toast.error("Faça login");
     setLoading(true);
     try {
       let total = 0;
-      if (detected.elements.length) {
+      if (detected?.elements.length) {
         const rows = detected.elements.map(normElement).filter((e) => e.symbol && e.number);
         const { error } = await supabase
           .from("elements")
@@ -146,7 +148,7 @@ export function JsonImporter({ onImported }: { onImported?: () => void }) {
         if (error) throw error;
         total += rows.length;
       }
-      if (detected.questions.length) {
+      if (detected?.questions.length) {
         const rows = detected.questions
           .map((q) => normQuestion(q, user.id))
           .filter((q) => q.question && q.options.length >= 2);
@@ -154,7 +156,7 @@ export function JsonImporter({ onImported }: { onImported?: () => void }) {
         if (error) throw error;
         total += rows.length;
       }
-      if (detected.terms.length) {
+      if (detected?.terms.length) {
         const rows = detected.terms
           .map((t) => normTerm(t, user.id))
           .filter((t) => t.term.length >= 3 && t.term.length <= 16 && t.clue);
@@ -162,8 +164,25 @@ export function JsonImporter({ onImported }: { onImported?: () => void }) {
         if (error) throw error;
         total += rows.length;
       }
+      if (schemaJson) {
+        const { error } = await supabase.from("app_blueprints").insert({
+          user_id: user.id,
+          app_name: schemaJson.app_name ?? null,
+          version: schemaJson.version ?? null,
+          exported_at: schemaJson.exported_at ?? null,
+          pages: schemaJson.pages ?? [],
+          entities: schemaJson.entities ?? [],
+          raw: schemaJson,
+        });
+        if (error) throw error;
+        total += (schemaJson.pages?.length ?? 0) + (schemaJson.entities?.length ?? 0);
+        toast.success(
+          `Estrutura salva: ${schemaJson.pages?.length ?? 0} páginas + ${schemaJson.entities?.length ?? 0} entidades`
+        );
+      }
       toast.success(`${total} registros importados`);
       setDetected(null);
+      setSchemaJson(null);
       setFileName("");
       onImported?.();
     } catch (e: any) {
@@ -189,13 +208,19 @@ export function JsonImporter({ onImported }: { onImported?: () => void }) {
         onChange={(e) => e.target.files?.[0] && handleFile(e.target.files[0])}
         className="max-w-md"
       />
-      {detected && (
+      {(detected || schemaJson) && (
         <div className="mt-4 space-y-2">
           <div className="flex flex-wrap gap-2">
             {fileName && <Badge variant="outline">{fileName}</Badge>}
-            <Badge>Elementos: {detected.elements.length}</Badge>
-            <Badge>Questões: {detected.questions.length}</Badge>
-            <Badge>Termos: {detected.terms.length}</Badge>
+            {detected && <Badge>Elementos: {detected.elements.length}</Badge>}
+            {detected && <Badge>Questões: {detected.questions.length}</Badge>}
+            {detected && <Badge>Termos: {detected.terms.length}</Badge>}
+            {schemaJson && (
+              <>
+                <Badge className="bg-[#4C1D95]">Páginas: {schemaJson.pages?.length ?? 0}</Badge>
+                <Badge className="bg-[#7C3AED]">Entidades: {schemaJson.entities?.length ?? 0}</Badge>
+              </>
+            )}
           </div>
           <Button
             onClick={doImport}

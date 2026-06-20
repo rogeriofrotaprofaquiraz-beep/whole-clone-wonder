@@ -56,6 +56,42 @@ export type Database = {
           },
         ]
       }
+      app_blueprints: {
+        Row: {
+          app_name: string | null
+          created_at: string
+          entities: Json
+          exported_at: string | null
+          id: string
+          pages: Json
+          raw: Json | null
+          user_id: string
+          version: string | null
+        }
+        Insert: {
+          app_name?: string | null
+          created_at?: string
+          entities?: Json
+          exported_at?: string | null
+          id?: string
+          pages?: Json
+          raw?: Json | null
+          user_id: string
+          version?: string | null
+        }
+        Update: {
+          app_name?: string | null
+          created_at?: string
+          entities?: Json
+          exported_at?: string | null
+          id?: string
+          pages?: Json
+          raw?: Json | null
+          user_id?: string
+          version?: string | null
+        }
+        Relationships: []
+      }
       chem_questions: {
         Row: {
           answer_text: string | null
