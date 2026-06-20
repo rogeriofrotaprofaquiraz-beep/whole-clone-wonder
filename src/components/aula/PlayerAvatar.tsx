@@ -188,9 +188,13 @@ export function PlayerAvatar() {
         }
         throw error;
       }
-      const payload = data as FunctionPayload;
+      const payload = data as FunctionPayload & { fallback?: boolean; reason?: string };
       if (payload?.error) throw new Error(payload.error);
-      toast.success(`Avatar gerado!${spend.charged ? ` -${spend.charged}${COIN_SYMBOL} ${COIN_NAME}` : " (admin)"}`);
+      if (payload?.fallback) {
+        toast.warning(payload.reason ?? "Avatar offline gerado (sem créditos de IA).");
+      } else {
+        toast.success(`Avatar gerado!${spend.charged ? ` -${spend.charged}${COIN_SYMBOL} ${COIN_NAME}` : " (admin)"}`);
+      }
       setTick((t) => t + 1);
     } catch (e: unknown) {
       // Reembolsa em caso de falha
