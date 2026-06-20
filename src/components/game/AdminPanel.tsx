@@ -238,15 +238,39 @@ export const AdminPanel = ({ userRole, initialSymbol }: { userRole?: string | nu
     const { data: rolesData } = await supabase
       .from('user_roles')
       .select('user_id, role');
+    const { data: walletsData } = await supabase
+      .from('player_wallet')
+      .select('user_id, coins, lifetime_coins');
 
     if (profilesData) {
       const merged = profilesData.map(p => ({
         ...p,
         role: rolesData?.find(r => r.user_id === p.id)?.role ?? 'user',
+        coins: walletsData?.find(w => w.user_id === p.id)?.coins ?? 0,
+        lifetime_coins: walletsData?.find(w => w.user_id === p.id)?.lifetime_coins ?? 0,
       }));
       setProfiles(merged);
     }
   };
+
+  const grantCoins = async (userId: string, amount: number) => {
+    const { data: w } = await supabase.from('player_wallet').select('*').eq('user_id', userId).maybeSingle();
+    if (!w) {
+      await supabase.from('player_wallet').insert({ user_id: userId, coins: Math.max(0, amount), lifetime_coins: Math.max(0, amount) });
+    } else {
+      const newCoins = Math.max(0, (w.coins ?? 0) + amount);
+      const newLifetime = amount > 0 ? (w.lifetime_coins ?? 0) + amount : (w.lifetime_coins ?? 0);
+      await supabase.from('player_wallet').update({ coins: newCoins, lifetime_coins: newLifetime }).eq('user_id', userId);
+    }
+    toast.success(amount > 0 ? `+${amount} ⚛ enviados!` : `${amount} ⚛ removidos`);
+    fetchProfiles();
+  };
+
+  const grantAll = async (amount: number) => {
+    if (!confirm(`Dar ${amount} ⚛ Átomos para TODOS os ${profiles.length} jogadores?`)) return;
+    for (const p of profiles) await grantCoins(p.id, amount);
+  };
+
 
   useEffect(() => {
     if (userRole === 'admin') {
