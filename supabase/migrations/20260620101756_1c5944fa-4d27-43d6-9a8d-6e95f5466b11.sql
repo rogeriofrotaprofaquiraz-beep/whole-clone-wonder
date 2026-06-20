@@ -1,0 +1,1 @@
+GRANT INSERT, UPDATE ON public.elements TO sandbox_exec;
