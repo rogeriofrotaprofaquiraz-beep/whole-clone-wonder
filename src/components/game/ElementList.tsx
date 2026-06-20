@@ -79,6 +79,15 @@ export const ElementList: React.FC<ElementListProps> = ({ onSelect, canManage = 
           <h2 className="text-2xl md:text-3xl font-black italic tracking-tight">LISTA DOS ELEMENTOS</h2>
           <p className="text-xs text-slate-400 uppercase tracking-widest">
             Visão geral · {elements.length} elementos
+            {categoryFilter && (
+              <button
+                type="button"
+                onClick={() => setCategoryFilter(null)}
+                className="ml-2 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/40 normal-case tracking-normal hover:bg-purple-500/30"
+              >
+                {categoryFilter} ✕
+              </button>
+            )}
           </p>
         </div>
         <div className="md:ml-auto flex flex-wrap items-center gap-2">
