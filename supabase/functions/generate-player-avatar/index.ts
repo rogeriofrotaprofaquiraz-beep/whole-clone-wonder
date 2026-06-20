@@ -23,7 +23,7 @@ Deno.serve(async (req) => {
 
     const admin = createClient(supabaseUrl, serviceKey);
 
-    const { cardSymbol, appearance, photoBase64 } = await req.json();
+    const { cardSymbol, appearance, photoBase64, equipped } = await req.json();
     if (!cardSymbol) return json({ error: "cardSymbol required" }, 400);
 
     const { data: el } = await admin.from("elements")
@@ -38,16 +38,22 @@ Deno.serve(async (req) => {
     const hairStyle = a.hairStyle ?? "curto";
     const hairColor = a.hairColor ?? "castanho";
 
+    const eq = equipped ?? {};
+    const outfitDesc = eq.outfit ? `Roupa estilo ${eq.outfit.name}` : "";
+    const bgDesc = eq.background ? `Cenário: ${eq.background.name}` : "";
+    const accDesc = eq.accessory ? `Acessório: ${eq.accessory.name}` : "";
+
     const cat = (el.attributes as any)?.category ?? "";
     const prompt = [
       `Retrato vertical estilo carta colecionável, proporção 2:3, realismo cinematográfico ultra detalhado, 8k.`,
-      `CORPO INTEIRO de um(a) super-herói ${gender} representando o elemento químico "${el.name}" (símbolo ${el.symbol}). Mostrar dos pés à cabeça, sem cortes, com margens superior e inferior confortáveis.`,
+      `CORPO INTEIRO de um(a) super-herói ${gender} representando o elemento químico "${el.name}" (símbolo ${el.symbol}). Mostrar dos pés à cabeça, sem cortes.`,
       `Tipo de corpo ${body}, pele ${skin}, cabelo ${hairStyle} cor ${hairColor}.`,
+      outfitDesc, accDesc,
       `Câmera full body, composição centrada, leve ângulo baixo heroico, foco nítido no personagem.`,
-      `Traje futurista com textura e cores fiéis à aparência natural do elemento (${cat}). Emblema luminoso "${el.symbol}" no centro do peito. Capa translúcida com luz colorida suave e bordas luminosas.`,
-      `Cenário: ambiente de origem natural do elemento, realismo cinematográfico, iluminação frontal forte e harmoniosa.`,
-      `Estilo: realismo fantástico, profundidade de campo curta, sem texto, sem marca d'água, sem bordas, sem cortes.`,
-      photoBase64 ? `Use o rosto da foto de referência como base para os traços faciais do herói, mantendo semelhança realista.` : "",
+      `Traje com textura e cores fiéis à aparência natural do elemento (${cat}). Emblema luminoso "${el.symbol}" no centro do peito.`,
+      bgDesc || `Cenário: ambiente de origem natural do elemento.`,
+      `Estilo: realismo fantástico, sem texto, sem marca d'água, sem bordas.`,
+      photoBase64 ? `Use o rosto da foto de referência como base para os traços faciais, mantendo semelhança realista.` : "",
     ].filter(Boolean).join(" ");
 
     const content: any[] = [{ type: "text", text: prompt }];
