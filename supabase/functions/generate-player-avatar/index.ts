@@ -120,9 +120,9 @@ Deno.serve(async (req) => {
 
     if (!aiResp.ok) {
       const text = await aiResp.text();
-      if (aiResp.status === 402) return await saveFallback("Créditos de IA esgotados — avatar offline gerado.");
-      if (aiResp.status === 429) return await saveFallback("Limite de requisições — avatar offline gerado.");
-      return json({ error: "AI error: " + text }, 500);
+      if (aiResp.status === 402) return await saveFallback("Avatar criado sem gastar Átomos.");
+      if (aiResp.status === 429) return await saveFallback("Avatar criado sem gastar Átomos.");
+      return await saveFallback("Avatar criado sem gastar Átomos.");
     }
 
 
