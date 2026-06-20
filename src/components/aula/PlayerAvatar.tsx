@@ -182,12 +182,12 @@ export function PlayerAvatar() {
 
   const unlocked: string[] = avatar.unlocked ?? [];
   const eq = avatar.equipped ?? {};
-  const handleShopAction = async (item: AvatarItem) => {
+  const handleShopAction = async (item: AvatarItem): Promise<void> => {
     if (unlocked.includes(item.id)) {
       await equipItem(userId, item);
     } else {
       const r = await buyItem(userId, item);
-      if (!r.ok) return toast.error(r.reason!);
+      if (!r.ok) { toast.error(r.reason!); return; }
       await equipItem(userId, item);
       toast.success(`${item.emoji} ${item.name} desbloqueado${r.admin ? " (modo administrador)" : ""}!`);
     }
