@@ -122,7 +122,7 @@ export function JsonImporter({ onImported }: { onImported?: () => void }) {
         const rows = detected.elements.map(normElement).filter((e) => e.symbol && e.number);
         const { error } = await supabase
           .from("elements")
-          .upsert(rows, { onConflict: "number" });
+          .upsert(rows, { onConflict: "symbol" });
         if (error) throw error;
         total += rows.length;
       }
@@ -138,9 +138,7 @@ export function JsonImporter({ onImported }: { onImported?: () => void }) {
         const rows = detected.terms
           .map((t) => normTerm(t, user.id))
           .filter((t) => t.term.length >= 3 && t.term.length <= 16 && t.clue);
-        const { error } = await supabase
-          .from("chem_terms")
-          .upsert(rows, { onConflict: "area,term", ignoreDuplicates: true });
+        const { error } = await supabase.from("chem_terms").insert(rows);
         if (error) throw error;
         total += rows.length;
       }
