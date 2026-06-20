@@ -126,11 +126,17 @@ export const AdminPanel = ({ userRole, initialSymbol }: { userRole?: string | nu
     setGenerating(true);
     try {
       const { data, error } = await supabase.functions.invoke('generate-hero-image', {
-        body: { prompt: buildHeroPrompt(formData), symbol: formData.symbol },
+        body: {
+          prompt: buildHeroPrompt(formData),
+          symbol: formData.symbol,
+          name: formData.name,
+          heroName: formData.heroName,
+          rarity: formData.rarity,
+        },
       });
       if (error || (data as any)?.error) throw new Error(error?.message || (data as any).error);
       handleInputChange('heroImage', (data as any).url);
-      toast.success("Imagem de herói gerada pela IA!");
+      toast.success((data as any)?.fallback ? "Avatar de herói criado e salvo!" : "Imagem de herói gerada pela IA!");
     } catch (e: any) {
       toast.error("Erro ao gerar imagem: " + e.message);
     } finally {
