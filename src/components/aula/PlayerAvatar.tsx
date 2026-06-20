@@ -227,29 +227,106 @@ export function PlayerAvatar() {
         </div>
       </Card>
 
-      {/* TABS */}
+      {/* WIZARD */}
       <Card className="p-3 bg-slate-900/60 border-slate-700">
-        <Tabs defaultValue="cartas">
-          <TabsList className="grid grid-cols-4 w-full bg-slate-800">
-            <TabsTrigger value="cartas"><Zap size={14} className="mr-1 text-amber-400" />Cartas</TabsTrigger>
-            <TabsTrigger value="aparencia">Aparência</TabsTrigger>
-            <TabsTrigger value="roupa"><ShoppingBag size={14} className="mr-1" />Roupa</TabsTrigger>
-            <TabsTrigger value="extras">Extras</TabsTrigger>
-          </TabsList>
+        <Wizard
+          userId={userId}
+          avatar={avatar}
+          appearance={appearance}
+          updateAppearance={updateAppearance}
+          elements={elements}
+          currentCard={currentCard}
+          photoBase64={photoBase64}
+          photoRef={photoRef}
+          handlePhotoFile={handlePhotoFile}
+          setTick={setTick}
+          unlocked={unlocked}
+          eq={eq}
+          wallet={wallet}
+          admin={admin}
+          handleShopAction={handleShopAction}
+        />
+      </Card>
+    </div>
+  );
+}
 
-          {/* CARTAS */}
-          <TabsContent value="cartas" className="mt-3">
+type WizardProps = {
+  userId: string;
+  avatar: AvatarState;
+  appearance: Appearance;
+  updateAppearance: (p: Appearance) => void;
+  elements: Element[];
+  currentCard?: Element;
+  photoBase64: string | null;
+  photoRef: React.RefObject<HTMLInputElement>;
+  handlePhotoFile: (f: File) => Promise<void>;
+  setTick: React.Dispatch<React.SetStateAction<number>>;
+  unlocked: string[];
+  eq: Partial<Record<AvatarItem["slot"], string>>;
+  wallet: WalletState | null;
+  admin: boolean;
+  handleShopAction: (item: AvatarItem) => Promise<void>;
+};
+
+const STEPS = [
+  { id: "cartas", label: "Cartas", icon: Zap },
+  { id: "aparencia", label: "Aparência", icon: User },
+  { id: "roupa", label: "Roupa", icon: Shirt },
+  { id: "extras", label: "Extras", icon: Backpack },
+] as const;
+
+function Wizard(p: WizardProps) {
+  const [step, setStep] = useState(0);
+  const StepIcon = STEPS[step].icon;
+
+  return (
+    <div>
+      {/* Stepper header */}
+      <div className="flex items-center justify-between gap-1 mb-3">
+        {STEPS.map((s, i) => {
+          const active = i === step;
+          const done = i < step;
+          const Icon = s.icon;
+          return (
+            <button
+              key={s.id}
+              onClick={() => setStep(i)}
+              className={`flex-1 flex flex-col items-center gap-1 py-2 rounded-lg border-2 transition ${
+                active
+                  ? "border-violet-400 bg-violet-600/30 text-white"
+                  : done
+                  ? "border-emerald-600 bg-emerald-900/30 text-emerald-300"
+                  : "border-slate-700 bg-slate-800/40 text-slate-400 hover:border-slate-500"
+              }`}
+            >
+              <div className="flex items-center gap-1 text-[10px] font-bold uppercase">
+                <span className={`w-4 h-4 rounded-full flex items-center justify-center text-[9px] ${active ? "bg-violet-500 text-white" : done ? "bg-emerald-500 text-black" : "bg-slate-700"}`}>
+                  {done ? <Check size={10} /> : i + 1}
+                </span>
+                <Icon size={12} />
+              </div>
+              <span className="text-xs font-semibold">{s.label}</span>
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Step content */}
+      <div className="min-h-[440px]">
+        {step === 0 && (
+          <div>
             <div className="text-center mb-2">
-              <div className="font-bold text-white">Selecione sua carta de inspiração</div>
+              <div className="font-bold text-white flex items-center justify-center gap-1"><StepIcon size={14} className="text-amber-400" />Selecione sua carta de inspiração</div>
               <div className="text-xs text-slate-400">A IA gerará seu avatar no estilo do herói elemental</div>
             </div>
-            <ScrollArea className="h-[420px] pr-2">
+            <ScrollArea className="h-[400px] pr-2">
               <div className="grid grid-cols-2 gap-3">
-                {elements.map((e) => {
-                  const active = avatar.current_card === e.symbol;
+                {p.elements.map((e) => {
+                  const active = p.avatar.current_card === e.symbol;
                   return (
                     <button key={e.symbol}
-                      onClick={() => { supabase.from("player_avatars").update({ current_card: e.symbol }).eq("user_id", userId).then(() => setTick((t) => t + 1)); }}
+                      onClick={() => { supabase.from("player_avatars").update({ current_card: e.symbol }).eq("user_id", p.userId).then(() => p.setTick((t) => t + 1)); }}
                       className={`relative rounded-xl border-2 overflow-hidden bg-slate-950 transition ${active ? "border-emerald-400 ring-2 ring-emerald-500/50" : "border-slate-700 hover:border-slate-500"}`}>
                       <div className="absolute top-1 left-1 z-10 bg-black/60 rounded px-1.5 py-0.5 text-xs font-bold text-white">{e.symbol}</div>
                       {active && <div className="absolute top-1 right-1 z-10 bg-emerald-500 rounded-full p-0.5"><Check size={12} className="text-black" /></div>}
@@ -266,95 +343,114 @@ export function PlayerAvatar() {
                 })}
               </div>
             </ScrollArea>
-            {currentCard && (
+            {p.currentCard && (
               <div className="mt-3 rounded-lg bg-violet-950/40 border border-violet-800 px-3 py-2 text-sm text-violet-200">
-                ✨ Avatar será gerado no estilo de <strong>{currentCard.hero_name || currentCard.name}</strong>
-                <div className="text-xs text-violet-300/80">Clique em "Gerar Avatar IA" para aplicar</div>
+                ✨ Avatar será gerado no estilo de <strong>{p.currentCard.hero_name || p.currentCard.name}</strong>
               </div>
             )}
-          </TabsContent>
+          </div>
+        )}
 
-          {/* APARÊNCIA */}
-          <TabsContent value="aparencia" className="mt-3">
-            <ScrollArea className="h-[480px] pr-2">
-              <div className="space-y-4">
-                <div className="rounded-lg border border-slate-700 bg-slate-950 p-3">
-                  <Label className="text-sm text-white">Sua Foto (Opcional)</Label>
-                  <div className="grid grid-cols-2 gap-2 mt-2">
-                    <Input readOnly value={photoBase64 ? "Foto carregada ✓" : ""} placeholder="Nenhuma foto" className="bg-white text-slate-900" />
-                    <Button variant="outline" onClick={() => photoRef.current?.click()}>
-                      <Upload size={14} className="mr-1" />Escolher
-                    </Button>
-                    <input ref={photoRef} type="file" accept="image/*" hidden
-                           onChange={(e) => e.target.files?.[0] && handlePhotoFile(e.target.files[0])} />
-                  </div>
-                  <div className="text-xs text-slate-400 mt-1">Use sua foto para criar um avatar personalizado</div>
-                </div>
-
-                <div>
-                  <Label className="text-sm text-white block mb-2">Gênero</Label>
-                  <PickGrid value={appearance.gender ?? "masculino"} onChange={(v) => updateAppearance({ gender: v })} options={GENDERS} />
-                </div>
-                <div>
-                  <Label className="text-sm text-white block mb-2">Tipo de Corpo</Label>
-                  <PickGrid value={appearance.body ?? "normal"} onChange={(v) => updateAppearance({ body: v })} options={BODIES} />
-                </div>
-                <div>
-                  <Label className="text-sm text-white block mb-2">Tom de Pele</Label>
-                  <PickGrid value={appearance.skin ?? "clara"} onChange={(v) => updateAppearance({ skin: v })} options={SKINS} />
-                </div>
-                <div>
-                  <Label className="text-sm text-white block mb-2">Estilo de Cabelo</Label>
-                  <PickGrid value={appearance.hairStyle ?? "curto"} onChange={(v) => updateAppearance({ hairStyle: v })} options={HAIR_STYLES} />
-                </div>
-                <div>
-                  <Label className="text-sm text-white block mb-2">Cor do Cabelo</Label>
-                  <PickGrid value={appearance.hairColor ?? "castanho"} onChange={(v) => updateAppearance({ hairColor: v })} options={HAIR_COLORS} />
+        {step === 1 && (
+          <ScrollArea className="h-[440px] pr-2">
+            <div className="space-y-4">
+              <div className="rounded-lg border border-slate-700 bg-slate-950 p-3">
+                <Label className="text-sm text-white">Sua Foto (Opcional)</Label>
+                <div className="grid grid-cols-2 gap-2 mt-2">
+                  <Input readOnly value={p.photoBase64 ? "Foto carregada ✓" : ""} placeholder="Nenhuma foto" className="bg-white text-slate-900" />
+                  <Button variant="outline" onClick={() => p.photoRef.current?.click()}>
+                    <Upload size={14} className="mr-1" />Escolher
+                  </Button>
+                  <input ref={p.photoRef} type="file" accept="image/*" hidden
+                         onChange={(e) => e.target.files?.[0] && p.handlePhotoFile(e.target.files[0])} />
                 </div>
               </div>
-            </ScrollArea>
-          </TabsContent>
+              <div><Label className="text-sm text-white block mb-2">Gênero</Label>
+                <PickGrid value={p.appearance.gender ?? "masculino"} onChange={(v) => p.updateAppearance({ gender: v })} options={GENDERS} /></div>
+              <div><Label className="text-sm text-white block mb-2">Tipo de Corpo</Label>
+                <PickGrid value={p.appearance.body ?? "normal"} onChange={(v) => p.updateAppearance({ body: v })} options={BODIES} /></div>
+              <div><Label className="text-sm text-white block mb-2">Tom de Pele</Label>
+                <PickGrid value={p.appearance.skin ?? "clara"} onChange={(v) => p.updateAppearance({ skin: v })} options={SKINS} /></div>
+              <div><Label className="text-sm text-white block mb-2">Estilo de Cabelo</Label>
+                <PickGrid value={p.appearance.hairStyle ?? "curto"} onChange={(v) => p.updateAppearance({ hairStyle: v })} options={HAIR_STYLES} /></div>
+              <div><Label className="text-sm text-white block mb-2">Cor do Cabelo</Label>
+                <PickGrid value={p.appearance.hairColor ?? "castanho"} onChange={(v) => p.updateAppearance({ hairColor: v })} options={HAIR_COLORS} /></div>
+            </div>
+          </ScrollArea>
+        )}
 
-          {/* ROUPA + EXTRAS (shop) */}
-          {(["roupa", "extras"] as const).map((tab) => {
-            const slots = tab === "roupa" ? (["outfit", "hat"] as const) : (["glasses", "background"] as const);
-            return (
-              <TabsContent key={tab} value={tab} className="mt-3">
-                <ScrollArea className="h-[480px] pr-2">
-                  {slots.map((slot) => (
-                    <div key={slot} className="mb-4">
-                      <div className="text-xs font-bold mb-2 uppercase text-slate-400">
-                        {slot === "hat" ? "Chapéus" : slot === "glasses" ? "Óculos" : slot === "outfit" ? "Roupas" : "Fundo"}
-                      </div>
-                      <div className="grid grid-cols-3 gap-2">
-                        {SHOP_ITEMS.filter((i) => i.slot === slot).map((item) => {
-                          const owned = unlocked.includes(item.id);
-                          const eqNow = eq[item.slot] === item.id;
-                          return (
-                            <button key={item.id} onClick={() => handleShopAction(item)}
-                              className={`p-2 rounded-lg border-2 text-left transition ${eqNow ? "border-violet-500 bg-violet-900/40" : "border-slate-700 bg-slate-800/40 hover:border-slate-500"}`}>
-                              <div className="text-2xl mb-1">{item.emoji}</div>
-                              <div className="text-xs font-bold text-white truncate">{item.name}</div>
-                              <div className="text-xs mt-0.5 flex items-center gap-1">
-                                {owned
-                                  ? (eqNow ? <span className="text-violet-300 font-bold flex items-center gap-1"><Check size={10} />Equipado</span>
-                                           : <span className="text-emerald-400">Equipar</span>)
-                                  : <span className="text-amber-400 flex items-center gap-1">
-                                      {!admin && (wallet?.coins ?? 0) < item.price && <Lock size={10} />}<Coins size={10} />{admin ? "grátis" : item.price}
-                                    </span>}
-                              </div>
-                            </button>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  ))}
-                </ScrollArea>
-              </TabsContent>
-            );
-          })}
-        </Tabs>
-      </Card>
+        {step === 2 && (
+          <ScrollArea className="h-[440px] pr-2">
+            {(["outfit", "background"] as const).map((slot) => (
+              <div key={slot} className="mb-4">
+                <div className="text-xs font-bold mb-2 uppercase text-slate-400">
+                  {slot === "outfit" ? "Roupa" : "Cenário"}
+                </div>
+                <div className="grid grid-cols-2 gap-2">
+                  {SHOP_ITEMS.filter((i) => i.slot === slot).map((item) => {
+                    const owned = p.unlocked.includes(item.id);
+                    const eqNow = p.eq[item.slot] === item.id;
+                    return (
+                      <button key={item.id} onClick={() => p.handleShopAction(item)}
+                        className={`px-3 py-2.5 rounded-lg border-2 text-sm font-semibold transition flex items-center justify-between ${eqNow ? "border-violet-400 bg-violet-600/30 text-white" : "border-slate-700 bg-slate-800/60 text-slate-200 hover:border-slate-500"}`}>
+                        <span className="flex items-center gap-2"><span className="text-lg">{item.emoji}</span>{item.name}</span>
+                        {owned
+                          ? (eqNow ? <Check size={14} className="text-emerald-400" /> : <span className="text-xs text-emerald-400">Equipar</span>)
+                          : <span className="text-xs text-amber-400 flex items-center gap-1">
+                              {!p.admin && (p.wallet?.coins ?? 0) < item.price && <Lock size={10} />}<Coins size={10} />{p.admin ? "grátis" : item.price}
+                            </span>}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
+          </ScrollArea>
+        )}
+
+        {step === 3 && (
+          <ScrollArea className="h-[440px] pr-2">
+            <div className="space-y-2">
+              {SHOP_ITEMS.filter((i) => i.slot === "accessory").map((item) => {
+                const owned = p.unlocked.includes(item.id);
+                const eqNow = p.eq[item.slot] === item.id;
+                return (
+                  <button key={item.id} onClick={() => p.handleShopAction(item)}
+                    className={`w-full px-4 py-3 rounded-lg border-2 flex items-center justify-between transition ${eqNow ? "border-emerald-400 bg-emerald-900/30" : "border-emerald-700/60 bg-slate-800/40 hover:border-emerald-500"}`}>
+                    <span className="flex items-center gap-3">
+                      <span className="text-xl">{item.emoji}</span>
+                      <span className="font-bold text-white">{item.name}</span>
+                    </span>
+                    {owned
+                      ? (eqNow ? <span className="text-emerald-300 text-xs font-bold flex items-center gap-1"><Check size={12} />Equipado</span>
+                               : <span className="text-emerald-400 text-xs">Equipar</span>)
+                      : <span className="text-amber-400 text-sm flex items-center gap-1 font-bold">
+                          {!p.admin && (p.wallet?.coins ?? 0) < item.price && <Lock size={12} />}<Coins size={12} />{p.admin ? "grátis" : item.price}
+                        </span>}
+                  </button>
+                );
+              })}
+            </div>
+          </ScrollArea>
+        )}
+      </div>
+
+      {/* Nav buttons */}
+      <div className="mt-3 flex items-center justify-between gap-2">
+        <Button variant="outline" onClick={() => setStep((s) => Math.max(0, s - 1))} disabled={step === 0}>
+          <ChevronLeft size={16} className="mr-1" />Anterior
+        </Button>
+        <div className="text-xs text-slate-400">Passo {step + 1} de {STEPS.length}</div>
+        {step < STEPS.length - 1 ? (
+          <Button onClick={() => setStep((s) => Math.min(STEPS.length - 1, s + 1))} className="bg-violet-600 hover:bg-violet-500">
+            Próximo<ChevronRight size={16} className="ml-1" />
+          </Button>
+        ) : (
+          <Button onClick={() => toast.success("Personalização concluída! 🎉")} className="bg-gradient-to-r from-emerald-600 to-emerald-500">
+            <Check size={16} className="mr-1" />Concluir
+          </Button>
+        )}
+      </div>
     </div>
   );
 }
