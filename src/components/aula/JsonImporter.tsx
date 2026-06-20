@@ -208,13 +208,19 @@ export function JsonImporter({ onImported }: { onImported?: () => void }) {
         onChange={(e) => e.target.files?.[0] && handleFile(e.target.files[0])}
         className="max-w-md"
       />
-      {detected && (
+      {(detected || schemaJson) && (
         <div className="mt-4 space-y-2">
           <div className="flex flex-wrap gap-2">
             {fileName && <Badge variant="outline">{fileName}</Badge>}
-            <Badge>Elementos: {detected.elements.length}</Badge>
-            <Badge>Questões: {detected.questions.length}</Badge>
-            <Badge>Termos: {detected.terms.length}</Badge>
+            {detected && <Badge>Elementos: {detected.elements.length}</Badge>}
+            {detected && <Badge>Questões: {detected.questions.length}</Badge>}
+            {detected && <Badge>Termos: {detected.terms.length}</Badge>}
+            {schemaJson && (
+              <>
+                <Badge className="bg-[#4C1D95]">Páginas: {schemaJson.pages?.length ?? 0}</Badge>
+                <Badge className="bg-[#7C3AED]">Entidades: {schemaJson.entities?.length ?? 0}</Badge>
+              </>
+            )}
           </div>
           <Button
             onClick={doImport}
