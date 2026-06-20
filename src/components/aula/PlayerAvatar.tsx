@@ -12,7 +12,7 @@ import {
   loadAvatar, loadWallet, buyItem, equipItem, isAdmin,
 } from "@/lib/playerEconomy";
 import { ensureUserAccess } from "@/lib/ensureUserAccess";
-import { Coins, Lock, Check, Upload, Sparkles, Zap, ShoppingBag, Loader2 } from "lucide-react";
+import { Coins, Lock, Check, Upload, Sparkles, Zap, ShoppingBag, Loader2, ChevronLeft, ChevronRight, User, Shirt, Backpack } from "lucide-react";
 import { toast } from "sonner";
 
 type Element = { symbol: string; number: number; name: string; hero_name?: string | null; hero_image?: string | null; rarity?: string | null };
