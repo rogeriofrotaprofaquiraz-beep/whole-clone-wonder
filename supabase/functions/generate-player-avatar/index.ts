@@ -27,7 +27,7 @@ Deno.serve(async (req) => {
     if (!cardSymbol) return json({ error: "cardSymbol required" }, 400);
 
     const { data: el } = await admin.from("elements")
-      .select("symbol,number,name,attributes,hero_name,hero_description")
+      .select("symbol,number,name,attributes,hero_name,hero_description,hero_image")
       .eq("symbol", cardSymbol).maybeSingle();
     if (!el) return json({ error: "Elemento não encontrado" }, 404);
 
@@ -97,6 +97,15 @@ Deno.serve(async (req) => {
     };
 
     const saveFallback = async (reason: string) => {
+      if (el.hero_image) {
+        await admin.from("player_avatars").update({
+          generated_url: el.hero_image,
+          current_card: cardSymbol,
+          appearance: a,
+        }).eq("user_id", user.id);
+        return json({ url: el.hero_image, fallback: true, reason });
+      }
+
       const svg = buildFallbackSvg();
       const bytes = new TextEncoder().encode(svg);
       const path = `${user.id}/${cardSymbol}-fallback-${Date.now()}.svg`;
