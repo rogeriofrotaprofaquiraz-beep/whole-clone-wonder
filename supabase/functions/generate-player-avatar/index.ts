@@ -195,21 +195,45 @@ Deno.serve(async (req) => {
     };
 
     const saveFallback = async (reason: string) => {
-      const svg = buildFallbackSvg();
-      const bytes = new TextEncoder().encode(svg);
-      const path = `${user.id}/${cardSymbol}-fallback-${Date.now()}.svg`;
-      await admin.storage.from("player-avatars").upload(path, bytes, { contentType: "image/svg+xml", upsert: true });
-      const { data: signed } = await admin.storage.from("player-avatars").createSignedUrl(path, 60 * 60 * 24 * 365 * 5);
-      const url = signed?.signedUrl;
-      await admin.from("player_avatars").update({
+      // Em vez do SVG cartoon (que quebra o padrão visual), reaproveitamos
+      // a própria carta-herói fotorrealista do elemento como avatar.
+      // Assim o jogador sempre vê uma imagem no mesmo estilo da carta oficial.
+      let url: string | null = el.hero_image ?? null;
 
+      if (heroBase64) {
+        try {
+          const bytes = Uint8Array.from(atob(heroBase64), (c) => c.charCodeAt(0));
+          const ext = (heroMime.split("/")[1] || "png").replace("svg+xml", "svg");
+          const path = `${user.id}/${cardSymbol}-hero-${Date.now()}.${ext}`;
+          const { error: upErr } = await admin.storage
+            .from("player-avatars")
+            .upload(path, bytes, { contentType: heroMime, upsert: true });
+          if (!upErr) {
+            const { data: signed } = await admin.storage
+              .from("player-avatars")
+              .createSignedUrl(path, 60 * 60 * 24 * 365 * 5);
+            if (signed?.signedUrl) url = signed.signedUrl;
+          }
+        } catch (_) { /* keep el.hero_image */ }
+      }
+
+      if (!url) {
+        // Último recurso: gera SVG simples só com o símbolo (sem cartoon)
+        const svg = buildFallbackSvg();
+        const bytes = new TextEncoder().encode(svg);
+        const path = `${user.id}/${cardSymbol}-fallback-${Date.now()}.svg`;
+        await admin.storage.from("player-avatars").upload(path, bytes, { contentType: "image/svg+xml", upsert: true });
+        const { data: signed } = await admin.storage.from("player-avatars").createSignedUrl(path, 60 * 60 * 24 * 365 * 5);
+        url = signed?.signedUrl ?? null;
+      }
+
+      await admin.from("player_avatars").update({
         generated_url: url, current_card: cardSymbol, appearance: a,
       }).eq("user_id", user.id);
-      return json({ url, path, fallback: true, reason });
+      return json({ url, fallback: true, reason });
     };
 
     if (!aiResp.ok) {
-      const text = await aiResp.text();
       if (aiResp.status === 402) return await saveFallback("Avatar criado sem gastar Átomos.");
       if (aiResp.status === 429) return await saveFallback("Avatar criado sem gastar Átomos.");
       return await saveFallback("Avatar criado sem gastar Átomos.");
