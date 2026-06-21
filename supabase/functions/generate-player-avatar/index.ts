@@ -62,18 +62,19 @@ Deno.serve(async (req) => {
     }
 
     const prompt = [
-      `TAREFA: editar/modificar a IMAGEM DE REFERÊNCIA do herói "${el.hero_name ?? el.name}" (elemento ${el.name}, símbolo ${el.symbol}) para criar uma VERSÃO PERSONALIZADA EXCLUSIVA deste jogador.`,
-      `MANTENHA fielmente: a mesma composição vertical de carta colecionável (proporção 2:3), o mesmo traje/armadura, a mesma pose heroica de corpo inteiro, o mesmo emblema "${el.symbol}" no peito, a mesma iluminação cinematográfica, o mesmo cenário/atmosfera (${cat}) e o mesmo estilo realista 8k da imagem original.`,
-      `MODIFIQUE apenas o personagem para refletir as características do jogador:`,
-      `- Gênero: ${gender}`,
-      `- Tipo físico: ${body}`,
-      `- Tom de pele: ${skin}`,
-      `- Cabelo: ${hairStyle} cor ${hairColor}`,
-      outfitDesc && `- ${outfitDesc} (adapte sutilmente sem perder a identidade do herói)`,
-      accDesc && `- ${accDesc}`,
-      bgDesc && `- ${bgDesc}`,
-      photoBase64 ? `Use a SEGUNDA imagem (foto do jogador) como referência facial: aplique os traços do rosto real ao herói, mantendo realismo.` : "",
-      `O resultado DEVE parecer uma variação oficial da mesma carta — reconhecível como "${el.hero_name ?? el.name}", porém com o personagem personalizado. Sem texto, sem bordas, sem marca d'água.`,
+      `TAREFA: gerar uma CARTA COLECIONÁVEL PERSONALIZADA (proporção 2:3) de um super-herói inspirado no elemento "${el.name}" (símbolo ${el.symbol}, categoria ${cat}).`,
+      `A imagem de referência mostra o ESTILO VISUAL da carta oficial — USE-A APENAS COMO REFERÊNCIA DE ESTILO (iluminação cinematográfica, fotorrealismo 8k, composição, paleta do elemento, cenário ${cat}, emblema "${el.symbol}" no peito).`,
+      `⚠️ NÃO COPIE o personagem da referência. RECRIE o personagem do zero com EXATAMENTE estas características obrigatórias do jogador (prioridade máxima — sobrepõem qualquer detalhe da referência):`,
+      `• GÊNERO: ${gender} — corpo, rosto, silhueta e proporções DEVEM ser claramente ${gender}`,
+      `• TIPO FÍSICO: corpo ${body}`,
+      `• TOM DE PELE: ${skin} (visível no rosto, mãos e pele exposta)`,
+      `• CABELO: estilo ${hairStyle}, cor ${hairColor} (claramente visível)`,
+      outfitDesc && `• TRAJE: ${outfitDesc} — substitua o traje da referência mantendo o emblema "${el.symbol}" no peito`,
+      accDesc && `• ACESSÓRIO OBRIGATÓRIO E VISÍVEL: ${accDesc}`,
+      bgDesc && `• CENÁRIO: ${bgDesc} (substitua o fundo da referência)`,
+      `Corpo inteiro visível (pés à cabeça), pose heroica, leve ângulo baixo, centralizado na carta.`,
+      photoBase64 ? `Use a SEGUNDA imagem (foto do jogador) como referência facial, respeitando gênero ${gender}, pele ${skin} e cabelo ${hairStyle} ${hairColor}.` : "",
+      `Saída: APENAS a carta finalizada, sem texto, sem bordas extras, sem marca d'água. Se qualquer característica do jogador acima for ignorada, a imagem está errada.`,
     ].filter(Boolean).join(" ");
 
     const content: any[] = [{ type: "text", text: prompt }];
