@@ -302,7 +302,7 @@ type WizardProps = {
   wallet: WalletState | null;
   admin: boolean;
   handleShopAction: (item: AvatarItem) => Promise<void>;
-  handleGenerate: () => Promise<void>;
+  handleGenerate: () => Promise<unknown>;
   generating: boolean;
 };
 
