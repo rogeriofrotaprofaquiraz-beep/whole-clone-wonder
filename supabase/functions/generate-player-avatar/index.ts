@@ -44,19 +44,42 @@ Deno.serve(async (req) => {
     const accDesc = eq.accessory ? `Acessório: ${eq.accessory.name}` : "";
 
     const cat = (el.attributes as any)?.category ?? "";
+
+    // Carrega a carta-herói existente como base (imagem de referência principal)
+    let heroBase64: string | null = null;
+    let heroMime = "image/png";
+    if (el.hero_image) {
+      try {
+        const heroResp = await fetch(el.hero_image);
+        if (heroResp.ok) {
+          heroMime = heroResp.headers.get("content-type") ?? "image/png";
+          const buf = new Uint8Array(await heroResp.arrayBuffer());
+          let bin = "";
+          for (let i = 0; i < buf.length; i++) bin += String.fromCharCode(buf[i]);
+          heroBase64 = btoa(bin);
+        }
+      } catch (_) { /* ignore */ }
+    }
+
     const prompt = [
-      `Retrato vertical estilo carta colecionável, proporção 2:3, realismo cinematográfico ultra detalhado, 8k.`,
-      `CORPO INTEIRO de um(a) super-herói ${gender} representando o elemento químico "${el.name}" (símbolo ${el.symbol}). Mostrar dos pés à cabeça, sem cortes.`,
-      `Tipo de corpo ${body}, pele ${skin}, cabelo ${hairStyle} cor ${hairColor}.`,
-      outfitDesc, accDesc,
-      `Câmera full body, composição centrada, leve ângulo baixo heroico, foco nítido no personagem.`,
-      `Traje com textura e cores fiéis à aparência natural do elemento (${cat}). Emblema luminoso "${el.symbol}" no centro do peito.`,
-      bgDesc || `Cenário: ambiente de origem natural do elemento.`,
-      `Estilo: realismo fantástico, sem texto, sem marca d'água, sem bordas.`,
-      photoBase64 ? `Use o rosto da foto de referência como base para os traços faciais, mantendo semelhança realista.` : "",
+      `TAREFA: editar/modificar a IMAGEM DE REFERÊNCIA do herói "${el.hero_name ?? el.name}" (elemento ${el.name}, símbolo ${el.symbol}) para criar uma VERSÃO PERSONALIZADA EXCLUSIVA deste jogador.`,
+      `MANTENHA fielmente: a mesma composição vertical de carta colecionável (proporção 2:3), o mesmo traje/armadura, a mesma pose heroica de corpo inteiro, o mesmo emblema "${el.symbol}" no peito, a mesma iluminação cinematográfica, o mesmo cenário/atmosfera (${cat}) e o mesmo estilo realista 8k da imagem original.`,
+      `MODIFIQUE apenas o personagem para refletir as características do jogador:`,
+      `- Gênero: ${gender}`,
+      `- Tipo físico: ${body}`,
+      `- Tom de pele: ${skin}`,
+      `- Cabelo: ${hairStyle} cor ${hairColor}`,
+      outfitDesc && `- ${outfitDesc} (adapte sutilmente sem perder a identidade do herói)`,
+      accDesc && `- ${accDesc}`,
+      bgDesc && `- ${bgDesc}`,
+      photoBase64 ? `Use a SEGUNDA imagem (foto do jogador) como referência facial: aplique os traços do rosto real ao herói, mantendo realismo.` : "",
+      `O resultado DEVE parecer uma variação oficial da mesma carta — reconhecível como "${el.hero_name ?? el.name}", porém com o personagem personalizado. Sem texto, sem bordas, sem marca d'água.`,
     ].filter(Boolean).join(" ");
 
     const content: any[] = [{ type: "text", text: prompt }];
+    if (heroBase64) {
+      content.push({ type: "image_url", image_url: { url: `data:${heroMime};base64,${heroBase64}` } });
+    }
     if (photoBase64) {
       const dataUrl = photoBase64.startsWith("data:") ? photoBase64 : `data:image/png;base64,${photoBase64}`;
       content.push({ type: "image_url", image_url: { url: dataUrl } });
