@@ -32,20 +32,100 @@ Deno.serve(async (req) => {
     if (!el) return json({ error: "Elemento não encontrado" }, 404);
 
     const a = appearance ?? {};
-    const gender = a.gender === "feminino" ? "feminina" : "masculino";
-    const body = a.body ?? "normal";
-    const skin = a.skin ?? "clara";
-    const hairStyle = a.hairStyle ?? "curto";
-    const hairColor = a.hairColor ?? "castanho";
+    const genderEn = a.gender === "feminino" ? "female" : "male";
+    const bodyMap: Record<string, string> = {
+      magro: "slim, lean build",
+      normal: "average athletic build",
+      atletico: "muscular athletic build",
+      forte: "very muscular, broad-shouldered build",
+      curvy: "curvy hourglass build",
+    };
+    const skinMap: Record<string, string> = {
+      muito_clara: "very fair pale skin",
+      clara: "light fair skin",
+      morena_clara: "light tan skin",
+      morena: "medium brown skin",
+      morena_escura: "dark brown skin",
+      negra: "deep dark brown skin",
+    };
+    const hairStyleMap: Record<string, string> = {
+      careca: "completely bald, no hair",
+      curto: "short cropped hair",
+      medio: "medium length hair",
+      longo: "long flowing hair",
+      cacheado: "curly voluminous hair",
+      crespo: "natural afro-textured hair",
+      rabo: "hair tied in a ponytail",
+      moicano: "mohawk haircut",
+    };
+    const hairColorMap: Record<string, string> = {
+      preto: "jet black",
+      castanho: "chestnut brown",
+      loiro: "blond",
+      ruivo: "red ginger",
+      grisalho: "grey silver",
+      branco: "white",
+      colorido: "vibrant dyed (pink/blue/purple)",
+    };
+    const body = bodyMap[a.body] ?? a.body ?? "average build";
+    const skin = skinMap[a.skin] ?? a.skin ?? "light skin";
+    const hairStyle = hairStyleMap[a.hairStyle] ?? a.hairStyle ?? "short hair";
+    const hairColor = a.hairStyle === "careca" ? "" : (hairColorMap[a.hairColor] ?? a.hairColor ?? "brown");
+
+    const outfitMap: Record<string, string> = {
+      outfit_casual: "casual streetwear superhero outfit: fitted t-shirt, jacket and jeans, with subtle glowing element emblem on chest",
+      outfit_cientista: "futuristic scientist hero outfit: long white lab coat over tactical suit, glowing tech panels, element emblem on chest",
+      outfit_heroi: "classic premium superhero bodysuit with armored chest plate, utility belt, glowing element emblem at the center of the chest",
+      outfit_futurista: "high-tech futuristic exosuit with neon circuitry, holographic plating, glowing element emblem on chest",
+      outfit_formal: "formal tailored suit with hero cape, sharp lines, glowing element emblem as a lapel pin",
+    };
+    const bgMap: Record<string, string> = {
+      bg_lab: "modern futuristic scientific laboratory background with glass tubes, holographic displays and blue rim lighting",
+      bg_space: "deep cosmic space background with nebulae, stars and distant planets, purple and blue tones",
+      bg_nature: "lush enchanted nature background with giant trees, sun rays and green particles",
+      bg_city: "epic neon-lit cyberpunk city skyline at night background",
+      bg_abstract: "abstract energetic background of swirling magenta, orange and violet energy waves",
+    };
+    const accMap: Record<string, string> = {
+      acc_oculos: "stylish modern eyeglasses",
+      acc_oculos_protecao: "futuristic protective goggles on the forehead",
+      acc_jaleco: "open white lab coat over the outfit",
+      acc_luvas: "tactical armored gloves on both hands",
+      acc_capa: "long flowing heroic cape behind the character",
+      acc_capacete: "protective tech helmet (face still visible)",
+      acc_mascara: "sleek hero half-mask covering only the eyes",
+      acc_mochila: "tactical backpack on the shoulders",
+    };
 
     const eq = equipped ?? {};
-    const outfitDesc = eq.outfit ? `Roupa estilo ${eq.outfit.name}` : "";
-    const bgDesc = eq.background ? `Cenário: ${eq.background.name}` : "";
-    const accDesc = eq.accessory ? `Acessório: ${eq.accessory.name}` : "";
+    const outfitDesc = eq.outfit ? (outfitMap[eq.outfit.id] ?? eq.outfit.name) : outfitMap.outfit_heroi;
+    const bgDesc = eq.background ? (bgMap[eq.background.id] ?? eq.background.name) : "dramatic elemental background matching the element";
+    const accDesc = eq.accessory ? (accMap[eq.accessory.id] ?? eq.accessory.name) : "";
 
     const cat = (el.attributes as any)?.category ?? "";
 
-    // Carrega a carta-herói existente como base (imagem de referência principal)
+    const prompt = [
+      `Generate a single 2:3 vertical full-body photorealistic superhero portrait. Cinematic 8k, slight low-angle heroic shot, strong cold front light, dramatic rim light, sharp focus.`,
+      `ABSOLUTE PRIORITY — the character MUST have EXACTLY these traits (these override every other reference):`,
+      `- Gender: ${genderEn} (clearly ${genderEn} face, body and proportions)`,
+      `- Body: ${body}`,
+      `- Skin tone: ${skin}`,
+      `- Hair: ${hairStyle}${hairColor ? `, ${hairColor} color` : ""}`,
+      `- Outfit: ${outfitDesc}`,
+      accDesc && `- Accessory (must be clearly visible on the character): ${accDesc}`,
+      `- Background: ${bgDesc}`,
+      `- Element theme: "${el.name}" (${el.symbol})${cat ? `, ${cat}` : ""} — subtle elemental aura/effects around the hands and emblem only.`,
+      `FRAMING: full body from head to toes, both feet visible, character centered and occupying 75-85% of the vertical frame, no cropping.`,
+      `FORBIDDEN: app UI, profile screen, buttons, coin badges, numbers, usernames, white card frame, any text/logo/watermark, cartoon or anime style, bust/close-up crop.`,
+      photoBase64 ? `A second image is attached: use it ONLY as a facial likeness reference, but you MUST keep the gender, skin tone and hair specified above even if the photo differs.` : "",
+    ].filter(Boolean).join("\n");
+
+    const content: any[] = [{ type: "text", text: prompt }];
+    if (photoBase64) {
+      const dataUrl = photoBase64.startsWith("data:") ? photoBase64 : `data:image/png;base64,${photoBase64}`;
+      content.push({ type: "image_url", image_url: { url: dataUrl } });
+    }
+
     let heroBase64: string | null = null;
     let heroMime = "image/png";
     if (el.hero_image) {
@@ -61,38 +141,11 @@ Deno.serve(async (req) => {
       } catch (_) { /* ignore */ }
     }
 
-    const prompt = [
-      `TAREFA: gerar APENAS A ARTE FINAL DO AVATAR PERSONALIZADO, no mesmo resultado visual mostrado nas telas de perfil: uma imagem vertical 2:3 de super-herói fotorrealista, pronta para aparecer como carta alta e também ser recortada em avatar circular no perfil.`,
-      `FORMATO OBRIGATÓRIO: retrato vertical 2:3, personagem de corpo inteiro centralizado, dos pés à cabeça, com os dois pés e a cabeça 100% visíveis, sem cortes, com margem superior e inferior completas. O herói deve ocupar cerca de 75% a 85% da altura da imagem, igual ao resultado de personalização enviado.`,
-      `NÃO gerar tela de aplicativo, perfil, interface, botão, badge de moedas, número 72, nome de usuário, moldura branca externa, card UI, texto, legenda, watermark, logo ou ícones. A saída é só a ilustração vertical do avatar.`,
-      `ESTILO VISUAL: super-herói cinematográfico realista 8k, foco nítido, leve ângulo baixo heroico, luz frontal fria forte, preenchimento ambiente suave, rim light dramático, sombras naturais, aura elemental discreta, cenário fantástico coerente com ${cat || "o elemento"}.`,
-      `A imagem oficial do elemento anexada é SOMENTE REFERÊNCIA DE QUALIDADE/PALETA/ILUMINAÇÃO para "${el.name}" (${el.symbol}). NÃO copie o personagem, rosto, pose exata, roupa ou identidade da referência.`,
-      `⚠️ PRIORIDADE MÁXIMA: recrie o personagem do zero com EXATAMENTE estas características do jogador, que vencem qualquer detalhe da referência:`,
-      `• GÊNERO: ${gender} — corpo, rosto, silhueta e proporções devem ser claramente ${gender}`,
-      `• TIPO FÍSICO: corpo ${body}`,
-      `• TOM DE PELE: ${skin}, visível no rosto, mãos e pele exposta`,
-      `• CABELO: estilo ${hairStyle}, cor ${hairColor}, claramente visível`,
-      outfitDesc && `• TRAJE: ${outfitDesc}; use um traje de super-herói premium adaptado a esse item, mantendo um emblema luminoso "${el.symbol}" no peito`,
-      accDesc && `• ACESSÓRIO OBRIGATÓRIO E VISÍVEL: ${accDesc}, integrado ao personagem sem esconder rosto, mãos ou corpo`,
-      bgDesc && `• CENÁRIO: ${bgDesc}, substituindo totalmente o fundo da carta original`,
-      photoBase64 ? `Use a SEGUNDA imagem (foto do jogador) apenas como referência facial/identidade, preservando as escolhas de gênero, pele e cabelo acima. Não transforme em selfie, busto ou retrato cortado.` : "",
-      `COMPOSIÇÃO FINAL: full-body shot central, pose heroica equilibrada, face no terço superior, torso legível para o recorte circular do perfil, pernas e pés completos dentro do quadro. Se sair busto, close-up, personagem cortado, cartoon, anime, tela de perfil ou card com texto, está errado.`,
-    ].filter(Boolean).join(" ");
-
-    const content: any[] = [{ type: "text", text: prompt }];
-    if (heroBase64) {
-      content.push({ type: "image_url", image_url: { url: `data:${heroMime};base64,${heroBase64}` } });
-    }
-    if (photoBase64) {
-      const dataUrl = photoBase64.startsWith("data:") ? photoBase64 : `data:image/png;base64,${photoBase64}`;
-      content.push({ type: "image_url", image_url: { url: dataUrl } });
-    }
-
     const aiResp = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
       headers: { "Content-Type": "application/json", "Authorization": `Bearer ${lovableKey}` },
       body: JSON.stringify({
-        model: "google/gemini-2.5-flash-image",
+        model: "google/gemini-3.1-flash-image-preview",
         messages: [{ role: "user", content }],
         modalities: ["image", "text"],
       }),
