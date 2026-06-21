@@ -188,17 +188,9 @@ export function PlayerAvatar() {
         }
         throw error;
       }
-      const payload = data as FunctionPayload & { fallback?: boolean; reason?: string };
+      const payload = data as FunctionPayload;
       if (payload?.error) throw new Error(payload.error);
-      if (payload?.fallback) {
-        if (spend.charged > 0) {
-          const w = await loadWallet(userId);
-          await supabase.from("player_wallet").update({ coins: (w?.coins ?? 0) + spend.charged }).eq("user_id", userId);
-        }
-        toast.success("Avatar criado com sucesso sem gastar Átomos.");
-      } else {
-        toast.success(`Avatar gerado!${spend.charged ? ` -${spend.charged}${COIN_SYMBOL} ${COIN_NAME}` : " (admin)"}`);
-      }
+      toast.success(`Avatar gerado!${spend.charged ? ` -${spend.charged}${COIN_SYMBOL} ${COIN_NAME}` : " (admin)"}`);
       setTick((t) => t + 1);
     } catch (e: unknown) {
       // Reembolsa em caso de falha
