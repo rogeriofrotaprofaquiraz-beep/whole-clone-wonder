@@ -37,15 +37,18 @@ Deno.serve(async (req) => {
       magro: "slim, lean build",
       normal: "average athletic build",
       atletico: "muscular athletic build",
+      musculoso: "very muscular, broad-shouldered build with clearly defined arms, chest and legs",
       forte: "very muscular, broad-shouldered build",
       curvy: "curvy hourglass build",
     };
     const skinMap: Record<string, string> = {
       muito_clara: "very fair pale skin",
       clara: "light fair skin",
+      media: "medium tan skin",
       morena_clara: "light tan skin",
       morena: "medium brown skin",
       morena_escura: "dark brown skin",
+      escura: "dark brown skin",
       negra: "deep dark brown skin",
     };
     const hairStyleMap: Record<string, string> = {
@@ -55,6 +58,7 @@ Deno.serve(async (req) => {
       longo: "long flowing hair",
       cacheado: "curly voluminous hair",
       crespo: "natural afro-textured hair",
+      espetado: "spiky upward-styled hair",
       rabo: "hair tied in a ponytail",
       moicano: "mohawk haircut",
     };
@@ -63,6 +67,8 @@ Deno.serve(async (req) => {
       castanho: "chestnut brown",
       loiro: "blond",
       ruivo: "red ginger",
+      azul: "electric blue",
+      roxo: "vivid purple",
       grisalho: "grey silver",
       branco: "white",
       colorido: "vibrant dyed (pink/blue/purple)",
@@ -126,21 +132,6 @@ Deno.serve(async (req) => {
       content.push({ type: "image_url", image_url: { url: dataUrl } });
     }
 
-    let heroBase64: string | null = null;
-    let heroMime = "image/png";
-    if (el.hero_image) {
-      try {
-        const heroResp = await fetch(el.hero_image);
-        if (heroResp.ok) {
-          heroMime = heroResp.headers.get("content-type") ?? "image/png";
-          const buf = new Uint8Array(await heroResp.arrayBuffer());
-          let bin = "";
-          for (let i = 0; i < buf.length; i++) bin += String.fromCharCode(buf[i]);
-          heroBase64 = btoa(bin);
-        }
-      } catch (_) { /* ignore */ }
-    }
-
     const aiResp = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
       headers: { "Content-Type": "application/json", "Authorization": `Bearer ${lovableKey}` },
@@ -151,43 +142,16 @@ Deno.serve(async (req) => {
       }),
     });
 
-    const saveFallback = async (reason: string) => {
-      // Em vez do SVG cartoon (que quebra o padrão visual), reaproveitamos
-      // a própria carta-herói fotorrealista do elemento como avatar.
-      // Assim o jogador sempre vê uma imagem no mesmo estilo da carta oficial.
-      let url: string | null = el.hero_image ?? null;
-
-      if (heroBase64) {
-        try {
-          const bytes = Uint8Array.from(atob(heroBase64), (c) => c.charCodeAt(0));
-          const ext = (heroMime.split("/")[1] || "png").replace("svg+xml", "svg");
-          const path = `${user.id}/${cardSymbol}-hero-${Date.now()}.${ext}`;
-          const { error: upErr } = await admin.storage
-            .from("player-avatars")
-            .upload(path, bytes, { contentType: heroMime, upsert: true });
-          if (!upErr) {
-            const { data: signed } = await admin.storage
-              .from("player-avatars")
-              .createSignedUrl(path, 60 * 60 * 24 * 365 * 5);
-            if (signed?.signedUrl) url = signed.signedUrl;
-          }
-        } catch (_) { /* keep el.hero_image */ }
-      }
-
-      if (!url) {
-        return json({ error: "Não foi possível gerar avatar no estilo solicitado agora. Tente novamente em instantes." }, 500);
-      }
-
-      await admin.from("player_avatars").update({
-        generated_url: url, current_card: cardSymbol, appearance: a,
-      }).eq("user_id", user.id);
-      return json({ url, fallback: true, reason });
+    const generationError = async (reason: string, status = 502) => {
+      await admin.from("player_avatars").update({ current_card: cardSymbol, appearance: a }).eq("user_id", user.id);
+      return json({ error: reason }, status);
     };
 
     if (!aiResp.ok) {
-      if (aiResp.status === 402) return await saveFallback("Avatar criado sem gastar Átomos.");
-      if (aiResp.status === 429) return await saveFallback("Avatar criado sem gastar Átomos.");
-      return await saveFallback("Avatar criado sem gastar Átomos.");
+      if (aiResp.status === 402) return await generationError("A IA não gerou uma nova imagem porque os créditos acabaram. Nenhuma carta padrão será usada como avatar.", 402);
+      if (aiResp.status === 429) return await generationError("A IA está com limite temporário. Tente gerar novamente em instantes.", 429);
+      const details = await aiResp.text().catch(() => "");
+      return await generationError(`A IA não conseguiu gerar o avatar personalizado agora.${details ? ` Detalhes: ${details.slice(0, 240)}` : ""}`);
     }
 
 

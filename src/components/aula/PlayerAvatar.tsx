@@ -55,8 +55,10 @@ function PickGrid({ value, onChange, options }: { value: string; onChange: (v: s
   );
 }
 
+const validGeneratedAvatarUrl = (url?: string | null) => (url && !url.includes("-hero-") ? url : null);
+
 export function AvatarDisplay({ avatar, size = 96 }: { avatar: Pick<AvatarState, "generated_url" | "photo_url"> | null; size?: number }) {
-  const url = avatar?.generated_url || avatar?.photo_url;
+  const url = validGeneratedAvatarUrl(avatar?.generated_url) || avatar?.photo_url;
   if (url) {
     return <img src={url} alt="Avatar" style={{ width: size, height: size }} className="rounded-2xl object-cover border border-slate-700" />;
   }
@@ -132,6 +134,7 @@ export function PlayerAvatar() {
   }
 
   const currentCard = elements.find((e) => e.symbol === avatar.current_card) ?? elements[0];
+  const previewUrl = validGeneratedAvatarUrl(avatar.generated_url) || avatar.photo_url;
 
   const handlePhotoFile = async (file: File) => {
     if (!userId) return;
@@ -188,17 +191,9 @@ export function PlayerAvatar() {
         }
         throw error;
       }
-      const payload = data as FunctionPayload & { fallback?: boolean; reason?: string };
+      const payload = data as FunctionPayload;
       if (payload?.error) throw new Error(payload.error);
-      if (payload?.fallback) {
-        if (spend.charged > 0) {
-          const w = await loadWallet(userId);
-          await supabase.from("player_wallet").update({ coins: (w?.coins ?? 0) + spend.charged }).eq("user_id", userId);
-        }
-        toast.success("Avatar criado com sucesso sem gastar Átomos.");
-      } else {
-        toast.success(`Avatar gerado!${spend.charged ? ` -${spend.charged}${COIN_SYMBOL} ${COIN_NAME}` : " (admin)"}`);
-      }
+      toast.success(`Avatar gerado!${spend.charged ? ` -${spend.charged}${COIN_SYMBOL} ${COIN_NAME}` : " (admin)"}`);
       setTick((t) => t + 1);
     } catch (e: unknown) {
       // Reembolsa em caso de falha
@@ -231,8 +226,8 @@ export function PlayerAvatar() {
       {/* PREVIEW */}
       <Card className="p-4 bg-slate-900/60 border-slate-700">
         <div className="relative rounded-xl overflow-hidden border border-slate-700 bg-slate-950 aspect-[2/3]">
-          {avatar.generated_url || avatar.photo_url ? (
-            <img src={avatar.generated_url || avatar.photo_url} alt="Avatar" className="w-full h-full object-cover" />
+          {previewUrl ? (
+            <img src={previewUrl} alt="Avatar" className="w-full h-full object-cover" />
           ) : (
             <div className="w-full h-full flex flex-col items-center justify-center text-slate-500 gap-3 p-6 text-center">
               <Sparkles size={48} className="opacity-50" />
@@ -278,6 +273,8 @@ export function PlayerAvatar() {
           wallet={wallet}
           admin={admin}
           handleShopAction={handleShopAction}
+          handleGenerate={handleGenerate}
+          generating={generating}
         />
       </Card>
     </div>
@@ -300,6 +297,8 @@ type WizardProps = {
   wallet: WalletState | null;
   admin: boolean;
   handleShopAction: (item: AvatarItem) => Promise<void>;
+  handleGenerate: () => Promise<unknown>;
+  generating: boolean;
 };
 
 const STEPS = [
@@ -479,8 +478,9 @@ function Wizard(p: WizardProps) {
             Próximo<ChevronRight size={16} className="ml-1" />
           </Button>
         ) : (
-          <Button onClick={() => toast.success("Personalização concluída! 🎉")} className="bg-gradient-to-r from-emerald-600 to-emerald-500">
-            <Check size={16} className="mr-1" />Concluir
+          <Button onClick={p.handleGenerate} disabled={p.generating} className="bg-gradient-to-r from-emerald-600 to-emerald-500">
+            {p.generating ? <Loader2 className="animate-spin mr-1" size={16} /> : <Sparkles size={16} className="mr-1" />}
+            Gerar Avatar IA
           </Button>
         )}
       </div>
