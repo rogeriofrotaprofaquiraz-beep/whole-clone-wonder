@@ -37,15 +37,18 @@ Deno.serve(async (req) => {
       magro: "slim, lean build",
       normal: "average athletic build",
       atletico: "muscular athletic build",
+      musculoso: "very muscular, broad-shouldered build with clearly defined arms, chest and legs",
       forte: "very muscular, broad-shouldered build",
       curvy: "curvy hourglass build",
     };
     const skinMap: Record<string, string> = {
       muito_clara: "very fair pale skin",
       clara: "light fair skin",
+      media: "medium tan skin",
       morena_clara: "light tan skin",
       morena: "medium brown skin",
       morena_escura: "dark brown skin",
+      escura: "dark brown skin",
       negra: "deep dark brown skin",
     };
     const hairStyleMap: Record<string, string> = {
@@ -55,6 +58,7 @@ Deno.serve(async (req) => {
       longo: "long flowing hair",
       cacheado: "curly voluminous hair",
       crespo: "natural afro-textured hair",
+      espetado: "spiky upward-styled hair",
       rabo: "hair tied in a ponytail",
       moicano: "mohawk haircut",
     };
@@ -63,6 +67,8 @@ Deno.serve(async (req) => {
       castanho: "chestnut brown",
       loiro: "blond",
       ruivo: "red ginger",
+      azul: "electric blue",
+      roxo: "vivid purple",
       grisalho: "grey silver",
       branco: "white",
       colorido: "vibrant dyed (pink/blue/purple)",
