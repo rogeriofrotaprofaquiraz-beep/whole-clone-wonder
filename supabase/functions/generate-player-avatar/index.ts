@@ -221,13 +221,7 @@ Deno.serve(async (req) => {
       }
 
       if (!url) {
-        // Último recurso: gera SVG simples só com o símbolo (sem cartoon)
-        const svg = buildFallbackSvg();
-        const bytes = new TextEncoder().encode(svg);
-        const path = `${user.id}/${cardSymbol}-fallback-${Date.now()}.svg`;
-        await admin.storage.from("player-avatars").upload(path, bytes, { contentType: "image/svg+xml", upsert: true });
-        const { data: signed } = await admin.storage.from("player-avatars").createSignedUrl(path, 60 * 60 * 24 * 365 * 5);
-        url = signed?.signedUrl ?? null;
+        return json({ error: "Não foi possível gerar avatar no estilo solicitado agora. Tente novamente em instantes." }, 500);
       }
 
       await admin.from("player_avatars").update({
