@@ -72,7 +72,7 @@ Deno.serve(async (req) => {
       }),
     });
 
-    // Fallback SVG quando os créditos de IA do workspace acabarem ou rate limit
+    // Fallback SVG personalizado conforme aparência + equipamentos
     const buildFallbackSvg = () => {
       const bgPalette: Record<string, [string, string]> = {
         bg_lab: ["#0F172A", "#1E3A8A"],
@@ -80,32 +80,98 @@ Deno.serve(async (req) => {
         bg_nature: ["#065F46", "#10B981"],
         bg_city: ["#1F2937", "#6B7280"],
         bg_abstract: ["#EC4899", "#F59E0B"],
+        bg_violet: ["#4C1D95", "#0F172A"],
       };
-      const bgId = eq.background?.id ?? "bg_lab";
-      const [c1, c2] = bgPalette[bgId] ?? bgPalette.bg_lab;
-      const accEmoji = eq.accessory?.emoji ?? "";
+      const bgId = eq.background?.id ?? "bg_violet";
+      const [c1, c2] = bgPalette[bgId] ?? bgPalette.bg_violet;
+
+      const skinMap: Record<string, string> = {
+        clara: "#f8d3b0", media: "#e8b48a", morena: "#c98e63", escura: "#6b4226",
+      };
+      const hairMap: Record<string, string> = {
+        preto: "#111827", castanho: "#5b3a1f", loiro: "#f5d68a", ruivo: "#c2410c",
+        azul: "#3b82f6", roxo: "#8b5cf6", branco: "#f1f5f9",
+      };
+      const skinHex = skinMap[skin] ?? skinMap.clara;
+      const hairHex = hairMap[hairColor] ?? hairMap.castanho;
+
+      // Corpo
+      const bodyW = body === "musculoso" ? 150 : body === "atletico" ? 120 : body === "magro" ? 90 : 110;
+      const bodyH = 220;
+
+      // Cabelo conforme estilo
+      let hair = "";
+      if (hairStyle === "longo") hair = `<path d="M130 150 Q200 70 270 150 L280 320 L260 200 L240 170 L200 160 L160 170 L140 200 L120 320 Z" fill="${hairHex}"/>`;
+      else if (hairStyle === "curto") hair = `<path d="M140 160 Q200 90 260 160 L260 195 Q200 170 140 195 Z" fill="${hairHex}"/>`;
+      else if (hairStyle === "cacheado") hair = `<g fill="${hairHex}"><circle cx="160" cy="155" r="22"/><circle cx="185" cy="140" r="22"/><circle cx="215" cy="140" r="22"/><circle cx="240" cy="155" r="22"/><circle cx="150" cy="180" r="18"/><circle cx="250" cy="180" r="18"/></g>`;
+      else if (hairStyle === "espetado") hair = `<path d="M140 180 L155 110 L170 175 L185 100 L200 170 L215 100 L230 175 L245 110 L260 180 Z" fill="${hairHex}"/>`;
+      // careca = sem cabelo
+
+      // Gênero — cintura/quadril
+      const hipW = gender === "feminina" ? bodyW + 30 : bodyW;
+
+      // Roupa (cor)
+      const outfitColors: Record<string, string> = {
+        outfit_casual: "#3b82f6", outfit_lab: "#f1f5f9", outfit_hero: "#dc2626",
+        outfit_formal: "#0f172a", outfit_sport: "#16a34a",
+      };
+      const outfitId = eq.outfit?.id ?? "outfit_casual";
+      const outfitColor = outfitColors[outfitId] ?? "#3b82f6";
       const outfitEmoji = eq.outfit?.emoji ?? "";
+      const accEmoji = eq.accessory?.emoji ?? "";
+
       return `<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600" width="400" height="600">
-  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${c1}"/><stop offset="1" stop-color="${c2}"/></linearGradient></defs>
-  <rect width="400" height="600" fill="url(#g)"/>
-  <text x="200" y="240" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="180" fill="#fff" opacity="0.95">${el.symbol}</text>
-  <text x="200" y="300" text-anchor="middle" font-family="Arial,sans-serif" font-size="28" fill="#fff" opacity="0.85">${el.name}</text>
-  <text x="200" y="430" text-anchor="middle" font-size="100">${outfitEmoji}${accEmoji}</text>
-  <text x="200" y="560" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" fill="#fff" opacity="0.7">Avatar offline (sem créditos IA)</text>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${c1}"/><stop offset="1" stop-color="${c2}"/></linearGradient>
+    <radialGradient id="glow" cx="50%" cy="35%" r="55%"><stop offset="0" stop-color="#fff" stop-opacity=".2"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="400" height="600" fill="url(#bg)"/>
+  <rect width="400" height="600" fill="url(#glow)"/>
+  <text x="200" y="50" text-anchor="middle" font-family="Arial Black,sans-serif" font-weight="900" font-size="36" fill="#fff" opacity="0.95">${el.symbol}</text>
+  <text x="200" y="78" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" fill="#fff" opacity="0.8">${el.name}</text>
+
+  <!-- Pernas -->
+  <rect x="${200 - hipW/2 + 10}" y="430" width="${hipW/2 - 20}" height="120" fill="#0f172a"/>
+  <rect x="${200 + 10}" y="430" width="${hipW/2 - 20}" height="120" fill="#0f172a"/>
+  <!-- Sapatos -->
+  <rect x="${200 - hipW/2 + 5}" y="545" width="${hipW/2 - 10}" height="18" rx="6" fill="#1f2937"/>
+  <rect x="${200 + 5}" y="545" width="${hipW/2 - 10}" height="18" rx="6" fill="#1f2937"/>
+
+  <!-- Corpo / camisa -->
+  <path d="M${200 - bodyW/2} 230 Q200 215 ${200 + bodyW/2} 230 L${200 + hipW/2} 440 L${200 - hipW/2} 440 Z" fill="${outfitColor}" stroke="#000" stroke-width="2" opacity="0.95"/>
+  <!-- Emblema -->
+  <circle cx="200" cy="320" r="34" fill="#0b0f1a"/>
+  <text x="200" y="332" text-anchor="middle" font-family="Arial Black,sans-serif" font-weight="900" font-size="32" fill="#fbbf24">${el.symbol}</text>
+
+  <!-- Braços -->
+  <rect x="${200 - bodyW/2 - 28}" y="232" width="26" height="160" rx="12" fill="${outfitColor}" stroke="#000" stroke-width="2"/>
+  <rect x="${200 + bodyW/2 + 2}" y="232" width="26" height="160" rx="12" fill="${outfitColor}" stroke="#000" stroke-width="2"/>
+  <!-- Mãos -->
+  <circle cx="${200 - bodyW/2 - 15}" cy="400" r="14" fill="${skinHex}"/>
+  <circle cx="${200 + bodyW/2 + 15}" cy="400" r="14" fill="${skinHex}"/>
+
+  <!-- Pescoço -->
+  <rect x="186" y="210" width="28" height="28" fill="${skinHex}"/>
+  <!-- Cabeça -->
+  <circle cx="200" cy="175" r="55" fill="${skinHex}" stroke="#000" stroke-width="2"/>
+  <!-- Olhos -->
+  <circle cx="183" cy="175" r="4" fill="#111"/>
+  <circle cx="217" cy="175" r="4" fill="#111"/>
+  <!-- Boca -->
+  <path d="M188 198 Q200 206 212 198" stroke="#111" stroke-width="2" fill="none"/>
+  <!-- Cabelo -->
+  ${hair}
+
+  <!-- Acessório / emoji -->
+  <text x="320" y="190" text-anchor="middle" font-size="44">${accEmoji}</text>
+  <text x="80" y="190" text-anchor="middle" font-size="38">${outfitEmoji}</text>
+
+  <text x="200" y="585" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="#fff" opacity="0.55">${gender} • ${body} • ${skin} • ${hairStyle} ${hairColor}</text>
 </svg>`;
     };
 
     const saveFallback = async (reason: string) => {
-      if (el.hero_image) {
-        await admin.from("player_avatars").update({
-          generated_url: el.hero_image,
-          current_card: cardSymbol,
-          appearance: a,
-        }).eq("user_id", user.id);
-        return json({ url: el.hero_image, fallback: true, reason });
-      }
-
       const svg = buildFallbackSvg();
       const bytes = new TextEncoder().encode(svg);
       const path = `${user.id}/${cardSymbol}-fallback-${Date.now()}.svg`;
@@ -113,6 +179,7 @@ Deno.serve(async (req) => {
       const { data: signed } = await admin.storage.from("player-avatars").createSignedUrl(path, 60 * 60 * 24 * 365 * 5);
       const url = signed?.signedUrl;
       await admin.from("player_avatars").update({
+
         generated_url: url, current_card: cardSymbol, appearance: a,
       }).eq("user_id", user.id);
       return json({ url, path, fallback: true, reason });
