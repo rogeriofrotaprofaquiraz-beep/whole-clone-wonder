@@ -278,6 +278,8 @@ export function PlayerAvatar() {
           wallet={wallet}
           admin={admin}
           handleShopAction={handleShopAction}
+          handleGenerate={handleGenerate}
+          generating={generating}
         />
       </Card>
     </div>
@@ -300,6 +302,8 @@ type WizardProps = {
   wallet: WalletState | null;
   admin: boolean;
   handleShopAction: (item: AvatarItem) => Promise<void>;
+  handleGenerate: () => Promise<void>;
+  generating: boolean;
 };
 
 const STEPS = [
@@ -479,8 +483,9 @@ function Wizard(p: WizardProps) {
             Próximo<ChevronRight size={16} className="ml-1" />
           </Button>
         ) : (
-          <Button onClick={() => toast.success("Personalização concluída! 🎉")} className="bg-gradient-to-r from-emerald-600 to-emerald-500">
-            <Check size={16} className="mr-1" />Concluir
+          <Button onClick={p.handleGenerate} disabled={p.generating} className="bg-gradient-to-r from-emerald-600 to-emerald-500">
+            {p.generating ? <Loader2 className="animate-spin mr-1" size={16} /> : <Sparkles size={16} className="mr-1" />}
+            Gerar Avatar IA
           </Button>
         )}
       </div>
