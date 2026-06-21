@@ -104,16 +104,23 @@ export const AdminPanel = ({ userRole, initialSymbol }: { userRole?: string | nu
     const hair = hairColors[Math.floor(Math.random()*hairColors.length)];
     const palette = colorAttr ? `Color palette coherent with the real element (${colorAttr}).` : "Color palette matching the real element's natural appearance.";
 
+    const heroNameUpper = (el.heroName || `${el.name} Veloz`).toString().toUpperCase();
     return [
-      `Vertical trading card portrait, 2:3 aspect ratio (6cm x 9cm), cinematic fantastic realism, ultra high definition, 8k.`,
-      `FULL BODY SHOT of a realistic ${gender} superhero representing the chemical element "${el.name}" (symbol ${el.symbol}). Entire body visible from head to toe — both feet and head fully inside the frame with comfortable top and bottom margins. DO NOT CROP any part of the body.`,
-      `Camera: full-body framing, centered composition, slightly low angle for a heroic effect, shallow depth of field with sharp focus on the character.`,
-      `Lighting: strong cool frontal key light revealing suit texture and confident expression, soft diffuse ambient fill, gentle natural shadows.`,
-      `Character: hero standing on the ground or slightly floating, balanced heroic pose, confident expression. Random realistic human ethnicity and features. ${hair} hair with a defined hairstyle.`,
-      `Suit: texture as close as possible to the REAL natural appearance of the element — ${texture}. Glowing luminous "${el.symbol}" emblem centered on the chest. ${cape}.`,
-      `Background: ${originAttr} — the natural place where the element originates or is extracted, rendered in cinematic realism and harmonized with the frontal lighting.`,
+      `COLLECTIBLE TRADING CARD in vertical 2:3 portrait format (like a Pokémon/Marvel card), cinematic fantastic realism, ultra high definition 8k, polished premium print look.`,
+      `CARD LAYOUT (MANDATORY, identical to reference style):`,
+      `- Thin elegant double-line silver/white frame border around the entire card with slightly rounded corners.`,
+      `- TOP-LEFT CORNER: small dark rounded square badge containing ONLY the bold white letter "${el.symbol}" (the element symbol), nothing else.`,
+      `- BOTTOM: a slim dark band inside the frame with the centered caption "${heroNameUpper}" in bold uppercase white sans-serif letters, clean and legible.`,
+      `- No other text, no numbers, no watermark, no logo anywhere else on the card.`,
+      `MAIN ARTWORK (fills the card between the badge and the bottom caption):`,
+      `FULL BODY SHOT of a realistic ${gender} superhero representing the chemical element "${el.name}" (symbol ${el.symbol}). Entire body visible from head to toe — feet and head fully inside the frame with comfortable margins. DO NOT CROP the body.`,
+      `Camera: heroic full-body framing, centered, slightly low angle, shallow depth of field, sharp focus on the character.`,
+      `Lighting: strong cool cinematic frontal key light revealing suit texture, soft ambient fill, dramatic rim light.`,
+      `Character: confident heroic standing pose, slight energy aura around the body. Realistic human features, ${hair} hair with a defined hairstyle.`,
+      `Suit: form-fitting hero suit with texture as close as possible to the REAL natural appearance of the element — ${texture}. Glowing luminous "${el.symbol}" emblem centered on the chest. ${cape}.`,
+      `Background: cinematic stylized depiction of ${originAttr} — the natural place where the element originates — with cosmic/energetic atmosphere, glowing clouds and soft light rays harmonized with the character.`,
       palette,
-      `Style: fantastic realism, central focus, short depth of field, balanced light, complete body details, no cropping, no text, no watermark, no logo, no borders.`,
+      `Style: premium collectible card art, fantastic photorealism, central composition, perfectly framed inside the card border, no additional text besides the symbol badge and the bottom hero-name caption.`,
     ].join(" ");
   };
 
