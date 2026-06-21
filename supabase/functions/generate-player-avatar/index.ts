@@ -132,21 +132,6 @@ Deno.serve(async (req) => {
       content.push({ type: "image_url", image_url: { url: dataUrl } });
     }
 
-    let heroBase64: string | null = null;
-    let heroMime = "image/png";
-    if (el.hero_image) {
-      try {
-        const heroResp = await fetch(el.hero_image);
-        if (heroResp.ok) {
-          heroMime = heroResp.headers.get("content-type") ?? "image/png";
-          const buf = new Uint8Array(await heroResp.arrayBuffer());
-          let bin = "";
-          for (let i = 0; i < buf.length; i++) bin += String.fromCharCode(buf[i]);
-          heroBase64 = btoa(bin);
-        }
-      } catch (_) { /* ignore */ }
-    }
-
     const aiResp = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
       headers: { "Content-Type": "application/json", "Authorization": `Bearer ${lovableKey}` },
