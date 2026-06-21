@@ -62,19 +62,21 @@ Deno.serve(async (req) => {
     }
 
     const prompt = [
-      `TAREFA: gerar uma CARTA COLECIONÁVEL PERSONALIZADA (proporção 2:3) de um super-herói inspirado no elemento "${el.name}" (símbolo ${el.symbol}, categoria ${cat}).`,
-      `A imagem de referência mostra o ESTILO VISUAL da carta oficial — USE-A APENAS COMO REFERÊNCIA DE ESTILO (iluminação cinematográfica, fotorrealismo 8k, composição, paleta do elemento, cenário ${cat}, emblema "${el.symbol}" no peito).`,
-      `⚠️ NÃO COPIE o personagem da referência. RECRIE o personagem do zero com EXATAMENTE estas características obrigatórias do jogador (prioridade máxima — sobrepõem qualquer detalhe da referência):`,
-      `• GÊNERO: ${gender} — corpo, rosto, silhueta e proporções DEVEM ser claramente ${gender}`,
+      `TAREFA: gerar APENAS A ARTE FINAL DO AVATAR PERSONALIZADO, no mesmo resultado visual mostrado nas telas de perfil: uma imagem vertical 2:3 de super-herói fotorrealista, pronta para aparecer como carta alta e também ser recortada em avatar circular no perfil.`,
+      `FORMATO OBRIGATÓRIO: retrato vertical 2:3, personagem de corpo inteiro centralizado, dos pés à cabeça, com os dois pés e a cabeça 100% visíveis, sem cortes, com margem superior e inferior completas. O herói deve ocupar cerca de 75% a 85% da altura da imagem, igual ao resultado de personalização enviado.`,
+      `NÃO gerar tela de aplicativo, perfil, interface, botão, badge de moedas, número 72, nome de usuário, moldura branca externa, card UI, texto, legenda, watermark, logo ou ícones. A saída é só a ilustração vertical do avatar.`,
+      `ESTILO VISUAL: super-herói cinematográfico realista 8k, foco nítido, leve ângulo baixo heroico, luz frontal fria forte, preenchimento ambiente suave, rim light dramático, sombras naturais, aura elemental discreta, cenário fantástico coerente com ${cat || "o elemento"}.`,
+      `A imagem oficial do elemento anexada é SOMENTE REFERÊNCIA DE QUALIDADE/PALETA/ILUMINAÇÃO para "${el.name}" (${el.symbol}). NÃO copie o personagem, rosto, pose exata, roupa ou identidade da referência.`,
+      `⚠️ PRIORIDADE MÁXIMA: recrie o personagem do zero com EXATAMENTE estas características do jogador, que vencem qualquer detalhe da referência:`,
+      `• GÊNERO: ${gender} — corpo, rosto, silhueta e proporções devem ser claramente ${gender}`,
       `• TIPO FÍSICO: corpo ${body}`,
-      `• TOM DE PELE: ${skin} (visível no rosto, mãos e pele exposta)`,
-      `• CABELO: estilo ${hairStyle}, cor ${hairColor} (claramente visível)`,
-      outfitDesc && `• TRAJE: ${outfitDesc} — substitua o traje da referência mantendo o emblema "${el.symbol}" no peito`,
-      accDesc && `• ACESSÓRIO OBRIGATÓRIO E VISÍVEL: ${accDesc}`,
-      bgDesc && `• CENÁRIO: ${bgDesc} (substitua o fundo da referência)`,
-      `Corpo inteiro visível (pés à cabeça), pose heroica, leve ângulo baixo, centralizado na carta.`,
-      photoBase64 ? `Use a SEGUNDA imagem (foto do jogador) como referência facial, respeitando gênero ${gender}, pele ${skin} e cabelo ${hairStyle} ${hairColor}.` : "",
-      `Saída: APENAS a carta finalizada, sem texto, sem bordas extras, sem marca d'água. Se qualquer característica do jogador acima for ignorada, a imagem está errada.`,
+      `• TOM DE PELE: ${skin}, visível no rosto, mãos e pele exposta`,
+      `• CABELO: estilo ${hairStyle}, cor ${hairColor}, claramente visível`,
+      outfitDesc && `• TRAJE: ${outfitDesc}; use um traje de super-herói premium adaptado a esse item, mantendo um emblema luminoso "${el.symbol}" no peito`,
+      accDesc && `• ACESSÓRIO OBRIGATÓRIO E VISÍVEL: ${accDesc}, integrado ao personagem sem esconder rosto, mãos ou corpo`,
+      bgDesc && `• CENÁRIO: ${bgDesc}, substituindo totalmente o fundo da carta original`,
+      photoBase64 ? `Use a SEGUNDA imagem (foto do jogador) apenas como referência facial/identidade, preservando as escolhas de gênero, pele e cabelo acima. Não transforme em selfie, busto ou retrato cortado.` : "",
+      `COMPOSIÇÃO FINAL: full-body shot central, pose heroica equilibrada, face no terço superior, torso legível para o recorte circular do perfil, pernas e pés completos dentro do quadro. Se sair busto, close-up, personagem cortado, cartoon, anime, tela de perfil ou card com texto, está errado.`,
     ].filter(Boolean).join(" ");
 
     const content: any[] = [{ type: "text", text: prompt }];
