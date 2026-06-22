@@ -138,8 +138,7 @@ Deno.serve(async (req) => {
     };
 
     const generateImage = async () => {
-      const attempts = [
-        {
+      const openAiAttempt = {
           name: "openai/gpt-image-2",
           endpoint: "https://ai.gateway.lovable.dev/v1/images/generations",
           body: {
@@ -150,8 +149,8 @@ Deno.serve(async (req) => {
             n: 1,
             stream: false,
           },
-        },
-        {
+        };
+      const geminiAttempt = {
           name: "google/gemini-3.1-flash-image-preview",
           endpoint: "https://ai.gateway.lovable.dev/v1/chat/completions",
           body: {
@@ -159,8 +158,8 @@ Deno.serve(async (req) => {
             messages: [{ role: "user", content }],
             modalities: ["image", "text"],
           },
-        },
-      ];
+        };
+      const attempts = photoBase64 ? [geminiAttempt, openAiAttempt] : [openAiAttempt, geminiAttempt];
 
       const failures: string[] = [];
       for (const attempt of attempts) {
