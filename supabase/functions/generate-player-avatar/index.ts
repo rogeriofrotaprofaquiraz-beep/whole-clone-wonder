@@ -184,7 +184,7 @@ Deno.serve(async (req) => {
 
       const failures: string[] = [];
       for (const attempt of attempts) {
-        const resp = await fetch(attempt.endpoint, {
+        const resp = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
