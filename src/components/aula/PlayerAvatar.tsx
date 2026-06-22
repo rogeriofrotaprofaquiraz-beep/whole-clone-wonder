@@ -27,7 +27,7 @@ type AvatarState = {
   equipped?: Partial<Record<AvatarItem["slot"], string>> | null;
 };
 type WalletState = { coins: number; lifetime_coins?: number };
-type FunctionPayload = { error?: string } | null;
+type FunctionPayload = { error?: string; fallback?: boolean; message?: string } | null;
 type FunctionInvokeError = Error & { context?: unknown };
 
 const errorMessage = (error: unknown) => error instanceof Error ? error.message : String(error);
@@ -193,7 +193,11 @@ export function PlayerAvatar() {
       }
       const payload = data as FunctionPayload;
       if (payload?.error) throw new Error(payload.error);
-      toast.success(`Avatar gerado!${spend.charged ? ` -${spend.charged}${COIN_SYMBOL} ${COIN_NAME}` : " (admin)"}`);
+      if (payload?.fallback) {
+        toast.info(payload.message || "Carta original aplicada como avatar.");
+      } else {
+        toast.success(`Avatar gerado!${spend.charged ? ` -${spend.charged}${COIN_SYMBOL} ${COIN_NAME}` : " (admin)"}`);
+      }
       setTick((t) => t + 1);
     } catch (e: unknown) {
       // Reembolsa em caso de falha
