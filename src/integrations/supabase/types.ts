@@ -18,26 +18,41 @@ export type Database = {
         Row: {
           action: string
           created_at: string | null
+          duration_seconds: number | null
           id: string
           metadata: Json | null
+          page: string | null
           path: string | null
+          session_id: string | null
+          user_email: string | null
           user_id: string
+          user_name: string | null
         }
         Insert: {
           action: string
           created_at?: string | null
+          duration_seconds?: number | null
           id?: string
           metadata?: Json | null
+          page?: string | null
           path?: string | null
+          session_id?: string | null
+          user_email?: string | null
           user_id: string
+          user_name?: string | null
         }
         Update: {
           action?: string
           created_at?: string | null
+          duration_seconds?: number | null
           id?: string
           metadata?: Json | null
+          page?: string | null
           path?: string | null
+          session_id?: string | null
+          user_email?: string | null
           user_id?: string
+          user_name?: string | null
         }
         Relationships: [
           {
@@ -456,43 +471,121 @@ export type Database = {
       }
       player_avatars: {
         Row: {
+          accessories: string[] | null
           appearance: Json
+          avatar_url: string | null
           background: string
+          body_type: string | null
           current_card: string
           equipped: Json
+          gender: string | null
           generated_url: string | null
+          hair_color: string | null
+          hair_style: string | null
+          outfit: string | null
           photo_url: string | null
           skin: string
+          skin_tone: string | null
+          total_earnings: number
           unlocked: string[]
           unlocked_cards: string[]
+          unlocked_items: string[] | null
           updated_at: string
           user_id: string
         }
         Insert: {
+          accessories?: string[] | null
           appearance?: Json
+          avatar_url?: string | null
           background?: string
+          body_type?: string | null
           current_card?: string
           equipped?: Json
+          gender?: string | null
           generated_url?: string | null
+          hair_color?: string | null
+          hair_style?: string | null
+          outfit?: string | null
           photo_url?: string | null
           skin?: string
+          skin_tone?: string | null
+          total_earnings?: number
           unlocked?: string[]
           unlocked_cards?: string[]
+          unlocked_items?: string[] | null
           updated_at?: string
           user_id: string
         }
         Update: {
+          accessories?: string[] | null
           appearance?: Json
+          avatar_url?: string | null
           background?: string
+          body_type?: string | null
           current_card?: string
           equipped?: Json
+          gender?: string | null
           generated_url?: string | null
+          hair_color?: string | null
+          hair_style?: string | null
+          outfit?: string | null
           photo_url?: string | null
           skin?: string
+          skin_tone?: string | null
+          total_earnings?: number
           unlocked?: string[]
           unlocked_cards?: string[]
+          unlocked_items?: string[] | null
           updated_at?: string
           user_id?: string
+        }
+        Relationships: []
+      }
+      player_stats: {
+        Row: {
+          avatar_url: string | null
+          best_win_streak: number
+          created_at: string
+          display_name: string | null
+          favorite_element: string | null
+          ranking_points: number
+          total_draws: number
+          total_games: number
+          total_losses: number
+          total_wins: number
+          updated_at: string
+          user_id: string
+          win_streak: number
+        }
+        Insert: {
+          avatar_url?: string | null
+          best_win_streak?: number
+          created_at?: string
+          display_name?: string | null
+          favorite_element?: string | null
+          ranking_points?: number
+          total_draws?: number
+          total_games?: number
+          total_losses?: number
+          total_wins?: number
+          updated_at?: string
+          user_id: string
+          win_streak?: number
+        }
+        Update: {
+          avatar_url?: string | null
+          best_win_streak?: number
+          created_at?: string
+          display_name?: string | null
+          favorite_element?: string | null
+          ranking_points?: number
+          total_draws?: number
+          total_games?: number
+          total_losses?: number
+          total_wins?: number
+          updated_at?: string
+          user_id?: string
+          win_streak?: number
         }
         Relationships: []
       }
