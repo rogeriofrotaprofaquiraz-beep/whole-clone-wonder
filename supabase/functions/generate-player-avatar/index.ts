@@ -159,36 +159,26 @@ Deno.serve(async (req) => {
     };
 
     const generateImage = async () => {
-      // Nano Banana (Gemini 2.5 Flash Image): mais barato, especialista em EDIÇÃO de imagem
-      const nanoBanana = {
-        name: "google/gemini-2.5-flash-image",
-        body: {
-          model: "google/gemini-2.5-flash-image",
-          messages: [{ role: "user", content }],
-          modalities: ["image", "text"],
-        },
-      };
-      // Nano Banana 2 (Gemini 3.1 Flash Image): edição com qualidade próxima do Pro
-      const nanoBanana2 = {
-        name: "google/gemini-3.1-flash-image",
-        body: {
-          model: "google/gemini-3.1-flash-image",
-          messages: [{ role: "user", content }],
-          modalities: ["image", "text"],
-        },
-      };
+      const makeGeminiEditBody = (model: string) => ({
+        model,
+        messages: [{ role: "user", content }],
+        modalities: ["image", "text"],
+        stream: false,
+      });
 
       // Ordem: prioriza o modelo mais barato que edita a carta original
-      const attempts = [nanoBanana, nanoBanana2];
-
+      const attempts = [
+        { name: "google/gemini-2.5-flash-image", body: makeGeminiEditBody("google/gemini-2.5-flash-image") },
+        { name: "google/gemini-3.1-flash-image", body: makeGeminiEditBody("google/gemini-3.1-flash-image") },
+        { name: "google/gemini-3-pro-image", body: makeGeminiEditBody("google/gemini-3-pro-image") },
+      ];
 
       const failures: string[] = [];
       for (const attempt of attempts) {
-        const resp = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
+        const resp = await fetch("https://ai.gateway.lovable.dev/v1/images/generations", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${lovableKey}`,
             "Lovable-API-Key": lovableKey,
           },
           body: JSON.stringify(attempt.body),
@@ -200,7 +190,7 @@ Deno.serve(async (req) => {
 
         if (!resp.ok) {
           failures.push(`${attempt.name}: HTTP ${resp.status}${raw ? ` — ${raw.slice(0, 220)}` : ""}`);
-          if (resp.status === 402 || resp.status === 429) {
+          if (resp.status >= 400 && resp.status < 500) {
             const err: any = new Error(failures.join(" | "));
             err.status = resp.status;
             throw err;
@@ -210,9 +200,6 @@ Deno.serve(async (req) => {
 
         const b64 = data?.data?.[0]?.b64_json;
         if (typeof b64 === "string" && b64.length > 0) return `data:image/png;base64,${b64}`;
-
-        const chatUrl = data?.choices?.[0]?.message?.images?.[0]?.image_url?.url;
-        if (typeof chatUrl === "string" && chatUrl.length > 0) return chatUrl;
 
         failures.push(`${attempt.name}: resposta sem imagem${raw ? ` — ${raw.slice(0, 220)}` : ""}`);
       }
