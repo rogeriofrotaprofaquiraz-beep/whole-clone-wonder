@@ -22,7 +22,6 @@ function toArea(v: any): AreaValue {
 }
 
 function isSchemaOnly(json: any): boolean {
-  // Estrutura tipo "elemental_heroes_estrutura": só descreve entidades/páginas, sem dados.
   if (!json || typeof json !== "object") return false;
   const hasPages = Array.isArray(json.pages);
   const hasEntities =
@@ -30,7 +29,10 @@ function isSchemaOnly(json: any): boolean {
     json.entities.every(
       (e: any) => e && typeof e === "object" && "key_fields" in e && !("symbol" in e) && !("question" in e)
     );
-  return hasPages && hasEntities;
+  if (hasPages && hasEntities) return true;
+  // Backup de módulo Base44 (ex: perfil_progressao)
+  if (json.module && json.structure && json.data && typeof json.data === "object") return true;
+  return false;
 }
 
 function detect(json: any): Detected {
@@ -119,9 +121,17 @@ export function JsonImporter({ onImported }: { onImported?: () => void }) {
       setDetected(d);
       setSchemaJson(schemaOnly ? json : null);
       if (schemaOnly) {
-        toast.success(
-          `Estrutura Base44 detectada: ${json.pages?.length ?? 0} páginas, ${json.entities?.length ?? 0} entidades`
-        );
+        if (json.module) {
+          const counts = Object.entries(json.data ?? {})
+            .filter(([, v]) => Array.isArray(v))
+            .map(([k, v]) => `${k}: ${(v as any[]).length}`)
+            .join(", ");
+          toast.success(`Módulo "${json.module}" detectado (${counts})`);
+        } else {
+          toast.success(
+            `Estrutura Base44 detectada: ${json.pages?.length ?? 0} páginas, ${json.entities?.length ?? 0} entidades`
+          );
+        }
       }
       const total = d.elements.length + d.questions.length + d.terms.length;
       if (!total && !schemaOnly) toast.error("Nenhum dado reconhecido no JSON");
@@ -165,20 +175,34 @@ export function JsonImporter({ onImported }: { onImported?: () => void }) {
         total += rows.length;
       }
       if (schemaJson) {
+        const isModule = !!schemaJson.module;
+        const summary = schemaJson.summary ?? {};
+        const dataObj = schemaJson.data ?? {};
+        const moduleCounts = isModule
+          ? Object.entries(dataObj)
+              .filter(([, v]) => Array.isArray(v))
+              .map(([k, v]) => `${k}: ${(v as any[]).length}`)
+              .join(", ")
+          : "";
         const { error } = await supabase.from("app_blueprints").insert({
           user_id: user.id,
-          app_name: schemaJson.app_name ?? null,
-          version: schemaJson.version ?? null,
+          app_name: schemaJson.app_name ?? schemaJson.module_title ?? schemaJson.module ?? null,
+          version: schemaJson.version ?? schemaJson.module ?? null,
           exported_at: schemaJson.exported_at ?? null,
           pages: schemaJson.pages ?? [],
-          entities: schemaJson.entities ?? [],
+          entities: schemaJson.entities ?? (isModule ? [{ module: schemaJson.module, summary, data_keys: Object.keys(dataObj) }] : []),
           raw: schemaJson,
         });
         if (error) throw error;
-        total += (schemaJson.pages?.length ?? 0) + (schemaJson.entities?.length ?? 0);
-        toast.success(
-          `Estrutura salva: ${schemaJson.pages?.length ?? 0} páginas + ${schemaJson.entities?.length ?? 0} entidades`
-        );
+        if (isModule) {
+          total += schemaJson.total_records ?? 0;
+          toast.success(`Módulo "${schemaJson.module}" salvo (${moduleCounts})`);
+        } else {
+          total += (schemaJson.pages?.length ?? 0) + (schemaJson.entities?.length ?? 0);
+          toast.success(
+            `Estrutura salva: ${schemaJson.pages?.length ?? 0} páginas + ${schemaJson.entities?.length ?? 0} entidades`
+          );
+        }
       }
       toast.success(`${total} registros importados`);
       setDetected(null);
@@ -215,7 +239,16 @@ export function JsonImporter({ onImported }: { onImported?: () => void }) {
             {detected && <Badge>Elementos: {detected.elements.length}</Badge>}
             {detected && <Badge>Questões: {detected.questions.length}</Badge>}
             {detected && <Badge>Termos: {detected.terms.length}</Badge>}
-            {schemaJson && (
+            {schemaJson && schemaJson.module ? (
+              <>
+                <Badge className="bg-[#4C1D95]">Módulo: {schemaJson.module}</Badge>
+                {Object.entries(schemaJson.data ?? {})
+                  .filter(([, v]) => Array.isArray(v))
+                  .map(([k, v]) => (
+                    <Badge key={k} className="bg-[#7C3AED]">{k}: {(v as any[]).length}</Badge>
+                  ))}
+              </>
+            ) : schemaJson && (
               <>
                 <Badge className="bg-[#4C1D95]">Páginas: {schemaJson.pages?.length ?? 0}</Badge>
                 <Badge className="bg-[#7C3AED]">Entidades: {schemaJson.entities?.length ?? 0}</Badge>
