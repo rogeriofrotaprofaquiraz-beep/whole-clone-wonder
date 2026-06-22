@@ -15,6 +15,18 @@ type Profile = {
   wins: number | null; losses: number | null; streak: number | null; rank_points: number | null;
 };
 type Wallet = { coins: number; lifetime_coins: number };
+type Stats = {
+  display_name: string | null;
+  avatar_url: string | null;
+  ranking_points: number;
+  total_games: number;
+  total_wins: number;
+  total_losses: number;
+  total_draws: number;
+  win_streak: number;
+  best_win_streak: number;
+  favorite_element: string | null;
+};
 type Avatar = { generated_url: string | null; photo_url: string | null; current_card: string | null; unlocked_cards: string[] | null };
 type Element = { symbol: string; number: number; name: string; hero_name: string | null; hero_image: string | null; rarity: string | null };
 
