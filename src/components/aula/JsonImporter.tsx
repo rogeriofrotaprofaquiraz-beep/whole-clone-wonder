@@ -239,7 +239,16 @@ export function JsonImporter({ onImported }: { onImported?: () => void }) {
             {detected && <Badge>Elementos: {detected.elements.length}</Badge>}
             {detected && <Badge>Questões: {detected.questions.length}</Badge>}
             {detected && <Badge>Termos: {detected.terms.length}</Badge>}
-            {schemaJson && (
+            {schemaJson && schemaJson.module ? (
+              <>
+                <Badge className="bg-[#4C1D95]">Módulo: {schemaJson.module}</Badge>
+                {Object.entries(schemaJson.data ?? {})
+                  .filter(([, v]) => Array.isArray(v))
+                  .map(([k, v]) => (
+                    <Badge key={k} className="bg-[#7C3AED]">{k}: {(v as any[]).length}</Badge>
+                  ))}
+              </>
+            ) : schemaJson && (
               <>
                 <Badge className="bg-[#4C1D95]">Páginas: {schemaJson.pages?.length ?? 0}</Badge>
                 <Badge className="bg-[#7C3AED]">Entidades: {schemaJson.entities?.length ?? 0}</Badge>
