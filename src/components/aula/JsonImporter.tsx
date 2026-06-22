@@ -167,20 +167,34 @@ export function JsonImporter({ onImported }: { onImported?: () => void }) {
         total += rows.length;
       }
       if (schemaJson) {
+        const isModule = !!schemaJson.module;
+        const summary = schemaJson.summary ?? {};
+        const dataObj = schemaJson.data ?? {};
+        const moduleCounts = isModule
+          ? Object.entries(dataObj)
+              .filter(([, v]) => Array.isArray(v))
+              .map(([k, v]) => `${k}: ${(v as any[]).length}`)
+              .join(", ")
+          : "";
         const { error } = await supabase.from("app_blueprints").insert({
           user_id: user.id,
-          app_name: schemaJson.app_name ?? null,
-          version: schemaJson.version ?? null,
+          app_name: schemaJson.app_name ?? schemaJson.module_title ?? schemaJson.module ?? null,
+          version: schemaJson.version ?? schemaJson.module ?? null,
           exported_at: schemaJson.exported_at ?? null,
           pages: schemaJson.pages ?? [],
-          entities: schemaJson.entities ?? [],
+          entities: schemaJson.entities ?? (isModule ? [{ module: schemaJson.module, summary, data_keys: Object.keys(dataObj) }] : []),
           raw: schemaJson,
         });
         if (error) throw error;
-        total += (schemaJson.pages?.length ?? 0) + (schemaJson.entities?.length ?? 0);
-        toast.success(
-          `Estrutura salva: ${schemaJson.pages?.length ?? 0} páginas + ${schemaJson.entities?.length ?? 0} entidades`
-        );
+        if (isModule) {
+          total += schemaJson.total_records ?? 0;
+          toast.success(`Módulo "${schemaJson.module}" salvo (${moduleCounts})`);
+        } else {
+          total += (schemaJson.pages?.length ?? 0) + (schemaJson.entities?.length ?? 0);
+          toast.success(
+            `Estrutura salva: ${schemaJson.pages?.length ?? 0} páginas + ${schemaJson.entities?.length ?? 0} entidades`
+          );
+        }
       }
       toast.success(`${total} registros importados`);
       setDetected(null);
