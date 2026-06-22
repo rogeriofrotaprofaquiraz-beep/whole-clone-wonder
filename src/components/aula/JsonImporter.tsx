@@ -197,6 +197,14 @@ export function JsonImporter({ onImported }: { onImported?: () => void }) {
         if (isModule) {
           total += schemaJson.total_records ?? 0;
           toast.success(`Módulo "${schemaJson.module}" salvo (${moduleCounts})`);
+          // Migra dados do módulo para tabelas reais, vinculando por e-mail
+          const migrated = await migrateModuleData(dataObj);
+          if (migrated.total) {
+            total += migrated.total;
+            toast.success(
+              `Migrados ${migrated.avatars} avatares, ${migrated.stats} stats, ${migrated.logs} logs (${migrated.skipped} sem e-mail correspondente)`
+            );
+          }
         } else {
           total += (schemaJson.pages?.length ?? 0) + (schemaJson.entities?.length ?? 0);
           toast.success(
