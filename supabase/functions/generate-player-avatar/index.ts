@@ -199,7 +199,7 @@ Deno.serve(async (req) => {
     try {
       imageUrl = await generateImage();
     } catch (e) {
-      const details = errorMessage(e);
+      const details = String((e as Error).message ?? e);
       const status = details.includes("HTTP 429") ? 429 : details.includes("HTTP 402") ? 402 : 502;
       return await generationError(`A IA não conseguiu gerar o avatar personalizado agora. O erro é do Gateway de IA, não dos Átomos do jogo. Detalhes: ${details.slice(0, 500)}`, status);
     }
