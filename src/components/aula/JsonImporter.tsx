@@ -105,6 +105,146 @@ function normTerm(t: any, userId: string) {
   };
 }
 
+// ---- Migração de dados do módulo perfil_progressao (Base44) ----
+type ModuleData = {
+  playerAvatars?: any[];
+  playerStats?: any[];
+  activityLogs?: any[];
+};
+
+async function migrateModuleData(data: ModuleData) {
+  const result = { avatars: 0, stats: 0, logs: 0, skipped: 0, total: 0 };
+  const avatars = data.playerAvatars ?? [];
+  const stats = data.playerStats ?? [];
+  const logs = data.activityLogs ?? [];
+
+  const collect = (arr: any[], keys: string[]) =>
+    arr.flatMap((r) => keys.map((k) => r?.[k])).filter((v) => typeof v === "string" && v.includes("@"));
+  const emails = Array.from(
+    new Set(
+      [
+        ...collect(avatars, ["created_by", "user_email"]),
+        ...collect(stats, ["created_by", "user_email"]),
+        ...collect(logs, ["user_email", "created_by"]),
+      ].map((e: string) => e.toLowerCase())
+    )
+  );
+
+  const emailToId = new Map<string, string>();
+  if (emails.length) {
+    const { data: mapping, error } = await (supabase as any).rpc("lookup_user_ids_by_emails", { _emails: emails });
+    if (error) throw error;
+    for (const row of mapping ?? []) emailToId.set(row.email, row.user_id);
+  }
+
+  const idFor = (rec: any, keys: string[]) => {
+    for (const k of keys) {
+      const v = rec?.[k];
+      if (typeof v === "string" && v.includes("@")) {
+        const id = emailToId.get(v.toLowerCase());
+        if (id) return id;
+      }
+    }
+    return null;
+  };
+
+  if (avatars.length) {
+    const rows = avatars
+      .map((a) => {
+        const uid = idFor(a, ["created_by", "user_email"]);
+        if (!uid) return null;
+        return {
+          user_id: uid,
+          gender: a.gender ?? null,
+          body_type: a.body_type ?? null,
+          skin_tone: a.skin_tone ?? null,
+          hair_style: a.hair_style ?? null,
+          hair_color: a.hair_color ?? null,
+          outfit: a.outfit ?? null,
+          background: a.background ?? null,
+          accessories: Array.isArray(a.accessories) ? a.accessories : [],
+          avatar_url: a.avatar_url ?? null,
+          unlocked_items: Array.isArray(a.unlocked_items) ? a.unlocked_items : [],
+          total_earnings: Number(a.total_earnings ?? 0),
+        };
+      })
+      .filter(Boolean) as any[];
+    result.skipped += avatars.length - rows.length;
+    if (rows.length) {
+      const { error } = await (supabase as any).from("player_avatars").upsert(rows, { onConflict: "user_id" });
+      if (error) throw error;
+      result.avatars = rows.length;
+      const wallets = avatars
+        .map((a) => {
+          const uid = idFor(a, ["created_by", "user_email"]);
+          if (!uid) return null;
+          return { user_id: uid, coins: Number(a.coins ?? 0), lifetime_coins: Number(a.total_earnings ?? a.coins ?? 0) };
+        })
+        .filter(Boolean) as any[];
+      if (wallets.length) await (supabase as any).from("player_wallet").upsert(wallets, { onConflict: "user_id" });
+    }
+  }
+
+  if (stats.length) {
+    const rows = stats
+      .map((s) => {
+        const uid = idFor(s, ["created_by", "user_email"]);
+        if (!uid) return null;
+        return {
+          user_id: uid,
+          display_name: s.display_name ?? null,
+          avatar_url: s.avatar_url ?? null,
+          ranking_points: Number(s.ranking_points ?? 1000),
+          total_games: Number(s.total_games ?? 0),
+          total_wins: Number(s.total_wins ?? 0),
+          total_losses: Number(s.total_losses ?? 0),
+          total_draws: Number(s.total_draws ?? 0),
+          win_streak: Number(s.win_streak ?? 0),
+          best_win_streak: Number(s.best_win_streak ?? 0),
+          favorite_element: s.favorite_element ?? null,
+        };
+      })
+      .filter(Boolean) as any[];
+    result.skipped += stats.length - rows.length;
+    if (rows.length) {
+      const { error } = await (supabase as any).from("player_stats").upsert(rows, { onConflict: "user_id" });
+      if (error) throw error;
+      result.stats = rows.length;
+    }
+  }
+
+  if (logs.length) {
+    const rows = logs
+      .map((l) => {
+        const uid = idFor(l, ["user_email", "created_by"]);
+        if (!uid) return null;
+        return {
+          user_id: uid,
+          action: String(l.action ?? "unknown"),
+          path: l.page ?? l.path ?? null,
+          page: l.page ?? null,
+          session_id: l.session_id ?? null,
+          user_email: l.user_email ?? null,
+          user_name: l.user_name ?? null,
+          duration_seconds: l.duration_seconds ?? null,
+          metadata: l.metadata ?? null,
+          created_at: l.created_date ?? l.created_at ?? new Date().toISOString(),
+        };
+      })
+      .filter(Boolean) as any[];
+    result.skipped += logs.length - rows.length;
+    for (let i = 0; i < rows.length; i += 500) {
+      const chunk = rows.slice(i, i + 500);
+      const { error } = await (supabase as any).from("activity_logs").insert(chunk);
+      if (error) throw error;
+      result.logs += chunk.length;
+    }
+  }
+
+  result.total = result.avatars + result.stats + result.logs;
+  return result;
+}
+
 export function JsonImporter({ onImported }: { onImported?: () => void }) {
   const [detected, setDetected] = useState<Detected | null>(null);
   const [schemaJson, setSchemaJson] = useState<any | null>(null);
