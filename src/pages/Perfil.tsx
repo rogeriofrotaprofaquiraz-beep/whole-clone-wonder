@@ -15,6 +15,18 @@ type Profile = {
   wins: number | null; losses: number | null; streak: number | null; rank_points: number | null;
 };
 type Wallet = { coins: number; lifetime_coins: number };
+type Stats = {
+  display_name: string | null;
+  avatar_url: string | null;
+  ranking_points: number;
+  total_games: number;
+  total_wins: number;
+  total_losses: number;
+  total_draws: number;
+  win_streak: number;
+  best_win_streak: number;
+  favorite_element: string | null;
+};
 type Avatar = { generated_url: string | null; photo_url: string | null; current_card: string | null; unlocked_cards: string[] | null };
 type Element = { symbol: string; number: number; name: string; hero_name: string | null; hero_image: string | null; rarity: string | null };
 
@@ -38,6 +50,7 @@ export default function Perfil() {
   const [userId, setUserId] = useState<string | null>(null);
   const [profile, setProfile] = useState<Profile | null>(null);
   const [wallet, setWallet] = useState<Wallet | null>(null);
+  const [stats, setStats] = useState<Stats | null>(null);
   const [avatar, setAvatar] = useState<Avatar | null>(null);
   const [unlockedHeroes, setUnlockedHeroes] = useState<Element[]>([]);
   const [totalHeroes, setTotalHeroes] = useState(0);
@@ -53,15 +66,17 @@ export default function Perfil() {
   useEffect(() => {
     if (!userId) return;
     (async () => {
-      const [{ data: p }, { data: w }, { data: a }, { count }] = await Promise.all([
+      const [{ data: p }, { data: w }, { data: a }, { data: s }, { count }] = await Promise.all([
         supabase.from("profiles").select("*").eq("id", userId).maybeSingle(),
         supabase.from("player_wallet").select("coins, lifetime_coins").eq("user_id", userId).maybeSingle(),
         supabase.from("player_avatars").select("generated_url, photo_url, current_card, unlocked_cards").eq("user_id", userId).maybeSingle(),
+        (supabase as any).from("player_stats").select("*").eq("user_id", userId).maybeSingle(),
         supabase.from("elements").select("*", { count: "exact", head: true }),
       ]);
       setProfile(p as Profile | null);
       setWallet((w as Wallet | null) ?? { coins: 0, lifetime_coins: 0 });
       setAvatar(a as Avatar | null);
+      setStats((s as Stats | null) ?? null);
       setTotalHeroes(count ?? 0);
 
       const symbols = (a as Avatar | null)?.unlocked_cards ?? [];
@@ -79,11 +94,16 @@ export default function Perfil() {
     return <div className="min-h-screen bg-slate-950 text-slate-300 flex items-center justify-center">Carregando perfil…</div>;
   }
 
-  const wins = profile.wins ?? 0;
-  const losses = profile.losses ?? 0;
-  const totalGames = wins + losses;
+  const wins = stats?.total_wins ?? profile.wins ?? 0;
+  const losses = stats?.total_losses ?? profile.losses ?? 0;
+  const draws = stats?.total_draws ?? 0;
+  const totalGames = stats?.total_games ?? (wins + losses);
   const level = profile.level ?? 1;
-  const points = profile.rank_points ?? 0;
+  const points = stats?.ranking_points ?? profile.rank_points ?? 0;
+  const streak = stats?.win_streak ?? profile.streak ?? 0;
+  const bestStreak = stats?.best_win_streak ?? profile.streak ?? 0;
+  const displayName = stats?.display_name ?? profile.username ?? "jogador";
+  const favorite = stats?.favorite_element ?? null;
   const heroCount = unlockedHeroes.length;
   const nextMilestone = MILESTONES.find((m) => heroCount < m.at) ?? MILESTONES[MILESTONES.length - 1];
   const heroProgress = Math.min(100, (heroCount / nextMilestone.at) * 100);
@@ -122,9 +142,10 @@ export default function Perfil() {
             </div>
 
             <div className="flex-1 text-center md:text-left">
-              <h1 className="text-2xl md:text-3xl font-black tracking-tight">
-                {profile.username ?? "jogador"}
-              </h1>
+              <h1 className="text-2xl md:text-3xl font-black tracking-tight">{displayName}</h1>
+              {favorite && (
+                <p className="text-xs text-violet-300 mt-1">Elemento favorito: <strong>{favorite}</strong></p>
+              )}
               <div className="mt-3 flex flex-wrap gap-2 justify-center md:justify-start">
                 <Badge className="bg-amber-950/60 border border-amber-700 text-amber-300 flex items-center gap-1 px-3 py-1">
                   <Coins size={12} />{wallet.coins} moedas
@@ -133,10 +154,10 @@ export default function Perfil() {
                   <Star size={12} />Nível {level}
                 </Badge>
                 <Badge className="bg-violet-950/60 border border-violet-700 text-violet-300 flex items-center gap-1 px-3 py-1">
-                  <Sparkles size={12} />{points} pontos
+                  <Sparkles size={12} />{points} pts ranking
                 </Badge>
                 <Badge className="bg-emerald-950/60 border border-emerald-700 text-emerald-300 flex items-center gap-1 px-3 py-1">
-                  <Trophy size={12} />{wins} vitórias
+                  <Trophy size={12} />{wins}V / {losses}D / {draws}E
                 </Badge>
               </div>
             </div>
@@ -144,11 +165,13 @@ export default function Perfil() {
         </Card>
 
         {/* STATS */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           <StatCard icon={<TrendingUp size={16} className="text-amber-400" />} label="Total Ganho"
                     value={`${wallet.lifetime_coins} moedas`} accent="from-amber-900/30 to-transparent border-amber-800/60" />
-          <StatCard icon={<Zap size={16} className="text-violet-400" />} label="Melhor Sequência"
-                    value={`${profile.streak ?? 0} vitórias`} accent="from-violet-900/30 to-transparent border-violet-800/60" />
+          <StatCard icon={<Zap size={16} className="text-violet-400" />} label="Sequência Atual"
+                    value={`${streak} vitórias`} accent="from-violet-900/30 to-transparent border-violet-800/60" />
+          <StatCard icon={<Award size={16} className="text-fuchsia-400" />} label="Melhor Sequência"
+                    value={`${bestStreak} vitórias`} accent="from-fuchsia-900/30 to-transparent border-fuchsia-800/60" />
           <StatCard icon={<Trophy size={16} className="text-blue-400" />} label="Total de Jogos"
                     value={`${totalGames}`} accent="from-blue-900/30 to-transparent border-blue-800/60" />
         </div>
