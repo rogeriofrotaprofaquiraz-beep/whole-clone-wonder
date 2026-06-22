@@ -121,9 +121,17 @@ export function JsonImporter({ onImported }: { onImported?: () => void }) {
       setDetected(d);
       setSchemaJson(schemaOnly ? json : null);
       if (schemaOnly) {
-        toast.success(
-          `Estrutura Base44 detectada: ${json.pages?.length ?? 0} páginas, ${json.entities?.length ?? 0} entidades`
-        );
+        if (json.module) {
+          const counts = Object.entries(json.data ?? {})
+            .filter(([, v]) => Array.isArray(v))
+            .map(([k, v]) => `${k}: ${(v as any[]).length}`)
+            .join(", ");
+          toast.success(`Módulo "${json.module}" detectado (${counts})`);
+        } else {
+          toast.success(
+            `Estrutura Base44 detectada: ${json.pages?.length ?? 0} páginas, ${json.entities?.length ?? 0} entidades`
+          );
+        }
       }
       const total = d.elements.length + d.questions.length + d.terms.length;
       if (!total && !schemaOnly) toast.error("Nenhum dado reconhecido no JSON");
