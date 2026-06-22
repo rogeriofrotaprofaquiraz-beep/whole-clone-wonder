@@ -22,7 +22,6 @@ function toArea(v: any): AreaValue {
 }
 
 function isSchemaOnly(json: any): boolean {
-  // Estrutura tipo "elemental_heroes_estrutura": só descreve entidades/páginas, sem dados.
   if (!json || typeof json !== "object") return false;
   const hasPages = Array.isArray(json.pages);
   const hasEntities =
@@ -30,7 +29,10 @@ function isSchemaOnly(json: any): boolean {
     json.entities.every(
       (e: any) => e && typeof e === "object" && "key_fields" in e && !("symbol" in e) && !("question" in e)
     );
-  return hasPages && hasEntities;
+  if (hasPages && hasEntities) return true;
+  // Backup de módulo Base44 (ex: perfil_progressao)
+  if (json.module && json.structure && json.data && typeof json.data === "object") return true;
+  return false;
 }
 
 function detect(json: any): Detected {
