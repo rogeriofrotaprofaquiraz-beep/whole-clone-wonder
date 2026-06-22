@@ -142,9 +142,10 @@ export default function Perfil() {
             </div>
 
             <div className="flex-1 text-center md:text-left">
-              <h1 className="text-2xl md:text-3xl font-black tracking-tight">
-                {profile.username ?? "jogador"}
-              </h1>
+              <h1 className="text-2xl md:text-3xl font-black tracking-tight">{displayName}</h1>
+              {favorite && (
+                <p className="text-xs text-violet-300 mt-1">Elemento favorito: <strong>{favorite}</strong></p>
+              )}
               <div className="mt-3 flex flex-wrap gap-2 justify-center md:justify-start">
                 <Badge className="bg-amber-950/60 border border-amber-700 text-amber-300 flex items-center gap-1 px-3 py-1">
                   <Coins size={12} />{wallet.coins} moedas
@@ -153,10 +154,10 @@ export default function Perfil() {
                   <Star size={12} />Nível {level}
                 </Badge>
                 <Badge className="bg-violet-950/60 border border-violet-700 text-violet-300 flex items-center gap-1 px-3 py-1">
-                  <Sparkles size={12} />{points} pontos
+                  <Sparkles size={12} />{points} pts ranking
                 </Badge>
                 <Badge className="bg-emerald-950/60 border border-emerald-700 text-emerald-300 flex items-center gap-1 px-3 py-1">
-                  <Trophy size={12} />{wins} vitórias
+                  <Trophy size={12} />{wins}V / {losses}D / {draws}E
                 </Badge>
               </div>
             </div>
@@ -164,11 +165,13 @@ export default function Perfil() {
         </Card>
 
         {/* STATS */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           <StatCard icon={<TrendingUp size={16} className="text-amber-400" />} label="Total Ganho"
                     value={`${wallet.lifetime_coins} moedas`} accent="from-amber-900/30 to-transparent border-amber-800/60" />
-          <StatCard icon={<Zap size={16} className="text-violet-400" />} label="Melhor Sequência"
-                    value={`${profile.streak ?? 0} vitórias`} accent="from-violet-900/30 to-transparent border-violet-800/60" />
+          <StatCard icon={<Zap size={16} className="text-violet-400" />} label="Sequência Atual"
+                    value={`${streak} vitórias`} accent="from-violet-900/30 to-transparent border-violet-800/60" />
+          <StatCard icon={<Award size={16} className="text-fuchsia-400" />} label="Melhor Sequência"
+                    value={`${bestStreak} vitórias`} accent="from-fuchsia-900/30 to-transparent border-fuchsia-800/60" />
           <StatCard icon={<Trophy size={16} className="text-blue-400" />} label="Total de Jogos"
                     value={`${totalGames}`} accent="from-blue-900/30 to-transparent border-blue-800/60" />
         </div>
