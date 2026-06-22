@@ -125,29 +125,29 @@ Deno.serve(async (req) => {
       } catch (_) { /* segue sem referência da carta */ }
     }
 
+    if (!cardImageDataUrl) {
+      return json({ error: "Esta carta não tem imagem oficial — não há como editar. Gere a arte da carta primeiro no painel admin." }, 400);
+    }
+
     const prompt = [
-      `ULTRA-PHOTOREALISTIC full-body superhero portrait, cinematic 8K, shot on 85mm lens, shallow depth of field, dramatic three-point studio lighting with strong rim light, hyper-detailed real skin pores and fabric texture, sharp focus, vertical 2:3 framing.`,
-      cardImageDataUrl
-        ? `STRICT REFERENCE: the first attached image is the official "${el.hero_name ?? el.name}" hero card. Recreate the SAME character — same costume colors, emblem, palette and overall vibe — AS A LIVE-ACTION PHOTOGRAPH OF A REAL HUMAN BEING (not illustration, not cartoon, not 3D render, not anime). Treat the card as concept art and produce a real photograph of that hero.`
-        : `Theme the character around the official "${el.hero_name ?? el.name}" hero of "${el.name}" (${el.symbol}) as a real-life live-action photograph.`,
-      `Apply these personalization traits on top of the reference (these override the card whenever they conflict):`,
-      `- Gender: ${genderEn} (clearly ${genderEn} face, body and proportions)`,
-      `- Body: ${body}`,
+      `EDIT THE ATTACHED HERO CARD IMAGE. Do NOT redraw from scratch — keep the same character pose, costume design, colors, emblem, lighting and background composition from the original card.`,
+      `Apply ONLY the following personalization changes to the existing character:`,
+      `- Gender presentation: ${genderEn}`,
+      `- Body type: ${body}`,
       `- Skin tone: ${skin}`,
       `- Hair: ${hairStyle}${hairColor ? `, ${hairColor} color` : ""}`,
-      `- Outfit: ${outfitDesc}`,
-      accDesc && `- Accessory clearly visible on the character: ${accDesc}`,
-      `- Background: ${bgDesc}`,
-      `- Element theme: "${el.name}" (${el.symbol})${cat ? `, ${cat}` : ""} — subtle elemental aura/effects around the hands and chest emblem only.`,
-      `FRAMING: full body head-to-toes, both feet visible, character centered, occupying 75-85% of vertical frame, no cropping.`,
-      `STYLE: realistic photograph, real human skin, real fabric, natural micro-imperfections. NO illustration, NO cel-shading, NO anime, NO toy/plastic look.`,
-      `FORBIDDEN: app UI, profile screen, card frame, borders, buttons, badges, coins, numbers, usernames, text, logos, watermarks.`,
-      photoBase64 ? `A SECOND attached image is the user's face — use it ONLY as facial likeness reference, keeping gender/skin/hair as specified above even if the photo differs.` : "",
+      `- Outfit adjustments: ${outfitDesc}`,
+      accDesc && `- Add accessory: ${accDesc}`,
+      eq.background ? `- Replace background with: ${bgDesc}` : `- Keep the original background.`,
+      `Element: "${el.name}" (${el.symbol})${cat ? `, ${cat}` : ""}.`,
+      `OUTPUT: full body, vertical 2:3 framing, same artistic style as the original card (do not switch to photo, do not switch to anime — keep the card's style).`,
+      `FORBIDDEN: app UI, card frame, borders, text, logos, watermarks, usernames, numbers.`,
+      photoBase64 ? `The SECOND attached image is the user's face — use only as facial likeness reference.` : "",
     ].filter(Boolean).join("\n");
 
     // Conteúdo multimodal: prompt + carta (referência principal) + foto opcional
     const content: any[] = [{ type: "text", text: prompt }];
-    if (cardImageDataUrl) content.push({ type: "image_url", image_url: { url: cardImageDataUrl } });
+    content.push({ type: "image_url", image_url: { url: cardImageDataUrl } });
     if (photoBase64) {
       const dataUrl = photoBase64.startsWith("data:") ? photoBase64 : `data:image/png;base64,${photoBase64}`;
       content.push({ type: "image_url", image_url: { url: dataUrl } });
@@ -159,42 +159,28 @@ Deno.serve(async (req) => {
     };
 
     const generateImage = async () => {
-      // Gemini 3 Pro Image: melhor qualidade fotorrealista e enxerga a carta de referência
-      const geminiPro = {
-        name: "google/gemini-3-pro-image",
-        endpoint: "https://ai.gateway.lovable.dev/v1/chat/completions",
+      // Nano Banana (Gemini 2.5 Flash Image): mais barato, especialista em EDIÇÃO de imagem
+      const nanoBanana = {
+        name: "google/gemini-2.5-flash-image",
         body: {
-          model: "google/gemini-3-pro-image",
+          model: "google/gemini-2.5-flash-image",
           messages: [{ role: "user", content }],
           modalities: ["image", "text"],
         },
       };
-      // Nano Banana 2: rápido e ótimo para edição a partir de imagem
-      const geminiFlash = {
+      // Nano Banana 2 (Gemini 3.1 Flash Image): edição com qualidade próxima do Pro
+      const nanoBanana2 = {
         name: "google/gemini-3.1-flash-image",
-        endpoint: "https://ai.gateway.lovable.dev/v1/chat/completions",
         body: {
           model: "google/gemini-3.1-flash-image",
           messages: [{ role: "user", content }],
           modalities: ["image", "text"],
         },
       };
-      // GPT-image-2 qualidade alta (só prompt — não usa a carta como referência)
-      const openAiHigh = {
-        name: "openai/gpt-image-2",
-        endpoint: "https://ai.gateway.lovable.dev/v1/images/generations",
-        body: {
-          model: "openai/gpt-image-2",
-          prompt,
-          size: "1024x1536",
-          quality: "high",
-          n: 1,
-          stream: false,
-        },
-      };
 
-      // Ordem: prioriza modelos multimodais que VEEM a carta de referência
-      const attempts = [geminiPro, geminiFlash, openAiHigh];
+      // Ordem: prioriza o modelo mais barato que edita a carta original
+      const attempts = [nanoBanana, nanoBanana2];
+
 
       const failures: string[] = [];
       for (const attempt of attempts) {
