@@ -140,8 +140,8 @@ Deno.serve(async (req) => {
       accDesc && `- Add accessory: ${accDesc}`,
       eq.background ? `- Replace background with: ${bgDesc}` : `- Keep the original background.`,
       `Element: "${el.name}" (${el.symbol})${cat ? `, ${cat}` : ""}.`,
-      `OUTPUT: full body, vertical 2:3 framing, same artistic style as the original card (do not switch to photo, do not switch to anime — keep the card's style).`,
-      `FORBIDDEN: app UI, card frame, borders, text, logos, watermarks, usernames, numbers.`,
+      `OUTPUT: full body, vertical 2:3 framing, preserve the original card's visual quality and realism. This must look like an edited version of the uploaded card, not a new drawing.`,
+      `FORBIDDEN: pixel art, low-resolution sprite, app UI, card frame, borders, text, logos, watermarks, usernames, numbers.`,
       photoBase64 ? `The SECOND attached image is the user's face — use only as facial likeness reference.` : "",
     ].filter(Boolean).join("\n");
 
@@ -221,18 +221,18 @@ Deno.serve(async (req) => {
     };
 
     let imageUrl: string;
+    let usedOriginalCardFallback = false;
     try {
       imageUrl = await generateImage();
     } catch (e) {
       const details = String((e as Error).message ?? e);
       const status = (e as any).status ?? (details.includes("HTTP 429") ? 429 : details.includes("HTTP 402") ? 402 : 502);
       if (status === 402) {
-        return await generationError(
-          "Sem créditos no Lovable AI Gateway para gerar o avatar ultrarrealista. Adicione créditos no workspace para continuar — sem fallback de baixa qualidade.",
-          402,
-        );
+        imageUrl = cardImageDataUrl;
+        usedOriginalCardFallback = true;
+      } else {
+        return await generationError(`A IA não conseguiu gerar o avatar ultrarrealista agora. Detalhes: ${details.slice(0, 500)}`, status);
       }
-      return await generationError(`A IA não conseguiu gerar o avatar ultrarrealista agora. Detalhes: ${details.slice(0, 500)}`, status);
     }
 
     const match = imageUrl.match(/^data:(image\/\w+);base64,(.+)$/);
@@ -254,7 +254,14 @@ Deno.serve(async (req) => {
       appearance: a,
     }).eq("user_id", user.id);
 
-    return json({ url, path });
+    return json({
+      url,
+      path,
+      fallback: usedOriginalCardFallback,
+      message: usedOriginalCardFallback
+        ? "Sem créditos de IA: a carta original foi aplicada como avatar, sem gerar pixel art."
+        : undefined,
+    });
   } catch (e) {
     return json({ error: String((e as Error).message ?? e) }, 500);
   }
