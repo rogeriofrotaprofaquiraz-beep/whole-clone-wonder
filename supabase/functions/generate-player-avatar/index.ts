@@ -217,6 +217,8 @@ Deno.serve(async (req) => {
       if (status === 402) {
         imageUrl = cardImageDataUrl;
         usedOriginalCardFallback = true;
+      } else if (status === 429) {
+        return await generationError("A IA está com limite temporário de uso. Tente novamente em alguns minutos; suas moedas foram preservadas.", 429);
       } else {
         return await generationError(`A IA não conseguiu gerar o avatar ultrarrealista agora. Detalhes: ${details.slice(0, 500)}`, status);
       }
@@ -246,7 +248,7 @@ Deno.serve(async (req) => {
       path,
       fallback: usedOriginalCardFallback,
       message: usedOriginalCardFallback
-        ? "Sem créditos de IA: a carta original foi aplicada como avatar, sem gerar pixel art."
+        ? "Sem créditos suficientes para editar com IA: a carta original foi aplicada como avatar. Adicione créditos ao workspace para gerar a versão ultrarrealista modificada."
         : undefined,
     });
   } catch (e) {
