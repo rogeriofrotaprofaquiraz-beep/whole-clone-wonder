@@ -132,32 +132,77 @@ Deno.serve(async (req) => {
       content.push({ type: "image_url", image_url: { url: dataUrl } });
     }
 
-    const aiResp = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", "Authorization": `Bearer ${lovableKey}` },
-      body: JSON.stringify({
-        model: "google/gemini-3.1-flash-image-preview",
-        messages: [{ role: "user", content }],
-        modalities: ["image", "text"],
-      }),
-    });
-
     const generationError = async (reason: string, status = 502) => {
       await admin.from("player_avatars").update({ current_card: cardSymbol, appearance: a }).eq("user_id", user.id);
       return json({ error: reason }, status);
     };
 
-    if (!aiResp.ok) {
-      if (aiResp.status === 402) return await generationError("A IA não gerou uma nova imagem porque os créditos acabaram. Nenhuma carta padrão será usada como avatar.", 402);
-      if (aiResp.status === 429) return await generationError("A IA está com limite temporário. Tente gerar novamente em instantes.", 429);
-      const details = await aiResp.text().catch(() => "");
-      return await generationError(`A IA não conseguiu gerar o avatar personalizado agora.${details ? ` Detalhes: ${details.slice(0, 240)}` : ""}`);
+    const generateImage = async () => {
+      const attempts = [
+        {
+          name: "openai/gpt-image-2",
+          endpoint: "https://ai.gateway.lovable.dev/v1/images/generations",
+          body: {
+            model: "openai/gpt-image-2",
+            prompt,
+            size: "1024x1536",
+            quality: "low",
+            n: 1,
+            stream: false,
+          },
+        },
+        {
+          name: "google/gemini-3.1-flash-image-preview",
+          endpoint: "https://ai.gateway.lovable.dev/v1/chat/completions",
+          body: {
+            model: "google/gemini-3.1-flash-image-preview",
+            messages: [{ role: "user", content }],
+            modalities: ["image", "text"],
+          },
+        },
+      ];
+
+      const failures: string[] = [];
+      for (const attempt of attempts) {
+        const resp = await fetch(attempt.endpoint, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${lovableKey}`,
+            "Lovable-API-Key": lovableKey,
+          },
+          body: JSON.stringify(attempt.body),
+        });
+
+        const raw = await resp.text();
+        let data: any = null;
+        try { data = raw ? JSON.parse(raw) : null; } catch { /* keep raw details */ }
+
+        if (!resp.ok) {
+          failures.push(`${attempt.name}: HTTP ${resp.status}${raw ? ` — ${raw.slice(0, 220)}` : ""}`);
+          continue;
+        }
+
+        const b64 = data?.data?.[0]?.b64_json;
+        if (typeof b64 === "string" && b64.length > 0) return `data:image/png;base64,${b64}`;
+
+        const chatUrl = data?.choices?.[0]?.message?.images?.[0]?.image_url?.url;
+        if (typeof chatUrl === "string" && chatUrl.length > 0) return chatUrl;
+
+        failures.push(`${attempt.name}: resposta sem imagem${raw ? ` — ${raw.slice(0, 220)}` : ""}`);
+      }
+
+      throw new Error(failures.join(" | ") || "nenhum modelo retornou imagem");
+    };
+
+    let imageUrl: string;
+    try {
+      imageUrl = await generateImage();
+    } catch (e) {
+      const details = errorMessage(e);
+      const status = details.includes("HTTP 429") ? 429 : details.includes("HTTP 402") ? 402 : 502;
+      return await generationError(`A IA não conseguiu gerar o avatar personalizado agora. O erro é do Gateway de IA, não dos Átomos do jogo. Detalhes: ${details.slice(0, 500)}`, status);
     }
-
-
-    const aiData = await aiResp.json();
-    const imageUrl: string | undefined = aiData.choices?.[0]?.message?.images?.[0]?.image_url?.url;
-    if (!imageUrl) return json({ error: "Nenhuma imagem retornada" }, 500);
 
     const match = imageUrl.match(/^data:(image\/\w+);base64,(.+)$/);
     if (!match) return json({ error: "Formato de imagem inválido" }, 500);
