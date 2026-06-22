@@ -194,7 +194,11 @@ export function PlayerAvatar() {
       const payload = data as FunctionPayload;
       if (payload?.error) throw new Error(payload.error);
       if (payload?.fallback) {
-        toast.info(payload.message || "Carta original aplicada como avatar.");
+        if (spend.charged > 0) {
+          const w = await loadWallet(userId);
+          await supabase.from("player_wallet").update({ coins: (w?.coins ?? 0) + spend.charged }).eq("user_id", userId);
+        }
+        toast.warning(payload.message || "Sem créditos suficientes para IA: a carta original foi aplicada como avatar e suas moedas foram devolvidas.");
       } else {
         toast.success(`Avatar gerado!${spend.charged ? ` -${spend.charged}${COIN_SYMBOL} ${COIN_NAME}` : " (admin)"}`);
       }
