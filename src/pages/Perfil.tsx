@@ -50,6 +50,7 @@ export default function Perfil() {
   const [userId, setUserId] = useState<string | null>(null);
   const [profile, setProfile] = useState<Profile | null>(null);
   const [wallet, setWallet] = useState<Wallet | null>(null);
+  const [stats, setStats] = useState<Stats | null>(null);
   const [avatar, setAvatar] = useState<Avatar | null>(null);
   const [unlockedHeroes, setUnlockedHeroes] = useState<Element[]>([]);
   const [totalHeroes, setTotalHeroes] = useState(0);
@@ -65,15 +66,17 @@ export default function Perfil() {
   useEffect(() => {
     if (!userId) return;
     (async () => {
-      const [{ data: p }, { data: w }, { data: a }, { count }] = await Promise.all([
+      const [{ data: p }, { data: w }, { data: a }, { data: s }, { count }] = await Promise.all([
         supabase.from("profiles").select("*").eq("id", userId).maybeSingle(),
         supabase.from("player_wallet").select("coins, lifetime_coins").eq("user_id", userId).maybeSingle(),
         supabase.from("player_avatars").select("generated_url, photo_url, current_card, unlocked_cards").eq("user_id", userId).maybeSingle(),
+        (supabase as any).from("player_stats").select("*").eq("user_id", userId).maybeSingle(),
         supabase.from("elements").select("*", { count: "exact", head: true }),
       ]);
       setProfile(p as Profile | null);
       setWallet((w as Wallet | null) ?? { coins: 0, lifetime_coins: 0 });
       setAvatar(a as Avatar | null);
+      setStats((s as Stats | null) ?? null);
       setTotalHeroes(count ?? 0);
 
       const symbols = (a as Avatar | null)?.unlocked_cards ?? [];
@@ -91,11 +94,16 @@ export default function Perfil() {
     return <div className="min-h-screen bg-slate-950 text-slate-300 flex items-center justify-center">Carregando perfil…</div>;
   }
 
-  const wins = profile.wins ?? 0;
-  const losses = profile.losses ?? 0;
-  const totalGames = wins + losses;
+  const wins = stats?.total_wins ?? profile.wins ?? 0;
+  const losses = stats?.total_losses ?? profile.losses ?? 0;
+  const draws = stats?.total_draws ?? 0;
+  const totalGames = stats?.total_games ?? (wins + losses);
   const level = profile.level ?? 1;
-  const points = profile.rank_points ?? 0;
+  const points = stats?.ranking_points ?? profile.rank_points ?? 0;
+  const streak = stats?.win_streak ?? profile.streak ?? 0;
+  const bestStreak = stats?.best_win_streak ?? profile.streak ?? 0;
+  const displayName = stats?.display_name ?? profile.username ?? "jogador";
+  const favorite = stats?.favorite_element ?? null;
   const heroCount = unlockedHeroes.length;
   const nextMilestone = MILESTONES.find((m) => heroCount < m.at) ?? MILESTONES[MILESTONES.length - 1];
   const heroProgress = Math.min(100, (heroCount / nextMilestone.at) * 100);
