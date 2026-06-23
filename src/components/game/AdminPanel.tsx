@@ -91,38 +91,73 @@ export const AdminPanel = ({ userRole, initialSymbol }: { userRole?: string | nu
     const s = stateAttr.toLowerCase();
     const isGas = s.includes("gás") || s.includes("gas");
     const isLiquid = s.includes("líquido") || s.includes("liquido") || s.includes("liquid");
-    const texture = isGas
-      ? "translucent gaseous shimmering texture, soft glowing particles, like the real gaseous element"
+
+    // Essence by physical state — light/ethereal for gases, fluid/reflective for liquids, solid/metallic for solids
+    const essence = isGas
+      ? {
+          mood: "leve, luminoso e etéreo",
+          float: "hero floating slightly above the ground, conveying lightness and mobility",
+          lightingExtra: "intense cool frontal light highlighting the lightness and luminosity of the suit, soft bluish and whitish highlights evoking energy and purity",
+          suitTexture: "translucent and luminous texture inspired by the lightness of a gas, soft glowing particles drifting around the body",
+          capeDesc: "shining, fluid cape with luminous edges suggesting movement and lightness",
+          bgDesc: "luminous background harmonized with the element, with subtle hue nuances evoking purity and ethereal atmosphere, clean, light and epic",
+          paletteHint: "light and luminous tones consistent with the element",
+        }
       : isLiquid
-      ? "flowing liquid metallic texture with reflective ripples, like the real liquid element"
-      : "solid crystalline/metallic texture matching the raw mineral form of the real element";
-    const cape = isGas
-      ? "shiny, gaseous and translucent cape with soft colored light and luminous glowing edges"
-      : "luminous translucent cape with soft colored light and glowing edges";
+      ? {
+          mood: "fluido, reflexivo e dinâmico",
+          float: "hero standing in a confident pose with subtle ripples of liquid around the feet",
+          lightingExtra: "cool cinematic frontal light with reflective highlights bouncing across the fluid suit, soft diffuse ambient fill",
+          suitTexture: "flowing liquid texture with reflective ripples and mirror-like sheen, like the real liquid element",
+          capeDesc: "fluid translucent cape that flows like liquid, with luminous reflective edges",
+          bgDesc: "cinematic stylized depiction of the element's natural source with reflective atmosphere harmonized with the frontal lighting",
+          paletteHint: "reflective tones consistent with the element",
+        }
+      : {
+          mood: "sólido, robusto e imponente",
+          float: "hero standing firmly on the ground, grounded heroic pose, weight and strength visible",
+          lightingExtra: "strong cool cinematic frontal key light revealing suit texture, dramatic rim light, gentle natural shadows",
+          suitTexture: "solid crystalline / metallic texture matching the raw mineral form of the real element, tangible weight and surface detail",
+          capeDesc: "heavy luminous cape with metallic glowing edges",
+          bgDesc: "cinematic stylized depiction of the element's natural source/origin with atmospheric glow harmonized with the frontal lighting",
+          paletteHint: "tones consistent with the element's natural mineral appearance",
+        };
+
     const gender = Math.random() > 0.5 ? "male" : "female";
     const hairColors = ["black","brown","blonde","red","white","silver","auburn"];
     const hair = hairColors[Math.floor(Math.random()*hairColors.length)];
-    const palette = colorAttr ? `Color palette coherent with the real element (${colorAttr}).` : "Color palette matching the real element's natural appearance.";
+    const palette = colorAttr
+      ? `Chromatic palette coherent with the real element (${colorAttr}); ${essence.paletteHint}.`
+      : `Chromatic palette matching the real element's natural appearance; ${essence.paletteHint}.`;
 
     const heroNameUpper = (el.heroName || `${el.name}`).toString().toUpperCase();
     const atomicNumber = el.number ?? "";
+
     return [
-      `COLLECTIBLE TRADING CARD in vertical 2:3 portrait format (Pokémon/Marvel style), cinematic fantastic realism, ultra high definition 8k, premium print look.`,
+      // FORMAT
+      `COLLECTIBLE TRADING CARD, vertical card (6 cm × 9 cm), 2:3 proportion, full-body framing with the character centered from head to toe, no crops, complete top and bottom margins.`,
+      // CARD LAYOUT
       `CARD LAYOUT (MANDATORY):`,
       `- Thin elegant double-line silver/white frame border with slightly rounded corners.`,
       `- TOP-LEFT CORNER: small dark rounded square badge containing ONLY the bold white element symbol "${el.symbol}".`,
       `- TOP-RIGHT CORNER: small dark rounded square badge containing ONLY the bold white atomic number "${atomicNumber}".`,
       `- BOTTOM: slim dark band inside the frame with the centered caption "${heroNameUpper}" in bold uppercase white sans-serif letters.`,
       `- NO other text, numbers, tables, scores, watermarks or logos anywhere else.`,
-      `MAIN ARTWORK (fills the card between the badges and the bottom caption):`,
-      `FULL BODY SHOT of a realistic ${gender} superhero representing the chemical element "${el.name}" (symbol ${el.symbol}, atomic number ${atomicNumber}). ENTIRE body visible from head to toe — both feet and the head fully inside the frame with comfortable top and bottom margins. DO NOT CROP any part of the body.`,
-      `Camera: heroic full-body framing, centered, slightly low angle, shallow depth of field, sharp focus on the character.`,
-      `Lighting: strong cool cinematic frontal key light revealing suit texture, soft diffuse ambient fill, dramatic rim light, gentle natural shadows.`,
-      `Character: hero standing on the ground or slightly floating, confident balanced heroic pose, slight luminous energy aura. Realistic random human ethnicity, ${hair} hair with a defined hairstyle.`,
-      `Suit: form-fitting hero suit with texture as close as possible to the REAL natural appearance of the element — ${texture}. Large glowing luminous "${el.symbol}" emblem centered on the chest. ${cape}.`,
-      `Background: cinematic stylized depiction of ${originAttr} — the natural source/origin of the element — with atmospheric glow harmonized with the frontal lighting.`,
+      // MAIN ARTWORK — adapted from the Hidrogênio template
+      `MAIN ARTWORK — realistic ${gender} superhero representing the chemical element "${el.name}" (symbol ${el.symbol}, atomic number ${atomicNumber}), mood: ${essence.mood}.`,
+      // CAMERA
+      `Camera: full-body shot at a slightly low angle for a heroic effect, character centered, short depth of field, sharp focus on the character, both feet and head fully inside the frame.`,
+      // LIGHTING
+      `Lighting: ${essence.lightingExtra}; diffuse natural ambient light, soft balanced shadows.`,
+      // CHARACTER
+      `Character: ${essence.float}, confident expression, balanced heroic pose. Realistic and varied appearance, random human traits, ${hair} hair with a defined hairstyle.`,
+      // SUIT
+      `Suit: ${essence.suitTexture}. Large glowing luminous "${el.symbol}" emblem centered on the chest, radiating energy. ${essence.capeDesc}.`,
       palette,
-      `Style: premium collectible card art, fantastic photorealism, central composition, complete body details, perfectly framed inside the card border, NO additional text besides the two corner badges (symbol left, atomic number right) and the bottom hero-name caption.`,
+      // BACKGROUND
+      `Background: ${essence.bgDesc}; stylized realistic cinematic depiction of ${originAttr}.`,
+      // STYLE
+      `Style: fantastic realism with central focus on the character, high definition, no crops, balanced light and complete body details, premium collectible card art, NO additional text besides the two corner badges and the bottom hero-name caption.`,
     ].join(" ");
   };
 
