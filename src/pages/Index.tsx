@@ -13,6 +13,8 @@ import { AdminPanel } from "@/components/game/AdminPanel";
 import { AuthSystem } from "@/components/game/AuthSystem";
 import { Ranking } from "@/components/game/Ranking";
 import { ElementList } from "@/components/game/ElementList";
+import { HeroCollection } from "@/components/game/HeroCollection";
+import { RARITY_FRAME, FAMILY_BADGE, getFamily, calcRarity } from "@/lib/heroStyles";
 
 import { ensureUserAccess } from "@/lib/ensureUserAccess";
 import { Swords, Brain, LayoutGrid, Settings, LogOut, User as UserIcon, Trophy, Users, Shield, List, GraduationCap, Dumbbell, Gamepad2, Atom, Activity } from 'lucide-react';
