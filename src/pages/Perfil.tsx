@@ -15,6 +15,14 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { toast } from "sonner";
 import { ArrowLeft, Atom, Lock, Sparkles, Trophy, Wand2, Check } from "lucide-react";
 
+const APPEARANCE_LABELS: Record<string, string> = {
+  gender: "Gênero",
+  body: "Tipo de corpo",
+  skin: "Tom de pele",
+  hairStyle: "Estilo de cabelo",
+  hairColor: "Cor do cabelo",
+};
+
 const APPEARANCE_OPTIONS = {
   gender: [
     { v: "masculino", l: "Masculino" },
@@ -49,6 +57,7 @@ const APPEARANCE_OPTIONS = {
     { v: "grisalho", l: "Grisalho" },
   ],
 };
+
 
 export default function Perfil() {
   const navigate = useNavigate();
