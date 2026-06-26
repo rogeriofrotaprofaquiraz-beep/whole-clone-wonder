@@ -520,6 +520,10 @@ const Index = () => {
           </div>
         </TabsContent>
 
+        <TabsContent value="heroes" className="w-full animate-in fade-in zoom-in-95 duration-500">
+          <HeroCollection onSelect={(sym) => { setSelectedSymbol(sym); setActiveTab('collection'); }} />
+        </TabsContent>
+
         <TabsContent value="list" className="w-full animate-in fade-in slide-in-from-bottom-10 duration-500">
           <ElementList
             canManage={userRole === 'admin'}
@@ -527,6 +531,7 @@ const Index = () => {
             onEdit={(sym) => { setAdminEditSymbol(sym); setSelectedSymbol(sym); setActiveTab('admin'); }}
           />
         </TabsContent>
+
 
         <TabsContent value="battle" className="w-full animate-in fade-in slide-in-from-right-10 duration-500">
           <BattleSystem />
