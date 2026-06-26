@@ -53,7 +53,7 @@ export default function PlanoDeAula() {
   const save = async () => {
     if (!questions.length) return;
     const rows = questions.map(q => ({
-      area: "geral",
+      area: "geral" as const,
       topic: form.topic || null,
       difficulty: q.difficulty ?? form.difficulty,
       school_level: "fundamental",
