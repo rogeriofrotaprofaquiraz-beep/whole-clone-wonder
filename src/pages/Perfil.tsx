@@ -69,6 +69,8 @@ export default function Perfil() {
   const [generating, setGenerating] = useState(false);
   const [photoBase64, setPhotoBase64] = useState<string | null>(null);
   const [photoPreview, setPhotoPreview] = useState<string | null>(null);
+  const [profileName, setProfileName] = useState<string>("");
+
 
 
 
