@@ -332,12 +332,17 @@ const Index = () => {
       <div className="w-full max-w-[1440px] flex justify-end mb-4">
         {session ? (
           <div className="flex items-center gap-4 bg-slate-900/50 p-2 px-4 rounded-2xl border border-white/10 backdrop-blur-xl">
-            <div className="flex items-center gap-2">
+            <Link to="/perfil" className="flex items-center gap-2 hover:opacity-80 transition">
               <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
                 <UserIcon className="w-4 h-4" />
               </div>
               <span className="text-sm font-black italic">{session.user.user_metadata?.username || session.user.email}</span>
-            </div>
+            </Link>
+            <Link to="/perfil">
+              <Button variant="ghost" size="sm" className="text-fuchsia-300 hover:text-white hover:bg-fuchsia-500/10">
+                <UserIcon className="w-4 h-4 mr-1"/> Perfil
+              </Button>
+            </Link>
             <Button variant="ghost" size="sm" onClick={handleLogout} className="text-red-400 hover:text-red-300 hover:bg-red-400/10">
               <LogOut className="w-4 h-4" />
             </Button>
