@@ -363,12 +363,12 @@ const Index = () => {
         <Tabs defaultValue="collection" value={activeTab} onValueChange={setActiveTab} className="w-full max-w-[1440px] flex flex-col items-center">
           <TabsList className="bg-slate-950/70 border border-white/5 px-2 py-1.5 rounded-2xl mb-12 h-auto gap-1 backdrop-blur-xl flex flex-wrap justify-center">
             {[
-              
               { value: "battle", label: "Jogar", Icon: UserIcon, color: "text-slate-200" },
-              { value: "collection", label: "Jogos", Icon: Gamepad2, color: "text-slate-200" },
+              { value: "heroes", label: "Coleção", Icon: LayoutGrid, color: "text-slate-200" },
+              { value: "collection", label: "Tabela", Icon: Gamepad2, color: "text-slate-200" },
               { value: "quiz", label: "Campeonato", Icon: Trophy, color: "text-slate-200" },
               { value: "ranking", label: "Ranking", Icon: Trophy, color: "text-slate-200" },
-              { value: "list", label: "Heróis", Icon: Atom, color: "text-slate-200" },
+              { value: "list", label: "Galeria", Icon: Atom, color: "text-slate-200" },
             ].map(({ value, label, Icon, color }) => (
               <TabsTrigger key={value} value={value}
                 className={`px-4 py-2.5 rounded-xl font-semibold text-sm gap-1.5 transition-all data-[state=active]:bg-violet-600 data-[state=active]:text-white data-[state=inactive]:bg-transparent ${color} hover:text-white`}>
