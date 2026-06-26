@@ -353,7 +353,7 @@ const Index = () => {
         <Tabs defaultValue="collection" value={activeTab} onValueChange={setActiveTab} className="w-full max-w-[1440px] flex flex-col items-center">
           <TabsList className="bg-slate-950/70 border border-white/5 px-2 py-1.5 rounded-2xl mb-12 h-auto gap-1 backdrop-blur-xl flex flex-wrap justify-center">
             {[
-              { value: "avatar", label: "Perfil", Icon: Users, color: "text-slate-200" },
+              
               { value: "battle", label: "Jogar", Icon: UserIcon, color: "text-slate-200" },
               { value: "collection", label: "Jogos", Icon: Gamepad2, color: "text-slate-200" },
               { value: "quiz", label: "Campeonato", Icon: Trophy, color: "text-slate-200" },
