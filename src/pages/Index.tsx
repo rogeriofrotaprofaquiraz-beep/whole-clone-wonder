@@ -408,6 +408,12 @@ const Index = () => {
             <Link to="/aula/treino" className="px-4 py-2.5 rounded-xl text-sm font-semibold gap-1.5 inline-flex items-center text-emerald-300 hover:text-white">
               <Dumbbell className="w-4 h-4" /> Treino
             </Link>
+            <Link to="/carteira" className="px-4 py-2.5 rounded-xl text-sm font-semibold gap-1.5 inline-flex items-center text-amber-300 hover:text-white">
+              <Atom className="w-4 h-4" /> Carteira
+            </Link>
+            <Link to="/progresso" className="px-4 py-2.5 rounded-xl text-sm font-semibold gap-1.5 inline-flex items-center text-violet-300 hover:text-white">
+              <Trophy className="w-4 h-4" /> Progresso
+            </Link>
           </TabsList>
 
 
