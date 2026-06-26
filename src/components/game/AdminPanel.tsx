@@ -801,6 +801,14 @@ export const AdminPanel = ({ userRole, initialSymbol }: { userRole?: string | nu
           </>
         )}
       </Tabs>
+      <HeroOptionsDialog
+        open={optionsOpen}
+        onOpenChange={setOptionsOpen}
+        urls={optionUrls}
+        loading={generating}
+        onPick={pickHeroOption}
+        onRegenerate={generateAIPrompt}
+      />
     </div>
   );
 };
