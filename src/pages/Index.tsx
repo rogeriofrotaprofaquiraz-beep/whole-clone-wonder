@@ -367,8 +367,14 @@ const Index = () => {
 
         <Tabs defaultValue="collection" value={activeTab} onValueChange={setActiveTab} className="w-full max-w-[1440px] flex flex-col items-center">
           <TabsList className="bg-slate-950/70 border border-white/5 px-2 py-1.5 rounded-2xl mb-12 h-auto gap-1 backdrop-blur-xl flex flex-wrap justify-center">
+            <TabsTrigger value="battle"
+              className="px-4 py-2.5 rounded-xl font-semibold text-sm gap-1.5 transition-all data-[state=active]:bg-violet-600 data-[state=active]:text-white data-[state=inactive]:bg-transparent text-slate-200 hover:text-white">
+              <UserIcon className="w-4 h-4" /> Jogar
+            </TabsTrigger>
+            <Link to="/perfil" className="px-4 py-2.5 rounded-xl text-sm font-semibold gap-1.5 inline-flex items-center text-fuchsia-300 hover:text-white">
+              <UserIcon className="w-4 h-4" /> Perfil
+            </Link>
             {[
-              { value: "battle", label: "Jogar", Icon: UserIcon, color: "text-slate-200" },
               { value: "heroes", label: "Coleção", Icon: LayoutGrid, color: "text-slate-200" },
               { value: "collection", label: "Tabela", Icon: Gamepad2, color: "text-slate-200" },
               { value: "quiz", label: "Campeonato", Icon: Trophy, color: "text-slate-200" },
@@ -380,6 +386,7 @@ const Index = () => {
                 <Icon className="w-4 h-4" /> {label}
               </TabsTrigger>
             ))}
+
             {userRole === 'teacher' && (
               <TabsTrigger value="admin"
                 className="px-4 py-2.5 rounded-xl font-semibold text-sm gap-1.5 text-emerald-400 hover:text-emerald-300 data-[state=active]:bg-violet-600 data-[state=active]:text-white">
@@ -408,9 +415,8 @@ const Index = () => {
             <Link to="/aula/treino" className="px-4 py-2.5 rounded-xl text-sm font-semibold gap-1.5 inline-flex items-center text-emerald-300 hover:text-white">
               <Dumbbell className="w-4 h-4" /> Treino
             </Link>
-            <Link to="/perfil" className="px-4 py-2.5 rounded-xl text-sm font-semibold gap-1.5 inline-flex items-center text-fuchsia-300 hover:text-white">
-              <UserIcon className="w-4 h-4" /> Perfil
-            </Link>
+
+
             <Link to="/carteira" className="px-4 py-2.5 rounded-xl text-sm font-semibold gap-1.5 inline-flex items-center text-amber-300 hover:text-white">
               <Atom className="w-4 h-4" /> Carteira
             </Link>
