@@ -13,7 +13,7 @@ import { AdminPanel } from "@/components/game/AdminPanel";
 import { AuthSystem } from "@/components/game/AuthSystem";
 import { Ranking } from "@/components/game/Ranking";
 import { ElementList } from "@/components/game/ElementList";
-import { PlayerAvatar } from "@/components/aula/PlayerAvatar";
+
 import { ensureUserAccess } from "@/lib/ensureUserAccess";
 import { Swords, Brain, LayoutGrid, Settings, LogOut, User as UserIcon, Trophy, Users, Shield, List, GraduationCap, Dumbbell, Gamepad2, Atom, Activity } from 'lucide-react';
 import { toast } from "sonner";
@@ -530,9 +530,6 @@ const Index = () => {
           <Ranking />
         </TabsContent>
 
-        <TabsContent value="avatar" className="w-full max-w-2xl animate-in fade-in slide-in-from-bottom-10 duration-500">
-          <PlayerAvatar />
-        </TabsContent>
 
         {(userRole === 'admin' || userRole === 'teacher') && (
           <TabsContent value="admin" className="w-full animate-in fade-in slide-in-from-bottom-10 duration-500">
