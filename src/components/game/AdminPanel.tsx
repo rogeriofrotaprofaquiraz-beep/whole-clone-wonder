@@ -11,6 +11,7 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
 import { Plus, Save, Wand2, Trash2, List, Settings, History, Users, Shield, User as UserIcon, Search, Activity, Trash } from 'lucide-react';
+import { HeroOptionsDialog } from "./HeroOptionsDialog";
 
 const ATTRIBUTE_LABELS = [
   "Fraquezas", "Risco/Benefício à natureza", "Risco à saúde", "Benefício",
@@ -82,6 +83,8 @@ export const AdminPanel = ({ userRole, initialSymbol }: { userRole?: string | nu
 
   const [generating, setGenerating] = useState(false);
   const [uploading, setUploading] = useState(false);
+  const [optionsOpen, setOptionsOpen] = useState(false);
+  const [optionUrls, setOptionUrls] = useState<string[]>([]);
 
   const buildHeroPrompt = (el: Partial<PeriodicElement>) => {
     const attrs = normalizeAttributes(el.attributes);
@@ -168,6 +171,8 @@ export const AdminPanel = ({ userRole, initialSymbol }: { userRole?: string | nu
       return;
     }
     setGenerating(true);
+    setOptionUrls([]);
+    setOptionsOpen(true);
     try {
       const { data, error } = await supabase.functions.invoke('generate-hero-image', {
         body: {
@@ -176,16 +181,27 @@ export const AdminPanel = ({ userRole, initialSymbol }: { userRole?: string | nu
           name: formData.name,
           heroName: formData.heroName,
           rarity: formData.rarity,
+          count: 5,
         },
       });
       if (error || (data as any)?.error) throw new Error(error?.message || (data as any).error);
-      handleInputChange('heroImage', (data as any).url);
-      toast.success((data as any)?.fallback ? "Avatar de herói criado e salvo!" : "Imagem de herói gerada pela IA!");
+      const urls: string[] = (data as any).urls || ((data as any).url ? [(data as any).url] : []);
+      setOptionUrls(urls);
+      if (!urls.length) toast.error("Nenhuma imagem retornada");
+      else if ((data as any).fallback) toast.warning("Sem créditos de IA — foi gerado um avatar offline");
+      else toast.success(`${urls.length} variações geradas — escolha a melhor!`);
     } catch (e: any) {
-      toast.error("Erro ao gerar imagem: " + e.message);
+      toast.error("Erro ao gerar imagens: " + e.message);
+      setOptionsOpen(false);
     } finally {
       setGenerating(false);
     }
+  };
+
+  const pickHeroOption = (url: string) => {
+    handleInputChange('heroImage', url);
+    setOptionsOpen(false);
+    toast.success("Imagem do herói selecionada! Lembre de salvar.");
   };
 
   const handleImageUpload = async (file: File) => {
@@ -785,6 +801,14 @@ export const AdminPanel = ({ userRole, initialSymbol }: { userRole?: string | nu
           </>
         )}
       </Tabs>
+      <HeroOptionsDialog
+        open={optionsOpen}
+        onOpenChange={setOptionsOpen}
+        urls={optionUrls}
+        loading={generating}
+        onPick={pickHeroOption}
+        onRegenerate={generateAIPrompt}
+      />
     </div>
   );
 };

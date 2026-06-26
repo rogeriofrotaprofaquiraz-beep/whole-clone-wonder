@@ -13,6 +13,8 @@ import { AdminPanel } from "@/components/game/AdminPanel";
 import { AuthSystem } from "@/components/game/AuthSystem";
 import { Ranking } from "@/components/game/Ranking";
 import { ElementList } from "@/components/game/ElementList";
+import { HeroCollection } from "@/components/game/HeroCollection";
+import { RARITY_FRAME, FAMILY_BADGE, getFamily, calcRarity } from "@/lib/heroStyles";
 
 import { ensureUserAccess } from "@/lib/ensureUserAccess";
 import { Swords, Brain, LayoutGrid, Settings, LogOut, User as UserIcon, Trophy, Users, Shield, List, GraduationCap, Dumbbell, Gamepad2, Atom, Activity } from 'lucide-react';
@@ -44,28 +46,36 @@ const ElementCard = ({ element }: { element: PeriodicElement }) => {
     return 'Comum';
   };
 
-  const rarity = element.rarity || calculateRarity(element);
+  const rarity = calcRarity(attributes as any, element.rarity);
+  const frame = RARITY_FRAME[rarity];
+  const family = getFamily(element.symbol, element.number);
+  const fb = FAMILY_BADGE[family];
 
   return (
     <div className={`
-      relative p-6 rounded-[2rem] w-[400px] h-[1333px] text-white font-sans shadow-[0_35px_80px_rgba(0,0,0,0.8)] 
-      animate-in fade-in zoom-in duration-700 border-2 border-white/20 overflow-hidden group flex flex-col
+      relative p-6 rounded-[2rem] w-[400px] h-[1333px] text-white font-sans
+      animate-in fade-in zoom-in duration-700 border-[3px] ${frame.ring} ${frame.glow} overflow-hidden group flex flex-col
       ${isGas ? 'backdrop-blur-2xl bg-slate-900/40' : 'bg-slate-900'}
     `}>
       {/* Carbon Fiber / Grid Pattern */}
       <div className="absolute inset-0 opacity-20 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
-      
+
+      {/* Rarity gradient inner glow */}
+      <div className={`absolute inset-0 rounded-[2rem] pointer-events-none bg-gradient-to-br ${frame.gradient} opacity-[0.08]`}></div>
+
       {/* Inner Border Glow */}
       <div className="absolute inset-2 rounded-[1.5rem] border border-white/5 pointer-events-none"></div>
 
-      {/* Symbol & Number (Style Carta MOV) */}
+      {/* Symbol (family-colored) & Atomic Number */}
       <div className="relative flex justify-between items-start mb-4 z-10">
-        <div className="w-12 h-12 bg-white/10 backdrop-blur-md rounded-xl flex items-center justify-center border border-white/20 shadow-xl group-hover:scale-110 transition-transform duration-500">
+        <div className={`min-w-12 h-12 px-2 rounded-xl flex items-center justify-center border ${fb.bg} ${fb.text} ${fb.border} ${fb.glow} backdrop-blur-md`}>
           <span className="text-2xl font-black italic drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]">{element.symbol}</span>
         </div>
-        <div className="text-right">
-          <span className="text-2xl font-black italic opacity-50 block leading-none">#{element.number}</span>
-          <Badge className={`${getRarityColor(rarity)} mt-1 font-black italic tracking-widest text-[8px] py-0 px-2`}>
+        <div className="text-right flex flex-col items-end gap-1">
+          <div className="min-w-12 h-12 px-2 rounded-xl flex items-center justify-center bg-black/60 border border-white/30 backdrop-blur-md">
+            <span className="text-xl font-black italic text-white">{element.number}</span>
+          </div>
+          <Badge className={`border ${frame.chip} font-black italic tracking-widest text-[8px] py-0 px-2`}>
             {rarity.toUpperCase()}
           </Badge>
         </div>
@@ -353,12 +363,12 @@ const Index = () => {
         <Tabs defaultValue="collection" value={activeTab} onValueChange={setActiveTab} className="w-full max-w-[1440px] flex flex-col items-center">
           <TabsList className="bg-slate-950/70 border border-white/5 px-2 py-1.5 rounded-2xl mb-12 h-auto gap-1 backdrop-blur-xl flex flex-wrap justify-center">
             {[
-              
               { value: "battle", label: "Jogar", Icon: UserIcon, color: "text-slate-200" },
-              { value: "collection", label: "Jogos", Icon: Gamepad2, color: "text-slate-200" },
+              { value: "heroes", label: "Coleção", Icon: LayoutGrid, color: "text-slate-200" },
+              { value: "collection", label: "Tabela", Icon: Gamepad2, color: "text-slate-200" },
               { value: "quiz", label: "Campeonato", Icon: Trophy, color: "text-slate-200" },
               { value: "ranking", label: "Ranking", Icon: Trophy, color: "text-slate-200" },
-              { value: "list", label: "Heróis", Icon: Atom, color: "text-slate-200" },
+              { value: "list", label: "Galeria", Icon: Atom, color: "text-slate-200" },
             ].map(({ value, label, Icon, color }) => (
               <TabsTrigger key={value} value={value}
                 className={`px-4 py-2.5 rounded-xl font-semibold text-sm gap-1.5 transition-all data-[state=active]:bg-violet-600 data-[state=active]:text-white data-[state=inactive]:bg-transparent ${color} hover:text-white`}>
@@ -510,6 +520,10 @@ const Index = () => {
           </div>
         </TabsContent>
 
+        <TabsContent value="heroes" className="w-full animate-in fade-in zoom-in-95 duration-500">
+          <HeroCollection onSelect={(sym) => { setSelectedSymbol(sym); setActiveTab('collection'); }} />
+        </TabsContent>
+
         <TabsContent value="list" className="w-full animate-in fade-in slide-in-from-bottom-10 duration-500">
           <ElementList
             canManage={userRole === 'admin'}
@@ -517,6 +531,7 @@ const Index = () => {
             onEdit={(sym) => { setAdminEditSymbol(sym); setSelectedSymbol(sym); setActiveTab('admin'); }}
           />
         </TabsContent>
+
 
         <TabsContent value="battle" className="w-full animate-in fade-in slide-in-from-right-10 duration-500">
           <BattleSystem />
