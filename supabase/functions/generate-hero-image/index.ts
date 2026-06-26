@@ -134,41 +134,52 @@ Deno.serve(async (req) => {
       return json({ url: signed?.signedUrl, path, fallback: true, reason });
     };
 
-    const aiResp = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", "Authorization": `Bearer ${lovableKey}` },
-      body: JSON.stringify({
-        model: "google/gemini-2.5-flash-image",
-        messages: [{ role: "user", content: prompt }],
-        modalities: ["image", "text"],
-      }),
-    });
+    const generateOne = async (variationIdx: number): Promise<{ url?: string; fallback?: boolean; reason?: string }> => {
+      const diversity = `RANDOM CASTING for variation #${variationIdx + 1}: ${pick(sexes)} hero, ${pick(ethns)} ethnicity, ${pick(skins)} skin tone, ${pick(hairs)} hair, ${pick(builds)} build, unique pose. Each variation MUST look like a different person.`;
+      const fullPrompt = diversity + " " + prompt;
+      try {
+        const aiResp = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Authorization": `Bearer ${lovableKey}` },
+          body: JSON.stringify({
+            model: "google/gemini-2.5-flash-image",
+            messages: [{ role: "user", content: fullPrompt }],
+            modalities: ["image", "text"],
+          }),
+        });
+        if (!aiResp.ok) {
+          const text = await aiResp.text();
+          if (aiResp.status === 402) return { fallback: true, reason: "Créditos de IA esgotados" };
+          if (aiResp.status === 429) return { fallback: true, reason: "Limite de IA atingido" };
+          return { fallback: true, reason: "Falha IA: " + text.slice(0, 100) };
+        }
+        const aiData = await aiResp.json();
+        const imageUrl: string | undefined = aiData.choices?.[0]?.message?.images?.[0]?.image_url?.url;
+        if (!imageUrl) return { fallback: true, reason: "IA não retornou imagem" };
+        const match = imageUrl.match(/^data:(image\/\w+);base64,(.+)$/);
+        if (!match) return { fallback: true, reason: "Formato inválido" };
+        const mime = match[1];
+        const ext = mime.split("/")[1] || "png";
+        const bytes = Uint8Array.from(atob(match[2]), (c) => c.charCodeAt(0));
+        const path = `${symbol}/${Date.now()}-v${variationIdx}.${ext}`;
+        const { error: upErr } = await admin.storage.from("hero-images").upload(path, bytes, { contentType: mime, upsert: true });
+        if (upErr) return { fallback: true, reason: "Upload falhou" };
+        const { data: signed } = await admin.storage.from("hero-images").createSignedUrl(path, 60 * 60 * 24 * 365 * 5);
+        return { url: signed?.signedUrl };
+      } catch (e) {
+        return { fallback: true, reason: "Exceção: " + String(e).slice(0, 80) };
+      }
+    };
 
-    if (!aiResp.ok) {
-      const text = await aiResp.text();
-      if (aiResp.status === 429) return await saveFallback("Limite de IA atingido — avatar de herói offline criado.");
-      if (aiResp.status === 402) return await saveFallback("Créditos de IA esgotados — avatar de herói offline criado.");
-      return await saveFallback("A IA não retornou imagem agora — avatar de herói offline criado. " + text.slice(0, 160));
+    const results = await Promise.all(Array.from({ length: count }, (_, i) => generateOne(i)));
+    const successes = results.filter((r) => r.url).map((r) => r.url!);
+    if (successes.length > 0) {
+      return json({ urls: successes, url: successes[0], count: successes.length, requested: count });
     }
-
-    const aiData = await aiResp.json();
-    const imageUrl: string | undefined = aiData.choices?.[0]?.message?.images?.[0]?.image_url?.url;
-    if (!imageUrl) return await saveFallback("A IA não retornou imagem agora — avatar de herói offline criado.");
-
-    // imageUrl is data URL "data:image/png;base64,..."
-    const match = imageUrl.match(/^data:(image\/\w+);base64,(.+)$/);
-    if (!match) return await saveFallback("Formato retornado pela IA inválido — avatar de herói offline criado.");
-    const mime = match[1];
-    const ext = mime.split("/")[1] || "png";
-    const bytes = Uint8Array.from(atob(match[2]), c => c.charCodeAt(0));
-
-    const path = `${symbol}/${Date.now()}.${ext}`;
-    const { error: upErr } = await admin.storage.from("hero-images").upload(path, bytes, { contentType: mime, upsert: true });
-    if (upErr) return json({ error: "Upload failed: " + upErr.message }, 500);
-
-    const { data: signed } = await admin.storage.from("hero-images").createSignedUrl(path, 60 * 60 * 24 * 365 * 5);
-
-    return json({ url: signed?.signedUrl, path });
+    // All failed → produce a single SVG fallback (backwards compatible)
+    const fallback = await saveFallback(results[0]?.reason || "Sem créditos de IA — avatar offline criado.");
+    const fbBody = await fallback.json();
+    return json({ urls: fbBody.url ? [fbBody.url] : [], url: fbBody.url, fallback: true, reason: fbBody.reason });
   } catch (e) {
     return json({ error: String(e) }, 500);
   }
