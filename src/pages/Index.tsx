@@ -423,6 +423,17 @@ const Index = () => {
             <Link to="/progresso" className="px-4 py-2.5 rounded-xl text-sm font-semibold gap-1.5 inline-flex items-center text-violet-300 hover:text-white">
               <Trophy className="w-4 h-4" /> Progresso
             </Link>
+            <Link to="/escola" className="px-4 py-2.5 rounded-xl text-sm font-semibold gap-1.5 inline-flex items-center text-cyan-300 hover:text-white">
+              <GraduationCap className="w-4 h-4" /> Escola
+            </Link>
+            <Link to="/ranking" className="px-4 py-2.5 rounded-xl text-sm font-semibold gap-1.5 inline-flex items-center text-yellow-300 hover:text-white">
+              <Trophy className="w-4 h-4" /> Ranking
+            </Link>
+            {(userRole === 'admin' || userRole === 'teacher') && (
+              <Link to="/plano-de-aula" className="px-4 py-2.5 rounded-xl text-sm font-semibold gap-1.5 inline-flex items-center text-emerald-300 hover:text-white">
+                <List className="w-4 h-4" /> Plano de Aula
+              </Link>
+            )}
           </TabsList>
 
 
