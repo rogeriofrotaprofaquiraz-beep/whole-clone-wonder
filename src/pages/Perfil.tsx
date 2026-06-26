@@ -249,13 +249,15 @@ export default function Perfil() {
 
           {/* Personalização + Cartas */}
           <div className="md:col-span-2">
-            <Tabs defaultValue="cards">
+            <Tabs defaultValue="customize">
               <TabsList className="bg-slate-900/60 border border-white/10">
-                <TabsTrigger value="cards">Cartas</TabsTrigger>
                 <TabsTrigger value="customize">Aparência</TabsTrigger>
               </TabsList>
+              <div className="mt-3 mb-4 text-xs text-white/60 bg-slate-900/40 border border-white/10 rounded-xl p-3">
+                Quer desbloquear novas cartas ou trocar a equipada? Acesse a <Link to="/carteira" className="text-amber-300 font-bold underline">Carteira</Link> e use seus {COIN_NAME}.
+              </div>
 
-              <TabsContent value="cards">
+              <TabsContent value="_hidden_cards" className="hidden">
                 <Card className="bg-slate-900/60 border-white/10">
                   <CardHeader>
                     <CardTitle className="text-sm font-black uppercase tracking-widest flex items-center justify-between">

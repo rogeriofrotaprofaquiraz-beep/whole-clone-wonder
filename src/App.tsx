@@ -10,6 +10,9 @@ import Treino from "./pages/Treino.tsx";
 import Perfil from "./pages/Perfil.tsx";
 import Carteira from "./pages/Carteira.tsx";
 import Progresso from "./pages/Progresso.tsx";
+import Escola from "./pages/Escola.tsx";
+import RankingPage from "./pages/Ranking.tsx";
+import PlanoDeAula from "./pages/PlanoDeAula.tsx";
 
 
 const queryClient = new QueryClient();
@@ -28,6 +31,10 @@ const App = () => (
           <Route path="/perfil" element={<Perfil />} />
           <Route path="/carteira" element={<Carteira />} />
           <Route path="/progresso" element={<Progresso />} />
+          <Route path="/escola" element={<Escola />} />
+          <Route path="/ranking" element={<RankingPage />} />
+          <Route path="/plano-de-aula" element={<PlanoDeAula />} />
+          
           
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
