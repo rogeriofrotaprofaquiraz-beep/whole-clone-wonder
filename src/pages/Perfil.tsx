@@ -67,7 +67,10 @@ export default function Perfil() {
   const [admin, setAdmin] = useState(false);
   const [busy, setBusy] = useState(false);
   const [generating, setGenerating] = useState(false);
-  const [profileName, setProfileName] = useState<string>("");
+  const [photoBase64, setPhotoBase64] = useState<string | null>(null);
+  const [photoPreview, setPhotoPreview] = useState<string | null>(null);
+
+
 
   const refresh = async (userId: string) => {
     const [w, a, isAdm, prof] = await Promise.all([
