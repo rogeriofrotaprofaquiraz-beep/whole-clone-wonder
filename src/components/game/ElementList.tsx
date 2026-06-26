@@ -2,46 +2,11 @@ import React, { useState, useMemo } from 'react';
 import { ELEMENTS_DATA, PeriodicElement } from '@/data/elements';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
 import { ArrowUpAZ, Hash, Pencil, Search, Trash2 } from 'lucide-react';
+import { HeroMiniCard } from './HeroMiniCard';
+import { getFamily, FAMILY_ORDER } from '@/lib/heroStyles';
 
 type SortMode = 'atomic' | 'alpha';
-
-const getCategoryName = (symbol: string, number: number): string => {
-  if (["He", "Ne", "Ar", "Kr", "Xe", "Rn", "Og"].includes(symbol)) return "Gás Nobre";
-  if (["Li", "Na", "K", "Rb", "Cs", "Fr"].includes(symbol)) return "Metal Alcalino";
-  if (["Be", "Mg", "Ca", "Sr", "Ba", "Ra"].includes(symbol)) return "Metal Alcalino Terroso";
-  if (["B", "Si", "Ge", "As", "Sb", "Te", "Po"].includes(symbol)) return "Semimetal";
-  if (["F", "Cl", "Br", "I", "At", "Ts"].includes(symbol)) return "Halogênio";
-  if (["H", "C", "N", "O", "P", "S", "Se"].includes(symbol)) return "Nao Metal";
-  if (["Al", "Ga", "In", "Sn", "Tl", "Pb", "Bi", "Nh", "Fl", "Mc", "Lv"].includes(symbol)) return "Outro Metal";
-  if ((number >= 57 && number <= 71)) return "Lantanídeo";
-  if ((number >= 89 && number <= 103)) return "Actinídeo";
-  return "Metal de Transição";
-};
-
-const calcRarity = (el: PeriodicElement) => {
-  if (el.rarity) return el.rarity;
-  const avg = el.attributes.reduce((a, c) => a + c.score, 0) / 27;
-  if (avg > 85) return 'Lendário';
-  if (avg > 70) return 'Épico';
-  if (avg > 50) return 'Raro';
-  if (avg > 30) return 'Incomum';
-  return 'Comum';
-};
-
-const calcPower = (el: PeriodicElement) =>
-  Math.round(el.attributes.reduce((a, c) => a + c.score, 0) / 27);
-
-const rarityStyle = (r: string) => {
-  switch (r) {
-    case 'Lendário': return 'bg-yellow-500/20 text-yellow-400 border-yellow-500/40';
-    case 'Épico': return 'bg-purple-500/20 text-purple-400 border-purple-500/40';
-    case 'Raro': return 'bg-blue-500/20 text-blue-400 border-blue-500/40';
-    case 'Incomum': return 'bg-green-500/20 text-green-400 border-green-500/40';
-    default: return 'bg-slate-500/20 text-slate-300 border-slate-500/40';
-  }
-};
 
 type ElementListProps = {
   onSelect?: (symbol: string) => void;
@@ -60,25 +25,22 @@ export const ElementList: React.FC<ElementListProps> = ({ onSelect, canManage = 
       (el) => el && el.symbol !== 'Element' && el.symbol !== 'Elemento' && el.name
     );
     const filtered = list.filter((el) => {
-      if (categoryFilter && getCategoryName(el.symbol, el.number) !== categoryFilter) return false;
+      if (categoryFilter && getFamily(el.symbol, el.number) !== categoryFilter) return false;
       if (query.trim() && ![el.name, el.symbol, el.heroName].some((s) => s?.toLowerCase().includes(query.toLowerCase()))) return false;
       return true;
     });
     return [...filtered].sort((a, b) =>
-      sort === 'atomic'
-        ? a.number - b.number
-        : a.name.localeCompare(b.name, 'pt-BR')
+      sort === 'atomic' ? a.number - b.number : a.name.localeCompare(b.name, 'pt-BR')
     );
   }, [sort, query, categoryFilter]);
 
-
   return (
-    <div className="w-full max-w-[1280px] mx-auto bg-slate-900/40 border border-white/10 rounded-3xl backdrop-blur-xl p-4 md:p-6 shadow-2xl">
+    <div className="w-full max-w-[1400px] mx-auto bg-slate-900/40 border border-white/10 rounded-3xl backdrop-blur-xl p-4 md:p-6 shadow-2xl">
       <div className="flex flex-col md:flex-row md:items-center gap-3 mb-5">
         <div>
-          <h2 className="text-2xl md:text-3xl font-black italic tracking-tight">LISTA DOS ELEMENTOS</h2>
+          <h2 className="text-2xl md:text-3xl font-black italic tracking-tight">GALERIA DE HERÓIS</h2>
           <p className="text-xs text-slate-400 uppercase tracking-widest">
-            Visão geral · {elements.length} elementos
+            {elements.length} elementos
             {categoryFilter && (
               <button
                 type="button"
@@ -100,130 +62,73 @@ export const ElementList: React.FC<ElementListProps> = ({ onSelect, canManage = 
               className="pl-9 bg-slate-950/60 border-white/10 w-64"
             />
           </div>
-          <Button
-            variant={sort === 'atomic' ? 'default' : 'outline'}
-            size="sm"
-            onClick={() => setSort('atomic')}
-            className="gap-2"
-          >
+          <Button variant={sort === 'atomic' ? 'default' : 'outline'} size="sm" onClick={() => setSort('atomic')} className="gap-2">
             <Hash className="w-4 h-4" /> Nº Atômico
           </Button>
-          <Button
-            variant={sort === 'alpha' ? 'default' : 'outline'}
-            size="sm"
-            onClick={() => setSort('alpha')}
-            className="gap-2"
-          >
+          <Button variant={sort === 'alpha' ? 'default' : 'outline'} size="sm" onClick={() => setSort('alpha')} className="gap-2">
             <ArrowUpAZ className="w-4 h-4" /> A-Z
           </Button>
         </div>
       </div>
 
-      <div className="overflow-x-auto rounded-2xl border border-white/5">
-        <table className="w-full min-w-[1120px] text-sm">
-          <thead className="bg-slate-950/60 text-slate-400 uppercase text-xs tracking-widest">
-            <tr>
-              <th className="py-3 px-4 text-left font-bold">#</th>
-              <th className="py-3 px-4 text-left font-bold">Imagem</th>
-              <th className="py-3 px-4 text-left font-bold">Símbolo</th>
-              <th className="py-3 px-4 text-left font-bold">Nome</th>
-              <th className="py-3 px-4 text-left font-bold">Herói</th>
-              <th className="py-3 px-4 text-left font-bold">Categoria</th>
-              <th className="py-3 px-4 text-left font-bold">Raridade</th>
-              <th className="py-3 px-4 text-left font-bold">Poder</th>
-              {canManage && <th className="py-3 px-4 text-left font-bold">Ações</th>}
-            </tr>
-          </thead>
-          <tbody>
-            {elements.map((el) => {
-              const rarity = calcRarity(el);
-              const power = calcPower(el);
-              const category = getCategoryName(el.symbol, el.number);
-              const isVideo = el.heroImage?.endsWith('.mp4');
-              return (
-                <tr
-                  key={el.symbol}
-                  onClick={() => onSelect?.(el.symbol)}
-                  className="border-t border-white/5 hover:bg-white/5 transition-colors cursor-pointer"
+      {/* Family filter chips */}
+      <div className="flex flex-wrap gap-2 mb-5">
+        {FAMILY_ORDER.map((fam) => (
+          <button
+            key={fam}
+            type="button"
+            onClick={() => setCategoryFilter((c) => (c === fam ? null : fam))}
+            className={`text-[10px] uppercase tracking-widest font-bold px-3 py-1.5 rounded-full border transition-colors ${
+              categoryFilter === fam
+                ? 'bg-purple-500/30 text-purple-100 border-purple-400/60'
+                : 'bg-white/5 text-slate-300 border-white/10 hover:bg-white/10'
+            }`}
+          >
+            {fam}
+          </button>
+        ))}
+      </div>
+
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 justify-items-center">
+        {elements.map((el) => (
+          <div key={el.symbol} className="flex flex-col items-center gap-2">
+            <HeroMiniCard element={el} onClick={() => onSelect?.(el.symbol)} />
+            {canManage && (
+              <div className="flex items-center gap-1">
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="icon"
+                  title="Editar carta"
+                  className="h-7 w-7 text-slate-400 hover:text-blue-300 hover:bg-blue-500/10"
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    (onEdit ?? onSelect)?.(el.symbol);
+                  }}
                 >
-                  <td className="py-3 px-4 text-slate-400 font-mono">{el.number}</td>
-                  <td className="py-3 px-4">
-                    <div className="w-12 h-12 rounded-lg overflow-hidden bg-slate-800 border border-white/10">
-                      {isVideo ? (
-                        <video src={el.heroImage} muted className="w-full h-full object-cover" />
-                      ) : (
-                        <img src={el.heroImage} alt={el.heroName} className="w-full h-full object-cover" />
-                      )}
-                    </div>
-                  </td>
-                  <td className="py-3 px-4">
-                    <span className="inline-flex items-center justify-center min-w-9 h-9 px-2 rounded-lg bg-purple-500/15 text-purple-300 border border-purple-500/30 font-black">
-                      {el.symbol}
-                    </span>
-                  </td>
-                  <td className="py-3 px-4 font-bold">{el.name}</td>
-                  <td className="py-3 px-4 text-blue-300">{el.heroName}</td>
-                  <td className="py-3 px-4">
-                    <button
-                      type="button"
-                      onClick={(e) => { e.stopPropagation(); setCategoryFilter((c) => c === category ? null : category); }}
-                      className={`text-left underline-offset-2 hover:underline transition-colors ${categoryFilter === category ? 'text-purple-300 font-bold' : 'text-slate-300 hover:text-purple-300'}`}
-                      title={categoryFilter === category ? 'Limpar filtro' : `Filtrar por ${category}`}
-                    >
-                      {category}
-                    </button>
-                  </td>
-                  <td className="py-3 px-4">
-                    <Badge variant="outline" className={`${rarityStyle(rarity)} font-bold`}>
-                      {rarity}
-                    </Badge>
-                  </td>
-                  <td className="py-3 px-4 font-black text-white">{power}</td>
-                  {canManage && (
-                    <td className="py-3 px-4">
-                      <div className="flex items-center gap-2">
-                        <Button
-                          type="button"
-                          variant="ghost"
-                          size="icon"
-                          title="Editar carta"
-                          className="h-8 w-8 text-slate-400 hover:text-blue-300 hover:bg-blue-500/10"
-                          onClick={(event) => {
-                            event.stopPropagation();
-                            (onEdit ?? onSelect)?.(el.symbol);
-                          }}
-                        >
-                          <Pencil className="w-4 h-4" />
-                        </Button>
-                        <Button
-                          type="button"
-                          variant="ghost"
-                          size="icon"
-                          title="Exclusão desativada para preservar a tabela periódica"
-                          disabled={!onDelete}
-                          className="h-8 w-8 text-red-400 hover:text-red-300 hover:bg-red-500/10 disabled:opacity-70 disabled:text-red-400"
-                          onClick={(event) => {
-                            event.stopPropagation();
-                            onDelete?.(el.symbol);
-                          }}
-                        >
-                          <Trash2 className="w-4 h-4" />
-                        </Button>
-                      </div>
-                    </td>
-                  )}
-                </tr>
-              );
-            })}
-            {elements.length === 0 && (
-              <tr>
-                <td colSpan={canManage ? 9 : 8} className="py-10 text-center text-slate-500 italic">
-                  Nenhum elemento encontrado.
-                </td>
-              </tr>
+                  <Pencil className="w-3.5 h-3.5" />
+                </Button>
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="icon"
+                  title="Exclusão desativada"
+                  disabled={!onDelete}
+                  className="h-7 w-7 text-red-400 hover:text-red-300 hover:bg-red-500/10 disabled:opacity-70"
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    onDelete?.(el.symbol);
+                  }}
+                >
+                  <Trash2 className="w-3.5 h-3.5" />
+                </Button>
+              </div>
             )}
-          </tbody>
-        </table>
+          </div>
+        ))}
+        {elements.length === 0 && (
+          <div className="col-span-full py-10 text-center text-slate-500 italic">Nenhum elemento encontrado.</div>
+        )}
       </div>
     </div>
   );
