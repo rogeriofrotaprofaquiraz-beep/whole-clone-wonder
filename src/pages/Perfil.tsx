@@ -175,8 +175,9 @@ export default function Perfil() {
         await supabase.from("player_wallet").update({ coins: coins - COSTS.generateAvatarAI }).eq("user_id", session.user.id);
       }
       const { data, error } = await supabase.functions.invoke("generate-player-avatar", {
-        body: { cardSymbol: currentSymbol, appearance: avatar?.appearance ?? {}, equipped: avatar?.equipped ?? {} },
+        body: { cardSymbol: currentSymbol, appearance: avatar?.appearance ?? {}, equipped: avatar?.equipped ?? {}, photoBase64 },
       });
+
       if (error || data?.error) {
         if (!admin) await supabase.from("player_wallet").update({ coins }).eq("user_id", session.user.id);
         toast.error(data?.error ?? error?.message ?? "Falha ao gerar avatar");
