@@ -11,6 +11,7 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
 import { Plus, Save, Wand2, Trash2, List, Settings, History, Users, Shield, User as UserIcon, Search, Activity, Trash } from 'lucide-react';
+import { HeroOptionsDialog } from "./HeroOptionsDialog";
 
 const ATTRIBUTE_LABELS = [
   "Fraquezas", "Risco/Benefício à natureza", "Risco à saúde", "Benefício",
@@ -82,6 +83,8 @@ export const AdminPanel = ({ userRole, initialSymbol }: { userRole?: string | nu
 
   const [generating, setGenerating] = useState(false);
   const [uploading, setUploading] = useState(false);
+  const [optionsOpen, setOptionsOpen] = useState(false);
+  const [optionUrls, setOptionUrls] = useState<string[]>([]);
 
   const buildHeroPrompt = (el: Partial<PeriodicElement>) => {
     const attrs = normalizeAttributes(el.attributes);
