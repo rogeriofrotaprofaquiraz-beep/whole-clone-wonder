@@ -46,28 +46,36 @@ const ElementCard = ({ element }: { element: PeriodicElement }) => {
     return 'Comum';
   };
 
-  const rarity = element.rarity || calculateRarity(element);
+  const rarity = calcRarity(attributes as any, element.rarity);
+  const frame = RARITY_FRAME[rarity];
+  const family = getFamily(element.symbol, element.number);
+  const fb = FAMILY_BADGE[family];
 
   return (
     <div className={`
-      relative p-6 rounded-[2rem] w-[400px] h-[1333px] text-white font-sans shadow-[0_35px_80px_rgba(0,0,0,0.8)] 
-      animate-in fade-in zoom-in duration-700 border-2 border-white/20 overflow-hidden group flex flex-col
+      relative p-6 rounded-[2rem] w-[400px] h-[1333px] text-white font-sans
+      animate-in fade-in zoom-in duration-700 border-[3px] ${frame.ring} ${frame.glow} overflow-hidden group flex flex-col
       ${isGas ? 'backdrop-blur-2xl bg-slate-900/40' : 'bg-slate-900'}
     `}>
       {/* Carbon Fiber / Grid Pattern */}
       <div className="absolute inset-0 opacity-20 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
-      
+
+      {/* Rarity gradient inner glow */}
+      <div className={`absolute inset-0 rounded-[2rem] pointer-events-none bg-gradient-to-br ${frame.gradient} opacity-[0.08]`}></div>
+
       {/* Inner Border Glow */}
       <div className="absolute inset-2 rounded-[1.5rem] border border-white/5 pointer-events-none"></div>
 
-      {/* Symbol & Number (Style Carta MOV) */}
+      {/* Symbol (family-colored) & Atomic Number */}
       <div className="relative flex justify-between items-start mb-4 z-10">
-        <div className="w-12 h-12 bg-white/10 backdrop-blur-md rounded-xl flex items-center justify-center border border-white/20 shadow-xl group-hover:scale-110 transition-transform duration-500">
+        <div className={`min-w-12 h-12 px-2 rounded-xl flex items-center justify-center border ${fb.bg} ${fb.text} ${fb.border} ${fb.glow} backdrop-blur-md`}>
           <span className="text-2xl font-black italic drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]">{element.symbol}</span>
         </div>
-        <div className="text-right">
-          <span className="text-2xl font-black italic opacity-50 block leading-none">#{element.number}</span>
-          <Badge className={`${getRarityColor(rarity)} mt-1 font-black italic tracking-widest text-[8px] py-0 px-2`}>
+        <div className="text-right flex flex-col items-end gap-1">
+          <div className="min-w-12 h-12 px-2 rounded-xl flex items-center justify-center bg-black/60 border border-white/30 backdrop-blur-md">
+            <span className="text-xl font-black italic text-white">{element.number}</span>
+          </div>
+          <Badge className={`border ${frame.chip} font-black italic tracking-widest text-[8px] py-0 px-2`}>
             {rarity.toUpperCase()}
           </Badge>
         </div>
