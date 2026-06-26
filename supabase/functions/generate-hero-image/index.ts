@@ -25,8 +25,17 @@ Deno.serve(async (req) => {
     const { data: isAdmin } = await admin.rpc("has_role", { _user_id: user.id, _role: "admin" });
     if (!isAdmin) return json({ error: "Forbidden" }, 403);
 
-    const { prompt, symbol, name, heroName, rarity } = await req.json();
+    const body = await req.json();
+    const { prompt, symbol, name, heroName, rarity } = body;
+    const count = Math.max(1, Math.min(5, Number(body.count) || 1));
     if (!prompt || !symbol) return json({ error: "prompt and symbol required" }, 400);
+    // Diversity hints to inject per variation (sex/skin/ethnicity sorted randomly per call)
+    const sexes = ["male", "female"];
+    const skins = ["fair", "light", "medium", "tan", "brown", "dark"];
+    const ethns = ["African", "East Asian", "South Asian", "Latin", "Middle Eastern", "European", "Indigenous", "Pacific Islander"];
+    const hairs = ["black", "brown", "blonde", "red", "white", "silver", "auburn"];
+    const builds = ["athletic", "muscular", "slim", "tall", "compact"];
+    const pick = <T,>(arr: T[]) => arr[Math.floor(Math.random() * arr.length)];
 
     const saveFallback = async (reason: string) => {
       const esc = (value: unknown) => String(value ?? "").replace(/[&<>'"]/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&apos;", '"': "&quot;" }[ch]!));
