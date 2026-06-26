@@ -280,8 +280,9 @@ Deno.serve(async (req) => {
       path,
       fallback: usedOriginalCardFallback,
       message: usedOriginalCardFallback
-        ? "Sem créditos suficientes para editar com IA: a carta original foi aplicada como avatar. Adicione créditos ao workspace para gerar a versão ultrarrealista modificada."
-        : undefined,
+        ? "Os créditos de IA do workspace acabaram. A carta original foi aplicada como avatar. Para gerar a versão ultrarrealista personalizada, adicione créditos no painel do Lovable (Workspace → Plans & credits)."
+        : "Avatar ultrarrealista gerado com sucesso!",
+
     });
   } catch (e) {
     return json({ error: String((e as Error).message ?? e) }, 500);
