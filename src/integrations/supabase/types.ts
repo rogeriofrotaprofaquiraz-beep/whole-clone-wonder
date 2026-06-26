@@ -111,11 +111,13 @@ export type Database = {
         Row: {
           answer_text: string | null
           area: Database["public"]["Enums"]["chem_area"]
+          class_id: string | null
           correct_index: number
           created_at: string
           created_by: string | null
           difficulty: number
           explanation: string | null
+          grade_year: number | null
           id: string
           options: Json
           question: string
@@ -126,11 +128,13 @@ export type Database = {
         Insert: {
           answer_text?: string | null
           area: Database["public"]["Enums"]["chem_area"]
+          class_id?: string | null
           correct_index?: number
           created_at?: string
           created_by?: string | null
           difficulty?: number
           explanation?: string | null
+          grade_year?: number | null
           id?: string
           options?: Json
           question: string
@@ -141,11 +145,13 @@ export type Database = {
         Update: {
           answer_text?: string | null
           area?: Database["public"]["Enums"]["chem_area"]
+          class_id?: string | null
           correct_index?: number
           created_at?: string
           created_by?: string | null
           difficulty?: number
           explanation?: string | null
+          grade_year?: number | null
           id?: string
           options?: Json
           question?: string
@@ -153,7 +159,15 @@ export type Database = {
           topic?: string | null
           updated_at?: string
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "chem_questions_class_id_fkey"
+            columns: ["class_id"]
+            isOneToOne: false
+            referencedRelation: "classes"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       chem_terms: {
         Row: {
@@ -187,6 +201,128 @@ export type Database = {
           term?: string
         }
         Relationships: []
+      }
+      class_members: {
+        Row: {
+          class_id: string
+          joined_at: string
+          role: string
+          user_id: string
+        }
+        Insert: {
+          class_id: string
+          joined_at?: string
+          role?: string
+          user_id: string
+        }
+        Update: {
+          class_id?: string
+          joined_at?: string
+          role?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "class_members_class_id_fkey"
+            columns: ["class_id"]
+            isOneToOne: false
+            referencedRelation: "classes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      class_team_members: {
+        Row: {
+          team_id: string
+          user_id: string
+        }
+        Insert: {
+          team_id: string
+          user_id: string
+        }
+        Update: {
+          team_id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "class_team_members_team_id_fkey"
+            columns: ["team_id"]
+            isOneToOne: false
+            referencedRelation: "class_teams"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      class_teams: {
+        Row: {
+          class_id: string
+          color: string | null
+          created_at: string
+          id: string
+          name: string
+        }
+        Insert: {
+          class_id: string
+          color?: string | null
+          created_at?: string
+          id?: string
+          name: string
+        }
+        Update: {
+          class_id?: string
+          color?: string | null
+          created_at?: string
+          id?: string
+          name?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "class_teams_class_id_fkey"
+            columns: ["class_id"]
+            isOneToOne: false
+            referencedRelation: "classes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      classes: {
+        Row: {
+          created_at: string
+          grade_year: number
+          id: string
+          invite_code: string
+          name: string
+          school_id: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          grade_year: number
+          id?: string
+          invite_code?: string
+          name: string
+          school_id: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          grade_year?: number
+          id?: string
+          invite_code?: string
+          name?: string
+          school_id?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "classes_school_id_fkey"
+            columns: ["school_id"]
+            isOneToOne: false
+            referencedRelation: "schools"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       elements: {
         Row: {
@@ -652,6 +788,33 @@ export type Database = {
         }
         Relationships: []
       }
+      schools: {
+        Row: {
+          city: string | null
+          created_at: string
+          id: string
+          name: string
+          owner_id: string
+          updated_at: string
+        }
+        Insert: {
+          city?: string | null
+          created_at?: string
+          id?: string
+          name: string
+          owner_id: string
+          updated_at?: string
+        }
+        Update: {
+          city?: string | null
+          created_at?: string
+          id?: string
+          name?: string
+          owner_id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       session_answers: {
         Row: {
           answer: Json
@@ -843,6 +1006,7 @@ export type Database = {
         }
         Returns: boolean
       }
+      join_class_by_code: { Args: { _code: string }; Returns: string }
       lookup_user_ids_by_emails: {
         Args: { _emails: string[] }
         Returns: {
