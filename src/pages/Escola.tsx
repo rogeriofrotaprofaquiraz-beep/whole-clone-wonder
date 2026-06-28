@@ -36,7 +36,9 @@ export default function Escola() {
   const [qrClass, setQrClass] = useState<ClassRow | null>(null);
   const [editStudent, setEditStudent] = useState<null | {
     user_id: string; username: string; level: number; xp: number; coins: number; class_role: string;
+    email: string; guardian_name: string; guardian_email: string; guardian_phone: string; guardian_relationship: string;
   }>(null);
+
 
   const buildJoinUrl = (code: string) => `${window.location.origin}/escola?join=${code}`;
 
@@ -133,7 +135,7 @@ export default function Escola() {
   const openEdit = async (uid: string) => {
     if (!activeClass) return;
     const [{ data: prof }, { data: wallet }, { data: cm }] = await Promise.all([
-      supabase.from("profiles").select("username, level, xp").eq("id", uid).maybeSingle(),
+      supabase.from("profiles").select("username, level, xp, email, guardian_name, guardian_email, guardian_phone, guardian_relationship").eq("id", uid).maybeSingle(),
       supabase.from("player_wallet").select("coins").eq("user_id", uid).maybeSingle(),
       supabase.from("class_members").select("role").eq("class_id", activeClass.id).eq("user_id", uid).maybeSingle(),
     ]);
@@ -144,6 +146,11 @@ export default function Escola() {
       xp: prof?.xp ?? 0,
       coins: wallet?.coins ?? 0,
       class_role: cm?.role ?? "student",
+      email: prof?.email ?? "",
+      guardian_name: prof?.guardian_name ?? "",
+      guardian_email: prof?.guardian_email ?? "",
+      guardian_phone: prof?.guardian_phone ?? "",
+      guardian_relationship: prof?.guardian_relationship ?? "",
     });
   };
 
@@ -151,7 +158,14 @@ export default function Escola() {
     if (!editStudent || !activeClass) return;
     const e = editStudent;
     const { error: pe } = await supabase.from("profiles")
-      .update({ username: e.username, level: e.level, xp: e.xp }).eq("id", e.user_id);
+      .update({
+        username: e.username, level: e.level, xp: e.xp,
+        email: e.email || null,
+        guardian_name: e.guardian_name || null,
+        guardian_email: e.guardian_email || null,
+        guardian_phone: e.guardian_phone || null,
+        guardian_relationship: e.guardian_relationship || null,
+      }).eq("id", e.user_id);
     if (pe) return toast.error(pe.message);
     const cur = await supabase.from("player_wallet").select("coins").eq("user_id", e.user_id).maybeSingle();
     const delta = e.coins - (cur.data?.coins ?? 0);
@@ -167,6 +181,7 @@ export default function Escola() {
     setEditStudent(null);
     loadClassDetails(activeClass);
   };
+
 
 
   const createTeam = async () => {
@@ -432,8 +447,34 @@ export default function Escola() {
                   </SelectContent>
                 </Select>
               </div>
+              <div>
+                <label className="text-[11px] font-black uppercase text-white/70">E-mail do aluno</label>
+                <Input type="email" value={editStudent.email} onChange={e => setEditStudent({ ...editStudent, email: e.target.value })} className="bg-slate-950 border-white/20 text-white font-bold"/>
+              </div>
+              <div className="border-t border-white/10 pt-3 space-y-2">
+                <p className="text-[11px] font-black uppercase tracking-widest text-cyan-300">Responsável</p>
+                <div className="grid grid-cols-2 gap-2">
+                  <div>
+                    <label className="text-[11px] font-black uppercase text-white/70">Nome</label>
+                    <Input value={editStudent.guardian_name} onChange={e => setEditStudent({ ...editStudent, guardian_name: e.target.value })} className="bg-slate-950 border-white/20 text-white font-bold"/>
+                  </div>
+                  <div>
+                    <label className="text-[11px] font-black uppercase text-white/70">Parentesco</label>
+                    <Input placeholder="Mãe, pai, tutor..." value={editStudent.guardian_relationship} onChange={e => setEditStudent({ ...editStudent, guardian_relationship: e.target.value })} className="bg-slate-950 border-white/20 text-white font-bold"/>
+                  </div>
+                  <div>
+                    <label className="text-[11px] font-black uppercase text-white/70">E-mail</label>
+                    <Input type="email" value={editStudent.guardian_email} onChange={e => setEditStudent({ ...editStudent, guardian_email: e.target.value })} className="bg-slate-950 border-white/20 text-white font-bold"/>
+                  </div>
+                  <div>
+                    <label className="text-[11px] font-black uppercase text-white/70">Telefone</label>
+                    <Input value={editStudent.guardian_phone} onChange={e => setEditStudent({ ...editStudent, guardian_phone: e.target.value })} className="bg-slate-950 border-white/20 text-white font-bold"/>
+                  </div>
+                </div>
+              </div>
               <p className="text-[10px] text-white/50">ID: {editStudent.user_id}</p>
             </div>
+
           )}
           <DialogFooter>
             <Button variant="ghost" onClick={() => setEditStudent(null)}>Cancelar</Button>
