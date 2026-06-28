@@ -159,6 +159,7 @@ export default function Escola() {
       guardian_relationship: prof?.guardian_relationship ?? "",
       access_code: code,
     });
+    loadSendLog(uid);
   };
 
   const regenAccessCode = async () => {
