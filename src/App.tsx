@@ -13,6 +13,7 @@ import Progresso from "./pages/Progresso.tsx";
 import Escola from "./pages/Escola.tsx";
 import RankingPage from "./pages/Ranking.tsx";
 import PlanoDeAula from "./pages/PlanoDeAula.tsx";
+import Permissoes from "./pages/Permissoes.tsx";
 
 
 const queryClient = new QueryClient();
