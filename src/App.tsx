@@ -13,6 +13,7 @@ import Progresso from "./pages/Progresso.tsx";
 import Escola from "./pages/Escola.tsx";
 import RankingPage from "./pages/Ranking.tsx";
 import PlanoDeAula from "./pages/PlanoDeAula.tsx";
+import Permissoes from "./pages/Permissoes.tsx";
 
 
 const queryClient = new QueryClient();
@@ -34,6 +35,7 @@ const App = () => (
           <Route path="/escola" element={<Escola />} />
           <Route path="/ranking" element={<RankingPage />} />
           <Route path="/plano-de-aula" element={<PlanoDeAula />} />
+          <Route path="/permissoes" element={<Permissoes />} />
           
           
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
