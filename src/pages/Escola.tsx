@@ -504,6 +504,19 @@ export default function Escola() {
                   </div>
                 </div>
               </div>
+              <div className="border-t border-white/10 pt-3 space-y-2">
+                <p className="text-[11px] font-black uppercase tracking-widest text-amber-300">Código de Acesso</p>
+                <div className="flex gap-2 items-center">
+                  <Input readOnly value={editStudent.access_code} className="bg-slate-950 border-amber-500/40 text-amber-200 font-black tracking-widest text-center"/>
+                  <Button size="sm" variant="ghost" onClick={() => { navigator.clipboard.writeText(editStudent.access_code); toast.success("Código copiado"); }} title="Copiar"><Copy className="w-4 h-4 text-white"/></Button>
+                </div>
+                <div className="grid grid-cols-3 gap-2">
+                  <Button size="sm" variant="secondary" onClick={regenAccessCode}>Gerar novo</Button>
+                  <Button size="sm" onClick={() => sendAccessCode("email")} className="bg-cyan-600 hover:bg-cyan-700">Enviar e-mail</Button>
+                  <Button size="sm" onClick={() => sendAccessCode("sms")} className="bg-emerald-600 hover:bg-emerald-700">Enviar SMS</Button>
+                </div>
+                <p className="text-[10px] text-white/50">O código é gerado no cadastro. Envia por e-mail do aluno/responsável ou SMS do responsável.</p>
+              </div>
               <p className="text-[10px] text-white/50">ID: {editStudent.user_id}</p>
             </div>
 
