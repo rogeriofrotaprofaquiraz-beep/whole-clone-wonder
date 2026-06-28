@@ -53,7 +53,7 @@ export default function Carteira() {
             <CardContent className="p-6">
               <div className="flex items-center gap-2 text-amber-300 text-xs uppercase tracking-widest font-black mb-2"><Wallet className="w-4 h-4"/>Saldo atual</div>
               <div className="text-4xl font-black flex items-center gap-2">{admin ? "∞" : coins} <span className="text-2xl text-amber-400">{COIN_SYMBOL}</span></div>
-              <div className="text-xs text-white/60 mt-1">{COIN_NAME} disponíveis</div>
+              <div className="text-xs text-white font-bold mt-1">{admin ? "Administrador: créditos infinitos" : `${COIN_NAME} disponíveis`}</div>
             </CardContent>
           </Card>
           <Card className="bg-slate-900/60 border-white/10">
@@ -75,10 +75,10 @@ export default function Carteira() {
         <Card className="bg-slate-900/60 border-white/10 mb-6">
           <CardHeader><CardTitle className="text-sm font-black uppercase tracking-widest flex items-center gap-2"><Sparkles className="w-4 h-4"/>Tabela de Preços</CardTitle></CardHeader>
           <CardContent className="grid sm:grid-cols-2 gap-2 text-sm">
-            <Row label="Gerar avatar com IA" value={COSTS.generateAvatarAI}/>
-            <Row label="Alterar aparência" value={COSTS.changeAppearance}/>
-            <Row label="Upload de foto" value={COSTS.uploadPhoto}/>
-            <Row label="Upload de avatar" value={COSTS.uploadAvatar}/>
+            <Row label="Gerar avatar com IA" value={COSTS.generateAvatarAI} admin={admin}/>
+            <Row label="Alterar aparência" value={COSTS.changeAppearance} admin={admin}/>
+            <Row label="Upload de foto" value={COSTS.uploadPhoto} admin={admin}/>
+            <Row label="Upload de avatar" value={COSTS.uploadAvatar} admin={admin}/>
           </CardContent>
         </Card>
 
@@ -107,11 +107,11 @@ export default function Carteira() {
   );
 }
 
-function Row({ label, value }: { label: string; value: number }) {
+function Row({ label, value, admin }: { label: string; value: number; admin: boolean }) {
   return (
     <div className="flex items-center justify-between bg-slate-950/60 border border-white/5 rounded-xl px-3 py-2">
-      <span className="text-white/80">{label}</span>
-      <span className="font-black text-amber-300">{value}{COIN_SYMBOL}</span>
+      <span className="text-white font-bold">{label}</span>
+      <span className="font-black text-amber-300">{admin ? "∞" : value}{COIN_SYMBOL}</span>
     </div>
   );
 }
