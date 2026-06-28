@@ -151,15 +151,20 @@ export default function PlanoDeAula() {
               </div>
             </div>
             <div className="sm:col-span-2">
+              <label className="text-[10px] uppercase text-white/60">Título do plano</label>
+              <Input value={planTitle} onChange={e => setPlanTitle(e.target.value)} placeholder="ex: Aula 1 - Estados da matéria" className="bg-slate-950 border-white/10"/>
+            </div>
+            <div className="sm:col-span-2">
               <label className="text-[10px] uppercase text-white/60">Plano de aula (texto completo)</label>
               <Textarea value={form.plan} onChange={e => setForm({ ...form, plan: e.target.value })} rows={8} placeholder="Cole aqui o plano de aula. A IA usará o conteúdo para gerar perguntas alinhadas ao tema e à série." className="bg-slate-950 border-white/10"/>
             </div>
-            <div className="sm:col-span-2 flex gap-2">
+            <div className="sm:col-span-2 flex gap-2 flex-wrap">
               <Button onClick={generate} disabled={busy} className="bg-gradient-to-r from-fuchsia-600 to-violet-600">
                 <Wand2 className="w-4 h-4 mr-1"/>{busy ? "Gerando…" : "Gerar com IA"}
               </Button>
+              <Button onClick={savePlan} variant="outline"><Save className="w-4 h-4 mr-1"/>Salvar plano</Button>
               {questions.length > 0 && (
-                <Button onClick={save} variant="secondary"><Save className="w-4 h-4 mr-1"/>Salvar no banco</Button>
+                <Button onClick={save} variant="secondary"><Save className="w-4 h-4 mr-1"/>Salvar perguntas no banco</Button>
               )}
             </div>
           </CardContent>
