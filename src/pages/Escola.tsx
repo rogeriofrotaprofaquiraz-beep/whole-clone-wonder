@@ -537,6 +537,18 @@ export default function Escola() {
                   <Button size="sm" onClick={() => sendAccessCode("sms")} className="bg-emerald-600 hover:bg-emerald-700">Enviar SMS</Button>
                 </div>
                 <p className="text-[10px] text-white/50">O código é gerado no cadastro. Envia por e-mail do aluno/responsável ou SMS do responsável.</p>
+                {sendLog.length > 0 && (
+                  <div className="mt-2 max-h-32 overflow-y-auto rounded border border-white/10 bg-slate-950/60 text-xs">
+                    <div className="px-2 py-1 font-black text-white/70 uppercase tracking-wider border-b border-white/10">Log de envios</div>
+                    {sendLog.map((l, i) => (
+                      <div key={i} className="px-2 py-1 flex justify-between gap-2 border-b border-white/5">
+                        <span className="font-bold text-cyan-300 uppercase">{l.channel}</span>
+                        <span className="truncate flex-1 text-white/80">{l.recipient}</span>
+                        <span className="text-white/40">{new Date(l.created_at).toLocaleString()}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
               <p className="text-[10px] text-white/50">ID: {editStudent.user_id}</p>
             </div>
