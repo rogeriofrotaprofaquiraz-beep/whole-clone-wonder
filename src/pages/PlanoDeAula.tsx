@@ -13,10 +13,15 @@ import { toast } from "sonner";
 
 type GenQ = { question: string; options: string[]; correct_index: number; explanation?: string; difficulty?: number };
 
+type SavedPlan = { id: string; title: string; subject: string | null; grade_year: number | null; content: string; class_id: string | null; updated_at: string };
+
 export default function PlanoDeAula() {
   const navigate = useNavigate();
   const [role, setRole] = useState<string | null>(null);
+  const [userId, setUserId] = useState<string>("");
   const [classes, setClasses] = useState<{ id: string; name: string; grade_year: number }[]>([]);
+  const [savedPlans, setSavedPlans] = useState<SavedPlan[]>([]);
+  const [planTitle, setPlanTitle] = useState("");
   const [form, setForm] = useState({
     class_id: "",
     grade_year: 6,
@@ -28,16 +33,46 @@ export default function PlanoDeAula() {
   const [busy, setBusy] = useState(false);
   const [questions, setQuestions] = useState<GenQ[]>([]);
 
+  const loadPlans = async (uid: string) => {
+    const { data } = await supabase.from("lesson_plans").select("*").eq("teacher_id", uid).order("updated_at", { ascending: false });
+    setSavedPlans((data ?? []) as any);
+  };
+
   useEffect(() => {
     supabase.auth.getSession().then(async ({ data: { session } }) => {
       if (!session?.user) { navigate("/"); return; }
+      setUserId(session.user.id);
       const r = await ensureUserAccess(session.user);
       setRole(r);
       if (r !== "admin" && r !== "teacher") { toast.error("Acesso restrito a professores"); navigate("/"); return; }
       const { data } = await supabase.from("classes").select("id, name, grade_year").order("grade_year");
       setClasses(data ?? []);
+      await loadPlans(session.user.id);
     });
   }, [navigate]);
+
+  const savePlan = async () => {
+    if (!planTitle.trim() || !form.plan.trim()) return toast.error("Informe título e conteúdo do plano");
+    const { error } = await supabase.from("lesson_plans").insert({
+      teacher_id: userId, title: planTitle, subject: form.topic || null,
+      grade_year: form.grade_year, content: form.plan, class_id: form.class_id || null,
+    });
+    if (error) return toast.error(error.message);
+    toast.success("Plano salvo");
+    setPlanTitle("");
+    await loadPlans(userId);
+  };
+
+  const loadPlan = (p: SavedPlan) => {
+    setPlanTitle(p.title);
+    setForm({ ...form, plan: p.content, topic: p.subject ?? "", grade_year: p.grade_year ?? 6, class_id: p.class_id ?? "" });
+    toast.success(`Plano "${p.title}" carregado`);
+  };
+
+  const deletePlan = async (id: string) => {
+    await supabase.from("lesson_plans").delete().eq("id", id);
+    setSavedPlans((p) => p.filter((x) => x.id !== id));
+  };
 
   const generate = async () => {
     if (!form.plan.trim()) return toast.error("Cole o plano de aula");
@@ -81,6 +116,24 @@ export default function PlanoDeAula() {
           <div/>
         </div>
 
+        {savedPlans.length > 0 && (
+          <Card className="bg-slate-900/60 border-white/10 mb-6">
+            <CardHeader><CardTitle className="text-sm font-black uppercase tracking-widest">Meus planos salvos ({savedPlans.length})</CardTitle></CardHeader>
+            <CardContent className="grid sm:grid-cols-2 lg:grid-cols-3 gap-2">
+              {savedPlans.map(p => (
+                <div key={p.id} className="border border-white/10 rounded-lg p-2 bg-slate-950/60">
+                  <div className="font-bold text-sm truncate">{p.title}</div>
+                  <div className="text-[10px] text-white/50">{p.subject ?? "—"} · {p.grade_year ?? "?"}º ano</div>
+                  <div className="flex gap-1 mt-2">
+                    <Button size="sm" variant="secondary" onClick={() => loadPlan(p)}>Carregar</Button>
+                    <Button size="sm" variant="ghost" onClick={() => deletePlan(p.id)}>Excluir</Button>
+                  </div>
+                </div>
+              ))}
+            </CardContent>
+          </Card>
+        )}
+
         <Card className="bg-slate-900/60 border-white/10 mb-6">
           <CardHeader><CardTitle className="text-sm font-black uppercase tracking-widest flex items-center gap-2"><BookOpen className="w-4 h-4"/>Configurações</CardTitle></CardHeader>
           <CardContent className="grid sm:grid-cols-2 gap-3">
@@ -116,15 +169,20 @@ export default function PlanoDeAula() {
               </div>
             </div>
             <div className="sm:col-span-2">
+              <label className="text-[10px] uppercase text-white/60">Título do plano</label>
+              <Input value={planTitle} onChange={e => setPlanTitle(e.target.value)} placeholder="ex: Aula 1 - Estados da matéria" className="bg-slate-950 border-white/10"/>
+            </div>
+            <div className="sm:col-span-2">
               <label className="text-[10px] uppercase text-white/60">Plano de aula (texto completo)</label>
               <Textarea value={form.plan} onChange={e => setForm({ ...form, plan: e.target.value })} rows={8} placeholder="Cole aqui o plano de aula. A IA usará o conteúdo para gerar perguntas alinhadas ao tema e à série." className="bg-slate-950 border-white/10"/>
             </div>
-            <div className="sm:col-span-2 flex gap-2">
+            <div className="sm:col-span-2 flex gap-2 flex-wrap">
               <Button onClick={generate} disabled={busy} className="bg-gradient-to-r from-fuchsia-600 to-violet-600">
                 <Wand2 className="w-4 h-4 mr-1"/>{busy ? "Gerando…" : "Gerar com IA"}
               </Button>
+              <Button onClick={savePlan} variant="outline"><Save className="w-4 h-4 mr-1"/>Salvar plano</Button>
               {questions.length > 0 && (
-                <Button onClick={save} variant="secondary"><Save className="w-4 h-4 mr-1"/>Salvar no banco</Button>
+                <Button onClick={save} variant="secondary"><Save className="w-4 h-4 mr-1"/>Salvar perguntas no banco</Button>
               )}
             </div>
           </CardContent>

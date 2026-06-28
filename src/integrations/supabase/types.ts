@@ -327,6 +327,104 @@ export type Database = {
           },
         ]
       }
+      credit_grants: {
+        Row: {
+          amount: number
+          created_at: string
+          granted_by: string
+          id: string
+          reason: string | null
+          user_id: string
+        }
+        Insert: {
+          amount: number
+          created_at?: string
+          granted_by: string
+          id?: string
+          reason?: string | null
+          user_id: string
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          granted_by?: string
+          id?: string
+          reason?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      credit_promotions: {
+        Row: {
+          active: boolean
+          bonus_pct: number
+          class_id: string | null
+          created_at: string
+          created_by: string
+          ends_at: string
+          id: string
+          name: string
+          starts_at: string
+          updated_at: string
+        }
+        Insert: {
+          active?: boolean
+          bonus_pct?: number
+          class_id?: string | null
+          created_at?: string
+          created_by: string
+          ends_at: string
+          id?: string
+          name: string
+          starts_at: string
+          updated_at?: string
+        }
+        Update: {
+          active?: boolean
+          bonus_pct?: number
+          class_id?: string | null
+          created_at?: string
+          created_by?: string
+          ends_at?: string
+          id?: string
+          name?: string
+          starts_at?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "credit_promotions_class_id_fkey"
+            columns: ["class_id"]
+            isOneToOne: false
+            referencedRelation: "classes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      economy_settings: {
+        Row: {
+          action_key: string
+          cost: number
+          id: string
+          label: string
+          updated_at: string
+        }
+        Insert: {
+          action_key: string
+          cost?: number
+          id?: string
+          label: string
+          updated_at?: string
+        }
+        Update: {
+          action_key?: string
+          cost?: number
+          id?: string
+          label?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       elements: {
         Row: {
           attributes: Json
@@ -450,6 +548,50 @@ export type Database = {
             columns: ["session_id"]
             isOneToOne: false
             referencedRelation: "game_sessions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      lesson_plans: {
+        Row: {
+          class_id: string | null
+          content: string
+          created_at: string
+          grade_year: number | null
+          id: string
+          subject: string | null
+          teacher_id: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          class_id?: string | null
+          content: string
+          created_at?: string
+          grade_year?: number | null
+          id?: string
+          subject?: string | null
+          teacher_id: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          class_id?: string | null
+          content?: string
+          created_at?: string
+          grade_year?: number | null
+          id?: string
+          subject?: string | null
+          teacher_id?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "lesson_plans_class_id_fkey"
+            columns: ["class_id"]
+            isOneToOne: false
+            referencedRelation: "classes"
             referencedColumns: ["id"]
           },
         ]
@@ -1033,6 +1175,7 @@ export type Database = {
         Args: { _approve: boolean; _class_id: string; _user_id: string }
         Returns: undefined
       }
+      current_credit_bonus: { Args: { _user_id: string }; Returns: number }
       ensure_current_user_access: {
         Args: never
         Returns: {
@@ -1047,6 +1190,10 @@ export type Database = {
           feature_key: string
           feature_label: string
         }[]
+      }
+      grant_coins_to_user: {
+        Args: { _amount: number; _reason: string; _user_id: string }
+        Returns: number
       }
       has_role: {
         Args: {
