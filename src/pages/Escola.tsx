@@ -36,7 +36,9 @@ export default function Escola() {
   const [qrClass, setQrClass] = useState<ClassRow | null>(null);
   const [editStudent, setEditStudent] = useState<null | {
     user_id: string; username: string; level: number; xp: number; coins: number; class_role: string;
+    email: string; guardian_name: string; guardian_email: string; guardian_phone: string; guardian_relationship: string;
   }>(null);
+
 
   const buildJoinUrl = (code: string) => `${window.location.origin}/escola?join=${code}`;
 
