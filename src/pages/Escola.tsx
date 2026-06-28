@@ -157,35 +157,35 @@ export default function Escola() {
         </div>
 
         {/* Aluno: entrar com código */}
-        <Card className="bg-slate-900/60 border-white/10 mb-6">
-          <CardHeader><CardTitle className="text-sm font-black uppercase tracking-widest">Entrar em uma turma</CardTitle></CardHeader>
+        <Card className="bg-slate-900/60 border-white/20 mb-6">
+          <CardHeader><CardTitle className="text-base font-black uppercase tracking-widest text-white">Entrar em uma turma</CardTitle></CardHeader>
           <CardContent className="flex gap-2">
-            <Input placeholder="Código de convite" value={joinCode} onChange={(e) => setJoinCode(e.target.value.toUpperCase())} className="bg-slate-950 border-white/10 uppercase"/>
+            <Input placeholder="Código de convite" value={joinCode} onChange={(e) => setJoinCode(e.target.value.toUpperCase())} className="bg-slate-950 border-white/20 uppercase text-white font-bold placeholder:text-white/60"/>
             <Button onClick={joinByCode}><UserPlus className="w-4 h-4 mr-1"/>Entrar</Button>
           </CardContent>
         </Card>
 
         {canTeach && (
           <div className="grid md:grid-cols-2 gap-6 mb-6">
-            <Card className="bg-slate-900/60 border-white/10">
-              <CardHeader><CardTitle className="text-sm font-black uppercase tracking-widest flex items-center gap-2"><School className="w-4 h-4"/>Nova Escola</CardTitle></CardHeader>
+            <Card className="bg-slate-900/60 border-white/20">
+              <CardHeader><CardTitle className="text-base font-black uppercase tracking-widest flex items-center gap-2 text-white"><School className="w-4 h-4"/>Nova Escola</CardTitle></CardHeader>
               <CardContent className="space-y-2">
-                <Input placeholder="Nome da escola" value={newSchool.name} onChange={e => setNewSchool({ ...newSchool, name: e.target.value })} className="bg-slate-950 border-white/10"/>
-                <Input placeholder="Cidade" value={newSchool.city} onChange={e => setNewSchool({ ...newSchool, city: e.target.value })} className="bg-slate-950 border-white/10"/>
+                <Input placeholder="Nome da escola" value={newSchool.name} onChange={e => setNewSchool({ ...newSchool, name: e.target.value })} className="bg-slate-950 border-white/20 text-white font-bold placeholder:text-white/60"/>
+                <Input placeholder="Cidade" value={newSchool.city} onChange={e => setNewSchool({ ...newSchool, city: e.target.value })} className="bg-slate-950 border-white/20 text-white font-bold placeholder:text-white/60"/>
                 <Button onClick={createSchool} className="w-full"><Plus className="w-4 h-4 mr-1"/>Criar Escola</Button>
               </CardContent>
             </Card>
 
-            <Card className="bg-slate-900/60 border-white/10">
-              <CardHeader><CardTitle className="text-sm font-black uppercase tracking-widest flex items-center gap-2"><Users className="w-4 h-4"/>Nova Turma (6º–9º)</CardTitle></CardHeader>
+            <Card className="bg-slate-900/60 border-white/20">
+              <CardHeader><CardTitle className="text-base font-black uppercase tracking-widest flex items-center gap-2 text-white"><Users className="w-4 h-4"/>Nova Turma (6º–9º)</CardTitle></CardHeader>
               <CardContent className="space-y-2">
                 <Select value={newClass.school_id} onValueChange={v => setNewClass({ ...newClass, school_id: v })}>
-                  <SelectTrigger className="bg-slate-950 border-white/10"><SelectValue placeholder="Escola"/></SelectTrigger>
+                  <SelectTrigger className="bg-slate-950 border-white/20 text-white font-bold"><SelectValue placeholder="Selecione a escola"/></SelectTrigger>
                   <SelectContent>{schools.map(s => <SelectItem key={s.id} value={s.id}>{s.name}</SelectItem>)}</SelectContent>
                 </Select>
-                <Input placeholder="Nome da turma (ex: A, B…)" value={newClass.name} onChange={e => setNewClass({ ...newClass, name: e.target.value })} className="bg-slate-950 border-white/10"/>
+                <Input placeholder="Nome da turma (ex: A, B…)" value={newClass.name} onChange={e => setNewClass({ ...newClass, name: e.target.value })} className="bg-slate-950 border-white/20 text-white font-bold placeholder:text-white/60"/>
                 <Select value={String(newClass.grade_year)} onValueChange={v => setNewClass({ ...newClass, grade_year: Number(v) })}>
-                  <SelectTrigger className="bg-slate-950 border-white/10"><SelectValue/></SelectTrigger>
+                  <SelectTrigger className="bg-slate-950 border-white/20 text-white font-bold"><SelectValue placeholder="Ano"/></SelectTrigger>
                   <SelectContent>{[6,7,8,9].map(g => <SelectItem key={g} value={String(g)}>{g}º ano</SelectItem>)}</SelectContent>
                 </Select>
                 <Button onClick={createClass} className="w-full"><Plus className="w-4 h-4 mr-1"/>Criar Turma</Button>
