@@ -227,9 +227,10 @@ export default function Escola() {
                   <button key={c.id} onClick={() => loadClassDetails(c)} className={`w-full text-left p-3 rounded-xl border ${activeClass?.id === c.id ? "bg-violet-600/20 border-violet-500" : "bg-slate-950/60 border-white/10"}`}>
                     <div className="font-bold text-sm">{c.name} <Badge variant="outline" className="ml-1 text-[10px]">{c.grade_year}º ano</Badge></div>
                     <div className="text-[10px] text-white/50">{sch?.name ?? "—"}</div>
-                    <div className="text-[10px] text-amber-300 mt-1 flex items-center gap-1">
+                    <div className="text-[10px] text-amber-300 mt-1 flex items-center gap-2">
                       <span className="font-mono">{c.invite_code}</span>
                       <Copy className="w-3 h-3 cursor-pointer" onClick={(e) => { e.stopPropagation(); navigator.clipboard.writeText(c.invite_code); toast.success("Código copiado"); }}/>
+                      <QrCode className="w-3 h-3 cursor-pointer text-cyan-300" onClick={(e) => { e.stopPropagation(); setQrClass(c); }}/>
                     </div>
                   </button>
                 );
