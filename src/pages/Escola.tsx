@@ -324,6 +324,30 @@ export default function Escola() {
           </div>
         </div>
       </div>
+
+      <Dialog open={!!qrClass} onOpenChange={(o) => !o && setQrClass(null)}>
+        <DialogContent className="bg-slate-900 border-white/20 text-white max-w-md">
+          <DialogHeader>
+            <DialogTitle className="font-black uppercase tracking-widest text-white">QR Code — Turma {qrClass?.name}</DialogTitle>
+          </DialogHeader>
+          {qrClass && (
+            <div className="flex flex-col items-center gap-4 py-4">
+              <div className="bg-white p-4 rounded-xl">
+                <QRCodeSVG value={buildJoinUrl(qrClass.invite_code)} size={240} level="M"/>
+              </div>
+              <div className="text-center">
+                <div className="text-xs text-white/60 uppercase tracking-widest font-bold">Código</div>
+                <div className="font-mono text-3xl font-black tracking-widest text-amber-300">{qrClass.invite_code}</div>
+              </div>
+              <div className="text-[11px] text-white/70 text-center font-bold break-all">{buildJoinUrl(qrClass.invite_code)}</div>
+              <Button onClick={() => { navigator.clipboard.writeText(buildJoinUrl(qrClass.invite_code)); toast.success("Link copiado"); }} className="w-full">
+                <Copy className="w-4 h-4 mr-2"/>Copiar link de convite
+              </Button>
+              <p className="text-[11px] text-white/60 text-center">Alunos escaneiam o QR ou digitam o código. A entrada precisa ser <strong className="text-amber-300">aprovada pelo professor</strong>.</p>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
