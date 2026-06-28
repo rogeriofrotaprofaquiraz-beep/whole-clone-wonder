@@ -34,6 +34,9 @@ export default function Escola() {
   const [newTeam, setNewTeam] = useState({ name: "", color: "#3b82f6" });
   const [joinCode, setJoinCode] = useState("");
   const [qrClass, setQrClass] = useState<ClassRow | null>(null);
+  const [editStudent, setEditStudent] = useState<null | {
+    user_id: string; username: string; level: number; xp: number; coins: number; class_role: string;
+  }>(null);
 
   const buildJoinUrl = (code: string) => `${window.location.origin}/escola?join=${code}`;
 
