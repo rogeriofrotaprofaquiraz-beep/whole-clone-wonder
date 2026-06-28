@@ -14,6 +14,39 @@ export type Database = {
   }
   public: {
     Tables: {
+      access_code_sends: {
+        Row: {
+          access_code: string
+          channel: string
+          created_at: string
+          id: string
+          note: string | null
+          recipient: string
+          sent_by: string
+          user_id: string
+        }
+        Insert: {
+          access_code: string
+          channel: string
+          created_at?: string
+          id?: string
+          note?: string | null
+          recipient: string
+          sent_by: string
+          user_id: string
+        }
+        Update: {
+          access_code?: string
+          channel?: string
+          created_at?: string
+          id?: string
+          note?: string | null
+          recipient?: string
+          sent_by?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       activity_logs: {
         Row: {
           action: string
@@ -1224,6 +1257,17 @@ export type Database = {
       history_by_access_code: {
         Args: { _code: string }
         Returns: {
+          coins: number
+          level: number
+          lifetime_coins: number
+          username: string
+          xp: number
+        }[]
+      }
+      history_by_access_codes: {
+        Args: { _codes: string[] }
+        Returns: {
+          access_code: string
           coins: number
           level: number
           lifetime_coins: number
