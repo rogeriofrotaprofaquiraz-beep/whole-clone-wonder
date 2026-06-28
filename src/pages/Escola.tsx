@@ -313,7 +313,12 @@ export default function Escola() {
                       {members.filter(m => m.status === "approved").map(m => (
                         <div key={m.user_id} className="flex items-center justify-between bg-slate-950/60 border border-white/10 rounded-lg px-3 py-2 text-xs">
                           <span>@{m.username} <Badge variant="outline" className="ml-2 text-[9px]">{m.role}</Badge></span>
-                          {canTeach && <Button size="sm" variant="ghost" onClick={() => removeMember(m.user_id)}><Trash2 className="w-3 h-3 text-rose-400"/></Button>}
+                          <div className="flex gap-1">
+                            {role === "admin" && (
+                              <Button size="sm" variant="ghost" onClick={() => openEdit(m.user_id)} title="Editar cadastro"><Pencil className="w-3 h-3 text-cyan-300"/></Button>
+                            )}
+                            {canTeach && <Button size="sm" variant="ghost" onClick={() => removeMember(m.user_id)}><Trash2 className="w-3 h-3 text-rose-400"/></Button>}
+                          </div>
                         </div>
                       ))}
                     </div>
