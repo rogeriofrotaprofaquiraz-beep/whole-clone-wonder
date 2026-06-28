@@ -447,8 +447,34 @@ export default function Escola() {
                   </SelectContent>
                 </Select>
               </div>
+              <div>
+                <label className="text-[11px] font-black uppercase text-white/70">E-mail do aluno</label>
+                <Input type="email" value={editStudent.email} onChange={e => setEditStudent({ ...editStudent, email: e.target.value })} className="bg-slate-950 border-white/20 text-white font-bold"/>
+              </div>
+              <div className="border-t border-white/10 pt-3 space-y-2">
+                <p className="text-[11px] font-black uppercase tracking-widest text-cyan-300">Responsável</p>
+                <div className="grid grid-cols-2 gap-2">
+                  <div>
+                    <label className="text-[11px] font-black uppercase text-white/70">Nome</label>
+                    <Input value={editStudent.guardian_name} onChange={e => setEditStudent({ ...editStudent, guardian_name: e.target.value })} className="bg-slate-950 border-white/20 text-white font-bold"/>
+                  </div>
+                  <div>
+                    <label className="text-[11px] font-black uppercase text-white/70">Parentesco</label>
+                    <Input placeholder="Mãe, pai, tutor..." value={editStudent.guardian_relationship} onChange={e => setEditStudent({ ...editStudent, guardian_relationship: e.target.value })} className="bg-slate-950 border-white/20 text-white font-bold"/>
+                  </div>
+                  <div>
+                    <label className="text-[11px] font-black uppercase text-white/70">E-mail</label>
+                    <Input type="email" value={editStudent.guardian_email} onChange={e => setEditStudent({ ...editStudent, guardian_email: e.target.value })} className="bg-slate-950 border-white/20 text-white font-bold"/>
+                  </div>
+                  <div>
+                    <label className="text-[11px] font-black uppercase text-white/70">Telefone</label>
+                    <Input value={editStudent.guardian_phone} onChange={e => setEditStudent({ ...editStudent, guardian_phone: e.target.value })} className="bg-slate-950 border-white/20 text-white font-bold"/>
+                  </div>
+                </div>
+              </div>
               <p className="text-[10px] text-white/50">ID: {editStudent.user_id}</p>
             </div>
+
           )}
           <DialogFooter>
             <Button variant="ghost" onClick={() => setEditStudent(null)}>Cancelar</Button>
