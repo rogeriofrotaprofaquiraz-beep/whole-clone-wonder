@@ -43,8 +43,16 @@ export default function Escola() {
       const r = await ensureUserAccess(session.user);
       setRole(r);
       await refresh();
+      const j = params.get("join");
+      if (j) {
+        const { error } = await supabase.rpc("join_class_by_code", { _code: j });
+        if (error) toast.error(error.message);
+        else toast.success("Solicitação enviada! Aguarde aprovação do professor.");
+        navigate("/escola", { replace: true });
+      }
     });
-  }, [navigate]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const refresh = async () => {
     const [s, c] = await Promise.all([
