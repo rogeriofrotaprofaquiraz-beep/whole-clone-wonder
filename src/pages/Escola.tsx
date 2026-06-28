@@ -37,6 +37,7 @@ export default function Escola() {
   const [editStudent, setEditStudent] = useState<null | {
     user_id: string; username: string; level: number; xp: number; coins: number; class_role: string;
     email: string; guardian_name: string; guardian_email: string; guardian_phone: string; guardian_relationship: string;
+    access_code: string;
   }>(null);
 
 
