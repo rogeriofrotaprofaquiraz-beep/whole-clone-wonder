@@ -136,10 +136,15 @@ export default function Escola() {
   const openEdit = async (uid: string) => {
     if (!activeClass) return;
     const [{ data: prof }, { data: wallet }, { data: cm }] = await Promise.all([
-      supabase.from("profiles").select("username, level, xp, email, guardian_name, guardian_email, guardian_phone, guardian_relationship").eq("id", uid).maybeSingle(),
+      supabase.from("profiles").select("username, level, xp, email, guardian_name, guardian_email, guardian_phone, guardian_relationship, access_code").eq("id", uid).maybeSingle(),
       supabase.from("player_wallet").select("coins").eq("user_id", uid).maybeSingle(),
       supabase.from("class_members").select("role").eq("class_id", activeClass.id).eq("user_id", uid).maybeSingle(),
     ]);
+    let code = (prof as any)?.access_code ?? "";
+    if (!code) {
+      const { data: gen } = await supabase.rpc("generate_access_code", { _user_id: uid });
+      code = (gen as any) ?? "";
+    }
     setEditStudent({
       user_id: uid,
       username: prof?.username ?? "",
@@ -152,8 +157,34 @@ export default function Escola() {
       guardian_email: prof?.guardian_email ?? "",
       guardian_phone: prof?.guardian_phone ?? "",
       guardian_relationship: prof?.guardian_relationship ?? "",
+      access_code: code,
     });
   };
+
+  const regenAccessCode = async () => {
+    if (!editStudent) return;
+    const { data, error } = await supabase.rpc("generate_access_code", { _user_id: editStudent.user_id });
+    if (error) return toast.error(error.message);
+    setEditStudent({ ...editStudent, access_code: (data as any) ?? "" });
+    toast.success("Novo código gerado");
+  };
+
+  const sendAccessCode = (channel: "email" | "sms") => {
+    if (!editStudent) return;
+    const code = editStudent.access_code;
+    const url = `${window.location.origin}/historico?code=${code}`;
+    const msg = `Olá! Seu Código de Acesso ao histórico no Elemental Heroes é ${code}. Acesse: ${url}`;
+    if (channel === "email") {
+      const to = editStudent.email || editStudent.guardian_email;
+      if (!to) return toast.error("Cadastre um e-mail do aluno ou do responsável");
+      window.location.href = `mailto:${to}?subject=${encodeURIComponent("Código de Acesso - Elemental Heroes")}&body=${encodeURIComponent(msg)}`;
+    } else {
+      const tel = (editStudent.guardian_phone || "").replace(/\D/g, "");
+      if (!tel) return toast.error("Cadastre um telefone do responsável");
+      window.location.href = `sms:${tel}?body=${encodeURIComponent(msg)}`;
+    }
+  };
+
 
   const saveEdit = async () => {
     if (!editStudent || !activeClass) return;
