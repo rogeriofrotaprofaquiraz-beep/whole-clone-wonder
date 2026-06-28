@@ -445,7 +445,7 @@ const Index = () => {
         <TabsContent value="collection" className="w-full animate-in fade-in zoom-in-95 duration-500">
           <div className="flex flex-col lg:flex-row gap-12 items-start justify-center w-full">
         {/* Lado Esquerdo: Tabela Periódica (Mini) */}
-        <div className="flex-1 bg-slate-900/40 p-4 md:p-8 rounded-[2rem] border border-white/5 backdrop-blur-2xl shadow-[0_0_50px_rgba(0,0,0,0.3)] relative overflow-hidden group">
+        <div className="flex-1 bg-slate-950/90 p-4 md:p-8 rounded-[2rem] border border-white/10 backdrop-blur-2xl shadow-[0_0_50px_rgba(0,0,0,0.6)] relative overflow-hidden group">
           {/* Grid Background Effect */}
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none"></div>
           
