@@ -791,6 +791,39 @@ export type Database = {
         }
         Relationships: []
       }
+      role_permissions: {
+        Row: {
+          can_edit: boolean
+          can_view: boolean
+          created_at: string
+          feature_key: string
+          feature_label: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          updated_at: string
+        }
+        Insert: {
+          can_edit?: boolean
+          can_view?: boolean
+          created_at?: string
+          feature_key: string
+          feature_label: string
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          updated_at?: string
+        }
+        Update: {
+          can_edit?: boolean
+          can_view?: boolean
+          created_at?: string
+          feature_key?: string
+          feature_label?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          updated_at?: string
+        }
+        Relationships: []
+      }
       schools: {
         Row: {
           city: string | null
@@ -1004,6 +1037,15 @@ export type Database = {
         Args: never
         Returns: {
           role: Database["public"]["Enums"]["app_role"]
+        }[]
+      }
+      get_my_permissions: {
+        Args: never
+        Returns: {
+          can_edit: boolean
+          can_view: boolean
+          feature_key: string
+          feature_label: string
         }[]
       }
       has_role: {
