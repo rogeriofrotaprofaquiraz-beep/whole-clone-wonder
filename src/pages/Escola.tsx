@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { ensureUserAccess } from "@/lib/ensureUserAccess";
 import { Button } from "@/components/ui/button";
@@ -7,12 +7,14 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { ArrowLeft, Plus, School, Users, Trash2, Copy, UserPlus } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { ArrowLeft, Plus, School, Users, Trash2, Copy, UserPlus, QrCode, Check, X } from "lucide-react";
 import { toast } from "sonner";
+import { QRCodeSVG } from "qrcode.react";
 
 type SchoolRow = { id: string; name: string; city: string | null };
 type ClassRow = { id: string; school_id: string; name: string; grade_year: number; invite_code: string };
-type MemberRow = { user_id: string; role: string; username?: string };
+type MemberRow = { user_id: string; role: string; status: string; username?: string };
 type TeamRow = { id: string; class_id: string; name: string; color: string };
 
 export default function Escola() {
