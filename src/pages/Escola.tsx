@@ -33,6 +33,9 @@ export default function Escola() {
   const [emailsRaw, setEmailsRaw] = useState("");
   const [newTeam, setNewTeam] = useState({ name: "", color: "#3b82f6" });
   const [joinCode, setJoinCode] = useState("");
+  const [qrClass, setQrClass] = useState<ClassRow | null>(null);
+
+  const buildJoinUrl = (code: string) => `${window.location.origin}/escola?join=${code}`;
 
   useEffect(() => {
     supabase.auth.getSession().then(async ({ data: { session } }) => {
