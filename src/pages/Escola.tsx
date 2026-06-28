@@ -19,6 +19,7 @@ type TeamRow = { id: string; class_id: string; name: string; color: string };
 
 export default function Escola() {
   const navigate = useNavigate();
+  const [params] = useSearchParams();
   const [role, setRole] = useState<string | null>(null);
   const [schools, setSchools] = useState<SchoolRow[]>([]);
   const [classes, setClasses] = useState<ClassRow[]>([]);
