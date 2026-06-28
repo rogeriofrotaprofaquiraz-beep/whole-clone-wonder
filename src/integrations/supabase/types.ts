@@ -893,6 +893,7 @@ export type Database = {
       }
       profiles: {
         Row: {
+          access_code: string | null
           avatar_url: string | null
           created_at: string
           email: string | null
@@ -911,6 +912,7 @@ export type Database = {
           xp: number | null
         }
         Insert: {
+          access_code?: string | null
           avatar_url?: string | null
           created_at?: string
           email?: string | null
@@ -929,6 +931,7 @@ export type Database = {
           xp?: number | null
         }
         Update: {
+          access_code?: string | null
           avatar_url?: string | null
           created_at?: string
           email?: string | null
@@ -1197,6 +1200,7 @@ export type Database = {
           role: Database["public"]["Enums"]["app_role"]
         }[]
       }
+      generate_access_code: { Args: { _user_id: string }; Returns: string }
       get_my_permissions: {
         Args: never
         Returns: {
@@ -1216,6 +1220,16 @@ export type Database = {
           _user_id: string
         }
         Returns: boolean
+      }
+      history_by_access_code: {
+        Args: { _code: string }
+        Returns: {
+          coins: number
+          level: number
+          lifetime_coins: number
+          username: string
+          xp: number
+        }[]
       }
       join_class_by_code: { Args: { _code: string }; Returns: string }
       lookup_user_ids_by_emails: {
