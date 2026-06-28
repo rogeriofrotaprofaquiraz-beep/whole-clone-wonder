@@ -239,9 +239,9 @@ export default function Perfil() {
                 <div className="text-xs text-white/70">
                   <span className="font-bold">@{profileName || session.user.email?.split("@")[0]}</span>
                 </div>
-                <Button onClick={handleGenerate} disabled={generating || busy} className="w-full bg-gradient-to-r from-fuchsia-600 to-violet-600">
+                <Button onClick={handleGenerate} disabled={generating || busy} className="w-full bg-gradient-to-r from-fuchsia-600 to-violet-600 text-white font-black">
                   <Wand2 className="w-4 h-4 mr-2"/>
-                  {generating ? "Gerando…" : `Personalizar com IA (${admin ? 0 : COSTS.generateAvatarAI}${COIN_SYMBOL})`}
+                  {generating ? "Gerando…" : `Personalizar com IA (${admin ? "∞" : COSTS.generateAvatarAI}${COIN_SYMBOL})`}
                 </Button>
               </div>
             </CardContent>
@@ -317,20 +317,20 @@ export default function Perfil() {
                   <CardContent className="grid sm:grid-cols-2 gap-4">
                     {Object.entries(APPEARANCE_OPTIONS).map(([key, opts]) => (
                       <div key={key}>
-                        <label className="text-[10px] uppercase tracking-widest text-white/60 mb-1 block">{APPEARANCE_LABELS[key] ?? key}</label>
+                        <label className="text-[10px] uppercase tracking-widest text-white font-black mb-1 block">{APPEARANCE_LABELS[key] ?? key}</label>
                         <Select value={avatar?.appearance?.[key] ?? ""} onValueChange={(v) => updateAppearance({ [key]: v })}>
-                          <SelectTrigger className="bg-slate-950/70 border-white/10">
-                            <SelectValue placeholder="Selecione…"/>
+                          <SelectTrigger className="bg-slate-950/70 border-white/20 text-white font-black [&>span]:text-white [&>span]:font-black">
+                            <SelectValue placeholder="Selecione…" />
                           </SelectTrigger>
-                          <SelectContent>
-                            {opts.map((o) => (<SelectItem key={o.v} value={o.v}>{o.l}</SelectItem>))}
+                          <SelectContent className="bg-slate-950 border-white/20 text-white font-bold">
+                            {opts.map((o) => (<SelectItem key={o.v} value={o.v} className="text-white font-bold focus:bg-fuchsia-600 focus:text-white">{o.l}</SelectItem>))}
                           </SelectContent>
                         </Select>
                       </div>
                     ))}
 
                     <div className="sm:col-span-2 border-t border-white/10 pt-4 mt-2">
-                      <label className="text-[10px] uppercase tracking-widest text-white/60 mb-2 block">
+                      <label className="text-[10px] uppercase tracking-widest text-white font-black mb-2 block">
                         Foto de referência (opcional — para semelhança realista)
                       </label>
                       <div className="flex items-center gap-3">
@@ -350,20 +350,20 @@ export default function Perfil() {
                             };
                             reader.readAsDataURL(file);
                           }}
-                          className="text-xs text-white/70 file:mr-3 file:rounded-md file:border-0 file:bg-fuchsia-600 file:text-white file:px-3 file:py-1.5 file:text-xs file:font-bold"
+                          className="text-xs text-white font-bold file:mr-3 file:rounded-md file:border-0 file:bg-fuchsia-600 file:text-white file:px-3 file:py-1.5 file:text-xs file:font-bold"
                         />
                         {photoPreview && (
                           <div className="flex items-center gap-2">
                             <img src={photoPreview} alt="Referência" className="w-12 h-12 rounded-lg object-cover border border-white/20"/>
-                            <Button size="sm" variant="ghost" className="text-xs text-white/60" onClick={() => { setPhotoBase64(null); setPhotoPreview(null); }}>Remover</Button>
+                            <Button size="sm" variant="ghost" className="text-xs text-white font-bold" onClick={() => { setPhotoBase64(null); setPhotoPreview(null); }}>Remover</Button>
                           </div>
                         )}
                       </div>
-                      <p className="text-[10px] text-white/40 mt-1">Sua face será usada apenas como referência de semelhança facial.</p>
+                      <p className="text-[10px] text-white font-bold mt-1">Sua face será usada apenas como referência de semelhança facial.</p>
                     </div>
 
-                    <div className="sm:col-span-2 text-[11px] text-white/50">
-                      As alterações são salvas automaticamente. {admin && <span className="text-emerald-400 font-bold">Administrador: créditos ilimitados.</span>} Clique em <strong>Personalizar com IA</strong> para gerar o avatar com base na carta equipada.
+                    <div className="sm:col-span-2 text-[11px] text-white font-bold">
+                      As alterações são salvas automaticamente. {admin && <span className="text-emerald-300 font-black">Administrador: créditos infinitos (∞).</span>} Clique em <strong className="text-white font-black">Personalizar com IA</strong> para gerar o avatar com base na carta equipada.
                     </div>
                   </CardContent>
 
