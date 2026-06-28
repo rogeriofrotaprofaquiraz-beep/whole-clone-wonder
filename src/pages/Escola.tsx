@@ -154,9 +154,17 @@ export default function Escola() {
     if (!joinCode.trim()) return;
     const { error } = await supabase.rpc("join_class_by_code", { _code: joinCode.trim() });
     if (error) return toast.error(error.message);
-    toast.success("Entrou na turma!");
+    toast.success("Solicitação enviada! Aguarde aprovação do professor.");
     setJoinCode("");
     refresh();
+  };
+
+  const approveMember = async (uid: string, approve: boolean) => {
+    if (!activeClass) return;
+    const { error } = await supabase.rpc("approve_class_member", { _class_id: activeClass.id, _user_id: uid, _approve: approve });
+    if (error) return toast.error(error.message);
+    toast.success(approve ? "Aluno aprovado" : "Solicitação recusada");
+    loadClassDetails(activeClass);
   };
 
   const canTeach = role === "admin" || role === "teacher";
