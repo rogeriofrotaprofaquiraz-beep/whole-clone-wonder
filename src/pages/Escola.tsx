@@ -169,21 +169,41 @@ export default function Escola() {
     toast.success("Novo código gerado");
   };
 
-  const sendAccessCode = (channel: "email" | "sms") => {
+  const sendAccessCode = async (channel: "email" | "sms") => {
     if (!editStudent) return;
     const code = editStudent.access_code;
     const url = `${window.location.origin}/historico?code=${code}`;
     const msg = `Olá! Seu Código de Acesso ao histórico no Elemental Heroes é ${code}. Acesse: ${url}`;
+    let recipient = "";
     if (channel === "email") {
-      const to = editStudent.email || editStudent.guardian_email;
-      if (!to) return toast.error("Cadastre um e-mail do aluno ou do responsável");
-      window.location.href = `mailto:${to}?subject=${encodeURIComponent("Código de Acesso - Elemental Heroes")}&body=${encodeURIComponent(msg)}`;
+      recipient = editStudent.email || editStudent.guardian_email;
+      if (!recipient) return toast.error("Cadastre um e-mail do aluno ou do responsável");
     } else {
-      const tel = (editStudent.guardian_phone || "").replace(/\D/g, "");
-      if (!tel) return toast.error("Cadastre um telefone do responsável");
-      window.location.href = `sms:${tel}?body=${encodeURIComponent(msg)}`;
+      recipient = (editStudent.guardian_phone || "").replace(/\D/g, "");
+      if (!recipient) return toast.error("Cadastre um telefone do responsável");
     }
+    const { data: { session } } = await supabase.auth.getSession();
+    await supabase.from("access_code_sends").insert({
+      user_id: editStudent.user_id, sent_by: session!.user.id,
+      channel, recipient, access_code: code,
+    });
+    await loadSendLog(editStudent.user_id);
+    if (channel === "email") {
+      window.location.href = `mailto:${recipient}?subject=${encodeURIComponent("Código de Acesso - Elemental Heroes")}&body=${encodeURIComponent(msg)}`;
+    } else {
+      window.location.href = `sms:${recipient}?body=${encodeURIComponent(msg)}`;
+    }
+    toast.success("Envio registrado");
   };
+
+  const [sendLog, setSendLog] = useState<Array<{ channel: string; recipient: string; created_at: string }>>([]);
+  const loadSendLog = async (uid: string) => {
+    const { data } = await supabase.from("access_code_sends")
+      .select("channel, recipient, created_at").eq("user_id", uid)
+      .order("created_at", { ascending: false }).limit(20);
+    setSendLog((data ?? []) as any);
+  };
+
 
 
   const saveEdit = async () => {
