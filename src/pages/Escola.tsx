@@ -37,6 +37,7 @@ export default function Escola() {
   const [editStudent, setEditStudent] = useState<null | {
     user_id: string; username: string; level: number; xp: number; coins: number; class_role: string;
     email: string; guardian_name: string; guardian_email: string; guardian_phone: string; guardian_relationship: string;
+    access_code: string;
   }>(null);
 
 
@@ -135,10 +136,15 @@ export default function Escola() {
   const openEdit = async (uid: string) => {
     if (!activeClass) return;
     const [{ data: prof }, { data: wallet }, { data: cm }] = await Promise.all([
-      supabase.from("profiles").select("username, level, xp, email, guardian_name, guardian_email, guardian_phone, guardian_relationship").eq("id", uid).maybeSingle(),
+      supabase.from("profiles").select("username, level, xp, email, guardian_name, guardian_email, guardian_phone, guardian_relationship, access_code").eq("id", uid).maybeSingle(),
       supabase.from("player_wallet").select("coins").eq("user_id", uid).maybeSingle(),
       supabase.from("class_members").select("role").eq("class_id", activeClass.id).eq("user_id", uid).maybeSingle(),
     ]);
+    let code = (prof as any)?.access_code ?? "";
+    if (!code) {
+      const { data: gen } = await supabase.rpc("generate_access_code", { _user_id: uid });
+      code = (gen as any) ?? "";
+    }
     setEditStudent({
       user_id: uid,
       username: prof?.username ?? "",
@@ -151,8 +157,34 @@ export default function Escola() {
       guardian_email: prof?.guardian_email ?? "",
       guardian_phone: prof?.guardian_phone ?? "",
       guardian_relationship: prof?.guardian_relationship ?? "",
+      access_code: code,
     });
   };
+
+  const regenAccessCode = async () => {
+    if (!editStudent) return;
+    const { data, error } = await supabase.rpc("generate_access_code", { _user_id: editStudent.user_id });
+    if (error) return toast.error(error.message);
+    setEditStudent({ ...editStudent, access_code: (data as any) ?? "" });
+    toast.success("Novo código gerado");
+  };
+
+  const sendAccessCode = (channel: "email" | "sms") => {
+    if (!editStudent) return;
+    const code = editStudent.access_code;
+    const url = `${window.location.origin}/historico?code=${code}`;
+    const msg = `Olá! Seu Código de Acesso ao histórico no Elemental Heroes é ${code}. Acesse: ${url}`;
+    if (channel === "email") {
+      const to = editStudent.email || editStudent.guardian_email;
+      if (!to) return toast.error("Cadastre um e-mail do aluno ou do responsável");
+      window.location.href = `mailto:${to}?subject=${encodeURIComponent("Código de Acesso - Elemental Heroes")}&body=${encodeURIComponent(msg)}`;
+    } else {
+      const tel = (editStudent.guardian_phone || "").replace(/\D/g, "");
+      if (!tel) return toast.error("Cadastre um telefone do responsável");
+      window.location.href = `sms:${tel}?body=${encodeURIComponent(msg)}`;
+    }
+  };
+
 
   const saveEdit = async () => {
     if (!editStudent || !activeClass) return;
@@ -471,6 +503,19 @@ export default function Escola() {
                     <Input value={editStudent.guardian_phone} onChange={e => setEditStudent({ ...editStudent, guardian_phone: e.target.value })} className="bg-slate-950 border-white/20 text-white font-bold"/>
                   </div>
                 </div>
+              </div>
+              <div className="border-t border-white/10 pt-3 space-y-2">
+                <p className="text-[11px] font-black uppercase tracking-widest text-amber-300">Código de Acesso</p>
+                <div className="flex gap-2 items-center">
+                  <Input readOnly value={editStudent.access_code} className="bg-slate-950 border-amber-500/40 text-amber-200 font-black tracking-widest text-center"/>
+                  <Button size="sm" variant="ghost" onClick={() => { navigator.clipboard.writeText(editStudent.access_code); toast.success("Código copiado"); }} title="Copiar"><Copy className="w-4 h-4 text-white"/></Button>
+                </div>
+                <div className="grid grid-cols-3 gap-2">
+                  <Button size="sm" variant="secondary" onClick={regenAccessCode}>Gerar novo</Button>
+                  <Button size="sm" onClick={() => sendAccessCode("email")} className="bg-cyan-600 hover:bg-cyan-700">Enviar e-mail</Button>
+                  <Button size="sm" onClick={() => sendAccessCode("sms")} className="bg-emerald-600 hover:bg-emerald-700">Enviar SMS</Button>
+                </div>
+                <p className="text-[10px] text-white/50">O código é gerado no cadastro. Envia por e-mail do aluno/responsável ou SMS do responsável.</p>
               </div>
               <p className="text-[10px] text-white/50">ID: {editStudent.user_id}</p>
             </div>
