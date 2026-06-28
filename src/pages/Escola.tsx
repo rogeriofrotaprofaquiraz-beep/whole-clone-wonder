@@ -395,6 +395,52 @@ export default function Escola() {
           )}
         </DialogContent>
       </Dialog>
+
+      <Dialog open={!!editStudent} onOpenChange={(o) => !o && setEditStudent(null)}>
+        <DialogContent className="bg-slate-900 border-white/20 text-white max-w-md">
+          <DialogHeader>
+            <DialogTitle className="font-black uppercase tracking-widest">Editar Aluno</DialogTitle>
+          </DialogHeader>
+          {editStudent && (
+            <div className="space-y-3 py-2">
+              <div>
+                <label className="text-[11px] font-black uppercase text-white/70">Nome de usuário</label>
+                <Input value={editStudent.username} onChange={e => setEditStudent({ ...editStudent, username: e.target.value })} className="bg-slate-950 border-white/20 text-white font-bold"/>
+              </div>
+              <div className="grid grid-cols-3 gap-2">
+                <div>
+                  <label className="text-[11px] font-black uppercase text-white/70">Nível</label>
+                  <Input type="number" value={editStudent.level} onChange={e => setEditStudent({ ...editStudent, level: parseInt(e.target.value) || 0 })} className="bg-slate-950 border-white/20 text-white font-bold"/>
+                </div>
+                <div>
+                  <label className="text-[11px] font-black uppercase text-white/70">XP</label>
+                  <Input type="number" value={editStudent.xp} onChange={e => setEditStudent({ ...editStudent, xp: parseInt(e.target.value) || 0 })} className="bg-slate-950 border-white/20 text-white font-bold"/>
+                </div>
+                <div>
+                  <label className="text-[11px] font-black uppercase text-white/70">Átomos</label>
+                  <Input type="number" value={editStudent.coins} onChange={e => setEditStudent({ ...editStudent, coins: parseInt(e.target.value) || 0 })} className="bg-slate-950 border-white/20 text-white font-bold"/>
+                </div>
+              </div>
+              <div>
+                <label className="text-[11px] font-black uppercase text-white/70">Papel na turma</label>
+                <Select value={editStudent.class_role} onValueChange={v => setEditStudent({ ...editStudent, class_role: v })}>
+                  <SelectTrigger className="bg-slate-950 border-white/20 text-white font-bold"><SelectValue/></SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="student">Aluno</SelectItem>
+                    <SelectItem value="assistant">Monitor</SelectItem>
+                    <SelectItem value="teacher">Professor</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <p className="text-[10px] text-white/50">ID: {editStudent.user_id}</p>
+            </div>
+          )}
+          <DialogFooter>
+            <Button variant="ghost" onClick={() => setEditStudent(null)}>Cancelar</Button>
+            <Button onClick={saveEdit}>Salvar</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
