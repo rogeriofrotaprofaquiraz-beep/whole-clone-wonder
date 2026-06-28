@@ -116,6 +116,24 @@ export default function PlanoDeAula() {
           <div/>
         </div>
 
+        {savedPlans.length > 0 && (
+          <Card className="bg-slate-900/60 border-white/10 mb-6">
+            <CardHeader><CardTitle className="text-sm font-black uppercase tracking-widest">Meus planos salvos ({savedPlans.length})</CardTitle></CardHeader>
+            <CardContent className="grid sm:grid-cols-2 lg:grid-cols-3 gap-2">
+              {savedPlans.map(p => (
+                <div key={p.id} className="border border-white/10 rounded-lg p-2 bg-slate-950/60">
+                  <div className="font-bold text-sm truncate">{p.title}</div>
+                  <div className="text-[10px] text-white/50">{p.subject ?? "—"} · {p.grade_year ?? "?"}º ano</div>
+                  <div className="flex gap-1 mt-2">
+                    <Button size="sm" variant="secondary" onClick={() => loadPlan(p)}>Carregar</Button>
+                    <Button size="sm" variant="ghost" onClick={() => deletePlan(p.id)}>Excluir</Button>
+                  </div>
+                </div>
+              ))}
+            </CardContent>
+          </Card>
+        )}
+
         <Card className="bg-slate-900/60 border-white/10 mb-6">
           <CardHeader><CardTitle className="text-sm font-black uppercase tracking-widest flex items-center gap-2"><BookOpen className="w-4 h-4"/>Configurações</CardTitle></CardHeader>
           <CardContent className="grid sm:grid-cols-2 gap-3">
