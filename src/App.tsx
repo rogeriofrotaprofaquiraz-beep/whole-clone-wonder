@@ -11,6 +11,7 @@ import Perfil from "./pages/Perfil.tsx";
 import Carteira from "./pages/Carteira.tsx";
 import Progresso from "./pages/Progresso.tsx";
 import Escola from "./pages/Escola.tsx";
+import Historico from "./pages/Historico.tsx";
 import RankingPage from "./pages/Ranking.tsx";
 import PlanoDeAula from "./pages/PlanoDeAula.tsx";
 import Permissoes from "./pages/Permissoes.tsx";
