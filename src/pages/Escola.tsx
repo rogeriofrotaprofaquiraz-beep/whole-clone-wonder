@@ -7,8 +7,8 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { ArrowLeft, Plus, School, Users, Trash2, Copy, UserPlus, QrCode, Check, X } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
+import { ArrowLeft, Plus, School, Users, Trash2, Copy, UserPlus, QrCode, Check, X, Pencil } from "lucide-react";
 import { toast } from "sonner";
 import { QRCodeSVG } from "qrcode.react";
 
@@ -34,6 +34,9 @@ export default function Escola() {
   const [newTeam, setNewTeam] = useState({ name: "", color: "#3b82f6" });
   const [joinCode, setJoinCode] = useState("");
   const [qrClass, setQrClass] = useState<ClassRow | null>(null);
+  const [editStudent, setEditStudent] = useState<null | {
+    user_id: string; username: string; level: number; xp: number; coins: number; class_role: string;
+  }>(null);
 
   const buildJoinUrl = (code: string) => `${window.location.origin}/escola?join=${code}`;
 
@@ -126,6 +129,45 @@ export default function Escola() {
     await supabase.from("class_members").delete().eq("class_id", activeClass.id).eq("user_id", uid);
     loadClassDetails(activeClass);
   };
+
+  const openEdit = async (uid: string) => {
+    if (!activeClass) return;
+    const [{ data: prof }, { data: wallet }, { data: cm }] = await Promise.all([
+      supabase.from("profiles").select("username, level, xp").eq("id", uid).maybeSingle(),
+      supabase.from("player_wallet").select("coins").eq("user_id", uid).maybeSingle(),
+      supabase.from("class_members").select("role").eq("class_id", activeClass.id).eq("user_id", uid).maybeSingle(),
+    ]);
+    setEditStudent({
+      user_id: uid,
+      username: prof?.username ?? "",
+      level: prof?.level ?? 1,
+      xp: prof?.xp ?? 0,
+      coins: wallet?.coins ?? 0,
+      class_role: cm?.role ?? "student",
+    });
+  };
+
+  const saveEdit = async () => {
+    if (!editStudent || !activeClass) return;
+    const e = editStudent;
+    const { error: pe } = await supabase.from("profiles")
+      .update({ username: e.username, level: e.level, xp: e.xp }).eq("id", e.user_id);
+    if (pe) return toast.error(pe.message);
+    const cur = await supabase.from("player_wallet").select("coins").eq("user_id", e.user_id).maybeSingle();
+    const delta = e.coins - (cur.data?.coins ?? 0);
+    if (delta !== 0) {
+      const { error: ge } = await supabase.rpc("grant_coins_to_user", {
+        _user_id: e.user_id, _amount: delta, _reason: "Ajuste do administrador",
+      });
+      if (ge) return toast.error(ge.message);
+    }
+    await supabase.from("class_members").update({ role: e.class_role })
+      .eq("class_id", activeClass.id).eq("user_id", e.user_id);
+    toast.success("Aluno atualizado");
+    setEditStudent(null);
+    loadClassDetails(activeClass);
+  };
+
 
   const createTeam = async () => {
     if (!activeClass || !newTeam.name.trim()) return;
@@ -271,7 +313,12 @@ export default function Escola() {
                       {members.filter(m => m.status === "approved").map(m => (
                         <div key={m.user_id} className="flex items-center justify-between bg-slate-950/60 border border-white/10 rounded-lg px-3 py-2 text-xs">
                           <span>@{m.username} <Badge variant="outline" className="ml-2 text-[9px]">{m.role}</Badge></span>
-                          {canTeach && <Button size="sm" variant="ghost" onClick={() => removeMember(m.user_id)}><Trash2 className="w-3 h-3 text-rose-400"/></Button>}
+                          <div className="flex gap-1">
+                            {role === "admin" && (
+                              <Button size="sm" variant="ghost" onClick={() => openEdit(m.user_id)} title="Editar cadastro"><Pencil className="w-3 h-3 text-cyan-300"/></Button>
+                            )}
+                            {canTeach && <Button size="sm" variant="ghost" onClick={() => removeMember(m.user_id)}><Trash2 className="w-3 h-3 text-rose-400"/></Button>}
+                          </div>
                         </div>
                       ))}
                     </div>
@@ -346,6 +393,52 @@ export default function Escola() {
               <p className="text-[11px] text-white/60 text-center">Alunos escaneiam o QR ou digitam o código. A entrada precisa ser <strong className="text-amber-300">aprovada pelo professor</strong>.</p>
             </div>
           )}
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={!!editStudent} onOpenChange={(o) => !o && setEditStudent(null)}>
+        <DialogContent className="bg-slate-900 border-white/20 text-white max-w-md">
+          <DialogHeader>
+            <DialogTitle className="font-black uppercase tracking-widest">Editar Aluno</DialogTitle>
+          </DialogHeader>
+          {editStudent && (
+            <div className="space-y-3 py-2">
+              <div>
+                <label className="text-[11px] font-black uppercase text-white/70">Nome de usuário</label>
+                <Input value={editStudent.username} onChange={e => setEditStudent({ ...editStudent, username: e.target.value })} className="bg-slate-950 border-white/20 text-white font-bold"/>
+              </div>
+              <div className="grid grid-cols-3 gap-2">
+                <div>
+                  <label className="text-[11px] font-black uppercase text-white/70">Nível</label>
+                  <Input type="number" value={editStudent.level} onChange={e => setEditStudent({ ...editStudent, level: parseInt(e.target.value) || 0 })} className="bg-slate-950 border-white/20 text-white font-bold"/>
+                </div>
+                <div>
+                  <label className="text-[11px] font-black uppercase text-white/70">XP</label>
+                  <Input type="number" value={editStudent.xp} onChange={e => setEditStudent({ ...editStudent, xp: parseInt(e.target.value) || 0 })} className="bg-slate-950 border-white/20 text-white font-bold"/>
+                </div>
+                <div>
+                  <label className="text-[11px] font-black uppercase text-white/70">Átomos</label>
+                  <Input type="number" value={editStudent.coins} onChange={e => setEditStudent({ ...editStudent, coins: parseInt(e.target.value) || 0 })} className="bg-slate-950 border-white/20 text-white font-bold"/>
+                </div>
+              </div>
+              <div>
+                <label className="text-[11px] font-black uppercase text-white/70">Papel na turma</label>
+                <Select value={editStudent.class_role} onValueChange={v => setEditStudent({ ...editStudent, class_role: v })}>
+                  <SelectTrigger className="bg-slate-950 border-white/20 text-white font-bold"><SelectValue/></SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="student">Aluno</SelectItem>
+                    <SelectItem value="assistant">Monitor</SelectItem>
+                    <SelectItem value="teacher">Professor</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <p className="text-[10px] text-white/50">ID: {editStudent.user_id}</p>
+            </div>
+          )}
+          <DialogFooter>
+            <Button variant="ghost" onClick={() => setEditStudent(null)}>Cancelar</Button>
+            <Button onClick={saveEdit}>Salvar</Button>
+          </DialogFooter>
         </DialogContent>
       </Dialog>
     </div>
