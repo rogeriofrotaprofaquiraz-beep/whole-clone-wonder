@@ -66,7 +66,7 @@ export default function Escola() {
   const loadClassDetails = async (cls: ClassRow) => {
     setActiveClass(cls);
     const [m, t] = await Promise.all([
-      supabase.from("class_members").select("user_id, role").eq("class_id", cls.id),
+      supabase.from("class_members").select("user_id, role, status").eq("class_id", cls.id),
       supabase.from("class_teams").select("*").eq("class_id", cls.id),
     ]);
     const userIds = (m.data ?? []).map((x: any) => x.user_id);
