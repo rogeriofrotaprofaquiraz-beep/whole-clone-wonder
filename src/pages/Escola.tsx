@@ -133,7 +133,7 @@ export default function Escola() {
   const openEdit = async (uid: string) => {
     if (!activeClass) return;
     const [{ data: prof }, { data: wallet }, { data: cm }] = await Promise.all([
-      supabase.from("profiles").select("username, level, xp").eq("id", uid).maybeSingle(),
+      supabase.from("profiles").select("username, level, xp, email, guardian_name, guardian_email, guardian_phone, guardian_relationship").eq("id", uid).maybeSingle(),
       supabase.from("player_wallet").select("coins").eq("user_id", uid).maybeSingle(),
       supabase.from("class_members").select("role").eq("class_id", activeClass.id).eq("user_id", uid).maybeSingle(),
     ]);
@@ -144,6 +144,11 @@ export default function Escola() {
       xp: prof?.xp ?? 0,
       coins: wallet?.coins ?? 0,
       class_role: cm?.role ?? "student",
+      email: prof?.email ?? "",
+      guardian_name: prof?.guardian_name ?? "",
+      guardian_email: prof?.guardian_email ?? "",
+      guardian_phone: prof?.guardian_phone ?? "",
+      guardian_relationship: prof?.guardian_relationship ?? "",
     });
   };
 
@@ -151,7 +156,14 @@ export default function Escola() {
     if (!editStudent || !activeClass) return;
     const e = editStudent;
     const { error: pe } = await supabase.from("profiles")
-      .update({ username: e.username, level: e.level, xp: e.xp }).eq("id", e.user_id);
+      .update({
+        username: e.username, level: e.level, xp: e.xp,
+        email: e.email || null,
+        guardian_name: e.guardian_name || null,
+        guardian_email: e.guardian_email || null,
+        guardian_phone: e.guardian_phone || null,
+        guardian_relationship: e.guardian_relationship || null,
+      }).eq("id", e.user_id);
     if (pe) return toast.error(pe.message);
     const cur = await supabase.from("player_wallet").select("coins").eq("user_id", e.user_id).maybeSingle();
     const delta = e.coins - (cur.data?.coins ?? 0);
@@ -167,6 +179,7 @@ export default function Escola() {
     setEditStudent(null);
     loadClassDetails(activeClass);
   };
+
 
 
   const createTeam = async () => {
