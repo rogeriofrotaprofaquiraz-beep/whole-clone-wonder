@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { ensureUserAccess } from "@/lib/ensureUserAccess";
 import { Button } from "@/components/ui/button";
@@ -7,16 +7,19 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { ArrowLeft, Plus, School, Users, Trash2, Copy, UserPlus } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { ArrowLeft, Plus, School, Users, Trash2, Copy, UserPlus, QrCode, Check, X } from "lucide-react";
 import { toast } from "sonner";
+import { QRCodeSVG } from "qrcode.react";
 
 type SchoolRow = { id: string; name: string; city: string | null };
 type ClassRow = { id: string; school_id: string; name: string; grade_year: number; invite_code: string };
-type MemberRow = { user_id: string; role: string; username?: string };
+type MemberRow = { user_id: string; role: string; status: string; username?: string };
 type TeamRow = { id: string; class_id: string; name: string; color: string };
 
 export default function Escola() {
   const navigate = useNavigate();
+  const [params] = useSearchParams();
   const [role, setRole] = useState<string | null>(null);
   const [schools, setSchools] = useState<SchoolRow[]>([]);
   const [classes, setClasses] = useState<ClassRow[]>([]);
@@ -30,6 +33,9 @@ export default function Escola() {
   const [emailsRaw, setEmailsRaw] = useState("");
   const [newTeam, setNewTeam] = useState({ name: "", color: "#3b82f6" });
   const [joinCode, setJoinCode] = useState("");
+  const [qrClass, setQrClass] = useState<ClassRow | null>(null);
+
+  const buildJoinUrl = (code: string) => `${window.location.origin}/escola?join=${code}`;
 
   useEffect(() => {
     supabase.auth.getSession().then(async ({ data: { session } }) => {
@@ -37,8 +43,16 @@ export default function Escola() {
       const r = await ensureUserAccess(session.user);
       setRole(r);
       await refresh();
+      const j = params.get("join");
+      if (j) {
+        const { error } = await supabase.rpc("join_class_by_code", { _code: j });
+        if (error) toast.error(error.message);
+        else toast.success("Solicitação enviada! Aguarde aprovação do professor.");
+        navigate("/escola", { replace: true });
+      }
     });
-  }, [navigate]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const refresh = async () => {
     const [s, c] = await Promise.all([
@@ -52,7 +66,7 @@ export default function Escola() {
   const loadClassDetails = async (cls: ClassRow) => {
     setActiveClass(cls);
     const [m, t] = await Promise.all([
-      supabase.from("class_members").select("user_id, role").eq("class_id", cls.id),
+      supabase.from("class_members").select("user_id, role, status").eq("class_id", cls.id),
       supabase.from("class_teams").select("*").eq("class_id", cls.id),
     ]);
     const userIds = (m.data ?? []).map((x: any) => x.user_id);
@@ -140,9 +154,17 @@ export default function Escola() {
     if (!joinCode.trim()) return;
     const { error } = await supabase.rpc("join_class_by_code", { _code: joinCode.trim() });
     if (error) return toast.error(error.message);
-    toast.success("Entrou na turma!");
+    toast.success("Solicitação enviada! Aguarde aprovação do professor.");
     setJoinCode("");
     refresh();
+  };
+
+  const approveMember = async (uid: string, approve: boolean) => {
+    if (!activeClass) return;
+    const { error } = await supabase.rpc("approve_class_member", { _class_id: activeClass.id, _user_id: uid, _approve: approve });
+    if (error) return toast.error(error.message);
+    toast.success(approve ? "Aluno aprovado" : "Solicitação recusada");
+    loadClassDetails(activeClass);
   };
 
   const canTeach = role === "admin" || role === "teacher";
@@ -205,9 +227,10 @@ export default function Escola() {
                   <button key={c.id} onClick={() => loadClassDetails(c)} className={`w-full text-left p-3 rounded-xl border ${activeClass?.id === c.id ? "bg-violet-600/20 border-violet-500" : "bg-slate-950/60 border-white/10"}`}>
                     <div className="font-bold text-sm">{c.name} <Badge variant="outline" className="ml-1 text-[10px]">{c.grade_year}º ano</Badge></div>
                     <div className="text-[10px] text-white/50">{sch?.name ?? "—"}</div>
-                    <div className="text-[10px] text-amber-300 mt-1 flex items-center gap-1">
+                    <div className="text-[10px] text-amber-300 mt-1 flex items-center gap-2">
                       <span className="font-mono">{c.invite_code}</span>
                       <Copy className="w-3 h-3 cursor-pointer" onClick={(e) => { e.stopPropagation(); navigator.clipboard.writeText(c.invite_code); toast.success("Código copiado"); }}/>
+                      <QrCode className="w-3 h-3 cursor-pointer text-cyan-300" onClick={(e) => { e.stopPropagation(); setQrClass(c); }}/>
                     </div>
                   </button>
                 );
@@ -227,9 +250,25 @@ export default function Escola() {
                         <Button onClick={addStudentsByEmail}><UserPlus className="w-4 h-4"/></Button>
                       </div>
                     )}
+                    {canTeach && members.some(m => m.status === "pending") && (
+                      <div className="mb-3 p-2 rounded-lg border border-amber-500/40 bg-amber-500/10">
+                        <div className="text-[11px] font-black uppercase text-amber-300 mb-1">Solicitações pendentes</div>
+                        <div className="space-y-1">
+                          {members.filter(m => m.status === "pending").map(m => (
+                            <div key={m.user_id} className="flex items-center justify-between text-xs">
+                              <span>@{m.username}</span>
+                              <div className="flex gap-1">
+                                <Button size="sm" variant="ghost" className="h-7 px-2" onClick={() => approveMember(m.user_id, true)}><Check className="w-3 h-3 text-emerald-400"/></Button>
+                                <Button size="sm" variant="ghost" className="h-7 px-2" onClick={() => approveMember(m.user_id, false)}><X className="w-3 h-3 text-rose-400"/></Button>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                     <div className="space-y-1 max-h-[300px] overflow-y-auto">
-                      {members.length === 0 && <p className="text-xs text-white/50">Sem alunos. Compartilhe o código <strong className="text-amber-300">{activeClass.invite_code}</strong>.</p>}
-                      {members.map(m => (
+                      {members.filter(m => m.status === "approved").length === 0 && <p className="text-xs text-white/50">Sem alunos aprovados. Compartilhe o código <strong className="text-amber-300">{activeClass.invite_code}</strong> ou o QR Code.</p>}
+                      {members.filter(m => m.status === "approved").map(m => (
                         <div key={m.user_id} className="flex items-center justify-between bg-slate-950/60 border border-white/10 rounded-lg px-3 py-2 text-xs">
                           <span>@{m.username} <Badge variant="outline" className="ml-2 text-[9px]">{m.role}</Badge></span>
                           {canTeach && <Button size="sm" variant="ghost" onClick={() => removeMember(m.user_id)}><Trash2 className="w-3 h-3 text-rose-400"/></Button>}
@@ -285,6 +324,30 @@ export default function Escola() {
           </div>
         </div>
       </div>
+
+      <Dialog open={!!qrClass} onOpenChange={(o) => !o && setQrClass(null)}>
+        <DialogContent className="bg-slate-900 border-white/20 text-white max-w-md">
+          <DialogHeader>
+            <DialogTitle className="font-black uppercase tracking-widest text-white">QR Code — Turma {qrClass?.name}</DialogTitle>
+          </DialogHeader>
+          {qrClass && (
+            <div className="flex flex-col items-center gap-4 py-4">
+              <div className="bg-white p-4 rounded-xl">
+                <QRCodeSVG value={buildJoinUrl(qrClass.invite_code)} size={240} level="M"/>
+              </div>
+              <div className="text-center">
+                <div className="text-xs text-white/60 uppercase tracking-widest font-bold">Código</div>
+                <div className="font-mono text-3xl font-black tracking-widest text-amber-300">{qrClass.invite_code}</div>
+              </div>
+              <div className="text-[11px] text-white/70 text-center font-bold break-all">{buildJoinUrl(qrClass.invite_code)}</div>
+              <Button onClick={() => { navigator.clipboard.writeText(buildJoinUrl(qrClass.invite_code)); toast.success("Link copiado"); }} className="w-full">
+                <Copy className="w-4 h-4 mr-2"/>Copiar link de convite
+              </Button>
+              <p className="text-[11px] text-white/60 text-center">Alunos escaneiam o QR ou digitam o código. A entrada precisa ser <strong className="text-amber-300">aprovada pelo professor</strong>.</p>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

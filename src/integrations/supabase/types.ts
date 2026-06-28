@@ -207,18 +207,21 @@ export type Database = {
           class_id: string
           joined_at: string
           role: string
+          status: string
           user_id: string
         }
         Insert: {
           class_id: string
           joined_at?: string
           role?: string
+          status?: string
           user_id: string
         }
         Update: {
           class_id?: string
           joined_at?: string
           role?: string
+          status?: string
           user_id?: string
         }
         Relationships: [
@@ -993,6 +996,10 @@ export type Database = {
       }
     }
     Functions: {
+      approve_class_member: {
+        Args: { _approve: boolean; _class_id: string; _user_id: string }
+        Returns: undefined
+      }
       ensure_current_user_access: {
         Args: never
         Returns: {
