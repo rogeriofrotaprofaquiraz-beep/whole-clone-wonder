@@ -130,6 +130,45 @@ export default function Escola() {
     loadClassDetails(activeClass);
   };
 
+  const openEdit = async (uid: string) => {
+    if (!activeClass) return;
+    const [{ data: prof }, { data: wallet }, { data: cm }] = await Promise.all([
+      supabase.from("profiles").select("username, level, xp").eq("id", uid).maybeSingle(),
+      supabase.from("player_wallet").select("coins").eq("user_id", uid).maybeSingle(),
+      supabase.from("class_members").select("role").eq("class_id", activeClass.id).eq("user_id", uid).maybeSingle(),
+    ]);
+    setEditStudent({
+      user_id: uid,
+      username: prof?.username ?? "",
+      level: prof?.level ?? 1,
+      xp: prof?.xp ?? 0,
+      coins: wallet?.coins ?? 0,
+      class_role: cm?.role ?? "student",
+    });
+  };
+
+  const saveEdit = async () => {
+    if (!editStudent || !activeClass) return;
+    const e = editStudent;
+    const { error: pe } = await supabase.from("profiles")
+      .update({ username: e.username, level: e.level, xp: e.xp }).eq("id", e.user_id);
+    if (pe) return toast.error(pe.message);
+    const cur = await supabase.from("player_wallet").select("coins").eq("user_id", e.user_id).maybeSingle();
+    const delta = e.coins - (cur.data?.coins ?? 0);
+    if (delta !== 0) {
+      const { error: ge } = await supabase.rpc("grant_coins_to_user", {
+        _user_id: e.user_id, _amount: delta, _reason: "Ajuste do administrador",
+      });
+      if (ge) return toast.error(ge.message);
+    }
+    await supabase.from("class_members").update({ role: e.class_role })
+      .eq("class_id", activeClass.id).eq("user_id", e.user_id);
+    toast.success("Aluno atualizado");
+    setEditStudent(null);
+    loadClassDetails(activeClass);
+  };
+
+
   const createTeam = async () => {
     if (!activeClass || !newTeam.name.trim()) return;
     const { error } = await supabase.from("class_teams").insert({ class_id: activeClass.id, name: newTeam.name.trim(), color: newTeam.color });
