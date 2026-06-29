@@ -213,6 +213,14 @@ export default function Perfil() {
 
   return (
     <div className="min-h-screen bg-slate-950 text-white p-4 md:p-8">
+      <HeroOptionsDialog
+        open={optionsOpen}
+        onOpenChange={setOptionsOpen}
+        urls={optionUrls}
+        loading={generating}
+        onPick={handlePickOption}
+        onRegenerate={handleGenerate}
+      />
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center justify-between mb-6">
           <Link to="/"><Button variant="ghost" className="text-white"><ArrowLeft className="w-4 h-4 mr-2"/>Voltar</Button></Link>
