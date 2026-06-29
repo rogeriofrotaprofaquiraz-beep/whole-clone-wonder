@@ -249,10 +249,68 @@ export default function Perfil() {
 
           {/* Personalização + Cartas */}
           <div className="md:col-span-2">
-            <Tabs defaultValue="customize">
+            <Tabs defaultValue="gallery">
               <TabsList className="bg-slate-900/60 border border-white/10">
-                <TabsTrigger value="customize">Aparência</TabsTrigger>
+                <TabsTrigger value="gallery">Galeria (grátis)</TabsTrigger>
+                <TabsTrigger value="customize">Aparência (IA)</TabsTrigger>
               </TabsList>
+
+              <TabsContent value="gallery">
+                <Card className="bg-slate-900/60 border-white/10">
+                  <CardHeader>
+                    <CardTitle className="text-sm font-black uppercase tracking-widest flex items-center justify-between">
+                      <span>Escolha um avatar pronto</span>
+                      <Badge variant="outline" className="border-emerald-400/40 text-emerald-300 font-black">Sem gastar créditos</Badge>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-[11px] text-white/70 mb-3 font-bold">
+                      Selecione uma das opções abaixo — a troca é instantânea e <span className="text-emerald-300">não consome créditos de IA nem Átomos</span>.
+                    </p>
+                    <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3 max-h-[600px] overflow-y-auto pr-2">
+                      {allCards
+                        .filter((el) => el.heroImage && !el.heroImage.endsWith(".mp4"))
+                        .map((el) => {
+                          const selected = avatar?.generated_url === el.heroImage;
+                          return (
+                            <button
+                              key={el.symbol}
+                              type="button"
+                              disabled={busy}
+                              onClick={async () => {
+                                if (!session?.user) return;
+                                setBusy(true);
+                                try {
+                                  await supabase.from("player_avatars")
+                                    .update({ generated_url: el.heroImage, current_card: el.symbol })
+                                    .eq("user_id", session.user.id);
+                                  await refresh(session.user.id);
+                                  toast.success(`Avatar definido: ${el.heroName}`);
+                                } finally { setBusy(false); }
+                              }}
+                              className={`relative rounded-xl overflow-hidden border-2 transition-all hover:scale-[1.03] ${selected ? "border-emerald-400 ring-2 ring-emerald-400" : "border-white/10 hover:border-white/40"}`}
+                            >
+                              <div className="aspect-[2/3] bg-slate-950">
+                                <img src={el.heroImage} alt={el.heroName} className="w-full h-full object-cover" loading="lazy"/>
+                              </div>
+                              <div className="absolute top-1 left-1 text-[10px] font-black bg-black/70 rounded px-1.5 py-0.5">{el.symbol}</div>
+                              <div className="absolute top-1 right-1 text-[10px] font-black bg-black/70 rounded px-1.5 py-0.5">#{el.number}</div>
+                              <div className="absolute bottom-0 left-0 right-0 p-1.5 bg-gradient-to-t from-black to-transparent">
+                                <div className="text-[9px] font-black truncate">{el.heroName}</div>
+                                <div className="text-[8px] text-white/60 truncate">{el.name}</div>
+                              </div>
+                              {selected && (
+                                <div className="absolute inset-0 flex items-center justify-center bg-emerald-500/20">
+                                  <div className="bg-emerald-500 rounded-full p-2"><Check className="w-5 h-5 text-white"/></div>
+                                </div>
+                              )}
+                            </button>
+                          );
+                        })}
+                    </div>
+                  </CardContent>
+                </Card>
+              </TabsContent>
               <div className="mt-3 mb-4 text-xs text-white/60 bg-slate-900/40 border border-white/10 rounded-xl p-3">
                 Quer desbloquear novas cartas ou trocar a equipada? Acesse a <Link to="/carteira" className="text-amber-300 font-bold underline">Carteira</Link> e use seus {COIN_NAME}.
               </div>
