@@ -173,23 +173,38 @@ export default function Perfil() {
       return;
     }
     setGenerating(true);
+    setOptionsOpen(true);
+    setOptionUrls([]);
     try {
       if (!admin) {
         await supabase.from("player_wallet").update({ coins: coins - COSTS.generateAvatarAI }).eq("user_id", session.user.id);
       }
       const { data, error } = await supabase.functions.invoke("generate-player-avatar", {
-        body: { cardSymbol: currentSymbol, appearance: avatar?.appearance ?? {}, equipped: avatar?.equipped ?? {}, photoBase64 },
+        body: { cardSymbol: currentSymbol, appearance: avatar?.appearance ?? {}, equipped: avatar?.equipped ?? {}, photoBase64, count: 5 },
       });
 
       if (error || data?.error) {
         if (!admin) await supabase.from("player_wallet").update({ coins }).eq("user_id", session.user.id);
         toast.error(data?.error ?? error?.message ?? "Falha ao gerar avatar");
+        setOptionsOpen(false);
       } else {
-        toast.success(data?.message ?? "Avatar gerado com sucesso!");
+        const urls: string[] = data?.urls ?? (data?.url ? [data.url] : []);
+        setOptionUrls(urls);
+        toast.success(data?.message ?? `${urls.length} variações geradas — escolha a melhor!`);
         if (data?.fallback && !admin) await supabase.from("player_wallet").update({ coins }).eq("user_id", session.user.id);
       }
-      await refresh(session.user.id);
     } finally { setGenerating(false); }
+  };
+
+  const handlePickOption = async (url: string) => {
+    if (!session?.user) return;
+    setBusy(true);
+    try {
+      await supabase.from("player_avatars").update({ generated_url: url, current_card: currentSymbol }).eq("user_id", session.user.id);
+      await refresh(session.user.id);
+      setOptionsOpen(false);
+      toast.success("Avatar escolhido!");
+    } finally { setBusy(false); }
   };
 
   if (!session) return <div className="min-h-screen bg-slate-950 flex items-center justify-center text-white">Carregando…</div>;
