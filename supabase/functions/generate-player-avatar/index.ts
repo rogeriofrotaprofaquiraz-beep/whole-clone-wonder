@@ -23,8 +23,9 @@ Deno.serve(async (req) => {
 
     const admin = createClient(supabaseUrl, serviceKey);
 
-    const { cardSymbol, appearance, photoBase64, equipped } = await req.json();
+    const { cardSymbol, appearance, photoBase64, equipped, count } = await req.json();
     if (!cardSymbol) return json({ error: "cardSymbol required" }, 400);
+    const nWanted = Math.max(1, Math.min(5, Number(count) || 1));
 
     const { data: el } = await admin.from("elements")
       .select("symbol,number,name,attributes,hero_name,hero_description,hero_image")
@@ -239,50 +240,58 @@ Deno.serve(async (req) => {
       throw new Error(failures.join(" | ") || "nenhum modelo retornou imagem");
     };
 
-    let imageUrl: string;
-    let usedOriginalCardFallback = false;
+    const generateOne = async (): Promise<{ url: string; fallback: boolean }> => {
+      try {
+        const u = await generateImage();
+        return { url: u, fallback: false };
+      } catch (e) {
+        const details = String((e as Error).message ?? e);
+        const status = (e as any).status ?? (details.includes("HTTP 429") ? 429 : details.includes("HTTP 402") ? 402 : 502);
+        if (status === 402) return { url: cardImageDataUrl!, fallback: true };
+        throw Object.assign(new Error(details), { status });
+      }
+    };
+
+    const uploads: string[] = [];
+    let anyFallback = false;
     try {
-      imageUrl = await generateImage();
+      for (let i = 0; i < nWanted; i++) {
+        const { url: imageUrl, fallback } = await generateOne();
+        if (fallback) anyFallback = true;
+        const match = imageUrl.match(/^data:(image\/\w+);base64,(.+)$/);
+        if (!match) continue;
+        const mime = match[1];
+        const ext = mime.split("/")[1] || "png";
+        const bytes = Uint8Array.from(atob(match[2]), c => c.charCodeAt(0));
+        const path = `${user.id}/${cardSymbol}-${Date.now()}-${i}.${ext}`;
+        const { error: upErr } = await admin.storage.from("player-avatars").upload(path, bytes, { contentType: mime, upsert: true });
+        if (upErr) continue;
+        const { data: signed } = await admin.storage.from("player-avatars").createSignedUrl(path, 60 * 60 * 24 * 365 * 5);
+        if (signed?.signedUrl) uploads.push(signed.signedUrl);
+      }
     } catch (e) {
       const details = String((e as Error).message ?? e);
-      const status = (e as any).status ?? (details.includes("HTTP 429") ? 429 : details.includes("HTTP 402") ? 402 : 502);
-      if (status === 402) {
-        imageUrl = cardImageDataUrl;
-        usedOriginalCardFallback = true;
-      } else if (status === 429) {
-        return await generationError("A IA está com limite temporário de uso. Tente novamente em alguns minutos; suas moedas foram preservadas.", 429);
-      } else {
+      const status = (e as any).status ?? 502;
+      if (uploads.length === 0) {
+        if (status === 429) return await generationError("A IA está com limite temporário de uso. Tente novamente em alguns minutos; suas moedas foram preservadas.", 429);
         return await generationError(`A IA não conseguiu gerar o avatar ultrarrealista agora. Detalhes: ${details.slice(0, 500)}`, status);
       }
     }
 
-    const match = imageUrl.match(/^data:(image\/\w+);base64,(.+)$/);
-    if (!match) return json({ error: "Formato de imagem inválido" }, 500);
-    const mime = match[1];
-    const ext = mime.split("/")[1] || "png";
-    const bytes = Uint8Array.from(atob(match[2]), c => c.charCodeAt(0));
-
-    const path = `${user.id}/${cardSymbol}-${Date.now()}.${ext}`;
-    const { error: upErr } = await admin.storage.from("player-avatars").upload(path, bytes, { contentType: mime, upsert: true });
-    if (upErr) return json({ error: "Upload falhou: " + upErr.message }, 500);
-
-    const { data: signed } = await admin.storage.from("player-avatars").createSignedUrl(path, 60 * 60 * 24 * 365 * 5);
-    const url = signed?.signedUrl;
+    if (uploads.length === 0) return await generationError("Nenhuma variação foi gerada. Tente novamente.", 502);
 
     await admin.from("player_avatars").update({
-      generated_url: url,
       current_card: cardSymbol,
       appearance: a,
     }).eq("user_id", user.id);
 
     return json({
-      url,
-      path,
-      fallback: usedOriginalCardFallback,
-      message: usedOriginalCardFallback
-        ? "Os créditos de IA do workspace acabaram. A carta original foi aplicada como avatar. Para gerar a versão ultrarrealista personalizada, adicione créditos no painel do Lovable (Workspace → Plans & credits)."
-        : "Avatar ultrarrealista gerado com sucesso!",
-
+      urls: uploads,
+      url: uploads[0],
+      fallback: anyFallback,
+      message: anyFallback
+        ? "Os créditos de IA do workspace acabaram em alguma variação. A carta original foi usada como alternativa. Escolha a melhor opção abaixo."
+        : `${uploads.length} variações geradas — escolha a melhor!`,
     });
   } catch (e) {
     return json({ error: String((e as Error).message ?? e) }, 500);
