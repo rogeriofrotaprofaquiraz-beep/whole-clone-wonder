@@ -413,6 +413,66 @@ export default function Perfil() {
                       </div>
                     ))}
 
+                    {/* Variações grátis por opção selecionada — sem créditos Lovable */}
+                    <div className="sm:col-span-2 border-t border-white/10 pt-4 mt-2">
+                      <label className="text-[10px] uppercase tracking-widest text-white font-black mb-2 block">
+                        Variações sugeridas (7 opções grátis — sem gastar créditos)
+                      </label>
+                      <p className="text-[10px] text-white/70 font-bold mb-3">
+                        Toda vez que você muda uma opção acima, geramos 7 sugestões prontas a partir das cartas existentes. Clique em uma para usá-la como seu avatar.
+                      </p>
+                      <div className="grid grid-cols-7 gap-2">
+                        {(() => {
+                          const app = avatar?.appearance ?? {};
+                          const seedStr = `${app.gender ?? ""}|${app.body ?? ""}|${app.skin ?? ""}|${app.hairStyle ?? ""}|${app.hairColor ?? ""}|${currentSymbol}`;
+                          let h = 2166136261;
+                          for (let i = 0; i < seedStr.length; i++) { h ^= seedStr.charCodeAt(i); h = Math.imul(h, 16777619); }
+                          const pool = allCards.filter((e) => e.heroImage && !e.heroImage.endsWith(".mp4"));
+                          const picks: typeof pool = [];
+                          const used = new Set<number>();
+                          let s = h >>> 0;
+                          while (picks.length < 7 && used.size < pool.length) {
+                            s = (s * 1664525 + 1013904223) >>> 0;
+                            const idx = s % pool.length;
+                            if (!used.has(idx)) { used.add(idx); picks.push(pool[idx]); }
+                          }
+                          return picks.map((el, i) => {
+                            const selected = avatar?.generated_url === el.heroImage;
+                            return (
+                              <button
+                                key={`${el.symbol}-${i}`}
+                                type="button"
+                                disabled={busy}
+                                onClick={async () => {
+                                  if (!session?.user) return;
+                                  setBusy(true);
+                                  try {
+                                    await supabase.from("player_avatars")
+                                      .update({ generated_url: el.heroImage, current_card: el.symbol })
+                                      .eq("user_id", session.user.id);
+                                    await refresh(session.user.id);
+                                    toast.success(`Avatar atualizado: ${el.heroName}`);
+                                  } finally { setBusy(false); }
+                                }}
+                                className={`relative rounded-lg overflow-hidden border-2 transition-all hover:scale-[1.05] ${selected ? "border-emerald-400 ring-2 ring-emerald-400" : "border-white/15 hover:border-fuchsia-400"}`}
+                                title={el.heroName}
+                              >
+                                <div className="aspect-[2/3] bg-slate-950">
+                                  <img src={el.heroImage} alt={el.heroName} className="w-full h-full object-cover" loading="lazy"/>
+                                </div>
+                                <div className="absolute top-0.5 left-0.5 text-[8px] font-black bg-black/70 rounded px-1">{el.symbol}</div>
+                                {selected && (
+                                  <div className="absolute inset-0 flex items-center justify-center bg-emerald-500/30">
+                                    <Check className="w-4 h-4 text-white"/>
+                                  </div>
+                                )}
+                              </button>
+                            );
+                          });
+                        })()}
+                      </div>
+                    </div>
+
                     <div className="sm:col-span-2 border-t border-white/10 pt-4 mt-2">
                       <label className="text-[10px] uppercase tracking-widest text-white font-black mb-2 block">
                         Foto de referência (opcional — para semelhança realista)
