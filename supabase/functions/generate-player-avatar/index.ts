@@ -23,8 +23,9 @@ Deno.serve(async (req) => {
 
     const admin = createClient(supabaseUrl, serviceKey);
 
-    const { cardSymbol, appearance, photoBase64, equipped } = await req.json();
+    const { cardSymbol, appearance, photoBase64, equipped, count } = await req.json();
     if (!cardSymbol) return json({ error: "cardSymbol required" }, 400);
+    const nWanted = Math.max(1, Math.min(5, Number(count) || 1));
 
     const { data: el } = await admin.from("elements")
       .select("symbol,number,name,attributes,hero_name,hero_description,hero_image")
