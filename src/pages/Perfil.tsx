@@ -71,6 +71,8 @@ export default function Perfil() {
   const [photoBase64, setPhotoBase64] = useState<string | null>(null);
   const [photoPreview, setPhotoPreview] = useState<string | null>(null);
   const [profileName, setProfileName] = useState<string>("");
+  const [optionsOpen, setOptionsOpen] = useState(false);
+  const [optionUrls, setOptionUrls] = useState<string[]>([]);
 
 
 
