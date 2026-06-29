@@ -14,6 +14,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
 import { ArrowLeft, Atom, Lock, Sparkles, Trophy, Wand2, Check } from "lucide-react";
+import { HeroOptionsDialog } from "@/components/game/HeroOptionsDialog";
 
 const APPEARANCE_LABELS: Record<string, string> = {
   gender: "Gênero",
