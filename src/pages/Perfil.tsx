@@ -482,8 +482,37 @@ export default function Perfil() {
             <Tabs defaultValue="gallery">
               <TabsList className="bg-slate-900/60 border border-white/10">
                 <TabsTrigger value="gallery">Galeria (grátis)</TabsTrigger>
+                <TabsTrigger value="bank">Banco de Modelos (grátis)</TabsTrigger>
                 <TabsTrigger value="customize">Aparência (IA)</TabsTrigger>
               </TabsList>
+
+              <TabsContent value="bank">
+                <Card className="bg-slate-900/60 border-white/10">
+                  <CardHeader>
+                    <CardTitle className="text-sm font-black uppercase tracking-widest flex items-center justify-between">
+                      <span>Banco de Modelos — Criador de Super-Heróis</span>
+                      <Badge variant="outline" className="border-emerald-400/40 text-emerald-300 font-black">Sem créditos de IA</Badge>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-3">
+                    <p className="text-[12px] text-white/80 font-bold">
+                      Use este banco visual como referência para escolher cada característica do seu herói nas seções abaixo —
+                      <span className="text-emerald-300"> nenhuma geração de IA é consumida</span>.
+                    </p>
+                    <a href="/assets/banco-modelos-herois.png" target="_blank" rel="noreferrer" className="block rounded-xl overflow-hidden border-2 border-white/10 hover:border-amber-300 transition-all">
+                      <img
+                        src="/assets/banco-modelos-herois.png"
+                        alt="Banco de modelos — Criador de Super-Heróis"
+                        className="w-full h-auto"
+                        loading="lazy"
+                      />
+                    </a>
+                    <p className="text-[11px] text-white/60">
+                      Clique na imagem para abrir em tela cheia. Categorias disponíveis: Gênero, Tipo de Corpo, Tom de Pele, Formato do Rosto, Estilo e Cor de Cabelo, Olhos, Máscara, Uniforme, Símbolo no Peito, Capa, Luvas, Botas, Aura, Poder Principal, Acessórios, Posição e Fundo.
+                    </p>
+                  </CardContent>
+                </Card>
+              </TabsContent>
 
               <TabsContent value="gallery">
                 <Card className="bg-slate-900/60 border-white/10">
