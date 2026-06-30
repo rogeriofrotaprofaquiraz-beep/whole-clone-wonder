@@ -246,7 +246,7 @@ Deno.serve(async (req) => {
     let anyFallback = false;
     try {
       for (let i = 0; i < nWanted; i++) {
-        const { url: imageUrl, fallback } = await generateOne();
+        const { url: imageUrl, fallback } = await generateOne(i);
         if (fallback) anyFallback = true;
         const match = imageUrl.match(/^data:(image\/\w+);base64,(.+)$/);
         if (!match) continue;
