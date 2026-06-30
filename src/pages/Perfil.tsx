@@ -19,6 +19,7 @@ import { backgroundsFor } from "@/lib/elementBackgrounds";
 
 const APPEARANCE_LABELS: Record<string, string> = {
   gender: "Gênero",
+  speciesType: "Tipo de gênero",
   body: "Tipo de corpo",
   skin: "Tom de pele",
   faceShape: "Formato do rosto",
@@ -47,6 +48,12 @@ const APPEARANCE_OPTIONS: Record<string, Array<{ v: string; l: string; e?: strin
     opt("masculino", "Masculino", { e: "♂" }),
     opt("feminino", "Feminino", { e: "♀" }),
   ],
+  speciesType: [
+    opt("humano", "Humano", { e: "🧑" }),
+    opt("alienigena", "Alienígena", { e: "👽" }),
+    opt("robo", "Robô", { e: "🤖" }),
+  ],
+
 
   body: [
     opt("magro", "Magro", { e: "🚶" }),
