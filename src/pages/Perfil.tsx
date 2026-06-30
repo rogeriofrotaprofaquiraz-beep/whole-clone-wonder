@@ -812,7 +812,24 @@ export default function Perfil() {
                     </div>
 
                     <div className="sm:col-span-2 text-[11px] text-white font-bold">
-                      As alterações são salvas automaticamente. {admin && <span className="text-emerald-300 font-black">Administrador: créditos infinitos (∞).</span>} Clique em <strong className="text-white font-black">Personalizar com IA</strong> para gerar o avatar com base na carta equipada.
+                      As alterações são salvas automaticamente. {admin && <span className="text-emerald-300 font-black">Administrador: créditos infinitos (∞).</span>}
+                    </div>
+
+                    {/* CTA final — Gerar avatar com as escolhas */}
+                    <div className="sticky bottom-2 z-10 border-t-2 border-amber-300/40 pt-4 mt-2 bg-gradient-to-t from-slate-950 via-slate-950/95 to-transparent">
+                      <Button
+                        onClick={handleGenerate}
+                        disabled={generating || busy}
+                        className="w-full h-14 text-base bg-gradient-to-r from-fuchsia-600 via-violet-600 to-amber-500 hover:from-fuchsia-500 hover:to-amber-400 text-white font-black uppercase tracking-widest shadow-lg shadow-fuchsia-900/40"
+                      >
+                        <Wand2 className="w-5 h-5 mr-2"/>
+                        {generating
+                          ? "Gerando 5 variações…"
+                          : `Gerar avatar com a aparência escolhida (${admin ? "∞" : COSTS.generateAvatarAI}${COIN_SYMBOL})`}
+                      </Button>
+                      <p className="text-[10px] text-center text-white/70 font-bold mt-2">
+                        A IA criará <span className="text-amber-300">5 variações</span> com base nas opções selecionadas acima — você escolhe a melhor.
+                      </p>
                     </div>
                   </CardContent>
 
