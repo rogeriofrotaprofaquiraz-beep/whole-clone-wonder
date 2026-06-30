@@ -130,97 +130,90 @@ Deno.serve(async (req) => {
       return json({ error: "Esta carta não tem imagem oficial — não há como editar. Gere a arte da carta primeiro no painel admin." }, 400);
     }
 
-    const prompt = [
-      `Use the ATTACHED HERO CARD as the visual identity reference (suit design, emblem, color palette, mood).`,
-      `Produce an ULTRA-PHOTOREALISTIC cinematic full-body portrait of a NEW superhero personalized for the player, following ALL the strict criteria below.`,
+    const variationTwists = [
+      "Pose: standing heroically, feet apart, fists clenched at sides, slight 3/4 turn to the LEFT, calm confident gaze.",
+      "Pose: dynamic action stance, one fist raised forward, body slightly turned to the RIGHT, dramatic wind blowing cape.",
+      "Pose: power stance facing camera straight on, arms crossed over chest, intense direct look, low hero shot.",
+      "Pose: in mid-air levitation, both arms extended slightly down, glowing energy swirling around feet, sky-side lighting.",
+      "Pose: walking toward camera, one hand glowing with element energy, cape flowing behind, cinematic side rim light.",
+    ];
+    const cameraTwists = [
+      "Camera: slight low angle, 35mm lens look.",
+      "Camera: eye level, 50mm portrait look.",
+      "Camera: dramatic worm's eye low angle, wide 28mm look.",
+      "Camera: cinematic 3/4 hero angle, 85mm compression.",
+      "Camera: front-facing, 50mm, soft bokeh background.",
+    ];
+
+    const buildPrompt = (variationIdx: number) => [
+      `Generate an ULTRA-PHOTOREALISTIC cinematic full-body portrait of a NEW personalized superhero.`,
+      `The ATTACHED HERO CARD is ONLY a reference for: suit DESIGN, chest EMBLEM shape, COLOR palette and overall MOOD.`,
+      `IGNORE the character shown on the card — DO NOT copy his face, body, hair, ethnicity, gender or pose. Replace him entirely with the personalized character described below.`,
       ``,
-      `FORMAT:`,
-      `- Vertical card, aspect ratio 2:3 (like 6cm x 9cm), full bleed image, no borders, no UI, no text, no logos, no watermark, no numbers.`,
+      `FORMAT: vertical 2:3, full bleed photo, no borders, no UI, no text, no logos, no watermark, no numbers, no captions.`,
       ``,
-      `COMPOSITION:`,
-      `- FULL-BODY SHOT from head to feet, BOTH FEET fully visible inside the frame, generous top and bottom margin, character centered.`,
-      `- Slightly low camera angle for a heroic feel.`,
-      `- Shallow but smooth depth of field; sharp focus on the character.`,
-      ``,
-      `LIGHTING:`,
-      `- Strong cool frontal key light highlighting suit texture and facial expression.`,
-      `- Soft natural ambient fill, gentle realistic shadows, cinematic realism.`,
-      ``,
-      `CHARACTER (personalization — MANDATORY):`,
-      `- Gender presentation: ${genderEn}.`,
+      `CHARACTER (MANDATORY — overrides the card's character completely):`,
+      `- Gender presentation: ${genderEn} (MUST clearly look ${genderEn}).`,
       `- Body type: ${body}.`,
-      `- Skin tone: ${skin}.`,
-      `- Hair: ${hairStyle}${hairColor ? `, ${hairColor} color` : ""}, clearly styled and defined.`,
+      `- Skin tone: ${skin} (clearly visible on face, neck and hands).`,
+      `- Hair: ${hairStyle}${hairColor ? `, ${hairColor} color` : ""}, clearly visible and styled.`,
       `- Realistic ethnically diverse human features matching the choices above.`,
-      `- Confident heroic expression, balanced powerful pose, either standing firmly on the ground or slightly hovering.`,
+      `- ${variationTwists[variationIdx % variationTwists.length]}`,
+      `- ${cameraTwists[variationIdx % cameraTwists.length]}`,
+      `- Unique face #${variationIdx + 1} — different facial structure from variation to variation while keeping the same gender, skin and hair.`,
       ``,
-      `COSTUME:`,
-      `- Suit texture must visually evoke the REAL NATURAL TEXTURE of the element "${el.name}" as found in nature (metallic, crystalline, gaseous shimmer, liquid sheen, mineral, etc.).`,
-      `- A clearly LUMINOUS chemical symbol "${el.symbol}" glowing at the CENTER OF THE CHEST as the emblem.`,
-      `- Suit colors and luminosity must match the real-world appearance of the element.`,
-      `- Cape rules based on element physical state:`,
-      `  • Gaseous element: shimmering, translucent, gaseous cape of glowing colored mist with luminous edges.`,
-      `  • Liquid or solid element: solid/glossy cape with soft colored light and luminous trims (no gaseous mist).`,
-      `- Outfit personalization: ${outfitDesc}.`,
+      `COMPOSITION: FULL-BODY head to feet, both feet inside frame, centered, shallow DoF.`,
+      `LIGHTING: cool frontal key, soft ambient fill, cinematic realism.`,
+      ``,
+      `COSTUME (inspired by the attached card):`,
+      `- Suit texture evokes the REAL natural texture of "${el.name}".`,
+      `- Luminous chemical symbol "${el.symbol}" glowing at the CENTER OF THE CHEST.`,
+      `- Cape: gaseous shimmer for gases, solid glossy for liquids/solids.`,
+      `- Outfit: ${outfitDesc}.`,
       accDesc && `- Accessory: ${accDesc}.`,
       ``,
-      `BACKGROUND (must show the natural origin / extraction site of the element):`,
-      `- Cinematic photorealistic environment representing where "${el.name}" is naturally found or extracted (mine, ore deposit, ocean, atmosphere, volcanic vent, salt flat, geothermal source, etc.).`,
-      `- Harmonized with the frontal lighting; coherent palette tied to the element.`,
-      eq.background ? `- Subtly blend with: ${bgDesc}.` : ``,
+      `BACKGROUND: cinematic photoreal environment of where "${el.name}" is naturally found / extracted.`,
+      eq.background ? `Subtly blend with: ${bgDesc}.` : ``,
       ``,
-      `STYLE:`,
-      `- Fantastic realism, cinematic photo quality, central focus, short depth of field.`,
-      `- High definition, fully visible body, balanced lighting, complete anatomy, no cropping of head or feet.`,
-      `- Palette coherent with the element "${el.name}" (${el.symbol})${cat ? `, category ${cat}` : ""}.`,
+      `STRICTLY FORBIDDEN: copying the face/body/hair/gender of the person on the reference card, pixel art, cartoon, anime, drawing, card frame, borders, captions, atomic numbers, UI chrome, watermarks, cropped feet or head.`,
+      photoBase64 ? `The SECOND attached image is the user's real face — use ONLY as facial likeness reference.` : "",
       ``,
-      `STRICTLY FORBIDDEN: pixel art, cartoon, anime, drawing, low-resolution sprite, card frame, borders, captions, usernames, atomic numbers, UI chrome, watermarks, cropped feet, cropped head.`,
-      photoBase64 ? `The SECOND attached image is the user's face — use only as facial likeness reference.` : "",
+      `Random seed: ${Math.random().toString(36).slice(2)}-${variationIdx}`,
     ].filter(Boolean).join("\n");
-
-    // Conteúdo multimodal: prompt + carta (referência principal) + foto opcional
-    const content: any[] = [{ type: "text", text: prompt }];
-    content.push({ type: "image_url", image_url: { url: cardImageDataUrl } });
-    if (photoBase64) {
-      const dataUrl = photoBase64.startsWith("data:") ? photoBase64 : `data:image/png;base64,${photoBase64}`;
-      content.push({ type: "image_url", image_url: { url: dataUrl } });
-    }
 
     const generationError = async (reason: string, status = 502) => {
       await admin.from("player_avatars").update({ current_card: cardSymbol, appearance: a }).eq("user_id", user.id);
       return json({ error: reason }, status);
     };
 
-    const generateImage = async () => {
+    const generateImage = async (variationIdx: number) => {
+      const content: any[] = [{ type: "text", text: buildPrompt(variationIdx) }];
+      content.push({ type: "image_url", image_url: { url: cardImageDataUrl } });
+      if (photoBase64) {
+        const dataUrl = photoBase64.startsWith("data:") ? photoBase64 : `data:image/png;base64,${photoBase64}`;
+        content.push({ type: "image_url", image_url: { url: dataUrl } });
+      }
       const makeGeminiEditBody = (model: string) => ({
         model,
         messages: [{ role: "user", content }],
         modalities: ["image", "text"],
         stream: false,
       });
-
-      // Ordem: prioriza o modelo mais barato que edita a carta original
       const attempts = [
         { name: "google/gemini-2.5-flash-image", body: makeGeminiEditBody("google/gemini-2.5-flash-image") },
         { name: "google/gemini-3.1-flash-image", body: makeGeminiEditBody("google/gemini-3.1-flash-image") },
         { name: "google/gemini-3-pro-image", body: makeGeminiEditBody("google/gemini-3-pro-image") },
       ];
-
       const failures: string[] = [];
       for (const attempt of attempts) {
         const resp = await fetch("https://ai.gateway.lovable.dev/v1/images/generations", {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Lovable-API-Key": lovableKey,
-          },
+          headers: { "Content-Type": "application/json", "Lovable-API-Key": lovableKey },
           body: JSON.stringify(attempt.body),
         });
-
         const raw = await resp.text();
         let data: any = null;
-        try { data = raw ? JSON.parse(raw) : null; } catch { /* keep raw details */ }
-
+        try { data = raw ? JSON.parse(raw) : null; } catch { /* */ }
         if (!resp.ok) {
           failures.push(`${attempt.name}: HTTP ${resp.status}${raw ? ` — ${raw.slice(0, 220)}` : ""}`);
           if (resp.status >= 400 && resp.status < 500) {
@@ -230,19 +223,16 @@ Deno.serve(async (req) => {
           }
           continue;
         }
-
         const b64 = data?.data?.[0]?.b64_json;
         if (typeof b64 === "string" && b64.length > 0) return `data:image/png;base64,${b64}`;
-
         failures.push(`${attempt.name}: resposta sem imagem${raw ? ` — ${raw.slice(0, 220)}` : ""}`);
       }
-
       throw new Error(failures.join(" | ") || "nenhum modelo retornou imagem");
     };
 
-    const generateOne = async (): Promise<{ url: string; fallback: boolean }> => {
+    const generateOne = async (variationIdx: number): Promise<{ url: string; fallback: boolean }> => {
       try {
-        const u = await generateImage();
+        const u = await generateImage(variationIdx);
         return { url: u, fallback: false };
       } catch (e) {
         const details = String((e as Error).message ?? e);
@@ -256,7 +246,7 @@ Deno.serve(async (req) => {
     let anyFallback = false;
     try {
       for (let i = 0; i < nWanted; i++) {
-        const { url: imageUrl, fallback } = await generateOne();
+        const { url: imageUrl, fallback } = await generateOne(i);
         if (fallback) anyFallback = true;
         const match = imageUrl.match(/^data:(image\/\w+);base64,(.+)$/);
         if (!match) continue;
