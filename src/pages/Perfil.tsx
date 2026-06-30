@@ -35,7 +35,7 @@ const APPEARANCE_LABELS: Record<string, string> = {
   mainPower: "Poder principal",
   accessory: "Acessórios",
   pose: "Posição",
-  scene: "Fundo",
+  
 };
 
 // helpers
@@ -46,8 +46,8 @@ const APPEARANCE_OPTIONS: Record<string, Array<{ v: string; l: string; e?: strin
   gender: [
     opt("masculino", "Masculino", { e: "♂" }),
     opt("feminino", "Feminino", { e: "♀" }),
-    opt("androgino", "Andrógino", { e: "⚧" }),
   ],
+
   body: [
     opt("magro", "Magro", { e: "🚶" }),
     opt("atletico", "Atlético", { e: "🏃" }),
@@ -259,13 +259,6 @@ const APPEARANCE_OPTIONS: Record<string, Array<{ v: string; l: string; e?: strin
     opt("correndo", "Correndo"), opt("agachado", "Agachado"),
     opt("atacando", "Atacando"), opt("meditando", "Meditando"),
     opt("flutuando", "Flutuando"),
-  ],
-  scene: [
-    opt("cidade", "Cidade"), opt("espaco", "Espaço"),
-    opt("tempestade", "Tempestade"), opt("montanhas", "Montanhas"),
-    opt("laboratorio", "Laboratório"), opt("floresta", "Floresta"),
-    opt("deserto", "Deserto"), opt("gelo", "Gelo"),
-    opt("vulcao", "Vulcão"), opt("portal", "Portal dimensional"),
   ],
 };
 
