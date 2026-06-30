@@ -191,9 +191,16 @@ Deno.serve(async (req) => {
       "Camera: cinematic 3/4 hero angle, 85mm compression.",
       "Camera: front-facing, 50mm, soft bokeh background.",
     ];
+    const faceArchetypes = [
+      "STRONG SQUARE JAW, wide cheekbones, thick straight eyebrows, prominent nose, age around 28, small scar on the eyebrow.",
+      "OVAL FACE, soft refined features, high cheekbones, almond-shaped eyes, age around 22, clean smooth skin.",
+      "ROUND FACE, dimpled cheeks, full lips, friendly warm expression, age around 25, light freckles across the nose.",
+      "ANGULAR DIAMOND FACE, very sharp cheekbones, deep-set intense eyes, narrow chin, age around 32, slight asymmetry.",
+      "HEART-SHAPED FACE, broad forehead, pointed chin, very expressive large eyes, age around 19, youthful glow.",
+    ];
 
     const buildPrompt = (variationIdx: number) => [
-      `Generate an ULTRA-PHOTOREALISTIC cinematic full-body portrait of a NEW personalized superhero.`,
+      `Generate an ULTRA-PHOTOREALISTIC cinematic full-body portrait of a NEW personalized superhero — VARIATION ${variationIdx + 1} OF 5, MUST BE VISUALLY DIFFERENT from the other 4 variations (different face, different pose, different framing).`,
       `The ATTACHED HERO CARD is ONLY a reference for: suit DESIGN, chest EMBLEM shape, COLOR palette and overall MOOD.`,
       `IGNORE the character shown on the card — DO NOT copy his face, body, hair, ethnicity, gender or pose. Replace him entirely with the personalized character described below.`,
       ``,
@@ -202,12 +209,12 @@ Deno.serve(async (req) => {
       `CHARACTER (MANDATORY — overrides the card's character completely):`,
       `- Gender presentation: ${genderEn} (MUST clearly look ${genderEn}).`,
       `- Body type: ${body}.`,
-      `- Skin tone: ${skin} (clearly visible on face, neck and hands).`,
-      `- Hair: ${hairStyle}${hairColor ? `, ${hairColor} color` : ""}, clearly visible and styled.`,
+      `- Skin tone: ${skin} (KEEP IDENTICAL across all 5 variations).`,
+      `- Hair: ${hairStyle}${hairColor ? `, ${hairColor} color` : ""} (KEEP IDENTICAL across all 5 variations).`,
       `- Realistic ethnically diverse human features matching the choices above.`,
+      `- UNIQUE FACE for this variation #${variationIdx + 1}: ${faceArchetypes[variationIdx % faceArchetypes.length]}`,
       `- ${variationTwists[variationIdx % variationTwists.length]}`,
       `- ${cameraTwists[variationIdx % cameraTwists.length]}`,
-      `- Unique face #${variationIdx + 1} — different facial structure from variation to variation while keeping the same gender, skin and hair.`,
       a.faceShape ? `- Face shape: ${a.faceShape}.` : "",
       a.eyeColor ? `- Eye color: ${a.eyeColor.replace(/_/g," ")}, intense and clearly visible.` : "",
       a.mask && a.mask !== "sem" ? `- Mask style: ${a.mask.replace(/_/g," ")} mask.` : "",
