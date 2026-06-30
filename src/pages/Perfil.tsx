@@ -15,6 +15,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { toast } from "sonner";
 import { ArrowLeft, Atom, Lock, Sparkles, Trophy, Wand2, Check } from "lucide-react";
 import { HeroOptionsDialog } from "@/components/game/HeroOptionsDialog";
+import { backgroundsFor } from "@/lib/elementBackgrounds";
 
 const APPEARANCE_LABELS: Record<string, string> = {
   gender: "Gênero",
@@ -24,40 +25,52 @@ const APPEARANCE_LABELS: Record<string, string> = {
   hairColor: "Cor do cabelo",
 };
 
+// Banco de opções — clique em uma para trocar
 const APPEARANCE_OPTIONS = {
   gender: [
-    { v: "masculino", l: "Masculino" },
-    { v: "feminino", l: "Feminino" },
+    { v: "masculino", l: "Masculino", e: "♂" },
+    { v: "feminino", l: "Feminino", e: "♀" },
+    { v: "androgino", l: "Andrógino", e: "⚧" },
   ],
   body: [
-    { v: "magro", l: "Magro" },
-    { v: "normal", l: "Atlético" },
-    { v: "musculoso", l: "Musculoso" },
-    { v: "curvy", l: "Curvilíneo" },
+    { v: "magro", l: "Magro", e: "🚶" },
+    { v: "normal", l: "Atlético", e: "🏃" },
+    { v: "musculoso", l: "Musculoso", e: "💪" },
+    { v: "forte", l: "Forte", e: "🏋️" },
+    { v: "curvy", l: "Curvilíneo", e: "💃" },
   ],
   skin: [
-    { v: "muito_clara", l: "Muito clara" },
-    { v: "clara", l: "Clara" },
-    { v: "morena", l: "Morena" },
-    { v: "escura", l: "Escura" },
-    { v: "negra", l: "Negra" },
+    { v: "muito_clara", l: "Muito clara", c: "#f7d9c4" },
+    { v: "clara", l: "Clara", c: "#eac393" },
+    { v: "media", l: "Média", c: "#c68863" },
+    { v: "morena", l: "Morena", c: "#a06a42" },
+    { v: "escura", l: "Escura", c: "#6f4326" },
+    { v: "negra", l: "Negra", c: "#3d2415" },
   ],
   hairStyle: [
-    { v: "curto", l: "Curto" },
-    { v: "medio", l: "Médio" },
-    { v: "longo", l: "Longo" },
-    { v: "cacheado", l: "Cacheado" },
-    { v: "crespo", l: "Crespo" },
-    { v: "careca", l: "Careca" },
+    { v: "curto", l: "Curto", e: "✂️" },
+    { v: "medio", l: "Médio", e: "💇" },
+    { v: "longo", l: "Longo", e: "👱" },
+    { v: "cacheado", l: "Cacheado", e: "🌀" },
+    { v: "crespo", l: "Crespo", e: "🦱" },
+    { v: "espetado", l: "Espetado", e: "⚡" },
+    { v: "rabo", l: "Rabo de cavalo", e: "🎀" },
+    { v: "moicano", l: "Moicano", e: "🦅" },
+    { v: "careca", l: "Careca", e: "🥚" },
   ],
   hairColor: [
-    { v: "preto", l: "Preto" },
-    { v: "castanho", l: "Castanho" },
-    { v: "loiro", l: "Loiro" },
-    { v: "ruivo", l: "Ruivo" },
-    { v: "grisalho", l: "Grisalho" },
+    { v: "preto", l: "Preto", c: "#1a1a1a" },
+    { v: "castanho", l: "Castanho", c: "#5a3825" },
+    { v: "loiro", l: "Loiro", c: "#e2c275" },
+    { v: "ruivo", l: "Ruivo", c: "#b5512b" },
+    { v: "grisalho", l: "Grisalho", c: "#9aa0a6" },
+    { v: "branco", l: "Branco", c: "#f0f0f0" },
+    { v: "azul", l: "Azul", c: "#2f6df0" },
+    { v: "roxo", l: "Roxo", c: "#8a3ef0" },
+    { v: "colorido", l: "Multicolor", c: "linear-gradient(90deg,#ff5fa2,#5fb8ff,#a85fff)" },
   ],
-};
+} as const;
+
 
 
 export default function Perfil() {
@@ -398,23 +411,71 @@ export default function Perfil() {
                   <CardHeader>
                     <CardTitle className="text-sm font-black uppercase tracking-widest">Aparência do Personagem</CardTitle>
                   </CardHeader>
-                  <CardContent className="grid sm:grid-cols-2 gap-4">
-                    {Object.entries(APPEARANCE_OPTIONS).map(([key, opts]) => (
-                      <div key={key}>
-                        <label className="text-[10px] uppercase tracking-widest text-white font-black mb-1 block">{APPEARANCE_LABELS[key] ?? key}</label>
-                        <Select value={avatar?.appearance?.[key] ?? ""} onValueChange={(v) => updateAppearance({ [key]: v })}>
-                          <SelectTrigger className="bg-slate-950/70 border-white/20 text-white font-black [&>span]:text-white [&>span]:font-black">
-                            <SelectValue placeholder="Selecione…" />
-                          </SelectTrigger>
-                          <SelectContent className="bg-slate-950 border-white/20 text-white font-bold">
-                            {opts.map((o) => (<SelectItem key={o.v} value={o.v} className="text-white font-bold focus:bg-fuchsia-600 focus:text-white">{o.l}</SelectItem>))}
-                          </SelectContent>
-                        </Select>
+                  <CardContent className="space-y-5">
+                    {Object.entries(APPEARANCE_OPTIONS).map(([key, opts]) => {
+                      const current = avatar?.appearance?.[key];
+                      return (
+                        <div key={key}>
+                          <label className="text-[10px] uppercase tracking-widest text-white font-black mb-2 block">
+                            {APPEARANCE_LABELS[key] ?? key} <span className="text-white/40">— escolha 1</span>
+                          </label>
+                          <div className="flex flex-wrap gap-2">
+                            {opts.map((o: any) => {
+                              const selected = current === o.v;
+                              return (
+                                <button
+                                  key={o.v}
+                                  type="button"
+                                  onClick={() => updateAppearance({ [key]: o.v })}
+                                  className={`group flex items-center gap-2 px-3 py-2 rounded-xl border-2 transition-all hover:scale-105 ${selected ? "border-emerald-400 ring-2 ring-emerald-400 bg-emerald-500/10" : "border-white/15 bg-slate-950/70 hover:border-fuchsia-400"}`}
+                                >
+                                  {"c" in o && (
+                                    <span className="w-5 h-5 rounded-full border border-white/30" style={{ background: o.c }} />
+                                  )}
+                                  {"e" in o && <span className="text-base">{o.e}</span>}
+                                  <span className="text-xs font-black text-white">{o.l}</span>
+                                  {selected && <Check className="w-3 h-3 text-emerald-300" />}
+                                </button>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      );
+                    })}
+
+                    {/* Cenário de fundo baseado no elemento equipado */}
+                    <div className="border-t border-white/10 pt-4">
+                      <label className="text-[10px] uppercase tracking-widest text-white font-black mb-2 block">
+                        Cenário de fundo — onde {currentEl.name} é abundante / produzido
+                      </label>
+                      <p className="text-[10px] text-white/70 font-bold mb-3">
+                        Escolha 1 ambiente inspirado na origem natural ou industrial do elemento. Ele será usado de fundo na geração com IA.
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {backgroundsFor(currentSymbol).map((s) => {
+                          const selected = avatar?.equipped?.background?.id === s.id;
+                          return (
+                            <button
+                              key={s.id}
+                              type="button"
+                              onClick={async () => {
+                                if (!session?.user) return;
+                                const nextEq = { ...(avatar?.equipped ?? {}), background: { id: s.id, name: s.prompt, label: s.label } };
+                                await supabase.from("player_avatars").update({ equipped: nextEq }).eq("user_id", session.user.id);
+                                setAvatar({ ...avatar, equipped: nextEq });
+                              }}
+                              className={`px-3 py-2 rounded-xl border-2 text-xs font-black transition-all hover:scale-105 ${selected ? "border-amber-300 ring-2 ring-amber-300 bg-amber-500/10 text-amber-100" : "border-white/15 bg-slate-950/70 text-white hover:border-amber-300"}`}
+                            >
+                              {s.label}
+                              {selected && <Check className="inline w-3 h-3 ml-1 text-amber-300" />}
+                            </button>
+                          );
+                        })}
                       </div>
-                    ))}
+                    </div>
 
                     {/* Variações grátis por opção selecionada — sem créditos Lovable */}
-                    <div className="sm:col-span-2 border-t border-white/10 pt-4 mt-2">
+                    <div className="border-t border-white/10 pt-4">
                       <label className="text-[10px] uppercase tracking-widest text-white font-black mb-2 block">
                         Variações sugeridas (7 opções grátis — sem gastar créditos)
                       </label>
@@ -422,6 +483,7 @@ export default function Perfil() {
                         Toda vez que você muda uma opção acima, geramos 7 sugestões prontas a partir das cartas existentes. Clique em uma para usá-la como seu avatar.
                       </p>
                       <div className="grid grid-cols-7 gap-2">
+
                         {(() => {
                           const app = avatar?.appearance ?? {};
                           const seedStr = `${app.gender ?? ""}|${app.body ?? ""}|${app.skin ?? ""}|${app.hairStyle ?? ""}|${app.hairColor ?? ""}|${currentSymbol}`;
