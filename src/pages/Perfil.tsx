@@ -632,6 +632,29 @@ export default function Perfil() {
                     <CardTitle className="text-sm font-black uppercase tracking-widest">Aparência do Personagem</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-5">
+                    {/* Banco de Modelos — referência visual ao escolher cada opção */}
+                    <details open className="rounded-xl border-2 border-amber-300/40 bg-slate-950/60 overflow-hidden">
+                      <summary className="cursor-pointer select-none px-4 py-3 flex items-center justify-between gap-3 bg-gradient-to-r from-amber-500/20 to-fuchsia-500/10 hover:from-amber-500/30">
+                        <span className="text-xs font-black uppercase tracking-widest text-amber-100">
+                          📖 Banco de Modelos — use como referência para cada opção abaixo
+                        </span>
+                        <span className="text-[10px] font-bold text-white/70">clique para expandir / recolher</span>
+                      </summary>
+                      <div className="p-3">
+                        <a href="/assets/banco-modelos-herois.png" target="_blank" rel="noreferrer" className="block rounded-lg overflow-hidden border border-white/10 hover:border-amber-300 transition-all">
+                          <img
+                            src="/assets/banco-modelos-herois.png"
+                            alt="Banco de Modelos — referência de tipos de corpo, pele, cabelo, máscara, uniforme, capa, luvas, botas, aura e poses"
+                            className="w-full h-auto block"
+                            loading="lazy"
+                          />
+                        </a>
+                        <p className="text-[10px] text-white/70 font-bold mt-2 text-center">
+                          Encontre a linha desejada (corpo, pele, cabelo, máscara, uniforme, capa, luvas, botas, aura, poder, pose...) e selecione a opção correspondente nos swatches abaixo.
+                        </p>
+                      </div>
+                    </details>
+
                     {Object.entries(APPEARANCE_OPTIONS).map(([key, opts]) => {
                       const current = avatar?.appearance?.[key];
                       return (
