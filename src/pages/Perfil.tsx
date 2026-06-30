@@ -15,6 +15,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { toast } from "sonner";
 import { ArrowLeft, Atom, Lock, Sparkles, Trophy, Wand2, Check } from "lucide-react";
 import { HeroOptionsDialog } from "@/components/game/HeroOptionsDialog";
+import { backgroundsFor } from "@/lib/elementBackgrounds";
 
 const APPEARANCE_LABELS: Record<string, string> = {
   gender: "Gênero",
@@ -24,40 +25,52 @@ const APPEARANCE_LABELS: Record<string, string> = {
   hairColor: "Cor do cabelo",
 };
 
+// Banco de opções — clique em uma para trocar
 const APPEARANCE_OPTIONS = {
   gender: [
-    { v: "masculino", l: "Masculino" },
-    { v: "feminino", l: "Feminino" },
+    { v: "masculino", l: "Masculino", e: "♂" },
+    { v: "feminino", l: "Feminino", e: "♀" },
+    { v: "androgino", l: "Andrógino", e: "⚧" },
   ],
   body: [
-    { v: "magro", l: "Magro" },
-    { v: "normal", l: "Atlético" },
-    { v: "musculoso", l: "Musculoso" },
-    { v: "curvy", l: "Curvilíneo" },
+    { v: "magro", l: "Magro", e: "🚶" },
+    { v: "normal", l: "Atlético", e: "🏃" },
+    { v: "musculoso", l: "Musculoso", e: "💪" },
+    { v: "forte", l: "Forte", e: "🏋️" },
+    { v: "curvy", l: "Curvilíneo", e: "💃" },
   ],
   skin: [
-    { v: "muito_clara", l: "Muito clara" },
-    { v: "clara", l: "Clara" },
-    { v: "morena", l: "Morena" },
-    { v: "escura", l: "Escura" },
-    { v: "negra", l: "Negra" },
+    { v: "muito_clara", l: "Muito clara", c: "#f7d9c4" },
+    { v: "clara", l: "Clara", c: "#eac393" },
+    { v: "media", l: "Média", c: "#c68863" },
+    { v: "morena", l: "Morena", c: "#a06a42" },
+    { v: "escura", l: "Escura", c: "#6f4326" },
+    { v: "negra", l: "Negra", c: "#3d2415" },
   ],
   hairStyle: [
-    { v: "curto", l: "Curto" },
-    { v: "medio", l: "Médio" },
-    { v: "longo", l: "Longo" },
-    { v: "cacheado", l: "Cacheado" },
-    { v: "crespo", l: "Crespo" },
-    { v: "careca", l: "Careca" },
+    { v: "curto", l: "Curto", e: "✂️" },
+    { v: "medio", l: "Médio", e: "💇" },
+    { v: "longo", l: "Longo", e: "👱" },
+    { v: "cacheado", l: "Cacheado", e: "🌀" },
+    { v: "crespo", l: "Crespo", e: "🦱" },
+    { v: "espetado", l: "Espetado", e: "⚡" },
+    { v: "rabo", l: "Rabo de cavalo", e: "🎀" },
+    { v: "moicano", l: "Moicano", e: "🦅" },
+    { v: "careca", l: "Careca", e: "🥚" },
   ],
   hairColor: [
-    { v: "preto", l: "Preto" },
-    { v: "castanho", l: "Castanho" },
-    { v: "loiro", l: "Loiro" },
-    { v: "ruivo", l: "Ruivo" },
-    { v: "grisalho", l: "Grisalho" },
+    { v: "preto", l: "Preto", c: "#1a1a1a" },
+    { v: "castanho", l: "Castanho", c: "#5a3825" },
+    { v: "loiro", l: "Loiro", c: "#e2c275" },
+    { v: "ruivo", l: "Ruivo", c: "#b5512b" },
+    { v: "grisalho", l: "Grisalho", c: "#9aa0a6" },
+    { v: "branco", l: "Branco", c: "#f0f0f0" },
+    { v: "azul", l: "Azul", c: "#2f6df0" },
+    { v: "roxo", l: "Roxo", c: "#8a3ef0" },
+    { v: "colorido", l: "Multicolor", c: "linear-gradient(90deg,#ff5fa2,#5fb8ff,#a85fff)" },
   ],
-};
+} as const;
+
 
 
 export default function Perfil() {
