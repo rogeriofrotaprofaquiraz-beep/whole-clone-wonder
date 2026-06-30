@@ -260,13 +260,6 @@ const APPEARANCE_OPTIONS: Record<string, Array<{ v: string; l: string; e?: strin
     opt("atacando", "Atacando"), opt("meditando", "Meditando"),
     opt("flutuando", "Flutuando"),
   ],
-  scene: [
-    opt("cidade", "Cidade"), opt("espaco", "Espaço"),
-    opt("tempestade", "Tempestade"), opt("montanhas", "Montanhas"),
-    opt("laboratorio", "Laboratório"), opt("floresta", "Floresta"),
-    opt("deserto", "Deserto"), opt("gelo", "Gelo"),
-    opt("vulcao", "Vulcão"), opt("portal", "Portal dimensional"),
-  ],
 };
 
 
