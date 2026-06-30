@@ -662,6 +662,15 @@ export default function Perfil() {
                           <label className="text-[10px] uppercase tracking-widest text-white font-black mb-2 block">
                             {APPEARANCE_LABELS[key] ?? key} <span className="text-white/40">— escolha 1</span>
                           </label>
+                          <div className="mb-2 rounded-lg overflow-hidden border border-white/10 bg-slate-950/60">
+                            <img
+                              src={`/assets/banco/${key}.png`}
+                              alt={`Referência visual — ${APPEARANCE_LABELS[key] ?? key}`}
+                              className="w-full h-auto block"
+                              loading="lazy"
+                              onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
+                            />
+                          </div>
                           <div className="flex flex-wrap gap-2">
                             {opts.map((o: any) => {
                               const selected = current === o.v;
