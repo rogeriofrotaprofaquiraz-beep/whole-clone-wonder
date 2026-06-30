@@ -312,8 +312,13 @@ Deno.serve(async (req) => {
     const uploads: string[] = [];
     let anyFallback = false;
     try {
-      for (let i = 0; i < nWanted; i++) {
-        const { url: imageUrl, fallback } = await generateOne(i);
+      const results = await Promise.allSettled(
+        Array.from({ length: nWanted }, (_, i) => generateOne(i))
+      );
+      for (let i = 0; i < results.length; i++) {
+        const r = results[i];
+        if (r.status !== "fulfilled") continue;
+        const { url: imageUrl, fallback } = r.value;
         if (fallback) anyFallback = true;
         const match = imageUrl.match(/^data:(image\/\w+);base64,(.+)$/);
         if (!match) continue;
@@ -326,11 +331,17 @@ Deno.serve(async (req) => {
         const { data: signed } = await admin.storage.from("player-avatars").createSignedUrl(path, 60 * 60 * 24 * 365 * 5);
         if (signed?.signedUrl) uploads.push(signed.signedUrl);
       }
+      if (uploads.length === 0) {
+        const firstErr = results.find(r => r.status === "rejected") as PromiseRejectedResult | undefined;
+        const details = String(firstErr?.reason?.message ?? firstErr?.reason ?? "sem detalhe");
+        const status = (firstErr?.reason as any)?.status ?? 502;
+        if (status === 429) return await generationError("A IA está com limite temporário de uso. Tente novamente em alguns minutos; suas moedas foram preservadas.", 429);
+        return await generationError(`A IA não conseguiu gerar o avatar ultrarrealista agora. Detalhes: ${details.slice(0, 500)}`, status);
+      }
     } catch (e) {
       const details = String((e as Error).message ?? e);
       const status = (e as any).status ?? 502;
       if (uploads.length === 0) {
-        if (status === 429) return await generationError("A IA está com limite temporário de uso. Tente novamente em alguns minutos; suas moedas foram preservadas.", 429);
         return await generationError(`A IA não conseguiu gerar o avatar ultrarrealista agora. Detalhes: ${details.slice(0, 500)}`, status);
       }
     }
