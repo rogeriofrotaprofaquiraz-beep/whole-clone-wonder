@@ -233,6 +233,7 @@ Deno.serve(async (req) => {
       ``,
       `BACKGROUND: cinematic photoreal environment of where "${el.name}" is naturally found / extracted.`,
       eq.background ? `Subtly blend with: ${bgDesc}.` : ``,
+      a.scene ? `Background override (mandatory): set the scene in a ${a.scene.replace(/_/g," ")} environment, photoreal cinematic.` : ``,
       ``,
       `STRICTLY FORBIDDEN: copying the face/body/hair/gender of the person on the reference card, pixel art, cartoon, anime, drawing, card frame, borders, captions, atomic numbers, UI chrome, watermarks, cropped feet or head.`,
       photoBase64 ? `The SECOND attached image is the user's real face — use ONLY as facial likeness reference.` : "",
