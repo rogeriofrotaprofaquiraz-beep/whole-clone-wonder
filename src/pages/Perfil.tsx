@@ -35,7 +35,7 @@ const APPEARANCE_LABELS: Record<string, string> = {
   mainPower: "Poder principal",
   accessory: "Acessórios",
   pose: "Posição",
-  scene: "Fundo",
+  
 };
 
 // helpers
