@@ -46,8 +46,8 @@ const APPEARANCE_OPTIONS: Record<string, Array<{ v: string; l: string; e?: strin
   gender: [
     opt("masculino", "Masculino", { e: "♂" }),
     opt("feminino", "Feminino", { e: "♀" }),
-    opt("androgino", "Andrógino", { e: "⚧" }),
   ],
+
   body: [
     opt("magro", "Magro", { e: "🚶" }),
     opt("atletico", "Atlético", { e: "🏃" }),
