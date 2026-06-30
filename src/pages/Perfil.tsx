@@ -669,31 +669,38 @@ export default function Perfil() {
                           <label className="text-[10px] uppercase tracking-widest text-white font-black mb-2 block">
                             {APPEARANCE_LABELS[key] ?? key} <span className="text-white/40">— escolha 1</span>
                           </label>
-                          <div className="mb-2 rounded-lg overflow-hidden border border-white/10 bg-slate-950/60">
-                            <img
-                              src={`/assets/banco/${key}.png`}
-                              alt={`Referência visual — ${APPEARANCE_LABELS[key] ?? key}`}
-                              className="w-full h-auto block"
-                              loading="lazy"
-                              onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
-                            />
-                          </div>
-                          <div className="flex flex-wrap gap-2">
-                            {opts.map((o: any) => {
+                          <div className="grid gap-3" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(120px, 1fr))" }}>
+                            {opts.map((o: any, i: number) => {
                               const selected = current === o.v;
+                              const n = opts.length;
                               return (
                                 <button
                                   key={o.v}
                                   type="button"
                                   onClick={() => updateAppearance({ [key]: o.v })}
-                                  className={`group flex items-center gap-2 px-3 py-2 rounded-xl border-2 transition-all hover:scale-105 ${selected ? "border-emerald-400 ring-2 ring-emerald-400 bg-emerald-500/10" : "border-white/15 bg-slate-950/70 hover:border-fuchsia-400"}`}
+                                  className={`group flex flex-col items-stretch rounded-xl border-2 overflow-hidden transition-all hover:scale-[1.03] ${selected ? "border-emerald-400 ring-2 ring-emerald-400 bg-emerald-500/10" : "border-white/15 bg-slate-950/70 hover:border-fuchsia-400"}`}
                                 >
-                                  {"c" in o && (
-                                    <span className="w-5 h-5 rounded-full border border-white/30" style={{ background: o.c }} />
-                                  )}
-                                  {"e" in o && <span className="text-base">{o.e}</span>}
-                                  <span className="text-xs font-black text-white">{o.l}</span>
-                                  {selected && <Check className="w-3 h-3 text-emerald-300" />}
+                                  <div
+                                    aria-hidden
+                                    className="w-full"
+                                    style={{
+                                      aspectRatio: "1 / 1",
+                                      backgroundImage: `url(/assets/banco/${key}.png)`,
+                                      backgroundSize: `${n * 100}% 100%`,
+                                      backgroundPosition: n > 1 ? `${(i / (n - 1)) * 100}% 0%` : "center",
+                                      backgroundRepeat: "no-repeat",
+                                      imageRendering: "auto",
+                                    }}
+                                    onError={() => {}}
+                                  />
+                                  <div className="flex items-center justify-center gap-1 px-2 py-2 bg-slate-950/80">
+                                    {"c" in o && (
+                                      <span className="w-3 h-3 rounded-full border border-white/30" style={{ background: o.c }} />
+                                    )}
+                                    {"e" in o && <span className="text-sm">{o.e}</span>}
+                                    <span className="text-[11px] font-black text-white text-center leading-tight">{o.l}</span>
+                                    {selected && <Check className="w-3 h-3 text-emerald-300" />}
+                                  </div>
                                 </button>
                               );
                             })}
