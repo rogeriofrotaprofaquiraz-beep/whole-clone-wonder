@@ -33,7 +33,13 @@ Deno.serve(async (req) => {
     if (!el) return json({ error: "Elemento não encontrado" }, 404);
 
     const a = appearance ?? {};
-    const genderEn = a.gender === "feminino" ? "female" : a.gender === "androgino" ? "androgynous" : "male";
+    const genderEn = a.gender === "feminino" ? "female" : "male";
+    const speciesMap: Record<string, string> = {
+      humano: "fully HUMAN character with realistic human anatomy and skin",
+      alienigena: "ALIEN humanoid character with subtle non-human features (unusual skin tone or markings, slightly elongated features, glowing eyes) while still bipedal and expressive",
+      robo: "ROBOTIC / cyborg character with visible mechanical plating, articulated joints, glowing tech seams and synthetic surfaces, still humanoid silhouette",
+    };
+    const speciesDesc = speciesMap[a.speciesType] ?? speciesMap.humano;
     const bodyMap: Record<string, string> = {
       magro: "slim, lean build",
       esguio: "tall slender lean build",
