@@ -214,6 +214,7 @@ Deno.serve(async (req) => {
       ``,
       `CHARACTER (MANDATORY — overrides the card's character completely):`,
       `- Gender presentation: ${genderEn} (MUST clearly look ${genderEn}).`,
+      `- Species: ${speciesDesc}.`,
       `- Body type: ${body}.`,
       `- Skin tone: ${skin} (KEEP IDENTICAL across all 5 variations).`,
       `- Hair: ${hairStyle}${hairColor ? `, ${hairColor} color` : ""} (KEEP IDENTICAL across all 5 variations).`,
