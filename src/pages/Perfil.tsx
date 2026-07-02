@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { ensureUserAccess } from "@/lib/ensureUserAccess";
-import { loadAvatar, loadWallet, isAdmin, COIN_SYMBOL, COIN_NAME, COSTS } from "@/lib/playerEconomy";
+import { loadAvatar, loadWallet, isAdmin, spendCoins, COIN_SYMBOL, COIN_NAME, COSTS } from "@/lib/playerEconomy";
 import { ELEMENTS_DATA } from "@/data/elements";
 import { levelFromLifetime, xpProgress, maxAtomicForLevel, canUnlockCard, cardUnlockCost, listAllCards } from "@/lib/playerProfile";
 import { RARITY_FRAME, FAMILY_BADGE, getFamily, calcRarity } from "@/lib/heroStyles";
