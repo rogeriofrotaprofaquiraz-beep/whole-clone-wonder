@@ -405,11 +405,8 @@ export default function Perfil() {
     } finally { setBusy(false); }
   };
 
-  // Preview ao vivo do compositor local
-  const localPreview = useMemo(
-    () => buildAvatarDataUrl(avatar?.appearance ?? {}, currentSymbol),
-    [avatar?.appearance, currentSymbol]
-  );
+  // Prévia ao vivo do compositor local (reflete cada clique instantaneamente)
+  const localPreview = livePreview;
 
   const handleGenerate = async () => {
     if (!session?.user) return;
