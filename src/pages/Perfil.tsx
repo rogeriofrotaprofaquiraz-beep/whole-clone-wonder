@@ -336,7 +336,10 @@ export default function Perfil() {
   const rarity = calcRarity(currentEl.attributes, currentEl.rarity);
   const frame = RARITY_FRAME[rarity];
 
-  const avatarImage = avatar?.generated_url || currentEl.heroImage;
+  // Prévia local do compositor — reflete gênero, pele e demais traços instantaneamente
+  const livePreview = buildAvatarDataUrl(avatar?.appearance ?? {}, currentSymbol);
+  // Prioridade: avatar gerado (IA) → prévia local do compositor → hero padrão do elemento
+  const avatarImage = avatar?.generated_url || (avatar?.appearance && Object.keys(avatar.appearance).length > 0 ? livePreview : currentEl.heroImage);
 
   const unlockedSet = new Set<string>(avatar?.unlocked_cards ?? ["H"]);
 
@@ -402,11 +405,8 @@ export default function Perfil() {
     } finally { setBusy(false); }
   };
 
-  // Preview ao vivo do compositor local
-  const localPreview = useMemo(
-    () => buildAvatarDataUrl(avatar?.appearance ?? {}, currentSymbol),
-    [avatar?.appearance, currentSymbol]
-  );
+  // Prévia ao vivo do compositor local (reflete cada clique instantaneamente)
+  const localPreview = livePreview;
 
   const handleGenerate = async () => {
     if (!session?.user) return;
