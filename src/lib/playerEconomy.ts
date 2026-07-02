@@ -11,6 +11,7 @@ export const COSTS = {
   changeAppearance: 5,    // Cada alteração de gênero/corpo/pele/cabelo
   uploadPhoto: 10,        // Upload de foto de referência
   uploadAvatar: 20,       // Upload direto de imagem como avatar
+  applyLocalAvatar: 5,    // Aplicar avatar montado no compositor local (sem IA)
 } as const;
 
 export type AvatarItem = {
