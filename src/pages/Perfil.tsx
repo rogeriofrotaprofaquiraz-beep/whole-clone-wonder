@@ -378,6 +378,26 @@ export default function Perfil() {
     setAvatar({ ...avatar, appearance: nextApp });
   };
 
+  // Aplica avatar composto localmente (SVG) — sem consumir créditos de IA nem Átomos.
+  const applyLocalAvatar = async () => {
+    if (!session?.user) return;
+    setBusy(true);
+    try {
+      const dataUrl = buildAvatarDataUrl(avatar?.appearance ?? {}, currentSymbol);
+      await supabase.from("player_avatars")
+        .update({ generated_url: dataUrl, current_card: currentSymbol })
+        .eq("user_id", session.user.id);
+      await refresh(session.user.id);
+      toast.success("Avatar aplicado sem gastar créditos!");
+    } finally { setBusy(false); }
+  };
+
+  // Preview ao vivo do compositor local
+  const localPreview = useMemo(
+    () => buildAvatarDataUrl(avatar?.appearance ?? {}, currentSymbol),
+    [avatar?.appearance, currentSymbol]
+  );
+
   const handleGenerate = async () => {
     if (!session?.user) return;
     if (!admin && coins < COSTS.generateAvatarAI) {
