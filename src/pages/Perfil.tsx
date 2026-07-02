@@ -16,6 +16,7 @@ import { toast } from "sonner";
 import { ArrowLeft, Atom, Lock, Sparkles, Trophy, Wand2, Check } from "lucide-react";
 import { HeroOptionsDialog } from "@/components/game/HeroOptionsDialog";
 import { backgroundsFor } from "@/lib/elementBackgrounds";
+import { buildAvatarDataUrl } from "@/lib/localAvatar";
 
 const APPEARANCE_LABELS: Record<string, string> = {
   gender: "Gênero",
@@ -377,6 +378,26 @@ export default function Perfil() {
     setAvatar({ ...avatar, appearance: nextApp });
   };
 
+  // Aplica avatar composto localmente (SVG) — sem consumir créditos de IA nem Átomos.
+  const applyLocalAvatar = async () => {
+    if (!session?.user) return;
+    setBusy(true);
+    try {
+      const dataUrl = buildAvatarDataUrl(avatar?.appearance ?? {}, currentSymbol);
+      await supabase.from("player_avatars")
+        .update({ generated_url: dataUrl, current_card: currentSymbol })
+        .eq("user_id", session.user.id);
+      await refresh(session.user.id);
+      toast.success("Avatar aplicado sem gastar créditos!");
+    } finally { setBusy(false); }
+  };
+
+  // Preview ao vivo do compositor local
+  const localPreview = useMemo(
+    () => buildAvatarDataUrl(avatar?.appearance ?? {}, currentSymbol),
+    [avatar?.appearance, currentSymbol]
+  );
+
   const handleGenerate = async () => {
     if (!session?.user) return;
     if (!admin && coins < COSTS.generateAvatarAI) {
@@ -702,6 +723,36 @@ export default function Perfil() {
                         </div>
                       );
                     })}
+
+                    {/* Compositor local — SEM créditos de IA */}
+                    <div className="border-t-2 border-emerald-400/40 pt-4">
+                      <div className="flex items-center justify-between mb-2">
+                        <label className="text-[10px] uppercase tracking-widest text-emerald-200 font-black">
+                          Prévia ao vivo (compositor grátis)
+                        </label>
+                        <Badge variant="outline" className="border-emerald-400/40 text-emerald-300 font-black">
+                          Sem créditos de IA · Sem Átomos
+                        </Badge>
+                      </div>
+                      <div className="grid grid-cols-[160px_1fr] gap-3 items-center">
+                        <div className="rounded-xl overflow-hidden border-2 border-emerald-400/40 bg-slate-950 aspect-[2/3]">
+                          <img src={localPreview} alt="Prévia local do avatar" className="w-full h-full object-cover"/>
+                        </div>
+                        <div className="space-y-2">
+                          <p className="text-[11px] text-white/80 font-bold">
+                            Cada clique nas opções acima atualiza a prévia instantaneamente. Quando gostar, aplique como seu avatar — <span className="text-emerald-300">sem gastar nada</span>.
+                          </p>
+                          <Button
+                            onClick={applyLocalAvatar}
+                            disabled={busy}
+                            className="w-full h-11 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white font-black uppercase tracking-widest"
+                          >
+                            <Check className="w-4 h-4 mr-2"/>
+                            Aplicar como avatar (grátis)
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
 
 
                     {/* Cenário de fundo baseado no elemento equipado */}
