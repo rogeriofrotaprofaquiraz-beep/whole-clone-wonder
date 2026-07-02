@@ -16,6 +16,7 @@ import { toast } from "sonner";
 import { ArrowLeft, Atom, Lock, Sparkles, Trophy, Wand2, Check } from "lucide-react";
 import { HeroOptionsDialog } from "@/components/game/HeroOptionsDialog";
 import { backgroundsFor } from "@/lib/elementBackgrounds";
+import { buildAvatarDataUrl } from "@/lib/localAvatar";
 
 const APPEARANCE_LABELS: Record<string, string> = {
   gender: "Gênero",
