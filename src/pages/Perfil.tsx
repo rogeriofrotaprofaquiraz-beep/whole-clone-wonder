@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { ensureUserAccess } from "@/lib/ensureUserAccess";
-import { loadAvatar, loadWallet, isAdmin, COIN_SYMBOL, COIN_NAME, COSTS } from "@/lib/playerEconomy";
+import { loadAvatar, loadWallet, isAdmin, spendCoins, COIN_SYMBOL, COIN_NAME, COSTS } from "@/lib/playerEconomy";
 import { ELEMENTS_DATA } from "@/data/elements";
 import { levelFromLifetime, xpProgress, maxAtomicForLevel, canUnlockCard, cardUnlockCost, listAllCards } from "@/lib/playerProfile";
 import { RARITY_FRAME, FAMILY_BADGE, getFamily, calcRarity } from "@/lib/heroStyles";
@@ -378,17 +378,27 @@ export default function Perfil() {
     setAvatar({ ...avatar, appearance: nextApp });
   };
 
-  // Aplica avatar composto localmente (SVG) — sem consumir créditos de IA nem Átomos.
+  // Aplica avatar composto localmente (SVG) — NÃO consome créditos Lovable.
+  // Aluno paga Átomos (COSTS.applyLocalAvatar); admin não paga.
   const applyLocalAvatar = async () => {
     if (!session?.user) return;
     setBusy(true);
     try {
+      const cost = COSTS.applyLocalAvatar;
+      if (!admin) {
+        if (coins < cost) {
+          toast.error(`Precisa de ${cost}${COIN_SYMBOL} para aplicar o avatar.`);
+          return;
+        }
+        const r = await spendCoins(session.user.id, cost, "aplicar avatar montado");
+        if (!r.ok) { toast.error(r.reason ?? "Falha ao debitar Átomos"); return; }
+      }
       const dataUrl = buildAvatarDataUrl(avatar?.appearance ?? {}, currentSymbol);
       await supabase.from("player_avatars")
         .update({ generated_url: dataUrl, current_card: currentSymbol })
         .eq("user_id", session.user.id);
       await refresh(session.user.id);
-      toast.success("Avatar aplicado sem gastar créditos!");
+      toast.success(admin ? "Avatar aplicado (admin — grátis)" : `Avatar aplicado! -${cost}${COIN_SYMBOL}`);
     } finally { setBusy(false); }
   };
 
