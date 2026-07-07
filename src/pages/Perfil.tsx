@@ -381,29 +381,20 @@ export default function Perfil() {
     setAvatar({ ...avatar, appearance: nextApp });
   };
 
-  // Aplica avatar composto localmente (SVG) — NÃO consome créditos Lovable.
-  // Aluno paga Átomos (COSTS.applyLocalAvatar); admin não paga.
+  // Aplica avatar composto localmente (SVG) — SEMPRE grátis, sem consumir Átomos nem créditos.
   const applyLocalAvatar = async () => {
     if (!session?.user) return;
     setBusy(true);
     try {
-      const cost = COSTS.applyLocalAvatar;
-      if (!admin) {
-        if (coins < cost) {
-          toast.error(`Precisa de ${cost}${COIN_SYMBOL} para aplicar o avatar.`);
-          return;
-        }
-        const r = await spendCoins(session.user.id, cost, "aplicar avatar montado");
-        if (!r.ok) { toast.error(r.reason ?? "Falha ao debitar Átomos"); return; }
-      }
       const dataUrl = buildAvatarDataUrl(avatar?.appearance ?? {}, currentSymbol);
       await supabase.from("player_avatars")
         .update({ generated_url: dataUrl, current_card: currentSymbol })
         .eq("user_id", session.user.id);
       await refresh(session.user.id);
-      toast.success(admin ? "Avatar aplicado (admin — grátis)" : `Avatar aplicado! -${cost}${COIN_SYMBOL}`);
+      toast.success("Avatar aplicado! (grátis)");
     } finally { setBusy(false); }
   };
+
 
   // Prévia ao vivo do compositor local (reflete cada clique instantaneamente)
   const localPreview = livePreview;
