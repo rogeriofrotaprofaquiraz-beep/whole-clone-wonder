@@ -381,29 +381,20 @@ export default function Perfil() {
     setAvatar({ ...avatar, appearance: nextApp });
   };
 
-  // Aplica avatar composto localmente (SVG) — NÃO consome créditos Lovable.
-  // Aluno paga Átomos (COSTS.applyLocalAvatar); admin não paga.
+  // Aplica avatar composto localmente (SVG) — SEMPRE grátis, sem consumir Átomos nem créditos.
   const applyLocalAvatar = async () => {
     if (!session?.user) return;
     setBusy(true);
     try {
-      const cost = COSTS.applyLocalAvatar;
-      if (!admin) {
-        if (coins < cost) {
-          toast.error(`Precisa de ${cost}${COIN_SYMBOL} para aplicar o avatar.`);
-          return;
-        }
-        const r = await spendCoins(session.user.id, cost, "aplicar avatar montado");
-        if (!r.ok) { toast.error(r.reason ?? "Falha ao debitar Átomos"); return; }
-      }
       const dataUrl = buildAvatarDataUrl(avatar?.appearance ?? {}, currentSymbol);
       await supabase.from("player_avatars")
         .update({ generated_url: dataUrl, current_card: currentSymbol })
         .eq("user_id", session.user.id);
       await refresh(session.user.id);
-      toast.success(admin ? "Avatar aplicado (admin — grátis)" : `Avatar aplicado! -${cost}${COIN_SYMBOL}`);
+      toast.success("Avatar aplicado! (grátis)");
     } finally { setBusy(false); }
   };
+
 
   // Prévia ao vivo do compositor local (reflete cada clique instantaneamente)
   const localPreview = livePreview;
@@ -537,9 +528,9 @@ export default function Perfil() {
                       Use este banco visual como referência para escolher cada característica do seu herói nas seções abaixo —
                       <span className="text-emerald-300"> nenhuma geração de IA é consumida</span>.
                     </p>
-                    <a href="/assets/banco-modelos-herois.png" target="_blank" rel="noreferrer" className="block rounded-xl overflow-hidden border-2 border-white/10 hover:border-amber-300 transition-all">
+                    <a href="/__l5e/assets-v1/303a12d9-7e7c-412a-b8a5-1d1cfd97c138/banco-modelos.png" target="_blank" rel="noreferrer" className="block rounded-xl overflow-hidden border-2 border-white/10 hover:border-amber-300 transition-all">
                       <img
-                        src="/assets/banco-modelos-herois.png"
+                        src="/__l5e/assets-v1/303a12d9-7e7c-412a-b8a5-1d1cfd97c138/banco-modelos.png"
                         alt="Banco de modelos — Criador de Super-Heróis"
                         className="w-full h-auto"
                         loading="lazy"
@@ -679,9 +670,9 @@ export default function Perfil() {
                         <span className="text-[10px] font-bold text-white/70">clique para expandir / recolher</span>
                       </summary>
                       <div className="p-3">
-                        <a href="/assets/banco-modelos-herois.png" target="_blank" rel="noreferrer" className="block rounded-lg overflow-hidden border border-white/10 hover:border-amber-300 transition-all">
+                        <a href="/__l5e/assets-v1/303a12d9-7e7c-412a-b8a5-1d1cfd97c138/banco-modelos.png" target="_blank" rel="noreferrer" className="block rounded-lg overflow-hidden border border-white/10 hover:border-amber-300 transition-all">
                           <img
-                            src="/assets/banco-modelos-herois.png"
+                            src="/__l5e/assets-v1/303a12d9-7e7c-412a-b8a5-1d1cfd97c138/banco-modelos.png"
                             alt="Banco de Modelos — referência de tipos de corpo, pele, cabelo, máscara, uniforme, capa, luvas, botas, aura e poses"
                             className="w-full h-auto block"
                             loading="lazy"
