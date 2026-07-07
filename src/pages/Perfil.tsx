@@ -528,9 +528,9 @@ export default function Perfil() {
                       Use este banco visual como referência para escolher cada característica do seu herói nas seções abaixo —
                       <span className="text-emerald-300"> nenhuma geração de IA é consumida</span>.
                     </p>
-                    <a href="/assets/banco-modelos-herois.png" target="_blank" rel="noreferrer" className="block rounded-xl overflow-hidden border-2 border-white/10 hover:border-amber-300 transition-all">
+                    <a href="/__l5e/assets-v1/303a12d9-7e7c-412a-b8a5-1d1cfd97c138/banco-modelos.png" target="_blank" rel="noreferrer" className="block rounded-xl overflow-hidden border-2 border-white/10 hover:border-amber-300 transition-all">
                       <img
-                        src="/assets/banco-modelos-herois.png"
+                        src="/__l5e/assets-v1/303a12d9-7e7c-412a-b8a5-1d1cfd97c138/banco-modelos.png"
                         alt="Banco de modelos — Criador de Super-Heróis"
                         className="w-full h-auto"
                         loading="lazy"
@@ -670,9 +670,9 @@ export default function Perfil() {
                         <span className="text-[10px] font-bold text-white/70">clique para expandir / recolher</span>
                       </summary>
                       <div className="p-3">
-                        <a href="/assets/banco-modelos-herois.png" target="_blank" rel="noreferrer" className="block rounded-lg overflow-hidden border border-white/10 hover:border-amber-300 transition-all">
+                        <a href="/__l5e/assets-v1/303a12d9-7e7c-412a-b8a5-1d1cfd97c138/banco-modelos.png" target="_blank" rel="noreferrer" className="block rounded-lg overflow-hidden border border-white/10 hover:border-amber-300 transition-all">
                           <img
-                            src="/assets/banco-modelos-herois.png"
+                            src="/__l5e/assets-v1/303a12d9-7e7c-412a-b8a5-1d1cfd97c138/banco-modelos.png"
                             alt="Banco de Modelos — referência de tipos de corpo, pele, cabelo, máscara, uniforme, capa, luvas, botas, aura e poses"
                             className="w-full h-auto block"
                             loading="lazy"
