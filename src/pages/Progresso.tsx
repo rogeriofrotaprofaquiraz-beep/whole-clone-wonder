@@ -3,27 +3,31 @@ import { Link, useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { ensureUserAccess } from "@/lib/ensureUserAccess";
 import { loadAvatar, loadWallet, isAdmin, COIN_NAME, COIN_SYMBOL } from "@/lib/playerEconomy";
-import { levelFromLifetime, xpProgress, maxAtomicForLevel, MAX_LEVEL } from "@/lib/playerProfile";
+import { levelFromLifetime, xpProgress, maxAtomicForLevel, MAX_LEVEL, coinsLevelMultiplier } from "@/lib/playerProfile";
+import { ELEMENTS_DATA } from "@/data/elements";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, Trophy, Gift, Lock, Check, Sparkles, Star } from "lucide-react";
+import { ArrowLeft, Trophy, Gift, Lock, Check, Sparkles, Star, Zap } from "lucide-react";
 import { toast } from "sonner";
 
-/** Recompensas por nível: cada um libera Átomos extras (pode reivindicar 1x). */
-const LEVEL_REWARDS: Record<number, { coins: number; title: string }> = {
-  1: { coins: 50, title: "Aprendiz Atômico" },
-  2: { coins: 150, title: "Iniciante Elemental" },
-  3: { coins: 300, title: "Cadete da Tabela" },
-  4: { coins: 500, title: "Estudante de Transição" },
-  5: { coins: 800, title: "Mestre dos Metais" },
-  6: { coins: 1200, title: "Guardião dos Halogênios" },
-  7: { coins: 1800, title: "Sábio dos Gases Nobres" },
-  8: { coins: 2600, title: "Lorde Lantanídeo" },
-  9: { coins: 3800, title: "Arconte Actinídeo" },
-  10: { coins: 5500, title: "Soberano da Tabela" },
-};
+/** Ordena elementos por número atômico (1..118) para casar 1 nível = 1 carta. */
+const ORDERED_ELEMENTS = Object.values(ELEMENTS_DATA)
+  .filter((e: any) => e && e.symbol && e.number)
+  .sort((a: any, b: any) => a.number - b.number);
+
+/** Recompensa em Átomos por nível (cresce com o nível). */
+function rewardCoinsForLevel(lvl: number) {
+  return 25 + Math.round(Math.pow(lvl, 1.6) * 4);
+}
+
+/** Título do nível: usa o nome do elemento correspondente. */
+function titleForLevel(lvl: number) {
+  const el: any = ORDERED_ELEMENTS[lvl - 1];
+  if (!el) return `Nível ${lvl}`;
+  return `${el.name} (${el.symbol})`;
+}
 
 const REWARD_KEY = (lvl: number) => `reward_lvl_${lvl}`;
 
