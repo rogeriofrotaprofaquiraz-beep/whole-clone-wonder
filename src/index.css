@@ -129,3 +129,7 @@ All colors MUST be HSL.
     background: transparent !important;
   }
 }
+
+#lovable-badge {
+  display: none !important;
+}
