@@ -160,9 +160,13 @@ export const BattleSystem = () => {
       setRound(r => r + 1);
       startNewRound();
     } else {
-      setGameState('gameOver');
+        setGameState('gameOver');
       if (session && score.player !== score.cpu) {
         const isWin = score.player > score.cpu;
+        if (isWin) {
+          await addCoins(session.user.id, MATCH_WIN_BONUS);
+          toast.success(`Bônus de vitória da partida: +${MATCH_WIN_BONUS}${COIN_SYMBOL}`);
+        }
         const { data: profile } = await supabase.from('profiles').select('*').eq('id', session.user.id).single();
         if (profile) {
           await supabase.from('profiles').update({
