@@ -579,7 +579,7 @@ const Index = () => {
         </TabsContent>
 
         <TabsContent value="quiz" className="w-full animate-in fade-in slide-in-from-left-10 duration-500">
-          <ElementQuiz />
+          <BattleSystem />
         </TabsContent>
 
         <TabsContent value="ranking" className="w-full animate-in fade-in slide-in-from-top-10 duration-500">
