@@ -57,13 +57,11 @@ export const BG_STYLES: Record<string, string> = {
 };
 
 /** Moedas por acerto: dificuldade × bônus de tempo (mesma curva do score). */
-export function coinsFor(difficulty: number, elapsedMs: number, maxMs = 90_000, playerLevel = 1) {
+export function coinsFor(difficulty: number, elapsedMs: number, maxMs = 90_000) {
   const base = [1, 2, 5, 10, 20][Math.max(1, Math.min(5, difficulty)) - 1];
   const t = Math.min(1, Math.max(0, elapsedMs / maxMs));
   const factor = 1 - 0.7 * t;
-  const lvl = Math.max(1, Math.min(118, playerLevel || 1));
-  const levelBonus = 1 + (lvl - 1) * 0.06;
-  return Math.max(1, Math.round(base * factor * levelBonus));
+  return Math.max(1, Math.round(base * factor));
 }
 
 export async function loadWallet(userId: string) {

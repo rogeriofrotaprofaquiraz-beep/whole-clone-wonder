@@ -137,19 +137,32 @@ export const AdminPanel = ({ userRole, initialSymbol }: { userRole?: string | nu
     const atomicNumber = el.number ?? "";
 
     return [
-      `Ultra-realistic cinematic collectible hero card (vertical 2:3), photoreal live-action movie still quality, sharp 8k detail. Full-body superhero visible head to toe — NOT cropped, both feet and full head fully in frame with generous top and bottom margins, centered composition.`,
-      `Camera: full-body shot from a slightly low heroic angle, 50mm lens, shallow depth of field, tack-sharp focus on the character, soft cinematic bokeh on background.`,
-      `Lighting: strong cool frontal key light revealing suit texture and facial detail, subtle rim light, luminous glow emanating from the suit itself. ${essence.lightingExtra}.`,
-      `Character: photoreal ${gender} human hero, realistic diverse ethnicity, ${hair} hair flowing naturally, confident grounded pose, arms slightly away from body, ${essence.float}. Bare face (no helmet) with cinematic natural skin.`,
-      `Suit: form-fitting high-tech armored bodysuit with silver/chrome plating and translucent glowing panels; ${essence.suitTexture}, physical behavior inspired by the real element "${el.name}" (${stateAttr}). Bright circular chest emblem — a glowing disc with the letter "${el.symbol}" clearly readable in the center, acting as a real light source. Luminous energy wisps and particles of the element swirling around the body. ${essence.capeDesc}.`,
+      // FORMAT
+      `COLLECTIBLE TRADING CARD, vertical card (6 cm × 9 cm), 2:3 proportion, full-body framing with the character centered from head to toe, no crops, complete top and bottom margins.`,
+      // CARD LAYOUT
+      `CARD LAYOUT (MANDATORY):`,
+      `- Thin elegant double-line silver/white frame border with slightly rounded corners.`,
+      `- TOP-LEFT CORNER: small dark rounded square badge containing ONLY the bold white element symbol "${el.symbol}".`,
+      `- TOP-RIGHT CORNER: small dark rounded square badge containing ONLY the bold white atomic number "${atomicNumber}".`,
+      `- BOTTOM: slim dark band inside the frame with the centered caption "${heroNameUpper}" in bold uppercase white sans-serif letters.`,
+      `- NO other text, numbers, tables, scores, watermarks or logos anywhere else.`,
+      // MAIN ARTWORK — adapted from the Hidrogênio template
+      `MAIN ARTWORK — realistic ${gender} superhero representing the chemical element "${el.name}" (symbol ${el.symbol}, atomic number ${atomicNumber}), mood: ${essence.mood}.`,
+      // CAMERA
+      `Camera: full-body shot at a slightly low angle for a heroic effect, character centered, short depth of field, sharp focus on the character, both feet and head fully inside the frame.`,
+      // LIGHTING
+      `Lighting: ${essence.lightingExtra}; diffuse natural ambient light, soft balanced shadows.`,
+      // CHARACTER
+      `Character: ${essence.float}, confident expression, balanced heroic pose. Realistic and varied appearance, random human traits, ${hair} hair with a defined hairstyle.`,
+      // SUIT
+      `Suit: ${essence.suitTexture}. Large glowing luminous "${el.symbol}" emblem centered on the chest, radiating energy. ${essence.capeDesc}.`,
       palette,
-      `Background: cinematic photoreal environment representing the natural origin of the element — ${originAttr}. ${essence.bgDesc}. The hero stands on a circular high-tech holographic platform emitting concentric glowing rings of light beneath the feet.`,
-      `Visual style: photoreal cinematic realism (live-action VFX movie still), NOT cartoon, NOT 2D illustration, NOT anime. Mood: ${essence.mood}.`,
-      `MANDATORY CARD HUD OVERLAY (thin white sci-fi frame): thin double-line white futuristic frame with angular octagonal corner brackets and small tick/circuit marks along the edges. TOP-LEFT CORNER: large octagonal bracket containing ONLY the bold white capital letter "${el.symbol}" (element symbol, big and clearly readable). TOP-RIGHT CORNER: small clean sans-serif white label "${heroNameUpper}" followed by a segmented horizontal bar/gauge of white ticks representing the atomic number ${atomicNumber}. NO other text, no numbers, no tables, no watermarks, no logos anywhere else on the image. Frame must be crisp white lines, not colored.`,
+      // BACKGROUND
+      `Background: ${essence.bgDesc}; stylized realistic cinematic depiction of ${originAttr}.`,
+      // STYLE
+      `Style: fantastic realism with central focus on the character, high definition, no crops, balanced light and complete body details, premium collectible card art, NO additional text besides the two corner badges and the bottom hero-name caption.`,
     ].join(" ");
   };
-
-
 
 
   const generateAIPrompt = async () => {

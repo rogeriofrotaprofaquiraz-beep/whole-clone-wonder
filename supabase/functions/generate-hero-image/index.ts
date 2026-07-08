@@ -142,11 +142,10 @@ Deno.serve(async (req) => {
           method: "POST",
           headers: { "Content-Type": "application/json", "Authorization": `Bearer ${lovableKey}` },
           body: JSON.stringify({
-            model: "google/gemini-3-pro-image",
+            model: "google/gemini-2.5-flash-image",
             messages: [{ role: "user", content: fullPrompt }],
             modalities: ["image", "text"],
           }),
-
         });
         if (!aiResp.ok) {
           const text = await aiResp.text();

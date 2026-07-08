@@ -3,31 +3,27 @@ import { Link, useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { ensureUserAccess } from "@/lib/ensureUserAccess";
 import { loadAvatar, loadWallet, isAdmin, COIN_NAME, COIN_SYMBOL } from "@/lib/playerEconomy";
-import { levelFromLifetime, xpProgress, maxAtomicForLevel, MAX_LEVEL, coinsLevelMultiplier } from "@/lib/playerProfile";
-import { ELEMENTS_DATA } from "@/data/elements";
+import { levelFromLifetime, xpProgress, maxAtomicForLevel, MAX_LEVEL } from "@/lib/playerProfile";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, Trophy, Gift, Lock, Check, Sparkles, Star, Zap } from "lucide-react";
+import { ArrowLeft, Trophy, Gift, Lock, Check, Sparkles, Star } from "lucide-react";
 import { toast } from "sonner";
 
-/** Ordena elementos por número atômico (1..118) para casar 1 nível = 1 carta. */
-const ORDERED_ELEMENTS = Object.values(ELEMENTS_DATA)
-  .filter((e: any) => e && e.symbol && e.number)
-  .sort((a: any, b: any) => a.number - b.number);
-
-/** Recompensa em Átomos por nível (cresce com o nível). */
-function rewardCoinsForLevel(lvl: number) {
-  return 25 + Math.round(Math.pow(lvl, 1.6) * 4);
-}
-
-/** Título do nível: usa o nome do elemento correspondente. */
-function titleForLevel(lvl: number) {
-  const el: any = ORDERED_ELEMENTS[lvl - 1];
-  if (!el) return `Nível ${lvl}`;
-  return `${el.name} (${el.symbol})`;
-}
+/** Recompensas por nível: cada um libera Átomos extras (pode reivindicar 1x). */
+const LEVEL_REWARDS: Record<number, { coins: number; title: string }> = {
+  1: { coins: 50, title: "Aprendiz Atômico" },
+  2: { coins: 150, title: "Iniciante Elemental" },
+  3: { coins: 300, title: "Cadete da Tabela" },
+  4: { coins: 500, title: "Estudante de Transição" },
+  5: { coins: 800, title: "Mestre dos Metais" },
+  6: { coins: 1200, title: "Guardião dos Halogênios" },
+  7: { coins: 1800, title: "Sábio dos Gases Nobres" },
+  8: { coins: 2600, title: "Lorde Lantanídeo" },
+  9: { coins: 3800, title: "Arconte Actinídeo" },
+  10: { coins: 5500, title: "Soberano da Tabela" },
+};
 
 const REWARD_KEY = (lvl: number) => `reward_lvl_${lvl}`;
 
@@ -66,18 +62,17 @@ export default function Progresso() {
     if (level < lvl) { toast.error(`Você precisa alcançar o nível ${lvl}.`); return; }
     setBusy(true);
     try {
-      const rewardCoins = rewardCoinsForLevel(lvl);
-      const rewardTitle = titleForLevel(lvl);
+      const reward = LEVEL_REWARDS[lvl];
       const newUnlocked = [...claimed, key];
       await supabase.from("player_avatars").update({ unlocked: newUnlocked }).eq("user_id", session.user.id);
       if (!admin) {
         await supabase.from("player_wallet").update({
-          coins: coins + rewardCoins,
-          lifetime_coins: lifetime + rewardCoins,
+          coins: coins + reward.coins,
+          lifetime_coins: lifetime + reward.coins,
         }).eq("user_id", session.user.id);
       }
       await refresh(session.user.id);
-      toast.success(`+${rewardCoins}${COIN_SYMBOL} — ${rewardTitle} desbloqueado!`);
+      toast.success(`+${reward.coins}${COIN_SYMBOL} — ${reward.title} desbloqueado!`);
     } finally { setBusy(false); }
   };
 
@@ -106,7 +101,6 @@ export default function Progresso() {
                 <div className="text-xs uppercase tracking-widest text-white/60 font-black">XP total</div>
                 <div className="text-3xl font-black flex items-center gap-2"><Trophy className="w-6 h-6 text-amber-300"/>{lifetime}</div>
                 <div className="text-[10px] text-white/60">Libera elementos até nº {admin ? "∞" : maxAtomicForLevel(level)}</div>
-                <div className="text-[10px] text-emerald-300 flex items-center gap-1 justify-end mt-1"><Zap className="w-3 h-3"/> Bônus de créditos: ×{coinsLevelMultiplier(level).toFixed(2)}</div>
               </div>
             </div>
             <Progress value={progress.percent} className="h-3"/>
@@ -115,38 +109,28 @@ export default function Progresso() {
         </Card>
 
         <Card className="bg-slate-900/60 border-white/10">
-          <CardHeader>
-            <CardTitle className="text-sm font-black uppercase tracking-widest flex items-center gap-2">
-              <Gift className="w-4 h-4"/>Trilha de Recompensas · 118 Elementos
-            </CardTitle>
-            <div className="text-xs text-white/60">Cada nível libera uma nova carta para personalizar no perfil. Perguntas valem mais créditos conforme seu nível sobe.</div>
-          </CardHeader>
-          <CardContent className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 max-h-[70vh] overflow-y-auto pr-1">
+          <CardHeader><CardTitle className="text-sm font-black uppercase tracking-widest flex items-center gap-2"><Gift className="w-4 h-4"/>Trilha de Recompensas</CardTitle></CardHeader>
+          <CardContent className="grid sm:grid-cols-2 gap-3">
             {Array.from({ length: MAX_LEVEL }, (_, i) => i + 1).map((lvl) => {
-              const rewardCoins = rewardCoinsForLevel(lvl);
-              const rewardTitle = titleForLevel(lvl);
-              const el: any = ORDERED_ELEMENTS[lvl - 1];
+              const reward = LEVEL_REWARDS[lvl];
               const key = REWARD_KEY(lvl);
               const isClaimed = claimed.includes(key);
               const isReached = level >= lvl;
               return (
                 <div key={lvl} className={`relative rounded-2xl p-4 border ${isClaimed ? "bg-emerald-500/10 border-emerald-500/30" : isReached ? "bg-slate-950/70 border-amber-500/30" : "bg-slate-950/40 border-white/5 opacity-60"}`}>
                   <div className="flex items-center justify-between mb-2">
-                    <Badge variant="outline" className="border-white/20 text-white/80 font-black">Nv {lvl}</Badge>
+                    <Badge variant="outline" className="border-white/20 text-white/80 font-black">Nível {lvl}</Badge>
                     {isClaimed ? <Check className="w-4 h-4 text-emerald-400"/> : isReached ? <Sparkles className="w-4 h-4 text-amber-300"/> : <Lock className="w-4 h-4 text-white/40"/>}
                   </div>
-                  <div className="flex items-center gap-2 mb-1">
-                    {el && <div className="text-2xl font-black text-blue-300 leading-none">{el.symbol}</div>}
-                    <div className="font-black text-sm leading-tight">{rewardTitle}</div>
-                  </div>
-                  <div className="text-[11px] text-white/60 mb-3">Nova carta + <span className="text-amber-300 font-black">{rewardCoins}{COIN_SYMBOL}</span></div>
+                  <div className="font-black text-base">{reward.title}</div>
+                  <div className="text-xs text-white/60 mb-3">Recompensa: <span className="text-amber-300 font-black">+{reward.coins}{COIN_SYMBOL}</span> {COIN_NAME}</div>
                   <Button
                     size="sm"
                     disabled={busy || isClaimed || !isReached}
                     onClick={() => claimReward(lvl)}
                     className={`w-full ${isClaimed ? "bg-emerald-700 hover:bg-emerald-700" : "bg-gradient-to-r from-amber-500 to-orange-600"}`}
                   >
-                    {isClaimed ? "Resgatado" : isReached ? `Resgatar +${rewardCoins}${COIN_SYMBOL}` : `Bloqueado`}
+                    {isClaimed ? "Resgatado" : isReached ? `Resgatar +${reward.coins}${COIN_SYMBOL}` : `Bloqueado`}
                   </Button>
                 </div>
               );

@@ -638,39 +638,15 @@ export default function Perfil() {
                           <label className="text-[10px] uppercase tracking-widest text-white font-black mb-2 block">
                             {APPEARANCE_LABELS[key] ?? key} <span className="text-white/40">— escolha 1</span>
                           </label>
-                          {/* Galeria visual — miniaturas de cada opção da categoria, destaca a selecionada */}
-                          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2 mb-3">
-                            {opts.map((o: any) => {
-                              const selected = current === o.v;
-                              return (
-                                <button
-                                  key={`thumb-${o.v}`}
-                                  type="button"
-                                  onClick={() => updateAppearance({ [key]: o.v })}
-                                  title={o.l}
-                                  className={`relative aspect-square rounded-xl border-2 overflow-hidden transition-all ${
-                                    selected
-                                      ? "border-emerald-400 ring-2 ring-emerald-400 scale-[1.04] shadow-[0_0_20px_rgba(52,211,153,0.5)]"
-                                      : "border-white/10 opacity-60 hover:opacity-100 hover:border-fuchsia-400/60 hover:scale-105"
-                                  }`}
-                                  style={"c" in o ? { background: o.c } : { background: "linear-gradient(135deg,#0f172a,#1e293b)" }}
-                                >
-                                  {"e" in o && (
-                                    <span className="absolute inset-0 flex items-center justify-center text-3xl drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)]">
-                                      {o.e}
-                                    </span>
-                                  )}
-                                  <span className={`absolute bottom-0 left-0 right-0 px-1 py-0.5 text-[9px] font-black uppercase tracking-wider text-center truncate ${selected ? "bg-emerald-500/90 text-white" : "bg-black/70 text-white/80"}`}>
-                                    {o.l}
-                                  </span>
-                                  {selected && (
-                                    <span className="absolute top-1 right-1 bg-emerald-400 rounded-full w-4 h-4 flex items-center justify-center">
-                                      <Check className="w-3 h-3 text-black"/>
-                                    </span>
-                                  )}
-                                </button>
-                              );
-                            })}
+                          {/* Barra horizontal de referência — divisor visual de estilos */}
+                          <div className="w-full rounded-lg overflow-hidden border border-white/15 bg-slate-950/60 mb-3">
+                            <img
+                              src={`/assets/banco/${key}.png`}
+                              alt={`Referência visual — ${APPEARANCE_LABELS[key] ?? key}`}
+                              className="w-full h-auto block"
+                              loading="lazy"
+                              onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = "none"; }}
+                            />
                           </div>
                           <div className="flex flex-wrap gap-2">
                             {opts.map((o: any) => {

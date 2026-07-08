@@ -1,8 +1,8 @@
 import { ELEMENTS_DATA } from "@/data/elements";
 
-/** Sistema de níveis: 1 nível por elemento da tabela (1..118). */
+/** Sistema de níveis com base em Átomos acumulados. */
 export const XP_PER_LEVEL = 100;
-export const MAX_LEVEL = 118;
+export const MAX_LEVEL = 10;
 
 export function levelFromLifetime(lifetimeCoins: number): number {
   return Math.min(MAX_LEVEL, Math.floor((lifetimeCoins ?? 0) / XP_PER_LEVEL) + 1);
@@ -14,9 +14,22 @@ export function xpProgress(lifetimeCoins: number) {
   return { level: lvl, current: inLevel, needed: XP_PER_LEVEL, percent: Math.min(100, (inLevel / XP_PER_LEVEL) * 100) };
 }
 
-/** Cada nível libera 1 carta nova (número atômico == nível). */
+/** Limite do número atômico permitido em cada nível. */
+const LEVEL_MAX_ATOMIC: Record<number, number> = {
+  1: 2,
+  2: 10,
+  3: 18,
+  4: 36,
+  5: 54,
+  6: 86,
+  7: 118,
+  8: 118,
+  9: 118,
+  10: 118,
+};
+
 export function maxAtomicForLevel(level: number) {
-  return Math.min(MAX_LEVEL, Math.max(1, level));
+  return LEVEL_MAX_ATOMIC[Math.min(MAX_LEVEL, Math.max(1, level))] ?? 2;
 }
 
 export function canUnlockCard(symbol: string, level: number) {
@@ -30,12 +43,6 @@ export function cardUnlockCost(symbol: string) {
   const el = ELEMENTS_DATA[symbol];
   if (!el) return 9999;
   return Math.max(10, el.number * 20);
-}
-
-/** Multiplicador de créditos por nível: nível 1 = 1x, nível 118 ≈ 7.85x. */
-export function coinsLevelMultiplier(level: number) {
-  const lvl = Math.max(1, Math.min(MAX_LEVEL, level || 1));
-  return 1 + (lvl - 1) * 0.06;
 }
 
 /** Todas as cartas existentes ordenadas por número atômico. */
