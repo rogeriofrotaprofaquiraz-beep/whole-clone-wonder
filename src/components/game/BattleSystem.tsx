@@ -123,7 +123,7 @@ export const BattleSystem = () => {
     return attr ? attr.score : 0;
   };
 
-  const handleBattle = (attrLabel: string) => {
+  const handleBattle = async (attrLabel: string) => {
     if (gameState !== 'battle' || !playerCard || !cpuCard) return;
 
     setSelectedAttr(attrLabel);
@@ -143,6 +143,16 @@ export const BattleSystem = () => {
 
     setWinner(result);
     setGameState('result');
+
+    if (session?.user?.id) {
+      if (result === 'player') {
+        await addCoins(session.user.id, ROUND_WIN_COINS);
+        toast.success(`+${ROUND_WIN_COINS}${COIN_SYMBOL} pela vitória na rodada!`);
+      } else if (result === 'draw') {
+        await addCoins(session.user.id, ROUND_DRAW_COINS);
+        toast.info(`Empate técnico: +${ROUND_DRAW_COINS}${COIN_SYMBOL}`);
+      }
+    }
   };
 
   const nextRound = async () => {
