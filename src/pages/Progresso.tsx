@@ -66,17 +66,18 @@ export default function Progresso() {
     if (level < lvl) { toast.error(`Você precisa alcançar o nível ${lvl}.`); return; }
     setBusy(true);
     try {
-      const reward = LEVEL_REWARDS[lvl];
+      const rewardCoins = rewardCoinsForLevel(lvl);
+      const rewardTitle = titleForLevel(lvl);
       const newUnlocked = [...claimed, key];
       await supabase.from("player_avatars").update({ unlocked: newUnlocked }).eq("user_id", session.user.id);
       if (!admin) {
         await supabase.from("player_wallet").update({
-          coins: coins + reward.coins,
-          lifetime_coins: lifetime + reward.coins,
+          coins: coins + rewardCoins,
+          lifetime_coins: lifetime + rewardCoins,
         }).eq("user_id", session.user.id);
       }
       await refresh(session.user.id);
-      toast.success(`+${reward.coins}${COIN_SYMBOL} — ${reward.title} desbloqueado!`);
+      toast.success(`+${rewardCoins}${COIN_SYMBOL} — ${rewardTitle} desbloqueado!`);
     } finally { setBusy(false); }
   };
 
