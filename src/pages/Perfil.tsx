@@ -401,33 +401,19 @@ export default function Perfil() {
 
   const handleGenerate = async () => {
     if (!session?.user) return;
-    if (!admin && coins < COSTS.generateAvatarAI) {
-      toast.error(`Precisa de ${COSTS.generateAvatarAI}${COIN_SYMBOL} para gerar com IA.`);
-      return;
-    }
     setGenerating(true);
-    setOptionsOpen(true);
-    setOptionUrls([]);
     try {
-      if (!admin) {
-        await supabase.from("player_wallet").update({ coins: coins - COSTS.generateAvatarAI }).eq("user_id", session.user.id);
-      }
-      const { data, error } = await supabase.functions.invoke("generate-player-avatar", {
-        body: { cardSymbol: currentSymbol, appearance: avatar?.appearance ?? {}, equipped: avatar?.equipped ?? {}, photoBase64, count: 5 },
-      });
-
-      if (error || data?.error) {
-        if (!admin) await supabase.from("player_wallet").update({ coins }).eq("user_id", session.user.id);
-        toast.error(data?.error ?? error?.message ?? "Falha ao gerar avatar");
-        setOptionsOpen(false);
-      } else {
-        const urls: string[] = data?.urls ?? (data?.url ? [data.url] : []);
-        setOptionUrls(urls);
-        toast.success(data?.message ?? `${urls.length} variações geradas — escolha a melhor!`);
-        if (data?.fallback && !admin) await supabase.from("player_wallet").update({ coins }).eq("user_id", session.user.id);
-      }
+      const dataUrl = buildAvatarDataUrl(avatar?.appearance ?? {}, currentSymbol);
+      await supabase.from("player_avatars")
+        .update({ generated_url: dataUrl, current_card: currentSymbol })
+        .eq("user_id", session.user.id);
+      await refresh(session.user.id);
+      toast.success("Avatar aplicado com suas seleções! (grátis)");
+    } catch (e) {
+      toast.error("Falha ao aplicar avatar");
     } finally { setGenerating(false); }
   };
+
 
   const handlePickOption = async (url: string) => {
     if (!session?.user) return;
