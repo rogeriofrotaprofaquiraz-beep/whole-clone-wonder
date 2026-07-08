@@ -5,7 +5,8 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
 import { areaMeta, AreaValue, computeScore, LevelValue } from "@/lib/aula";
-import { addCoins, coinsFor } from "@/lib/playerEconomy";
+import { addCoins, coinsFor, loadWallet } from "@/lib/playerEconomy";
+import { levelFromLifetime } from "@/lib/playerProfile";
 import { ElementCardsPopup } from "@/components/aula/ElementCard";
 import { RotateCcw, Skull, Trophy, Lightbulb, Timer, Coins } from "lucide-react";
 
