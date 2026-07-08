@@ -94,7 +94,7 @@ export function Forca({ area, level, difficulty }: { area: AreaValue; level: Lev
           penalty: (hintRevealed ? 0.4 : 0) + Math.min(0.3, errors * 0.05),
           correct: true,
         });
-        const coins = coinsFor(difficulty, elapsedMs);
+        const coins = coinsFor(difficulty, elapsedMs, 90_000, playerLevel);
         setScore((s) => s + pts);
         setWins((w) => w + 1);
         toast.success(`Acertou! +${pts} pts · +${coins} 🪙`);
