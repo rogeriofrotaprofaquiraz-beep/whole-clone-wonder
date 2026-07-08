@@ -138,7 +138,7 @@ export const AdminPanel = ({ userRole, initialSymbol }: { userRole?: string | nu
 
     return [
       // FORMAT
-      `COLLECTIBLE TRADING CARD, vertical card (6 cm × 9 cm), 2:3 proportion, full-body framing with the character centered from head to toe, no crops, complete top and bottom margins.`,
+      `ULTRA-PHOTOREALISTIC collectible trading card, vertical 2:3 ratio, full-body framing head to toe, cinematic depth of field, shot on 85mm lens, f/2.8, 8K hyper-detailed, Unreal Engine 5 cinematic render + photographic quality, skin pores visible, fabric weave visible, realistic subsurface scattering — ABSOLUTELY NOT cartoon, NOT anime, NOT 2D, NOT flat illustration, NOT vector art, NOT stylized.`,
       // CARD LAYOUT
       `CARD LAYOUT (MANDATORY):`,
       `- Thin elegant double-line silver/white frame border with slightly rounded corners.`,
@@ -146,23 +146,24 @@ export const AdminPanel = ({ userRole, initialSymbol }: { userRole?: string | nu
       `- TOP-RIGHT CORNER: small dark rounded square badge containing ONLY the bold white atomic number "${atomicNumber}".`,
       `- BOTTOM: slim dark band inside the frame with the centered caption "${heroNameUpper}" in bold uppercase white sans-serif letters.`,
       `- NO other text, numbers, tables, scores, watermarks or logos anywhere else.`,
-      // MAIN ARTWORK — adapted from the Hidrogênio template
-      `MAIN ARTWORK — realistic ${gender} superhero representing the chemical element "${el.name}" (symbol ${el.symbol}, atomic number ${atomicNumber}), mood: ${essence.mood}.`,
+      // MAIN ARTWORK
+      `MAIN ARTWORK: hyper-realistic live-action ${gender} superhero portrait embodying the real chemical element "${el.name}" (symbol ${el.symbol}, atomic number ${atomicNumber}). The suit, skin textures, materials and aura MUST be built from the REAL physical characteristics of the element — its actual color, luster, crystalline/metallic/gaseous/liquid nature, reflectivity, oxidation patina, natural glow. Mood: ${essence.mood}.`,
       // CAMERA
-      `Camera: full-body shot at a slightly low angle for a heroic effect, character centered, short depth of field, sharp focus on the character, both feet and head fully inside the frame.`,
+      `Camera: full-body heroic low-angle photograph, character perfectly centered, tack-sharp focus on the character, subtle bokeh background, both feet and head fully inside the frame with generous margins.`,
       // LIGHTING
-      `Lighting: ${essence.lightingExtra}; diffuse natural ambient light, soft balanced shadows.`,
+      `Lighting: ${essence.lightingExtra}; cinematic three-point lighting, realistic global illumination, physically accurate reflections and shadows, no flat shading.`,
       // CHARACTER
-      `Character: ${essence.float}, confident expression, balanced heroic pose. Realistic and varied appearance, random human traits, ${hair} hair with a defined hairstyle.`,
+      `Character: ${essence.float}, confident expression, realistic human anatomy and proportions, photorealistic skin with pores and micro-details, ${hair} hair with individual strands visible and realistic hairstyle. Diverse authentic human features, NOT idealized cartoon face.`,
       // SUIT
-      `Suit: ${essence.suitTexture}. Large glowing luminous "${el.symbol}" emblem centered on the chest, radiating energy. ${essence.capeDesc}.`,
+      `Suit: ${essence.suitTexture} — rendered with real-world material physics (roughness, metallic response, subsurface scattering). Large glowing luminous "${el.symbol}" emblem centered on the chest as a real physical light source casting bounce light on the suit. ${essence.capeDesc}.`,
       palette,
       // BACKGROUND
-      `Background: ${essence.bgDesc}; stylized realistic cinematic depiction of ${originAttr}.`,
+      `Background: ${essence.bgDesc}; photorealistic cinematic depiction of ${originAttr} with atmospheric haze, volumetric light and real environment textures.`,
       // STYLE
-      `Style: fantastic realism with central focus on the character, high definition, no crops, balanced light and complete body details, premium collectible card art, NO additional text besides the two corner badges and the bottom hero-name caption.`,
+      `Style: photorealistic cinematic hero photography, Marvel/DC live-action movie key art quality, hyperdetailed, sharp, dramatic, premium collectible card — STRICTLY NO cartoon, NO anime, NO cel-shading, NO flat 2D illustration, NO chibi, NO vector look. Only the two corner badges and the bottom hero-name caption may contain text.`,
     ].join(" ");
   };
+
 
 
   const generateAIPrompt = async () => {
