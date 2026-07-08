@@ -6,6 +6,11 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Swords, Trophy, RefreshCw, ChevronRight, User, Users, CircleHelp } from 'lucide-react';
 import { toast } from "sonner";
+import { addCoins, COIN_SYMBOL } from "@/lib/playerEconomy";
+
+const ROUND_WIN_COINS = 10;
+const ROUND_DRAW_COINS = 5;
+const MATCH_WIN_BONUS = 30;
 
 export const BattleSystem = () => {
   const [session, setSession] = useState<any>(null);
