@@ -5,7 +5,8 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
 import { areaMeta, AreaValue, computeScore, LevelValue } from "@/lib/aula";
-import { addCoins, coinsFor } from "@/lib/playerEconomy";
+import { addCoins, coinsFor, loadWallet } from "@/lib/playerEconomy";
+import { levelFromLifetime } from "@/lib/playerProfile";
 import { ElementCardsPopup } from "@/components/aula/ElementCard";
 import { RotateCcw, Skull, Trophy, Lightbulb, Timer, Coins } from "lucide-react";
 
@@ -23,7 +24,16 @@ export function Forca({ area, level, difficulty }: { area: AreaValue; level: Lev
   const [score, setScore] = useState(0);
   const [startedAt, setStartedAt] = useState<number>(Date.now());
   const [now, setNow] = useState<number>(Date.now());
+  const [playerLevel, setPlayerLevel] = useState<number>(1);
   const meta = areaMeta(area);
+
+  useEffect(() => {
+    supabase.auth.getUser().then(async ({ data }) => {
+      if (!data.user) return;
+      const w = await loadWallet(data.user.id);
+      setPlayerLevel(levelFromLifetime(w?.lifetime_coins ?? 0));
+    });
+  }, []);
 
   useEffect(() => {
     supabase.from("chem_terms").select("*")
@@ -84,7 +94,7 @@ export function Forca({ area, level, difficulty }: { area: AreaValue; level: Lev
           penalty: (hintRevealed ? 0.4 : 0) + Math.min(0.3, errors * 0.05),
           correct: true,
         });
-        const coins = coinsFor(difficulty, elapsedMs);
+        const coins = coinsFor(difficulty, elapsedMs, 90_000, playerLevel);
         setScore((s) => s + pts);
         setWins((w) => w + 1);
         toast.success(`Acertou! +${pts} pts · +${coins} 🪙`);
