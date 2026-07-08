@@ -6,6 +6,11 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Swords, Trophy, RefreshCw, ChevronRight, User, Users, CircleHelp } from 'lucide-react';
 import { toast } from "sonner";
+import { addCoins, COIN_SYMBOL } from "@/lib/playerEconomy";
+
+const ROUND_WIN_COINS = 10;
+const ROUND_DRAW_COINS = 5;
+const MATCH_WIN_BONUS = 30;
 
 export const BattleSystem = () => {
   const [session, setSession] = useState<any>(null);
@@ -118,7 +123,7 @@ export const BattleSystem = () => {
     return attr ? attr.score : 0;
   };
 
-  const handleBattle = (attrLabel: string) => {
+  const handleBattle = async (attrLabel: string) => {
     if (gameState !== 'battle' || !playerCard || !cpuCard) return;
 
     setSelectedAttr(attrLabel);
@@ -138,6 +143,16 @@ export const BattleSystem = () => {
 
     setWinner(result);
     setGameState('result');
+
+    if (session?.user?.id) {
+      if (result === 'player') {
+        await addCoins(session.user.id, ROUND_WIN_COINS);
+        toast.success(`+${ROUND_WIN_COINS}${COIN_SYMBOL} pela vitória na rodada!`);
+      } else if (result === 'draw') {
+        await addCoins(session.user.id, ROUND_DRAW_COINS);
+        toast.info(`Empate técnico: +${ROUND_DRAW_COINS}${COIN_SYMBOL}`);
+      }
+    }
   };
 
   const nextRound = async () => {
@@ -145,9 +160,13 @@ export const BattleSystem = () => {
       setRound(r => r + 1);
       startNewRound();
     } else {
-      setGameState('gameOver');
+        setGameState('gameOver');
       if (session && score.player !== score.cpu) {
         const isWin = score.player > score.cpu;
+        if (isWin) {
+          await addCoins(session.user.id, MATCH_WIN_BONUS);
+          toast.success(`Bônus de vitória da partida: +${MATCH_WIN_BONUS}${COIN_SYMBOL}`);
+        }
         const { data: profile } = await supabase.from('profiles').select('*').eq('id', session.user.id).single();
         if (profile) {
           await supabase.from('profiles').update({
