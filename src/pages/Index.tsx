@@ -219,13 +219,14 @@ const Index = () => {
         if (ELEMENTS_DATA[el.symbol]) {
           ELEMENTS_DATA[el.symbol] = {
             ...ELEMENTS_DATA[el.symbol],
-            number: el.number,
-            name: el.name,
-            heroName: el.hero_name,
-            heroDescription: el.hero_description,
-            heroImage: el.hero_image,
-            rarity: el.rarity,
-            attributes: el.attributes,
+            number: el.number ?? ELEMENTS_DATA[el.symbol].number,
+            name: el.name ?? ELEMENTS_DATA[el.symbol].name,
+            heroName: el.hero_name ?? ELEMENTS_DATA[el.symbol].heroName,
+            heroDescription: el.hero_description ?? ELEMENTS_DATA[el.symbol].heroDescription,
+            heroImage: el.hero_image ?? ELEMENTS_DATA[el.symbol].heroImage,
+            rarity: el.rarity ?? ELEMENTS_DATA[el.symbol].rarity,
+            // Only override attributes if DB has a valid array (schema in DB may be an object)
+            attributes: Array.isArray(el.attributes) ? el.attributes : ELEMENTS_DATA[el.symbol].attributes,
           };
         }
       });
