@@ -137,15 +137,15 @@ export const AdminPanel = ({ userRole, initialSymbol }: { userRole?: string | nu
     const atomicNumber = el.number ?? "";
 
     return [
-      `Personagem super-herói de corpo inteiro visível, dos pés à cabeça, NÃO cortado. Enquadramento full body, centrado, pé esquerdo e direito visíveis, margem superior e inferior completas. Formato de carta colecionável vertical proporção 2:3.`,
-      `Câmera: full-body shot em leve ângulo baixo (slightly low angle) para efeito heroico. Profundidade de campo suave, foco nítido no personagem.`,
-      `Iluminação: luz frontal forte e fria realçando textura do traje e expressão; luz ambiente difusa e natural, sombras suaves.`,
-      `Personagem ${gender}, ${essence.float}. Aparência aleatória e realista: traços humanos variados (etnia diversa), cabelo ${hair} com penteado definido. Expressão confiante, pose heroica e equilibrada.`,
-      `Traje: ${essence.suitTexture}, com brilho e comportamento físico inspirados nas características reais do elemento "${el.name}" (${stateAttr}). Símbolo luminoso "${el.symbol}" grande e brilhante centrado no peito, agindo como fonte de luz real. ${essence.capeDesc}. Cores e luminosidade coerentes com o elemento.`,
+      `Ultra-realistic cinematic collectible hero card (vertical 2:3), photoreal live-action movie still quality, sharp 8k detail. Full-body superhero visible head to toe — NOT cropped, both feet and full head fully in frame with generous top and bottom margins, centered composition.`,
+      `Camera: full-body shot from a slightly low heroic angle, 50mm lens, shallow depth of field, tack-sharp focus on the character, soft cinematic bokeh on background.`,
+      `Lighting: strong cool frontal key light revealing suit texture and facial detail, subtle rim light, luminous glow emanating from the suit itself. ${essence.lightingExtra}.`,
+      `Character: photoreal ${gender} human hero, realistic diverse ethnicity, ${hair} hair flowing naturally, confident grounded pose, arms slightly away from body, ${essence.float}. Bare face (no helmet) with cinematic natural skin.`,
+      `Suit: form-fitting high-tech armored bodysuit with silver/chrome plating and translucent glowing panels; ${essence.suitTexture}, physical behavior inspired by the real element "${el.name}" (${stateAttr}). Bright circular chest emblem — a glowing disc with the letter "${el.symbol}" clearly readable in the center, acting as a real light source. Luminous energy wisps and particles of the element swirling around the body. ${essence.capeDesc}.`,
       palette,
-      `Cenário/fundo: representa a origem natural do elemento — ${originAttr}. ${essence.bgDesc}. Realismo cinematográfico, harmônico com a iluminação frontal.`,
-      `Estilo visual: realismo fantástico, foco central, profundidade de campo curta, alta definição, sem cortes, luz equilibrada e detalhes completos do corpo. Paleta coerente com o elemento. Mood: ${essence.mood}.`,
-      `LAYOUT DA CARTA (obrigatório): moldura fina prata/branca de linha dupla com cantos levemente arredondados. CANTO SUPERIOR ESQUERDO: pequeno emblema escuro arredondado destacando SOMENTE o símbolo "${el.symbol}" em branco negrito. CANTO SUPERIOR DIREITO: pequeno emblema escuro arredondado com SOMENTE o número atômico "${atomicNumber}" em branco negrito. Faixa escura fina na base com o nome "${heroNameUpper}" centralizado em maiúsculas brancas. NENHUM outro texto, número, tabela, marca d'água ou logotipo em qualquer outro lugar.`,
+      `Background: cinematic photoreal environment representing the natural origin of the element — ${originAttr}. ${essence.bgDesc}. The hero stands on a circular high-tech holographic platform emitting concentric glowing rings of light beneath the feet.`,
+      `Visual style: photoreal cinematic realism (live-action VFX movie still), NOT cartoon, NOT 2D illustration, NOT anime. Mood: ${essence.mood}.`,
+      `MANDATORY CARD HUD OVERLAY (thin white sci-fi frame): thin double-line white futuristic frame with angular octagonal corner brackets and small tick/circuit marks along the edges. TOP-LEFT CORNER: large octagonal bracket containing ONLY the bold white capital letter "${el.symbol}" (element symbol, big and clearly readable). TOP-RIGHT CORNER: small clean sans-serif white label "${heroNameUpper}" followed by a segmented horizontal bar/gauge of white ticks representing the atomic number ${atomicNumber}. NO other text, no numbers, no tables, no watermarks, no logos anywhere else on the image. Frame must be crisp white lines, not colored.`,
     ].join(" ");
   };
 
