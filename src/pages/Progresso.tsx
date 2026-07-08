@@ -13,16 +13,16 @@ import { toast } from "sonner";
 
 /** Recompensas por nível: cada um libera Átomos extras (pode reivindicar 1x). */
 const LEVEL_REWARDS: Record<number, { coins: number; title: string }> = {
-  1: { coins: 25, title: "Aprendiz Atômico" },
-  2: { coins: 50, title: "Iniciante Elemental" },
-  3: { coins: 100, title: "Cadete da Tabela" },
-  4: { coins: 150, title: "Estudante de Transição" },
-  5: { coins: 250, title: "Mestre dos Metais" },
-  6: { coins: 400, title: "Guardião dos Halogênios" },
-  7: { coins: 600, title: "Sábio dos Gases Nobres" },
-  8: { coins: 900, title: "Lorde Lantanídeo" },
-  9: { coins: 1400, title: "Arconte Actinídeo" },
-  10: { coins: 2000, title: "Soberano da Tabela" },
+  1: { coins: 50, title: "Aprendiz Atômico" },
+  2: { coins: 150, title: "Iniciante Elemental" },
+  3: { coins: 300, title: "Cadete da Tabela" },
+  4: { coins: 500, title: "Estudante de Transição" },
+  5: { coins: 800, title: "Mestre dos Metais" },
+  6: { coins: 1200, title: "Guardião dos Halogênios" },
+  7: { coins: 1800, title: "Sábio dos Gases Nobres" },
+  8: { coins: 2600, title: "Lorde Lantanídeo" },
+  9: { coins: 3800, title: "Arconte Actinídeo" },
+  10: { coins: 5500, title: "Soberano da Tabela" },
 };
 
 const REWARD_KEY = (lvl: number) => `reward_lvl_${lvl}`;
