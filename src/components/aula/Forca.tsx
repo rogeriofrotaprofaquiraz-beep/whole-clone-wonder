@@ -24,7 +24,16 @@ export function Forca({ area, level, difficulty }: { area: AreaValue; level: Lev
   const [score, setScore] = useState(0);
   const [startedAt, setStartedAt] = useState<number>(Date.now());
   const [now, setNow] = useState<number>(Date.now());
+  const [playerLevel, setPlayerLevel] = useState<number>(1);
   const meta = areaMeta(area);
+
+  useEffect(() => {
+    supabase.auth.getUser().then(async ({ data }) => {
+      if (!data.user) return;
+      const w = await loadWallet(data.user.id);
+      setPlayerLevel(levelFromLifetime(w?.lifetime_coins ?? 0));
+    });
+  }, []);
 
   useEffect(() => {
     supabase.from("chem_terms").select("*")
