@@ -87,13 +87,12 @@ const APPEARANCE_OPTIONS: Record<string, Array<{ v: string; l: string; e?: strin
     opt("moicano", "Moicano", { e: "🦅" }),
   ],
   hairColor: [
-    opt("preto", "Preto", { c: "#1a1a1a" }),
-    opt("castanho", "Castanho", { c: "#5a3825" }),
-    opt("loiro", "Loiro", { c: "#e2c275" }),
-    opt("ruivo", "Ruivo", { c: "#b5512b" }),
     opt("azul", "Azul", { c: "#2f6df0" }),
     opt("verde", "Verde", { c: "#2f8f3a" }),
-    opt("colorido", "Colorido", { c: "linear-gradient(90deg,#ff5fa2,#ffd35f,#5fff9a,#5fb8ff,#a85fff)" }),
+    opt("verde_agua", "Verde-água", { c: "#3ad3b8" }),
+    opt("roxo", "Roxo", { c: "#8a3ef0" }),
+    opt("rosa", "Rosa", { c: "#ff66b3" }),
+    opt("pastel", "Cores pastel", { c: "linear-gradient(90deg,#ff5fa2,#ffd35f,#5fff9a,#5fb8ff,#a85fff)" }),
   ],
   eyeColor: [
     opt("castanho", "Castanho", { c: "#5a3825" }),
