@@ -383,15 +383,17 @@ export default function Perfil() {
           cardSymbol: currentSymbol,
           appearance: avatar?.appearance ?? {},
           photoBase64: photoBase64 ?? undefined,
-          count: 5,
+          count: 1,
         },
       });
       if (error) throw error;
       const urls: string[] = (data?.urls ?? (data?.url ? [data.url] : [])) as string[];
       if (!urls.length) throw new Error(data?.error ?? "Sem imagens");
-      setOptionUrls(urls);
-      if (data?.fallback) toast.warning(data?.message ?? "Alguma variação usou a carta original.");
-      else toast.success(`${urls.length} variações ultrarrealistas prontas — escolha a melhor!`);
+      // Aplica direto a única variação — sem diálogo de escolha
+      await handlePickOption(urls[0]);
+      if (data?.fallback) toast.warning(data?.message ?? "Usada a carta original como fallback.");
+      else toast.success("Avatar ultrarrealista aplicado!");
+
       await refresh(session.user.id);
     } catch (e: any) {
       toast.error(e?.message ?? "Falha ao gerar avatar");
