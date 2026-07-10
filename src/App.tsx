@@ -18,6 +18,7 @@ import Permissoes from "./pages/Permissoes.tsx";
 import Banco from "./pages/Banco.tsx";
 import Cursos from "./pages/Cursos.tsx";
 import CursoDetalhe from "./pages/CursoDetalhe.tsx";
+import AdminMaterial from "./pages/AdminMaterial.tsx";
 
 
 const queryClient = new QueryClient();
@@ -43,6 +44,7 @@ const App = () => (
           <Route path="/banco" element={<Banco />} />
           <Route path="/cursos" element={<Cursos />} />
           <Route path="/cursos/:id" element={<CursoDetalhe />} />
+          <Route path="/admin/material" element={<AdminMaterial />} />
           <Route path="/historico" element={<Historico />} />
           
           
