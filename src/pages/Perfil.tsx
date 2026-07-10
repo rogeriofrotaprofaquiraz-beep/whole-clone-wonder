@@ -297,10 +297,11 @@ export default function Perfil() {
   const rarity = calcRarity(currentEl.attributes, currentEl.rarity);
   const frame = RARITY_FRAME[rarity];
 
-  // Prévia local do compositor — reflete gênero, pele e demais traços instantaneamente
+  // Prévia local do compositor — usada apenas na aba de personalização, NUNCA no card principal
   const livePreview = buildAvatarDataUrl(avatar?.appearance ?? {}, currentSymbol);
-  // Prioridade: avatar gerado (IA) → prévia local do compositor → hero padrão do elemento
-  const avatarImage = avatar?.generated_url || (avatar?.appearance && Object.keys(avatar.appearance).length > 0 ? livePreview : currentEl.heroImage);
+  // Card principal: avatar gerado pela IA → carta ORIGINAL ultrarrealista do elemento
+  const avatarImage = avatar?.generated_url || currentEl.heroImage;
+
 
   const unlockedSet = new Set<string>(avatar?.unlocked_cards ?? ["H"]);
 
@@ -371,7 +372,7 @@ export default function Perfil() {
     }
     setGenerating(true);
     setOptionUrls([]);
-    setOptionsOpen(true);
+
     try {
       if (!admin) {
         const ok = await spendCoins(session.user.id, cost, "generate_avatar_ai");
@@ -382,15 +383,17 @@ export default function Perfil() {
           cardSymbol: currentSymbol,
           appearance: avatar?.appearance ?? {},
           photoBase64: photoBase64 ?? undefined,
-          count: 5,
+          count: 1,
         },
       });
       if (error) throw error;
       const urls: string[] = (data?.urls ?? (data?.url ? [data.url] : [])) as string[];
       if (!urls.length) throw new Error(data?.error ?? "Sem imagens");
-      setOptionUrls(urls);
-      if (data?.fallback) toast.warning(data?.message ?? "Alguma variação usou a carta original.");
-      else toast.success(`${urls.length} variações ultrarrealistas prontas — escolha a melhor!`);
+      // Aplica direto a única variação — sem diálogo de escolha
+      await handlePickOption(urls[0]);
+      if (data?.fallback) toast.warning(data?.message ?? "Usada a carta original como fallback.");
+      else toast.success("Avatar ultrarrealista aplicado!");
+
       await refresh(session.user.id);
     } catch (e: any) {
       toast.error(e?.message ?? "Falha ao gerar avatar");
