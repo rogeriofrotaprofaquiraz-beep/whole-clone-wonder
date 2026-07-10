@@ -8,7 +8,7 @@ import { Progress } from "@/components/ui/progress";
 import { ArrowLeft, CheckCircle2, Circle, Coins, Loader2, PlayCircle, Zap } from "lucide-react";
 import { toast } from "sonner";
 import { areaMeta } from "@/lib/aula";
-import { grantCoins } from "@/lib/playerEconomy";
+import { addCoins } from "@/lib/playerEconomy";
 
 type Course = { id: string; title: string; description: string | null; area: string; level: string };
 type Lesson = {
@@ -62,7 +62,7 @@ export default function CursoDetalhe() {
       .insert({ lesson_id: lesson.id, user_id: user.id });
     if (error) { toast.error(error.message); setSaving(false); return; }
     try {
-      await grantCoins(user.id, lesson.coin_reward, `Aula: ${lesson.title}`);
+      await addCoins(user.id, lesson.coin_reward);
     } catch { /* ignore */ }
     setDone(new Set([...done, lesson.id]));
     toast.success(`+${lesson.xp_reward} XP e +${lesson.coin_reward} ⚛`);
