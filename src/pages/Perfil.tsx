@@ -297,10 +297,11 @@ export default function Perfil() {
   const rarity = calcRarity(currentEl.attributes, currentEl.rarity);
   const frame = RARITY_FRAME[rarity];
 
-  // Prévia local do compositor — reflete gênero, pele e demais traços instantaneamente
+  // Prévia local do compositor — usada apenas na aba de personalização, NUNCA no card principal
   const livePreview = buildAvatarDataUrl(avatar?.appearance ?? {}, currentSymbol);
-  // Prioridade: avatar gerado (IA) → prévia local do compositor → hero padrão do elemento
-  const avatarImage = avatar?.generated_url || (avatar?.appearance && Object.keys(avatar.appearance).length > 0 ? livePreview : currentEl.heroImage);
+  // Card principal: avatar gerado pela IA → carta ORIGINAL ultrarrealista do elemento
+  const avatarImage = avatar?.generated_url || currentEl.heroImage;
+
 
   const unlockedSet = new Set<string>(avatar?.unlocked_cards ?? ["H"]);
 
