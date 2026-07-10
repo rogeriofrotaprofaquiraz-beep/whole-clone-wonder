@@ -360,18 +360,41 @@ export default function Perfil() {
   // Prévia ao vivo do compositor local (reflete cada clique instantaneamente)
   const localPreview = livePreview;
 
+  // Gera 5 variações ULTRARREALISTAS a partir da CARTA ORIGINAL do elemento (via IA),
+  // respeitando as personalizações escolhidas. Admin não paga Átomos.
   const handleGenerate = async () => {
     if (!session?.user) return;
+    const cost = COSTS.generateAvatarAI;
+    if (!admin && coins < cost) {
+      toast.error(`${COIN_NAME} insuficientes (precisa ${cost}${COIN_SYMBOL}).`);
+      return;
+    }
     setGenerating(true);
+    setOptionUrls([]);
+    setOptionsOpen(true);
     try {
-      const dataUrl = buildAvatarDataUrl(avatar?.appearance ?? {}, currentSymbol);
-      await supabase.from("player_avatars")
-        .update({ generated_url: dataUrl, current_card: currentSymbol })
-        .eq("user_id", session.user.id);
+      if (!admin) {
+        const ok = await spendCoins(session.user.id, cost, "generate_avatar_ai");
+        if (!ok) { toast.error("Falha ao debitar Átomos."); setOptionsOpen(false); return; }
+      }
+      const { data, error } = await supabase.functions.invoke("generate-player-avatar", {
+        body: {
+          cardSymbol: currentSymbol,
+          appearance: avatar?.appearance ?? {},
+          photoBase64: photoBase64 ?? undefined,
+          count: 5,
+        },
+      });
+      if (error) throw error;
+      const urls: string[] = (data?.urls ?? (data?.url ? [data.url] : [])) as string[];
+      if (!urls.length) throw new Error(data?.error ?? "Sem imagens");
+      setOptionUrls(urls);
+      if (data?.fallback) toast.warning(data?.message ?? "Alguma variação usou a carta original.");
+      else toast.success(`${urls.length} variações ultrarrealistas prontas — escolha a melhor!`);
       await refresh(session.user.id);
-      toast.success("Avatar aplicado com suas seleções! (grátis)");
-    } catch (e) {
-      toast.error("Falha ao aplicar avatar");
+    } catch (e: any) {
+      toast.error(e?.message ?? "Falha ao gerar avatar");
+      setOptionsOpen(false);
     } finally { setGenerating(false); }
   };
 
