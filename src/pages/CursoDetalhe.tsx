@@ -180,6 +180,46 @@ export default function CursoDetalhe() {
             )}
           </Card>
         </div>
+
+        <Card className="p-6 mt-6">
+          <h2 className="text-xl font-black mb-1">Ementa completa do curso</h2>
+          <p className="text-sm text-slate-500 mb-4">
+            Todos os assuntos abordados em cada capítulo deste módulo.
+          </p>
+          <div className="space-y-6">
+            {lessons.map((l) => (
+              <div key={`ementa-${l.id}`} className="border-l-4 border-[#4C1D95] pl-4">
+                <div className="flex items-center gap-2 mb-1">
+                  {done.has(l.id)
+                    ? <CheckCircle2 className="text-emerald-600" size={16} />
+                    : <Circle className="text-slate-400" size={16} />}
+                  <span className="text-xs text-slate-500">Aula {l.order_index}</span>
+                  <span className="text-xs text-slate-400">•</span>
+                  <span className="text-[11px] inline-flex items-center gap-0.5 text-slate-500">
+                    <Zap size={11} />{l.xp_reward} XP
+                  </span>
+                  <span className="text-[11px] inline-flex items-center gap-0.5 text-slate-500">
+                    <Coins size={11} />{l.coin_reward}
+                  </span>
+                </div>
+                <h3 className="font-bold text-base mb-2">{l.title}</h3>
+                {l.content && (
+                  <div className="prose prose-sm max-w-none whitespace-pre-wrap text-slate-700">
+                    {l.content}
+                  </div>
+                )}
+                <div className="mt-2">
+                  <Button size="sm" variant="outline" onClick={() => {
+                    setActive(l);
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}>
+                    Abrir aula
+                  </Button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Card>
       </div>
     </div>
   );
