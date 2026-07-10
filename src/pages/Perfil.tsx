@@ -372,7 +372,7 @@ export default function Perfil() {
     }
     setGenerating(true);
     setOptionUrls([]);
-    setOptionsOpen(true);
+
     try {
       if (!admin) {
         const ok = await spendCoins(session.user.id, cost, "generate_avatar_ai");
