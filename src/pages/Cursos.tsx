@@ -34,7 +34,7 @@ export default function Cursos() {
       .from("courses")
       .select("id,title,description,area,level,cover_url")
       .eq("published", true)
-      .order("created_at", { ascending: false });
+      .order("title", { ascending: true });
     setCourses((cs ?? []) as Course[]);
     if (user?.id) {
       const { data: es } = await supabase
