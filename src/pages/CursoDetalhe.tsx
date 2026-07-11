@@ -118,7 +118,7 @@ export default function CursoDetalhe() {
                 return (
                   <li key={l.id}>
                     <button
-                      onClick={() => setActive(l)}
+                      onClick={() => setActive(isActive ? null : l)}
                       className={`w-full text-left p-3 rounded-lg border transition flex items-start gap-3 ${
                         isActive ? "border-[#4C1D95] bg-violet-50" : "hover:bg-slate-50"
                       }`}
@@ -135,6 +135,16 @@ export default function CursoDetalhe() {
                         </div>
                       </div>
                     </button>
+                    {isActive && l.content && (
+                      <div className="mt-2 mb-3 ml-8 p-3 rounded-lg bg-violet-50/70 border border-violet-200">
+                        <div className="text-[11px] font-semibold text-[#4C1D95] uppercase tracking-wide mb-2">
+                          Ementa desta aula
+                        </div>
+                        <div className="prose prose-sm max-w-none whitespace-pre-wrap text-slate-700">
+                          {l.content}
+                        </div>
+                      </div>
+                    )}
                   </li>
                 );
               })}
