@@ -33,9 +33,13 @@ export default function Cursos() {
     const { data: cs } = await supabase
       .from("courses")
       .select("id,title,description,area,level,cover_url")
-      .eq("published", true)
-      .order("created_at", { ascending: false });
-    setCourses((cs ?? []) as Course[]);
+      .eq("published", true);
+    const sorted = ((cs ?? []) as Course[]).sort((a, b) => {
+      const na = parseInt(a.title.match(/^(\d+)/)?.[1] ?? "9999", 10);
+      const nb = parseInt(b.title.match(/^(\d+)/)?.[1] ?? "9999", 10);
+      return na - nb || a.title.localeCompare(b.title);
+    });
+    setCourses(sorted);
     if (user?.id) {
       const { data: es } = await supabase
         .from("course_enrollments")
