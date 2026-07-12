@@ -102,6 +102,7 @@ export default function Avaliacao() {
     const { data, error } = await supabase.rpc("submit_assessment", {
       _course_id: id!,
       _answers: arr as any,
+      _indices: assessment.indices as any,
     });
     setSubmitting(false);
     if (error) {
