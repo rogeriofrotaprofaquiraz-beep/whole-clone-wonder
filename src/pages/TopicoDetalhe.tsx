@@ -631,6 +631,95 @@ const levelBadge = (title: string) => {
   return "Ensino Fundamental e Médio";
 };
 
+/* ============================================================================
+   DICIONÁRIO — explicações curtas de conceitos-chave (chave normalizada).
+============================================================================ */
+const KEY_GLOSSARY: Record<string, string> = {
+  "proton": "Partícula subatômica de carga positiva no núcleo. Define o número atômico (Z) do elemento.",
+  "neutron": "Partícula subatômica sem carga, também no núcleo. Contribui para a massa e a estabilidade nuclear.",
+  "eletron": "Partícula de carga negativa que ocupa orbitais ao redor do núcleo; responsável pelas ligações químicas.",
+  "numero atomico z": "Quantidade de prótons no núcleo — identifica o elemento químico.",
+  "numero de massa a": "Soma de prótons e nêutrons; expressa a massa do átomo em unidades de massa atômica (u).",
+  "isotopos": "Átomos do mesmo elemento (mesmo Z) que diferem no número de nêutrons e, portanto, na massa.",
+  "orbital": "Região do espaço com alta probabilidade (~90%) de encontrar o elétron; forma dada pela função de onda ψ.",
+  "nivel e subnivel": "Nível = camada (K, L, M...); subnível = subgrupo s, p, d, f, cada um com energia própria.",
+  "grupo familia": "Coluna vertical da Tabela Periódica; elementos do mesmo grupo têm propriedades químicas semelhantes.",
+  "periodo": "Linha horizontal da Tabela Periódica; indica o número de camadas eletrônicas.",
+  "metais nao metais semimetais": "Metais perdem elétrons; não metais os ganham; semimetais (Si, Ge) são intermediários — base da eletrônica.",
+  "raio atomico": "Distância do núcleo à camada mais externa; diminui no período e aumenta no grupo.",
+  "energia de ionizacao": "Energia mínima para arrancar um elétron do átomo gasoso; cresce da esquerda para a direita.",
+  "afinidade eletronica": "Energia liberada quando um átomo neutro captura um elétron.",
+  "eletronegatividade": "Tendência do átomo em atrair elétrons numa ligação (escala de Pauling; F = 3,98).",
+  "camada de valencia": "Camada eletrônica mais externa — envolvida diretamente nas ligações químicas.",
+  "ligacao ionica": "Transferência de elétrons entre metal e não metal; forma íons e cristais (ex.: NaCl).",
+  "ligacao covalente": "Compartilhamento de pares de elétrons entre não metais; forma moléculas (ex.: H₂O).",
+  "ligacao metalica": "Mar de elétrons livres entre cátions metálicos; explica condutividade e maleabilidade.",
+  "polaridade": "Distribuição desigual de carga em uma ligação/molécula; determina solubilidade e interações.",
+  "vsepr": "Teoria da Repulsão dos Pares Eletrônicos da camada de Valência — prevê a geometria molecular.",
+  "hibridizacao": "Mistura de orbitais atômicos (sp, sp², sp³) que explica ângulos e ligações múltiplas.",
+  "forcas intermoleculares": "Atrações entre moléculas (dipolo-dipolo, ligação de H, London) — definem ponto de ebulição.",
+  "reagente produto": "Reagentes: consumidos (esquerda). Produtos: formados (direita da equação).",
+  "coeficiente estequiometrico": "Número inteiro que balanceia a equação e indica a proporção em mols.",
+  "mol": "Quantidade de matéria: 1 mol = 6,022×10²³ entidades (constante de Avogadro).",
+  "massa molar": "Massa de 1 mol da substância, em g/mol — soma das massas atômicas.",
+  "reagente limitante": "Reagente que se esgota primeiro e limita a quantidade máxima de produto.",
+  "rendimento": "Razão percentual entre massa obtida experimentalmente e massa teórica esperada.",
+  "pureza": "Fração de substância pura em uma amostra que contém impurezas.",
+  "h hidronio": "Íon H₃O⁺ formado quando o ácido cede próton em água — responsável pela acidez.",
+  "oh hidroxido": "Íon OH⁻ liberado por bases; responsável pelo caráter básico e neutraliza H⁺.",
+  "ka kb": "Constantes de dissociação de ácidos (Ka) e bases (Kb); quanto maior, mais forte.",
+  "ph poh": "Escalas logarítmicas: pH = −log[H⁺], pH + pOH = 14 (a 25 °C).",
+  "neutralizacao": "Reação entre ácido e base formando sal e água, geralmente exotérmica.",
+  "tampao": "Solução que resiste a variações de pH ao receber ácido ou base (ex.: sangue).",
+  "indicador": "Substância que muda de cor em faixa específica de pH (ex.: fenolftaleína, tornassol).",
+  "sistema vizinhanca": "Sistema = porção estudada; vizinhança = tudo que troca energia/matéria com ele.",
+  "entalpia h": "Calor trocado a pressão constante; ΔH < 0 exotérmica, ΔH > 0 endotérmica.",
+  "entropia s": "Grau de desordem do sistema; cresce em processos espontâneos isolados.",
+  "energia livre g": "ΔG = ΔH − TΔS; ΔG < 0 → processo espontâneo.",
+  "exotermico endotermico": "Exo: libera calor (queima). Endo: absorve calor (fotossíntese, bolsa gelada).",
+  "lei de hess": "ΔH total é soma dos ΔH das etapas — a entalpia é função de estado.",
+  "entalpia de formacao": "ΔH°f — energia envolvida na formação de 1 mol da substância a partir dos elementos no estado padrão.",
+  "materia": "Tudo que tem massa e ocupa lugar no espaço.",
+  "energia": "Capacidade de realizar trabalho ou provocar transformações — térmica, elétrica, química etc.",
+  "propriedades": "Características que identificam a substância: densidade, ponto de fusão, cor, condutividade.",
+  "transformacoes": "Processos que alteram a matéria (físicos ou químicos) modificando estado ou composição.",
+};
+
+function normalizeKey(k: string) {
+  return k
+    .toLowerCase()
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .replace(/[()+\-−·×⁺⁻⁰¹²³⁴⁵⁶⁷⁸⁹]/g, "")
+    .replace(/[/,]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+function explainKey(term: string): string {
+  const norm = normalizeKey(term);
+  if (KEY_GLOSSARY[norm]) return KEY_GLOSSARY[norm];
+  const short = normalizeKey(term.replace(/\(.*?\)/g, ""));
+  if (KEY_GLOSSARY[short]) return KEY_GLOSSARY[short];
+  const parts = term.split(/[()]/)[0].trim();
+  return `Conceito fundamental relacionado a ${parts.toLowerCase()} — essencial para compreender o comportamento da matéria neste tópico.`;
+}
+function highlightPrinciple(text: string): { head: string; rest: string } {
+  const m = text.match(/^([^.:—-]+?)([.:—-]\s+)(.+)$/);
+  if (m) return { head: m[1].trim(), rest: m[3].trim() };
+  return { head: text, rest: "" };
+}
+function imageForExample(text: string): string {
+  const stop = new Set(["de","da","do","em","para","com","no","na","os","as","um","uma","que","por","aos","pela","pelo","dos","das"]);
+  const words = text
+    .toLowerCase()
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9 ]/g, " ")
+    .split(/\s+/)
+    .filter(w => w.length > 3 && !stop.has(w))
+    .slice(0, 3)
+    .join(",");
+  return `https://source.unsplash.com/featured/600x400/?${encodeURIComponent(words || "chemistry,laboratory")}`;
+}
+
 export default function TopicoDetalhe() {
   const { slug } = useParams();
   const [params] = useSearchParams();
@@ -679,28 +768,42 @@ export default function TopicoDetalhe() {
               <p className="text-slate-700 leading-relaxed">{c.formal}</p>
             </section>
 
-            {/* Conceitos-chave */}
+            {/* Conceitos-chave — cartões com explicação */}
             <section>
-              <div className="flex items-center gap-2 text-[#4C1D95] font-bold mb-2">
-                <Lightbulb size={18} /> Conceitos-chave
+              <div className="flex items-center gap-2 text-[#4C1D95] font-bold mb-3">
+                <Lightbulb size={18} /> Conceitos-chave (com explicação)
               </div>
-              <div className="flex flex-wrap gap-2">
+              <div className="grid sm:grid-cols-2 gap-3">
                 {c.key.map((k, i) => (
-                  <span key={i} className="px-3 py-1 rounded-full bg-violet-100 text-[#4C1D95] text-xs font-semibold">
-                    {k}
-                  </span>
+                  <div key={i} className="rounded-lg border border-violet-200 bg-violet-50/60 p-3">
+                    <div className="text-sm font-bold text-[#4C1D95] mb-1">{k}</div>
+                    <div className="text-xs text-slate-700 leading-relaxed">{explainKey(k)}</div>
+                  </div>
                 ))}
               </div>
             </section>
 
-            {/* Princípios */}
+            {/* Princípios — cabeçalho destacado + explicação */}
             <section>
-              <div className="flex items-center gap-2 text-[#4C1D95] font-bold mb-2">
+              <div className="flex items-center gap-2 text-[#4C1D95] font-bold mb-3">
                 <Target size={18} /> Princípios e leis fundamentais
               </div>
-              <ul className="space-y-1.5 text-sm text-slate-700 list-disc pl-5">
-                {c.principles.map((p, i) => <li key={i}>{p}</li>)}
-              </ul>
+              <ol className="space-y-2">
+                {c.principles.map((p, i) => {
+                  const { head, rest } = highlightPrinciple(p);
+                  return (
+                    <li key={i} className="rounded-lg border border-slate-200 bg-white p-3 flex gap-3">
+                      <div className="w-7 h-7 shrink-0 rounded-full bg-[#4C1D95] text-white text-xs font-bold flex items-center justify-center">
+                        {i + 1}
+                      </div>
+                      <div className="flex-1">
+                        <div className="font-bold text-sm text-slate-900">{head}</div>
+                        {rest && <div className="text-xs text-slate-600 mt-0.5 leading-relaxed">{rest}</div>}
+                      </div>
+                    </li>
+                  );
+                })}
+              </ol>
             </section>
 
             {/* Fórmulas */}
@@ -720,25 +823,42 @@ export default function TopicoDetalhe() {
               </section>
             )}
 
-            {/* Exemplos + Erros comuns */}
-            <section className="grid md:grid-cols-2 gap-4">
-              <div className="rounded-xl p-4 bg-emerald-50 border border-emerald-200">
-                <div className="flex items-center gap-2 text-emerald-700 font-bold mb-2">
-                  <FlaskConical size={18} /> Aplicações e cotidiano
-                </div>
-                <ul className="space-y-1.5 text-sm text-slate-700 list-disc pl-5">
-                  {c.examples.map((e, i) => <li key={i}>{e}</li>)}
-                </ul>
+            {/* Aplicações e cotidiano — cartões com imagens */}
+            <section>
+              <div className="flex items-center gap-2 text-emerald-700 font-bold mb-3">
+                <FlaskConical size={18} /> Aplicações e cotidiano
               </div>
-              <div className="rounded-xl p-4 bg-red-50 border border-red-200">
-                <div className="flex items-center gap-2 text-red-700 font-bold mb-2">
-                  <AlertTriangle size={18} /> Erros comuns
-                </div>
-                <ul className="space-y-1.5 text-sm text-slate-700 list-disc pl-5">
-                  {c.pitfalls.map((p, i) => <li key={i}>{p}</li>)}
-                </ul>
+              <div className="grid sm:grid-cols-2 gap-3">
+                {c.examples.map((e, i) => (
+                  <div key={i} className="rounded-xl overflow-hidden border border-emerald-200 bg-emerald-50/50 flex flex-col">
+                    <div className="aspect-[16/10] bg-gradient-to-br from-emerald-100 to-emerald-200 relative overflow-hidden">
+                      <img
+                        src={imageForExample(e)}
+                        alt={`Exemplo cotidiano: ${e.slice(0, 60)}`}
+                        loading="lazy"
+                        className="w-full h-full object-cover"
+                        onError={(ev) => { (ev.target as HTMLImageElement).style.display = "none"; }}
+                      />
+                      <div className="absolute top-2 left-2 bg-white/90 text-emerald-700 text-[10px] font-bold px-2 py-0.5 rounded-full">
+                        Exemplo {i + 1}
+                      </div>
+                    </div>
+                    <div className="p-3 text-sm text-slate-700 leading-relaxed flex-1">{e}</div>
+                  </div>
+                ))}
               </div>
             </section>
+
+            {/* Erros comuns */}
+            <section className="rounded-xl p-4 bg-red-50 border border-red-200">
+              <div className="flex items-center gap-2 text-red-700 font-bold mb-2">
+                <AlertTriangle size={18} /> Erros comuns
+              </div>
+              <ul className="space-y-1.5 text-sm text-slate-700 list-disc pl-5">
+                {c.pitfalls.map((p, i) => <li key={i}>{p}</li>)}
+              </ul>
+            </section>
+
 
             {/* Exercícios */}
             <section className="rounded-xl p-4 bg-amber-50 border border-amber-200">
