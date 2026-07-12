@@ -21,34 +21,75 @@ function slugify(s: string) {
     .replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 80);
 }
 
-/** Renderiza conteúdo em markdown-lite transformando cada bullet em link para /topico/:slug */
-function LessonContent({ text, backTo }: { text: string; backTo: string }) {
-  const lines = text.split("\n");
+/** Renderiza conteúdo em markdown-lite agrupando seções e transformando bullets em links. */
+function LessonContent({ text, backTo, lessonTitle }: { text: string; backTo: string; lessonTitle?: string }) {
+  // Agrupa por seções ## ; ignora H1 (duplica o título da aula) e junta bullets.
+  type Section = { heading?: string; bullets: string[]; paragraphs: string[] };
+  const sections: Section[] = [];
+  let current: Section = { bullets: [], paragraphs: [] };
+  sections.push(current);
+
+  for (const raw of text.split("\n")) {
+    const line = raw.trimEnd();
+    if (!line.trim()) continue;
+    const h1 = line.match(/^\s*#\s+(.+)$/);
+    if (h1) {
+      // Pula H1 se for igual ao título da aula
+      if (lessonTitle && h1[1].trim().toLowerCase() === lessonTitle.trim().toLowerCase()) continue;
+      current = { heading: h1[1].trim(), bullets: [], paragraphs: [] };
+      sections.push(current);
+      continue;
+    }
+    const h2 = line.match(/^\s*#{2,6}\s+(.+)$/);
+    if (h2) {
+      current = { heading: h2[1].trim(), bullets: [], paragraphs: [] };
+      sections.push(current);
+      continue;
+    }
+    const bullet = line.match(/^\s*[-•*]\s+(.+)$/);
+    if (bullet) { current.bullets.push(bullet[1].replace(/\*\*/g, "").trim()); continue; }
+    current.paragraphs.push(line);
+  }
+
+  const nonEmpty = sections.filter(s => s.heading || s.bullets.length || s.paragraphs.length);
+
   return (
-    <div className="text-sm text-slate-700 space-y-1.5">
-      {lines.map((raw, i) => {
-        const line = raw.trimEnd();
-        const bullet = line.match(/^\s*[-•*]\s+(.+)$/);
-        if (bullet) {
-          const topic = bullet[1].replace(/\*\*/g, "").trim();
-          const url = `/topico/${slugify(topic)}?t=${encodeURIComponent(topic)}&back=${encodeURIComponent(backTo)}`;
-          return (
-            <div key={i} className="flex items-start gap-2">
-              <span className="text-[#4C1D95] mt-0.5">•</span>
-              <Link to={url} className="text-[#4C1D95] hover:underline hover:text-[#3b1478] font-medium">
-                {topic}
-              </Link>
+    <div className="space-y-4">
+      {nonEmpty.map((s, i) => (
+        <div key={i}>
+          {s.heading && (
+            <h4 className="text-sm font-bold uppercase tracking-wide text-[#4C1D95] mb-2">
+              {s.heading}
+            </h4>
+          )}
+          {s.paragraphs.length > 0 && (
+            <div className="space-y-1.5 mb-2">
+              {s.paragraphs.map((p, k) => (
+                <p key={k} className="text-sm text-slate-700 leading-relaxed"
+                   dangerouslySetInnerHTML={{ __html: p.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>") }} />
+              ))}
             </div>
-          );
-        }
-        if (/^\s*#{1,6}\s+/.test(line)) {
-          return <h4 key={i} className="font-bold text-slate-900 mt-3">{line.replace(/^\s*#+\s+/, "")}</h4>;
-        }
-        if (!line.trim()) return <div key={i} className="h-2" />;
-        return <p key={i} className="leading-relaxed" dangerouslySetInnerHTML={{
-          __html: line.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
-        }} />;
-      })}
+          )}
+          {s.bullets.length > 0 && (
+            <ul className="grid sm:grid-cols-2 gap-1.5">
+              {s.bullets.map((topic, k) => {
+                const url = `/topico/${slugify(topic)}?t=${encodeURIComponent(topic)}&back=${encodeURIComponent(backTo)}`;
+                return (
+                  <li key={k}>
+                    <Link
+                      to={url}
+                      className="flex items-start gap-2 p-2 rounded-md border border-violet-200 bg-violet-50/60 hover:bg-violet-100 hover:border-violet-400 transition text-sm text-[#4C1D95] font-medium"
+                    >
+                      <span className="mt-0.5">→</span>
+                      <span className="flex-1">{topic}</span>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          )}
+        </div>
+      ))}
     </div>
   );
 }
