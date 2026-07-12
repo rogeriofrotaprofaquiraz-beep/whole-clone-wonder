@@ -203,8 +203,8 @@ export default function CursoDetalhe() {
                     <iframe src={active.video_url} className="w-full h-full" allowFullScreen />
                   </div>
                 )}
-                <div className="prose prose-sm max-w-none whitespace-pre-wrap text-slate-700">
-                  {active.content}
+                <div className="prose prose-sm max-w-none text-slate-700">
+                  {active.content && <LessonContent text={active.content} backTo={`/cursos/${id}`} />}
                 </div>
                 <div className="mt-6 flex items-center gap-3">
                   <Button
@@ -251,8 +251,8 @@ export default function CursoDetalhe() {
                 </div>
                 <h3 className="font-bold text-base mb-2">{l.title}</h3>
                 {l.content && (
-                  <div className="prose prose-sm max-w-none whitespace-pre-wrap text-slate-700">
-                    {l.content}
+                  <div className="prose prose-sm max-w-none text-slate-700">
+                    <LessonContent text={l.content} backTo={`/cursos/${id}`} />
                   </div>
                 )}
                 <div className="mt-2">
