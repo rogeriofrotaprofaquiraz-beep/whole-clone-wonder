@@ -631,6 +631,95 @@ const levelBadge = (title: string) => {
   return "Ensino Fundamental e Médio";
 };
 
+/* ============================================================================
+   DICIONÁRIO — explicações curtas de conceitos-chave (chave normalizada).
+============================================================================ */
+const KEY_GLOSSARY: Record<string, string> = {
+  "proton": "Partícula subatômica de carga positiva no núcleo. Define o número atômico (Z) do elemento.",
+  "neutron": "Partícula subatômica sem carga, também no núcleo. Contribui para a massa e a estabilidade nuclear.",
+  "eletron": "Partícula de carga negativa que ocupa orbitais ao redor do núcleo; responsável pelas ligações químicas.",
+  "numero atomico z": "Quantidade de prótons no núcleo — identifica o elemento químico.",
+  "numero de massa a": "Soma de prótons e nêutrons; expressa a massa do átomo em unidades de massa atômica (u).",
+  "isotopos": "Átomos do mesmo elemento (mesmo Z) que diferem no número de nêutrons e, portanto, na massa.",
+  "orbital": "Região do espaço com alta probabilidade (~90%) de encontrar o elétron; forma dada pela função de onda ψ.",
+  "nivel e subnivel": "Nível = camada (K, L, M...); subnível = subgrupo s, p, d, f, cada um com energia própria.",
+  "grupo familia": "Coluna vertical da Tabela Periódica; elementos do mesmo grupo têm propriedades químicas semelhantes.",
+  "periodo": "Linha horizontal da Tabela Periódica; indica o número de camadas eletrônicas.",
+  "metais nao metais semimetais": "Metais perdem elétrons; não metais os ganham; semimetais (Si, Ge) são intermediários — base da eletrônica.",
+  "raio atomico": "Distância do núcleo à camada mais externa; diminui no período e aumenta no grupo.",
+  "energia de ionizacao": "Energia mínima para arrancar um elétron do átomo gasoso; cresce da esquerda para a direita.",
+  "afinidade eletronica": "Energia liberada quando um átomo neutro captura um elétron.",
+  "eletronegatividade": "Tendência do átomo em atrair elétrons numa ligação (escala de Pauling; F = 3,98).",
+  "camada de valencia": "Camada eletrônica mais externa — envolvida diretamente nas ligações químicas.",
+  "ligacao ionica": "Transferência de elétrons entre metal e não metal; forma íons e cristais (ex.: NaCl).",
+  "ligacao covalente": "Compartilhamento de pares de elétrons entre não metais; forma moléculas (ex.: H₂O).",
+  "ligacao metalica": "Mar de elétrons livres entre cátions metálicos; explica condutividade e maleabilidade.",
+  "polaridade": "Distribuição desigual de carga em uma ligação/molécula; determina solubilidade e interações.",
+  "vsepr": "Teoria da Repulsão dos Pares Eletrônicos da camada de Valência — prevê a geometria molecular.",
+  "hibridizacao": "Mistura de orbitais atômicos (sp, sp², sp³) que explica ângulos e ligações múltiplas.",
+  "forcas intermoleculares": "Atrações entre moléculas (dipolo-dipolo, ligação de H, London) — definem ponto de ebulição.",
+  "reagente produto": "Reagentes: consumidos (esquerda). Produtos: formados (direita da equação).",
+  "coeficiente estequiometrico": "Número inteiro que balanceia a equação e indica a proporção em mols.",
+  "mol": "Quantidade de matéria: 1 mol = 6,022×10²³ entidades (constante de Avogadro).",
+  "massa molar": "Massa de 1 mol da substância, em g/mol — soma das massas atômicas.",
+  "reagente limitante": "Reagente que se esgota primeiro e limita a quantidade máxima de produto.",
+  "rendimento": "Razão percentual entre massa obtida experimentalmente e massa teórica esperada.",
+  "pureza": "Fração de substância pura em uma amostra que contém impurezas.",
+  "h hidronio": "Íon H₃O⁺ formado quando o ácido cede próton em água — responsável pela acidez.",
+  "oh hidroxido": "Íon OH⁻ liberado por bases; responsável pelo caráter básico e neutraliza H⁺.",
+  "ka kb": "Constantes de dissociação de ácidos (Ka) e bases (Kb); quanto maior, mais forte.",
+  "ph poh": "Escalas logarítmicas: pH = −log[H⁺], pH + pOH = 14 (a 25 °C).",
+  "neutralizacao": "Reação entre ácido e base formando sal e água, geralmente exotérmica.",
+  "tampao": "Solução que resiste a variações de pH ao receber ácido ou base (ex.: sangue).",
+  "indicador": "Substância que muda de cor em faixa específica de pH (ex.: fenolftaleína, tornassol).",
+  "sistema vizinhanca": "Sistema = porção estudada; vizinhança = tudo que troca energia/matéria com ele.",
+  "entalpia h": "Calor trocado a pressão constante; ΔH < 0 exotérmica, ΔH > 0 endotérmica.",
+  "entropia s": "Grau de desordem do sistema; cresce em processos espontâneos isolados.",
+  "energia livre g": "ΔG = ΔH − TΔS; ΔG < 0 → processo espontâneo.",
+  "exotermico endotermico": "Exo: libera calor (queima). Endo: absorve calor (fotossíntese, bolsa gelada).",
+  "lei de hess": "ΔH total é soma dos ΔH das etapas — a entalpia é função de estado.",
+  "entalpia de formacao": "ΔH°f — energia envolvida na formação de 1 mol da substância a partir dos elementos no estado padrão.",
+  "materia": "Tudo que tem massa e ocupa lugar no espaço.",
+  "energia": "Capacidade de realizar trabalho ou provocar transformações — térmica, elétrica, química etc.",
+  "propriedades": "Características que identificam a substância: densidade, ponto de fusão, cor, condutividade.",
+  "transformacoes": "Processos que alteram a matéria (físicos ou químicos) modificando estado ou composição.",
+};
+
+function normalizeKey(k: string) {
+  return k
+    .toLowerCase()
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .replace(/[()+\-−·×⁺⁻⁰¹²³⁴⁵⁶⁷⁸⁹]/g, "")
+    .replace(/[/,]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+function explainKey(term: string): string {
+  const norm = normalizeKey(term);
+  if (KEY_GLOSSARY[norm]) return KEY_GLOSSARY[norm];
+  const short = normalizeKey(term.replace(/\(.*?\)/g, ""));
+  if (KEY_GLOSSARY[short]) return KEY_GLOSSARY[short];
+  const parts = term.split(/[()]/)[0].trim();
+  return `Conceito fundamental relacionado a ${parts.toLowerCase()} — essencial para compreender o comportamento da matéria neste tópico.`;
+}
+function highlightPrinciple(text: string): { head: string; rest: string } {
+  const m = text.match(/^([^.:—-]+?)([.:—-]\s+)(.+)$/);
+  if (m) return { head: m[1].trim(), rest: m[3].trim() };
+  return { head: text, rest: "" };
+}
+function imageForExample(text: string): string {
+  const stop = new Set(["de","da","do","em","para","com","no","na","os","as","um","uma","que","por","aos","pela","pelo","dos","das"]);
+  const words = text
+    .toLowerCase()
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9 ]/g, " ")
+    .split(/\s+/)
+    .filter(w => w.length > 3 && !stop.has(w))
+    .slice(0, 3)
+    .join(",");
+  return `https://source.unsplash.com/featured/600x400/?${encodeURIComponent(words || "chemistry,laboratory")}`;
+}
+
 export default function TopicoDetalhe() {
   const { slug } = useParams();
   const [params] = useSearchParams();
