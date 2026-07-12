@@ -30,8 +30,18 @@ type Assessment = {
   title: string;
   passing_score: number;
   questions: Question[];
+  indices: number[];
 };
 type Course = { id: string; title: string; hours: number };
+
+function pickRandom(total: number, n: number): number[] {
+  const arr = Array.from({ length: total }, (_, i) => i);
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr.slice(0, Math.min(n, total));
+}
 
 export default function Avaliacao() {
   const { id } = useParams();
@@ -45,6 +55,24 @@ export default function Avaliacao() {
   const [result, setResult] = useState<any>(null);
   const [imgError, setImgError] = useState<Record<number, boolean>>({});
 
+  const buildAttempt = (raw: any) => {
+    const bank: Question[] = Array.isArray(raw.question_bank) && raw.question_bank.length > 0
+      ? raw.question_bank
+      : (raw.questions ?? []);
+    const perAttempt = raw.questions_per_attempt ?? 10;
+    const indices = pickRandom(bank.length, perAttempt);
+    const questions = indices.map((i) => bank[i]);
+    return {
+      id: raw.id,
+      title: raw.title,
+      passing_score: raw.passing_score,
+      questions,
+      indices,
+      _bank: bank,
+      _perAttempt: perAttempt,
+    } as Assessment & { _bank: Question[]; _perAttempt: number };
+  };
+
   useEffect(() => {
     (async () => {
       if (!id) return;
@@ -53,12 +81,12 @@ export default function Avaliacao() {
         supabase.from("courses").select("id,title,hours").eq("id", id).maybeSingle(),
         supabase
           .from("course_assessments")
-          .select("id,title,passing_score,questions")
+          .select("id,title,passing_score,questions,question_bank,questions_per_attempt")
           .eq("course_id", id)
           .maybeSingle(),
       ]);
       setCourse(c as any);
-      setAssessment(a as any);
+      if (a) setAssessment(buildAttempt(a));
       setLoading(false);
     })();
   }, [id]);
