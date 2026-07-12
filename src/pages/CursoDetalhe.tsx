@@ -218,9 +218,7 @@ export default function CursoDetalhe() {
                         <div className="text-[11px] font-semibold text-[#4C1D95] uppercase tracking-wide mb-2">
                           Ementa desta aula
                         </div>
-                        <div className="prose prose-sm max-w-none whitespace-pre-wrap text-slate-700">
-                          {l.content}
-                        </div>
+                        <LessonContent text={l.content} backTo={`/cursos/${id}`} lessonTitle={l.title} />
                       </div>
                     )}
                   </li>
