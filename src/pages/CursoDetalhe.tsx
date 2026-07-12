@@ -144,8 +144,19 @@ export default function CursoDetalhe() {
         .eq("user_id", user.id);
       setDone(new Set((cs ?? []).map((x: any) => x.lesson_id)));
     }
+    if (user?.id) {
+      const { data: att } = await supabase
+        .from("assessment_attempts")
+        .select("passed")
+        .eq("course_id", id)
+        .eq("user_id", user.id);
+      const rows = att ?? [];
+      setPassed(rows.some((r: any) => r.passed));
+      setFailedAttempts(rows.filter((r: any) => !r.passed).length);
+    }
     setLoading(false);
   };
+
 
   useEffect(() => { load(); /* eslint-disable-next-line */ }, [id, user?.id]);
 
