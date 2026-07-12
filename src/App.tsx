@@ -20,6 +20,11 @@ import Cursos from "./pages/Cursos.tsx";
 import CursoDetalhe from "./pages/CursoDetalhe.tsx";
 import TopicoDetalhe from "./pages/TopicoDetalhe.tsx";
 import AdminMaterial from "./pages/AdminMaterial.tsx";
+import Avaliacao from "./pages/Avaliacao.tsx";
+import Certificado from "./pages/Certificado.tsx";
+
+
+
 
 
 const queryClient = new QueryClient();
@@ -45,6 +50,8 @@ const App = () => (
           <Route path="/banco" element={<Banco />} />
           <Route path="/cursos" element={<Cursos />} />
           <Route path="/cursos/:id" element={<CursoDetalhe />} />
+          <Route path="/cursos/:id/avaliacao" element={<Avaliacao />} />
+          <Route path="/certificado/:code" element={<Certificado />} />
           <Route path="/topico/:slug" element={<TopicoDetalhe />} />
           <Route path="/admin/material" element={<AdminMaterial />} />
           <Route path="/historico" element={<Historico />} />
