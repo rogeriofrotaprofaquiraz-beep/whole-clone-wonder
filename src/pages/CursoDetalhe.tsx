@@ -16,6 +16,43 @@ type Lesson = {
   order_index: number; xp_reward: number; coin_reward: number;
 };
 
+function slugify(s: string) {
+  return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 80);
+}
+
+/** Renderiza conteúdo em markdown-lite transformando cada bullet em link para /topico/:slug */
+function LessonContent({ text, backTo }: { text: string; backTo: string }) {
+  const lines = text.split("\n");
+  return (
+    <div className="text-sm text-slate-700 space-y-1.5">
+      {lines.map((raw, i) => {
+        const line = raw.trimEnd();
+        const bullet = line.match(/^\s*[-•*]\s+(.+)$/);
+        if (bullet) {
+          const topic = bullet[1].replace(/\*\*/g, "").trim();
+          const url = `/topico/${slugify(topic)}?t=${encodeURIComponent(topic)}&back=${encodeURIComponent(backTo)}`;
+          return (
+            <div key={i} className="flex items-start gap-2">
+              <span className="text-[#4C1D95] mt-0.5">•</span>
+              <Link to={url} className="text-[#4C1D95] hover:underline hover:text-[#3b1478] font-medium">
+                {topic}
+              </Link>
+            </div>
+          );
+        }
+        if (/^\s*#{1,6}\s+/.test(line)) {
+          return <h4 key={i} className="font-bold text-slate-900 mt-3">{line.replace(/^\s*#+\s+/, "")}</h4>;
+        }
+        if (!line.trim()) return <div key={i} className="h-2" />;
+        return <p key={i} className="leading-relaxed" dangerouslySetInnerHTML={{
+          __html: line.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+        }} />;
+      })}
+    </div>
+  );
+}
+
 export default function CursoDetalhe() {
   const { id } = useParams();
   const navigate = useNavigate();
