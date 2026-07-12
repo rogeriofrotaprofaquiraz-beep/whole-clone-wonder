@@ -77,19 +77,55 @@ export default function Avaliacao() {
     (async () => {
       if (!id) return;
       setLoading(true);
-      const [{ data: c }, { data: a }] = await Promise.all([
+      const { data: userData } = await supabase.auth.getUser();
+      const uid = userData.user?.id;
+      const [{ data: c }, { data: a }, { data: lessonRows }] = await Promise.all([
         supabase.from("courses").select("id,title,hours").eq("id", id).maybeSingle(),
         supabase
           .from("course_assessments")
           .select("id,title,passing_score,questions,question_bank,questions_per_attempt")
           .eq("course_id", id)
           .maybeSingle(),
+        supabase.from("course_lessons").select("id").eq("course_id", id),
       ]);
       setCourse(c as any);
+
+      if (uid && lessonRows && lessonRows.length > 0) {
+        const { data: comp } = await supabase
+          .from("lesson_completions")
+          .select("lesson_id")
+          .eq("user_id", uid)
+          .in("lesson_id", lessonRows.map((l: any) => l.id));
+        const doneCount = (comp ?? []).length;
+        const { data: att } = await supabase
+          .from("assessment_attempts")
+          .select("passed")
+          .eq("course_id", id)
+          .eq("user_id", uid);
+        const rows = att ?? [];
+        const alreadyPassed = rows.some((r: any) => r.passed);
+        const failed = rows.filter((r: any) => !r.passed).length;
+        if (!alreadyPassed) {
+          if (doneCount < lessonRows.length) {
+            toast.error("Conclua todas as aulas antes de fazer a avaliação");
+            setLoading(false);
+            navigate(`/cursos/${id}`);
+            return;
+          }
+          if (failed >= 3) {
+            toast.error("Módulo bloqueado: 3 tentativas esgotadas");
+            setLoading(false);
+            navigate(`/cursos/${id}`);
+            return;
+          }
+        }
+      }
+
       if (a) setAssessment(buildAttempt(a));
       setLoading(false);
     })();
   }, [id]);
+
 
   const submit = async () => {
     if (!assessment) return;

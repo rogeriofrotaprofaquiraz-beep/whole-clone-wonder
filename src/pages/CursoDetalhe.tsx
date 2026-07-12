@@ -119,6 +119,9 @@ export default function CursoDetalhe() {
   const [active, setActive] = useState<Lesson | null>(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const [failedAttempts, setFailedAttempts] = useState(0);
+  const [passed, setPassed] = useState(false);
+
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data }) => setUser(data.user));
@@ -141,8 +144,19 @@ export default function CursoDetalhe() {
         .eq("user_id", user.id);
       setDone(new Set((cs ?? []).map((x: any) => x.lesson_id)));
     }
+    if (user?.id) {
+      const { data: att } = await supabase
+        .from("assessment_attempts")
+        .select("passed")
+        .eq("course_id", id)
+        .eq("user_id", user.id);
+      const rows = att ?? [];
+      setPassed(rows.some((r: any) => r.passed));
+      setFailedAttempts(rows.filter((r: any) => !r.passed).length);
+    }
     setLoading(false);
   };
+
 
   useEffect(() => { load(); /* eslint-disable-next-line */ }, [id, user?.id]);
 
@@ -199,13 +213,29 @@ export default function CursoDetalhe() {
                 <Progress value={progress} className="bg-white/20" />
               </div>
               <div className="mt-4">
-                <Button
-                  onClick={() => navigate(`/cursos/${course.id}/avaliacao`)}
-                  className="bg-white text-[#4C1D95] hover:bg-white/90 font-bold"
-                >
-                  🎓 Fazer avaliação final (nota mínima 7,0)
-                </Button>
+                {(() => {
+                  const allDone = lessons.length > 0 && done.size >= lessons.length;
+                  const blocked = failedAttempts >= 3 && !passed;
+                  const disabled = (!allDone && !passed) || blocked;
+                  const label = passed
+                    ? "🎓 Avaliação aprovada — ver certificado"
+                    : blocked
+                    ? "🚫 Módulo bloqueado (3 tentativas esgotadas)"
+                    : !allDone
+                    ? `🔒 Conclua todas as aulas para liberar (${done.size}/${lessons.length})`
+                    : `🎓 Fazer avaliação final (tentativas restantes: ${3 - failedAttempts})`;
+                  return (
+                    <Button
+                      onClick={() => navigate(`/cursos/${course.id}/avaliacao`)}
+                      disabled={disabled}
+                      className="bg-white text-[#4C1D95] hover:bg-white/90 font-bold disabled:opacity-60"
+                    >
+                      {label}
+                    </Button>
+                  );
+                })()}
               </div>
+
             </div>
           </div>
         </Card>
