@@ -5,6 +5,8 @@ import {
   ArrowLeft, BookOpen, Lightbulb, FlaskConical, Sparkles, GraduationCap,
   Atom, Library, Target, Sigma, AlertTriangle,
 } from "lucide-react";
+import TopicExercise from "@/components/TopicExercise";
+
 
 /* ============================================================================
    PÁGINA EXPLICATIVA DE UM TÓPICO
