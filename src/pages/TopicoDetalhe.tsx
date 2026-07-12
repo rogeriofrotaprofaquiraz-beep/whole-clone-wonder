@@ -616,7 +616,7 @@ function buildContent(title: string): Section {
           "Por que o vinagre remove crostas de calcário?",
         ],
         refs: [
-          `${BOOKS[0].short}, boxes \"Química na vida\"`,
+          `${BOOKS[0].short}, boxes "Química na vida"`,
           `${BOOKS[1].short}, cap. contexto ambiental`,
           `${BOOKS[4].short}, todas os volumes — seções aplicadas`,
         ],
@@ -747,80 +747,223 @@ function explainPrinciple(text: string): string {
   return "Princípio essencial: relaciona causa e efeito das transformações químicas descritas neste tópico. Compreender esta regra evita erros conceituais e agiliza a resolução de exercícios.";
 }
 
-/* Mapa PT → consulta de imagem em inglês (loremflickr entende termos em inglês).
-   Detecta palavras/expressões-chave em cada exemplo e devolve uma query focada. */
-const EXAMPLE_IMAGE_MAP: { keys: RegExp; query: string }[] = [
-  // cotidiano / limpeza / cozinha
-  { keys: /produtos.*(casa|limpeza|cosm)|alimentos.*cosm/i, query: "ultra,processed,food,supermarket,snacks" },
-  { keys: /base para.*(ind[uú]stria|farmac)|ind[uú]stria.*farmac/i, query: "pharmaceutical,laboratory,scientist,lab" },
+type ExampleScene =
+  | "processedFood" | "pharmaLab" | "exam" | "archaeology" | "neon" | "mri"
+  | "sodiumWater" | "balloon" | "salt" | "water" | "metal" | "flame"
+  | "antacid" | "crops" | "stomach" | "blood" | "acidRain" | "coldPack"
+  | "photosynthesis" | "enzyme" | "carCatalyst" | "fridge" | "factory" | "soda"
+  | "oxygenBlood" | "saline" | "antifreeze" | "osmosis" | "battery" | "electrolysis"
+  | "chrome" | "plastic" | "vinegar" | "glucose" | "nuclear" | "thyroid"
+  | "airbag" | "tire" | "diver" | "matter" | "air" | "granite" | "separation"
+  | "soap" | "yogurt" | "sunscreen" | "chemistry";
 
-  { keys: /alimento|comida|cozinha|receita|pão|bolo/i, query: "food,cooking,kitchen" },
-  { keys: /cosm[eé]tic|shampoo|creme|maquiagem/i, query: "cosmetics,bottles" },
-  { keys: /limpeza|sab[aã]o|detergente|água sanitária/i, query: "soap,cleaning,detergent" },
-  { keys: /ind[uú]stria|f[aá]brica|refinaria|planta qu[ií]mica/i, query: "chemical,factory,industry" },
-  { keys: /farmac[eê]utic|rem[eé]dio|medicamento|comprimido|f[aá]rmaco/i, query: "pharmacy,pills,medicine" },
-  { keys: /ambiental|poluição|meio ambiente|sustentabilidade/i, query: "environment,pollution,nature" },
-  { keys: /vestibular|enem|prova|estudo|estudante/i, query: "student,exam,books" },
-  // átomo / periódica
-  { keys: /carbono[- ]?14|datação|arqueolog/i, query: "archaeology,fossil,radiocarbon" },
-  { keys: /neônio|letreir|neon/i, query: "neon,sign,city" },
-  { keys: /resson[aâ]ncia magn[eé]tica|mri/i, query: "MRI,scan,hospital" },
-  { keys: /sódio.*(água|reage)|metal alcalino/i, query: "sodium,reaction,water" },
-  { keys: /gás(es)? nobre|hélio|argônio/i, query: "noble,gas,balloon" },
-  { keys: /halog[eê]nio|cloro|flúor|iodo/i, query: "chlorine,salt,crystals" },
-  // ligações
-  { keys: /\bnacl\b|sal de cozinha|cloreto de s[oó]dio/i, query: "salt,crystals,cooking" },
-  { keys: /água|h2o|gelo/i, query: "water,drop,molecule" },
-  { keys: /cobre|ferro|alumínio|cabo|fio/i, query: "copper,wire,metal" },
-  { keys: /metano|ch4|gás natural/i, query: "gas,stove,flame" },
-  // reações / estequiometria
-  { keys: /combustão|queima|combust[ií]vel/i, query: "flame,combustion,fire" },
-  { keys: /neutralização|antiácido|azia/i, query: "antacid,tablets,stomach" },
-  { keys: /haber[- ]bosch|amônia|fertilizante/i, query: "fertilizer,agriculture,crops" },
-  // ácido-base
-  { keys: /suco g[aá]strico|est[oô]mago/i, query: "stomach,anatomy,acid" },
-  { keys: /sangue|tampão bicarbon/i, query: "blood,cells,microscope" },
-  { keys: /chuva [aá]cida/i, query: "acid,rain,pollution" },
-  // termodinâmica
-  { keys: /queimar madeira|fogueira|lenha/i, query: "campfire,wood,burning" },
-  { keys: /bolsa gelada|instant cold pack/i, query: "cold,pack,ice" },
-  { keys: /fotoss[ií]ntese/i, query: "photosynthesis,leaves,sun" },
-  // eletroquímica / gases
-  { keys: /pilha|bateria/i, query: "battery,cells,energy" },
-  { keys: /eletróli|galvani/i, query: "electrolysis,industrial" },
-  { keys: /balão|pneu|gás/i, query: "balloon,gas,helium" },
-  // orgânica
-  { keys: /pl[aá]stico|polímero|pet\b/i, query: "plastic,bottles,recycling" },
-  { keys: /petr[oó]leo|gasolina|combust/i, query: "oil,refinery,fuel" },
-  { keys: /álcool|etanol|cachaça/i, query: "alcohol,ethanol,bottle" },
-  // nuclear
-  { keys: /nuclear|urânio|radioativ/i, query: "nuclear,reactor,radiation" },
-  { keys: /fermentação|iogurte|queijo/i, query: "yogurt,fermentation,dairy" },
-  { keys: /vinagre|ácido acético/i, query: "vinegar,bottle,kitchen" },
-  { keys: /bicarbonato|fermento/i, query: "baking,soda,bread" },
-  { keys: /filtro solar|protetor solar/i, query: "sunscreen,beach,skin" },
-  { keys: /calcário|caverna|estalactite/i, query: "limestone,cave" },
+type ExampleImageRule = {
+  keys: RegExp;
+  query: string;
+  label: string;
+  scene: ExampleScene;
+  palette: [string, string, string];
+};
+
+/* Analisa o texto de cada exemplo e gera uma ilustração local específica.
+   Isso evita imagens aleatórias de serviços externos sem relação com o assunto. */
+const EXAMPLE_IMAGE_MAP: ExampleImageRule[] = [
+  { keys: /produtos.*(casa|limpeza|cosm)|alimentos.*cosm/i, query: "ultra,processed,food,supermarket,snacks", label: "Alimentos ultraprocessados", scene: "processedFood", palette: ["#0f766e", "#14b8a6", "#ccfbf1"] },
+  { keys: /base para.*(ind[uú]stria|farmac)|ind[uú]stria.*farmac/i, query: "pharmaceutical,laboratory,scientist,lab", label: "Laboratório farmacêutico", scene: "pharmaLab", palette: ["#1d4ed8", "#38bdf8", "#dbeafe"] },
+  { keys: /vestibular|enem|fuvest|unicamp|ita|ime|prova|estudo|estudante/i, query: "student,exam,books", label: "Avaliação e vestibulares", scene: "exam", palette: ["#7c2d12", "#fb923c", "#ffedd5"] },
+
+  { keys: /alimento|comida|cozinha|receita|pão|bolo/i, query: "food,cooking,kitchen", label: "Química dos alimentos", scene: "processedFood", palette: ["#166534", "#22c55e", "#dcfce7"] },
+  { keys: /cosm[eé]tic|shampoo|creme|maquiagem/i, query: "cosmetics,bottles", label: "Cosméticos", scene: "pharmaLab", palette: ["#be185d", "#f472b6", "#fce7f3"] },
+  { keys: /limpeza|sab[aã]o|detergente|água sanitária/i, query: "soap,cleaning,detergent", label: "Produtos de limpeza", scene: "soap", palette: ["#0369a1", "#38bdf8", "#e0f2fe"] },
+  { keys: /ind[uú]stria|f[aá]brica|refinaria|planta qu[ií]mica/i, query: "chemical,factory,industry", label: "Indústria química", scene: "factory", palette: ["#334155", "#64748b", "#e2e8f0"] },
+  { keys: /farmac[eê]utic|rem[eé]dio|medicamento|comprimido|f[aá]rmaco/i, query: "pharmacy,pills,medicine", label: "Medicamentos", scene: "pharmaLab", palette: ["#1d4ed8", "#60a5fa", "#dbeafe"] },
+  { keys: /ambiental|poluição|meio ambiente|sustentabilidade/i, query: "environment,pollution,nature", label: "Meio ambiente", scene: "acidRain", palette: ["#365314", "#84cc16", "#ecfccb"] },
+
+  { keys: /carbono[- ]?14|c-14|datação|arqueolog|fóssil/i, query: "archaeology,fossil,radiocarbon", label: "Datação arqueológica", scene: "archaeology", palette: ["#92400e", "#f59e0b", "#fef3c7"] },
+  { keys: /neônio|letreir|neon/i, query: "neon,sign,city", label: "Letreiro de neônio", scene: "neon", palette: ["#86198f", "#e879f9", "#fae8ff"] },
+  { keys: /resson[aâ]ncia magn[eé]tica|mri/i, query: "MRI,scan,hospital", label: "Ressonância magnética", scene: "mri", palette: ["#155e75", "#22d3ee", "#cffafe"] },
+  { keys: /sódio.*(água|reage)|metal alcalino/i, query: "sodium,reaction,water", label: "Sódio reagindo com água", scene: "sodiumWater", palette: ["#b45309", "#fbbf24", "#fef3c7"] },
+  { keys: /gás(es)? nobre|hélio|argônio/i, query: "noble,gas,balloon", label: "Gases nobres", scene: "balloon", palette: ["#6d28d9", "#a78bfa", "#ede9fe"] },
+  { keys: /halog[eê]nio|cloro|flúor|iodo/i, query: "chlorine,salt,crystals", label: "Halogênios e sais", scene: "salt", palette: ["#0f766e", "#5eead4", "#ccfbf1"] },
+
+  { keys: /\bnacl\b|sal de cozinha|cloreto de s[oó]dio/i, query: "salt,crystals,cooking", label: "Cristais de sal", scene: "salt", palette: ["#475569", "#cbd5e1", "#f8fafc"] },
+  { keys: /água|h2o|gelo/i, query: "water,drop,molecule", label: "Molécula de água", scene: "water", palette: ["#0369a1", "#38bdf8", "#e0f2fe"] },
+  { keys: /cobre|ferro|alumínio|cabo|fio/i, query: "copper,wire,metal", label: "Metais condutores", scene: "metal", palette: ["#7c2d12", "#fb923c", "#fed7aa"] },
+  { keys: /metano|ch4|gás natural|combustão|queima|combust[ií]vel|etanol.*motor/i, query: "gas,stove,flame", label: "Combustão", scene: "flame", palette: ["#991b1b", "#fb923c", "#ffedd5"] },
+  { keys: /neutralização|antiácido|azia/i, query: "antacid,tablets,stomach", label: "Antiácido", scene: "antacid", palette: ["#0f766e", "#5eead4", "#ccfbf1"] },
+  { keys: /haber[- ]bosch|amônia|fertilizante/i, query: "fertilizer,agriculture,crops", label: "Fertilizantes na agricultura", scene: "crops", palette: ["#166534", "#22c55e", "#dcfce7"] },
+
+  { keys: /suco g[aá]strico|est[oô]mago/i, query: "stomach,anatomy,acid", label: "Ácido no estômago", scene: "stomach", palette: ["#be123c", "#fb7185", "#ffe4e6"] },
+  { keys: /sangue|tampão bicarbon|hemoglobina/i, query: "blood,cells,microscope", label: "Sangue e tampões", scene: "blood", palette: ["#991b1b", "#ef4444", "#fee2e2"] },
+  { keys: /chuva [aá]cida/i, query: "acid,rain,pollution", label: "Chuva ácida", scene: "acidRain", palette: ["#374151", "#94a3b8", "#e5e7eb"] },
+  { keys: /fotoss[ií]ntese/i, query: "photosynthesis,leaves,sun", label: "Fotossíntese", scene: "photosynthesis", palette: ["#166534", "#84cc16", "#ecfccb"] },
+  { keys: /bolsa gelada|compressa fria|instant cold pack|nh₄no₃/i, query: "cold,pack,ice", label: "Compressa fria", scene: "coldPack", palette: ["#075985", "#7dd3fc", "#e0f2fe"] },
+  { keys: /enzima|digerem|digest/i, query: "enzyme,digestion,food", label: "Catálise biológica", scene: "enzyme", palette: ["#166534", "#4ade80", "#dcfce7"] },
+  { keys: /escapamento|noₓ|co em n₂|catalisador do/i, query: "catalytic,converter,car", label: "Catalisador automotivo", scene: "carCatalyst", palette: ["#334155", "#94a3b8", "#e2e8f0"] },
+  { keys: /geladeira|deteriora/i, query: "refrigerator,food,cold", label: "Conservação na geladeira", scene: "fridge", palette: ["#0369a1", "#60a5fa", "#dbeafe"] },
+  { keys: /co₂ dissolvido|refrigerante|abrir a lata/i, query: "soda,can,bubbles", label: "Refrigerante e equilíbrio", scene: "soda", palette: ["#b91c1c", "#f87171", "#fee2e2"] },
+  { keys: /oxig[eê]nio no sangue|hbo₂/i, query: "oxygen,blood,cells", label: "Transporte de oxigênio", scene: "oxygenBlood", palette: ["#9f1239", "#fb7185", "#ffe4e6"] },
+
+  { keys: /soro fisiol[oó]gico|nacl 0,9/i, query: "saline,iv,hospital", label: "Soro fisiológico", scene: "saline", palette: ["#0e7490", "#67e8f9", "#cffafe"] },
+  { keys: /anticongelante|etilenoglicol|radiador/i, query: "antifreeze,car,radiator", label: "Anticongelante", scene: "antifreeze", palette: ["#4338ca", "#818cf8", "#e0e7ff"] },
+  { keys: /dessalinização|osmose reversa/i, query: "reverse,osmosis,water", label: "Osmose reversa", scene: "osmosis", palette: ["#0f766e", "#2dd4bf", "#ccfbf1"] },
+  { keys: /pilha|bateria|íon-lítio|celular|carro elétrico/i, query: "battery,cells,energy", label: "Baterias", scene: "battery", palette: ["#854d0e", "#facc15", "#fef9c3"] },
+  { keys: /eletróli|hall-héroult|cloro-soda/i, query: "electrolysis,industrial", label: "Eletrólise", scene: "electrolysis", palette: ["#1e40af", "#60a5fa", "#dbeafe"] },
+  { keys: /galvanoplastia|cromagem/i, query: "chrome,plating,car", label: "Cromagem", scene: "chrome", palette: ["#475569", "#cbd5e1", "#f8fafc"] },
+
+  { keys: /pl[aá]stico|polietileno|polímero|pet\b|sacolas/i, query: "plastic,bottles,recycling", label: "Plásticos e polímeros", scene: "plastic", palette: ["#0f766e", "#34d399", "#d1fae5"] },
+  { keys: /petr[oó]leo|gasolina/i, query: "oil,refinery,fuel", label: "Derivados de petróleo", scene: "factory", palette: ["#111827", "#6b7280", "#f3f4f6"] },
+  { keys: /álcool|etanol|cachaça/i, query: "alcohol,ethanol,bottle", label: "Etanol", scene: "vinegar", palette: ["#047857", "#6ee7b7", "#d1fae5"] },
+  { keys: /vinagre|ácido acético/i, query: "vinegar,bottle,kitchen", label: "Vinagre", scene: "vinegar", palette: ["#92400e", "#fbbf24", "#fef3c7"] },
+  { keys: /glicose/i, query: "glucose,fruit,energy", label: "Glicose", scene: "glucose", palette: ["#b45309", "#fbbf24", "#fef3c7"] },
+  { keys: /nuclear|urânio|u-235|radioativ|reator|bomba atômica/i, query: "nuclear,reactor,radiation", label: "Energia nuclear", scene: "nuclear", palette: ["#3f6212", "#a3e635", "#ecfccb"] },
+  { keys: /i-131|tireoide/i, query: "thyroid,medicine,radiotherapy", label: "Medicina nuclear", scene: "thyroid", palette: ["#7e22ce", "#c084fc", "#f3e8ff"] },
+
+  { keys: /airbag|nan₃/i, query: "airbag,car,safety", label: "Airbag", scene: "airbag", palette: ["#334155", "#cbd5e1", "#f8fafc"] },
+  { keys: /pneu|pressão sobe/i, query: "tire,pressure,car", label: "Pressão no pneu", scene: "tire", palette: ["#1f2937", "#9ca3af", "#f3f4f6"] },
+  { keys: /mergulhador|hélio\/o₂|profundidades/i, query: "scuba,diver,oxygen", label: "Mistura para mergulho", scene: "diver", palette: ["#075985", "#38bdf8", "#e0f2fe"] },
+  { keys: /água pura|pf = 0|pe = 100/i, query: "water,ice,steam", label: "Estados da água", scene: "matter", palette: ["#0369a1", "#7dd3fc", "#e0f2fe"] },
+  { keys: /ar: mistura|n₂|o₂|co₂/i, query: "air,atmosphere,gases", label: "Mistura de gases do ar", scene: "air", palette: ["#0e7490", "#67e8f9", "#cffafe"] },
+  { keys: /granito|quartzo|feldspato|mica/i, query: "granite,rock,minerals", label: "Granito", scene: "granite", palette: ["#57534e", "#a8a29e", "#f5f5f4"] },
+  { keys: /separação|destilação|filtração|decantação/i, query: "filtration,distillation,oil,water", label: "Separação de misturas", scene: "separation", palette: ["#0f766e", "#5eead4", "#ccfbf1"] },
+  { keys: /bicarbonato|fermento/i, query: "baking,soda,bread", label: "Bicarbonato e fermentação", scene: "processedFood", palette: ["#92400e", "#f59e0b", "#fef3c7"] },
+  { keys: /fermentação|iogurte|queijo|lactose|ácido lático/i, query: "yogurt,fermentation,dairy", label: "Fermentação do iogurte", scene: "yogurt", palette: ["#be185d", "#f9a8d4", "#fce7f3"] },
+  { keys: /filtro solar|protetor solar|absorvem uv/i, query: "sunscreen,beach,skin", label: "Filtro solar", scene: "sunscreen", palette: ["#b45309", "#fbbf24", "#fef3c7"] },
+  { keys: /calcário|caverna|estalactite/i, query: "limestone,cave", label: "Calcário", scene: "granite", palette: ["#57534e", "#d6d3d1", "#f5f5f4"] },
 ];
 
 function imageForExample(text: string): string {
-  // 1) tenta mapeamento temático específico
-  for (const m of EXAMPLE_IMAGE_MAP) {
-    if (m.keys.test(text)) {
-      return `https://loremflickr.com/600/400/${encodeURIComponent(m.query)}?lock=${Math.abs(hash(text)) % 9999}`;
-    }
+  const rule = EXAMPLE_IMAGE_MAP.find((m) => m.keys.test(text)) ?? {
+    keys: /.*/,
+    query: "chemistry,laboratory,science",
+    label: "Aplicação da química",
+    scene: "chemistry" as ExampleScene,
+    palette: ["#0f766e", "#2dd4bf", "#ccfbf1"] as [string, string, string],
+  };
+  return makeExampleSvg(rule, text);
+}
+
+function makeExampleSvg(rule: Pick<ExampleImageRule, "label" | "scene" | "palette">, text: string): string {
+  const [dark, accent, soft] = rule.palette;
+  const seed = Math.abs(hash(text)) % 360;
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="375" viewBox="0 0 600 375" role="img" aria-label="${escapeSvg(rule.label)}">
+    <defs>
+      <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="${soft}"/><stop offset="0.58" stop-color="#ffffff"/><stop offset="1" stop-color="${accent}" stop-opacity="0.45"/>
+      </linearGradient>
+      <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="${dark}" flood-opacity="0.20"/></filter>
+    </defs>
+    <rect width="600" height="375" fill="url(#bg)"/>
+    <path d="M0 292 C92 246 151 342 245 290 S426 237 600 294 L600 375 L0 375 Z" fill="${dark}" opacity="0.10"/>
+    <circle cx="${70 + (seed % 70)}" cy="${56 + (seed % 34)}" r="42" fill="${accent}" opacity="0.18"/>
+    <circle cx="${490 - (seed % 62)}" cy="${62 + (seed % 42)}" r="58" fill="${dark}" opacity="0.10"/>
+    ${sceneSvg(rule.scene, dark, accent, soft)}
+    <rect x="30" y="286" width="540" height="58" rx="18" fill="#ffffff" opacity="0.92" filter="url(#shadow)"/>
+    <text x="52" y="323" font-family="Arial, sans-serif" font-size="24" font-weight="800" fill="${dark}">${escapeSvg(rule.label)}</text>
+  </svg>`;
+  return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
+}
+
+function sceneSvg(scene: ExampleScene, dark: string, accent: string, soft: string): string {
+  switch (scene) {
+    case "processedFood":
+      return `<g filter="url(#shadow)"><rect x="90" y="94" width="420" height="170" rx="24" fill="#fff"/><rect x="122" y="130" width="90" height="96" rx="12" fill="${accent}"/><rect x="238" y="112" width="98" height="114" rx="14" fill="${soft}" stroke="${dark}" stroke-width="5"/><rect x="364" y="142" width="92" height="84" rx="12" fill="${dark}" opacity="0.88"/><circle cx="166" cy="160" r="22" fill="#fff" opacity="0.75"/><path d="M250 179 h72 M250 199 h72" stroke="${dark}" stroke-width="9" stroke-linecap="round"/></g>`;
+    case "pharmaLab":
+      return `<g filter="url(#shadow)"><rect x="92" y="226" width="416" height="26" rx="13" fill="${dark}"/><path d="M175 90 h56 v95 l40 58 h-136 l40-58z" fill="#fff" stroke="${dark}" stroke-width="8"/><path d="M176 184 h54 l27 40 h-108z" fill="${accent}" opacity="0.85"/><rect x="340" y="86" width="70" height="142" rx="22" fill="#fff" stroke="${dark}" stroke-width="8"/><path d="M342 168 h66 v42 h-66z" fill="${accent}" opacity="0.75"/><circle cx="455" cy="128" r="28" fill="${soft}" stroke="${dark}" stroke-width="7"/></g>`;
+    case "exam":
+      return `<g filter="url(#shadow)"><rect x="145" y="78" width="310" height="190" rx="18" fill="#fff"/><path d="M300 88 v168" stroke="${dark}" stroke-width="5"/><path d="M180 126 h82 M180 158 h82 M180 190 h58 M334 126 h84 M334 158 h84 M334 190 h56" stroke="${dark}" stroke-width="10" stroke-linecap="round" opacity="0.55"/><circle cx="405" cy="226" r="24" fill="${accent}"/><path d="M394 226 l8 9 17-22" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></g>`;
+    case "archaeology":
+      return `<g filter="url(#shadow)"><ellipse cx="302" cy="226" rx="190" ry="38" fill="${dark}" opacity="0.18"/><path d="M168 198 C234 118 342 117 431 195" fill="none" stroke="${dark}" stroke-width="22" stroke-linecap="round"/><circle cx="164" cy="198" r="24" fill="#fff" stroke="${dark}" stroke-width="8"/><circle cx="438" cy="198" r="24" fill="#fff" stroke="${dark}" stroke-width="8"/><path d="M252 166 l32 72 M324 157 l-18 81 M374 172 l-36 60" stroke="#fff" stroke-width="12" stroke-linecap="round"/></g>`;
+    case "neon":
+      return `<g filter="url(#shadow)"><rect x="126" y="90" width="348" height="154" rx="28" fill="#111827" stroke="${accent}" stroke-width="10"/><path d="M190 168 C230 108 285 228 326 168 S405 107 430 170" fill="none" stroke="${accent}" stroke-width="15" stroke-linecap="round"/><path d="M190 168 C230 108 285 228 326 168 S405 107 430 170" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity="0.9"/></g>`;
+    case "mri":
+      return `<g filter="url(#shadow)"><rect x="120" y="114" width="360" height="132" rx="36" fill="#fff" stroke="${dark}" stroke-width="8"/><circle cx="252" cy="180" r="58" fill="${soft}" stroke="${accent}" stroke-width="18"/><rect x="286" y="173" width="146" height="18" rx="9" fill="${dark}" opacity="0.75"/><circle cx="430" cy="182" r="16" fill="${accent}"/></g>`;
+    case "sodiumWater":
+      return `<g filter="url(#shadow)"><rect x="96" y="178" width="408" height="80" rx="22" fill="#fff"/><path d="M118 196 C178 220 242 178 302 202 S418 224 482 195 V236 H118z" fill="${accent}" opacity="0.72"/><circle cx="296" cy="172" r="30" fill="${dark}"/><path d="M296 88 v50 M250 118 l35 29 M342 118 l-35 29" stroke="${accent}" stroke-width="12" stroke-linecap="round"/></g>`;
+    case "balloon":
+      return `<g filter="url(#shadow)"><ellipse cx="230" cy="142" rx="62" ry="78" fill="${accent}"/><ellipse cx="360" cy="130" rx="62" ry="78" fill="${dark}" opacity="0.86"/><path d="M230 220 C224 250 210 268 190 286 M360 208 C363 248 390 260 398 286" fill="none" stroke="${dark}" stroke-width="5"/><path d="M210 122 c15-24 35-28 52-16" stroke="#fff" stroke-width="8" stroke-linecap="round" opacity="0.65"/></g>`;
+    case "salt":
+      return `<g filter="url(#shadow)"><rect x="118" y="188" width="360" height="54" rx="27" fill="#fff"/><path d="M190 110 l55 32 -55 32 -55-32z M302 92 l70 40 -70 40 -70-40z M404 132 l60 35 -60 35 -60-35z" fill="${soft}" stroke="${dark}" stroke-width="7"/><path d="M302 172 v52 M190 174 v50 M404 202 v28" stroke="${accent}" stroke-width="8" stroke-linecap="round"/></g>`;
+    case "water":
+      return `<g filter="url(#shadow)"><circle cx="300" cy="170" r="48" fill="${accent}"/><circle cx="215" cy="128" r="34" fill="#fff" stroke="${dark}" stroke-width="8"/><circle cx="385" cy="128" r="34" fill="#fff" stroke="${dark}" stroke-width="8"/><path d="M245 142 L270 156 M355 156 L380 142" stroke="${dark}" stroke-width="10" stroke-linecap="round"/><path d="M132 246 C230 208 368 286 468 236" fill="none" stroke="${accent}" stroke-width="20" stroke-linecap="round" opacity="0.5"/></g>`;
+    case "metal":
+      return `<g filter="url(#shadow)"><path d="M115 135 C210 88 280 228 390 134 S478 146 502 190" fill="none" stroke="${dark}" stroke-width="18" stroke-linecap="round"/><path d="M112 176 C214 126 280 262 394 174 S478 186 502 230" fill="none" stroke="${accent}" stroke-width="18" stroke-linecap="round"/><circle cx="392" cy="134" r="22" fill="#fff" stroke="${dark}" stroke-width="7"/><circle cx="392" cy="174" r="22" fill="#fff" stroke="${accent}" stroke-width="7"/></g>`;
+    case "flame":
+      return `<g filter="url(#shadow)"><rect x="142" y="238" width="316" height="30" rx="15" fill="${dark}"/><path d="M300 238 C205 194 248 116 290 80 C286 136 370 150 334 236z" fill="${accent}"/><path d="M304 236 C260 210 283 164 311 138 C308 177 357 187 332 236z" fill="#fff" opacity="0.72"/><path d="M172 224 h256" stroke="#fff" stroke-width="9" stroke-linecap="round" opacity="0.45"/></g>`;
+    case "antacid":
+      return `<g filter="url(#shadow)"><rect x="140" y="112" width="140" height="86" rx="43" fill="#fff" stroke="${dark}" stroke-width="8" transform="rotate(-18 210 155)"/><rect x="306" y="126" width="140" height="86" rx="43" fill="${accent}" transform="rotate(15 376 169)"/><path d="M246 236 C284 198 338 200 376 236 C350 267 274 267 246 236z" fill="${soft}" stroke="${dark}" stroke-width="7"/></g>`;
+    case "crops":
+      return `<g filter="url(#shadow)"><circle cx="470" cy="92" r="42" fill="#fde047"/><path d="M72 254 C180 174 392 174 528 254" fill="${accent}" opacity="0.65"/><path d="M128 250 C190 204 228 190 286 174 M236 258 C302 210 362 184 448 178 M356 260 C410 226 468 206 528 198" stroke="${dark}" stroke-width="8" stroke-linecap="round"/><path d="M188 196 q18-42 38 0 M324 176 q20-48 42 0" fill="none" stroke="${dark}" stroke-width="8"/></g>`;
+    case "stomach":
+      return `<g filter="url(#shadow)"><path d="M306 82 C356 112 342 168 398 178 C470 192 454 274 356 276 C252 278 215 232 254 178 C282 140 250 104 306 82z" fill="${accent}" stroke="${dark}" stroke-width="8"/><circle cx="340" cy="204" r="18" fill="#fff" opacity="0.7"/><circle cx="386" cy="224" r="13" fill="#fff" opacity="0.55"/></g>`;
+    case "blood":
+    case "oxygenBlood":
+      return `<g filter="url(#shadow)"><rect x="118" y="92" width="364" height="176" rx="40" fill="#fff"/><circle cx="206" cy="152" r="40" fill="${accent}"/><circle cx="304" cy="196" r="48" fill="${dark}" opacity="0.9"/><circle cx="414" cy="148" r="38" fill="${accent}"/><circle cx="206" cy="152" r="14" fill="#fff" opacity="0.55"/><circle cx="304" cy="196" r="16" fill="#fff" opacity="0.45"/><path d="M174 232 C250 256 370 254 438 222" stroke="${accent}" stroke-width="10" stroke-linecap="round" fill="none"/></g>`;
+    case "acidRain":
+      return `<g filter="url(#shadow)"><path d="M162 122 h228 a52 52 0 0 1 0 104 h-244 a52 52 0 0 1 16-104z" fill="#fff" stroke="${dark}" stroke-width="8"/><path d="M188 248 l-22 42 M270 248 l-22 42 M354 248 l-22 42 M438 248 l-22 42" stroke="${accent}" stroke-width="10" stroke-linecap="round"/><rect x="420" y="146" width="46" height="86" fill="${dark}"/><path d="M432 134 h22 v-32 h22 v130 h-44z" fill="${dark}" opacity="0.75"/></g>`;
+    case "coldPack":
+      return `<g filter="url(#shadow)"><rect x="158" y="86" width="284" height="184" rx="30" fill="#fff" stroke="${dark}" stroke-width="8"/><path d="M198 178 h204 M300 104 v148 M230 126 l140 104 M370 126 l-140 104" stroke="${accent}" stroke-width="12" stroke-linecap="round"/></g>`;
+    case "photosynthesis":
+      return `<g filter="url(#shadow)"><circle cx="454" cy="96" r="42" fill="#fde047"/><path d="M142 236 C232 68 418 106 452 236 C332 256 226 286 142 236z" fill="${accent}" stroke="${dark}" stroke-width="8"/><path d="M174 232 C260 190 334 154 426 126" stroke="#fff" stroke-width="10" stroke-linecap="round" opacity="0.75"/></g>`;
+    case "enzyme":
+      return `<g filter="url(#shadow)"><path d="M170 190 C170 112 250 80 300 132 C350 80 430 112 430 190 C430 258 350 282 300 230 C250 282 170 258 170 190z" fill="${accent}" stroke="${dark}" stroke-width="8"/><circle cx="256" cy="178" r="22" fill="#fff"/><circle cx="344" cy="178" r="22" fill="#fff"/><path d="M242 228 C280 250 326 250 360 228" stroke="#fff" stroke-width="10" stroke-linecap="round"/></g>`;
+    case "carCatalyst":
+      return `<g filter="url(#shadow)"><rect x="124" y="154" width="350" height="78" rx="34" fill="${dark}"/><circle cx="204" cy="238" r="32" fill="#fff" stroke="${dark}" stroke-width="8"/><circle cx="398" cy="238" r="32" fill="#fff" stroke="${dark}" stroke-width="8"/><rect x="252" y="116" width="116" height="74" rx="18" fill="${accent}"/><path d="M454 172 c38 2 54 18 62 42" stroke="${accent}" stroke-width="12" stroke-linecap="round" fill="none"/></g>`;
+    case "fridge":
+      return `<g filter="url(#shadow)"><rect x="218" y="72" width="164" height="216" rx="22" fill="#fff" stroke="${dark}" stroke-width="8"/><path d="M218 158 h164" stroke="${dark}" stroke-width="7"/><rect x="246" y="96" width="56" height="38" rx="8" fill="${accent}"/><circle cx="332" cy="220" r="28" fill="${soft}" stroke="${accent}" stroke-width="8"/></g>`;
+    case "factory":
+      return `<g filter="url(#shadow)"><path d="M112 250 V150 l96 50 v-50 l96 50 v-50 l96 50 v50z" fill="${dark}" opacity="0.86"/><rect x="430" y="116" width="50" height="134" fill="${accent}"/><path d="M436 96 c28-28 70 0 44 28 c40-8 54 32 18 46" fill="none" stroke="${dark}" stroke-width="12" stroke-linecap="round" opacity="0.35"/><path d="M154 226 h48 M246 226 h48 M338 226 h48" stroke="#fff" stroke-width="10" stroke-linecap="round"/></g>`;
+    case "soda":
+      return `<g filter="url(#shadow)"><rect x="238" y="90" width="124" height="188" rx="24" fill="${accent}" stroke="${dark}" stroke-width="8"/><rect x="260" y="124" width="80" height="64" rx="12" fill="#fff" opacity="0.85"/><circle cx="408" cy="130" r="16" fill="#fff"/><circle cx="430" cy="190" r="11" fill="#fff"/><circle cx="180" cy="174" r="13" fill="#fff"/><path d="M260 84 h80" stroke="${dark}" stroke-width="10" stroke-linecap="round"/></g>`;
+    case "saline":
+      return `<g filter="url(#shadow)"><rect x="244" y="72" width="112" height="156" rx="20" fill="#fff" stroke="${dark}" stroke-width="8"/><path d="M246 160 h108 v56 h-108z" fill="${accent}" opacity="0.65"/><path d="M300 228 v54 M300 282 c0 28 44 16 44 48" stroke="${dark}" stroke-width="8" stroke-linecap="round" fill="none"/><path d="M278 116 h44 M300 94 v44" stroke="${accent}" stroke-width="10" stroke-linecap="round"/></g>`;
+    case "antifreeze":
+      return `<g filter="url(#shadow)"><rect x="170" y="128" width="260" height="128" rx="24" fill="${dark}"/><rect x="210" y="88" width="70" height="60" rx="14" fill="${accent}"/><path d="M214 184 h172 M252 150 v92 M326 150 v92" stroke="#fff" stroke-width="10" stroke-linecap="round" opacity="0.75"/><circle cx="456" cy="202" r="28" fill="${accent}"/></g>`;
+    case "osmosis":
+      return `<g filter="url(#shadow)"><rect x="108" y="102" width="384" height="148" rx="28" fill="#fff" stroke="${dark}" stroke-width="8"/><path d="M300 108 v136" stroke="${dark}" stroke-width="8" stroke-dasharray="12 12"/><circle cx="180" cy="172" r="14" fill="${accent}"/><circle cx="224" cy="204" r="10" fill="${accent}"/><path d="M344 176 h72 M386 144 l30 32 -30 32" stroke="${accent}" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>`;
+    case "battery":
+      return `<g filter="url(#shadow)"><rect x="128" y="124" width="344" height="128" rx="26" fill="#fff" stroke="${dark}" stroke-width="8"/><rect x="472" y="166" width="26" height="44" rx="8" fill="${dark}"/><path d="M214 158 v60 M184 188 h60 M352 188 h64" stroke="${accent}" stroke-width="14" stroke-linecap="round"/><path d="M268 188 h54" stroke="${dark}" stroke-width="10" stroke-linecap="round"/></g>`;
+    case "electrolysis":
+      return `<g filter="url(#shadow)"><rect x="142" y="116" width="316" height="134" rx="28" fill="#fff" stroke="${dark}" stroke-width="8"/><path d="M170 178 h260 v48 h-260z" fill="${accent}" opacity="0.55"/><path d="M238 80 v150 M362 80 v150" stroke="${dark}" stroke-width="10" stroke-linecap="round"/><circle cx="238" cy="128" r="14" fill="#fff"/><circle cx="362" cy="146" r="12" fill="#fff"/><circle cx="390" cy="112" r="9" fill="#fff"/></g>`;
+    case "chrome":
+      return `<g filter="url(#shadow)"><path d="M142 208 C166 142 226 116 300 116 S434 142 458 208" fill="${soft}" stroke="${dark}" stroke-width="8"/><rect x="126" y="196" width="348" height="52" rx="26" fill="${accent}"/><circle cx="206" cy="252" r="30" fill="#fff" stroke="${dark}" stroke-width="8"/><circle cx="394" cy="252" r="30" fill="#fff" stroke="${dark}" stroke-width="8"/></g>`;
+    case "plastic":
+      return `<g filter="url(#shadow)"><rect x="170" y="100" width="92" height="168" rx="22" fill="${accent}"/><rect x="338" y="100" width="92" height="168" rx="22" fill="${dark}" opacity="0.82"/><path d="M194 72 h44 v34 h-44z M362 72 h44 v34 h-44z" fill="#fff" stroke="${dark}" stroke-width="7"/><path d="M248 196 C290 148 336 238 376 190" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" opacity="0.7"/></g>`;
+    case "vinegar":
+      return `<g filter="url(#shadow)"><path d="M250 86 h100 v48 c0 34 38 48 38 92 c0 42-34 58-88 58 s-88-16-88-58 c0-44 38-58 38-92z" fill="#fff" stroke="${dark}" stroke-width="8"/><path d="M228 204 h144 v46 c-16 23-128 23-144 0z" fill="${accent}" opacity="0.75"/><path d="M266 116 h68" stroke="${accent}" stroke-width="10" stroke-linecap="round"/></g>`;
+    case "glucose":
+      return `<g filter="url(#shadow)"><circle cx="230" cy="170" r="46" fill="${accent}"/><circle cx="300" cy="126" r="46" fill="#fff" stroke="${dark}" stroke-width="8"/><circle cx="370" cy="170" r="46" fill="${accent}"/><circle cx="300" cy="216" r="46" fill="#fff" stroke="${dark}" stroke-width="8"/><path d="M264 148 l-28 18 M336 148 l28 18 M300 172 v38" stroke="${dark}" stroke-width="10" stroke-linecap="round"/></g>`;
+    case "nuclear":
+      return `<g filter="url(#shadow)"><circle cx="300" cy="174" r="78" fill="${accent}"/><circle cx="300" cy="174" r="22" fill="${dark}"/><path d="M300 88 A86 86 0 0 1 374 218 L300 174z M224 218 A86 86 0 0 1 300 88 L300 174z M300 174 l76 44 a86 86 0 0 1-152 0z" fill="#fff" opacity="0.78"/><circle cx="300" cy="174" r="22" fill="${dark}"/></g>`;
+    case "thyroid":
+      return `<g filter="url(#shadow)"><path d="M300 94 v64" stroke="${dark}" stroke-width="12" stroke-linecap="round"/><path d="M296 168 C240 108 174 164 206 228 C232 280 286 238 300 202 C314 238 368 280 394 228 C426 164 360 108 304 168z" fill="${accent}" stroke="${dark}" stroke-width="8"/><circle cx="300" cy="202" r="15" fill="#fff" opacity="0.7"/></g>`;
+    case "airbag":
+      return `<g filter="url(#shadow)"><rect x="138" y="150" width="324" height="96" rx="24" fill="${dark}"/><circle cx="300" cy="152" r="70" fill="#fff" stroke="${accent}" stroke-width="10"/><path d="M210 234 h180" stroke="#fff" stroke-width="12" stroke-linecap="round" opacity="0.6"/></g>`;
+    case "tire":
+      return `<g filter="url(#shadow)"><circle cx="300" cy="174" r="96" fill="${dark}"/><circle cx="300" cy="174" r="54" fill="#fff"/><circle cx="300" cy="174" r="22" fill="${accent}"/><path d="M300 78 v40 M300 230 v40 M204 174 h40 M356 174 h40" stroke="#fff" stroke-width="12" stroke-linecap="round" opacity="0.6"/></g>`;
+    case "diver":
+      return `<g filter="url(#shadow)"><path d="M92 232 C194 176 406 282 520 198" stroke="${accent}" stroke-width="26" stroke-linecap="round" fill="none" opacity="0.55"/><circle cx="270" cy="150" r="38" fill="${dark}"/><rect x="300" y="140" width="104" height="34" rx="17" fill="#fff" stroke="${dark}" stroke-width="7"/><path d="M260 188 c62 34 114 30 168 8" stroke="${dark}" stroke-width="16" stroke-linecap="round" fill="none"/><circle cx="422" cy="116" r="10" fill="#fff"/><circle cx="452" cy="86" r="14" fill="#fff"/></g>`;
+    case "matter":
+      return `<g filter="url(#shadow)"><rect x="118" y="178" width="104" height="86" rx="16" fill="#fff" stroke="${dark}" stroke-width="8"/><path d="M272 220 c0-48 56-78 56-130 c42 42 66 86 66 130 a61 61 0 0 1-122 0z" fill="${accent}"/><path d="M424 128 c62-40 106 32 40 70 c56-10 76 58 12 68" fill="none" stroke="${dark}" stroke-width="13" stroke-linecap="round" opacity="0.45"/></g>`;
+    case "air":
+      return `<g filter="url(#shadow)"><path d="M112 156 C204 98 308 208 406 142 C458 106 504 126 526 156" fill="none" stroke="${dark}" stroke-width="15" stroke-linecap="round"/><path d="M96 220 C208 160 322 276 492 198" fill="none" stroke="${accent}" stroke-width="18" stroke-linecap="round"/><circle cx="218" cy="196" r="18" fill="#fff"/><circle cx="312" cy="158" r="14" fill="#fff"/><circle cx="402" cy="216" r="20" fill="#fff"/></g>`;
+    case "granite":
+      return `<g filter="url(#shadow)"><path d="M150 248 L206 114 L344 82 L464 190 L412 270 H190z" fill="${dark}" opacity="0.85"/><path d="M214 140 l54 38 -42 46 -56-30z M330 116 l66 64 -74 24z M306 218 l72 26 -24 30h-92z" fill="#fff" opacity="0.42"/><circle cx="252" cy="158" r="10" fill="${accent}"/><circle cx="386" cy="204" r="12" fill="${accent}"/></g>`;
+    case "separation":
+      return `<g filter="url(#shadow)"><path d="M190 82 h220 l-78 104 v78 h-64 v-78z" fill="#fff" stroke="${dark}" stroke-width="8"/><path d="M222 126 h156 l-42 56 h-72z" fill="${accent}" opacity="0.65"/><rect x="236" y="260" width="128" height="20" rx="10" fill="${dark}"/><circle cx="406" cy="232" r="28" fill="${soft}" stroke="${accent}" stroke-width="8"/></g>`;
+    case "soap":
+      return `<g filter="url(#shadow)"><rect x="174" y="164" width="252" height="90" rx="38" fill="${accent}"/><circle cx="218" cy="122" r="24" fill="#fff"/><circle cx="292" cy="92" r="34" fill="#fff"/><circle cx="374" cy="126" r="22" fill="#fff"/><path d="M220 210 h160" stroke="#fff" stroke-width="10" stroke-linecap="round" opacity="0.55"/></g>`;
+    case "yogurt":
+      return `<g filter="url(#shadow)"><path d="M198 114 h204 l-24 154 h-156z" fill="#fff" stroke="${dark}" stroke-width="8"/><path d="M218 190 h164 l-12 70 h-140z" fill="${accent}" opacity="0.65"/><circle cx="272" cy="214" r="12" fill="#fff"/><circle cx="326" cy="236" r="10" fill="#fff"/><path d="M236 94 h128" stroke="${dark}" stroke-width="14" stroke-linecap="round"/></g>`;
+    case "sunscreen":
+      return `<g filter="url(#shadow)"><circle cx="438" cy="104" r="44" fill="#fde047"/><rect x="210" y="104" width="128" height="166" rx="22" fill="#fff" stroke="${dark}" stroke-width="8"/><path d="M232 170 h84" stroke="${accent}" stroke-width="15" stroke-linecap="round"/><path d="M126 258 C224 222 396 290 500 238" stroke="${accent}" stroke-width="18" stroke-linecap="round" fill="none" opacity="0.55"/></g>`;
+    default:
+      return `<g filter="url(#shadow)"><path d="M224 88 h152 v74 l62 100 h-276 l62-100z" fill="#fff" stroke="${dark}" stroke-width="8"/><path d="M212 200 h176 l32 52 h-240z" fill="${accent}" opacity="0.72"/><circle cx="246" cy="144" r="14" fill="${accent}"/><circle cx="320" cy="124" r="18" fill="${dark}" opacity="0.8"/><circle cx="374" cy="162" r="12" fill="${accent}"/></g>`;
   }
-  // 2) fallback: sempre inclui "chemistry" para manter o tema
-  const stop = new Set(["aparece","produtos","usamos","casa","base","para","cobrado","como","também","muito","alguns","outras","aquela","este","essa","sobre","entre"]);
-  const words = text
-    .toLowerCase()
-    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^a-z0-9 ]/g, " ")
-    .split(/\s+/)
-    .filter(w => w.length > 4 && !stop.has(w))
-    .slice(0, 2)
-    .join(",");
-  const q = words ? `chemistry,${words}` : "chemistry,laboratory,science";
-  return `https://loremflickr.com/600/400/${encodeURIComponent(q)}?lock=${Math.abs(hash(text)) % 9999}`;
+}
+
+function escapeSvg(value: string): string {
+  return value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 }
 function hash(s: string) {
   let h = 0; for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) | 0; return h;
