@@ -751,7 +751,9 @@ function explainPrinciple(text: string): string {
    Detecta palavras/expressões-chave em cada exemplo e devolve uma query focada. */
 const EXAMPLE_IMAGE_MAP: { keys: RegExp; query: string }[] = [
   // cotidiano / limpeza / cozinha
-  { keys: /produtos.*(casa|limpeza|cosm)/i, query: "cleaning,products,shelf" },
+  { keys: /produtos.*(casa|limpeza|cosm)|alimentos.*cosm/i, query: "ultra,processed,food,supermarket,snacks" },
+  { keys: /base para.*(ind[uú]stria|farmac)|ind[uú]stria.*farmac/i, query: "pharmaceutical,laboratory,scientist,lab" },
+
   { keys: /alimento|comida|cozinha|receita|pão|bolo/i, query: "food,cooking,kitchen" },
   { keys: /cosm[eé]tic|shampoo|creme|maquiagem/i, query: "cosmetics,bottles" },
   { keys: /limpeza|sab[aã]o|detergente|água sanitária/i, query: "soap,cleaning,detergent" },
