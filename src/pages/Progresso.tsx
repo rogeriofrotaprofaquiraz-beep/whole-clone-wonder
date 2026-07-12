@@ -34,6 +34,8 @@ export default function Progresso() {
   const [avatar, setAvatar] = useState<any>(null);
   const [admin, setAdmin] = useState(false);
   const [busy, setBusy] = useState(false);
+  const [attempts, setAttempts] = useState<any[]>([]);
+
 
   const refresh = async (uid: string) => {
     const [w, a, isAdm] = await Promise.all([loadWallet(uid), loadAvatar(uid), isAdmin(uid)]);
