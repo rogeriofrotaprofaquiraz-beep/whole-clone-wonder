@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, Trophy, Gift, Lock, Check, Sparkles, Star } from "lucide-react";
+import { ArrowLeft, Trophy, Gift, Lock, Check, Sparkles, Star, ClipboardCheck } from "lucide-react";
 import { toast } from "sonner";
 
 /** Recompensas por nível: cada um libera Átomos extras (pode reivindicar 1x). */
@@ -34,11 +34,25 @@ export default function Progresso() {
   const [avatar, setAvatar] = useState<any>(null);
   const [admin, setAdmin] = useState(false);
   const [busy, setBusy] = useState(false);
+  const [attempts, setAttempts] = useState<any[]>([]);
+
 
   const refresh = async (uid: string) => {
-    const [w, a, isAdm] = await Promise.all([loadWallet(uid), loadAvatar(uid), isAdmin(uid)]);
+    const [w, a, isAdm, att] = await Promise.all([
+      loadWallet(uid),
+      loadAvatar(uid),
+      isAdmin(uid),
+      supabase
+        .from("topic_exercise_attempts")
+        .select("topic_slug, topic_title, category, score, correct, total, created_at")
+        .eq("user_id", uid)
+        .order("created_at", { ascending: false })
+        .limit(50),
+    ]);
     setWallet(w); setAvatar(a); setAdmin(isAdm);
+    setAttempts(att.data ?? []);
   };
+
 
   useEffect(() => {
     supabase.auth.getSession().then(async ({ data: { session } }) => {
@@ -137,7 +151,91 @@ export default function Progresso() {
             })}
           </CardContent>
         </Card>
+
+        {/* Histórico de exercícios e média */}
+        <Card className="bg-slate-900/60 border-white/10 mt-6">
+          <CardHeader>
+            <CardTitle className="text-sm font-black uppercase tracking-widest flex items-center gap-2">
+              <ClipboardCheck className="w-4 h-4"/>Histórico de Exercícios
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            {attempts.length === 0 ? (
+              <p className="text-sm text-white/60">
+                Você ainda não realizou nenhum exercício. Acesse um tópico dentro de um curso e responda a atividade avaliativa para registrar sua primeira nota.
+              </p>
+            ) : (
+              <>
+                {(() => {
+                  // Média por melhor nota de cada tópico
+                  const bestByTopic = new Map<string, number>();
+                  attempts.forEach((a) => {
+                    const cur = bestByTopic.get(a.topic_slug) ?? 0;
+                    if (Number(a.score) > cur) bestByTopic.set(a.topic_slug, Number(a.score));
+                  });
+                  const bests = Array.from(bestByTopic.values());
+                  const avg = bests.length ? bests.reduce((s, v) => s + v, 0) / bests.length : 0;
+                  const approved = bests.filter((v) => v >= 7).length;
+                  return (
+                    <div className="grid grid-cols-3 gap-3 mb-4">
+                      <div className="rounded-lg bg-slate-950/60 border border-white/10 p-3">
+                        <div className="text-[10px] uppercase text-white/50 font-black">Média Geral</div>
+                        <div className={`text-2xl font-black ${avg >= 7 ? "text-emerald-400" : "text-amber-300"}`}>{avg.toFixed(1)}</div>
+                      </div>
+                      <div className="rounded-lg bg-slate-950/60 border border-white/10 p-3">
+                        <div className="text-[10px] uppercase text-white/50 font-black">Tópicos Aprovados</div>
+                        <div className="text-2xl font-black text-emerald-400">{approved}/{bests.length}</div>
+                      </div>
+                      <div className="rounded-lg bg-slate-950/60 border border-white/10 p-3">
+                        <div className="text-[10px] uppercase text-white/50 font-black">Tentativas</div>
+                        <div className="text-2xl font-black text-white">{attempts.length}</div>
+                      </div>
+                    </div>
+                  );
+                })()}
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead className="text-[10px] uppercase text-white/50">
+                      <tr>
+                        <th className="text-left p-2">Data</th>
+                        <th className="text-left p-2">Tópico</th>
+                        <th className="p-2">Acertos</th>
+                        <th className="p-2">Nota</th>
+                        <th className="p-2">Situação</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {attempts.map((a, i) => {
+                        const s = Number(a.score);
+                        return (
+                          <tr key={i} className="border-t border-white/10">
+                            <td className="p-2 text-white/70 whitespace-nowrap text-xs">
+                              {new Date(a.created_at).toLocaleDateString("pt-BR")}
+                            </td>
+                            <td className="p-2 font-bold">
+                              <Link to={`/topico/${a.topic_slug}?t=${encodeURIComponent(a.topic_title)}`} className="hover:text-amber-300">
+                                {a.topic_title}
+                              </Link>
+                            </td>
+                            <td className="p-2 text-center text-white/80">{a.correct}/{a.total}</td>
+                            <td className={`p-2 text-center font-black ${s >= 7 ? "text-emerald-400" : "text-red-400"}`}>{s.toFixed(1)}</td>
+                            <td className="p-2 text-center text-xs">
+                              {s >= 7
+                                ? <span className="text-emerald-400 font-bold">Aprovado</span>
+                                : <span className="text-red-400 font-bold">Reprovado</span>}
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+              </>
+            )}
+          </CardContent>
+        </Card>
       </div>
     </div>
   );
 }
+
