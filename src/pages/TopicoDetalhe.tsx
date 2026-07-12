@@ -770,8 +770,8 @@ export default function TopicoDetalhe() {
   const back = params.get("back") || "/cursos";
 
   const c = buildContent(title);
-  const imgQuery = encodeURIComponent(title + " chemistry laboratory");
-  const imgUrl = `https://source.unsplash.com/1200x600/?${imgQuery}`;
+  const imgQuery = encodeURIComponent(title.toLowerCase().split(/\s+/).slice(0, 3).join(","));
+  const imgUrl = `https://loremflickr.com/1200/600/${imgQuery},chemistry,laboratory?lock=${Math.abs(hash(title)) % 9999}`;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-[#4C1D95] to-slate-900">
