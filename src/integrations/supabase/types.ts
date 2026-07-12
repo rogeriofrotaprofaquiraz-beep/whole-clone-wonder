@@ -1414,6 +1414,56 @@ export type Database = {
           },
         ]
       }
+      topic_exercise_attempts: {
+        Row: {
+          answers: Json
+          category: string | null
+          correct: number
+          course_id: string | null
+          created_at: string
+          id: string
+          score: number
+          topic_slug: string
+          topic_title: string
+          total: number
+          user_id: string
+        }
+        Insert: {
+          answers?: Json
+          category?: string | null
+          correct: number
+          course_id?: string | null
+          created_at?: string
+          id?: string
+          score: number
+          topic_slug: string
+          topic_title: string
+          total: number
+          user_id: string
+        }
+        Update: {
+          answers?: Json
+          category?: string | null
+          correct?: number
+          course_id?: string | null
+          created_at?: string
+          id?: string
+          score?: number
+          topic_slug?: string
+          topic_title?: string
+          total?: number
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "topic_exercise_attempts_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "courses"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       user_collection: {
         Row: {
           acquired_at: string
