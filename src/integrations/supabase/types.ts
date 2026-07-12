@@ -464,7 +464,9 @@ export type Database = {
           created_at: string
           id: string
           passing_score: number
+          question_bank: Json
           questions: Json
+          questions_per_attempt: number
           title: string
           updated_at: string
         }
@@ -473,7 +475,9 @@ export type Database = {
           created_at?: string
           id?: string
           passing_score?: number
+          question_bank?: Json
           questions?: Json
+          questions_per_attempt?: number
           title?: string
           updated_at?: string
         }
@@ -482,7 +486,9 @@ export type Database = {
           created_at?: string
           id?: string
           passing_score?: number
+          question_bank?: Json
           questions?: Json
+          questions_per_attempt?: number
           title?: string
           updated_at?: string
         }
@@ -1616,10 +1622,12 @@ export type Database = {
           user_id: string
         }[]
       }
-      submit_assessment: {
-        Args: { _answers: Json; _course_id: string }
-        Returns: Json
-      }
+      submit_assessment:
+        | { Args: { _answers: Json; _course_id: string }; Returns: Json }
+        | {
+            Args: { _answers: Json; _course_id: string; _indices?: Json }
+            Returns: Json
+          }
     }
     Enums: {
       app_role:
