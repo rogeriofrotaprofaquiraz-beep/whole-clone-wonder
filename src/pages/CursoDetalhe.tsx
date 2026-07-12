@@ -9,6 +9,30 @@ import { ArrowLeft, CheckCircle2, Circle, Coins, Loader2, PlayCircle, Zap } from
 import { toast } from "sonner";
 import { areaMeta } from "@/lib/aula";
 import { addCoins } from "@/lib/playerEconomy";
+import TopicExercise from "@/components/TopicExercise";
+
+function reviewCategoryFor(course: { title: string; area: string }): string {
+  const t = (course.title + " " + course.area).toLowerCase();
+  const rules: [RegExp, string][] = [
+    [/org[âa]nic/, "organica"],
+    [/[áa]cido|base|p[hH]|sal|hidr[óo]lise/, "acidobase"],
+    [/termo|entalp|entrop|gibbs/, "termo"],
+    [/cin[ée]tic|velocidade|catalis/, "cinetica"],
+    [/equil[íi]brio|le chatelier/, "equilibrio"],
+    [/solu[çc][ãa]o|colig|molarid|dilui/, "solucoes"],
+    [/eletro|pilha|nox|redox|oxidorredu/, "eletro"],
+    [/nuclear|radioativ|f[íi]ssão|fusão/, "nuclear"],
+    [/g[áa]s|gases|clapeyron/, "gases"],
+    [/mat[ée]ria|mistura|estado f[íi]sico/, "materia"],
+    [/cotidian|ambient|farmac|droga|aliment/, "cotidiano"],
+    [/peri[óo]dic|tabela|fam[íi]lia/, "periodica"],
+    [/liga[çc]|geometr|vsepr|polar/, "ligacoes"],
+    [/rea[çc][ãa]o|estequio|balance/, "reacoes"],
+    [/[áa]tom|modelo at|is[óo]top/, "atomo"],
+  ];
+  for (const [re, cat] of rules) if (re.test(t)) return cat;
+  return "geral";
+}
 
 type Course = { id: string; title: string; description: string | null; area: string; level: string; hours: number };
 type Lesson = {
@@ -319,6 +343,15 @@ export default function CursoDetalhe() {
               </div>
             )}
           </Card>
+        </div>
+
+        <div className="mt-6">
+          <TopicExercise
+            slug={`revisao-modulo-${course.id}`}
+            title={`Revisão do módulo — ${course.title}`}
+            category={reviewCategoryFor(course)}
+            courseId={course.id}
+          />
         </div>
 
         <Card className="p-6 mt-6">
