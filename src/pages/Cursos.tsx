@@ -15,6 +15,7 @@ type Course = {
   area: string;
   level: string;
   cover_url: string | null;
+  hours: number;
 };
 
 export default function Cursos() {
@@ -32,7 +33,7 @@ export default function Cursos() {
     setLoading(true);
     const { data: cs } = await supabase
       .from("courses")
-      .select("id,title,description,area,level,cover_url")
+      .select("id,title,description,area,level,cover_url,hours")
       .eq("published", true);
     const sorted = ((cs ?? []) as Course[]).sort((a, b) => {
       const na = parseInt(a.title.match(/^(\d+)/)?.[1] ?? "9999", 10);
@@ -99,9 +100,10 @@ export default function Cursos() {
                     </div>
                     <div className="flex-1">
                       <h3 className="font-black text-lg leading-tight">{c.title}</h3>
-                      <div className="flex gap-1 mt-1">
+                      <div className="flex gap-1 mt-1 flex-wrap">
                         <Badge variant="secondary">{m.label}</Badge>
                         <Badge variant="outline">{c.level}</Badge>
+                        <Badge variant="outline">{c.hours}h</Badge>
                       </div>
                     </div>
                   </div>

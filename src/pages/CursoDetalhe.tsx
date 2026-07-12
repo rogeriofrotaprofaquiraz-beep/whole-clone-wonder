@@ -10,7 +10,7 @@ import { toast } from "sonner";
 import { areaMeta } from "@/lib/aula";
 import { addCoins } from "@/lib/playerEconomy";
 
-type Course = { id: string; title: string; description: string | null; area: string; level: string };
+type Course = { id: string; title: string; description: string | null; area: string; level: string; hours: number };
 type Lesson = {
   id: string; title: string; content: string | null; video_url: string | null;
   order_index: number; xp_reward: number; coin_reward: number;
@@ -113,7 +113,7 @@ export default function CursoDetalhe() {
     if (!id) return;
     setLoading(true);
     const [{ data: c }, { data: ls }] = await Promise.all([
-      supabase.from("courses").select("id,title,description,area,level").eq("id", id).maybeSingle(),
+      supabase.from("courses").select("id,title,description,area,level,hours").eq("id", id).maybeSingle(),
       supabase.from("course_lessons").select("*").eq("course_id", id).order("order_index"),
     ]);
     setCourse(c as any);
