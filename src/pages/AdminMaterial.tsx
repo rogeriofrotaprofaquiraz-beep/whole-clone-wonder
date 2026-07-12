@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Card } from "@/components/ui/card";
@@ -7,11 +7,16 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import {
+  Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter,
+} from "@/components/ui/dialog";
+import {
+  Accordion, AccordionContent, AccordionItem, AccordionTrigger,
+} from "@/components/ui/accordion";
 import {
   ArrowLeft, Shield, Loader2, Search, BookOpen, Users, CheckCircle2,
-  Eye, EyeOff, Pencil, Save, Coins, Zap, Lock,
+  Eye, EyeOff, Pencil, Save, Coins, Zap, Lock, Plus, Trash2, FileUp,
+  Image as ImageIcon, FileText, ClipboardCheck, X,
 } from "lucide-react";
 import { toast } from "sonner";
 import { areaMeta } from "@/lib/aula";
@@ -24,6 +29,31 @@ type Lesson = {
   id: string; course_id: string; title: string; content: string | null;
   video_url: string | null; order_index: number; xp_reward: number; coin_reward: number;
 };
+type Question = {
+  q: string; options: string[]; correct: number;
+  context?: string; image_url?: string; explanation?: string;
+};
+type Assessment = {
+  id: string; course_id: string; title: string;
+  passing_score: number; questions: Question[];
+};
+
+const SIGNED_URL_TTL = 60 * 60 * 24 * 365; // 1 ano
+
+async function uploadCourseFile(file: File, courseId: string): Promise<string> {
+  const ext = file.name.split(".").pop() || "bin";
+  const safe = file.name.replace(/[^a-zA-Z0-9._-]/g, "_").slice(0, 80);
+  const path = `${courseId}/${Date.now()}-${Math.random().toString(36).slice(2, 8)}-${safe}`;
+  const { error } = await supabase.storage
+    .from("course-materials")
+    .upload(path, file, { contentType: file.type || undefined, upsert: false });
+  if (error) throw error;
+  const { data, error: sErr } = await supabase.storage
+    .from("course-materials")
+    .createSignedUrl(path, SIGNED_URL_TTL);
+  if (sErr || !data?.signedUrl) throw sErr ?? new Error("Falha ao gerar URL");
+  return data.signedUrl;
+}
 
 export default function AdminMaterial() {
   const navigate = useNavigate();
@@ -36,8 +66,13 @@ export default function AdminMaterial() {
   const [q, setQ] = useState("");
   const [editing, setEditing] = useState<Lesson | null>(null);
   const [saving, setSaving] = useState(false);
+  const [uploading, setUploading] = useState(false);
+  const contentRef = useRef<HTMLTextAreaElement | null>(null);
 
-  // Gate: admin only
+  const [assessmentCourse, setAssessmentCourse] = useState<Course | null>(null);
+  const [assessment, setAssessment] = useState<Assessment | null>(null);
+  const [savingAssessment, setSavingAssessment] = useState(false);
+
   useEffect(() => {
     (async () => {
       const { data: { user } } = await supabase.auth.getUser();
@@ -60,17 +95,11 @@ export default function AdminMaterial() {
     if (list.length) {
       const ids = list.map(c => c.id);
       const { data: ls } = await supabase
-        .from("course_lessons")
-        .select("*")
-        .in("course_id", ids)
-        .order("order_index");
+        .from("course_lessons").select("*").in("course_id", ids).order("order_index");
       const grouped: Record<string, Lesson[]> = {};
-      (ls ?? []).forEach((l: any) => {
-        (grouped[l.course_id] ||= []).push(l as Lesson);
-      });
+      (ls ?? []).forEach((l: any) => { (grouped[l.course_id] ||= []).push(l as Lesson); });
       setLessonsByCourse(grouped);
 
-      // Stats: enrollments and completions
       const [{ data: en }, { data: dn }] = await Promise.all([
         supabase.from("course_enrollments").select("course_id").in("course_id", ids),
         supabase.from("lesson_completions").select("lesson_id"),
@@ -98,6 +127,30 @@ export default function AdminMaterial() {
     toast.success(!c.published ? "Curso publicado" : "Curso ocultado");
   };
 
+  const addLesson = async (courseId: string) => {
+    const existing = lessonsByCourse[courseId] || [];
+    const nextOrder = existing.length ? Math.max(...existing.map(l => l.order_index)) + 1 : 1;
+    const { data, error } = await supabase.from("course_lessons").insert({
+      course_id: courseId, title: `Nova aula ${nextOrder}`, content: "",
+      order_index: nextOrder, xp_reward: 10, coin_reward: 5,
+    }).select().single();
+    if (error) { toast.error(error.message); return; }
+    setLessonsByCourse(prev => ({
+      ...prev, [courseId]: [...(prev[courseId] || []), data as Lesson],
+    }));
+    setEditing(data as Lesson);
+  };
+
+  const deleteLesson = async (lesson: Lesson) => {
+    if (!confirm(`Excluir a aula "${lesson.title}"?`)) return;
+    const { error } = await supabase.from("course_lessons").delete().eq("id", lesson.id);
+    if (error) { toast.error(error.message); return; }
+    setLessonsByCourse(prev => ({
+      ...prev, [lesson.course_id]: (prev[lesson.course_id] || []).filter(l => l.id !== lesson.id),
+    }));
+    toast.success("Aula excluída");
+  };
+
   const saveLesson = async () => {
     if (!editing) return;
     setSaving(true);
@@ -112,12 +165,120 @@ export default function AdminMaterial() {
     setSaving(false);
     if (error) { toast.error(error.message); return; }
     setLessonsByCourse(prev => {
-      const arr = (prev[editing.course_id] || []).map(l => l.id === editing.id ? editing : l)
+      const arr = (prev[editing.course_id] || [])
+        .map(l => l.id === editing.id ? editing : l)
         .sort((a, b) => a.order_index - b.order_index);
       return { ...prev, [editing.course_id]: arr };
     });
     toast.success("Aula atualizada");
     setEditing(null);
+  };
+
+  const insertAtCursor = (snippet: string) => {
+    if (!editing) return;
+    const ta = contentRef.current;
+    const current = editing.content ?? "";
+    let next: string;
+    if (ta) {
+      const s = ta.selectionStart ?? current.length;
+      const e = ta.selectionEnd ?? current.length;
+      next = current.slice(0, s) + snippet + current.slice(e);
+    } else {
+      next = current + "\n" + snippet;
+    }
+    setEditing({ ...editing, content: next });
+  };
+
+  const onUploadFile = async (file: File | null, kind: "image" | "file") => {
+    if (!file || !editing) return;
+    setUploading(true);
+    try {
+      const url = await uploadCourseFile(file, editing.course_id);
+      const snippet = kind === "image"
+        ? `\n\n![${file.name}](${url})\n`
+        : `\n\n📎 [${file.name}](${url})\n`;
+      insertAtCursor(snippet);
+      toast.success("Arquivo enviado e link inserido no conteúdo");
+    } catch (e: any) {
+      toast.error(e?.message ?? "Falha no upload");
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  // ================== Assessment editor ==================
+  const openAssessment = async (course: Course) => {
+    setAssessmentCourse(course);
+    const { data } = await supabase
+      .from("course_assessments")
+      .select("id,course_id,title,passing_score,questions")
+      .eq("course_id", course.id)
+      .maybeSingle();
+    if (data) {
+      setAssessment(data as unknown as Assessment);
+    } else {
+      setAssessment({
+        id: "", course_id: course.id, title: `Avaliação — ${course.title}`,
+        passing_score: 7, questions: [],
+      });
+    }
+  };
+
+  const addQuestion = () => {
+    if (!assessment) return;
+    setAssessment({
+      ...assessment,
+      questions: [...assessment.questions, {
+        q: "Nova questão", options: ["Opção A", "Opção B", "Opção C", "Opção D"],
+        correct: 0, context: "", image_url: "", explanation: "",
+      }],
+    });
+  };
+
+  const updateQuestion = (i: number, patch: Partial<Question>) => {
+    if (!assessment) return;
+    const qs = assessment.questions.slice();
+    qs[i] = { ...qs[i], ...patch };
+    setAssessment({ ...assessment, questions: qs });
+  };
+
+  const deleteQuestion = (i: number) => {
+    if (!assessment) return;
+    if (!confirm("Excluir esta questão?")) return;
+    setAssessment({ ...assessment, questions: assessment.questions.filter((_, k) => k !== i) });
+  };
+
+  const uploadQuestionImage = async (i: number, file: File | null) => {
+    if (!file || !assessment) return;
+    setUploading(true);
+    try {
+      const url = await uploadCourseFile(file, assessment.course_id);
+      updateQuestion(i, { image_url: url });
+      toast.success("Imagem anexada à questão");
+    } catch (e: any) {
+      toast.error(e?.message ?? "Falha no upload");
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  const saveAssessment = async () => {
+    if (!assessment) return;
+    setSavingAssessment(true);
+    const payload = {
+      course_id: assessment.course_id,
+      title: assessment.title,
+      passing_score: assessment.passing_score,
+      questions: assessment.questions as any,
+    };
+    const { error } = assessment.id
+      ? await supabase.from("course_assessments").update(payload).eq("id", assessment.id)
+      : await supabase.from("course_assessments").insert(payload);
+    setSavingAssessment(false);
+    if (error) { toast.error(error.message); return; }
+    toast.success("Avaliação salva");
+    setAssessment(null);
+    setAssessmentCourse(null);
   };
 
   const filtered = useMemo(() => {
@@ -208,6 +369,16 @@ export default function AdminMaterial() {
                   </div>
                   <AccordionContent className="p-4">
                     {c.description && <p className="text-sm text-slate-600 mb-3">{c.description}</p>}
+
+                    <div className="flex flex-wrap gap-2 mb-3">
+                      <Button size="sm" onClick={() => addLesson(c.id)} className="bg-[#059669] hover:bg-[#047857]">
+                        <Plus size={14} className="mr-1" /> Nova aula
+                      </Button>
+                      <Button size="sm" variant="outline" onClick={() => openAssessment(c)}>
+                        <ClipboardCheck size={14} className="mr-1" /> Editar avaliação
+                      </Button>
+                    </div>
+
                     {ls.length === 0 ? (
                       <p className="text-sm text-slate-500 italic">Nenhuma aula cadastrada.</p>
                     ) : (
@@ -218,15 +389,21 @@ export default function AdminMaterial() {
                               <div className="w-8 h-8 rounded-lg bg-[#4C1D95] text-white font-black flex items-center justify-center shrink-0 text-sm">{l.order_index}</div>
                               <div className="flex-1 min-w-0">
                                 <div className="font-bold text-sm">{l.title}</div>
-                                <div className="flex gap-2 text-xs text-slate-500 mt-0.5">
+                                <div className="flex gap-2 text-xs text-slate-500 mt-0.5 flex-wrap">
                                   <span className="inline-flex items-center gap-0.5"><Zap size={11} />{l.xp_reward} XP</span>
                                   <span className="inline-flex items-center gap-0.5"><Coins size={11} />{l.coin_reward} ⚛</span>
                                   {l.video_url && <span>🎬 vídeo</span>}
                                 </div>
                               </div>
-                              <Button size="sm" variant="outline" onClick={() => setEditing(l)}>
-                                <Pencil size={13} className="mr-1" /> Editar
-                              </Button>
+                              <div className="flex gap-1 shrink-0">
+                                <Button size="sm" variant="outline" onClick={() => setEditing(l)}>
+                                  <Pencil size={13} className="mr-1" /> Editar
+                                </Button>
+                                <Button size="sm" variant="outline" onClick={() => deleteLesson(l)}
+                                  className="text-red-600 hover:text-red-700 border-red-200 hover:border-red-300">
+                                  <Trash2 size={13} />
+                                </Button>
+                              </div>
                             </div>
                             {l.content && (
                               <details className="mt-2">
@@ -248,6 +425,7 @@ export default function AdminMaterial() {
         )}
       </div>
 
+      {/* ===== Lesson editor ===== */}
       <Dialog open={!!editing} onOpenChange={(o) => !o && setEditing(null)}>
         <DialogContent className="max-w-3xl max-h-[90vh] overflow-auto">
           <DialogHeader><DialogTitle>Editar aula</DialogTitle></DialogHeader>
@@ -277,9 +455,40 @@ export default function AdminMaterial() {
                   <Input type="number" value={editing.coin_reward} onChange={e => setEditing({ ...editing, coin_reward: parseInt(e.target.value) || 0 })} />
                 </div>
               </div>
+
+              <div className="p-3 rounded-lg border border-dashed border-violet-300 bg-violet-50/40">
+                <div className="text-xs font-bold text-[#4C1D95] mb-2 flex items-center gap-1">
+                  <FileUp size={13} /> Anexar arquivos ao conteúdo
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  <label className="cursor-pointer inline-flex items-center gap-1 text-xs px-3 py-2 rounded-md bg-white border hover:bg-slate-50">
+                    <ImageIcon size={13} /> Imagem
+                    <input type="file" accept="image/*" className="hidden"
+                      onChange={e => onUploadFile(e.target.files?.[0] ?? null, "image")} />
+                  </label>
+                  <label className="cursor-pointer inline-flex items-center gap-1 text-xs px-3 py-2 rounded-md bg-white border hover:bg-slate-50">
+                    <FileText size={13} /> PowerPoint / PDF / DOC
+                    <input type="file"
+                      accept=".ppt,.pptx,.pdf,.doc,.docx,.xls,.xlsx,application/vnd.openxmlformats-officedocument.presentationml.presentation,application/pdf"
+                      className="hidden"
+                      onChange={e => onUploadFile(e.target.files?.[0] ?? null, "file")} />
+                  </label>
+                  {uploading && <span className="text-xs text-slate-500 inline-flex items-center gap-1"><Loader2 size={12} className="animate-spin" /> Enviando…</span>}
+                </div>
+                <p className="text-[11px] text-slate-500 mt-2">
+                  O arquivo será inserido no conteúdo abaixo como link markdown na posição do cursor.
+                </p>
+              </div>
+
               <div>
                 <label className="text-xs font-semibold">Conteúdo (Markdown)</label>
-                <Textarea rows={16} value={editing.content ?? ""} onChange={e => setEditing({ ...editing, content: e.target.value })} className="font-mono text-xs" />
+                <Textarea
+                  ref={contentRef}
+                  rows={16}
+                  value={editing.content ?? ""}
+                  onChange={e => setEditing({ ...editing, content: e.target.value })}
+                  className="font-mono text-xs"
+                />
               </div>
             </div>
           )}
@@ -288,6 +497,148 @@ export default function AdminMaterial() {
             <Button onClick={saveLesson} disabled={saving} className="bg-[#4C1D95] hover:bg-[#3b1477]">
               {saving ? <Loader2 className="animate-spin mr-2" size={14} /> : <Save className="mr-2" size={14} />}
               Salvar
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      {/* ===== Assessment editor ===== */}
+      <Dialog open={!!assessment} onOpenChange={(o) => { if (!o) { setAssessment(null); setAssessmentCourse(null); } }}>
+        <DialogContent className="max-w-4xl max-h-[92vh] overflow-auto">
+          <DialogHeader>
+            <DialogTitle>Avaliação — {assessmentCourse?.title}</DialogTitle>
+          </DialogHeader>
+          {assessment && (
+            <div className="space-y-4">
+              <div className="grid grid-cols-3 gap-3">
+                <div className="col-span-2">
+                  <label className="text-xs font-semibold">Título</label>
+                  <Input value={assessment.title}
+                    onChange={e => setAssessment({ ...assessment, title: e.target.value })} />
+                </div>
+                <div>
+                  <label className="text-xs font-semibold">Nota mínima</label>
+                  <Input type="number" step="0.1" min={0} max={10}
+                    value={assessment.passing_score}
+                    onChange={e => setAssessment({ ...assessment, passing_score: parseFloat(e.target.value) || 0 })} />
+                </div>
+              </div>
+
+              <div className="flex justify-between items-center">
+                <div className="text-sm text-slate-600">
+                  {assessment.questions.length} questão(ões)
+                </div>
+                <Button size="sm" onClick={addQuestion} className="bg-[#059669] hover:bg-[#047857]">
+                  <Plus size={14} className="mr-1" /> Adicionar questão
+                </Button>
+              </div>
+
+              <div className="space-y-3">
+                {assessment.questions.map((qq, i) => (
+                  <Card key={i} className="p-4 border-l-4 border-[#4C1D95]">
+                    <div className="flex justify-between items-center mb-2">
+                      <Badge className="bg-[#4C1D95]">Questão {i + 1}</Badge>
+                      <Button size="sm" variant="ghost" onClick={() => deleteQuestion(i)}
+                        className="text-red-600 hover:bg-red-50">
+                        <Trash2 size={14} />
+                      </Button>
+                    </div>
+
+                    <div className="space-y-2">
+                      <div>
+                        <label className="text-xs font-semibold">Enunciado</label>
+                        <Textarea rows={2} value={qq.q}
+                          onChange={e => updateQuestion(i, { q: e.target.value })} />
+                      </div>
+
+                      <div>
+                        <label className="text-xs font-semibold">Contexto (situação-problema)</label>
+                        <Textarea rows={2} value={qq.context ?? ""}
+                          onChange={e => updateQuestion(i, { context: e.target.value })}
+                          placeholder="Descreva um cenário real onde o conceito aparece..." />
+                      </div>
+
+                      <div>
+                        <label className="text-xs font-semibold">Imagem de apoio</label>
+                        <div className="flex gap-2 items-start">
+                          <Input value={qq.image_url ?? ""}
+                            onChange={e => updateQuestion(i, { image_url: e.target.value })}
+                            placeholder="https://..." />
+                          <label className="cursor-pointer inline-flex items-center gap-1 text-xs px-3 py-2 rounded-md bg-white border hover:bg-slate-50 shrink-0">
+                            <ImageIcon size={13} /> Enviar
+                            <input type="file" accept="image/*" className="hidden"
+                              onChange={e => uploadQuestionImage(i, e.target.files?.[0] ?? null)} />
+                          </label>
+                        </div>
+                        {qq.image_url && (
+                          <div className="mt-2 relative inline-block">
+                            <img src={qq.image_url} alt="" className="max-h-32 rounded border" />
+                            <button type="button" onClick={() => updateQuestion(i, { image_url: "" })}
+                              className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-0.5">
+                              <X size={12} />
+                            </button>
+                          </div>
+                        )}
+                      </div>
+
+                      <div>
+                        <label className="text-xs font-semibold">Alternativas (marque a correta)</label>
+                        <div className="space-y-1">
+                          {qq.options.map((opt, k) => (
+                            <div key={k} className="flex items-center gap-2">
+                              <input type="radio" name={`correct-${i}`} checked={qq.correct === k}
+                                onChange={() => updateQuestion(i, { correct: k })} />
+                              <span className="text-xs font-bold w-5">{String.fromCharCode(65 + k)})</span>
+                              <Input value={opt}
+                                onChange={e => {
+                                  const opts = qq.options.slice(); opts[k] = e.target.value;
+                                  updateQuestion(i, { options: opts });
+                                }} />
+                              {qq.options.length > 2 && (
+                                <Button size="sm" variant="ghost"
+                                  onClick={() => updateQuestion(i, {
+                                    options: qq.options.filter((_, x) => x !== k),
+                                    correct: qq.correct >= k && qq.correct > 0 ? qq.correct - 1 : qq.correct,
+                                  })}>
+                                  <X size={12} />
+                                </Button>
+                              )}
+                            </div>
+                          ))}
+                        </div>
+                        {qq.options.length < 6 && (
+                          <Button size="sm" variant="outline" className="mt-2"
+                            onClick={() => updateQuestion(i, { options: [...qq.options, `Opção ${String.fromCharCode(65 + qq.options.length)}`] })}>
+                            <Plus size={12} className="mr-1" /> Alternativa
+                          </Button>
+                        )}
+                      </div>
+
+                      <div>
+                        <label className="text-xs font-semibold">Explicação (feedback ao aluno)</label>
+                        <Textarea rows={2} value={qq.explanation ?? ""}
+                          onChange={e => updateQuestion(i, { explanation: e.target.value })}
+                          placeholder="Por que a alternativa correta é a certa?" />
+                      </div>
+                    </div>
+                  </Card>
+                ))}
+                {assessment.questions.length === 0 && (
+                  <div className="text-center text-slate-500 py-8 border-2 border-dashed rounded-lg">
+                    Nenhuma questão. Clique em <strong>Adicionar questão</strong> para começar.
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+          <DialogFooter>
+            <Button variant="outline" onClick={() => { setAssessment(null); setAssessmentCourse(null); }}>
+              Cancelar
+            </Button>
+            <Button onClick={saveAssessment} disabled={savingAssessment}
+              className="bg-[#4C1D95] hover:bg-[#3b1477]">
+              {savingAssessment ? <Loader2 className="animate-spin mr-2" size={14} /> : <Save className="mr-2" size={14} />}
+              Salvar avaliação
             </Button>
           </DialogFooter>
         </DialogContent>
