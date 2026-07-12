@@ -245,7 +245,7 @@ export default function CursoDetalhe() {
                   </div>
                 )}
                 <div className="prose prose-sm max-w-none text-slate-700">
-                  {active.content && <LessonContent text={active.content} backTo={`/cursos/${id}`} />}
+                  {active.content && <LessonContent text={active.content} backTo={`/cursos/${id}`} lessonTitle={active.title} />}
                 </div>
                 <div className="mt-6 flex items-center gap-3">
                   <Button
@@ -293,7 +293,7 @@ export default function CursoDetalhe() {
                 <h3 className="font-bold text-base mb-2">{l.title}</h3>
                 {l.content && (
                   <div className="prose prose-sm max-w-none text-slate-700">
-                    <LessonContent text={l.content} backTo={`/cursos/${id}`} />
+                    <LessonContent text={l.content} backTo={`/cursos/${id}`} lessonTitle={l.title} />
                   </div>
                 )}
                 <div className="mt-2">
