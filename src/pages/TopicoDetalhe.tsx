@@ -1129,13 +1129,7 @@ export default function TopicoDetalhe() {
             </section>
 
 
-            {/* Exercício avaliativo online */}
-            <TopicExercise
-              slug={slug ?? title}
-              title={title}
-              category={classify(title)}
-              courseId={params.get("course")}
-            />
+
 
 
             {/* Referências bibliográficas */}
