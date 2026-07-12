@@ -834,6 +834,7 @@ export default function TopicoDetalhe() {
               <ol className="space-y-2">
                 {c.principles.map((p, i) => {
                   const { head, rest } = highlightPrinciple(p);
+                  const explain = explainPrinciple(p);
                   return (
                     <li key={i} className="rounded-lg border border-slate-200 bg-white p-3 flex gap-3">
                       <div className="w-7 h-7 shrink-0 rounded-full bg-[#4C1D95] text-white text-xs font-bold flex items-center justify-center">
@@ -841,7 +842,10 @@ export default function TopicoDetalhe() {
                       </div>
                       <div className="flex-1">
                         <div className="font-bold text-sm text-slate-900">{head}</div>
-                        {rest && <div className="text-xs text-slate-600 mt-0.5 leading-relaxed">{rest}</div>}
+                        {rest && <div className="text-xs text-slate-700 mt-0.5 leading-relaxed">{rest}</div>}
+                        <div className="text-xs text-slate-600 mt-2 leading-relaxed border-l-2 border-violet-300 pl-2 italic">
+                          {explain}
+                        </div>
                       </div>
                     </li>
                   );
