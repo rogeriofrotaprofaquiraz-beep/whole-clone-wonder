@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, Trophy, Gift, Lock, Check, Sparkles, Star } from "lucide-react";
+import { ArrowLeft, Trophy, Gift, Lock, Check, Sparkles, Star, ClipboardCheck } from "lucide-react";
 import { toast } from "sonner";
 
 /** Recompensas por nível: cada um libera Átomos extras (pode reivindicar 1x). */
