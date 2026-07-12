@@ -119,6 +119,9 @@ export default function CursoDetalhe() {
   const [active, setActive] = useState<Lesson | null>(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const [failedAttempts, setFailedAttempts] = useState(0);
+  const [passed, setPassed] = useState(false);
+
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data }) => setUser(data.user));
