@@ -345,6 +345,15 @@ export default function CursoDetalhe() {
           </Card>
         </div>
 
+        <div className="mt-6">
+          <TopicExercise
+            slug={`revisao-modulo-${course.id}`}
+            title={`Revisão do módulo — ${course.title}`}
+            category={reviewCategoryFor(course)}
+            courseId={course.id}
+          />
+        </div>
+
         <Card className="p-6 mt-6">
           <h2 className="text-xl font-black mb-1">Ementa completa do curso</h2>
           <p className="text-sm text-slate-500 mb-4">
