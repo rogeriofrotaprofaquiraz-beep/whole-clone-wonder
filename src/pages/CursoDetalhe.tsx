@@ -64,10 +64,25 @@ function LessonContent({ text, backTo, lessonTitle }: { text: string; backTo: st
           )}
           {s.paragraphs.length > 0 && (
             <div className="space-y-1.5 mb-2">
-              {s.paragraphs.map((p, k) => (
-                <p key={k} className="text-sm text-slate-700 leading-relaxed"
-                   dangerouslySetInnerHTML={{ __html: p.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>") }} />
-              ))}
+              {s.paragraphs.map((p, k) => {
+                const img = p.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
+                if (img) {
+                  return (
+                    <img key={k} src={img[2]} alt={img[1]}
+                      className="rounded-lg border max-h-96 my-2" loading="lazy" />
+                  );
+                }
+                const html = p
+                  .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+                  .replace(/!\[([^\]]*)\]\(([^)]+)\)/g,
+                    '<img src="$2" alt="$1" class="inline-block rounded max-h-40 mx-1" />')
+                  .replace(/\[([^\]]+)\]\(([^)]+)\)/g,
+                    '<a href="$2" target="_blank" rel="noopener" class="text-[#4C1D95] underline font-semibold">$1</a>');
+                return (
+                  <p key={k} className="text-sm text-slate-700 leading-relaxed"
+                     dangerouslySetInnerHTML={{ __html: html }} />
+                );
+              })}
             </div>
           )}
           {s.bullets.length > 0 && (
