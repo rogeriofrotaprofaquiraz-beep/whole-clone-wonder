@@ -984,15 +984,14 @@ export default function TopicoDetalhe() {
             </section>
 
 
-            {/* Exercícios */}
-            <section className="rounded-xl p-4 bg-amber-50 border border-amber-200">
-              <div className="flex items-center gap-2 text-amber-700 font-bold mb-2">
-                <Sparkles size={18} /> Exercícios sugeridos
-              </div>
-              <ol className="space-y-1.5 text-sm text-slate-700 list-decimal pl-5">
-                {c.exercises.map((e, i) => <li key={i}>{e}</li>)}
-              </ol>
-            </section>
+            {/* Exercício avaliativo online */}
+            <TopicExercise
+              slug={slug ?? title}
+              title={title}
+              category={classify(title)}
+              courseId={params.get("course")}
+            />
+
 
             {/* Referências bibliográficas */}
             <section className="rounded-xl p-4 bg-slate-50 border border-slate-200">
