@@ -616,7 +616,7 @@ function buildContent(title: string): Section {
           "Por que o vinagre remove crostas de calcário?",
         ],
         refs: [
-          `${BOOKS[0].short}, boxes \"Química na vida\"`,
+          `${BOOKS[0].short}, boxes "Química na vida"`,
           `${BOOKS[1].short}, cap. contexto ambiental`,
           `${BOOKS[4].short}, todas os volumes — seções aplicadas`,
         ],
