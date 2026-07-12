@@ -326,7 +326,13 @@ export default function Avaliacao() {
                   <p className="text-red-700 font-bold">Não aprovado</p>
                   <Button
                     variant="outline"
-                    onClick={() => {
+                    onClick={async () => {
+                      const { data: a } = await supabase
+                        .from("course_assessments")
+                        .select("id,title,passing_score,questions,question_bank,questions_per_attempt")
+                        .eq("course_id", id!)
+                        .maybeSingle();
+                      if (a) setAssessment(buildAttempt(a));
                       setResult(null);
                       setAnswers({});
                       setCurrent(0);
