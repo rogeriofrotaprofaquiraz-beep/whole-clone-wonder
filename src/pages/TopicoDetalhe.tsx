@@ -707,8 +707,46 @@ function highlightPrinciple(text: string): { head: string; rest: string } {
   if (m) return { head: m[1].trim(), rest: m[3].trim() };
   return { head: text, rest: "" };
 }
+
+/* Explicações longas dos princípios por palavras-chave. */
+const PRINCIPLE_PATTERNS: { re: RegExp; explain: string }[] = [
+  { re: /lavoisier|conservação da massa/i, explain: "Em um sistema fechado, a massa total dos reagentes é igual à massa total dos produtos. Átomos não são criados nem destruídos — apenas rearranjados. Base para todo cálculo estequiométrico." },
+  { re: /proust|proporções definidas/i, explain: "Uma substância pura sempre apresenta os mesmos elementos combinados na mesma proporção em massa (ex.: H₂O = 11,2% H e 88,8% O). Fundamenta a fórmula química." },
+  { re: /dalton|proporções múltiplas/i, explain: "Quando dois elementos formam mais de um composto, as massas de um deles que se combinam com massa fixa do outro estão em razão de números inteiros pequenos (ex.: CO e CO₂)." },
+  { re: /avogadro|6,022/i, explain: "1 mol contém 6,022×10²³ entidades (átomos, moléculas, íons). Permite converter contagem microscópica em massa mensurável no laboratório." },
+  { re: /hess/i, explain: "Como a entalpia é função de estado, o ΔH de uma reação global é igual à soma dos ΔH das etapas — mesmo que o caminho real seja diferente. Permite calcular calores impossíveis de medir diretamente." },
+  { re: /octeto/i, explain: "Átomos tendem a ganhar, perder ou compartilhar elétrons até atingir 8 na camada de valência (2 para H e He), configuração estável dos gases nobres. Exceções: H, Be, B e elementos do 3º período em diante." },
+  { re: /aufbau|pauli|hund/i, explain: "Elétrons preenchem orbitais do menor para o maior nível de energia (Aufbau), no máximo dois por orbital com spins opostos (Pauli), e ocupam orbitais degenerados um a um antes de emparelhar (Hund)." },
+  { re: /raio atômico/i, explain: "Diminui da esquerda para a direita no período (mais prótons puxam a mesma camada) e aumenta de cima para baixo no grupo (novas camadas afastam a valência)." },
+  { re: /energia de ionização|ionizacao/i, explain: "Cresce ao longo do período — mais carga nuclear efetiva prende os elétrons — e decresce no grupo, pois elétrons mais distantes saem com menos energia." },
+  { re: /eletronegatividade|pauling/i, explain: "Mede a força com que um átomo atrai elétrons em uma ligação. Flúor (3,98) é o mais eletronegativo. A diferença de eletronegatividade (ΔEN) define o caráter da ligação." },
+  { re: /vsepr|geometria/i, explain: "Pares eletrônicos ao redor do átomo central se repelem e assumem a geometria que minimiza essa repulsão — linear, angular, trigonal, tetraédrica etc. Determina polaridade e reatividade." },
+  { re: /forças intermolecul|dipolo|hidrogênio|london/i, explain: "Atrações entre moléculas (mais fracas que ligações químicas) determinam ponto de ebulição, solubilidade e viscosidade: ligação de H > dipolo-dipolo > forças de London." },
+  { re: /ph \+ poh|pH.*14/i, explain: "A 25 °C, a autoionização da água mantém [H⁺]·[OH⁻] = 10⁻¹⁴, então pH e pOH sempre somam 14. Meio ácido: pH < 7; neutro: pH = 7; básico: pH > 7." },
+  { re: /ácido forte|dissocia completamente/i, explain: "Ácidos fortes (HCl, HNO₃, H₂SO₄) ionizam praticamente 100% em água, liberando todo o H⁺. Ácidos fracos (HF, CH₃COOH) ionizam parcialmente e estabelecem equilíbrio." },
+  { re: /base forte/i, explain: "Hidróxidos de metais alcalinos e alcalino-terrosos (NaOH, KOH, Ca(OH)₂) dissociam-se totalmente em água liberando OH⁻ — daí a alta condutividade e o pH próximo a 14." },
+  { re: /neutralização.*calor|exotérmica/i, explain: "Toda neutralização entre ácido e base fortes libera ~57 kJ/mol (calor de neutralização) — energia da formação da ligação O–H na água." },
+  { re: /exotérmico|endotérmico|ΔH ?< ?0|ΔH ?> ?0/i, explain: "Exotérmica libera calor para o ambiente (queima, respiração). Endotérmica absorve calor (fotossíntese, dissolução de nitrato de amônio). O sinal do ΔH indica o sentido do fluxo." },
+  { re: /entropia|ΔS/i, explain: "A entropia mede o número de configurações microscópicas possíveis. Aumenta na fusão, vaporização, mistura de gases e em reações que geram mais mols gasosos." },
+  { re: /ΔG|gibbs|espontân/i, explain: "ΔG = ΔH − T·ΔS combina calor e desordem: se ΔG < 0 o processo é espontâneo; ΔG = 0 indica equilíbrio; ΔG > 0 exige energia externa." },
+  { re: /le chatelier|le châtelier/i, explain: "Perturbar um sistema em equilíbrio (concentração, pressão, temperatura) desloca a reação no sentido que atenua a perturbação. Base da otimização industrial (ex.: Haber-Bosch)." },
+  { re: /catalisador/i, explain: "O catalisador oferece um caminho alternativo com menor energia de ativação, acelerando a reação nos dois sentidos sem ser consumido nem alterar o equilíbrio." },
+  { re: /nernst|potencial/i, explain: "A equação de Nernst corrige o potencial padrão de uma pilha para condições não-padrão (concentração e temperatura): E = E° − (RT/nF)·ln Q." },
+  { re: /oxidação|redução|nox/i, explain: "Oxidação = perda de elétrons (aumento do NOX); redução = ganho de elétrons (diminuição do NOX). Ocorrem sempre juntas — quem oxida um, reduz o outro." },
+  { re: /pv ?= ?nrt|gás ideal|boyle|charles/i, explain: "Nos gases ideais, pressão, volume, temperatura e mols se relacionam por PV = nRT. Boyle (T const.): P·V = k; Charles (P const.): V/T = k." },
+  { re: /meia-vida|radioatividade/i, explain: "Meia-vida (t½) é o tempo para metade dos núcleos radioativos decaírem. Constante para cada isótopo — permite datação (¹⁴C, U-Pb) e dose médica." },
+  { re: /função de estado/i, explain: "Grandezas como H, U, S e G dependem apenas do estado inicial e final do sistema, não do caminho percorrido. Isso é o que permite tabelar e somar valores." },
+];
+
+function explainPrinciple(text: string): string {
+  for (const p of PRINCIPLE_PATTERNS) {
+    if (p.re.test(text)) return p.explain;
+  }
+  return "Princípio essencial: relaciona causa e efeito das transformações químicas descritas neste tópico. Compreender esta regra evita erros conceituais e agiliza a resolução de exercícios.";
+}
+
 function imageForExample(text: string): string {
-  const stop = new Set(["de","da","do","em","para","com","no","na","os","as","um","uma","que","por","aos","pela","pelo","dos","das"]);
+  const stop = new Set(["de","da","do","em","para","com","no","na","os","as","um","uma","que","por","aos","pela","pelo","dos","das","sua","seu"]);
   const words = text
     .toLowerCase()
     .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
@@ -717,8 +755,13 @@ function imageForExample(text: string): string {
     .filter(w => w.length > 3 && !stop.has(w))
     .slice(0, 3)
     .join(",");
-  return `https://source.unsplash.com/featured/600x400/?${encodeURIComponent(words || "chemistry,laboratory")}`;
+  // loremflickr entrega imagens temáticas reais e estáveis (Unsplash Source foi descontinuado).
+  return `https://loremflickr.com/600/400/${encodeURIComponent(words || "chemistry,laboratory")}?lock=${Math.abs(hash(text)) % 9999}`;
 }
+function hash(s: string) {
+  let h = 0; for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) | 0; return h;
+}
+
 
 export default function TopicoDetalhe() {
   const { slug } = useParams();
