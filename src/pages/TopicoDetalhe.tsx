@@ -830,8 +830,23 @@ export default function TopicoDetalhe() {
   const back = params.get("back") || "/cursos";
 
   const c = buildContent(title);
-  const imgQuery = encodeURIComponent(title.toLowerCase().split(/\s+/).slice(0, 3).join(","));
-  const imgUrl = `https://loremflickr.com/1200/600/${imgQuery},chemistry,laboratory?lock=${Math.abs(hash(title)) % 9999}`;
+  // Usa o mapeamento temático (traduzido) para a imagem-capa, garantindo relação com o assunto.
+  const heroQuery = (() => {
+    for (const m of EXAMPLE_IMAGE_MAP) if (m.keys.test(title)) return m.query;
+    const cat = classify(title);
+    const byCat: Record<string,string> = {
+      atomo:"atom,science,physics", periodica:"periodic,table,chemistry",
+      ligacoes:"molecule,structure", reacoes:"chemistry,reaction,flask",
+      acidobase:"laboratory,ph,indicator", termo:"thermodynamics,flame",
+      cinetica:"reaction,speed,laboratory", equilibrio:"equilibrium,chemistry",
+      solucoes:"solution,beaker,liquid", eletro:"battery,electrochemistry",
+      organica:"organic,chemistry,molecule", nuclear:"nuclear,reactor",
+      gases:"gas,balloon,science", materia:"matter,states,ice",
+      cotidiano:"kitchen,cooking,chemistry",
+    };
+    return byCat[cat] || "chemistry,laboratory,science";
+  })();
+  const imgUrl = `https://loremflickr.com/1200/600/${encodeURIComponent(heroQuery)}?lock=${Math.abs(hash(title)) % 9999}`;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-[#4C1D95] to-slate-900">
