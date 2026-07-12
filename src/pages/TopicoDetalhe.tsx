@@ -768,28 +768,42 @@ export default function TopicoDetalhe() {
               <p className="text-slate-700 leading-relaxed">{c.formal}</p>
             </section>
 
-            {/* Conceitos-chave */}
+            {/* Conceitos-chave — cartões com explicação */}
             <section>
-              <div className="flex items-center gap-2 text-[#4C1D95] font-bold mb-2">
-                <Lightbulb size={18} /> Conceitos-chave
+              <div className="flex items-center gap-2 text-[#4C1D95] font-bold mb-3">
+                <Lightbulb size={18} /> Conceitos-chave (com explicação)
               </div>
-              <div className="flex flex-wrap gap-2">
+              <div className="grid sm:grid-cols-2 gap-3">
                 {c.key.map((k, i) => (
-                  <span key={i} className="px-3 py-1 rounded-full bg-violet-100 text-[#4C1D95] text-xs font-semibold">
-                    {k}
-                  </span>
+                  <div key={i} className="rounded-lg border border-violet-200 bg-violet-50/60 p-3">
+                    <div className="text-sm font-bold text-[#4C1D95] mb-1">{k}</div>
+                    <div className="text-xs text-slate-700 leading-relaxed">{explainKey(k)}</div>
+                  </div>
                 ))}
               </div>
             </section>
 
-            {/* Princípios */}
+            {/* Princípios — cabeçalho destacado + explicação */}
             <section>
-              <div className="flex items-center gap-2 text-[#4C1D95] font-bold mb-2">
+              <div className="flex items-center gap-2 text-[#4C1D95] font-bold mb-3">
                 <Target size={18} /> Princípios e leis fundamentais
               </div>
-              <ul className="space-y-1.5 text-sm text-slate-700 list-disc pl-5">
-                {c.principles.map((p, i) => <li key={i}>{p}</li>)}
-              </ul>
+              <ol className="space-y-2">
+                {c.principles.map((p, i) => {
+                  const { head, rest } = highlightPrinciple(p);
+                  return (
+                    <li key={i} className="rounded-lg border border-slate-200 bg-white p-3 flex gap-3">
+                      <div className="w-7 h-7 shrink-0 rounded-full bg-[#4C1D95] text-white text-xs font-bold flex items-center justify-center">
+                        {i + 1}
+                      </div>
+                      <div className="flex-1">
+                        <div className="font-bold text-sm text-slate-900">{head}</div>
+                        {rest && <div className="text-xs text-slate-600 mt-0.5 leading-relaxed">{rest}</div>}
+                      </div>
+                    </li>
+                  );
+                })}
+              </ol>
             </section>
 
             {/* Fórmulas */}
@@ -809,25 +823,42 @@ export default function TopicoDetalhe() {
               </section>
             )}
 
-            {/* Exemplos + Erros comuns */}
-            <section className="grid md:grid-cols-2 gap-4">
-              <div className="rounded-xl p-4 bg-emerald-50 border border-emerald-200">
-                <div className="flex items-center gap-2 text-emerald-700 font-bold mb-2">
-                  <FlaskConical size={18} /> Aplicações e cotidiano
-                </div>
-                <ul className="space-y-1.5 text-sm text-slate-700 list-disc pl-5">
-                  {c.examples.map((e, i) => <li key={i}>{e}</li>)}
-                </ul>
+            {/* Aplicações e cotidiano — cartões com imagens */}
+            <section>
+              <div className="flex items-center gap-2 text-emerald-700 font-bold mb-3">
+                <FlaskConical size={18} /> Aplicações e cotidiano
               </div>
-              <div className="rounded-xl p-4 bg-red-50 border border-red-200">
-                <div className="flex items-center gap-2 text-red-700 font-bold mb-2">
-                  <AlertTriangle size={18} /> Erros comuns
-                </div>
-                <ul className="space-y-1.5 text-sm text-slate-700 list-disc pl-5">
-                  {c.pitfalls.map((p, i) => <li key={i}>{p}</li>)}
-                </ul>
+              <div className="grid sm:grid-cols-2 gap-3">
+                {c.examples.map((e, i) => (
+                  <div key={i} className="rounded-xl overflow-hidden border border-emerald-200 bg-emerald-50/50 flex flex-col">
+                    <div className="aspect-[16/10] bg-gradient-to-br from-emerald-100 to-emerald-200 relative overflow-hidden">
+                      <img
+                        src={imageForExample(e)}
+                        alt={`Exemplo cotidiano: ${e.slice(0, 60)}`}
+                        loading="lazy"
+                        className="w-full h-full object-cover"
+                        onError={(ev) => { (ev.target as HTMLImageElement).style.display = "none"; }}
+                      />
+                      <div className="absolute top-2 left-2 bg-white/90 text-emerald-700 text-[10px] font-bold px-2 py-0.5 rounded-full">
+                        Exemplo {i + 1}
+                      </div>
+                    </div>
+                    <div className="p-3 text-sm text-slate-700 leading-relaxed flex-1">{e}</div>
+                  </div>
+                ))}
               </div>
             </section>
+
+            {/* Erros comuns */}
+            <section className="rounded-xl p-4 bg-red-50 border border-red-200">
+              <div className="flex items-center gap-2 text-red-700 font-bold mb-2">
+                <AlertTriangle size={18} /> Erros comuns
+              </div>
+              <ul className="space-y-1.5 text-sm text-slate-700 list-disc pl-5">
+                {c.pitfalls.map((p, i) => <li key={i}>{p}</li>)}
+              </ul>
+            </section>
+
 
             {/* Exercícios */}
             <section className="rounded-xl p-4 bg-amber-50 border border-amber-200">
