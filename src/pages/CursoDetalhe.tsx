@@ -10,7 +10,7 @@ import { toast } from "sonner";
 import { areaMeta } from "@/lib/aula";
 import { addCoins } from "@/lib/playerEconomy";
 
-type Course = { id: string; title: string; description: string | null; area: string; level: string };
+type Course = { id: string; title: string; description: string | null; area: string; level: string; hours: number };
 type Lesson = {
   id: string; title: string; content: string | null; video_url: string | null;
   order_index: number; xp_reward: number; coin_reward: number;
@@ -113,7 +113,7 @@ export default function CursoDetalhe() {
     if (!id) return;
     setLoading(true);
     const [{ data: c }, { data: ls }] = await Promise.all([
-      supabase.from("courses").select("id,title,description,area,level").eq("id", id).maybeSingle(),
+      supabase.from("courses").select("id,title,description,area,level,hours").eq("id", id).maybeSingle(),
       supabase.from("course_lessons").select("*").eq("course_id", id).order("order_index"),
     ]);
     setCourse(c as any);
@@ -173,14 +173,23 @@ export default function CursoDetalhe() {
             <div className="flex-1">
               <h1 className="text-2xl md:text-3xl font-black">{course.title}</h1>
               {course.description && <p className="text-white/85 mt-1">{course.description}</p>}
-              <div className="flex gap-2 mt-3">
+              <div className="flex gap-2 mt-3 flex-wrap">
                 <Badge className="bg-white/20 text-white">{m!.label}</Badge>
                 <Badge className="bg-white/20 text-white">{course.level}</Badge>
                 <Badge className="bg-white/20 text-white">{lessons.length} aulas</Badge>
+                <Badge className="bg-white/20 text-white">Carga horária: {course.hours}h</Badge>
               </div>
               <div className="mt-4">
                 <div className="flex justify-between text-xs mb-1"><span>Progresso</span><span>{progress}%</span></div>
                 <Progress value={progress} className="bg-white/20" />
+              </div>
+              <div className="mt-4">
+                <Button
+                  onClick={() => navigate(`/cursos/${course.id}/avaliacao`)}
+                  className="bg-white text-[#4C1D95] hover:bg-white/90 font-bold"
+                >
+                  🎓 Fazer avaliação final (nota mínima 7,0)
+                </Button>
               </div>
             </div>
           </div>

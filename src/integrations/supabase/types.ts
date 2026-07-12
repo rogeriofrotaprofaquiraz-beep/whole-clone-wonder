@@ -140,6 +140,104 @@ export type Database = {
         }
         Relationships: []
       }
+      assessment_attempts: {
+        Row: {
+          answers: Json
+          assessment_id: string | null
+          correct_count: number
+          course_id: string
+          created_at: string
+          id: string
+          passed: boolean
+          score: number
+          total_questions: number
+          user_id: string
+        }
+        Insert: {
+          answers?: Json
+          assessment_id?: string | null
+          correct_count?: number
+          course_id: string
+          created_at?: string
+          id?: string
+          passed?: boolean
+          score?: number
+          total_questions?: number
+          user_id: string
+        }
+        Update: {
+          answers?: Json
+          assessment_id?: string | null
+          correct_count?: number
+          course_id?: string
+          created_at?: string
+          id?: string
+          passed?: boolean
+          score?: number
+          total_questions?: number
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "assessment_attempts_assessment_id_fkey"
+            columns: ["assessment_id"]
+            isOneToOne: false
+            referencedRelation: "course_assessments"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "assessment_attempts_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "courses"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      certificates: {
+        Row: {
+          code: string
+          course_id: string
+          course_title: string
+          hours: number
+          id: string
+          issued_at: string
+          score: number
+          student_name: string
+          user_id: string
+        }
+        Insert: {
+          code: string
+          course_id: string
+          course_title: string
+          hours: number
+          id?: string
+          issued_at?: string
+          score: number
+          student_name: string
+          user_id: string
+        }
+        Update: {
+          code?: string
+          course_id?: string
+          course_title?: string
+          hours?: number
+          id?: string
+          issued_at?: string
+          score?: number
+          student_name?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "certificates_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "courses"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       chem_questions: {
         Row: {
           answer_text: string | null
@@ -360,6 +458,44 @@ export type Database = {
           },
         ]
       }
+      course_assessments: {
+        Row: {
+          course_id: string
+          created_at: string
+          id: string
+          passing_score: number
+          questions: Json
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          course_id: string
+          created_at?: string
+          id?: string
+          passing_score?: number
+          questions?: Json
+          title?: string
+          updated_at?: string
+        }
+        Update: {
+          course_id?: string
+          created_at?: string
+          id?: string
+          passing_score?: number
+          questions?: Json
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "course_assessments_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: true
+            referencedRelation: "courses"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       course_enrollments: {
         Row: {
           course_id: string
@@ -443,6 +579,7 @@ export type Database = {
           cover_url: string | null
           created_at: string
           description: string | null
+          hours: number
           id: string
           level: string
           published: boolean
@@ -455,6 +592,7 @@ export type Database = {
           cover_url?: string | null
           created_at?: string
           description?: string | null
+          hours?: number
           id?: string
           level?: string
           published?: boolean
@@ -467,6 +605,7 @@ export type Database = {
           cover_url?: string | null
           created_at?: string
           description?: string | null
+          hours?: number
           id?: string
           level?: string
           published?: boolean
@@ -1426,6 +1565,10 @@ export type Database = {
           email: string
           user_id: string
         }[]
+      }
+      submit_assessment: {
+        Args: { _answers: Json; _course_id: string }
+        Returns: Json
       }
     }
     Enums: {
