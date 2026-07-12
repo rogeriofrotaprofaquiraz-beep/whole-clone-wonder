@@ -745,18 +745,78 @@ function explainPrinciple(text: string): string {
   return "Princípio essencial: relaciona causa e efeito das transformações químicas descritas neste tópico. Compreender esta regra evita erros conceituais e agiliza a resolução de exercícios.";
 }
 
+/* Mapa PT → consulta de imagem em inglês (loremflickr entende termos em inglês).
+   Detecta palavras/expressões-chave em cada exemplo e devolve uma query focada. */
+const EXAMPLE_IMAGE_MAP: { keys: RegExp; query: string }[] = [
+  // cotidiano / limpeza / cozinha
+  { keys: /produtos.*(casa|limpeza|cosm)/i, query: "cleaning,products,shelf" },
+  { keys: /alimento|comida|cozinha|receita|pão|bolo/i, query: "food,cooking,kitchen" },
+  { keys: /cosm[eé]tic|shampoo|creme|maquiagem/i, query: "cosmetics,bottles" },
+  { keys: /limpeza|sab[aã]o|detergente|água sanitária/i, query: "soap,cleaning,detergent" },
+  { keys: /ind[uú]stria|f[aá]brica|refinaria|planta qu[ií]mica/i, query: "chemical,factory,industry" },
+  { keys: /farmac[eê]utic|rem[eé]dio|medicamento|comprimido|f[aá]rmaco/i, query: "pharmacy,pills,medicine" },
+  { keys: /ambiental|poluição|meio ambiente|sustentabilidade/i, query: "environment,pollution,nature" },
+  { keys: /vestibular|enem|prova|estudo|estudante/i, query: "student,exam,books" },
+  // átomo / periódica
+  { keys: /carbono[- ]?14|datação|arqueolog/i, query: "archaeology,fossil,radiocarbon" },
+  { keys: /neônio|letreir|neon/i, query: "neon,sign,city" },
+  { keys: /resson[aâ]ncia magn[eé]tica|mri/i, query: "MRI,scan,hospital" },
+  { keys: /sódio.*(água|reage)|metal alcalino/i, query: "sodium,reaction,water" },
+  { keys: /gás(es)? nobre|hélio|argônio/i, query: "noble,gas,balloon" },
+  { keys: /halog[eê]nio|cloro|flúor|iodo/i, query: "chlorine,salt,crystals" },
+  // ligações
+  { keys: /\bnacl\b|sal de cozinha|cloreto de s[oó]dio/i, query: "salt,crystals,cooking" },
+  { keys: /água|h2o|gelo/i, query: "water,drop,molecule" },
+  { keys: /cobre|ferro|alumínio|cabo|fio/i, query: "copper,wire,metal" },
+  { keys: /metano|ch4|gás natural/i, query: "gas,stove,flame" },
+  // reações / estequiometria
+  { keys: /combustão|queima|combust[ií]vel/i, query: "flame,combustion,fire" },
+  { keys: /neutralização|antiácido|azia/i, query: "antacid,tablets,stomach" },
+  { keys: /haber[- ]bosch|amônia|fertilizante/i, query: "fertilizer,agriculture,crops" },
+  // ácido-base
+  { keys: /suco g[aá]strico|est[oô]mago/i, query: "stomach,anatomy,acid" },
+  { keys: /sangue|tampão bicarbon/i, query: "blood,cells,microscope" },
+  { keys: /chuva [aá]cida/i, query: "acid,rain,pollution" },
+  // termodinâmica
+  { keys: /queimar madeira|fogueira|lenha/i, query: "campfire,wood,burning" },
+  { keys: /bolsa gelada|instant cold pack/i, query: "cold,pack,ice" },
+  { keys: /fotoss[ií]ntese/i, query: "photosynthesis,leaves,sun" },
+  // eletroquímica / gases
+  { keys: /pilha|bateria/i, query: "battery,cells,energy" },
+  { keys: /eletróli|galvani/i, query: "electrolysis,industrial" },
+  { keys: /balão|pneu|gás/i, query: "balloon,gas,helium" },
+  // orgânica
+  { keys: /pl[aá]stico|polímero|pet\b/i, query: "plastic,bottles,recycling" },
+  { keys: /petr[oó]leo|gasolina|combust/i, query: "oil,refinery,fuel" },
+  { keys: /álcool|etanol|cachaça/i, query: "alcohol,ethanol,bottle" },
+  // nuclear
+  { keys: /nuclear|urânio|radioativ/i, query: "nuclear,reactor,radiation" },
+  { keys: /fermentação|iogurte|queijo/i, query: "yogurt,fermentation,dairy" },
+  { keys: /vinagre|ácido acético/i, query: "vinegar,bottle,kitchen" },
+  { keys: /bicarbonato|fermento/i, query: "baking,soda,bread" },
+  { keys: /filtro solar|protetor solar/i, query: "sunscreen,beach,skin" },
+  { keys: /calcário|caverna|estalactite/i, query: "limestone,cave" },
+];
+
 function imageForExample(text: string): string {
-  const stop = new Set(["de","da","do","em","para","com","no","na","os","as","um","uma","que","por","aos","pela","pelo","dos","das","sua","seu"]);
+  // 1) tenta mapeamento temático específico
+  for (const m of EXAMPLE_IMAGE_MAP) {
+    if (m.keys.test(text)) {
+      return `https://loremflickr.com/600/400/${encodeURIComponent(m.query)}?lock=${Math.abs(hash(text)) % 9999}`;
+    }
+  }
+  // 2) fallback: sempre inclui "chemistry" para manter o tema
+  const stop = new Set(["aparece","produtos","usamos","casa","base","para","cobrado","como","também","muito","alguns","outras","aquela","este","essa","sobre","entre"]);
   const words = text
     .toLowerCase()
     .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
     .replace(/[^a-z0-9 ]/g, " ")
     .split(/\s+/)
-    .filter(w => w.length > 3 && !stop.has(w))
-    .slice(0, 3)
+    .filter(w => w.length > 4 && !stop.has(w))
+    .slice(0, 2)
     .join(",");
-  // loremflickr entrega imagens temáticas reais e estáveis (Unsplash Source foi descontinuado).
-  return `https://loremflickr.com/600/400/${encodeURIComponent(words || "chemistry,laboratory")}?lock=${Math.abs(hash(text)) % 9999}`;
+  const q = words ? `chemistry,${words}` : "chemistry,laboratory,science";
+  return `https://loremflickr.com/600/400/${encodeURIComponent(q)}?lock=${Math.abs(hash(text)) % 9999}`;
 }
 function hash(s: string) {
   let h = 0; for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) | 0; return h;
@@ -770,8 +830,23 @@ export default function TopicoDetalhe() {
   const back = params.get("back") || "/cursos";
 
   const c = buildContent(title);
-  const imgQuery = encodeURIComponent(title.toLowerCase().split(/\s+/).slice(0, 3).join(","));
-  const imgUrl = `https://loremflickr.com/1200/600/${imgQuery},chemistry,laboratory?lock=${Math.abs(hash(title)) % 9999}`;
+  // Usa o mapeamento temático (traduzido) para a imagem-capa, garantindo relação com o assunto.
+  const heroQuery = (() => {
+    for (const m of EXAMPLE_IMAGE_MAP) if (m.keys.test(title)) return m.query;
+    const cat = classify(title);
+    const byCat: Record<string,string> = {
+      atomo:"atom,science,physics", periodica:"periodic,table,chemistry",
+      ligacoes:"molecule,structure", reacoes:"chemistry,reaction,flask",
+      acidobase:"laboratory,ph,indicator", termo:"thermodynamics,flame",
+      cinetica:"reaction,speed,laboratory", equilibrio:"equilibrium,chemistry",
+      solucoes:"solution,beaker,liquid", eletro:"battery,electrochemistry",
+      organica:"organic,chemistry,molecule", nuclear:"nuclear,reactor",
+      gases:"gas,balloon,science", materia:"matter,states,ice",
+      cotidiano:"kitchen,cooking,chemistry",
+    };
+    return byCat[cat] || "chemistry,laboratory,science";
+  })();
+  const imgUrl = `https://loremflickr.com/1200/600/${encodeURIComponent(heroQuery)}?lock=${Math.abs(hash(title)) % 9999}`;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-[#4C1D95] to-slate-900">
