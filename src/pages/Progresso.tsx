@@ -38,9 +38,21 @@ export default function Progresso() {
 
 
   const refresh = async (uid: string) => {
-    const [w, a, isAdm] = await Promise.all([loadWallet(uid), loadAvatar(uid), isAdmin(uid)]);
+    const [w, a, isAdm, att] = await Promise.all([
+      loadWallet(uid),
+      loadAvatar(uid),
+      isAdmin(uid),
+      supabase
+        .from("topic_exercise_attempts")
+        .select("topic_slug, topic_title, category, score, correct, total, created_at")
+        .eq("user_id", uid)
+        .order("created_at", { ascending: false })
+        .limit(50),
+    ]);
     setWallet(w); setAvatar(a); setAdmin(isAdm);
+    setAttempts(att.data ?? []);
   };
+
 
   useEffect(() => {
     supabase.auth.getSession().then(async ({ data: { session } }) => {
