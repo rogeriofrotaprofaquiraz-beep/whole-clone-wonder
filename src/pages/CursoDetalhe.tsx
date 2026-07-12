@@ -213,13 +213,29 @@ export default function CursoDetalhe() {
                 <Progress value={progress} className="bg-white/20" />
               </div>
               <div className="mt-4">
-                <Button
-                  onClick={() => navigate(`/cursos/${course.id}/avaliacao`)}
-                  className="bg-white text-[#4C1D95] hover:bg-white/90 font-bold"
-                >
-                  🎓 Fazer avaliação final (nota mínima 7,0)
-                </Button>
+                {(() => {
+                  const allDone = lessons.length > 0 && done.size >= lessons.length;
+                  const blocked = failedAttempts >= 3 && !passed;
+                  const disabled = (!allDone && !passed) || blocked;
+                  const label = passed
+                    ? "🎓 Avaliação aprovada — ver certificado"
+                    : blocked
+                    ? "🚫 Módulo bloqueado (3 tentativas esgotadas)"
+                    : !allDone
+                    ? `🔒 Conclua todas as aulas para liberar (${done.size}/${lessons.length})`
+                    : `🎓 Fazer avaliação final (tentativas restantes: ${3 - failedAttempts})`;
+                  return (
+                    <Button
+                      onClick={() => navigate(`/cursos/${course.id}/avaliacao`)}
+                      disabled={disabled}
+                      className="bg-white text-[#4C1D95] hover:bg-white/90 font-bold disabled:opacity-60"
+                    >
+                      {label}
+                    </Button>
+                  );
+                })()}
               </div>
+
             </div>
           </div>
         </Card>
