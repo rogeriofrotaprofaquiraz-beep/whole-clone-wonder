@@ -1272,6 +1272,93 @@ export default function TopicoDetalhe() {
               </ul>
             </section>
 
+            {isAdmin && (
+              <section className="rounded-xl p-4 bg-amber-50 border border-amber-300">
+                <div className="flex items-center justify-between mb-3 gap-2 flex-wrap">
+                  <div className="flex items-center gap-2 text-amber-800 font-bold">
+                    <Pencil size={18} /> Edição do conteúdo (admin)
+                  </div>
+                  <div className="flex gap-2">
+                    {!editing && (
+                      <Button size="sm" onClick={startEdit} className="bg-amber-600 hover:bg-amber-700">
+                        <Pencil size={14} className="mr-1" /> Editar este tópico
+                      </Button>
+                    )}
+                    {override && (
+                      <Button size="sm" variant="outline" onClick={resetToGenerated}>
+                        <Trash2 size={14} className="mr-1" /> Remover edição
+                      </Button>
+                    )}
+                  </div>
+                </div>
+
+                {override && !editing && (
+                  <p className="text-xs text-amber-700">
+                    Este tópico está usando conteúdo editado manualmente (salvo em <code>topic_overrides</code>, slug: <code>{slug}</code>).
+                  </p>
+                )}
+                {!override && !editing && (
+                  <p className="text-xs text-amber-700">
+                    Conteúdo gerado automaticamente. Clique em <b>Editar</b> para personalizar textos, exemplos, fórmulas e referências deste tópico.
+                  </p>
+                )}
+
+                {editing && form && (
+                  <div className="space-y-3 mt-3">
+                    <div>
+                      <label className="text-xs font-semibold text-slate-700">Ideia principal (linguagem simples)</label>
+                      <Textarea rows={3} value={form.simple} onChange={e => setForm({ ...form, simple: e.target.value })} />
+                    </div>
+                    <div>
+                      <label className="text-xs font-semibold text-slate-700">Definição formal</label>
+                      <Textarea rows={4} value={form.formal} onChange={e => setForm({ ...form, formal: e.target.value })} />
+                    </div>
+                    <div>
+                      <label className="text-xs font-semibold text-slate-700">Conceitos-chave (um por linha)</label>
+                      <Textarea rows={4} value={form.keys} onChange={e => setForm({ ...form, keys: e.target.value })} />
+                    </div>
+                    <div>
+                      <label className="text-xs font-semibold text-slate-700">Princípios / leis (um por linha)</label>
+                      <Textarea rows={4} value={form.principles} onChange={e => setForm({ ...form, principles: e.target.value })} />
+                    </div>
+                    <div>
+                      <label className="text-xs font-semibold text-slate-700">Fórmulas (uma por linha, formato: <code>expressão | descrição</code>)</label>
+                      <Textarea rows={3} value={form.formulas} onChange={e => setForm({ ...form, formulas: e.target.value })} placeholder="E = h·ν | Energia do fóton" />
+                    </div>
+                    <div>
+                      <label className="text-xs font-semibold text-slate-700">Exemplos e aplicações (um por linha)</label>
+                      <Textarea rows={4} value={form.examples} onChange={e => setForm({ ...form, examples: e.target.value })} />
+                    </div>
+                    <div>
+                      <label className="text-xs font-semibold text-slate-700">Erros comuns (um por linha)</label>
+                      <Textarea rows={3} value={form.pitfalls} onChange={e => setForm({ ...form, pitfalls: e.target.value })} />
+                    </div>
+                    <div>
+                      <label className="text-xs font-semibold text-slate-700">Exercícios sugeridos (um por linha)</label>
+                      <Textarea rows={3} value={form.exercises} onChange={e => setForm({ ...form, exercises: e.target.value })} />
+                    </div>
+                    <div>
+                      <label className="text-xs font-semibold text-slate-700">Referências (uma por linha)</label>
+                      <Textarea rows={3} value={form.refs} onChange={e => setForm({ ...form, refs: e.target.value })} />
+                    </div>
+                    <div>
+                      <label className="text-xs font-semibold text-slate-700">URL da imagem de capa (opcional)</label>
+                      <Input value={form.image_url} onChange={e => setForm({ ...form, image_url: e.target.value })} placeholder="https://..." />
+                    </div>
+
+                    <div className="flex gap-2 pt-1">
+                      <Button size="sm" onClick={save} disabled={saving} className="bg-emerald-600 hover:bg-emerald-700">
+                        <Save size={14} className="mr-1" /> {saving ? "Salvando..." : "Salvar edição"}
+                      </Button>
+                      <Button size="sm" variant="outline" onClick={() => setEditing(false)}>
+                        <RotateCcw size={14} className="mr-1" /> Cancelar
+                      </Button>
+                    </div>
+                  </div>
+                )}
+              </section>
+            )}
+
             <div className="flex flex-wrap gap-3 pt-2">
               <Link to={back}>
                 <Button className="bg-[#4C1D95] hover:bg-[#3b1478]">Voltar para a aula</Button>
@@ -1280,6 +1367,7 @@ export default function TopicoDetalhe() {
                 <Button variant="outline">Ver todos os cursos</Button>
               </Link>
             </div>
+
           </div>
         </Card>
       </div>
