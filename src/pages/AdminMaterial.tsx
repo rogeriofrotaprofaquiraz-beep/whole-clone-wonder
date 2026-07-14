@@ -423,7 +423,7 @@ export default function AdminMaterial() {
                                         {topics.map((t, i) => (
                                           <Link
                                             key={i}
-                                            to={`/topico/${slug(t)}?t=${encodeURIComponent(t)}&lesson=${encodeURIComponent(l.title)}&back=${encodeURIComponent("/admin/material")}`}
+                                            to={`/topico/${slug(t)}?t=${encodeURIComponent(t)}&lesson=${encodeURIComponent(l.title)}&back=${encodeURIComponent("/admin/material")}&edit=1`}
                                             className="flex items-center gap-2 text-xs px-2 py-1.5 rounded bg-white border border-violet-200 hover:border-violet-500 hover:bg-violet-100 text-[#4C1D95] font-medium"
                                           >
                                             <Pencil size={11} />

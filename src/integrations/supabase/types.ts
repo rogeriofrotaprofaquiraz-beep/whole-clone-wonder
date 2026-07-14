@@ -1480,6 +1480,7 @@ export type Database = {
           image_url: string | null
           keys: Json | null
           lesson: string | null
+          materials: Json
           pitfalls: Json | null
           principles: Json | null
           refs: Json | null
@@ -1488,6 +1489,7 @@ export type Database = {
           title: string | null
           updated_at: string
           updated_by: string | null
+          video_url: string | null
         }
         Insert: {
           created_at?: string
@@ -1498,6 +1500,7 @@ export type Database = {
           image_url?: string | null
           keys?: Json | null
           lesson?: string | null
+          materials?: Json
           pitfalls?: Json | null
           principles?: Json | null
           refs?: Json | null
@@ -1506,6 +1509,7 @@ export type Database = {
           title?: string | null
           updated_at?: string
           updated_by?: string | null
+          video_url?: string | null
         }
         Update: {
           created_at?: string
@@ -1516,6 +1520,7 @@ export type Database = {
           image_url?: string | null
           keys?: Json | null
           lesson?: string | null
+          materials?: Json
           pitfalls?: Json | null
           principles?: Json | null
           refs?: Json | null
@@ -1524,6 +1529,7 @@ export type Database = {
           title?: string | null
           updated_at?: string
           updated_by?: string | null
+          video_url?: string | null
         }
         Relationships: []
       }
