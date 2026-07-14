@@ -88,7 +88,7 @@ export default function AdminMaterial() {
     const { data: cs } = await supabase
       .from("courses")
       .select("id,title,description,area,level,published,created_at")
-      .order("created_at", { ascending: false });
+      .order("title", { ascending: true });
     const list = (cs ?? []) as Course[];
     setCourses(list);
 
