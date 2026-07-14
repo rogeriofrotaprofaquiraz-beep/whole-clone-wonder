@@ -982,14 +982,59 @@ export default function TopicoDetalhe() {
   const lesson = params.get("lesson") || "";
   const back = params.get("back") || "/cursos";
 
-  // Para rótulos genéricos da ementa ("Fundamentos teóricos", "Propriedades e características",
-  // "Exemplos do cotidiano", etc.), classificamos pelo TÍTULO DA AULA — que carrega o assunto
-  // químico real — e não pelo rótulo do tópico. Assim o conteúdo exibido é sempre pertinente.
   const classificationSource = lesson && classify(title) === "geral" ? `${lesson} ${title}` : title;
-  const c = buildContent(classificationSource);
+  const generated = buildContent(classificationSource);
   const displayTitle = lesson ? `${title} — ${lesson}` : title;
 
-  // Usa o mapeamento temático (traduzido) para a imagem-capa, garantindo relação com o assunto.
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [override, setOverride] = useState<Partial<Section> & { image_url?: string } | null>(null);
+  const [editing, setEditing] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const [form, setForm] = useState<any>(null);
+
+  useEffect(() => {
+    (async () => {
+      const { data: u } = await supabase.auth.getUser();
+      if (u.user) {
+        const { data } = await supabase.rpc("has_role", { _user_id: u.user.id, _role: "admin" });
+        setIsAdmin(!!data);
+      }
+    })();
+  }, []);
+
+  useEffect(() => {
+    if (!slug) return;
+    (async () => {
+      const { data } = await supabase.from("topic_overrides").select("*").eq("slug", slug).maybeSingle();
+      if (data) {
+        setOverride({
+          simple: data.simple ?? undefined,
+          formal: data.formal ?? undefined,
+          key: (data.keys as any) ?? undefined,
+          principles: (data.principles as any) ?? undefined,
+          formulas: (data.formulas as any) ?? undefined,
+          examples: (data.examples as any) ?? undefined,
+          pitfalls: (data.pitfalls as any) ?? undefined,
+          exercises: (data.exercises as any) ?? undefined,
+          refs: (data.refs as any) ?? undefined,
+          image_url: data.image_url ?? undefined,
+        });
+      }
+    })();
+  }, [slug]);
+
+  const c: Section = {
+    simple: override?.simple || generated.simple,
+    formal: override?.formal || generated.formal,
+    key: override?.key?.length ? override.key : generated.key,
+    principles: override?.principles?.length ? override.principles : generated.principles,
+    formulas: override?.formulas?.length ? override.formulas : generated.formulas,
+    examples: override?.examples?.length ? override.examples : generated.examples,
+    pitfalls: override?.pitfalls?.length ? override.pitfalls : generated.pitfalls,
+    exercises: override?.exercises?.length ? override.exercises : generated.exercises,
+    refs: override?.refs?.length ? override.refs : generated.refs,
+  };
+
   const heroQuery = (() => {
     for (const m of EXAMPLE_IMAGE_MAP) if (m.keys.test(classificationSource)) return m.query;
     const cat = classify(classificationSource);
@@ -1005,7 +1050,71 @@ export default function TopicoDetalhe() {
     };
     return byCat[cat] || "chemistry,laboratory,science";
   })();
-  const imgUrl = `https://loremflickr.com/1200/600/${encodeURIComponent(heroQuery)}?lock=${Math.abs(hash(displayTitle)) % 9999}`;
+  const imgUrl = override?.image_url || `https://loremflickr.com/1200/600/${encodeURIComponent(heroQuery)}?lock=${Math.abs(hash(displayTitle)) % 9999}`;
+
+  const startEdit = () => {
+    setForm({
+      simple: c.simple,
+      formal: c.formal,
+      keys: c.key.join("\n"),
+      principles: c.principles.join("\n"),
+      formulas: (c.formulas || []).map(f => `${f.expr} | ${f.desc}`).join("\n"),
+      examples: c.examples.join("\n"),
+      pitfalls: c.pitfalls.join("\n"),
+      exercises: c.exercises.join("\n"),
+      refs: c.refs.join("\n"),
+      image_url: override?.image_url || "",
+    });
+    setEditing(true);
+  };
+
+  const save = async () => {
+    if (!slug) return;
+    setSaving(true);
+    const toLines = (s: string) => s.split("\n").map(x => x.trim()).filter(Boolean);
+    const formulas = toLines(form.formulas).map((l: string) => {
+      const [expr, ...rest] = l.split("|");
+      return { expr: expr.trim(), desc: rest.join("|").trim() };
+    });
+    const payload = {
+      slug,
+      title,
+      lesson,
+      simple: form.simple.trim(),
+      formal: form.formal.trim(),
+      keys: toLines(form.keys),
+      principles: toLines(form.principles),
+      formulas,
+      examples: toLines(form.examples),
+      pitfalls: toLines(form.pitfalls),
+      exercises: toLines(form.exercises),
+      refs: toLines(form.refs),
+      image_url: form.image_url.trim() || null,
+    };
+    const { error } = await supabase.from("topic_overrides").upsert(payload, { onConflict: "slug" });
+    setSaving(false);
+    if (error) { toast.error(error.message); return; }
+    toast.success("Conteúdo do tópico salvo");
+    setOverride({
+      simple: payload.simple, formal: payload.formal,
+      key: payload.keys, principles: payload.principles, formulas: payload.formulas,
+      examples: payload.examples, pitfalls: payload.pitfalls, exercises: payload.exercises,
+      refs: payload.refs, image_url: payload.image_url || undefined,
+    });
+    setEditing(false);
+  };
+
+  const resetToGenerated = async () => {
+    if (!slug) return;
+    if (!confirm("Remover edição personalizada e voltar ao conteúdo gerado automaticamente?")) return;
+    const { error } = await supabase.from("topic_overrides").delete().eq("slug", slug);
+    if (error) { toast.error(error.message); return; }
+    setOverride(null);
+    setEditing(false);
+    toast.success("Edição removida");
+  };
+
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-[#4C1D95] to-slate-900">
