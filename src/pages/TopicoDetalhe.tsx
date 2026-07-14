@@ -9,6 +9,7 @@ import { toast } from "sonner";
 import {
   ArrowLeft, BookOpen, Lightbulb, FlaskConical, Sparkles, GraduationCap,
   Atom, Library, Target, Sigma, AlertTriangle, Pencil, Save, RotateCcw, Trash2,
+  Video, Paperclip, Upload, ExternalLink,
 } from "lucide-react";
 
 
@@ -975,21 +976,25 @@ function hash(s: string) {
 }
 
 
+type Material = { name: string; url: string };
+
 export default function TopicoDetalhe() {
   const { slug } = useParams();
   const [params] = useSearchParams();
   const title = params.get("t") || (slug ?? "Tópico").replace(/-/g, " ");
   const lesson = params.get("lesson") || "";
   const back = params.get("back") || "/cursos";
+  const autoEdit = params.get("edit") === "1";
 
   const classificationSource = lesson && classify(title) === "geral" ? `${lesson} ${title}` : title;
   const generated = buildContent(classificationSource);
   const displayTitle = lesson ? `${title} — ${lesson}` : title;
 
   const [isAdmin, setIsAdmin] = useState(false);
-  const [override, setOverride] = useState<Partial<Section> & { image_url?: string } | null>(null);
+  const [override, setOverride] = useState<(Partial<Section> & { image_url?: string; video_url?: string; materials?: Material[] }) | null>(null);
   const [editing, setEditing] = useState(false);
   const [saving, setSaving] = useState(false);
+  const [uploading, setUploading] = useState(false);
   const [form, setForm] = useState<any>(null);
 
   useEffect(() => {
@@ -1018,6 +1023,8 @@ export default function TopicoDetalhe() {
           exercises: (data.exercises as any) ?? undefined,
           refs: (data.refs as any) ?? undefined,
           image_url: data.image_url ?? undefined,
+          video_url: (data as any).video_url ?? undefined,
+          materials: ((data as any).materials as Material[]) ?? [],
         });
       }
     })();
@@ -1064,8 +1071,32 @@ export default function TopicoDetalhe() {
       exercises: c.exercises.join("\n"),
       refs: c.refs.join("\n"),
       image_url: override?.image_url || "",
+      video_url: override?.video_url || "",
+      materials: (override?.materials || []).map(m => `${m.name} | ${m.url}`).join("\n"),
     });
     setEditing(true);
+    setTimeout(() => {
+      document.getElementById("topic-admin-editor")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 50);
+  };
+
+  useEffect(() => {
+    if (autoEdit && isAdmin && !editing) startEdit();
+    // eslint-disable-next-line
+  }, [autoEdit, isAdmin]);
+
+  const uploadMaterial = async (file: File) => {
+    if (!slug) return;
+    setUploading(true);
+    const path = `topicos/${slug}/${Date.now()}-${file.name.replace(/[^a-zA-Z0-9._-]+/g, "_")}`;
+    const { error } = await supabase.storage.from("course-materials").upload(path, file, { upsert: false });
+    if (error) { setUploading(false); toast.error(error.message); return; }
+    const { data: signed } = await supabase.storage.from("course-materials").createSignedUrl(path, 60 * 60 * 24 * 365);
+    const url = signed?.signedUrl || "";
+    const line = `${file.name} | ${url}`;
+    setForm((f: any) => ({ ...f, materials: f.materials ? f.materials + "\n" + line : line }));
+    setUploading(false);
+    toast.success("Material anexado — lembre de salvar");
   };
 
   const save = async () => {
@@ -1076,6 +1107,10 @@ export default function TopicoDetalhe() {
       const [expr, ...rest] = l.split("|");
       return { expr: expr.trim(), desc: rest.join("|").trim() };
     });
+    const materials = toLines(form.materials).map((l: string) => {
+      const [name, ...rest] = l.split("|");
+      return { name: name.trim(), url: rest.join("|").trim() };
+    }).filter((m: Material) => m.name && m.url);
     const payload = {
       slug,
       title,
@@ -1090,6 +1125,8 @@ export default function TopicoDetalhe() {
       exercises: toLines(form.exercises),
       refs: toLines(form.refs),
       image_url: form.image_url.trim() || null,
+      video_url: form.video_url.trim() || null,
+      materials,
     };
     const { error } = await supabase.from("topic_overrides").upsert(payload, { onConflict: "slug" });
     setSaving(false);
@@ -1100,6 +1137,7 @@ export default function TopicoDetalhe() {
       key: payload.keys, principles: payload.principles, formulas: payload.formulas,
       examples: payload.examples, pitfalls: payload.pitfalls, exercises: payload.exercises,
       refs: payload.refs, image_url: payload.image_url || undefined,
+      video_url: payload.video_url || undefined, materials: payload.materials,
     });
     setEditing(false);
   };
@@ -1112,6 +1150,15 @@ export default function TopicoDetalhe() {
     setOverride(null);
     setEditing(false);
     toast.success("Edição removida");
+  };
+
+  const videoEmbed = (u?: string) => {
+    if (!u) return null;
+    const yt = u.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{6,})/);
+    if (yt) return `https://www.youtube.com/embed/${yt[1]}`;
+    const vm = u.match(/vimeo\.com\/(\d+)/);
+    if (vm) return `https://player.vimeo.com/video/${vm[1]}`;
+    return u;
   };
 
 
@@ -1251,8 +1298,36 @@ export default function TopicoDetalhe() {
               </ul>
             </section>
 
+            {/* Vídeo-aula (opcional) */}
+            {override?.video_url && (
+              <section>
+                <div className="flex items-center gap-2 text-[#4C1D95] font-bold mb-2">
+                  <Video size={18} /> Vídeo-aula
+                </div>
+                <div className="aspect-video rounded-lg overflow-hidden bg-black">
+                  <iframe src={videoEmbed(override.video_url)!} className="w-full h-full" allowFullScreen title={`Vídeo — ${title}`} />
+                </div>
+              </section>
+            )}
 
-
+            {/* Materiais complementares */}
+            {override?.materials && override.materials.length > 0 && (
+              <section className="rounded-xl p-4 bg-indigo-50 border border-indigo-200">
+                <div className="flex items-center gap-2 text-indigo-800 font-bold mb-3">
+                  <Paperclip size={18} /> Materiais complementares
+                </div>
+                <ul className="space-y-1.5">
+                  {override.materials.map((m, i) => (
+                    <li key={i}>
+                      <a href={m.url} target="_blank" rel="noopener noreferrer"
+                        className="flex items-center gap-2 text-sm text-indigo-700 hover:text-indigo-900 hover:underline">
+                        <ExternalLink size={14} /> <span className="flex-1">{m.name}</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
 
 
             {/* Referências bibliográficas */}
@@ -1273,7 +1348,7 @@ export default function TopicoDetalhe() {
             </section>
 
             {isAdmin && (
-              <section className="rounded-xl p-4 bg-amber-50 border border-amber-300">
+              <section id="topic-admin-editor" className="rounded-xl p-4 bg-amber-50 border border-amber-300">
                 <div className="flex items-center justify-between mb-3 gap-2 flex-wrap">
                   <div className="flex items-center gap-2 text-amber-800 font-bold">
                     <Pencil size={18} /> Edição do conteúdo (admin)
@@ -1344,6 +1419,27 @@ export default function TopicoDetalhe() {
                     <div>
                       <label className="text-xs font-semibold text-slate-700">URL da imagem de capa (opcional)</label>
                       <Input value={form.image_url} onChange={e => setForm({ ...form, image_url: e.target.value })} placeholder="https://..." />
+                    </div>
+                    <div>
+                      <label className="text-xs font-semibold text-slate-700 flex items-center gap-1">
+                        <Video size={12} /> URL do vídeo (YouTube, Vimeo ou embed direto)
+                      </label>
+                      <Input value={form.video_url} onChange={e => setForm({ ...form, video_url: e.target.value })} placeholder="https://youtu.be/..." />
+                    </div>
+                    <div>
+                      <label className="text-xs font-semibold text-slate-700 flex items-center gap-1">
+                        <Paperclip size={12} /> Materiais complementares (um por linha, formato: <code>nome | url</code>)
+                      </label>
+                      <Textarea rows={4} value={form.materials} onChange={e => setForm({ ...form, materials: e.target.value })}
+                        placeholder="Slides da aula | https://exemplo.com/slides.pdf" />
+                      <div className="mt-2 flex items-center gap-2">
+                        <label className="inline-flex items-center gap-1 text-xs px-3 py-1.5 rounded border border-indigo-300 bg-white hover:bg-indigo-50 text-indigo-700 cursor-pointer">
+                          <Upload size={12} /> {uploading ? "Enviando..." : "Anexar arquivo (PDF, PPT, imagem, vídeo)"}
+                          <input type="file" className="hidden" disabled={uploading}
+                            onChange={(e) => { const f = e.target.files?.[0]; if (f) uploadMaterial(f); e.currentTarget.value = ""; }} />
+                        </label>
+                        <span className="text-[11px] text-slate-500">O arquivo é anexado à lista acima; clique em Salvar para confirmar.</span>
+                      </div>
                     </div>
 
                     <div className="flex gap-2 pt-1">
