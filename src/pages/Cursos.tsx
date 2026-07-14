@@ -35,11 +35,9 @@ export default function Cursos() {
       .from("courses")
       .select("id,title,description,area,level,cover_url,hours")
       .eq("published", true);
-    const sorted = ((cs ?? []) as Course[]).sort((a, b) => {
-      const na = parseInt(a.title.match(/^(\d+)/)?.[1] ?? "9999", 10);
-      const nb = parseInt(b.title.match(/^(\d+)/)?.[1] ?? "9999", 10);
-      return na - nb || a.title.localeCompare(b.title);
-    });
+    const sorted = ((cs ?? []) as Course[]).sort((a, b) =>
+      a.title.localeCompare(b.title, "pt-BR", { sensitivity: "base" })
+    );
     setCourses(sorted);
     if (user?.id) {
       const { data: es } = await supabase
