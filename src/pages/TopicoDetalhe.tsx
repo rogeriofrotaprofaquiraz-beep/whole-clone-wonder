@@ -1,9 +1,14 @@
 import { Link, useParams, useSearchParams } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
+import { Input } from "@/components/ui/input";
+import { useEffect, useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
 import {
   ArrowLeft, BookOpen, Lightbulb, FlaskConical, Sparkles, GraduationCap,
-  Atom, Library, Target, Sigma, AlertTriangle,
+  Atom, Library, Target, Sigma, AlertTriangle, Pencil, Save, RotateCcw, Trash2,
 } from "lucide-react";
 
 
