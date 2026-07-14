@@ -974,13 +974,20 @@ export default function TopicoDetalhe() {
   const { slug } = useParams();
   const [params] = useSearchParams();
   const title = params.get("t") || (slug ?? "Tópico").replace(/-/g, " ");
+  const lesson = params.get("lesson") || "";
   const back = params.get("back") || "/cursos";
 
-  const c = buildContent(title);
+  // Para rótulos genéricos da ementa ("Fundamentos teóricos", "Propriedades e características",
+  // "Exemplos do cotidiano", etc.), classificamos pelo TÍTULO DA AULA — que carrega o assunto
+  // químico real — e não pelo rótulo do tópico. Assim o conteúdo exibido é sempre pertinente.
+  const classificationSource = lesson && classify(title) === "geral" ? `${lesson} ${title}` : title;
+  const c = buildContent(classificationSource);
+  const displayTitle = lesson ? `${title} — ${lesson}` : title;
+
   // Usa o mapeamento temático (traduzido) para a imagem-capa, garantindo relação com o assunto.
   const heroQuery = (() => {
-    for (const m of EXAMPLE_IMAGE_MAP) if (m.keys.test(title)) return m.query;
-    const cat = classify(title);
+    for (const m of EXAMPLE_IMAGE_MAP) if (m.keys.test(classificationSource)) return m.query;
+    const cat = classify(classificationSource);
     const byCat: Record<string,string> = {
       atomo:"atom,science,physics", periodica:"periodic,table,chemistry",
       ligacoes:"molecule,structure", reacoes:"chemistry,reaction,flask",
@@ -993,7 +1000,7 @@ export default function TopicoDetalhe() {
     };
     return byCat[cat] || "chemistry,laboratory,science";
   })();
-  const imgUrl = `https://loremflickr.com/1200/600/${encodeURIComponent(heroQuery)}?lock=${Math.abs(hash(title)) % 9999}`;
+  const imgUrl = `https://loremflickr.com/1200/600/${encodeURIComponent(heroQuery)}?lock=${Math.abs(hash(displayTitle)) % 9999}`;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-[#4C1D95] to-slate-900">
@@ -1004,7 +1011,7 @@ export default function TopicoDetalhe() {
 
         <Card className="overflow-hidden mb-6 border-0">
           <div className="relative h-56 md:h-72 bg-gradient-to-br from-violet-700 to-indigo-900">
-            <img src={imgUrl} alt={`Ilustração de ${title}`}
+            <img src={imgUrl} alt={`Ilustração de ${displayTitle}`}
               className="w-full h-full object-cover opacity-80"
               onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
@@ -1012,9 +1019,11 @@ export default function TopicoDetalhe() {
               <div className="inline-flex items-center gap-1 bg-white/20 backdrop-blur px-2 py-1 rounded text-xs mb-2">
                 <GraduationCap size={12} /> {levelBadge(title)}
               </div>
+              {lesson && <div className="text-xs uppercase tracking-wider text-white/70 mb-1">{lesson}</div>}
               <h1 className="text-2xl md:text-4xl font-black leading-tight">{title}</h1>
             </div>
           </div>
+
 
           <div className="p-6 md:p-8 space-y-6">
             {/* Ideia principal — linguagem simples */}

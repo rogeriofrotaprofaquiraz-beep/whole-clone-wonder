@@ -112,7 +112,8 @@ function LessonContent({ text, backTo, lessonTitle }: { text: string; backTo: st
           {s.bullets.length > 0 && (
             <ul className="grid sm:grid-cols-2 gap-1.5">
               {s.bullets.map((topic, k) => {
-                const url = `/topico/${slugify(topic)}?t=${encodeURIComponent(topic)}&back=${encodeURIComponent(backTo)}`;
+                const lessonParam = lessonTitle ? `&lesson=${encodeURIComponent(lessonTitle)}` : "";
+                const url = `/topico/${slugify(topic)}?t=${encodeURIComponent(topic)}${lessonParam}&back=${encodeURIComponent(backTo)}`;
                 return (
                   <li key={k}>
                     <Link
