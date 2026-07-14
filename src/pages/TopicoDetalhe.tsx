@@ -9,6 +9,7 @@ import { toast } from "sonner";
 import {
   ArrowLeft, BookOpen, Lightbulb, FlaskConical, Sparkles, GraduationCap,
   Atom, Library, Target, Sigma, AlertTriangle, Pencil, Save, RotateCcw, Trash2,
+  Video, Paperclip, Upload, ExternalLink,
 } from "lucide-react";
 
 
@@ -975,21 +976,25 @@ function hash(s: string) {
 }
 
 
+type Material = { name: string; url: string };
+
 export default function TopicoDetalhe() {
   const { slug } = useParams();
   const [params] = useSearchParams();
   const title = params.get("t") || (slug ?? "Tópico").replace(/-/g, " ");
   const lesson = params.get("lesson") || "";
   const back = params.get("back") || "/cursos";
+  const autoEdit = params.get("edit") === "1";
 
   const classificationSource = lesson && classify(title) === "geral" ? `${lesson} ${title}` : title;
   const generated = buildContent(classificationSource);
   const displayTitle = lesson ? `${title} — ${lesson}` : title;
 
   const [isAdmin, setIsAdmin] = useState(false);
-  const [override, setOverride] = useState<Partial<Section> & { image_url?: string } | null>(null);
+  const [override, setOverride] = useState<(Partial<Section> & { image_url?: string; video_url?: string; materials?: Material[] }) | null>(null);
   const [editing, setEditing] = useState(false);
   const [saving, setSaving] = useState(false);
+  const [uploading, setUploading] = useState(false);
   const [form, setForm] = useState<any>(null);
 
   useEffect(() => {
@@ -1018,6 +1023,8 @@ export default function TopicoDetalhe() {
           exercises: (data.exercises as any) ?? undefined,
           refs: (data.refs as any) ?? undefined,
           image_url: data.image_url ?? undefined,
+          video_url: (data as any).video_url ?? undefined,
+          materials: ((data as any).materials as Material[]) ?? [],
         });
       }
     })();
@@ -1064,8 +1071,32 @@ export default function TopicoDetalhe() {
       exercises: c.exercises.join("\n"),
       refs: c.refs.join("\n"),
       image_url: override?.image_url || "",
+      video_url: override?.video_url || "",
+      materials: (override?.materials || []).map(m => `${m.name} | ${m.url}`).join("\n"),
     });
     setEditing(true);
+    setTimeout(() => {
+      document.getElementById("topic-admin-editor")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 50);
+  };
+
+  useEffect(() => {
+    if (autoEdit && isAdmin && !editing) startEdit();
+    // eslint-disable-next-line
+  }, [autoEdit, isAdmin]);
+
+  const uploadMaterial = async (file: File) => {
+    if (!slug) return;
+    setUploading(true);
+    const path = `topicos/${slug}/${Date.now()}-${file.name.replace(/[^a-zA-Z0-9._-]+/g, "_")}`;
+    const { error } = await supabase.storage.from("course-materials").upload(path, file, { upsert: false });
+    if (error) { setUploading(false); toast.error(error.message); return; }
+    const { data: signed } = await supabase.storage.from("course-materials").createSignedUrl(path, 60 * 60 * 24 * 365);
+    const url = signed?.signedUrl || "";
+    const line = `${file.name} | ${url}`;
+    setForm((f: any) => ({ ...f, materials: f.materials ? f.materials + "\n" + line : line }));
+    setUploading(false);
+    toast.success("Material anexado — lembre de salvar");
   };
 
   const save = async () => {
@@ -1076,6 +1107,10 @@ export default function TopicoDetalhe() {
       const [expr, ...rest] = l.split("|");
       return { expr: expr.trim(), desc: rest.join("|").trim() };
     });
+    const materials = toLines(form.materials).map((l: string) => {
+      const [name, ...rest] = l.split("|");
+      return { name: name.trim(), url: rest.join("|").trim() };
+    }).filter((m: Material) => m.name && m.url);
     const payload = {
       slug,
       title,
@@ -1090,6 +1125,8 @@ export default function TopicoDetalhe() {
       exercises: toLines(form.exercises),
       refs: toLines(form.refs),
       image_url: form.image_url.trim() || null,
+      video_url: form.video_url.trim() || null,
+      materials,
     };
     const { error } = await supabase.from("topic_overrides").upsert(payload, { onConflict: "slug" });
     setSaving(false);
@@ -1100,6 +1137,7 @@ export default function TopicoDetalhe() {
       key: payload.keys, principles: payload.principles, formulas: payload.formulas,
       examples: payload.examples, pitfalls: payload.pitfalls, exercises: payload.exercises,
       refs: payload.refs, image_url: payload.image_url || undefined,
+      video_url: payload.video_url || undefined, materials: payload.materials,
     });
     setEditing(false);
   };
@@ -1112,6 +1150,15 @@ export default function TopicoDetalhe() {
     setOverride(null);
     setEditing(false);
     toast.success("Edição removida");
+  };
+
+  const videoEmbed = (u?: string) => {
+    if (!u) return null;
+    const yt = u.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{6,})/);
+    if (yt) return `https://www.youtube.com/embed/${yt[1]}`;
+    const vm = u.match(/vimeo\.com\/(\d+)/);
+    if (vm) return `https://player.vimeo.com/video/${vm[1]}`;
+    return u;
   };
 
 
