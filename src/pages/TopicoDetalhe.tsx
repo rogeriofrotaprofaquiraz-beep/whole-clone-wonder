@@ -1298,8 +1298,36 @@ export default function TopicoDetalhe() {
               </ul>
             </section>
 
+            {/* Vídeo-aula (opcional) */}
+            {override?.video_url && (
+              <section>
+                <div className="flex items-center gap-2 text-[#4C1D95] font-bold mb-2">
+                  <Video size={18} /> Vídeo-aula
+                </div>
+                <div className="aspect-video rounded-lg overflow-hidden bg-black">
+                  <iframe src={videoEmbed(override.video_url)!} className="w-full h-full" allowFullScreen title={`Vídeo — ${title}`} />
+                </div>
+              </section>
+            )}
 
-
+            {/* Materiais complementares */}
+            {override?.materials && override.materials.length > 0 && (
+              <section className="rounded-xl p-4 bg-indigo-50 border border-indigo-200">
+                <div className="flex items-center gap-2 text-indigo-800 font-bold mb-3">
+                  <Paperclip size={18} /> Materiais complementares
+                </div>
+                <ul className="space-y-1.5">
+                  {override.materials.map((m, i) => (
+                    <li key={i}>
+                      <a href={m.url} target="_blank" rel="noopener noreferrer"
+                        className="flex items-center gap-2 text-sm text-indigo-700 hover:text-indigo-900 hover:underline">
+                        <ExternalLink size={14} /> <span className="flex-1">{m.name}</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
 
 
             {/* Referências bibliográficas */}
@@ -1320,7 +1348,7 @@ export default function TopicoDetalhe() {
             </section>
 
             {isAdmin && (
-              <section className="rounded-xl p-4 bg-amber-50 border border-amber-300">
+              <section id="topic-admin-editor" className="rounded-xl p-4 bg-amber-50 border border-amber-300">
                 <div className="flex items-center justify-between mb-3 gap-2 flex-wrap">
                   <div className="flex items-center gap-2 text-amber-800 font-bold">
                     <Pencil size={18} /> Edição do conteúdo (admin)
@@ -1391,6 +1419,27 @@ export default function TopicoDetalhe() {
                     <div>
                       <label className="text-xs font-semibold text-slate-700">URL da imagem de capa (opcional)</label>
                       <Input value={form.image_url} onChange={e => setForm({ ...form, image_url: e.target.value })} placeholder="https://..." />
+                    </div>
+                    <div>
+                      <label className="text-xs font-semibold text-slate-700 flex items-center gap-1">
+                        <Video size={12} /> URL do vídeo (YouTube, Vimeo ou embed direto)
+                      </label>
+                      <Input value={form.video_url} onChange={e => setForm({ ...form, video_url: e.target.value })} placeholder="https://youtu.be/..." />
+                    </div>
+                    <div>
+                      <label className="text-xs font-semibold text-slate-700 flex items-center gap-1">
+                        <Paperclip size={12} /> Materiais complementares (um por linha, formato: <code>nome | url</code>)
+                      </label>
+                      <Textarea rows={4} value={form.materials} onChange={e => setForm({ ...form, materials: e.target.value })}
+                        placeholder="Slides da aula | https://exemplo.com/slides.pdf" />
+                      <div className="mt-2 flex items-center gap-2">
+                        <label className="inline-flex items-center gap-1 text-xs px-3 py-1.5 rounded border border-indigo-300 bg-white hover:bg-indigo-50 text-indigo-700 cursor-pointer">
+                          <Upload size={12} /> {uploading ? "Enviando..." : "Anexar arquivo (PDF, PPT, imagem, vídeo)"}
+                          <input type="file" className="hidden" disabled={uploading}
+                            onChange={(e) => { const f = e.target.files?.[0]; if (f) uploadMaterial(f); e.currentTarget.value = ""; }} />
+                        </label>
+                        <span className="text-[11px] text-slate-500">O arquivo é anexado à lista acima; clique em Salvar para confirmar.</span>
+                      </div>
                     </div>
 
                     <div className="flex gap-2 pt-1">
