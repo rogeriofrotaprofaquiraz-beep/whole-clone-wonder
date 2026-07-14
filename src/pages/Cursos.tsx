@@ -91,6 +91,12 @@ export default function Cursos() {
               const isEnrolled = enrolled.has(c.id);
               return (
                 <Card key={c.id} className="p-5 hover:shadow-xl transition">
+                  {c.cover_url && (
+                    <div className="mb-3 -mx-5 -mt-5 h-32 overflow-hidden rounded-t-lg">
+                      <img src={c.cover_url} alt={c.title} loading="lazy"
+                        className="w-full h-full object-cover" />
+                    </div>
+                  )}
                   <div className="flex items-start gap-3 mb-3">
                     <div
                       className="w-14 h-14 rounded-xl flex items-center justify-center text-3xl shrink-0"
