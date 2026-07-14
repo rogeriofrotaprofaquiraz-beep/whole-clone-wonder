@@ -1,9 +1,14 @@
 import { Link, useParams, useSearchParams } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
+import { Input } from "@/components/ui/input";
+import { useEffect, useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
 import {
   ArrowLeft, BookOpen, Lightbulb, FlaskConical, Sparkles, GraduationCap,
-  Atom, Library, Target, Sigma, AlertTriangle,
+  Atom, Library, Target, Sigma, AlertTriangle, Pencil, Save, RotateCcw, Trash2,
 } from "lucide-react";
 
 
@@ -977,14 +982,59 @@ export default function TopicoDetalhe() {
   const lesson = params.get("lesson") || "";
   const back = params.get("back") || "/cursos";
 
-  // Para rótulos genéricos da ementa ("Fundamentos teóricos", "Propriedades e características",
-  // "Exemplos do cotidiano", etc.), classificamos pelo TÍTULO DA AULA — que carrega o assunto
-  // químico real — e não pelo rótulo do tópico. Assim o conteúdo exibido é sempre pertinente.
   const classificationSource = lesson && classify(title) === "geral" ? `${lesson} ${title}` : title;
-  const c = buildContent(classificationSource);
+  const generated = buildContent(classificationSource);
   const displayTitle = lesson ? `${title} — ${lesson}` : title;
 
-  // Usa o mapeamento temático (traduzido) para a imagem-capa, garantindo relação com o assunto.
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [override, setOverride] = useState<Partial<Section> & { image_url?: string } | null>(null);
+  const [editing, setEditing] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const [form, setForm] = useState<any>(null);
+
+  useEffect(() => {
+    (async () => {
+      const { data: u } = await supabase.auth.getUser();
+      if (u.user) {
+        const { data } = await supabase.rpc("has_role", { _user_id: u.user.id, _role: "admin" });
+        setIsAdmin(!!data);
+      }
+    })();
+  }, []);
+
+  useEffect(() => {
+    if (!slug) return;
+    (async () => {
+      const { data } = await supabase.from("topic_overrides").select("*").eq("slug", slug).maybeSingle();
+      if (data) {
+        setOverride({
+          simple: data.simple ?? undefined,
+          formal: data.formal ?? undefined,
+          key: (data.keys as any) ?? undefined,
+          principles: (data.principles as any) ?? undefined,
+          formulas: (data.formulas as any) ?? undefined,
+          examples: (data.examples as any) ?? undefined,
+          pitfalls: (data.pitfalls as any) ?? undefined,
+          exercises: (data.exercises as any) ?? undefined,
+          refs: (data.refs as any) ?? undefined,
+          image_url: data.image_url ?? undefined,
+        });
+      }
+    })();
+  }, [slug]);
+
+  const c: Section = {
+    simple: override?.simple || generated.simple,
+    formal: override?.formal || generated.formal,
+    key: override?.key?.length ? override.key : generated.key,
+    principles: override?.principles?.length ? override.principles : generated.principles,
+    formulas: override?.formulas?.length ? override.formulas : generated.formulas,
+    examples: override?.examples?.length ? override.examples : generated.examples,
+    pitfalls: override?.pitfalls?.length ? override.pitfalls : generated.pitfalls,
+    exercises: override?.exercises?.length ? override.exercises : generated.exercises,
+    refs: override?.refs?.length ? override.refs : generated.refs,
+  };
+
   const heroQuery = (() => {
     for (const m of EXAMPLE_IMAGE_MAP) if (m.keys.test(classificationSource)) return m.query;
     const cat = classify(classificationSource);
@@ -1000,7 +1050,71 @@ export default function TopicoDetalhe() {
     };
     return byCat[cat] || "chemistry,laboratory,science";
   })();
-  const imgUrl = `https://loremflickr.com/1200/600/${encodeURIComponent(heroQuery)}?lock=${Math.abs(hash(displayTitle)) % 9999}`;
+  const imgUrl = override?.image_url || `https://loremflickr.com/1200/600/${encodeURIComponent(heroQuery)}?lock=${Math.abs(hash(displayTitle)) % 9999}`;
+
+  const startEdit = () => {
+    setForm({
+      simple: c.simple,
+      formal: c.formal,
+      keys: c.key.join("\n"),
+      principles: c.principles.join("\n"),
+      formulas: (c.formulas || []).map(f => `${f.expr} | ${f.desc}`).join("\n"),
+      examples: c.examples.join("\n"),
+      pitfalls: c.pitfalls.join("\n"),
+      exercises: c.exercises.join("\n"),
+      refs: c.refs.join("\n"),
+      image_url: override?.image_url || "",
+    });
+    setEditing(true);
+  };
+
+  const save = async () => {
+    if (!slug) return;
+    setSaving(true);
+    const toLines = (s: string) => s.split("\n").map(x => x.trim()).filter(Boolean);
+    const formulas = toLines(form.formulas).map((l: string) => {
+      const [expr, ...rest] = l.split("|");
+      return { expr: expr.trim(), desc: rest.join("|").trim() };
+    });
+    const payload = {
+      slug,
+      title,
+      lesson,
+      simple: form.simple.trim(),
+      formal: form.formal.trim(),
+      keys: toLines(form.keys),
+      principles: toLines(form.principles),
+      formulas,
+      examples: toLines(form.examples),
+      pitfalls: toLines(form.pitfalls),
+      exercises: toLines(form.exercises),
+      refs: toLines(form.refs),
+      image_url: form.image_url.trim() || null,
+    };
+    const { error } = await supabase.from("topic_overrides").upsert(payload, { onConflict: "slug" });
+    setSaving(false);
+    if (error) { toast.error(error.message); return; }
+    toast.success("Conteúdo do tópico salvo");
+    setOverride({
+      simple: payload.simple, formal: payload.formal,
+      key: payload.keys, principles: payload.principles, formulas: payload.formulas,
+      examples: payload.examples, pitfalls: payload.pitfalls, exercises: payload.exercises,
+      refs: payload.refs, image_url: payload.image_url || undefined,
+    });
+    setEditing(false);
+  };
+
+  const resetToGenerated = async () => {
+    if (!slug) return;
+    if (!confirm("Remover edição personalizada e voltar ao conteúdo gerado automaticamente?")) return;
+    const { error } = await supabase.from("topic_overrides").delete().eq("slug", slug);
+    if (error) { toast.error(error.message); return; }
+    setOverride(null);
+    setEditing(false);
+    toast.success("Edição removida");
+  };
+
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-[#4C1D95] to-slate-900">
@@ -1158,6 +1272,93 @@ export default function TopicoDetalhe() {
               </ul>
             </section>
 
+            {isAdmin && (
+              <section className="rounded-xl p-4 bg-amber-50 border border-amber-300">
+                <div className="flex items-center justify-between mb-3 gap-2 flex-wrap">
+                  <div className="flex items-center gap-2 text-amber-800 font-bold">
+                    <Pencil size={18} /> Edição do conteúdo (admin)
+                  </div>
+                  <div className="flex gap-2">
+                    {!editing && (
+                      <Button size="sm" onClick={startEdit} className="bg-amber-600 hover:bg-amber-700">
+                        <Pencil size={14} className="mr-1" /> Editar este tópico
+                      </Button>
+                    )}
+                    {override && (
+                      <Button size="sm" variant="outline" onClick={resetToGenerated}>
+                        <Trash2 size={14} className="mr-1" /> Remover edição
+                      </Button>
+                    )}
+                  </div>
+                </div>
+
+                {override && !editing && (
+                  <p className="text-xs text-amber-700">
+                    Este tópico está usando conteúdo editado manualmente (salvo em <code>topic_overrides</code>, slug: <code>{slug}</code>).
+                  </p>
+                )}
+                {!override && !editing && (
+                  <p className="text-xs text-amber-700">
+                    Conteúdo gerado automaticamente. Clique em <b>Editar</b> para personalizar textos, exemplos, fórmulas e referências deste tópico.
+                  </p>
+                )}
+
+                {editing && form && (
+                  <div className="space-y-3 mt-3">
+                    <div>
+                      <label className="text-xs font-semibold text-slate-700">Ideia principal (linguagem simples)</label>
+                      <Textarea rows={3} value={form.simple} onChange={e => setForm({ ...form, simple: e.target.value })} />
+                    </div>
+                    <div>
+                      <label className="text-xs font-semibold text-slate-700">Definição formal</label>
+                      <Textarea rows={4} value={form.formal} onChange={e => setForm({ ...form, formal: e.target.value })} />
+                    </div>
+                    <div>
+                      <label className="text-xs font-semibold text-slate-700">Conceitos-chave (um por linha)</label>
+                      <Textarea rows={4} value={form.keys} onChange={e => setForm({ ...form, keys: e.target.value })} />
+                    </div>
+                    <div>
+                      <label className="text-xs font-semibold text-slate-700">Princípios / leis (um por linha)</label>
+                      <Textarea rows={4} value={form.principles} onChange={e => setForm({ ...form, principles: e.target.value })} />
+                    </div>
+                    <div>
+                      <label className="text-xs font-semibold text-slate-700">Fórmulas (uma por linha, formato: <code>expressão | descrição</code>)</label>
+                      <Textarea rows={3} value={form.formulas} onChange={e => setForm({ ...form, formulas: e.target.value })} placeholder="E = h·ν | Energia do fóton" />
+                    </div>
+                    <div>
+                      <label className="text-xs font-semibold text-slate-700">Exemplos e aplicações (um por linha)</label>
+                      <Textarea rows={4} value={form.examples} onChange={e => setForm({ ...form, examples: e.target.value })} />
+                    </div>
+                    <div>
+                      <label className="text-xs font-semibold text-slate-700">Erros comuns (um por linha)</label>
+                      <Textarea rows={3} value={form.pitfalls} onChange={e => setForm({ ...form, pitfalls: e.target.value })} />
+                    </div>
+                    <div>
+                      <label className="text-xs font-semibold text-slate-700">Exercícios sugeridos (um por linha)</label>
+                      <Textarea rows={3} value={form.exercises} onChange={e => setForm({ ...form, exercises: e.target.value })} />
+                    </div>
+                    <div>
+                      <label className="text-xs font-semibold text-slate-700">Referências (uma por linha)</label>
+                      <Textarea rows={3} value={form.refs} onChange={e => setForm({ ...form, refs: e.target.value })} />
+                    </div>
+                    <div>
+                      <label className="text-xs font-semibold text-slate-700">URL da imagem de capa (opcional)</label>
+                      <Input value={form.image_url} onChange={e => setForm({ ...form, image_url: e.target.value })} placeholder="https://..." />
+                    </div>
+
+                    <div className="flex gap-2 pt-1">
+                      <Button size="sm" onClick={save} disabled={saving} className="bg-emerald-600 hover:bg-emerald-700">
+                        <Save size={14} className="mr-1" /> {saving ? "Salvando..." : "Salvar edição"}
+                      </Button>
+                      <Button size="sm" variant="outline" onClick={() => setEditing(false)}>
+                        <RotateCcw size={14} className="mr-1" /> Cancelar
+                      </Button>
+                    </div>
+                  </div>
+                )}
+              </section>
+            )}
+
             <div className="flex flex-wrap gap-3 pt-2">
               <Link to={back}>
                 <Button className="bg-[#4C1D95] hover:bg-[#3b1478]">Voltar para a aula</Button>
@@ -1166,6 +1367,7 @@ export default function TopicoDetalhe() {
                 <Button variant="outline">Ver todos os cursos</Button>
               </Link>
             </div>
+
           </div>
         </Card>
       </div>

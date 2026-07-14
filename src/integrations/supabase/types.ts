@@ -1470,6 +1470,63 @@ export type Database = {
           },
         ]
       }
+      topic_overrides: {
+        Row: {
+          created_at: string
+          examples: Json | null
+          exercises: Json | null
+          formal: string | null
+          formulas: Json | null
+          image_url: string | null
+          keys: Json | null
+          lesson: string | null
+          pitfalls: Json | null
+          principles: Json | null
+          refs: Json | null
+          simple: string | null
+          slug: string
+          title: string | null
+          updated_at: string
+          updated_by: string | null
+        }
+        Insert: {
+          created_at?: string
+          examples?: Json | null
+          exercises?: Json | null
+          formal?: string | null
+          formulas?: Json | null
+          image_url?: string | null
+          keys?: Json | null
+          lesson?: string | null
+          pitfalls?: Json | null
+          principles?: Json | null
+          refs?: Json | null
+          simple?: string | null
+          slug: string
+          title?: string | null
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Update: {
+          created_at?: string
+          examples?: Json | null
+          exercises?: Json | null
+          formal?: string | null
+          formulas?: Json | null
+          image_url?: string | null
+          keys?: Json | null
+          lesson?: string | null
+          pitfalls?: Json | null
+          principles?: Json | null
+          refs?: Json | null
+          simple?: string | null
+          slug?: string
+          title?: string | null
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Relationships: []
+      }
       user_collection: {
         Row: {
           acquired_at: string
