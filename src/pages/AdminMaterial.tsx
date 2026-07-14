@@ -405,14 +405,43 @@ export default function AdminMaterial() {
                                 </Button>
                               </div>
                             </div>
-                            {l.content && (
-                              <details className="mt-2">
-                                <summary className="text-xs text-[#4C1D95] cursor-pointer font-semibold">Ver conteúdo completo</summary>
-                                <div className="mt-2 p-3 bg-white border rounded whitespace-pre-wrap text-xs text-slate-700 max-h-96 overflow-auto">
-                                  {l.content}
-                                </div>
-                              </details>
-                            )}
+                            {l.content && (() => {
+                              const topics = (l.content.match(/^\s*[-•*]\s+(.+)$/gm) || [])
+                                .map(s => s.replace(/^\s*[-•*]\s+/, "").replace(/\*\*/g, "").trim())
+                                .filter(Boolean);
+                              const slug = (s: string) => s.toLowerCase().normalize("NFD")
+                                .replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-")
+                                .replace(/^-+|-+$/g, "").slice(0, 80);
+                              return (
+                                <>
+                                  {topics.length > 0 && (
+                                    <div className="mt-2 p-2 rounded border border-violet-200 bg-violet-50/60">
+                                      <div className="text-[11px] font-bold text-[#4C1D95] uppercase mb-1.5">
+                                        Tópicos desta aula — clique para editar o conteúdo
+                                      </div>
+                                      <div className="grid sm:grid-cols-2 gap-1.5">
+                                        {topics.map((t, i) => (
+                                          <Link
+                                            key={i}
+                                            to={`/topico/${slug(t)}?t=${encodeURIComponent(t)}&lesson=${encodeURIComponent(l.title)}&back=${encodeURIComponent("/admin/material")}`}
+                                            className="flex items-center gap-2 text-xs px-2 py-1.5 rounded bg-white border border-violet-200 hover:border-violet-500 hover:bg-violet-100 text-[#4C1D95] font-medium"
+                                          >
+                                            <Pencil size={11} />
+                                            <span className="flex-1 truncate">{t}</span>
+                                          </Link>
+                                        ))}
+                                      </div>
+                                    </div>
+                                  )}
+                                  <details className="mt-2">
+                                    <summary className="text-xs text-[#4C1D95] cursor-pointer font-semibold">Ver conteúdo completo</summary>
+                                    <div className="mt-2 p-3 bg-white border rounded whitespace-pre-wrap text-xs text-slate-700 max-h-96 overflow-auto">
+                                      {l.content}
+                                    </div>
+                                  </details>
+                                </>
+                              );
+                            })()}
                           </div>
                         ))}
                       </div>
