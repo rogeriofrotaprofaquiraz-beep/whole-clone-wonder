@@ -1102,6 +1102,29 @@ export default function TopicoDetalhe() {
     toast.success("Material anexado — lembre de salvar");
   };
 
+  const uploadFooterImage = async (file: File, opts?: { instant?: boolean }) => {
+    if (!slug) return;
+    setUploadingFooter(true);
+    const path = `topicos/${slug}/footer-${Date.now()}-${file.name.replace(/[^a-zA-Z0-9._-]+/g, "_")}`;
+    const { error } = await supabase.storage.from("course-materials").upload(path, file, { upsert: false });
+    if (error) { setUploadingFooter(false); toast.error(error.message); return; }
+    const { data: signed } = await supabase.storage.from("course-materials").createSignedUrl(path, 60 * 60 * 24 * 365);
+    const url = signed?.signedUrl || "";
+    if (opts?.instant) {
+      const { error: upErr } = await supabase.from("topic_overrides").upsert(
+        { slug, title, lesson, footer_image_url: url } as any,
+        { onConflict: "slug" }
+      );
+      setUploadingFooter(false);
+      if (upErr) { toast.error(upErr.message); return; }
+      setOverride((o) => ({ ...(o || {}), footer_image_url: url }));
+      toast.success("Imagem adicionada ao final do tópico");
+      return;
+    }
+    setForm((f: any) => ({ ...f, footer_image_url: url }));
+    setUploadingFooter(false);
+    toast.success("Imagem anexada — lembre de salvar");
+
   const save = async () => {
     if (!slug) return;
     setSaving(true);
