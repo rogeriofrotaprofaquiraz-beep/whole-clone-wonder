@@ -1379,6 +1379,51 @@ export default function TopicoDetalhe() {
               </ul>
             </section>
 
+            {/* Imagem final do tópico (upload/exibição) */}
+            {(override?.footer_image_url || isAdmin) && (
+              <section className="rounded-xl p-4 bg-violet-50 border border-violet-200">
+                <div className="flex items-center justify-between gap-2 flex-wrap mb-2">
+                  <div className="flex items-center gap-2 text-[#4C1D95] font-bold">
+                    <Sparkles size={18} /> Imagem do tópico
+                  </div>
+                  {isAdmin && (
+                    <div className="flex items-center gap-2">
+                      <label className="inline-flex items-center gap-1 text-xs px-3 py-1.5 rounded border border-violet-300 bg-white hover:bg-violet-100 text-[#4C1D95] cursor-pointer">
+                        <Upload size={12} />
+                        {uploadingFooter ? "Enviando..." : override?.footer_image_url ? "Substituir imagem" : "Inserir imagem"}
+                        <input type="file" accept="image/*" className="hidden" disabled={uploadingFooter}
+                          onChange={(e) => { const f = e.target.files?.[0]; if (f) uploadFooterImage(f, { instant: true }); e.currentTarget.value = ""; }} />
+                      </label>
+                      {override?.footer_image_url && (
+                        <Button size="sm" variant="outline" onClick={async () => {
+                          if (!slug) return;
+                          if (!confirm("Remover a imagem final deste tópico?")) return;
+                          const { error } = await supabase.from("topic_overrides").upsert(
+                            { slug, title, lesson, footer_image_url: null } as any,
+                            { onConflict: "slug" }
+                          );
+                          if (error) { toast.error(error.message); return; }
+                          setOverride((o) => ({ ...(o || {}), footer_image_url: undefined }));
+                          toast.success("Imagem removida");
+                        }}>
+                          <Trash2 size={12} className="mr-1" /> Remover
+                        </Button>
+                      )}
+                    </div>
+                  )}
+                </div>
+                {override?.footer_image_url ? (
+                  <img src={override.footer_image_url} alt={`Imagem — ${title}`}
+                    className="w-full rounded-lg border border-violet-200 bg-white" loading="lazy" />
+                ) : (
+                  <p className="text-xs text-slate-600">
+                    Nenhuma imagem inserida ainda. Use o botão acima para anexar uma imagem que ficará ao final deste tópico.
+                  </p>
+                )}
+              </section>
+            )}
+
+
             {isAdmin && (
               <section id="topic-admin-editor" className="rounded-xl p-4 bg-amber-50 border border-amber-300">
                 <div className="flex items-center justify-between mb-3 gap-2 flex-wrap">
