@@ -1475,6 +1475,7 @@ export type Database = {
           created_at: string
           examples: Json | null
           exercises: Json | null
+          footer_image_url: string | null
           formal: string | null
           formulas: Json | null
           image_url: string | null
@@ -1495,6 +1496,7 @@ export type Database = {
           created_at?: string
           examples?: Json | null
           exercises?: Json | null
+          footer_image_url?: string | null
           formal?: string | null
           formulas?: Json | null
           image_url?: string | null
@@ -1515,6 +1517,7 @@ export type Database = {
           created_at?: string
           examples?: Json | null
           exercises?: Json | null
+          footer_image_url?: string | null
           formal?: string | null
           formulas?: Json | null
           image_url?: string | null
