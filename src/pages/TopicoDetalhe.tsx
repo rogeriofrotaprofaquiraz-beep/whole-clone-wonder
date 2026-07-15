@@ -1025,6 +1025,7 @@ export default function TopicoDetalhe() {
           refs: (data.refs as any) ?? undefined,
           image_url: data.image_url ?? undefined,
           video_url: (data as any).video_url ?? undefined,
+          footer_image_url: (data as any).footer_image_url ?? undefined,
           materials: ((data as any).materials as Material[]) ?? [],
         });
       }
