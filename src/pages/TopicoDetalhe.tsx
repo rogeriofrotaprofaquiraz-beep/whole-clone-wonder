@@ -991,10 +991,11 @@ export default function TopicoDetalhe() {
   const displayTitle = lesson ? `${title} — ${lesson}` : title;
 
   const [isAdmin, setIsAdmin] = useState(false);
-  const [override, setOverride] = useState<(Partial<Section> & { image_url?: string; video_url?: string; materials?: Material[] }) | null>(null);
+  const [override, setOverride] = useState<(Partial<Section> & { image_url?: string; video_url?: string; footer_image_url?: string; materials?: Material[] }) | null>(null);
   const [editing, setEditing] = useState(false);
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
+  const [uploadingFooter, setUploadingFooter] = useState(false);
   const [form, setForm] = useState<any>(null);
 
   useEffect(() => {
@@ -1024,6 +1025,7 @@ export default function TopicoDetalhe() {
           refs: (data.refs as any) ?? undefined,
           image_url: data.image_url ?? undefined,
           video_url: (data as any).video_url ?? undefined,
+          footer_image_url: (data as any).footer_image_url ?? undefined,
           materials: ((data as any).materials as Material[]) ?? [],
         });
       }
@@ -1072,6 +1074,7 @@ export default function TopicoDetalhe() {
       refs: c.refs.join("\n"),
       image_url: override?.image_url || "",
       video_url: override?.video_url || "",
+      footer_image_url: override?.footer_image_url || "",
       materials: (override?.materials || []).map(m => `${m.name} | ${m.url}`).join("\n"),
     });
     setEditing(true);
@@ -1098,6 +1101,32 @@ export default function TopicoDetalhe() {
     setUploading(false);
     toast.success("Material anexado — lembre de salvar");
   };
+
+  const uploadFooterImage = async (file: File, opts?: { instant?: boolean }) => {
+    if (!slug) return;
+    setUploadingFooter(true);
+    const path = `topicos/${slug}/footer-${Date.now()}-${file.name.replace(/[^a-zA-Z0-9._-]+/g, "_")}`;
+    const { error } = await supabase.storage.from("course-materials").upload(path, file, { upsert: false });
+    if (error) { setUploadingFooter(false); toast.error(error.message); return; }
+    const { data: signed } = await supabase.storage.from("course-materials").createSignedUrl(path, 60 * 60 * 24 * 365);
+    const url = signed?.signedUrl || "";
+    if (opts?.instant) {
+      const { error: upErr } = await supabase.from("topic_overrides").upsert(
+        { slug, title, lesson, footer_image_url: url } as any,
+        { onConflict: "slug" }
+      );
+      setUploadingFooter(false);
+      if (upErr) { toast.error(upErr.message); return; }
+      setOverride((o) => ({ ...(o || {}), footer_image_url: url }));
+      toast.success("Imagem adicionada ao final do tópico");
+      return;
+    }
+    setForm((f: any) => ({ ...f, footer_image_url: url }));
+    setUploadingFooter(false);
+    toast.success("Imagem anexada — lembre de salvar");
+  };
+
+
 
   const save = async () => {
     if (!slug) return;
@@ -1126,6 +1155,7 @@ export default function TopicoDetalhe() {
       refs: toLines(form.refs),
       image_url: form.image_url.trim() || null,
       video_url: form.video_url.trim() || null,
+      footer_image_url: (form.footer_image_url || "").trim() || null,
       materials,
     };
     const { error } = await supabase.from("topic_overrides").upsert(payload, { onConflict: "slug" });
@@ -1137,7 +1167,9 @@ export default function TopicoDetalhe() {
       key: payload.keys, principles: payload.principles, formulas: payload.formulas,
       examples: payload.examples, pitfalls: payload.pitfalls, exercises: payload.exercises,
       refs: payload.refs, image_url: payload.image_url || undefined,
-      video_url: payload.video_url || undefined, materials: payload.materials,
+      video_url: payload.video_url || undefined,
+      footer_image_url: payload.footer_image_url || undefined,
+      materials: payload.materials,
     });
     setEditing(false);
   };
@@ -1346,6 +1378,51 @@ export default function TopicoDetalhe() {
                 {c.refs.map((r, i) => <li key={i}>{r}</li>)}
               </ul>
             </section>
+
+            {/* Imagem final do tópico (upload/exibição) */}
+            {(override?.footer_image_url || isAdmin) && (
+              <section className="rounded-xl p-4 bg-violet-50 border border-violet-200">
+                <div className="flex items-center justify-between gap-2 flex-wrap mb-2">
+                  <div className="flex items-center gap-2 text-[#4C1D95] font-bold">
+                    <Sparkles size={18} /> Imagem do tópico
+                  </div>
+                  {isAdmin && (
+                    <div className="flex items-center gap-2">
+                      <label className="inline-flex items-center gap-1 text-xs px-3 py-1.5 rounded border border-violet-300 bg-white hover:bg-violet-100 text-[#4C1D95] cursor-pointer">
+                        <Upload size={12} />
+                        {uploadingFooter ? "Enviando..." : override?.footer_image_url ? "Substituir imagem" : "Inserir imagem"}
+                        <input type="file" accept="image/*" className="hidden" disabled={uploadingFooter}
+                          onChange={(e) => { const f = e.target.files?.[0]; if (f) uploadFooterImage(f, { instant: true }); e.currentTarget.value = ""; }} />
+                      </label>
+                      {override?.footer_image_url && (
+                        <Button size="sm" variant="outline" onClick={async () => {
+                          if (!slug) return;
+                          if (!confirm("Remover a imagem final deste tópico?")) return;
+                          const { error } = await supabase.from("topic_overrides").upsert(
+                            { slug, title, lesson, footer_image_url: null } as any,
+                            { onConflict: "slug" }
+                          );
+                          if (error) { toast.error(error.message); return; }
+                          setOverride((o) => ({ ...(o || {}), footer_image_url: undefined }));
+                          toast.success("Imagem removida");
+                        }}>
+                          <Trash2 size={12} className="mr-1" /> Remover
+                        </Button>
+                      )}
+                    </div>
+                  )}
+                </div>
+                {override?.footer_image_url ? (
+                  <img src={override.footer_image_url} alt={`Imagem — ${title}`}
+                    className="w-full rounded-lg border border-violet-200 bg-white" loading="lazy" />
+                ) : (
+                  <p className="text-xs text-slate-600">
+                    Nenhuma imagem inserida ainda. Use o botão acima para anexar uma imagem que ficará ao final deste tópico.
+                  </p>
+                )}
+              </section>
+            )}
+
 
             {isAdmin && (
               <section id="topic-admin-editor" className="rounded-xl p-4 bg-amber-50 border border-amber-300">
