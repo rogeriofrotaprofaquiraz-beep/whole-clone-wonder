@@ -1074,6 +1074,7 @@ export default function TopicoDetalhe() {
       refs: c.refs.join("\n"),
       image_url: override?.image_url || "",
       video_url: override?.video_url || "",
+      footer_image_url: override?.footer_image_url || "",
       materials: (override?.materials || []).map(m => `${m.name} | ${m.url}`).join("\n"),
     });
     setEditing(true);
