@@ -1124,6 +1124,9 @@ export default function TopicoDetalhe() {
     setForm((f: any) => ({ ...f, footer_image_url: url }));
     setUploadingFooter(false);
     toast.success("Imagem anexada — lembre de salvar");
+  };
+
+
 
   const save = async () => {
     if (!slug) return;
