@@ -1155,6 +1155,7 @@ export default function TopicoDetalhe() {
       refs: toLines(form.refs),
       image_url: form.image_url.trim() || null,
       video_url: form.video_url.trim() || null,
+      footer_image_url: (form.footer_image_url || "").trim() || null,
       materials,
     };
     const { error } = await supabase.from("topic_overrides").upsert(payload, { onConflict: "slug" });
@@ -1166,7 +1167,9 @@ export default function TopicoDetalhe() {
       key: payload.keys, principles: payload.principles, formulas: payload.formulas,
       examples: payload.examples, pitfalls: payload.pitfalls, exercises: payload.exercises,
       refs: payload.refs, image_url: payload.image_url || undefined,
-      video_url: payload.video_url || undefined, materials: payload.materials,
+      video_url: payload.video_url || undefined,
+      footer_image_url: payload.footer_image_url || undefined,
+      materials: payload.materials,
     });
     setEditing(false);
   };
