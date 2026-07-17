@@ -24,10 +24,12 @@ import { areaMeta } from "@/lib/aula";
 type Course = {
   id: string; title: string; description: string | null;
   area: string; level: string; published: boolean; created_at: string;
+  image_url?: string | null; slide_url?: string | null;
 };
 type Lesson = {
   id: string; course_id: string; title: string; content: string | null;
   video_url: string | null; order_index: number; xp_reward: number; coin_reward: number;
+  image_url?: string | null; slide_url?: string | null;
 };
 type Question = {
   q: string; options: string[]; correct: number;
