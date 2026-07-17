@@ -1602,6 +1602,40 @@ export default function TopicoDetalhe() {
               </div>
             </section>
 
+            {(() => {
+              const pack = funContent(classificationSource);
+              return (
+                <>
+                  <section className="rounded-xl p-4 bg-sky-50 border border-sky-200">
+                    <div className="flex items-center gap-2 text-sky-800 font-bold mb-2">
+                      <Home size={18} /> Aplicação no cotidiano
+                    </div>
+                    <ul className="space-y-1.5 text-sm text-slate-700 list-disc pl-5">
+                      {pack.dailyLife.map((t, i) => <li key={i}>{t}</li>)}
+                    </ul>
+                  </section>
+
+                  <section className="rounded-xl p-4 bg-violet-50 border border-violet-200">
+                    <div className="flex items-center gap-2 text-[#4C1D95] font-bold mb-2">
+                      <Sparkles size={18} /> Curiosidades
+                    </div>
+                    <ul className="space-y-1.5 text-sm text-slate-700 list-disc pl-5">
+                      {pack.curiosities.map((t, i) => <li key={i}>{t}</li>)}
+                    </ul>
+                  </section>
+
+                  <section className="rounded-xl p-4 bg-amber-50 border border-amber-200">
+                    <div className="flex items-center gap-2 text-amber-800 font-bold mb-2">
+                      <Smile size={18} /> Fatos engraçados
+                    </div>
+                    <ul className="space-y-1.5 text-sm text-slate-700 list-disc pl-5">
+                      {pack.funFacts.map((t, i) => <li key={i}>{t}</li>)}
+                    </ul>
+                  </section>
+                </>
+              );
+            })()}
+
             {/* Erros comuns */}
             <section className="rounded-xl p-4 bg-red-50 border border-red-200">
               <div className="flex items-center gap-2 text-red-700 font-bold mb-2">
