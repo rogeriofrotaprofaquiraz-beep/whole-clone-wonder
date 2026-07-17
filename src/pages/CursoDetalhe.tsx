@@ -266,6 +266,31 @@ export default function CursoDetalhe() {
           </div>
         </Card>
 
+        {(course.image_url || course.slide_url) && (
+          <div className="grid sm:grid-cols-2 gap-4 mb-6">
+            {course.image_url && (
+              <Card className="p-2 overflow-hidden">
+                <img src={course.image_url} alt={course.title}
+                  className="w-full h-56 object-cover rounded" />
+                <div className="text-xs text-slate-500 mt-2 px-1">Imagem do módulo</div>
+              </Card>
+            )}
+            {course.slide_url && (
+              <Card className="p-4 flex flex-col justify-center">
+                <div className="text-xs font-bold text-[#4C1D95] uppercase mb-2">Slide do módulo</div>
+                {/\.pdf($|\?)/i.test(course.slide_url) ? (
+                  <iframe src={course.slide_url} className="w-full h-56 rounded border" />
+                ) : (
+                  <a href={course.slide_url} target="_blank" rel="noopener"
+                    className="inline-flex items-center gap-2 text-[#4C1D95] font-semibold underline">
+                    📎 Abrir apresentação
+                  </a>
+                )}
+              </Card>
+            )}
+          </div>
+        )}
+
         <div className="grid md:grid-cols-[1fr_1.4fr] gap-4">
           <Card className="p-4">
             <h2 className="font-bold mb-3">Aulas</h2>
