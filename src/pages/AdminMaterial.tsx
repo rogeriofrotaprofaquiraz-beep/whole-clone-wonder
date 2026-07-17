@@ -163,6 +163,8 @@ export default function AdminMaterial() {
       xp_reward: editing.xp_reward,
       coin_reward: editing.coin_reward,
       order_index: editing.order_index,
+      image_url: editing.image_url ?? null,
+      slide_url: editing.slide_url ?? null,
     }).eq("id", editing.id);
     setSaving(false);
     if (error) { toast.error(error.message); return; }
