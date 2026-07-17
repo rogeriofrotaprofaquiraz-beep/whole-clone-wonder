@@ -69,7 +69,7 @@ type ProfileRow = {
   roles: Role[];
 };
 
-export default function Permissoes() {
+export default function Permissoes({ embedded = false }: { embedded?: boolean } = {}) {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [authorized, setAuthorized] = useState(false);
@@ -250,13 +250,15 @@ export default function Permissoes() {
   const selectedEff = selected ? effectivePermsFor(selected.roles) : null;
 
   return (
-    <div className="min-h-screen p-4 md:p-8 text-white">
-      <div className="max-w-7xl mx-auto space-y-6">
+    <div className={embedded ? "text-white" : "min-h-screen p-4 md:p-8 text-white"}>
+      <div className={embedded ? "space-y-6" : "max-w-7xl mx-auto space-y-6"}>
         <div className="flex items-center justify-between gap-3 flex-wrap">
           <div className="flex items-center gap-3">
-            <Link to="/" className="inline-flex items-center gap-2 text-white/80 hover:text-white">
-              <ArrowLeft size={18} /> Voltar
-            </Link>
+            {!embedded && (
+              <Link to="/" className="inline-flex items-center gap-2 text-white/80 hover:text-white">
+                <ArrowLeft size={18} /> Voltar
+              </Link>
+            )}
             <div>
               <h1 className="text-3xl font-black flex items-center gap-2">
                 <Shield className="w-7 h-7 text-rose-400" /> Gestão de Usuários e Permissões

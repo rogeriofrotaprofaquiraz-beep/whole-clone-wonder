@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { BattleSystem } from "@/components/game/BattleSystem";
 import { ElementQuiz } from "@/components/game/ElementQuiz";
 import { AdminPanel } from "@/components/game/AdminPanel";
+import Permissoes from "@/pages/Permissoes";
 import { AuthSystem } from "@/components/game/AuthSystem";
 import { Ranking } from "@/components/game/Ranking";
 import { ElementList } from "@/components/game/ElementList";
@@ -447,11 +448,6 @@ const Index = () => {
                 <List className="w-4 h-4" /> Banco
               </Link>
             )}
-            {userRole === 'admin' && (
-              <Link to="/permissoes" className="px-4 py-2.5 rounded-xl text-sm font-semibold gap-1.5 inline-flex items-center text-rose-300 hover:text-white">
-                <List className="w-4 h-4" /> Permissões
-              </Link>
-            )}
           </TabsList>
 
 
@@ -597,7 +593,22 @@ const Index = () => {
 
         {(userRole === 'admin' || userRole === 'teacher') && (
           <TabsContent value="admin" className="w-full animate-in fade-in slide-in-from-bottom-10 duration-500">
-            <AdminPanel userRole={userRole} initialSymbol={adminEditSymbol} />
+            {userRole === 'admin' ? (
+              <Tabs defaultValue="editor" className="w-full">
+                <TabsList className="mb-4 bg-slate-900/60 border border-white/10">
+                  <TabsTrigger value="editor">Editor de Cartas</TabsTrigger>
+                  <TabsTrigger value="permissoes">Permissões</TabsTrigger>
+                </TabsList>
+                <TabsContent value="editor">
+                  <AdminPanel userRole={userRole} initialSymbol={adminEditSymbol} />
+                </TabsContent>
+                <TabsContent value="permissoes">
+                  <Permissoes embedded />
+                </TabsContent>
+              </Tabs>
+            ) : (
+              <AdminPanel userRole={userRole} initialSymbol={adminEditSymbol} />
+            )}
           </TabsContent>
         )}
         {userRole === 'admin' && (
