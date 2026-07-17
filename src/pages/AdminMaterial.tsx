@@ -412,6 +412,62 @@ export default function AdminMaterial() {
                       <Button size="sm" variant="outline" onClick={() => openAssessment(c)}>
                         <ClipboardCheck size={14} className="mr-1" /> Editar avaliação
                       </Button>
+                      <Button size="sm" variant="outline" onClick={() => previewAsStudent(c)}>
+                        <Eye size={14} className="mr-1" /> Visualizar como aluno
+                      </Button>
+                    </div>
+
+                    <div className="grid sm:grid-cols-2 gap-3 mb-4">
+                      <div className="p-3 rounded-lg border border-dashed border-violet-300 bg-violet-50/40">
+                        <div className="text-xs font-bold text-[#4C1D95] mb-2 flex items-center gap-1">
+                          <ImageIcon size={13} /> Imagem do módulo
+                        </div>
+                        {c.image_url && (
+                          <img src={c.image_url} alt="" className="max-h-32 rounded border mb-2" />
+                        )}
+                        <div className="flex gap-2 flex-wrap">
+                          <label className="cursor-pointer inline-flex items-center gap-1 text-xs px-3 py-1.5 rounded-md bg-white border hover:bg-slate-50">
+                            <FileUp size={12} /> {c.image_url ? "Substituir" : "Enviar"}
+                            <input type="file" accept="image/*" className="hidden"
+                              onChange={e => uploadCourseMedia(c, e.target.files?.[0] ?? null, "image")} />
+                          </label>
+                          {c.image_url && (
+                            <Button size="sm" variant="outline"
+                              className="text-red-600 border-red-200"
+                              onClick={() => setCourseMedia(c, { image_url: null })}>
+                              <Trash2 size={12} className="mr-1" /> Remover
+                            </Button>
+                          )}
+                        </div>
+                      </div>
+
+                      <div className="p-3 rounded-lg border border-dashed border-violet-300 bg-violet-50/40">
+                        <div className="text-xs font-bold text-[#4C1D95] mb-2 flex items-center gap-1">
+                          <FileText size={13} /> Slide do módulo (PPT/PDF)
+                        </div>
+                        {c.slide_url && (
+                          <a href={c.slide_url} target="_blank" rel="noopener"
+                            className="text-xs text-[#4C1D95] underline block mb-2 truncate">
+                            📎 Ver slide atual
+                          </a>
+                        )}
+                        <div className="flex gap-2 flex-wrap">
+                          <label className="cursor-pointer inline-flex items-center gap-1 text-xs px-3 py-1.5 rounded-md bg-white border hover:bg-slate-50">
+                            <FileUp size={12} /> {c.slide_url ? "Substituir" : "Enviar"}
+                            <input type="file"
+                              accept=".ppt,.pptx,.pdf,.key,.odp"
+                              className="hidden"
+                              onChange={e => uploadCourseMedia(c, e.target.files?.[0] ?? null, "slide")} />
+                          </label>
+                          {c.slide_url && (
+                            <Button size="sm" variant="outline"
+                              className="text-red-600 border-red-200"
+                              onClick={() => setCourseMedia(c, { slide_url: null })}>
+                              <Trash2 size={12} className="mr-1" /> Remover
+                            </Button>
+                          )}
+                        </div>
+                      </div>
                     </div>
 
                     {ls.length === 0 ? (
