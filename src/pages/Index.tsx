@@ -447,11 +447,6 @@ const Index = () => {
                 <List className="w-4 h-4" /> Banco
               </Link>
             )}
-            {userRole === 'admin' && (
-              <Link to="/permissoes" className="px-4 py-2.5 rounded-xl text-sm font-semibold gap-1.5 inline-flex items-center text-rose-300 hover:text-white">
-                <List className="w-4 h-4" /> Permissões
-              </Link>
-            )}
           </TabsList>
 
 
