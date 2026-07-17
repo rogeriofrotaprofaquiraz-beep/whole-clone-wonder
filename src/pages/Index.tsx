@@ -429,8 +429,8 @@ const Index = () => {
             <Link to="/ranking" className="px-4 py-2.5 rounded-xl text-sm font-semibold gap-1.5 inline-flex items-center text-yellow-300 hover:text-white">
               <Trophy className="w-4 h-4" /> Ranking
             </Link>
-            <Link to="/cursos" className="px-4 py-2.5 rounded-xl text-sm font-semibold gap-1.5 inline-flex items-center text-sky-300 hover:text-white">
-              <List className="w-4 h-4" /> Cursos
+            <Link to="/cursos" className="px-4 py-2.5 rounded-xl text-sm font-bold gap-1.5 inline-flex items-center text-white bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 shadow-lg shadow-sky-900/40">
+              <GraduationCap className="w-4 h-4" /> Cursos
             </Link>
             {userRole === 'admin' && (
               <Link to="/admin/material" className="px-4 py-2.5 rounded-xl text-sm font-semibold gap-1.5 inline-flex items-center text-pink-300 hover:text-white">
