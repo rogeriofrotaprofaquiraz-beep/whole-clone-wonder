@@ -538,7 +538,9 @@ export type Database = {
           course_id: string
           created_at: string
           id: string
+          image_url: string | null
           order_index: number
+          slide_url: string | null
           title: string
           updated_at: string
           video_url: string | null
@@ -550,7 +552,9 @@ export type Database = {
           course_id: string
           created_at?: string
           id?: string
+          image_url?: string | null
           order_index?: number
+          slide_url?: string | null
           title: string
           updated_at?: string
           video_url?: string | null
@@ -562,7 +566,9 @@ export type Database = {
           course_id?: string
           created_at?: string
           id?: string
+          image_url?: string | null
           order_index?: number
+          slide_url?: string | null
           title?: string
           updated_at?: string
           video_url?: string | null
@@ -587,8 +593,10 @@ export type Database = {
           description: string | null
           hours: number
           id: string
+          image_url: string | null
           level: string
           published: boolean
+          slide_url: string | null
           title: string
           updated_at: string
         }
@@ -600,8 +608,10 @@ export type Database = {
           description?: string | null
           hours?: number
           id?: string
+          image_url?: string | null
           level?: string
           published?: boolean
+          slide_url?: string | null
           title: string
           updated_at?: string
         }
@@ -613,8 +623,10 @@ export type Database = {
           description?: string | null
           hours?: number
           id?: string
+          image_url?: string | null
           level?: string
           published?: boolean
+          slide_url?: string | null
           title?: string
           updated_at?: string
         }
