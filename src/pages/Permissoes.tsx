@@ -9,7 +9,8 @@ import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { toast } from "sonner";
-import { ArrowLeft, Loader2, Save, Shield, UserCog, Plus, Eye, Pencil, Users, Filter } from "lucide-react";
+import { ArrowLeft, Loader2, Save, Shield, UserCog, Plus, Eye, Pencil, Users, Filter, QrCode, Copy, Link as LinkIcon } from "lucide-react";
+import { QRCodeSVG } from "qrcode.react";
 
 type Role =
   | "student"
@@ -431,6 +432,94 @@ export default function Permissoes({ embedded = false }: { embedded?: boolean } 
                           )}
                         </div>
                       </div>
+
+                      {/* Link + QR de acesso individual */}
+                      <div className="mb-4 rounded-lg border border-cyan-400/30 bg-cyan-500/5 p-3">
+                        <div className="text-xs font-black text-cyan-200 uppercase mb-2 flex items-center gap-1">
+                          <QrCode className="w-3.5 h-3.5" /> Acesso do usuário
+                        </div>
+                        {selected.access_code ? (
+                          (() => {
+                            const origin = typeof window !== "undefined" ? window.location.origin : "";
+                            const url = `${origin}/?ac=${encodeURIComponent(selected.access_code)}`;
+                            return (
+                              <div className="space-y-2">
+                                <div className="flex items-center gap-2 bg-slate-900/60 rounded border border-white/10 px-2 py-1">
+                                  <LinkIcon className="w-3 h-3 text-white/50 shrink-0" />
+                                  <span className="text-[10px] font-mono text-white/80 truncate flex-1">{url}</span>
+                                  <Button
+                                    size="sm"
+                                    variant="ghost"
+                                    className="h-6 px-2 text-white/70 hover:text-white"
+                                    onClick={() => {
+                                      navigator.clipboard.writeText(url);
+                                      toast.success("Link copiado");
+                                    }}
+                                  >
+                                    <Copy className="w-3 h-3" />
+                                  </Button>
+                                </div>
+                                <div className="flex gap-3 items-start">
+                                  <div className="bg-white p-2 rounded">
+                                    <QRCodeSVG value={url} size={110} level="M" />
+                                  </div>
+                                  <div className="text-[11px] text-white/60 leading-relaxed flex-1">
+                                    Código: <span className="font-mono text-white">{selected.access_code}</span>
+                                    <br />
+                                    Ao entrar por este link, o usuário acessa o ambiente com as permissões do seu perfil.
+                                    <div className="flex gap-1 mt-2">
+                                      <Button
+                                        size="sm"
+                                        variant="outline"
+                                        className="h-6 px-2 text-[10px]"
+                                        onClick={() => window.open(url, "_blank")}
+                                      >
+                                        Abrir
+                                      </Button>
+                                      <Button
+                                        size="sm"
+                                        variant="outline"
+                                        className="h-6 px-2 text-[10px]"
+                                        onClick={async () => {
+                                          const { data, error } = await supabase.rpc("generate_access_code", {
+                                            _user_id: selected.id,
+                                          });
+                                          if (error) return toast.error(error.message);
+                                          toast.success("Novo código gerado");
+                                          await reloadAll();
+                                          if (data) setSelectedUser(selected.id);
+                                        }}
+                                      >
+                                        Regerar
+                                      </Button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            );
+                          })()
+                        ) : (
+                          <div className="flex items-center justify-between gap-2">
+                            <span className="text-xs text-white/60">Sem código de acesso ainda.</span>
+                            <Button
+                              size="sm"
+                              className="h-7 text-xs"
+                              onClick={async () => {
+                                const { error } = await supabase.rpc("generate_access_code", {
+                                  _user_id: selected.id,
+                                });
+                                if (error) return toast.error(error.message);
+                                toast.success("Código gerado");
+                                await reloadAll();
+                                setSelectedUser(selected.id);
+                              }}
+                            >
+                              Gerar código
+                            </Button>
+                          </div>
+                        )}
+                      </div>
+
                       <div className="text-xs font-black text-white/70 uppercase mb-2">
                         Acesso efetivo por funcionalidade
                       </div>
