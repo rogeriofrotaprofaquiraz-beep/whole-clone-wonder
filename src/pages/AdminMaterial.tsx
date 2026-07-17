@@ -391,7 +391,14 @@ export default function AdminMaterial() {
                     <div className="flex items-center gap-2 shrink-0">
                       <span className="text-xs text-slate-500 hidden sm:inline">{c.published ? "Publicado" : "Oculto"}</span>
                       <Switch checked={c.published} onCheckedChange={() => togglePublished(c)} />
-                      {c.published ? <Eye size={16} className="text-emerald-600" /> : <EyeOff size={16} className="text-slate-400" />}
+                      <button
+                        type="button"
+                        onClick={(e) => { e.stopPropagation(); previewAsStudent(c); }}
+                        title="Visualizar como aluno"
+                        className={`p-1 rounded hover:bg-slate-200 transition ${c.published ? "text-emerald-600" : "text-slate-400"}`}
+                      >
+                        {c.published ? <Eye size={18} /> : <EyeOff size={18} />}
+                      </button>
                     </div>
                     <AccordionTrigger className="py-2" />
                   </div>
