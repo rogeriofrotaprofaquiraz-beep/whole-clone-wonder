@@ -24,10 +24,12 @@ import { areaMeta } from "@/lib/aula";
 type Course = {
   id: string; title: string; description: string | null;
   area: string; level: string; published: boolean; created_at: string;
+  image_url?: string | null; slide_url?: string | null;
 };
 type Lesson = {
   id: string; course_id: string; title: string; content: string | null;
   video_url: string | null; order_index: number; xp_reward: number; coin_reward: number;
+  image_url?: string | null; slide_url?: string | null;
 };
 type Question = {
   q: string; options: string[]; correct: number;
@@ -87,7 +89,7 @@ export default function AdminMaterial() {
     setLoading(true);
     const { data: cs } = await supabase
       .from("courses")
-      .select("id,title,description,area,level,published,created_at")
+      .select("id,title,description,area,level,published,created_at,image_url,slide_url")
       .order("title", { ascending: true });
     const list = (cs ?? []) as Course[];
     setCourses(list);
@@ -127,6 +129,30 @@ export default function AdminMaterial() {
     toast.success(!c.published ? "Curso publicado" : "Curso ocultado");
   };
 
+  const previewAsStudent = (c: Course) => {
+    window.open(`/cursos/${c.id}`, "_blank", "noopener");
+  };
+
+  const setCourseMedia = async (c: Course, patch: Partial<Course>) => {
+    const { error } = await supabase.from("courses").update(patch).eq("id", c.id);
+    if (error) { toast.error(error.message); return; }
+    setCourses(prev => prev.map(x => x.id === c.id ? { ...x, ...patch } : x));
+    toast.success("Curso atualizado");
+  };
+
+  const uploadCourseMedia = async (c: Course, file: File | null, kind: "image" | "slide") => {
+    if (!file) return;
+    setUploading(true);
+    try {
+      const url = await uploadCourseFile(file, c.id);
+      await setCourseMedia(c, kind === "image" ? { image_url: url } : { slide_url: url });
+    } catch (e: any) {
+      toast.error(e?.message ?? "Falha no upload");
+    } finally {
+      setUploading(false);
+    }
+  };
+
   const addLesson = async (courseId: string) => {
     const existing = lessonsByCourse[courseId] || [];
     const nextOrder = existing.length ? Math.max(...existing.map(l => l.order_index)) + 1 : 1;
@@ -161,6 +187,8 @@ export default function AdminMaterial() {
       xp_reward: editing.xp_reward,
       coin_reward: editing.coin_reward,
       order_index: editing.order_index,
+      image_url: editing.image_url ?? null,
+      slide_url: editing.slide_url ?? null,
     }).eq("id", editing.id);
     setSaving(false);
     if (error) { toast.error(error.message); return; }
@@ -363,7 +391,14 @@ export default function AdminMaterial() {
                     <div className="flex items-center gap-2 shrink-0">
                       <span className="text-xs text-slate-500 hidden sm:inline">{c.published ? "Publicado" : "Oculto"}</span>
                       <Switch checked={c.published} onCheckedChange={() => togglePublished(c)} />
-                      {c.published ? <Eye size={16} className="text-emerald-600" /> : <EyeOff size={16} className="text-slate-400" />}
+                      <button
+                        type="button"
+                        onClick={(e) => { e.stopPropagation(); previewAsStudent(c); }}
+                        title="Visualizar como aluno"
+                        className={`p-1 rounded hover:bg-slate-200 transition ${c.published ? "text-emerald-600" : "text-slate-400"}`}
+                      >
+                        {c.published ? <Eye size={18} /> : <EyeOff size={18} />}
+                      </button>
                     </div>
                     <AccordionTrigger className="py-2" />
                   </div>
@@ -377,6 +412,62 @@ export default function AdminMaterial() {
                       <Button size="sm" variant="outline" onClick={() => openAssessment(c)}>
                         <ClipboardCheck size={14} className="mr-1" /> Editar avaliação
                       </Button>
+                      <Button size="sm" variant="outline" onClick={() => previewAsStudent(c)}>
+                        <Eye size={14} className="mr-1" /> Visualizar como aluno
+                      </Button>
+                    </div>
+
+                    <div className="grid sm:grid-cols-2 gap-3 mb-4">
+                      <div className="p-3 rounded-lg border border-dashed border-violet-300 bg-violet-50/40">
+                        <div className="text-xs font-bold text-[#4C1D95] mb-2 flex items-center gap-1">
+                          <ImageIcon size={13} /> Imagem do módulo
+                        </div>
+                        {c.image_url && (
+                          <img src={c.image_url} alt="" className="max-h-32 rounded border mb-2" />
+                        )}
+                        <div className="flex gap-2 flex-wrap">
+                          <label className="cursor-pointer inline-flex items-center gap-1 text-xs px-3 py-1.5 rounded-md bg-white border hover:bg-slate-50">
+                            <FileUp size={12} /> {c.image_url ? "Substituir" : "Enviar"}
+                            <input type="file" accept="image/*" className="hidden"
+                              onChange={e => uploadCourseMedia(c, e.target.files?.[0] ?? null, "image")} />
+                          </label>
+                          {c.image_url && (
+                            <Button size="sm" variant="outline"
+                              className="text-red-600 border-red-200"
+                              onClick={() => setCourseMedia(c, { image_url: null })}>
+                              <Trash2 size={12} className="mr-1" /> Remover
+                            </Button>
+                          )}
+                        </div>
+                      </div>
+
+                      <div className="p-3 rounded-lg border border-dashed border-violet-300 bg-violet-50/40">
+                        <div className="text-xs font-bold text-[#4C1D95] mb-2 flex items-center gap-1">
+                          <FileText size={13} /> Slide do módulo (PPT/PDF)
+                        </div>
+                        {c.slide_url && (
+                          <a href={c.slide_url} target="_blank" rel="noopener"
+                            className="text-xs text-[#4C1D95] underline block mb-2 truncate">
+                            📎 Ver slide atual
+                          </a>
+                        )}
+                        <div className="flex gap-2 flex-wrap">
+                          <label className="cursor-pointer inline-flex items-center gap-1 text-xs px-3 py-1.5 rounded-md bg-white border hover:bg-slate-50">
+                            <FileUp size={12} /> {c.slide_url ? "Substituir" : "Enviar"}
+                            <input type="file"
+                              accept=".ppt,.pptx,.pdf,.key,.odp"
+                              className="hidden"
+                              onChange={e => uploadCourseMedia(c, e.target.files?.[0] ?? null, "slide")} />
+                          </label>
+                          {c.slide_url && (
+                            <Button size="sm" variant="outline"
+                              className="text-red-600 border-red-200"
+                              onClick={() => setCourseMedia(c, { slide_url: null })}>
+                              <Trash2 size={12} className="mr-1" /> Remover
+                            </Button>
+                          )}
+                        </div>
+                      </div>
                     </div>
 
                     {ls.length === 0 ? (
@@ -482,6 +573,79 @@ export default function AdminMaterial() {
                 <div>
                   <label className="text-xs font-semibold">Átomos</label>
                   <Input type="number" value={editing.coin_reward} onChange={e => setEditing({ ...editing, coin_reward: parseInt(e.target.value) || 0 })} />
+                </div>
+              </div>
+
+              <div className="grid sm:grid-cols-2 gap-2">
+                <div className="p-3 rounded-lg border border-dashed border-violet-300 bg-violet-50/40">
+                  <div className="text-xs font-bold text-[#4C1D95] mb-2 flex items-center gap-1">
+                    <ImageIcon size={13} /> Imagem do capítulo
+                  </div>
+                  {editing.image_url && (
+                    <img src={editing.image_url} alt="" className="max-h-28 rounded border mb-2" />
+                  )}
+                  <div className="flex gap-2 flex-wrap items-center">
+                    <label className="cursor-pointer inline-flex items-center gap-1 text-xs px-3 py-1.5 rounded-md bg-white border hover:bg-slate-50">
+                      <FileUp size={12} /> {editing.image_url ? "Substituir" : "Enviar"}
+                      <input type="file" accept="image/*" className="hidden"
+                        onChange={async (e) => {
+                          const f = e.target.files?.[0];
+                          if (!f || !editing) return;
+                          setUploading(true);
+                          try {
+                            const url = await uploadCourseFile(f, editing.course_id);
+                            setEditing({ ...editing, image_url: url });
+                          } catch (err: any) { toast.error(err?.message ?? "Falha"); }
+                          finally { setUploading(false); }
+                        }} />
+                    </label>
+                    {editing.image_url && (
+                      <Button size="sm" variant="outline" className="text-red-600 border-red-200"
+                        onClick={() => setEditing({ ...editing, image_url: null })}>
+                        <Trash2 size={12} />
+                      </Button>
+                    )}
+                  </div>
+                  <Input className="mt-2 text-xs" placeholder="ou cole a URL"
+                    value={editing.image_url ?? ""}
+                    onChange={e => setEditing({ ...editing, image_url: e.target.value || null })} />
+                </div>
+
+                <div className="p-3 rounded-lg border border-dashed border-violet-300 bg-violet-50/40">
+                  <div className="text-xs font-bold text-[#4C1D95] mb-2 flex items-center gap-1">
+                    <FileText size={13} /> Slide do capítulo (PPT/PDF)
+                  </div>
+                  {editing.slide_url && (
+                    <a href={editing.slide_url} target="_blank" rel="noopener"
+                      className="text-xs text-[#4C1D95] underline block mb-2 truncate">
+                      📎 Ver slide atual
+                    </a>
+                  )}
+                  <div className="flex gap-2 flex-wrap items-center">
+                    <label className="cursor-pointer inline-flex items-center gap-1 text-xs px-3 py-1.5 rounded-md bg-white border hover:bg-slate-50">
+                      <FileUp size={12} /> {editing.slide_url ? "Substituir" : "Enviar"}
+                      <input type="file" accept=".ppt,.pptx,.pdf,.key,.odp" className="hidden"
+                        onChange={async (e) => {
+                          const f = e.target.files?.[0];
+                          if (!f || !editing) return;
+                          setUploading(true);
+                          try {
+                            const url = await uploadCourseFile(f, editing.course_id);
+                            setEditing({ ...editing, slide_url: url });
+                          } catch (err: any) { toast.error(err?.message ?? "Falha"); }
+                          finally { setUploading(false); }
+                        }} />
+                    </label>
+                    {editing.slide_url && (
+                      <Button size="sm" variant="outline" className="text-red-600 border-red-200"
+                        onClick={() => setEditing({ ...editing, slide_url: null })}>
+                        <Trash2 size={12} />
+                      </Button>
+                    )}
+                  </div>
+                  <Input className="mt-2 text-xs" placeholder="ou cole a URL"
+                    value={editing.slide_url ?? ""}
+                    onChange={e => setEditing({ ...editing, slide_url: e.target.value || null })} />
                 </div>
               </div>
 

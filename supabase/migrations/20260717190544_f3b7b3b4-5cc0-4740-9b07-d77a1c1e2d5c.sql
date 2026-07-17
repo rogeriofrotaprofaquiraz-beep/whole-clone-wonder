@@ -1,0 +1,2 @@
+ALTER TABLE public.courses ADD COLUMN IF NOT EXISTS image_url TEXT, ADD COLUMN IF NOT EXISTS slide_url TEXT;
+ALTER TABLE public.course_lessons ADD COLUMN IF NOT EXISTS image_url TEXT, ADD COLUMN IF NOT EXISTS slide_url TEXT;
