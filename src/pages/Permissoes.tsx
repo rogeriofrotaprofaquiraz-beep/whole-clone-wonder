@@ -69,7 +69,7 @@ type ProfileRow = {
   roles: Role[];
 };
 
-export default function Permissoes() {
+export default function Permissoes({ embedded = false }: { embedded?: boolean } = {}) {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [authorized, setAuthorized] = useState(false);
