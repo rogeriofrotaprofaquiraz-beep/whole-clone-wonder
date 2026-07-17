@@ -34,10 +34,11 @@ function reviewCategoryFor(course: { title: string; area: string }): string {
   return "geral";
 }
 
-type Course = { id: string; title: string; description: string | null; area: string; level: string; hours: number };
+type Course = { id: string; title: string; description: string | null; area: string; level: string; hours: number; image_url?: string | null; slide_url?: string | null };
 type Lesson = {
   id: string; title: string; content: string | null; video_url: string | null;
   order_index: number; xp_reward: number; coin_reward: number;
+  image_url?: string | null; slide_url?: string | null;
 };
 
 function slugify(s: string) {
