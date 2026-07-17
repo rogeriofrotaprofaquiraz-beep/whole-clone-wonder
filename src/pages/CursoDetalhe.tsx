@@ -157,7 +157,7 @@ export default function CursoDetalhe() {
     if (!id) return;
     setLoading(true);
     const [{ data: c }, { data: ls }] = await Promise.all([
-      supabase.from("courses").select("id,title,description,area,level,hours").eq("id", id).maybeSingle(),
+      supabase.from("courses").select("id,title,description,area,level,hours,image_url,slide_url").eq("id", id).maybeSingle(),
       supabase.from("course_lessons").select("*").eq("course_id", id).order("order_index"),
     ]);
     setCourse(c as any);
