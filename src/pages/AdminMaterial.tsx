@@ -129,6 +129,30 @@ export default function AdminMaterial() {
     toast.success(!c.published ? "Curso publicado" : "Curso ocultado");
   };
 
+  const previewAsStudent = (c: Course) => {
+    window.open(`/cursos/${c.id}`, "_blank", "noopener");
+  };
+
+  const setCourseMedia = async (c: Course, patch: Partial<Course>) => {
+    const { error } = await supabase.from("courses").update(patch).eq("id", c.id);
+    if (error) { toast.error(error.message); return; }
+    setCourses(prev => prev.map(x => x.id === c.id ? { ...x, ...patch } : x));
+    toast.success("Curso atualizado");
+  };
+
+  const uploadCourseMedia = async (c: Course, file: File | null, kind: "image" | "slide") => {
+    if (!file) return;
+    setUploading(true);
+    try {
+      const url = await uploadCourseFile(file, c.id);
+      await setCourseMedia(c, kind === "image" ? { image_url: url } : { slide_url: url });
+    } catch (e: any) {
+      toast.error(e?.message ?? "Falha no upload");
+    } finally {
+      setUploading(false);
+    }
+  };
+
   const addLesson = async (courseId: string) => {
     const existing = lessonsByCourse[courseId] || [];
     const nextOrder = existing.length ? Math.max(...existing.map(l => l.order_index)) + 1 : 1;
