@@ -9,8 +9,290 @@ import { toast } from "sonner";
 import {
   ArrowLeft, BookOpen, Lightbulb, FlaskConical, Sparkles, GraduationCap,
   Atom, Library, Target, Sigma, AlertTriangle, Pencil, Save, RotateCcw, Trash2,
-  Video, Paperclip, Upload, ExternalLink,
+  Video, Paperclip, Upload, ExternalLink, Home, Smile,
 } from "lucide-react";
+
+/* Conteúdo extra por categoria: aplicação no cotidiano, curiosidades e fatos engraçados */
+type FunPack = { dailyLife: string[]; curiosities: string[]; funFacts: string[] };
+function funContent(title: string): FunPack {
+  const cat = classify(title);
+  const generic: FunPack = {
+    dailyLife: [
+      `Escovar os dentes envolve química: o flúor da pasta reage com o esmalte formando fluorapatita, mais resistente a ácidos.`,
+      `Cozinhar arroz, fritar um ovo e assar um bolo são reações químicas controladas por temperatura, tempo e proporção.`,
+      `Produtos de limpeza, cosméticos, remédios e alimentos industrializados só existem graças à ${title.toLowerCase()}.`,
+    ],
+    curiosities: [
+      `A palavra “química” vem do árabe al-kīmiyā, herança dos alquimistas que buscavam transformar metais em ouro.`,
+      `Cerca de 99% do corpo humano é feito de apenas 6 elementos: O, C, H, N, Ca e P.`,
+      `Se juntássemos todos os átomos do seu corpo em fila, dariam várias voltas ao redor da Terra — eles são absurdamente pequenos.`,
+    ],
+    funFacts: [
+      `Peidos são química pura: uma mistura de N₂, CO₂, H₂, CH₄ e H₂S (esse último é o fedorento — e inflamável!).`,
+      `Se você espirrar, o ar sai a até 160 km/h carregando aerossóis com milhões de partículas — uma verdadeira “reação em cadeia”.`,
+      `O cheiro de “chuva” tem nome científico: petricor, causado por moléculas chamadas geosmina liberadas pelo solo.`,
+    ],
+  };
+  switch (cat) {
+    case "atomo": return {
+      dailyLife: [
+        "Detectores de fumaça usam amerício-241 (radioativo) para perceber partículas de fumaça no ar.",
+        "Lâmpadas fluorescentes e letreiros de neon funcionam com elétrons pulando entre níveis de energia.",
+        "Ressonância magnética usa o spin de átomos de hidrogênio do seu corpo para gerar imagens médicas.",
+      ],
+      curiosities: [
+        "Se o núcleo fosse do tamanho de uma bola de futebol, os elétrons estariam a alguns quilômetros de distância — o átomo é 99,9999% vácuo.",
+        "Todo carbono do seu corpo já esteve dentro de uma estrela: fomos literalmente feitos de poeira estelar.",
+        "Um único grama de hidrogênio contém cerca de 6×10²³ átomos — mais do que estrelas na Via Láctea.",
+      ],
+      funFacts: [
+        "Se os átomos não se repelissem eletricamente, você atravessaria a cadeira ao se sentar. 'Sentar' é literalmente flutuar sobre elétrons.",
+        "Você troca cerca de 98% dos seus átomos por ano. O 'você' de dois anos atrás é quase totalmente outra pessoa (atomicamente falando).",
+        "Rutherford disparou partículas alfa numa folha de ouro esperando que passassem — quando algumas ricochetearam, disse que era 'como atirar num lenço de papel e a bala voltar'.",
+      ],
+    };
+    case "periodica": return {
+      dailyLife: [
+        "O sal de cozinha (NaCl) junta um metal explosivo (Na) e um gás venenoso (Cl) — juntos, tempero indispensável.",
+        "Baterias de celular usam lítio; fios elétricos, cobre; latas, alumínio; joias, ouro e prata.",
+        "Lâmpadas de vapor de sódio (luz amarela das ruas) e de mercúrio existem por causa das propriedades periódicas.",
+      ],
+      curiosities: [
+        "Mendeleev deixou 'buracos' na tabela e previu elementos que ainda não existiam — todos foram descobertos depois, como previsto.",
+        "O elemento mais caro do mundo é o califórnio-252: cerca de US$ 27 milhões por grama.",
+        "O francium é tão raro que se estima existirem menos de 30 gramas dele em toda a crosta terrestre ao mesmo tempo.",
+      ],
+      funFacts: [
+        "Gálio derrete na sua mão (29 °C). Fazer 'colheres desaparecerem no chá' era pegadinha clássica de químicos.",
+        "O elemento 118, oganessônio, existiu por menos de um milissegundo — e ainda ganhou nome oficial.",
+        "Se você comer uma banana, ingere potássio-40 radioativo. Sim, banana é levemente radioativa (e totalmente segura).",
+      ],
+    };
+    case "ligacoes": return {
+      dailyLife: [
+        "Água molha porque suas moléculas fazem ligações de hidrogênio com quase tudo — inclusive com sua pele.",
+        "Panela antiaderente (teflon) tem ligações C–F tão fortes que quase nada gruda nela.",
+        "Cola, esparadrapo e post-it funcionam com forças intermoleculares fracas (van der Waals).",
+      ],
+      curiosities: [
+        "A lagartixa anda no teto graças a bilhões de forças de van der Waals entre pelos microscópicos das patas e a parede.",
+        "O diamante é o mesmo elemento (C) do grafite do lápis — o que muda é só o tipo de ligação.",
+        "A seda de aranha, feita de ligações de hidrogênio, é mais resistente que o aço na mesma espessura.",
+      ],
+      funFacts: [
+        "Sem ligações de hidrogênio, a água ferveria a −80 °C e você não existiria. Obrigado, pontes de hidrogênio.",
+        "Cheirar cola faz mal justamente porque moléculas apolares se dissolvem na gordura do cérebro. Não faça isso.",
+        "O gelo flutua porque a água sólida é MENOS densa que a líquida — uma das poucas substâncias assim. Peixes agradecem no inverno.",
+      ],
+    };
+    case "reacoes": return {
+      dailyLife: [
+        "O fermento faz o pão crescer liberando CO₂ (reação de fermentação).",
+        "Ferrugem no portão é uma reação de oxidação lenta do ferro com O₂ e água.",
+        "Fogos de artifício coloridos são reações químicas de sais metálicos: Sr (vermelho), Ba (verde), Cu (azul).",
+      ],
+      curiosities: [
+        "A reação Belousov-Zhabotinsky muda de cor sozinha, indo e voltando por minutos — parece mágica, é só química oscilante.",
+        "A luz dos vaga-lumes vem de uma reação com quase 100% de eficiência (a lâmpada incandescente tem só ~5%).",
+        "Uma única reação de fusão nuclear no Sol dura em média 10 bilhões de anos para cada átomo de hidrogênio.",
+      ],
+      funFacts: [
+        "Misturar Mentos com Coca gera um gêiser não por reação química, mas pela textura porosa da bala liberando o CO₂ dissolvido.",
+        "O nitrogênio tri-iodeto (NI₃) é tão instável que explode se uma mosca pousar nele.",
+        "Se você arrotar depois de tomar refrigerante, é literalmente uma reação de descompressão de CO₂ acontecendo em você.",
+      ],
+    };
+    case "acidobase": return {
+      dailyLife: [
+        "Antiácidos (Sonrisal, leite de magnésia) neutralizam o HCl do estômago.",
+        "Sabão em pó é básico; produtos para desentupir pia (soda cáustica) têm pH próximo de 14.",
+        "Vinagre (ácido acético) tira mancha de calcário; suco de limão clareia frutas cortadas (retarda oxidação).",
+      ],
+      curiosities: [
+        "O ácido mais forte conhecido é o ácido fluoroantimônico (H₂FSbF₆), 10¹⁶ vezes mais forte que o ácido sulfúrico puro.",
+        "O sangue humano tem um sistema tampão tão preciso que uma variação de 0,4 no pH já pode ser fatal.",
+        "A picada da formiga contém ácido fórmico — o mesmo que dá o cheiro característico das colônias.",
+      ],
+      funFacts: [
+        "Cuspir muito é básico: a saliva ajuda a neutralizar ácidos que corroem os dentes. Beijos são higiene química.",
+        "O 'ácido' dos filmes que dissolve pessoas em segundos não existe. HF ataca ossos, mas leva horas — e não faz fumaça verde.",
+        "Suco gástrico é mais ácido que suco de limão. Seu estômago só não se digere porque troca a mucosa a cada 3 dias.",
+      ],
+    };
+    case "termo": return {
+      dailyLife: [
+        "Bolsa térmica instantânea (gelada) usa dissolução endotérmica de nitrato de amônio em água.",
+        "Aquecedor de mão químico usa oxidação de ferro em pó — libera calor por horas.",
+        "Geladeira 'expulsa' calor de dentro para fora usando ciclos de compressão/expansão de gases.",
+      ],
+      curiosities: [
+        "O zero absoluto (−273,15 °C) nunca foi atingido — só chegamos a bilionésimos de grau acima dele.",
+        "Um raio aquece o ar a ~30.000 °C, cinco vezes a temperatura da superfície do Sol.",
+        "A entropia do universo só aumenta — é a única lei da física com 'seta do tempo'.",
+      ],
+      funFacts: [
+        "Se você deixar seu quarto bagunçado, está obedecendo à 2ª Lei da Termodinâmica. Culpe a entropia.",
+        "Café esfria mais rápido se você colocar o leite depois — física + termodinâmica ganhando de superstição.",
+        "Um humano em repouso libera cerca de 100 W de calor — quase uma lâmpada antiga. Salas cheias esquentam mesmo!",
+      ],
+    };
+    case "cinetica": return {
+      dailyLife: [
+        "Geladeira desacelera reações de deterioração dos alimentos (menor T = menor velocidade).",
+        "Panela de pressão cozinha mais rápido: maior T eleva a velocidade da reação.",
+        "Catalisadores de carros transformam gases tóxicos em CO₂, N₂ e H₂O em milésimos de segundo.",
+      ],
+      curiosities: [
+        "Enzimas do seu corpo aceleram reações em até 10¹⁷ vezes — sem elas, digerir uma refeição levaria anos.",
+        "A explosão de uma bomba envolve reações que se completam em microssegundos.",
+        "A borracha do pneu envelhece por reações de oxidação lentas — daí a data de validade dos pneus.",
+      ],
+      funFacts: [
+        "Se catalisadores fossem pessoas, seriam aqueles amigos que 'fazem as coisas acontecerem' sem se envolverem.",
+        "O sabor 'queimado' do café passado do ponto é cinética química: você deixou a reação de Maillard passar do ideal.",
+        "Cabelo cresce cerca de 0,3 mm por dia — reação bioquímica lentíssima que a gente só nota no espelho.",
+      ],
+    };
+    case "equilibrio": return {
+      dailyLife: [
+        "Refrigerante fechado está em equilíbrio: CO₂ dissolvido ⇌ CO₂ gasoso. Abrir a garrafa desloca o equilíbrio.",
+        "Hemoglobina no sangue 'pega' e 'solta' O₂ conforme o equilíbrio nos tecidos.",
+        "Fabricação de amônia (Haber-Bosch) alimenta metade do planeta ajustando pressão e temperatura do equilíbrio.",
+      ],
+      curiosities: [
+        "Le Chatelier percebeu o princípio observando ferro sendo forjado — a química imita a preguiça: reage para 'compensar' o incômodo.",
+        "Cavernas com estalactites são equilíbrios de carbonato de cálcio ao longo de milênios.",
+        "O CO₂ oceânico está em equilíbrio com o atmosférico — por isso o oceano está ficando mais ácido.",
+      ],
+      funFacts: [
+        "Se você agita uma latinha de refrigerante, muda o equilíbrio e recebe um banho. Física, química e vergonha alheia juntas.",
+        "Casais também vivem em equilíbrio dinâmico: pressão de um lado desloca o outro. Le Chatelier explica.",
+        "Toda vez que você respira, seu sangue reajusta um equilíbrio químico. Você é uma reação viva.",
+      ],
+    };
+    case "solucoes": return {
+      dailyLife: [
+        "Soro fisiológico (0,9% NaCl) tem a mesma concentração do sangue — por isso não 'estoura' as células.",
+        "Sal na estrada em países frios abaixa a temperatura de congelamento da água (efeito coligativo).",
+        "Doce de leite cozinha mais quente porque o açúcar eleva o ponto de ebulição da mistura.",
+      ],
+      curiosities: [
+        "A água do mar tem em média 35 g de sal por litro — se secasse toda, cobriria os continentes com 150 m de sal.",
+        "Sangue e água do mar têm proporções de íons parecidas — herança da vida ter surgido no oceano.",
+        "O Mar Morto é tão salgado (~34%) que você boia sem esforço nenhum.",
+      ],
+      funFacts: [
+        "Colocar açúcar no café até 'não dissolver mais' é atingir a saturação. Ciência para justificar a gulodice.",
+        "Se você chorar dentro do mar, teoricamente sua lágrima é MENOS salgada que a água ao redor.",
+        "Água com gás é literalmente uma solução de CO₂ pressurizada. Você bebe uma reação química presa.",
+      ],
+    };
+    case "eletro": return {
+      dailyLife: [
+        "Bateria do celular é uma pilha recarregável de íons de lítio.",
+        "Galvanoplastia deposita ouro/prata em joias e cromo em para-choques.",
+        "Corrosão de casco de navio é combatida com 'ânodos de sacrifício' de zinco.",
+      ],
+      curiosities: [
+        "A primeira pilha (Volta, 1800) era feita de discos de zinco, cobre e panos molhados com salmoura.",
+        "Enguias-elétricas produzem até 860 V — voltagem para acender lâmpadas.",
+        "O corpo humano funciona a eletricidade: neurônios disparam a ~70 mV por diferenças iônicas.",
+      ],
+      funFacts: [
+        "Se você lamber uma pilha de 9 V, sente um choque leve — sua língua fecha o circuito. Não recomendado (mas todo mundo já fez).",
+        "Meias de lã no tapete carregam você com milhares de volts. Você vira uma 'pilha humana' antes de dar choque na maçaneta.",
+        "O primeiro marca-passo funcionava com pilhas comuns e precisava ser trocado toda semana. Coitados dos pioneiros.",
+      ],
+    };
+    case "organica": return {
+      dailyLife: [
+        "Plásticos (PET, PVC, PE), tecidos sintéticos (poliéster, nylon) e remédios são química orgânica.",
+        "Gasolina, álcool e óleo diesel são misturas de hidrocarbonetos.",
+        "Perfumes, cafeína, chocolate e vitaminas: tudo compostos orgânicos.",
+      ],
+      curiosities: [
+        "O petróleo é fóssil de plâncton e algas que viveram há centenas de milhões de anos.",
+        "A vanilina (essência de baunilha) já foi extraída de esgoto reciclado — quimicamente é a mesma molécula.",
+        "Existem mais compostos orgânicos catalogados (>100 milhões) do que qualquer outra classe química.",
+      ],
+      funFacts: [
+        "O cheiro de vitamina do complexo B na urina é enxofre + orgânica. Ciência: não é 'a urina forte', é a molécula.",
+        "Capsaicina (pimenta) engana o cérebro fingindo ser calor. Você não está queimando — está sendo enganado quimicamente.",
+        "O cheiro de 'livro velho' vem de compostos orgânicos voláteis liberados pela decomposição da celulose. É poesia molecular.",
+      ],
+    };
+    case "nuclear": return {
+      dailyLife: [
+        "Radioterapia trata cânceres usando radiação gama controlada.",
+        "Datação por C-14 revela a idade de fósseis e múmias.",
+        "Cerca de 10% da eletricidade mundial vem de usinas nucleares.",
+      ],
+      curiosities: [
+        "1 g de urânio-235 libera energia equivalente a 3 toneladas de carvão.",
+        "A radiação de fundo natural é maior em Guarapari (RJ) que em Chernobyl, por causa da areia monazítica.",
+        "O 'sabor de metal' de quem sofreu radiação vem de reações químicas no paladar induzidas pela ionização.",
+      ],
+      funFacts: [
+        "Comer 1 banana te expõe a ~0,1 μSv de radiação. Existe até a 'unidade banana' (BED) usada informalmente por físicos.",
+        "Dormir com alguém acrescenta radiação: dois corpos emitem K-40 mutuamente. Amor radioativo.",
+        "Marie Curie ainda é tão radioativa que seus cadernos precisam ser guardados em caixas de chumbo — 90 anos depois.",
+      ],
+    };
+    case "gases": return {
+      dailyLife: [
+        "Airbag infla em 30 ms com gás gerado pela decomposição de azida de sódio.",
+        "Panela de pressão eleva a pressão dos gases internos, cozinhando mais rápido.",
+        "Pneu murcho não é por 'perda de ar' — é pela diminuição da pressão dos gases dentro dele.",
+      ],
+      curiosities: [
+        "A atmosfera tem 78% N₂, 21% O₂ e 1% de outros — proporção mantida por bilhões de anos pela vida.",
+        "Um balão de hélio esvazia sozinho: o átomo é tão pequeno que atravessa a borracha.",
+        "Ao afundar 10 m no mar, a pressão dobra — por isso mergulhadores usam misturas gasosas especiais.",
+      ],
+      funFacts: [
+        "Inspirar hélio deixa a voz fina; inspirar hexafluoreto de enxofre deixa a voz grave. Física da acústica em gases.",
+        "Um peido humano tem em média 100 mL de gás. Multiplique por 7 bilhões de pessoas por dia. Faça as contas.",
+        "Se você prendesse a respiração dentro de um elevador em queda, ainda cairia. Boato antigo, química não salva.",
+      ],
+    };
+    case "materia": return {
+      dailyLife: [
+        "Água mudando de estado: gelo, líquido, vapor — três exemplos que você vê todo dia.",
+        "Separar café e água coado é filtração; destilar cachaça é separação por ebulição.",
+        "Neblina é uma dispersão coloidal — pequenas gotas de água suspensas no ar.",
+      ],
+      curiosities: [
+        "Existem 4 estados clássicos (sólido, líquido, gasoso, plasma) e outros exóticos: Bose-Einstein, supercrítico, superfluido.",
+        "99% da matéria visível do universo está no estado de plasma (estrelas, nebulosas).",
+        "Vidro parece sólido, mas tecnicamente é um líquido super-resfriado extremamente lento (debate ainda em curso).",
+      ],
+      funFacts: [
+        "Gelo derrete embaixo do patim por pressão — é literalmente física de estado da matéria em ação.",
+        "Se você congelar rápido demais, cria gelo com bolhas; devagar, cristal transparente. Bartenders sabem disso.",
+        "Sublimação é o gelo virar vapor direto — como o 'gelo seco' de festa (que é CO₂ sólido, não H₂O).",
+      ],
+    };
+    case "cotidiano": return {
+      dailyLife: [
+        "Sabão emulsiona a gordura da louça — uma ponta apolar 'gruda' na gordura, a outra polar dissolve na água.",
+        "Refrigerantes são soluções ácidas (H₂CO₃) — por isso corroem esmalte dental se consumidos em excesso.",
+        "Cozinhar em altitudes elevadas demora mais porque a água ferve abaixo de 100 °C.",
+      ],
+      curiosities: [
+        "O cheiro de terra molhada tem nome: petricor, causado por geosmina liberada pelo solo.",
+        "Cebola faz chorar porque libera gás sulfênico que reage com a água dos olhos formando ácido sulfúrico diluído.",
+        "O 'bafo' de manhã é o resultado de bactérias fermentando restos noturnos.",
+      ],
+      funFacts: [
+        "Chocolate derrete na boca porque tem ponto de fusão logo abaixo da T do corpo (35 °C). Engenharia química deliciosa.",
+        "Pipoca estoura porque a água interna vira vapor a alta pressão. Cada milho é uma pequena panela de pressão.",
+        "O sabor 'umami' foi descoberto no Japão em 1908 — é o 5º gosto oficial, causado pelo glutamato.",
+      ],
+    };
+  }
+  return generic;
+}
+
 
 
 
@@ -1319,6 +1601,40 @@ export default function TopicoDetalhe() {
                 ))}
               </div>
             </section>
+
+            {(() => {
+              const pack = funContent(classificationSource);
+              return (
+                <>
+                  <section className="rounded-xl p-4 bg-sky-50 border border-sky-200">
+                    <div className="flex items-center gap-2 text-sky-800 font-bold mb-2">
+                      <Home size={18} /> Aplicação no cotidiano
+                    </div>
+                    <ul className="space-y-1.5 text-sm text-slate-700 list-disc pl-5">
+                      {pack.dailyLife.map((t, i) => <li key={i}>{t}</li>)}
+                    </ul>
+                  </section>
+
+                  <section className="rounded-xl p-4 bg-violet-50 border border-violet-200">
+                    <div className="flex items-center gap-2 text-[#4C1D95] font-bold mb-2">
+                      <Sparkles size={18} /> Curiosidades
+                    </div>
+                    <ul className="space-y-1.5 text-sm text-slate-700 list-disc pl-5">
+                      {pack.curiosities.map((t, i) => <li key={i}>{t}</li>)}
+                    </ul>
+                  </section>
+
+                  <section className="rounded-xl p-4 bg-amber-50 border border-amber-200">
+                    <div className="flex items-center gap-2 text-amber-800 font-bold mb-2">
+                      <Smile size={18} /> Fatos engraçados
+                    </div>
+                    <ul className="space-y-1.5 text-sm text-slate-700 list-disc pl-5">
+                      {pack.funFacts.map((t, i) => <li key={i}>{t}</li>)}
+                    </ul>
+                  </section>
+                </>
+              );
+            })()}
 
             {/* Erros comuns */}
             <section className="rounded-xl p-4 bg-red-50 border border-red-200">
