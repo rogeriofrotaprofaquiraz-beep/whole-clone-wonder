@@ -592,7 +592,22 @@ const Index = () => {
 
         {(userRole === 'admin' || userRole === 'teacher') && (
           <TabsContent value="admin" className="w-full animate-in fade-in slide-in-from-bottom-10 duration-500">
-            <AdminPanel userRole={userRole} initialSymbol={adminEditSymbol} />
+            {userRole === 'admin' ? (
+              <Tabs defaultValue="editor" className="w-full">
+                <TabsList className="mb-4 bg-slate-900/60 border border-white/10">
+                  <TabsTrigger value="editor">Editor de Cartas</TabsTrigger>
+                  <TabsTrigger value="permissoes">Permissões</TabsTrigger>
+                </TabsList>
+                <TabsContent value="editor">
+                  <AdminPanel userRole={userRole} initialSymbol={adminEditSymbol} />
+                </TabsContent>
+                <TabsContent value="permissoes">
+                  <Permissoes embedded />
+                </TabsContent>
+              </Tabs>
+            ) : (
+              <AdminPanel userRole={userRole} initialSymbol={adminEditSymbol} />
+            )}
           </TabsContent>
         )}
         {userRole === 'admin' && (
