@@ -347,6 +347,26 @@ export default function CursoDetalhe() {
                     <iframe src={active.video_url} className="w-full h-full" allowFullScreen />
                   </div>
                 )}
+                {active.image_url && (
+                  <figure className="mb-4">
+                    <img src={active.image_url} alt={active.title}
+                      className="w-full max-h-96 object-contain rounded-lg border bg-slate-50" />
+                    <figcaption className="text-xs text-slate-500 mt-1">Imagem do capítulo</figcaption>
+                  </figure>
+                )}
+                {active.slide_url && (
+                  <div className="mb-4 p-3 rounded-lg border border-violet-200 bg-violet-50/40">
+                    <div className="text-xs font-bold text-[#4C1D95] uppercase mb-2">Slide do capítulo</div>
+                    {/\.pdf($|\?)/i.test(active.slide_url) ? (
+                      <iframe src={active.slide_url} className="w-full h-96 rounded border bg-white" />
+                    ) : (
+                      <a href={active.slide_url} target="_blank" rel="noopener"
+                        className="inline-flex items-center gap-2 text-[#4C1D95] font-semibold underline">
+                        📎 Abrir apresentação
+                      </a>
+                    )}
+                  </div>
+                )}
                 <div className="prose prose-sm max-w-none text-slate-700">
                   {active.content && <LessonContent text={active.content} backTo={`/cursos/${id}`} lessonTitle={active.title} />}
                 </div>
