@@ -9,7 +9,8 @@ import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { toast } from "sonner";
-import { ArrowLeft, Loader2, Save, Shield, UserCog, Plus, Eye, Pencil, Users, Filter } from "lucide-react";
+import { ArrowLeft, Loader2, Save, Shield, UserCog, Plus, Eye, Pencil, Users, Filter, QrCode, Copy, Link as LinkIcon } from "lucide-react";
+import { QRCodeSVG } from "qrcode.react";
 
 type Role =
   | "student"
