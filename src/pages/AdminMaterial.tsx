@@ -576,6 +576,79 @@ export default function AdminMaterial() {
                 </div>
               </div>
 
+              <div className="grid sm:grid-cols-2 gap-2">
+                <div className="p-3 rounded-lg border border-dashed border-violet-300 bg-violet-50/40">
+                  <div className="text-xs font-bold text-[#4C1D95] mb-2 flex items-center gap-1">
+                    <ImageIcon size={13} /> Imagem do capítulo
+                  </div>
+                  {editing.image_url && (
+                    <img src={editing.image_url} alt="" className="max-h-28 rounded border mb-2" />
+                  )}
+                  <div className="flex gap-2 flex-wrap items-center">
+                    <label className="cursor-pointer inline-flex items-center gap-1 text-xs px-3 py-1.5 rounded-md bg-white border hover:bg-slate-50">
+                      <FileUp size={12} /> {editing.image_url ? "Substituir" : "Enviar"}
+                      <input type="file" accept="image/*" className="hidden"
+                        onChange={async (e) => {
+                          const f = e.target.files?.[0];
+                          if (!f || !editing) return;
+                          setUploading(true);
+                          try {
+                            const url = await uploadCourseFile(f, editing.course_id);
+                            setEditing({ ...editing, image_url: url });
+                          } catch (err: any) { toast.error(err?.message ?? "Falha"); }
+                          finally { setUploading(false); }
+                        }} />
+                    </label>
+                    {editing.image_url && (
+                      <Button size="sm" variant="outline" className="text-red-600 border-red-200"
+                        onClick={() => setEditing({ ...editing, image_url: null })}>
+                        <Trash2 size={12} />
+                      </Button>
+                    )}
+                  </div>
+                  <Input className="mt-2 text-xs" placeholder="ou cole a URL"
+                    value={editing.image_url ?? ""}
+                    onChange={e => setEditing({ ...editing, image_url: e.target.value || null })} />
+                </div>
+
+                <div className="p-3 rounded-lg border border-dashed border-violet-300 bg-violet-50/40">
+                  <div className="text-xs font-bold text-[#4C1D95] mb-2 flex items-center gap-1">
+                    <FileText size={13} /> Slide do capítulo (PPT/PDF)
+                  </div>
+                  {editing.slide_url && (
+                    <a href={editing.slide_url} target="_blank" rel="noopener"
+                      className="text-xs text-[#4C1D95] underline block mb-2 truncate">
+                      📎 Ver slide atual
+                    </a>
+                  )}
+                  <div className="flex gap-2 flex-wrap items-center">
+                    <label className="cursor-pointer inline-flex items-center gap-1 text-xs px-3 py-1.5 rounded-md bg-white border hover:bg-slate-50">
+                      <FileUp size={12} /> {editing.slide_url ? "Substituir" : "Enviar"}
+                      <input type="file" accept=".ppt,.pptx,.pdf,.key,.odp" className="hidden"
+                        onChange={async (e) => {
+                          const f = e.target.files?.[0];
+                          if (!f || !editing) return;
+                          setUploading(true);
+                          try {
+                            const url = await uploadCourseFile(f, editing.course_id);
+                            setEditing({ ...editing, slide_url: url });
+                          } catch (err: any) { toast.error(err?.message ?? "Falha"); }
+                          finally { setUploading(false); }
+                        }} />
+                    </label>
+                    {editing.slide_url && (
+                      <Button size="sm" variant="outline" className="text-red-600 border-red-200"
+                        onClick={() => setEditing({ ...editing, slide_url: null })}>
+                        <Trash2 size={12} />
+                      </Button>
+                    )}
+                  </div>
+                  <Input className="mt-2 text-xs" placeholder="ou cole a URL"
+                    value={editing.slide_url ?? ""}
+                    onChange={e => setEditing({ ...editing, slide_url: e.target.value || null })} />
+                </div>
+              </div>
+
               <div className="p-3 rounded-lg border border-dashed border-violet-300 bg-violet-50/40">
                 <div className="text-xs font-bold text-[#4C1D95] mb-2 flex items-center gap-1">
                   <FileUp size={13} /> Anexar arquivos ao conteúdo
