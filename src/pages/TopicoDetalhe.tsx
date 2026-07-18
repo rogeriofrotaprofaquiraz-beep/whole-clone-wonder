@@ -1309,6 +1309,9 @@ export default function TopicoDetalhe() {
           video_url: (data as any).video_url ?? undefined,
           footer_image_url: (data as any).footer_image_url ?? undefined,
           materials: ((data as any).materials as Material[]) ?? [],
+          daily_life: ((data as any).daily_life as string[]) ?? undefined,
+          curiosities: ((data as any).curiosities as string[]) ?? undefined,
+          fun_facts: ((data as any).fun_facts as string[]) ?? undefined,
         });
       }
     })();
