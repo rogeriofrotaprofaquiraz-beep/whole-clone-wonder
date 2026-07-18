@@ -16,6 +16,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { toast } from "sonner";
+import { addCoins } from "@/lib/playerEconomy";
 
 type Question = {
   q: string;
@@ -148,7 +149,33 @@ export default function Avaliacao() {
     setResult(data);
     window.scrollTo({ top: 0, behavior: "smooth" });
     if ((data as any)?.passed) {
-      toast.success("Aprovado! Certificado emitido.");
+      // Bônus de ranking pela aprovação (uma única vez por curso)
+      try {
+        const { data: userData } = await supabase.auth.getUser();
+        const uid = userData.user?.id;
+        if (uid) {
+          const { data: prior } = await supabase
+            .from("assessment_attempts")
+            .select("id, passed, created_at")
+            .eq("course_id", id)
+            .eq("user_id", uid)
+            .eq("passed", true)
+            .order("created_at", { ascending: true });
+          if ((prior?.length ?? 0) <= 1) {
+            const score = Number((data as any).score ?? 0);
+            const hours = Number(course?.hours ?? 1);
+            const bonus = Math.max(20, Math.round(hours * 10 * (score / 10)));
+            await addCoins(uid, bonus);
+            toast.success(`Aprovado! Certificado emitido. +${bonus} ⚛ no ranking`);
+          } else {
+            toast.success("Aprovado! Certificado emitido.");
+          }
+        } else {
+          toast.success("Aprovado! Certificado emitido.");
+        }
+      } catch {
+        toast.success("Aprovado! Certificado emitido.");
+      }
     } else {
       toast.error("Nota insuficiente. Estude mais e tente novamente.");
     }
