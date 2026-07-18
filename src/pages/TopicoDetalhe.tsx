@@ -1818,6 +1818,23 @@ export default function TopicoDetalhe() {
                       <Textarea rows={3} value={form.pitfalls} onChange={e => setForm({ ...form, pitfalls: e.target.value })} />
                     </div>
                     <div>
+                      <label className="text-xs font-semibold text-sky-800 flex items-center gap-1">
+                        <Home size={12} /> Aplicação no cotidiano (um item por linha)
+                      </label>
+                      <Textarea rows={4} value={form.daily_life} onChange={e => setForm({ ...form, daily_life: e.target.value })} />
+                    </div>
+                    <div>
+                      <label className="text-xs font-semibold text-[#4C1D95] flex items-center gap-1">
+                        <Sparkles size={12} /> Curiosidades (uma por linha)
+                      </label>
+                      <Textarea rows={4} value={form.curiosities} onChange={e => setForm({ ...form, curiosities: e.target.value })} />
+                    </div>
+                    <div>
+                      <label className="text-xs font-semibold text-amber-800 flex items-center gap-1">
+                        <Smile size={12} /> Fatos engraçados (um por linha)
+                      </label>
+                      <Textarea rows={4} value={form.fun_facts} onChange={e => setForm({ ...form, fun_facts: e.target.value })} />
+                    <div>
                       <label className="text-xs font-semibold text-slate-700">Exercícios sugeridos (um por linha)</label>
                       <Textarea rows={3} value={form.exercises} onChange={e => setForm({ ...form, exercises: e.target.value })} />
                     </div>
