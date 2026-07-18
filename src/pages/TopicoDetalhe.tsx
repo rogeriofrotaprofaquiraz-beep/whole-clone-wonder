@@ -1347,6 +1347,7 @@ export default function TopicoDetalhe() {
   const imgUrl = override?.image_url || `https://loremflickr.com/1200/600/${encodeURIComponent(heroQuery)}?lock=${Math.abs(hash(displayTitle)) % 9999}`;
 
   const startEdit = () => {
+    const pack = funContent(classificationSource);
     setForm({
       simple: c.simple,
       formal: c.formal,
@@ -1357,6 +1358,9 @@ export default function TopicoDetalhe() {
       pitfalls: c.pitfalls.join("\n"),
       exercises: c.exercises.join("\n"),
       refs: c.refs.join("\n"),
+      daily_life: (override?.daily_life?.length ? override.daily_life : pack.dailyLife).join("\n"),
+      curiosities: (override?.curiosities?.length ? override.curiosities : pack.curiosities).join("\n"),
+      fun_facts: (override?.fun_facts?.length ? override.fun_facts : pack.funFacts).join("\n"),
       image_url: override?.image_url || "",
       video_url: override?.video_url || "",
       footer_image_url: override?.footer_image_url || "",
