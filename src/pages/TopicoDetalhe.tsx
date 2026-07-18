@@ -1834,6 +1834,7 @@ export default function TopicoDetalhe() {
                         <Smile size={12} /> Fatos engraçados (um por linha)
                       </label>
                       <Textarea rows={4} value={form.fun_facts} onChange={e => setForm({ ...form, fun_facts: e.target.value })} />
+                    </div>
                     <div>
                       <label className="text-xs font-semibold text-slate-700">Exercícios sugeridos (um por linha)</label>
                       <Textarea rows={3} value={form.exercises} onChange={e => setForm({ ...form, exercises: e.target.value })} />
