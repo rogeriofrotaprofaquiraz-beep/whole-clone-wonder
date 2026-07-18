@@ -1442,6 +1442,9 @@ export default function TopicoDetalhe() {
       pitfalls: toLines(form.pitfalls),
       exercises: toLines(form.exercises),
       refs: toLines(form.refs),
+      daily_life: toLines(form.daily_life || ""),
+      curiosities: toLines(form.curiosities || ""),
+      fun_facts: toLines(form.fun_facts || ""),
       image_url: form.image_url.trim() || null,
       video_url: form.video_url.trim() || null,
       footer_image_url: (form.footer_image_url || "").trim() || null,
@@ -1459,6 +1462,9 @@ export default function TopicoDetalhe() {
       video_url: payload.video_url || undefined,
       footer_image_url: payload.footer_image_url || undefined,
       materials: payload.materials,
+      daily_life: payload.daily_life,
+      curiosities: payload.curiosities,
+      fun_facts: payload.fun_facts,
     });
     setEditing(false);
   };
