@@ -1607,6 +1607,9 @@ export default function TopicoDetalhe() {
 
             {(() => {
               const pack = funContent(classificationSource);
+              const dailyLife = override?.daily_life?.length ? override.daily_life : pack.dailyLife;
+              const curiosities = override?.curiosities?.length ? override.curiosities : pack.curiosities;
+              const funFacts = override?.fun_facts?.length ? override.fun_facts : pack.funFacts;
               return (
                 <>
                   <section className="rounded-xl p-4 bg-sky-50 border border-sky-200">
@@ -1614,7 +1617,7 @@ export default function TopicoDetalhe() {
                       <Home size={18} /> Aplicação no cotidiano
                     </div>
                     <ul className="space-y-1.5 text-sm text-slate-700 list-disc pl-5">
-                      {pack.dailyLife.map((t, i) => <li key={i}>{t}</li>)}
+                      {dailyLife.map((t, i) => <li key={i}>{t}</li>)}
                     </ul>
                   </section>
 
@@ -1623,7 +1626,7 @@ export default function TopicoDetalhe() {
                       <Sparkles size={18} /> Curiosidades
                     </div>
                     <ul className="space-y-1.5 text-sm text-slate-700 list-disc pl-5">
-                      {pack.curiosities.map((t, i) => <li key={i}>{t}</li>)}
+                      {curiosities.map((t, i) => <li key={i}>{t}</li>)}
                     </ul>
                   </section>
 
@@ -1632,7 +1635,7 @@ export default function TopicoDetalhe() {
                       <Smile size={18} /> Fatos engraçados
                     </div>
                     <ul className="space-y-1.5 text-sm text-slate-700 list-disc pl-5">
-                      {pack.funFacts.map((t, i) => <li key={i}>{t}</li>)}
+                      {funFacts.map((t, i) => <li key={i}>{t}</li>)}
                     </ul>
                   </section>
                 </>
