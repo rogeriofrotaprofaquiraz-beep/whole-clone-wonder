@@ -16,6 +16,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { toast } from "sonner";
+import { addCoins } from "@/lib/playerEconomy";
 
 type Question = {
   q: string;
