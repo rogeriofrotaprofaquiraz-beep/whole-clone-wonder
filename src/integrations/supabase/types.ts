@@ -1485,11 +1485,14 @@ export type Database = {
       topic_overrides: {
         Row: {
           created_at: string
+          curiosities: string[] | null
+          daily_life: string[] | null
           examples: Json | null
           exercises: Json | null
           footer_image_url: string | null
           formal: string | null
           formulas: Json | null
+          fun_facts: string[] | null
           image_url: string | null
           keys: Json | null
           lesson: string | null
@@ -1506,11 +1509,14 @@ export type Database = {
         }
         Insert: {
           created_at?: string
+          curiosities?: string[] | null
+          daily_life?: string[] | null
           examples?: Json | null
           exercises?: Json | null
           footer_image_url?: string | null
           formal?: string | null
           formulas?: Json | null
+          fun_facts?: string[] | null
           image_url?: string | null
           keys?: Json | null
           lesson?: string | null
@@ -1527,11 +1533,14 @@ export type Database = {
         }
         Update: {
           created_at?: string
+          curiosities?: string[] | null
+          daily_life?: string[] | null
           examples?: Json | null
           exercises?: Json | null
           footer_image_url?: string | null
           formal?: string | null
           formulas?: Json | null
+          fun_facts?: string[] | null
           image_url?: string | null
           keys?: Json | null
           lesson?: string | null
