@@ -1273,7 +1273,7 @@ export default function TopicoDetalhe() {
   const displayTitle = lesson ? `${title} — ${lesson}` : title;
 
   const [isAdmin, setIsAdmin] = useState(false);
-  const [override, setOverride] = useState<(Partial<Section> & { image_url?: string; video_url?: string; footer_image_url?: string; materials?: Material[] }) | null>(null);
+  const [override, setOverride] = useState<(Partial<Section> & { image_url?: string; video_url?: string; footer_image_url?: string; materials?: Material[]; daily_life?: string[]; curiosities?: string[]; fun_facts?: string[] }) | null>(null);
   const [editing, setEditing] = useState(false);
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
@@ -1309,6 +1309,9 @@ export default function TopicoDetalhe() {
           video_url: (data as any).video_url ?? undefined,
           footer_image_url: (data as any).footer_image_url ?? undefined,
           materials: ((data as any).materials as Material[]) ?? [],
+          daily_life: ((data as any).daily_life as string[]) ?? undefined,
+          curiosities: ((data as any).curiosities as string[]) ?? undefined,
+          fun_facts: ((data as any).fun_facts as string[]) ?? undefined,
         });
       }
     })();
@@ -1344,6 +1347,7 @@ export default function TopicoDetalhe() {
   const imgUrl = override?.image_url || `https://loremflickr.com/1200/600/${encodeURIComponent(heroQuery)}?lock=${Math.abs(hash(displayTitle)) % 9999}`;
 
   const startEdit = () => {
+    const pack = funContent(classificationSource);
     setForm({
       simple: c.simple,
       formal: c.formal,
@@ -1354,6 +1358,9 @@ export default function TopicoDetalhe() {
       pitfalls: c.pitfalls.join("\n"),
       exercises: c.exercises.join("\n"),
       refs: c.refs.join("\n"),
+      daily_life: (override?.daily_life?.length ? override.daily_life : pack.dailyLife).join("\n"),
+      curiosities: (override?.curiosities?.length ? override.curiosities : pack.curiosities).join("\n"),
+      fun_facts: (override?.fun_facts?.length ? override.fun_facts : pack.funFacts).join("\n"),
       image_url: override?.image_url || "",
       video_url: override?.video_url || "",
       footer_image_url: override?.footer_image_url || "",
@@ -1435,6 +1442,9 @@ export default function TopicoDetalhe() {
       pitfalls: toLines(form.pitfalls),
       exercises: toLines(form.exercises),
       refs: toLines(form.refs),
+      daily_life: toLines(form.daily_life || ""),
+      curiosities: toLines(form.curiosities || ""),
+      fun_facts: toLines(form.fun_facts || ""),
       image_url: form.image_url.trim() || null,
       video_url: form.video_url.trim() || null,
       footer_image_url: (form.footer_image_url || "").trim() || null,
@@ -1452,6 +1462,9 @@ export default function TopicoDetalhe() {
       video_url: payload.video_url || undefined,
       footer_image_url: payload.footer_image_url || undefined,
       materials: payload.materials,
+      daily_life: payload.daily_life,
+      curiosities: payload.curiosities,
+      fun_facts: payload.fun_facts,
     });
     setEditing(false);
   };
@@ -1604,6 +1617,9 @@ export default function TopicoDetalhe() {
 
             {(() => {
               const pack = funContent(classificationSource);
+              const dailyLife = override?.daily_life?.length ? override.daily_life : pack.dailyLife;
+              const curiosities = override?.curiosities?.length ? override.curiosities : pack.curiosities;
+              const funFacts = override?.fun_facts?.length ? override.fun_facts : pack.funFacts;
               return (
                 <>
                   <section className="rounded-xl p-4 bg-sky-50 border border-sky-200">
@@ -1611,7 +1627,7 @@ export default function TopicoDetalhe() {
                       <Home size={18} /> Aplicação no cotidiano
                     </div>
                     <ul className="space-y-1.5 text-sm text-slate-700 list-disc pl-5">
-                      {pack.dailyLife.map((t, i) => <li key={i}>{t}</li>)}
+                      {dailyLife.map((t, i) => <li key={i}>{t}</li>)}
                     </ul>
                   </section>
 
@@ -1620,7 +1636,7 @@ export default function TopicoDetalhe() {
                       <Sparkles size={18} /> Curiosidades
                     </div>
                     <ul className="space-y-1.5 text-sm text-slate-700 list-disc pl-5">
-                      {pack.curiosities.map((t, i) => <li key={i}>{t}</li>)}
+                      {curiosities.map((t, i) => <li key={i}>{t}</li>)}
                     </ul>
                   </section>
 
@@ -1629,7 +1645,7 @@ export default function TopicoDetalhe() {
                       <Smile size={18} /> Fatos engraçados
                     </div>
                     <ul className="space-y-1.5 text-sm text-slate-700 list-disc pl-5">
-                      {pack.funFacts.map((t, i) => <li key={i}>{t}</li>)}
+                      {funFacts.map((t, i) => <li key={i}>{t}</li>)}
                     </ul>
                   </section>
                 </>
@@ -1800,6 +1816,24 @@ export default function TopicoDetalhe() {
                     <div>
                       <label className="text-xs font-semibold text-slate-700">Erros comuns (um por linha)</label>
                       <Textarea rows={3} value={form.pitfalls} onChange={e => setForm({ ...form, pitfalls: e.target.value })} />
+                    </div>
+                    <div>
+                      <label className="text-xs font-semibold text-sky-800 flex items-center gap-1">
+                        <Home size={12} /> Aplicação no cotidiano (um item por linha)
+                      </label>
+                      <Textarea rows={4} value={form.daily_life} onChange={e => setForm({ ...form, daily_life: e.target.value })} />
+                    </div>
+                    <div>
+                      <label className="text-xs font-semibold text-[#4C1D95] flex items-center gap-1">
+                        <Sparkles size={12} /> Curiosidades (uma por linha)
+                      </label>
+                      <Textarea rows={4} value={form.curiosities} onChange={e => setForm({ ...form, curiosities: e.target.value })} />
+                    </div>
+                    <div>
+                      <label className="text-xs font-semibold text-amber-800 flex items-center gap-1">
+                        <Smile size={12} /> Fatos engraçados (um por linha)
+                      </label>
+                      <Textarea rows={4} value={form.fun_facts} onChange={e => setForm({ ...form, fun_facts: e.target.value })} />
                     </div>
                     <div>
                       <label className="text-xs font-semibold text-slate-700">Exercícios sugeridos (um por linha)</label>
