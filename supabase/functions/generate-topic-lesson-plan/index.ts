@@ -78,15 +78,18 @@ Retorne JSON EXATO:
     });
 
     if (!aiResp.ok) {
-      const text = await aiResp.text();
-      if (aiResp.status === 429) return json({ error: "Muitas requisições, tente em instantes" }, 429);
-      if (aiResp.status === 402) return json({ error: "Créditos de IA esgotados" }, 402);
-      return json({ error: "AI error: " + text }, 500);
+      const text = await aiResp.text().catch(() => "");
+      console.warn("AI gateway falhou, usando template:", aiResp.status, text);
+      const fb = buildFallback({ title, lesson, course, stage, duration, context });
+      return json({ ...fb, fallback: true, reason: aiResp.status === 402 ? "credits" : aiResp.status === 429 ? "rate" : "error" });
     }
     const aiData = await aiResp.json();
     const content = aiData.choices?.[0]?.message?.content ?? "{}";
     let parsed: any;
-    try { parsed = JSON.parse(content); } catch { return json({ error: "Resposta da IA não é JSON" }, 500); }
+    try { parsed = JSON.parse(content); } catch {
+      const fb = buildFallback({ title, lesson, course, stage, duration, context });
+      return json({ ...fb, fallback: true, reason: "parse" });
+    }
 
     const plan = String(parsed.plan ?? "").trim();
     const bncc = (Array.isArray(parsed.bncc) ? parsed.bncc : [])
@@ -98,11 +101,64 @@ Retorne JSON EXATO:
       .filter((b: any) => b.code && b.label)
       .slice(0, 20);
 
+    if (!plan) {
+      const fb = buildFallback({ title, lesson, course, stage, duration, context });
+      return json({ ...fb, fallback: true, reason: "empty" });
+    }
+
     return json({ plan, bncc });
   } catch (e) {
     return json({ error: String(e) }, 500);
   }
 });
+
+function buildFallback(p: { title: string; lesson: string; course: string; stage: string; duration: string; context: string }) {
+  const { title, lesson, course, stage, duration, context } = p;
+  const plan = `# Planejamento — ${title}
+
+**Disciplina:** ${course || "Ciências / Química"}  
+**Turma / Etapa:** ${stage}  
+**Duração:** ${duration}  
+${lesson ? `**Unidade / Aula:** ${lesson}  \n` : ""}
+## Objetivo
+Compreender e aplicar os principais conceitos de **${title}**, relacionando-os ao cotidiano do aluno e às competências previstas na BNCC.
+
+## Componentes Curriculares
+Ciências da Natureza — Química.
+
+## Competência
+Investigar fenômenos naturais e tecnológicos, utilizando conhecimentos científicos para resolver problemas e tomar decisões.
+
+## Habilidades
+- Identificar e descrever os conceitos centrais de ${title}.
+- Relacionar o conteúdo com situações do cotidiano.
+- Desenvolver argumentação científica e pensamento crítico.
+
+## Metodologia
+Aula expositiva dialogada com apoio de recursos digitais (slides, simuladores PhET e vídeos), seguida de atividade prática em grupos e discussão coletiva.
+
+## Sequência didática
+1. **Abertura (10 min)** — problematização e conhecimentos prévios sobre ${title}.
+2. **Desenvolvimento (30 min)** — exposição dos conceitos, exemplos e demonstrações.
+3. **Fechamento (10 min)** — síntese, exercícios de fixação e avaliação formativa.
+
+## Recursos
+Quadro, projetor, slides, simuladores, vídeos e material impresso.
+
+## Avaliação
+Participação, resolução de exercícios e produção escrita curta sobre o tema.
+
+## Observações
+${context ? context.slice(0, 400) : "Adaptar linguagem e exemplos ao nível da turma."}
+`;
+  const bncc = [
+    { code: "EF09CI03", label: "Identificar modelos que descrevem a estrutura da matéria.", type: "BNCC" },
+    { code: "EM13CNT301", label: "Construir questões, elaborar hipóteses e analisar fenômenos naturais.", type: "BNCC" },
+    { code: "EM13CNT101", label: "Analisar fenômenos naturais e processos tecnológicos.", type: "BNCC" },
+    { code: "EM13LGG703", label: "Utilizar tecnologias digitais de forma crítica e criativa.", type: "BNCC_DIGITAL" },
+  ];
+  return { plan, bncc };
+}
 
 function json(body: unknown, status = 200) {
   return new Response(JSON.stringify(body), { status, headers: { ...corsHeaders, "Content-Type": "application/json" } });
