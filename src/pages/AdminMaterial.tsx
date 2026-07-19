@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import { areaMeta } from "@/lib/aula";
+import { parseBulkQuestions } from "@/lib/parseBulkQuestions";
 
 type Course = {
   id: string; title: string; description: string | null;
@@ -74,6 +75,8 @@ export default function AdminMaterial() {
   const [assessmentCourse, setAssessmentCourse] = useState<Course | null>(null);
   const [assessment, setAssessment] = useState<Assessment | null>(null);
   const [savingAssessment, setSavingAssessment] = useState(false);
+  const [bulkOpen, setBulkOpen] = useState(false);
+  const [bulkText, setBulkText] = useState("");
 
   useEffect(() => {
     (async () => {
@@ -262,6 +265,31 @@ export default function AdminMaterial() {
       }],
     });
   };
+
+  const applyBulkPaste = (mode: "append" | "replace") => {
+    if (!assessment) return;
+    const parsed = parseBulkQuestions(bulkText);
+    if (parsed.length === 0) {
+      toast.error("Nenhuma questão reconhecida. Verifique o formato.");
+      return;
+    }
+    const asQuestions: Question[] = parsed.map((p) => ({
+      q: p.q,
+      options: p.options,
+      correct: p.correct,
+      context: p.context ?? "",
+      explanation: p.explanation ?? "",
+      image_url: "",
+    }));
+    const next = mode === "append"
+      ? [...assessment.questions, ...asQuestions]
+      : asQuestions;
+    setAssessment({ ...assessment, questions: next });
+    toast.success(`${parsed.length} questão(ões) importada(s)`);
+    setBulkOpen(false);
+    setBulkText("");
+  };
+
 
   const updateQuestion = (i: number, patch: Partial<Question>) => {
     if (!assessment) return;
@@ -717,14 +745,20 @@ export default function AdminMaterial() {
                 </div>
               </div>
 
-              <div className="flex justify-between items-center">
+              <div className="flex justify-between items-center gap-2 flex-wrap">
                 <div className="text-sm text-slate-600">
                   {assessment.questions.length} questão(ões)
                 </div>
-                <Button size="sm" onClick={addQuestion} className="bg-[#059669] hover:bg-[#047857]">
-                  <Plus size={14} className="mr-1" /> Adicionar questão
-                </Button>
+                <div className="flex gap-2 flex-wrap">
+                  <Button size="sm" variant="outline" onClick={() => setBulkOpen(true)}>
+                    <FileText size={14} className="mr-1" /> Colar em massa
+                  </Button>
+                  <Button size="sm" onClick={addQuestion} className="bg-[#059669] hover:bg-[#047857]">
+                    <Plus size={14} className="mr-1" /> Adicionar questão
+                  </Button>
+                </div>
               </div>
+
 
               <div className="space-y-3">
                 {assessment.questions.map((qq, i) => (
@@ -836,6 +870,66 @@ export default function AdminMaterial() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
+
+      {/* ===== Bulk paste ===== */}
+      <Dialog open={bulkOpen} onOpenChange={(o) => { setBulkOpen(o); if (!o) setBulkText(""); }}>
+        <DialogContent className="max-w-3xl max-h-[92vh] overflow-auto">
+          <DialogHeader>
+            <DialogTitle>Colar questões em massa</DialogTitle>
+          </DialogHeader>
+          <div className="space-y-3">
+            <div className="p-3 rounded-lg bg-violet-50 border border-violet-200 text-xs text-slate-700 leading-relaxed">
+              <div className="font-bold text-[#4C1D95] mb-1">Formato aceito (flexível)</div>
+              <pre className="whitespace-pre-wrap font-mono text-[11px] bg-white p-2 rounded border">{`1) Qual é o símbolo químico do hidrogênio?
+Contexto: (opcional) situação-problema em uma linha.
+a) H2
+*b) H
+c) He
+d) O
+Resposta: B      ← ou marque a correta com "*" antes da letra
+Explicação: (opcional) por que B está correta.
+
+2) Próxima questão...
+a) ...
+b) ...
+c) ...
+d) ...
+Resposta: A`}</pre>
+              <ul className="list-disc pl-4 mt-2 space-y-0.5">
+                <li>Separe as questões com uma linha em branco.</li>
+                <li>Aceita <code>A)</code>, <code>A.</code>, <code>A-</code>, <code>(A)</code>, <code>[A]</code>.</li>
+                <li>Marque a correta com <code>*</code>/<code>✓</code> antes da letra <strong>ou</strong> use uma linha <code>Resposta: X</code>.</li>
+              </ul>
+            </div>
+            <Textarea
+              rows={16}
+              value={bulkText}
+              onChange={(e) => setBulkText(e.target.value)}
+              placeholder="Cole aqui as questões..."
+              className="font-mono text-xs"
+            />
+            {bulkText.trim() && (
+              <div className="text-xs text-slate-600">
+                Prévia: <strong>{parseBulkQuestions(bulkText).length}</strong> questão(ões) reconhecida(s).
+              </div>
+            )}
+          </div>
+          <DialogFooter className="gap-2 flex-wrap">
+            <Button variant="outline" onClick={() => { setBulkOpen(false); setBulkText(""); }}>
+              Cancelar
+            </Button>
+            <Button variant="outline" onClick={() => applyBulkPaste("replace")}
+              className="text-red-600 border-red-200">
+              Substituir todas
+            </Button>
+            <Button onClick={() => applyBulkPaste("append")}
+              className="bg-[#4C1D95] hover:bg-[#3b1477]">
+              <Plus size={14} className="mr-1" /> Adicionar ao final
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
+
 }
