@@ -2032,10 +2032,16 @@ export default function TopicoDetalhe() {
                     <ul className="space-y-3 text-sm text-slate-700">
                       {allCuriosities.map((t, i) => (
                         <li key={i} className="flex gap-3">
-                          <img src={topicImage(`${title} ${t}`, 180, 180)} alt=""
-                            loading="lazy"
-                            className="w-14 h-14 rounded-md object-cover border border-violet-200 shrink-0"
-                            onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }} />
+                          <div className="w-14 h-14 rounded-md border border-violet-200 shrink-0 overflow-hidden">
+                            <EditableImage
+                              src={sectionImg(`curio_${i}`) || topicImage(`${title} ${t}`, 180, 180)}
+                              alt=""
+                              className="w-full h-full"
+                              isAdmin={isAdmin} slug={slug!} title={title} lesson={lesson}
+                              imageKey={`curio_${i}`} currentOverride={sectionImg(`curio_${i}`)}
+                              onChange={(u) => applySectionImage(`curio_${i}`, u)}
+                            />
+                          </div>
                           <span className="flex-1 leading-relaxed">{t}</span>
                         </li>
                       ))}
