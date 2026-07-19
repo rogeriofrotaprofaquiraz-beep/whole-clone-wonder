@@ -1982,8 +1982,16 @@ export default function TopicoDetalhe() {
                     <div className="flex items-center gap-2 text-emerald-800 font-bold mb-2">
                       <FlaskConical size={18} /> Aplicações no cotidiano
                     </div>
-                    <ul className="space-y-1.5 text-sm text-slate-700 list-disc pl-5">
-                      {dailyLife.map((t, i) => <li key={i}>{t}</li>)}
+                    <ul className="space-y-3 text-sm text-slate-700">
+                      {dailyLife.map((t, i) => (
+                        <li key={i} className="flex gap-3">
+                          <img src={topicImage(`${title} ${t}`, 180, 180)} alt=""
+                            loading="lazy"
+                            className="w-14 h-14 rounded-md object-cover border border-emerald-200 shrink-0"
+                            onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }} />
+                          <span className="flex-1 leading-relaxed">{t}</span>
+                        </li>
+                      ))}
                     </ul>
                   </section>
 
@@ -1991,8 +1999,16 @@ export default function TopicoDetalhe() {
                     <div className="flex items-center gap-2 text-[#4C1D95] font-bold mb-2">
                       <Sparkles size={18} /> Curiosidades
                     </div>
-                    <ul className="space-y-1.5 text-sm text-slate-700 list-disc pl-5">
-                      {allCuriosities.map((t, i) => <li key={i}>{t}</li>)}
+                    <ul className="space-y-3 text-sm text-slate-700">
+                      {allCuriosities.map((t, i) => (
+                        <li key={i} className="flex gap-3">
+                          <img src={topicImage(`${title} ${t}`, 180, 180)} alt=""
+                            loading="lazy"
+                            className="w-14 h-14 rounded-md object-cover border border-violet-200 shrink-0"
+                            onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }} />
+                          <span className="flex-1 leading-relaxed">{t}</span>
+                        </li>
+                      ))}
                     </ul>
                   </section>
                 </>
