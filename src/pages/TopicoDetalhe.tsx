@@ -1340,18 +1340,31 @@ function applyAspect(base: Section, title: string, lesson: string): Section {
     case "fundamentos":
       return {
         ...M,
-        simple: `**Fundamentos teóricos.** São as ideias e leis que sustentam ${tema}. Sem esses pilares, não dá para prever resultados nem explicar experimentos.`,
-        formal: `**Base teórica de ${tema}.** ${M.formal} O corpo teórico se organiza em: (1) postulados (afirmações aceitas como ponto de partida), (2) leis (regularidades observadas), (3) modelos (representações da realidade) e (4) teorias (explicações amplas e testáveis).`,
-        principles: M.principles,
+        simple: `**Como ${tema} funciona por dentro?** Enquanto o "conceito" responde *o que é*, os fundamentos respondem *por que funciona*: são as leis, postulados e modelos que permitem **prever** o comportamento antes mesmo de fazer o experimento.`,
+        formal: `**Arquitetura teórica de ${tema}.** O conhecimento se organiza em quatro camadas hierárquicas: (1) **postulados** — afirmações iniciais aceitas sem demonstração (ex.: átomos existem); (2) **leis** — regularidades quantitativas obtidas por medida (ex.: Lavoisier, Proust, Dalton); (3) **modelos** — representações simplificadas (ex.: modelo de Bohr, esferas rígidas); (4) **teorias** — explicações amplas, testáveis e capazes de fazer previsões novas (ex.: teoria cinética, teoria atômica moderna). Cada camada pode ser refinada sem derrubar as demais.`,
+        key: ["Postulado", "Lei empírica", "Modelo científico", "Teoria unificadora", "Previsão testável", "Refutabilidade (Popper)"],
+        principles: [
+          "**Conservação da massa (Lavoisier, 1789)** — em sistema fechado a massa total não muda.",
+          "**Proporções definidas (Proust)** e **múltiplas (Dalton)** — a composição de uma substância pura é fixa.",
+          "**Relação micro ↔ macro** — propriedades observáveis (cor, ponto de fusão, condutividade) emergem da estrutura atômica e das ligações.",
+        ],
+        formulas: [
+          { expr: "m(reagentes) = m(produtos)", desc: "Lei de Lavoisier — conservação da massa em sistema fechado." },
+          { expr: "n = m / M", desc: "Relação massa ↔ mol — ponte quantitativa entre o mundo micro e macro." },
+        ],
         examples: [
-          "Lei da Conservação da Massa (Lavoisier) — base de toda estequiometria.",
-          "Lei das Proporções Definidas (Proust) — composição fixa das substâncias.",
-          "Teoria atômica moderna — modelo explicativo unificador.",
+          "Queima de 12 g de C + 32 g de O₂ → 44 g de CO₂ (confirma Lavoisier).",
+          "Água sempre com 11,2 % H e 88,8 % O em massa (Proust).",
+          "H + O formam H₂O ou H₂O₂ em razões inteiras (Dalton).",
+        ],
+        pitfalls: [
+          "Confundir **lei** (o que acontece) com **teoria** (por que acontece).",
+          "Achar que modelo antigo está “errado” — geralmente é um caso particular de um modelo mais amplo.",
         ],
         exercises: [
-          `Diferencie lei, modelo e teoria dentro de ${tema}.`,
-          "Escolha uma lei e cite um experimento simples que a confirme.",
-          "Explique por que uma teoria pode ser refutada por uma única evidência contrária.",
+          `Diferencie postulado, lei, modelo e teoria dentro de ${tema}, dando um exemplo de cada.`,
+          "Um experimento contraria uma lei estabelecida. O que deve ser revisto primeiro: a medida, o modelo ou a teoria? Justifique.",
+          "Por que uma teoria científica precisa ser refutável para ser considerada científica?",
         ],
       };
     case "classificacao":
