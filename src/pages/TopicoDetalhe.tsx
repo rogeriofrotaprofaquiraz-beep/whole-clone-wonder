@@ -12,6 +12,7 @@ import {
   Video, Paperclip, Upload, ExternalLink, Home, Smile, FileText, Wand2, Tag,
 } from "lucide-react";
 import LockedQuiz from "@/components/LockedQuiz";
+import EditableImage from "@/components/EditableImage";
 
 
 type BnccCode = { code: string; label: string; type: "BNCC" | "BNCC_DIGITAL" };
@@ -1546,7 +1547,7 @@ export default function TopicoDetalhe() {
   const displayTitle = lesson ? `${title} — ${lesson}` : title;
 
   const [isAdmin, setIsAdmin] = useState(false);
-  const [override, setOverride] = useState<(Partial<Section> & { image_url?: string; video_url?: string; footer_image_url?: string; materials?: Material[]; daily_life?: string[]; curiosities?: string[]; fun_facts?: string[]; lesson_plan?: string; bncc_codes?: BnccCode[] }) | null>(null);
+  const [override, setOverride] = useState<(Partial<Section> & { image_url?: string; video_url?: string; footer_image_url?: string; materials?: Material[]; daily_life?: string[]; curiosities?: string[]; fun_facts?: string[]; lesson_plan?: string; bncc_codes?: BnccCode[]; section_images?: Record<string, string> }) | null>(null);
   const [editing, setEditing] = useState(false);
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
@@ -1588,6 +1589,7 @@ export default function TopicoDetalhe() {
           fun_facts: ((data as any).fun_facts as string[]) ?? undefined,
           lesson_plan: (data as any).lesson_plan ?? undefined,
           bncc_codes: ((data as any).bncc_codes as BnccCode[]) ?? undefined,
+          section_images: ((data as any).section_images as Record<string,string>) ?? {},
         });
       }
     })();
@@ -1621,6 +1623,15 @@ export default function TopicoDetalhe() {
     return byCat[cat] || "chemistry,laboratory,science";
   })();
   const imgUrl = override?.image_url || `https://loremflickr.com/1200/600/${encodeURIComponent(heroQuery)}?lock=${Math.abs(hash(displayTitle)) % 9999}`;
+
+  const sectionImg = (key: string) => override?.section_images?.[key];
+  const applySectionImage = (key: string, url: string | null) => {
+    setOverride((o) => {
+      const cur = { ...(o?.section_images || {}) };
+      if (url) cur[key] = url; else delete cur[key];
+      return { ...(o || {}), section_images: cur };
+    });
+  };
 
   const startEdit = () => {
     const pack = funContent(classificationSource);
@@ -1829,9 +1840,14 @@ export default function TopicoDetalhe() {
 
         <Card className="overflow-hidden mb-6 border-0">
           <div className="relative h-56 md:h-72 bg-gradient-to-br from-violet-700 to-indigo-900">
-            <img src={imgUrl} alt={`Ilustração de ${displayTitle}`}
-              className="w-full h-full object-cover opacity-80"
-              onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} />
+            <EditableImage
+              src={sectionImg("hero") || imgUrl}
+              alt={`Ilustração de ${displayTitle}`}
+              className="w-full h-full opacity-80"
+              isAdmin={isAdmin} slug={slug!} title={title} lesson={lesson}
+              imageKey="hero" currentOverride={sectionImg("hero")}
+              onChange={(u) => applySectionImage("hero", u)}
+            />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
               <div className="inline-flex items-center gap-1 bg-white/20 backdrop-blur px-2 py-1 rounded text-xs mb-2">
@@ -1850,12 +1866,13 @@ export default function TopicoDetalhe() {
                 <BookOpen size={18} /> Ideia principal (fundamental)
               </div>
               <div className="grid md:grid-cols-[200px,1fr] gap-4 items-start">
-                <img
-                  src={topicImage(`${title} conceito`, 400, 300)}
+                <EditableImage
+                  src={sectionImg("simple") || topicImage(`${title} conceito`, 400, 300)}
                   alt={`Ilustração — ${title}`}
-                  loading="lazy"
-                  className="w-full h-32 md:h-full object-cover rounded-lg border border-slate-200"
-                  onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
+                  className="w-full h-32 md:h-40 rounded-lg border border-slate-200 overflow-hidden"
+                  isAdmin={isAdmin} slug={slug!} title={title} lesson={lesson}
+                  imageKey="simple" currentOverride={sectionImg("simple")}
+                  onChange={(u) => applySectionImage("simple", u)}
                 />
                 <p className="text-slate-700 leading-relaxed">{c.simple}</p>
               </div>
@@ -1868,12 +1885,13 @@ export default function TopicoDetalhe() {
               </div>
               <div className="grid md:grid-cols-[1fr,200px] gap-4 items-start">
                 <p className="text-slate-700 leading-relaxed">{c.formal}</p>
-                <img
-                  src={topicImage(`${title} definicao formal`, 400, 300)}
+                <EditableImage
+                  src={sectionImg("formal") || topicImage(`${title} definicao formal`, 400, 300)}
                   alt={`Definição de ${title}`}
-                  loading="lazy"
-                  className="w-full h-32 md:h-full object-cover rounded-lg border border-slate-200 order-first md:order-none"
-                  onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
+                  className="w-full h-32 md:h-40 rounded-lg border border-slate-200 overflow-hidden order-first md:order-none"
+                  isAdmin={isAdmin} slug={slug!} title={title} lesson={lesson}
+                  imageKey="formal" currentOverride={sectionImg("formal")}
+                  onChange={(u) => applySectionImage("formal", u)}
                 />
               </div>
             </section>
@@ -1886,13 +1904,16 @@ export default function TopicoDetalhe() {
               <div className="grid sm:grid-cols-2 gap-3">
                 {c.key.map((k, i) => (
                   <div key={i} className="rounded-lg border border-violet-200 bg-violet-50/60 overflow-hidden">
-                    <img
-                      src={topicImage(`${title} ${k}`, 480, 200)}
-                      alt={`Ilustração de ${k}`}
-                      loading="lazy"
-                      className="w-full h-28 object-cover"
-                      onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
-                    />
+                    <div className="w-full h-28 overflow-hidden">
+                      <EditableImage
+                        src={sectionImg(`key_${i}`) || topicImage(`${title} ${k}`, 480, 200)}
+                        alt={`Ilustração de ${k}`}
+                        className="w-full h-full"
+                        isAdmin={isAdmin} slug={slug!} title={title} lesson={lesson}
+                        imageKey={`key_${i}`} currentOverride={sectionImg(`key_${i}`)}
+                        onChange={(u) => applySectionImage(`key_${i}`, u)}
+                      />
+                    </div>
                     <div className="p-3">
                       <div className="text-sm font-bold text-[#4C1D95] mb-1">{k}</div>
                       <div className="text-xs text-slate-700 leading-relaxed">{explainKey(k)}</div>
@@ -1916,13 +1937,16 @@ export default function TopicoDetalhe() {
                       <div className="w-7 h-7 shrink-0 rounded-full bg-[#4C1D95] text-white text-xs font-bold flex items-center justify-center">
                         {i + 1}
                       </div>
-                      <img
-                        src={topicImage(`${title} ${head}`, 240, 240)}
-                        alt={`Ilustração de ${head}`}
-                        loading="lazy"
-                        className="w-20 h-20 rounded-md object-cover border border-slate-200 hidden sm:block"
-                        onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
-                      />
+                      <div className="w-20 h-20 rounded-md border border-slate-200 hidden sm:block overflow-hidden shrink-0">
+                        <EditableImage
+                          src={sectionImg(`principle_${i}`) || topicImage(`${title} ${head}`, 240, 240)}
+                          alt={`Ilustração de ${head}`}
+                          className="w-full h-full"
+                          isAdmin={isAdmin} slug={slug!} title={title} lesson={lesson}
+                          imageKey={`principle_${i}`} currentOverride={sectionImg(`principle_${i}`)}
+                          onChange={(u) => applySectionImage(`principle_${i}`, u)}
+                        />
+                      </div>
                       <div className="flex-1">
                         <div className="font-bold text-sm text-slate-900">{head}</div>
                         {rest && <div className="text-xs text-slate-700 mt-0.5 leading-relaxed">{rest}</div>}
@@ -1985,10 +2009,16 @@ export default function TopicoDetalhe() {
                     <ul className="space-y-3 text-sm text-slate-700">
                       {dailyLife.map((t, i) => (
                         <li key={i} className="flex gap-3">
-                          <img src={topicImage(`${title} ${t}`, 180, 180)} alt=""
-                            loading="lazy"
-                            className="w-14 h-14 rounded-md object-cover border border-emerald-200 shrink-0"
-                            onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }} />
+                          <div className="w-14 h-14 rounded-md border border-emerald-200 shrink-0 overflow-hidden">
+                            <EditableImage
+                              src={sectionImg(`daily_${i}`) || topicImage(`${title} ${t}`, 180, 180)}
+                              alt=""
+                              className="w-full h-full"
+                              isAdmin={isAdmin} slug={slug!} title={title} lesson={lesson}
+                              imageKey={`daily_${i}`} currentOverride={sectionImg(`daily_${i}`)}
+                              onChange={(u) => applySectionImage(`daily_${i}`, u)}
+                            />
+                          </div>
                           <span className="flex-1 leading-relaxed">{t}</span>
                         </li>
                       ))}
@@ -2002,10 +2032,16 @@ export default function TopicoDetalhe() {
                     <ul className="space-y-3 text-sm text-slate-700">
                       {allCuriosities.map((t, i) => (
                         <li key={i} className="flex gap-3">
-                          <img src={topicImage(`${title} ${t}`, 180, 180)} alt=""
-                            loading="lazy"
-                            className="w-14 h-14 rounded-md object-cover border border-violet-200 shrink-0"
-                            onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }} />
+                          <div className="w-14 h-14 rounded-md border border-violet-200 shrink-0 overflow-hidden">
+                            <EditableImage
+                              src={sectionImg(`curio_${i}`) || topicImage(`${title} ${t}`, 180, 180)}
+                              alt=""
+                              className="w-full h-full"
+                              isAdmin={isAdmin} slug={slug!} title={title} lesson={lesson}
+                              imageKey={`curio_${i}`} currentOverride={sectionImg(`curio_${i}`)}
+                              onChange={(u) => applySectionImage(`curio_${i}`, u)}
+                            />
+                          </div>
                           <span className="flex-1 leading-relaxed">{t}</span>
                         </li>
                       ))}

@@ -1,0 +1,1 @@
+ALTER TABLE public.topic_overrides ADD COLUMN IF NOT EXISTS section_images JSONB NOT NULL DEFAULT '{}'::jsonb;
