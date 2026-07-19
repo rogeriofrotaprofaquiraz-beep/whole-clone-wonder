@@ -1436,6 +1436,15 @@ export default function TopicoDetalhe() {
       const [name, ...rest] = l.split("|");
       return { name: name.trim(), url: rest.join("|").trim() };
     }).filter((m: Material) => m.name && m.url);
+    const bncc_codes: BnccCode[] = toLines(form.bncc_codes || "").map((l: string) => {
+      const parts = l.split("|").map(x => x.trim());
+      if (parts.length >= 3) {
+        const t = parts[0].toUpperCase();
+        return { type: (t.startsWith("DIG") ? "BNCC_DIGITAL" : "BNCC") as BnccCode["type"], code: parts[1].toUpperCase(), label: parts.slice(2).join(" | ") };
+      }
+      if (parts.length === 2) return { type: "BNCC" as const, code: parts[0].toUpperCase(), label: parts[1] };
+      return { type: "BNCC" as const, code: parts[0].toUpperCase(), label: "" };
+    }).filter(b => b.code && b.label);
     const payload = {
       slug,
       title,
@@ -1456,6 +1465,8 @@ export default function TopicoDetalhe() {
       video_url: form.video_url.trim() || null,
       footer_image_url: (form.footer_image_url || "").trim() || null,
       materials,
+      lesson_plan: (form.lesson_plan || "").trim() || null,
+      bncc_codes,
     };
     const { error } = await supabase.from("topic_overrides").upsert(payload, { onConflict: "slug" });
     setSaving(false);
@@ -1472,8 +1483,46 @@ export default function TopicoDetalhe() {
       daily_life: payload.daily_life,
       curiosities: payload.curiosities,
       fun_facts: payload.fun_facts,
+      lesson_plan: payload.lesson_plan || undefined,
+      bncc_codes: payload.bncc_codes,
     });
     setEditing(false);
+  };
+
+  const generateLessonPlan = async () => {
+    if (!isAdmin) return;
+    setGeneratingPlan(true);
+    try {
+      const context = [c.simple, c.formal, ...(c.key || []), ...(c.principles || [])].filter(Boolean).join("\n");
+      const { data, error } = await supabase.functions.invoke("generate-topic-lesson-plan", {
+        body: { title, lesson, course: lesson, stage: "Ensino Médio", duration: "50 minutos", context },
+      });
+      if (error || (data as any)?.error) {
+        toast.error((data as any)?.error ?? error?.message ?? "Falha ao gerar plano");
+        return;
+      }
+      const plan = String((data as any).plan ?? "").trim();
+      const bncc: BnccCode[] = Array.isArray((data as any).bncc) ? (data as any).bncc : [];
+      if (editing && form) {
+        setForm((f: any) => ({
+          ...f,
+          lesson_plan: plan,
+          bncc_codes: bncc.map(b => `${b.type === "BNCC_DIGITAL" ? "DIG" : "BNC"} | ${b.code} | ${b.label}`).join("\n"),
+        }));
+        toast.success("Plano gerado — revise e clique em Salvar");
+      } else {
+        if (!slug) return;
+        const { error: upErr } = await supabase.from("topic_overrides").upsert(
+          { slug, title, lesson, lesson_plan: plan, bncc_codes: bncc } as any,
+          { onConflict: "slug" }
+        );
+        if (upErr) { toast.error(upErr.message); return; }
+        setOverride((o) => ({ ...(o || {}), lesson_plan: plan, bncc_codes: bncc }));
+        toast.success("Plano de aula gerado e salvo");
+      }
+    } finally {
+      setGeneratingPlan(false);
+    }
   };
 
   const resetToGenerated = async () => {
