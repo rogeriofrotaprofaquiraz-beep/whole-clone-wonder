@@ -75,6 +75,8 @@ export default function AdminMaterial() {
   const [assessmentCourse, setAssessmentCourse] = useState<Course | null>(null);
   const [assessment, setAssessment] = useState<Assessment | null>(null);
   const [savingAssessment, setSavingAssessment] = useState(false);
+  const [bulkOpen, setBulkOpen] = useState(false);
+  const [bulkText, setBulkText] = useState("");
 
   useEffect(() => {
     (async () => {
