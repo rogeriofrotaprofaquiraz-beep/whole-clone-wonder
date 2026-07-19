@@ -10,9 +10,8 @@ import {
   ArrowLeft, BookOpen, Lightbulb, FlaskConical, Sparkles, GraduationCap,
   Atom, Library, Target, Sigma, AlertTriangle, Pencil, Save, RotateCcw, Trash2,
   Video, Paperclip, Upload, ExternalLink, Home, Smile, FileText, Wand2, Tag,
-  School, ClipboardList, HelpCircle, CheckSquare,
 } from "lucide-react";
-import { pedagogicalContent } from "@/lib/pedagogicalContent";
+
 
 type BnccCode = { code: string; label: string; type: "BNCC" | "BNCC_DIGITAL" };
 
