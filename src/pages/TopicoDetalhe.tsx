@@ -1885,12 +1885,13 @@ export default function TopicoDetalhe() {
               </div>
               <div className="grid md:grid-cols-[1fr,200px] gap-4 items-start">
                 <p className="text-slate-700 leading-relaxed">{c.formal}</p>
-                <img
-                  src={topicImage(`${title} definicao formal`, 400, 300)}
+                <EditableImage
+                  src={sectionImg("formal") || topicImage(`${title} definicao formal`, 400, 300)}
                   alt={`Definição de ${title}`}
-                  loading="lazy"
-                  className="w-full h-32 md:h-full object-cover rounded-lg border border-slate-200 order-first md:order-none"
-                  onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
+                  className="w-full h-32 md:h-40 rounded-lg border border-slate-200 overflow-hidden order-first md:order-none"
+                  isAdmin={isAdmin} slug={slug!} title={title} lesson={lesson}
+                  imageKey="formal" currentOverride={sectionImg("formal")}
+                  onChange={(u) => applySectionImage("formal", u)}
                 />
               </div>
             </section>
