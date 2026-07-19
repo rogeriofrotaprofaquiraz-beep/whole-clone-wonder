@@ -1925,6 +1925,30 @@ export default function TopicoDetalhe() {
                       </div>
                     </div>
 
+                    <div className="rounded-lg border border-emerald-200 bg-emerald-50/60 p-3 space-y-2">
+                      <label className="text-xs font-semibold text-emerald-800 flex items-center gap-1">
+                        <FileText size={12} /> Plano de aula moderno (Markdown)
+                      </label>
+                      <Textarea rows={10} value={form.lesson_plan || ""} onChange={e => setForm({ ...form, lesson_plan: e.target.value })}
+                        placeholder="Cole ou gere com IA um plano de aula completo em Markdown." />
+                      <div className="flex flex-wrap items-center gap-2">
+                        <Button size="sm" type="button" onClick={generateLessonPlan} disabled={generatingPlan}
+                          className="bg-emerald-600 hover:bg-emerald-700">
+                          <Wand2 size={14} className="mr-1" /> {generatingPlan ? "Gerando..." : "Gerar plano com IA"}
+                        </Button>
+                        <span className="text-[11px] text-emerald-800/70">A geração também popula os códigos BNCC abaixo.</span>
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="text-xs font-semibold text-slate-700 flex items-center gap-1">
+                        <Tag size={12} /> Códigos BNCC / BNCC Digital (um por linha: <code>BNC|CÓDIGO|descrição</code> ou <code>DIG|CÓDIGO|descrição</code>)
+                      </label>
+                      <Textarea rows={5} value={form.bncc_codes || ""} onChange={e => setForm({ ...form, bncc_codes: e.target.value })}
+                        placeholder="BNC | EM13CNT301 | Construir questões, elaborar hipóteses..." />
+                    </div>
+
+
                     <div className="flex gap-2 pt-1">
                       <Button size="sm" onClick={save} disabled={saving} className="bg-emerald-600 hover:bg-emerald-700">
                         <Save size={14} className="mr-1" /> {saving ? "Salvando..." : "Salvar edição"}
