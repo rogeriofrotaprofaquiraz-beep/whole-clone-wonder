@@ -2154,10 +2154,6 @@ export default function TopicoDetalhe() {
                       <Textarea rows={3} value={form.simple} onChange={e => setForm({ ...form, simple: e.target.value })} />
                     </div>
                     <div>
-                      <label className="text-xs font-semibold text-slate-700">Definição formal</label>
-                      <Textarea rows={4} value={form.formal} onChange={e => setForm({ ...form, formal: e.target.value })} />
-                    </div>
-                    <div>
                       <label className="text-xs font-semibold text-slate-700">Conceitos-chave (um por linha)</label>
                       <Textarea rows={4} value={form.keys} onChange={e => setForm({ ...form, keys: e.target.value })} />
                     </div>
@@ -2169,10 +2165,7 @@ export default function TopicoDetalhe() {
                       <label className="text-xs font-semibold text-slate-700">Fórmulas (uma por linha, formato: <code>expressão | descrição</code>)</label>
                       <Textarea rows={3} value={form.formulas} onChange={e => setForm({ ...form, formulas: e.target.value })} placeholder="E = h·ν | Energia do fóton" />
                     </div>
-                    <div>
-                      <label className="text-xs font-semibold text-slate-700">Exemplos e aplicações (um por linha)</label>
-                      <Textarea rows={4} value={form.examples} onChange={e => setForm({ ...form, examples: e.target.value })} />
-                    </div>
+
                     <div>
                       <label className="text-xs font-semibold text-slate-700">Erros comuns (um por linha)</label>
                       <Textarea rows={3} value={form.pitfalls} onChange={e => setForm({ ...form, pitfalls: e.target.value })} />
