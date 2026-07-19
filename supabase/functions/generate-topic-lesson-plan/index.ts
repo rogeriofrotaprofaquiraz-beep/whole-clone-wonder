@@ -180,17 +180,30 @@ Retorne JSON EXATO com TODOS os campos (strings em português):
 
 function str(v: any) { return typeof v === "string" ? v.trim() : ""; }
 
-function buildFallback(p: { title: string; lesson: string; course: string; stage: string; duration: string; context: string; bimestre?: string }) {
+function buildFallback(p: { title: string; lesson: string; course: string; stage: string; duration: string; context: string; bimestre?: string; ui?: any }) {
   const { title, lesson, course, stage, duration, context, bimestre } = p;
-  const objective = `Identificar e diferenciar os conceitos centrais de ${title} (matéria, substância, mistura, propriedades físicas e químicas), relacionando-os a situações do cotidiano e desenvolvendo argumentação científica.`;
-  const methodology = "Metodologia ativa em blocos curtos: exposição dialogada intercalada com problematização, demonstração prática e discussão em grupo. Uso de recursos digitais (slides, simuladores PhET, vídeos curtos).";
-  const sequence = `Abertura (5 min): pergunta disparadora "Onde a química aparece no seu dia a dia?" e levantamento de saberes prévios.
-Desenvolvimento (20 min): exposição dialogada em blocos de até 7 min, intercalada com perguntas problematizadoras e uma breve demonstração relacionada a ${title}.
-Atividade em grupo (15 min): experimento simples e seguro com gelo, sal, vinagre e bicarbonato — observar mudanças físicas e químicas, registrar em roteiro estruturado e discutir coletivamente.
-Fechamento (15 min): síntese coletiva no quadro, exercício rápido de fixação, apresentação oral breve dos grupos e autoavaliação escrita (o que aprendi / dúvidas).`;
-  const practical = "Distribuir aos grupos: 4 copos plásticos, cubos de gelo, sal grosso, vinagre e bicarbonato de sódio. Passos: (1) observar o gelo derretendo (física); (2) adicionar sal ao gelo e medir a temperatura; (3) misturar vinagre + bicarbonato (química, com efervescência); (4) registrar observações. Segurança: óculos de proteção, evitar contato com os olhos, ambiente ventilado.";
-  const assessment = "Avaliação diversificada: participação nas discussões, relatório breve do experimento em grupo, apresentação oral dos resultados (2–3 min por grupo) e autoavaliação escrita. Critérios: clareza conceitual, uso de vocabulário científico, colaboração e argumentação.";
-  const contents = `Conceitos de ${title}; relações com fenômenos cotidianos; propriedades e transformações observáveis; introdução à linguagem científica da área.`;
+  const ui = p.ui ?? {};
+  const pick = (aiVal: string, uiVal: any) => (typeof uiVal === "string" && uiVal.trim().length > 0 ? uiVal.trim() : aiVal);
+
+  const objective = pick(
+    `Identificar e diferenciar os conceitos centrais de ${title}, relacionando-os a situações do cotidiano e desenvolvendo argumentação científica.`,
+    ui.objective,
+  );
+  const methodology = pick(
+    "Metodologia ativa em blocos curtos: exposição dialogada intercalada com problematização, demonstração prática e discussão em grupo. Uso de recursos digitais (slides, simuladores, vídeos curtos).",
+    ui.methodology,
+  );
+  const sequence = `Abertura (5 min): pergunta disparadora e levantamento de saberes prévios sobre ${title}.
+Desenvolvimento (20 min): exposição dialogada em blocos de até 7 min, intercalada com problematização e demonstração relacionada a ${title}.
+Atividade em grupo (15 min): tarefa investigativa/experimental com registro estruturado e discussão coletiva.
+Fechamento (15 min): síntese, exercício rápido, apresentação oral breve dos grupos e autoavaliação escrita.`;
+  const practical = "Atividade prática em grupos com materiais do cotidiano; passos numerados, registro em roteiro estruturado e cuidados de segurança adequados ao experimento.";
+  const assessment = "Avaliação diversificada: participação nas discussões, relatório breve, apresentação oral (2–3 min por grupo) e autoavaliação escrita. Critérios: clareza conceitual, vocabulário científico, colaboração e argumentação.";
+  const contents = pick(
+    `Conceitos de ${title}; relações com fenômenos cotidianos; propriedades e transformações observáveis; linguagem científica da área.`,
+    ui.contents_topics,
+  );
+  const curricular = pick("Ciências da Natureza — " + (course || "Química"), ui.curricular_components);
 
   const plan = `# Planejamento — ${title}
 
@@ -201,7 +214,7 @@ ${lesson ? `**Unidade / Aula:** ${lesson}` : ""}
 ${objective}
 
 ## Componentes curriculares
-Ciências da Natureza — Química.
+${curricular}
 
 ## Conteúdos e tópicos
 ${contents}
@@ -222,7 +235,7 @@ ${assessment}
 ${context ? context.slice(0, 400) : "Adaptar linguagem e nível de aprofundamento à realidade da turma; garantir segurança na atividade prática."}
 `;
 
-  const bncc = [
+  const bnccDefault = [
     { code: "EF09CI03", label: "Identificar modelos que descrevem a estrutura da matéria.", type: "BNCC" },
     { code: "EM13CNT301", label: "Construir questões, elaborar hipóteses e analisar fenômenos naturais.", type: "BNCC" },
     { code: "EM13CNT101", label: "Analisar fenômenos naturais e processos tecnológicos.", type: "BNCC" },
@@ -232,22 +245,23 @@ ${context ? context.slice(0, 400) : "Adaptar linguagem e nível de aprofundament
   return {
     objective,
     methodology,
-    curricular_components: "Ciências da Natureza — Química",
+    curricular_components: curricular,
     contents_topics: contents,
-    competencies_codes: "CG2, CG5, CG7",
-    competencies_text: "Investigar fenômenos naturais e tecnológicos; argumentar com base em evidências; comunicar resultados de forma ética e responsável.",
-    skills_codes: bncc.map((b) => b.code).join(", "),
-    skills_text: "Reconhecer e classificar conceitos-chave do tópico; relacionar com fenômenos do cotidiano; registrar observações; comunicar oralmente e por escrito.",
-    descriptors_codes: "D1, D2, D3",
-    descriptors_text: "D1 — identifica conceitos; D2 — relaciona teoria e cotidiano; D3 — argumenta cientificamente.",
-    bncc_codes: bncc.map((b) => b.code).join(", "),
+    competencies_codes: pick("CG2, CG5, CG7", ui.competencies_codes),
+    competencies_text: pick("Investigar fenômenos naturais e tecnológicos; argumentar com base em evidências; comunicar resultados de forma ética e responsável.", ui.competencies_text),
+    skills_codes: pick(bnccDefault.map((b) => b.code).join(", "), ui.skills_codes),
+    skills_text: pick("Reconhecer e classificar conceitos-chave do tópico; relacionar com fenômenos do cotidiano; registrar observações; comunicar oralmente e por escrito.", ui.skills_text),
+    descriptors_codes: pick("D1, D2, D3", ui.descriptors_codes),
+    descriptors_text: pick("D1 — identifica conceitos; D2 — relaciona teoria e cotidiano; D3 — argumenta cientificamente.", ui.descriptors_text),
+    bncc_codes: pick(bnccDefault.map((b) => b.code).join(", "), ui.bncc_codes),
     sequence,
     practical_activity: practical,
     assessment,
     plan,
-    bncc,
+    bncc: bnccDefault,
   };
 }
+
 
 function json(body: unknown, status = 200) {
   return new Response(JSON.stringify(body), { status, headers: { ...corsHeaders, "Content-Type": "application/json" } });
