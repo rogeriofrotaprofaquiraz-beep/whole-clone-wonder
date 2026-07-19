@@ -1370,6 +1370,8 @@ export default function TopicoDetalhe() {
       video_url: override?.video_url || "",
       footer_image_url: override?.footer_image_url || "",
       materials: (override?.materials || []).map(m => `${m.name} | ${m.url}`).join("\n"),
+      lesson_plan: override?.lesson_plan || "",
+      bncc_codes: (override?.bncc_codes || []).map(b => `${b.type === "BNCC_DIGITAL" ? "DIG" : "BNC"} | ${b.code} | ${b.label}`).join("\n"),
     });
     setEditing(true);
     setTimeout(() => {
