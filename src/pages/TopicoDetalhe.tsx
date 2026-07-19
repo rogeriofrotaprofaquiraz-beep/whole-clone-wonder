@@ -16,6 +16,22 @@ import LockedQuiz from "@/components/LockedQuiz";
 
 type BnccCode = { code: string; label: string; type: "BNCC" | "BNCC_DIGITAL" };
 
+/* Imagem contextual baseada em palavras-chave do texto (Loremflickr) */
+const IMG_STOP = new Set(["de","da","do","dos","das","a","o","os","as","e","é","um","uma","que","por","para","com","em","no","na","nos","nas","ao","à","às","se","ou","the","of","and","to","in","on","um","uns","umas","sem","sob","sobre","como","mais","menos","muito","pouco","este","esta","isso","essa","esse","seus","suas","sua","seu","entre"]);
+function imageKeywords(text: string): string {
+  const words = (text || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9\s]/g, " ").split(/\s+/).filter((w) => w.length > 3 && !IMG_STOP.has(w));
+  const pick = words.slice(0, 2).join(",");
+  return (pick || "chemistry") + ",chemistry,science";
+}
+function topicImage(text: string, w = 480, h = 260): string {
+  let h1 = 0;
+  const s = text || "chem";
+  for (let i = 0; i < s.length; i++) h1 = ((h1 << 5) - h1 + s.charCodeAt(i)) | 0;
+  const lock = Math.abs(h1) % 100000;
+  return `https://loremflickr.com/${w}/${h}/${encodeURIComponent(imageKeywords(s))}?lock=${lock}`;
+}
+
 /* Conteúdo extra por categoria: aplicação no cotidiano, curiosidades e fatos engraçados */
 type FunPack = { dailyLife: string[]; curiosities: string[]; funFacts: string[] };
 function funContent(title: string): FunPack {
