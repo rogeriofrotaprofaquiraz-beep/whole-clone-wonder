@@ -1860,22 +1860,31 @@ export default function TopicoDetalhe() {
               <p className="text-slate-700 leading-relaxed">{c.formal}</p>
             </section>
 
-            {/* Conceitos-chave — cartões com explicação */}
+            {/* Conceitos-chave — cartões com explicação + imagem contextual */}
             <section>
               <div className="flex items-center gap-2 text-[#4C1D95] font-bold mb-3">
                 <Lightbulb size={18} /> Conceitos-chave (com explicação)
               </div>
               <div className="grid sm:grid-cols-2 gap-3">
                 {c.key.map((k, i) => (
-                  <div key={i} className="rounded-lg border border-violet-200 bg-violet-50/60 p-3">
-                    <div className="text-sm font-bold text-[#4C1D95] mb-1">{k}</div>
-                    <div className="text-xs text-slate-700 leading-relaxed">{explainKey(k)}</div>
+                  <div key={i} className="rounded-lg border border-violet-200 bg-violet-50/60 overflow-hidden">
+                    <img
+                      src={topicImage(`${title} ${k}`, 480, 200)}
+                      alt={`Ilustração de ${k}`}
+                      loading="lazy"
+                      className="w-full h-28 object-cover"
+                      onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
+                    />
+                    <div className="p-3">
+                      <div className="text-sm font-bold text-[#4C1D95] mb-1">{k}</div>
+                      <div className="text-xs text-slate-700 leading-relaxed">{explainKey(k)}</div>
+                    </div>
                   </div>
                 ))}
               </div>
             </section>
 
-            {/* Princípios — cabeçalho destacado + explicação */}
+            {/* Princípios — cabeçalho destacado + explicação + imagem */}
             <section>
               <div className="flex items-center gap-2 text-[#4C1D95] font-bold mb-3">
                 <Target size={18} /> Princípios e leis fundamentais
@@ -1889,6 +1898,13 @@ export default function TopicoDetalhe() {
                       <div className="w-7 h-7 shrink-0 rounded-full bg-[#4C1D95] text-white text-xs font-bold flex items-center justify-center">
                         {i + 1}
                       </div>
+                      <img
+                        src={topicImage(`${title} ${head}`, 240, 240)}
+                        alt={`Ilustração de ${head}`}
+                        loading="lazy"
+                        className="w-20 h-20 rounded-md object-cover border border-slate-200 hidden sm:block"
+                        onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
+                      />
                       <div className="flex-1">
                         <div className="font-bold text-sm text-slate-900">{head}</div>
                         {rest && <div className="text-xs text-slate-700 mt-0.5 leading-relaxed">{rest}</div>}
