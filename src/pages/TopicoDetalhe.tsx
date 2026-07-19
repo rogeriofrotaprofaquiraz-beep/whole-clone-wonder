@@ -1315,6 +1315,8 @@ export default function TopicoDetalhe() {
           daily_life: ((data as any).daily_life as string[]) ?? undefined,
           curiosities: ((data as any).curiosities as string[]) ?? undefined,
           fun_facts: ((data as any).fun_facts as string[]) ?? undefined,
+          lesson_plan: (data as any).lesson_plan ?? undefined,
+          bncc_codes: ((data as any).bncc_codes as BnccCode[]) ?? undefined,
         });
       }
     })();
