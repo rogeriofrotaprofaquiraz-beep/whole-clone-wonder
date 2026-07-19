@@ -745,14 +745,20 @@ export default function AdminMaterial() {
                 </div>
               </div>
 
-              <div className="flex justify-between items-center">
+              <div className="flex justify-between items-center gap-2 flex-wrap">
                 <div className="text-sm text-slate-600">
                   {assessment.questions.length} questão(ões)
                 </div>
-                <Button size="sm" onClick={addQuestion} className="bg-[#059669] hover:bg-[#047857]">
-                  <Plus size={14} className="mr-1" /> Adicionar questão
-                </Button>
+                <div className="flex gap-2 flex-wrap">
+                  <Button size="sm" variant="outline" onClick={() => setBulkOpen(true)}>
+                    <FileText size={14} className="mr-1" /> Colar em massa
+                  </Button>
+                  <Button size="sm" onClick={addQuestion} className="bg-[#059669] hover:bg-[#047857]">
+                    <Plus size={14} className="mr-1" /> Adicionar questão
+                  </Button>
+                </div>
               </div>
+
 
               <div className="space-y-3">
                 {assessment.questions.map((qq, i) => (
