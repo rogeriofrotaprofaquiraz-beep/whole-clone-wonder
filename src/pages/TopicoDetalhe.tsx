@@ -1937,13 +1937,16 @@ export default function TopicoDetalhe() {
                       <div className="w-7 h-7 shrink-0 rounded-full bg-[#4C1D95] text-white text-xs font-bold flex items-center justify-center">
                         {i + 1}
                       </div>
-                      <img
-                        src={topicImage(`${title} ${head}`, 240, 240)}
-                        alt={`Ilustração de ${head}`}
-                        loading="lazy"
-                        className="w-20 h-20 rounded-md object-cover border border-slate-200 hidden sm:block"
-                        onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
-                      />
+                      <div className="w-20 h-20 rounded-md border border-slate-200 hidden sm:block overflow-hidden shrink-0">
+                        <EditableImage
+                          src={sectionImg(`principle_${i}`) || topicImage(`${title} ${head}`, 240, 240)}
+                          alt={`Ilustração de ${head}`}
+                          className="w-full h-full"
+                          isAdmin={isAdmin} slug={slug!} title={title} lesson={lesson}
+                          imageKey={`principle_${i}`} currentOverride={sectionImg(`principle_${i}`)}
+                          onChange={(u) => applySectionImage(`principle_${i}`, u)}
+                        />
+                      </div>
                       <div className="flex-1">
                         <div className="font-bold text-sm text-slate-900">{head}</div>
                         {rest && <div className="text-xs text-slate-700 mt-0.5 leading-relaxed">{rest}</div>}
