@@ -9,8 +9,10 @@ import { toast } from "sonner";
 import {
   ArrowLeft, BookOpen, Lightbulb, FlaskConical, Sparkles, GraduationCap,
   Atom, Library, Target, Sigma, AlertTriangle, Pencil, Save, RotateCcw, Trash2,
-  Video, Paperclip, Upload, ExternalLink, Home, Smile,
+  Video, Paperclip, Upload, ExternalLink, Home, Smile, FileText, Wand2, Tag,
 } from "lucide-react";
+
+type BnccCode = { code: string; label: string; type: "BNCC" | "BNCC_DIGITAL" };
 
 /* Conteúdo extra por categoria: aplicação no cotidiano, curiosidades e fatos engraçados */
 type FunPack = { dailyLife: string[]; curiosities: string[]; funFacts: string[] };
