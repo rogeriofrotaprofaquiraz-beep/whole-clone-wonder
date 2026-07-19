@@ -1840,9 +1840,14 @@ export default function TopicoDetalhe() {
 
         <Card className="overflow-hidden mb-6 border-0">
           <div className="relative h-56 md:h-72 bg-gradient-to-br from-violet-700 to-indigo-900">
-            <img src={imgUrl} alt={`Ilustração de ${displayTitle}`}
-              className="w-full h-full object-cover opacity-80"
-              onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} />
+            <EditableImage
+              src={sectionImg("hero") || imgUrl}
+              alt={`Ilustração de ${displayTitle}`}
+              className="w-full h-full opacity-80"
+              isAdmin={isAdmin} slug={slug!} title={title} lesson={lesson}
+              imageKey="hero" currentOverride={sectionImg("hero")}
+              onChange={(u) => applySectionImage("hero", u)}
+            />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
               <div className="inline-flex items-center gap-1 bg-white/20 backdrop-blur px-2 py-1 rounded text-xs mb-2">
