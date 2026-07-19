@@ -266,6 +266,31 @@ export default function AdminMaterial() {
     });
   };
 
+  const applyBulkPaste = (mode: "append" | "replace") => {
+    if (!assessment) return;
+    const parsed = parseBulkQuestions(bulkText);
+    if (parsed.length === 0) {
+      toast.error("Nenhuma questão reconhecida. Verifique o formato.");
+      return;
+    }
+    const asQuestions: Question[] = parsed.map((p) => ({
+      q: p.q,
+      options: p.options,
+      correct: p.correct,
+      context: p.context ?? "",
+      explanation: p.explanation ?? "",
+      image_url: "",
+    }));
+    const next = mode === "append"
+      ? [...assessment.questions, ...asQuestions]
+      : asQuestions;
+    setAssessment({ ...assessment, questions: next });
+    toast.success(`${parsed.length} questão(ões) importada(s)`);
+    setBulkOpen(false);
+    setBulkText("");
+  };
+
+
   const updateQuestion = (i: number, patch: Partial<Question>) => {
     if (!assessment) return;
     const qs = assessment.questions.slice();
