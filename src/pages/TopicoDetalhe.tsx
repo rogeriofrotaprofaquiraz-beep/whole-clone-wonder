@@ -2009,10 +2009,16 @@ export default function TopicoDetalhe() {
                     <ul className="space-y-3 text-sm text-slate-700">
                       {dailyLife.map((t, i) => (
                         <li key={i} className="flex gap-3">
-                          <img src={topicImage(`${title} ${t}`, 180, 180)} alt=""
-                            loading="lazy"
-                            className="w-14 h-14 rounded-md object-cover border border-emerald-200 shrink-0"
-                            onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }} />
+                          <div className="w-14 h-14 rounded-md border border-emerald-200 shrink-0 overflow-hidden">
+                            <EditableImage
+                              src={sectionImg(`daily_${i}`) || topicImage(`${title} ${t}`, 180, 180)}
+                              alt=""
+                              className="w-full h-full"
+                              isAdmin={isAdmin} slug={slug!} title={title} lesson={lesson}
+                              imageKey={`daily_${i}`} currentOverride={sectionImg(`daily_${i}`)}
+                              onChange={(u) => applySectionImage(`daily_${i}`, u)}
+                            />
+                          </div>
                           <span className="flex-1 leading-relaxed">{t}</span>
                         </li>
                       ))}
