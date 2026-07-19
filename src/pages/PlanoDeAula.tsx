@@ -150,21 +150,103 @@ export default function PlanoDeAula() {
 
         {savedPlans.length > 0 && (
           <Card className="bg-slate-900/60 border-white/10 mb-6">
-            <CardHeader><CardTitle className="text-sm font-black uppercase tracking-widest">Meus planos salvos ({savedPlans.length})</CardTitle></CardHeader>
-            <CardContent className="grid sm:grid-cols-2 lg:grid-cols-3 gap-2">
-              {savedPlans.map(p => (
-                <div key={p.id} className="border border-white/10 rounded-lg p-2 bg-slate-950/60">
-                  <div className="font-bold text-sm truncate">{p.title}</div>
-                  <div className="text-[10px] text-white/50">{p.subject ?? "—"} · {p.grade_year ?? "?"}º ano</div>
-                  <div className="flex gap-1 mt-2">
-                    <Button size="sm" variant="secondary" onClick={() => loadPlan(p)}>Carregar</Button>
-                    <Button size="sm" variant="ghost" onClick={() => deletePlan(p.id)}>Excluir</Button>
-                  </div>
-                </div>
-              ))}
+            <CardHeader>
+              <CardTitle className="text-sm font-black uppercase tracking-widest flex items-center gap-2">
+                <BookOpen className="w-4 h-4 text-fuchsia-400" />
+                Planejamentos Cadastrados ({savedPlans.length})
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="p-0">
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="text-left text-[10px] uppercase text-white/50 border-b border-white/10">
+                      <th className="px-3 py-2">Data</th>
+                      <th className="px-3 py-2">Turma</th>
+                      <th className="px-3 py-2">Disciplina</th>
+                      <th className="px-3 py-2">Assunto</th>
+                      <th className="px-3 py-2 text-right">Ações</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {savedPlans.map((p) => (
+                      <tr key={p.id} className="border-b border-white/5 hover:bg-white/5">
+                        <td className="px-3 py-2 text-white/70 whitespace-nowrap">{new Date(p.updated_at).toLocaleDateString("pt-BR")}</td>
+                        <td className="px-3 py-2 text-white/70 whitespace-nowrap">{classNameOf(p.class_id)}</td>
+                        <td className="px-3 py-2"><Badge variant="secondary" className="text-[10px]">{p.subject ?? "—"}</Badge></td>
+                        <td className="px-3 py-2 font-medium">{p.title}</td>
+                        <td className="px-3 py-2">
+                          <div className="flex gap-1 justify-end">
+                            <Button size="icon" variant="outline" title="Visualizar plano completo" onClick={() => setPreview(p)}>
+                              <Eye className="w-4 h-4" />
+                            </Button>
+                            <Button size="icon" variant="outline" title="Gerar atividade" onClick={() => generateActivityFor(p)}>
+                              <FileText className="w-4 h-4 text-fuchsia-400" />
+                            </Button>
+                            <Button size="icon" variant="outline" title="Excluir" onClick={() => deletePlan(p.id)}>
+                              <Trash2 className="w-4 h-4 text-red-400" />
+                            </Button>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </CardContent>
           </Card>
         )}
+
+        <Dialog open={!!preview} onOpenChange={(o) => !o && setPreview(null)}>
+          <DialogContent className="max-w-3xl bg-slate-900 border-white/10 text-white max-h-[85vh] overflow-y-auto">
+            <DialogHeader><DialogTitle className="text-lg">{preview?.title}</DialogTitle></DialogHeader>
+            {preview && (
+              <div className="space-y-3 text-sm">
+                <div className="grid grid-cols-3 gap-3 text-xs">
+                  <div><div className="text-white/50 uppercase text-[10px]">Data</div><div>{new Date(preview.updated_at).toLocaleDateString("pt-BR")}</div></div>
+                  <div><div className="text-white/50 uppercase text-[10px]">Turma</div><div>{classNameOf(preview.class_id)}</div></div>
+                  <div><div className="text-white/50 uppercase text-[10px]">Disciplina</div><div>{preview.subject ?? "—"}</div></div>
+                </div>
+                <div className="border-t border-white/10 pt-3 whitespace-pre-wrap leading-relaxed text-white/90">{preview.content}</div>
+                <div className="flex gap-2 pt-2">
+                  <Button size="sm" variant="secondary" onClick={() => { loadPlan(preview); setPreview(null); }}>Carregar no editor</Button>
+                  <Button size="sm" onClick={() => { setPreview(null); generateActivityFor(preview); }} className="bg-gradient-to-r from-fuchsia-600 to-violet-600">
+                    <FileText className="w-4 h-4 mr-1"/>Gerar atividade
+                  </Button>
+                </div>
+              </div>
+            )}
+          </DialogContent>
+        </Dialog>
+
+        <Dialog open={!!activityFor} onOpenChange={(o) => !o && setActivityFor(null)}>
+          <DialogContent className="max-w-3xl bg-slate-900 border-white/10 text-white max-h-[85vh] overflow-y-auto">
+            <DialogHeader><DialogTitle className="text-lg">Atividade — {activityFor?.title}</DialogTitle></DialogHeader>
+            {genBusy && <div className="text-center py-8 text-white/70">Gerando questões com IA…</div>}
+            {!genBusy && activityQuestions.length === 0 && <div className="text-center py-8 text-white/50 text-sm">Nenhuma questão gerada.</div>}
+            {!genBusy && activityQuestions.length > 0 && (
+              <div className="space-y-3">
+                {activityQuestions.map((q, i) => (
+                  <div key={i} className="bg-slate-950/60 border border-white/10 rounded-xl p-3">
+                    <p className="text-sm font-bold mb-2">{i + 1}. {q.question}</p>
+                    <ul className="space-y-1 text-xs">
+                      {q.options.map((o, oi) => (
+                        <li key={oi} className={oi === q.correct_index ? "text-emerald-400 font-bold" : "text-white/70"}>
+                          {String.fromCharCode(65 + oi)}) {o}
+                        </li>
+                      ))}
+                    </ul>
+                    {q.explanation && <p className="text-[11px] text-white/50 mt-2 italic">{q.explanation}</p>}
+                  </div>
+                ))}
+                <div className="flex gap-2 pt-2">
+                  <Button size="sm" variant="outline" onClick={() => window.print()}>Imprimir</Button>
+                </div>
+              </div>
+            )}
+          </DialogContent>
+        </Dialog>
+
 
         <Card className="bg-slate-900/60 border-white/10 mb-6">
           <CardHeader><CardTitle className="text-sm font-black uppercase tracking-widest flex items-center gap-2"><BookOpen className="w-4 h-4"/>Configurações</CardTitle></CardHeader>
