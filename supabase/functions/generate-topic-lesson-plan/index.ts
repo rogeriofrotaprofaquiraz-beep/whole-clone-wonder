@@ -121,35 +121,37 @@ function buildFallback(p: { title: string; lesson: string; course: string; stage
 **Duração:** ${duration}  
 ${lesson ? `**Unidade / Aula:** ${lesson}  \n` : ""}
 ## Objetivo
-Compreender e aplicar os principais conceitos de **${title}**, relacionando-os ao cotidiano do aluno e às competências previstas na BNCC.
+Identificar e diferenciar os conceitos centrais de **${title}** (por exemplo: matéria, substância, mistura, propriedades físicas e químicas), relacionando-os a situações cotidianas e desenvolvendo a argumentação científica dos estudantes.
 
 ## Componentes Curriculares
 Ciências da Natureza — Química.
 
 ## Competência
-Investigar fenômenos naturais e tecnológicos, utilizando conhecimentos científicos para resolver problemas e tomar decisões.
+Investigar fenômenos naturais e tecnológicos, utilizando conhecimentos científicos para resolver problemas, tomar decisões e comunicar resultados de forma ética e responsável.
 
 ## Habilidades
-- Identificar e descrever os conceitos centrais de ${title}.
-- Relacionar o conteúdo com situações do cotidiano.
-- Desenvolver argumentação científica e pensamento crítico.
+- Reconhecer e classificar os conceitos-chave abordados em ${title}.
+- Relacionar o conteúdo com fenômenos e materiais do dia a dia.
+- Formular hipóteses, registrar observações e argumentar cientificamente.
+- Trabalhar colaborativamente e comunicar resultados de forma oral e escrita.
 
 ## Metodologia
-Aula expositiva dialogada com apoio de recursos digitais (slides, simuladores PhET e vídeos), seguida de atividade prática em grupos e discussão coletiva.
+Metodologia ativa, intercalando exposição dialogada curta com problematização, demonstração prática e discussão em grupos. Uso de recursos digitais (slides, simuladores PhET, vídeos curtos) para apoiar visualização e engajamento.
 
 ## Sequência didática
-1. **Abertura (10 min)** — problematização e conhecimentos prévios sobre ${title}.
-2. **Desenvolvimento (30 min)** — exposição dos conceitos, exemplos e demonstrações.
-3. **Fechamento (10 min)** — síntese, exercícios de fixação e avaliação formativa.
+1. **Abertura (5 min)** — pergunta disparadora: "Onde a química aparece no seu dia a dia?"; levantamento de conhecimentos prévios.
+2. **Desenvolvimento (20 min)** — exposição dialogada em blocos curtos (máx. 7 min), intercalada com perguntas problematizadoras e uma breve demonstração relacionada a ${title}.
+3. **Atividade em grupo (15 min)** — experimento simples e seguro (ex.: observar mudanças físicas e químicas com gelo, sal, vinagre e bicarbonato); registro em roteiro estruturado e análise coletiva.
+4. **Fechamento (10 min)** — síntese coletiva no quadro, exercício rápido de fixação e autoavaliação (o que aprendi / o que ainda tenho dúvida).
 
 ## Recursos
-Quadro, projetor, slides, simuladores, vídeos e material impresso.
+Quadro, projetor, slides, simuladores PhET, vídeos curtos, roteiro impresso do experimento e materiais de baixo custo (gelo, sal, vinagre, bicarbonato, copos plásticos).
 
 ## Avaliação
-Participação, resolução de exercícios e produção escrita curta sobre o tema.
+Avaliação formativa combinando: participação nas discussões, relatório breve do experimento em grupo, apresentação oral dos resultados e autoavaliação escrita. Critérios: clareza conceitual, uso de vocabulário científico, colaboração e argumentação.
 
 ## Observações
-${context ? context.slice(0, 400) : "Adaptar linguagem e exemplos ao nível da turma."}
+${context ? context.slice(0, 400) : "Adaptar linguagem, exemplos e nível de aprofundamento à realidade da turma; garantir segurança na atividade prática."}
 `;
   const bncc = [
     { code: "EF09CI03", label: "Identificar modelos que descrevem a estrutura da matéria.", type: "BNCC" },
