@@ -1624,6 +1624,15 @@ export default function TopicoDetalhe() {
   })();
   const imgUrl = override?.image_url || `https://loremflickr.com/1200/600/${encodeURIComponent(heroQuery)}?lock=${Math.abs(hash(displayTitle)) % 9999}`;
 
+  const sectionImg = (key: string) => override?.section_images?.[key];
+  const applySectionImage = (key: string, url: string | null) => {
+    setOverride((o) => {
+      const cur = { ...(o?.section_images || {}) };
+      if (url) cur[key] = url; else delete cur[key];
+      return { ...(o || {}), section_images: cur };
+    });
+  };
+
   const startEdit = () => {
     const pack = funContent(classificationSource);
     setForm({
