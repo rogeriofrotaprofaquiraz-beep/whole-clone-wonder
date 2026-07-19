@@ -1484,6 +1484,7 @@ export type Database = {
       }
       topic_overrides: {
         Row: {
+          bncc_codes: Json
           created_at: string
           curiosities: string[] | null
           daily_life: string[] | null
@@ -1496,6 +1497,7 @@ export type Database = {
           image_url: string | null
           keys: Json | null
           lesson: string | null
+          lesson_plan: string | null
           materials: Json
           pitfalls: Json | null
           principles: Json | null
@@ -1508,6 +1510,7 @@ export type Database = {
           video_url: string | null
         }
         Insert: {
+          bncc_codes?: Json
           created_at?: string
           curiosities?: string[] | null
           daily_life?: string[] | null
@@ -1520,6 +1523,7 @@ export type Database = {
           image_url?: string | null
           keys?: Json | null
           lesson?: string | null
+          lesson_plan?: string | null
           materials?: Json
           pitfalls?: Json | null
           principles?: Json | null
@@ -1532,6 +1536,7 @@ export type Database = {
           video_url?: string | null
         }
         Update: {
+          bncc_codes?: Json
           created_at?: string
           curiosities?: string[] | null
           daily_life?: string[] | null
@@ -1544,6 +1549,7 @@ export type Database = {
           image_url?: string | null
           keys?: Json | null
           lesson?: string | null
+          lesson_plan?: string | null
           materials?: Json
           pitfalls?: Json | null
           principles?: Json | null

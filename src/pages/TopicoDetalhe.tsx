@@ -9,8 +9,10 @@ import { toast } from "sonner";
 import {
   ArrowLeft, BookOpen, Lightbulb, FlaskConical, Sparkles, GraduationCap,
   Atom, Library, Target, Sigma, AlertTriangle, Pencil, Save, RotateCcw, Trash2,
-  Video, Paperclip, Upload, ExternalLink, Home, Smile,
+  Video, Paperclip, Upload, ExternalLink, Home, Smile, FileText, Wand2, Tag,
 } from "lucide-react";
+
+type BnccCode = { code: string; label: string; type: "BNCC" | "BNCC_DIGITAL" };
 
 /* Conteúdo extra por categoria: aplicação no cotidiano, curiosidades e fatos engraçados */
 type FunPack = { dailyLife: string[]; curiosities: string[]; funFacts: string[] };
@@ -1273,11 +1275,12 @@ export default function TopicoDetalhe() {
   const displayTitle = lesson ? `${title} — ${lesson}` : title;
 
   const [isAdmin, setIsAdmin] = useState(false);
-  const [override, setOverride] = useState<(Partial<Section> & { image_url?: string; video_url?: string; footer_image_url?: string; materials?: Material[]; daily_life?: string[]; curiosities?: string[]; fun_facts?: string[] }) | null>(null);
+  const [override, setOverride] = useState<(Partial<Section> & { image_url?: string; video_url?: string; footer_image_url?: string; materials?: Material[]; daily_life?: string[]; curiosities?: string[]; fun_facts?: string[]; lesson_plan?: string; bncc_codes?: BnccCode[] }) | null>(null);
   const [editing, setEditing] = useState(false);
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
   const [uploadingFooter, setUploadingFooter] = useState(false);
+  const [generatingPlan, setGeneratingPlan] = useState(false);
   const [form, setForm] = useState<any>(null);
 
   useEffect(() => {
@@ -1312,6 +1315,8 @@ export default function TopicoDetalhe() {
           daily_life: ((data as any).daily_life as string[]) ?? undefined,
           curiosities: ((data as any).curiosities as string[]) ?? undefined,
           fun_facts: ((data as any).fun_facts as string[]) ?? undefined,
+          lesson_plan: (data as any).lesson_plan ?? undefined,
+          bncc_codes: ((data as any).bncc_codes as BnccCode[]) ?? undefined,
         });
       }
     })();
@@ -1365,6 +1370,8 @@ export default function TopicoDetalhe() {
       video_url: override?.video_url || "",
       footer_image_url: override?.footer_image_url || "",
       materials: (override?.materials || []).map(m => `${m.name} | ${m.url}`).join("\n"),
+      lesson_plan: override?.lesson_plan || "",
+      bncc_codes: (override?.bncc_codes || []).map(b => `${b.type === "BNCC_DIGITAL" ? "DIG" : "BNC"} | ${b.code} | ${b.label}`).join("\n"),
     });
     setEditing(true);
     setTimeout(() => {
@@ -1429,6 +1436,15 @@ export default function TopicoDetalhe() {
       const [name, ...rest] = l.split("|");
       return { name: name.trim(), url: rest.join("|").trim() };
     }).filter((m: Material) => m.name && m.url);
+    const bncc_codes: BnccCode[] = toLines(form.bncc_codes || "").map((l: string) => {
+      const parts = l.split("|").map(x => x.trim());
+      if (parts.length >= 3) {
+        const t = parts[0].toUpperCase();
+        return { type: (t.startsWith("DIG") ? "BNCC_DIGITAL" : "BNCC") as BnccCode["type"], code: parts[1].toUpperCase(), label: parts.slice(2).join(" | ") };
+      }
+      if (parts.length === 2) return { type: "BNCC" as const, code: parts[0].toUpperCase(), label: parts[1] };
+      return { type: "BNCC" as const, code: parts[0].toUpperCase(), label: "" };
+    }).filter(b => b.code && b.label);
     const payload = {
       slug,
       title,
@@ -1449,6 +1465,8 @@ export default function TopicoDetalhe() {
       video_url: form.video_url.trim() || null,
       footer_image_url: (form.footer_image_url || "").trim() || null,
       materials,
+      lesson_plan: (form.lesson_plan || "").trim() || null,
+      bncc_codes,
     };
     const { error } = await supabase.from("topic_overrides").upsert(payload, { onConflict: "slug" });
     setSaving(false);
@@ -1465,8 +1483,46 @@ export default function TopicoDetalhe() {
       daily_life: payload.daily_life,
       curiosities: payload.curiosities,
       fun_facts: payload.fun_facts,
+      lesson_plan: payload.lesson_plan || undefined,
+      bncc_codes: payload.bncc_codes,
     });
     setEditing(false);
+  };
+
+  const generateLessonPlan = async () => {
+    if (!isAdmin) return;
+    setGeneratingPlan(true);
+    try {
+      const context = [c.simple, c.formal, ...(c.key || []), ...(c.principles || [])].filter(Boolean).join("\n");
+      const { data, error } = await supabase.functions.invoke("generate-topic-lesson-plan", {
+        body: { title, lesson, course: lesson, stage: "Ensino Médio", duration: "50 minutos", context },
+      });
+      if (error || (data as any)?.error) {
+        toast.error((data as any)?.error ?? error?.message ?? "Falha ao gerar plano");
+        return;
+      }
+      const plan = String((data as any).plan ?? "").trim();
+      const bncc: BnccCode[] = Array.isArray((data as any).bncc) ? (data as any).bncc : [];
+      if (editing && form) {
+        setForm((f: any) => ({
+          ...f,
+          lesson_plan: plan,
+          bncc_codes: bncc.map(b => `${b.type === "BNCC_DIGITAL" ? "DIG" : "BNC"} | ${b.code} | ${b.label}`).join("\n"),
+        }));
+        toast.success("Plano gerado — revise e clique em Salvar");
+      } else {
+        if (!slug) return;
+        const { error: upErr } = await supabase.from("topic_overrides").upsert(
+          { slug, title, lesson, lesson_plan: plan, bncc_codes: bncc } as any,
+          { onConflict: "slug" }
+        );
+        if (upErr) { toast.error(upErr.message); return; }
+        setOverride((o) => ({ ...(o || {}), lesson_plan: plan, bncc_codes: bncc }));
+        toast.success("Plano de aula gerado e salvo");
+      }
+    } finally {
+      setGeneratingPlan(false);
+    }
   };
 
   const resetToGenerated = async () => {
@@ -1694,6 +1750,56 @@ export default function TopicoDetalhe() {
             )}
 
 
+            {/* Plano de aula (admin gera) */}
+            {(override?.lesson_plan || (override?.bncc_codes && override.bncc_codes.length > 0) || isAdmin) && (
+              <section className="rounded-xl p-4 bg-emerald-50 border border-emerald-200">
+                <div className="flex items-center justify-between gap-2 flex-wrap mb-3">
+                  <div className="flex items-center gap-2 text-emerald-800 font-bold">
+                    <FileText size={18} /> Plano de aula
+                  </div>
+                  {isAdmin && (
+                    <Button size="sm" onClick={generateLessonPlan} disabled={generatingPlan}
+                      className="bg-emerald-600 hover:bg-emerald-700">
+                      <Wand2 size={14} className="mr-1" />
+                      {generatingPlan ? "Gerando..." : override?.lesson_plan ? "Regenerar com IA" : "Gerar com IA"}
+                    </Button>
+                  )}
+                </div>
+                {override?.lesson_plan ? (
+                  <pre className="whitespace-pre-wrap font-sans text-sm text-slate-800 leading-relaxed">
+                    {override.lesson_plan}
+                  </pre>
+                ) : (
+                  <p className="text-xs text-emerald-800/80">
+                    {isAdmin
+                      ? "Nenhum plano publicado ainda. Clique em Gerar com IA para criar um plano moderno alinhado à BNCC."
+                      : "Plano de aula ainda não publicado para este tópico."}
+                  </p>
+                )}
+
+                {override?.bncc_codes && override.bncc_codes.length > 0 && (
+                  <div className="mt-4 pt-3 border-t border-emerald-200">
+                    <div className="flex items-center gap-2 text-emerald-800 font-bold mb-2 text-sm">
+                      <Tag size={14} /> Códigos BNCC / BNCC Digital
+                    </div>
+                    <ul className="grid sm:grid-cols-2 gap-2">
+                      {override.bncc_codes.map((b, i) => (
+                        <li key={i} className="flex items-start gap-2 text-xs bg-white border border-emerald-200 rounded-md px-2 py-1.5">
+                          <span className={`shrink-0 font-mono font-bold px-1.5 py-0.5 rounded ${b.type === "BNCC_DIGITAL" ? "bg-sky-100 text-sky-800" : "bg-emerald-100 text-emerald-800"}`}>
+                            {b.code}
+                          </span>
+                          <span className="text-slate-700">{b.label}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <p className="text-[10px] text-slate-500 mt-2">
+                      Legenda: <span className="font-mono text-emerald-700">verde</span> = BNCC · <span className="font-mono text-sky-700">azul</span> = BNCC Digital / Computação
+                    </p>
+                  </div>
+                )}
+              </section>
+            )}
+
             {/* Referências bibliográficas */}
             <section className="rounded-xl p-4 bg-slate-50 border border-slate-200">
               <div className="flex items-center gap-2 text-slate-700 font-bold mb-2">
@@ -1868,6 +1974,30 @@ export default function TopicoDetalhe() {
                         <span className="text-[11px] text-slate-500">O arquivo é anexado à lista acima; clique em Salvar para confirmar.</span>
                       </div>
                     </div>
+
+                    <div className="rounded-lg border border-emerald-200 bg-emerald-50/60 p-3 space-y-2">
+                      <label className="text-xs font-semibold text-emerald-800 flex items-center gap-1">
+                        <FileText size={12} /> Plano de aula moderno (Markdown)
+                      </label>
+                      <Textarea rows={10} value={form.lesson_plan || ""} onChange={e => setForm({ ...form, lesson_plan: e.target.value })}
+                        placeholder="Cole ou gere com IA um plano de aula completo em Markdown." />
+                      <div className="flex flex-wrap items-center gap-2">
+                        <Button size="sm" type="button" onClick={generateLessonPlan} disabled={generatingPlan}
+                          className="bg-emerald-600 hover:bg-emerald-700">
+                          <Wand2 size={14} className="mr-1" /> {generatingPlan ? "Gerando..." : "Gerar plano com IA"}
+                        </Button>
+                        <span className="text-[11px] text-emerald-800/70">A geração também popula os códigos BNCC abaixo.</span>
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="text-xs font-semibold text-slate-700 flex items-center gap-1">
+                        <Tag size={12} /> Códigos BNCC / BNCC Digital (um por linha: <code>BNC|CÓDIGO|descrição</code> ou <code>DIG|CÓDIGO|descrição</code>)
+                      </label>
+                      <Textarea rows={5} value={form.bncc_codes || ""} onChange={e => setForm({ ...form, bncc_codes: e.target.value })}
+                        placeholder="BNC | EM13CNT301 | Construir questões, elaborar hipóteses..." />
+                    </div>
+
 
                     <div className="flex gap-2 pt-1">
                       <Button size="sm" onClick={save} disabled={saving} className="bg-emerald-600 hover:bg-emerald-700">
