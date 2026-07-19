@@ -122,7 +122,9 @@ const BANK: Record<string, Q[]> = {
   ],
 };
 
-function pickQuestions(category: string, seedStr: string, n = 5): Q[] {
+export { BANK };
+export type { Q };
+export function pickQuestions(category: string, seedStr: string, n = 5): Q[] {
   const pool = BANK[category] || BANK.geral;
   // Simple deterministic shuffle by seed
   let seed = 0;
