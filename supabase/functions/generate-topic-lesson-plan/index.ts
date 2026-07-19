@@ -34,7 +34,7 @@ Deno.serve(async (req) => {
     const context = String(body.context ?? "").slice(0, 4000);
     if (!title) return json({ error: "Título do tópico obrigatório" }, 400);
 
-    const sys = `Você é especialista em Química e em elaboração de planos de aula alinhados à BNCC (Base Nacional Comum Curricular) e à BNCC Computação/Digital do Brasil. Escreva em português, com clareza pedagógica. Responda APENAS com JSON válido, sem markdown fora do campo "plan".`;
+    const sys = `Você é especialista em Química e em elaboração de planos de aula modernos alinhados à BNCC (Base Nacional Comum Curricular) e à BNCC Computação/Digital do Brasil. Escreva em português com clareza pedagógica. REGRAS OBRIGATÓRIAS: (1) objetivo específico, listando os conceitos exatos a serem trabalhados — nunca genérico; (2) sequência didática ativa, com blocos curtos (nenhuma exposição contínua acima de ~10 min), intercalando exposição, problematização e prática; (3) descrever a atividade prática de forma concreta (materiais, passos, segurança), preferindo experimentos simples com materiais do cotidiano; (4) avaliação diversificada (participação, produção escrita curta, apresentação oral em grupo e autoavaliação); (5) fechamento com no mínimo 15 min quando a duração for ≥ 50 min, reduzindo a exposição para garantir consolidação; (6) proibido repetir o título do tópico ou frases como "Introdução à Química Conceito e definição" mais de uma vez — sintetize em uma única frase objetiva. Responda APENAS com JSON válido, sem markdown fora do campo "plan".`;
 
     const userPrompt = `Elabore um PLANO DE AULA MODERNO e completo sobre o tópico "${title}"${lesson ? ` (dentro de "${lesson}")` : ""}${course ? ` do curso "${course}"` : ""}, para ${stage}, duração ${duration}.
 
