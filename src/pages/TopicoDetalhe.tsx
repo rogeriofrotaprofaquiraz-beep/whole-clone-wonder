@@ -11,6 +11,7 @@ import {
   Atom, Library, Target, Sigma, AlertTriangle, Pencil, Save, RotateCcw, Trash2,
   Video, Paperclip, Upload, ExternalLink, Home, Smile, FileText, Wand2, Tag,
 } from "lucide-react";
+import LockedQuiz from "@/components/LockedQuiz";
 
 
 type BnccCode = { code: string; label: string; type: "BNCC" | "BNCC_DIGITAL" };
@@ -2059,6 +2060,16 @@ export default function TopicoDetalhe() {
                 {c.refs.map((r, i) => <li key={i}>{r}</li>)}
               </ul>
             </section>
+
+            {/* Quiz avaliativo travado (janela fullscreen) — vale nota */}
+            <LockedQuiz
+              slug={slug ?? ""}
+              title={title}
+              category={classify(classificationSource)}
+              courseId={params.get("courseId")}
+            />
+
+
 
             {/* Imagem final do tópico (upload/exibição) */}
             {(override?.footer_image_url || isAdmin) && (
