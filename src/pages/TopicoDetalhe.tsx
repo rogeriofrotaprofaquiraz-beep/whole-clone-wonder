@@ -1,4 +1,4 @@
-import { Link, useParams, useSearchParams } from "react-router-dom";
+import { Link, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -1504,6 +1504,7 @@ type Material = { name: string; url: string };
 
 export default function TopicoDetalhe() {
   const { slug } = useParams();
+  const navigate = useNavigate();
   const [params] = useSearchParams();
   const title = params.get("t") || (slug ?? "Tópico").replace(/-/g, " ");
   const lesson = params.get("lesson") || "";
@@ -1789,9 +1790,12 @@ export default function TopicoDetalhe() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-[#4C1D95] to-slate-900">
       <div className="max-w-4xl mx-auto p-4 py-6">
-        <Link to={back} className="inline-flex items-center gap-2 text-white/80 hover:text-white mb-4">
-          <ArrowLeft size={18} /> Voltar ao curso
-        </Link>
+        <button
+          onClick={() => (window.history.length > 1 ? navigate(-1) : navigate(back))}
+          className="inline-flex items-center gap-2 text-white/80 hover:text-white mb-4"
+        >
+          <ArrowLeft size={18} /> Tópico anterior
+        </button>
 
         <Card className="overflow-hidden mb-6 border-0">
           <div className="relative h-56 md:h-72 bg-gradient-to-br from-violet-700 to-indigo-900">
