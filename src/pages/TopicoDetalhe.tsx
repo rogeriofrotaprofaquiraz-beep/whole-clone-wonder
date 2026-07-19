@@ -1916,8 +1916,8 @@ export default function TopicoDetalhe() {
                   return true;
                 });
               const curiosities = override?.curiosities?.length ? override.curiosities : pack.curiosities;
-              const funFacts = override?.fun_facts?.length ? override.fun_facts : pack.funFacts;
-              // Curiosidades unificadas (sem sub-título "Fatos divertidos")
+              // Só usa funFacts do override; sem fallback genérico (evita repetição em todos os tópicos)
+              const funFacts = override?.fun_facts?.length ? override.fun_facts : [];
               const seenC = new Set<string>();
               const allCuriosities = [...curiosities, ...funFacts].filter((t) => {
                 const k = t.trim().toLowerCase();
