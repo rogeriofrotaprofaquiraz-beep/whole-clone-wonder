@@ -12,6 +12,7 @@ import {
   Video, Paperclip, Upload, ExternalLink, Home, Smile, FileText, Wand2, Tag,
 } from "lucide-react";
 import LockedQuiz from "@/components/LockedQuiz";
+import EditableImage from "@/components/EditableImage";
 
 
 type BnccCode = { code: string; label: string; type: "BNCC" | "BNCC_DIGITAL" };
