@@ -1349,8 +1349,8 @@ function applyAspect(base: Section, title: string, lesson: string): Section {
           "**Relação micro ↔ macro** — propriedades observáveis (cor, ponto de fusão, condutividade) emergem da estrutura atômica e das ligações.",
         ],
         formulas: [
-          "m(reagentes) = m(produtos)   (Lavoisier)",
-          "n = m / M   (relação massa ↔ mol, ponte entre micro e macro)",
+          { expr: "m(reagentes) = m(produtos)", desc: "Lei de Lavoisier — conservação da massa em sistema fechado." },
+          { expr: "n = m / M", desc: "Relação massa ↔ mol — ponte quantitativa entre o mundo micro e macro." },
         ],
         examples: [
           "Queima de 12 g de C + 32 g de O₂ → 44 g de CO₂ (confirma Lavoisier).",
