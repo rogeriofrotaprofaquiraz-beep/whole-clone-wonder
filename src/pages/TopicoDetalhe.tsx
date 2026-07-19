@@ -10,7 +10,9 @@ import {
   ArrowLeft, BookOpen, Lightbulb, FlaskConical, Sparkles, GraduationCap,
   Atom, Library, Target, Sigma, AlertTriangle, Pencil, Save, RotateCcw, Trash2,
   Video, Paperclip, Upload, ExternalLink, Home, Smile, FileText, Wand2, Tag,
+  School, ClipboardList, HelpCircle, CheckSquare,
 } from "lucide-react";
+import { pedagogicalContent } from "@/lib/pedagogicalContent";
 
 type BnccCode = { code: string; label: string; type: "BNCC" | "BNCC_DIGITAL" };
 
@@ -1722,6 +1724,153 @@ export default function TopicoDetalhe() {
                 {c.pitfalls.map((p, i) => <li key={i}>{p}</li>)}
               </ul>
             </section>
+
+            {/* Desenvolvimento pedagógico — Fundamental + Médio */}
+            {(() => {
+              const ped = pedagogicalContent(classificationSource);
+              return (
+                <section className="space-y-4">
+                  <div className="flex items-center gap-2 text-[#4C1D95] font-bold">
+                    <ClipboardList size={18} /> Desenvolvimento em sala — Fundamental & Médio
+                  </div>
+
+                  <div className="grid md:grid-cols-2 gap-4">
+                    {/* ============== FUNDAMENTAL ============== */}
+                    <div className="rounded-xl border-2 border-emerald-200 bg-emerald-50/60 p-4 space-y-3">
+                      <div className="flex items-center gap-2 text-emerald-800 font-bold">
+                        <School size={18} /> Ensino Fundamental
+                      </div>
+
+                      <div>
+                        <div className="text-xs uppercase tracking-wide text-emerald-700 font-semibold mb-1">Ideia central</div>
+                        <p className="text-sm text-slate-800">{ped.fundamental.ideiaCentral}</p>
+                      </div>
+
+                      <div className="rounded-lg bg-white/70 border border-emerald-200 p-3">
+                        <div className="text-xs uppercase tracking-wide text-emerald-700 font-semibold mb-1">Analogia do cotidiano</div>
+                        <p className="text-sm text-slate-700 italic">{ped.fundamental.analogia}</p>
+                      </div>
+
+                      <div>
+                        <div className="text-xs uppercase tracking-wide text-emerald-700 font-semibold mb-1">Vocabulário essencial</div>
+                        <ul className="space-y-1 text-sm text-slate-700">
+                          {ped.fundamental.vocabulario.map((v, i) => (
+                            <li key={i}><b className="text-slate-900">{v.termo}:</b> {v.explicacao}</li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      <div className="rounded-lg bg-white border border-emerald-300 p-3">
+                        <div className="flex items-center gap-2 text-emerald-800 font-semibold mb-1">
+                          <FlaskConical size={16} /> Atividade prática — {ped.fundamental.pratica.titulo}
+                        </div>
+                        <p className="text-xs text-slate-600 mb-2"><b>Objetivo:</b> {ped.fundamental.pratica.objetivo}</p>
+                        <div className="text-xs font-semibold text-slate-700 mb-1">Materiais</div>
+                        <ul className="text-xs text-slate-700 list-disc pl-5 mb-2">
+                          {ped.fundamental.pratica.materiais.map((m, i) => <li key={i}>{m}</li>)}
+                        </ul>
+                        <div className="text-xs font-semibold text-slate-700 mb-1">Passo a passo</div>
+                        <ol className="text-xs text-slate-700 list-decimal pl-5 space-y-0.5 mb-2">
+                          {ped.fundamental.pratica.passos.map((p, i) => <li key={i}>{p}</li>)}
+                        </ol>
+                        <div className="text-xs font-semibold text-slate-700 mb-1">Discussão em roda</div>
+                        <ul className="text-xs text-slate-700 list-disc pl-5">
+                          {ped.fundamental.pratica.discussao.map((d, i) => <li key={i}>{d}</li>)}
+                        </ul>
+                        {ped.fundamental.pratica.seguranca && (
+                          <div className="mt-2 text-[11px] text-red-700 bg-red-50 border border-red-200 rounded p-2">
+                            <b>⚠ Segurança:</b> {ped.fundamental.pratica.seguranca}
+                          </div>
+                        )}
+                      </div>
+
+                      <div>
+                        <div className="flex items-center gap-2 text-xs uppercase tracking-wide text-emerald-700 font-semibold mb-1">
+                          <HelpCircle size={14} /> Perguntas de verificação
+                        </div>
+                        <ol className="text-sm text-slate-700 list-decimal pl-5 space-y-0.5">
+                          {ped.fundamental.perguntas.map((p, i) => <li key={i}>{p}</li>)}
+                        </ol>
+                      </div>
+                    </div>
+
+                    {/* ============== MÉDIO ============== */}
+                    <div className="rounded-xl border-2 border-indigo-200 bg-indigo-50/60 p-4 space-y-3">
+                      <div className="flex items-center gap-2 text-indigo-800 font-bold">
+                        <GraduationCap size={18} /> Ensino Médio
+                      </div>
+
+                      <div>
+                        <div className="text-xs uppercase tracking-wide text-indigo-700 font-semibold mb-1">Aprofundamento conceitual</div>
+                        <p className="text-sm text-slate-800">{ped.medio.aprofundamento}</p>
+                      </div>
+
+                      <div>
+                        <div className="text-xs uppercase tracking-wide text-indigo-700 font-semibold mb-1">Conexões interdisciplinares</div>
+                        <ul className="space-y-1 text-sm text-slate-700 list-disc pl-5">
+                          {ped.medio.conexoes.map((c2, i) => <li key={i}>{c2}</li>)}
+                        </ul>
+                      </div>
+
+                      <div className="rounded-lg bg-white border border-indigo-300 p-3">
+                        <div className="flex items-center gap-2 text-indigo-800 font-semibold mb-1">
+                          <Sigma size={16} /> Exemplo resolvido
+                        </div>
+                        <p className="text-sm text-slate-800 mb-1"><b>Enunciado.</b> {ped.medio.exemploResolvido.enunciado}</p>
+                        <div className="text-xs font-semibold text-slate-700 mb-1">Resolução</div>
+                        <ol className="text-sm text-slate-700 list-decimal pl-5 space-y-0.5 mb-2">
+                          {ped.medio.exemploResolvido.resolucao.map((r, i) => <li key={i}>{r}</li>)}
+                        </ol>
+                        <p className="text-sm text-slate-900 bg-indigo-100 border border-indigo-200 rounded px-2 py-1">
+                          <b>Resposta:</b> {ped.medio.exemploResolvido.resposta}
+                        </p>
+                      </div>
+
+                      <div>
+                        <div className="flex items-center gap-2 text-xs uppercase tracking-wide text-indigo-700 font-semibold mb-1">
+                          <BookOpen size={14} /> Questões estilo vestibular / ENEM
+                        </div>
+                        <ol className="text-sm text-slate-700 list-decimal pl-5 space-y-0.5">
+                          {ped.medio.questoesVestibular.map((q, i) => <li key={i}>{q}</li>)}
+                        </ol>
+                      </div>
+
+                      <div className="rounded-lg bg-white/70 border border-indigo-200 p-3">
+                        <div className="flex items-center gap-2 text-xs uppercase tracking-wide text-indigo-700 font-semibold mb-1">
+                          <CheckSquare size={14} /> Autoavaliação do aluno
+                        </div>
+                        <ul className="text-sm text-slate-700 space-y-1">
+                          {ped.medio.autoavaliacao.map((a, i) => (
+                            <li key={i} className="flex items-start gap-2">
+                              <input type="checkbox" className="mt-1 accent-indigo-600" />
+                              <span>{a}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* BNCC sugerida (referência pedagógica) */}
+                  {ped.bnccSugerida.length > 0 && (
+                    <div className="rounded-xl bg-slate-50 border border-slate-200 p-3">
+                      <div className="flex items-center gap-2 text-xs uppercase tracking-wide text-slate-600 font-semibold mb-2">
+                        <Tag size={14} /> Códigos BNCC de referência
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        {ped.bnccSugerida.map((code, i) => (
+                          <span key={i} className="inline-flex items-center gap-1 rounded-full bg-white border border-slate-300 px-2.5 py-1 text-xs font-mono text-slate-700">
+                            {code}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </section>
+              );
+            })()}
+
+
 
 
             {/* Vídeo-aula (opcional) */}
