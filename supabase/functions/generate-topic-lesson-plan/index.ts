@@ -15,54 +15,74 @@ Deno.serve(async (req) => {
     const anon = Deno.env.get("SUPABASE_ANON_KEY")!;
     const service = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
     const lovableKey = Deno.env.get("LOVABLE_API_KEY");
-    if (!lovableKey) return json({ error: "Missing LOVABLE_API_KEY" }, 500);
 
     const userClient = createClient(url, anon, { global: { headers: { Authorization: authHeader } } });
     const { data: { user } } = await userClient.auth.getUser();
     if (!user) return json({ error: "Unauthorized" }, 401);
 
     const admin = createClient(url, service);
-    const { data: isAdm } = await admin.rpc("has_role", { _user_id: user.id, _role: "admin" });
-    if (!isAdm) return json({ error: "Apenas administradores podem gerar plano de aula" }, 403);
+    const [{ data: isAdm }, { data: isTeacher }] = await Promise.all([
+      admin.rpc("has_role", { _user_id: user.id, _role: "admin" }),
+      admin.rpc("has_role", { _user_id: user.id, _role: "teacher" }),
+    ]);
+    if (!isAdm && !isTeacher) return json({ error: "Apenas professores ou administradores podem gerar plano de aula" }, 403);
 
     const body = await req.json().catch(() => ({}));
-    const title = String(body.title ?? "").trim();
+
+    // Aceita dois formatos: { title, lesson, course, stage, duration, context }
+    // OU { topic: { title, description }, discipline, bimestre, stage, duration }
+    const topicObj = body.topic ?? {};
+    const title = String(body.title ?? topicObj.title ?? "").trim();
     const lesson = String(body.lesson ?? "").trim();
-    const course = String(body.course ?? "").trim();
+    const course = String(body.course ?? body.discipline ?? "").trim();
     const stage = String(body.stage ?? "Ensino Médio").trim();
     const duration = String(body.duration ?? "50 minutos").trim();
-    const context = String(body.context ?? "").slice(0, 4000);
-    if (!title) return json({ error: "Título do tópico obrigatório" }, 400);
+    const bimestre = String(body.bimestre ?? "").trim();
+    const context = String(body.context ?? topicObj.description ?? "").slice(0, 4000);
+    if (!title) return json({ error: "Assunto/título obrigatório" }, 400);
 
-    const sys = `Você é especialista em Química e em elaboração de planos de aula modernos alinhados à BNCC (Base Nacional Comum Curricular) e à BNCC Computação/Digital do Brasil. Escreva em português com clareza pedagógica. REGRAS OBRIGATÓRIAS: (1) objetivo específico, listando os conceitos exatos a serem trabalhados — nunca genérico; (2) sequência didática ativa, com blocos curtos (nenhuma exposição contínua acima de ~10 min), intercalando exposição, problematização e prática; (3) descrever a atividade prática de forma concreta (materiais, passos, segurança), preferindo experimentos simples com materiais do cotidiano; (4) avaliação diversificada (participação, produção escrita curta, apresentação oral em grupo e autoavaliação); (5) fechamento com no mínimo 15 min quando a duração for ≥ 50 min, reduzindo a exposição para garantir consolidação; (6) proibido repetir o título do tópico ou frases como "Introdução à Química Conceito e definição" mais de uma vez — sintetize em uma única frase objetiva. Responda APENAS com JSON válido, sem markdown fora do campo "plan".`;
+    // Fallback imediato quando não há chave configurada
+    if (!lovableKey) {
+      const fb = buildFallback({ title, lesson, course, stage, duration, context, bimestre });
+      return json({ ...fb, fallback: true, reason: "no_key" });
+    }
 
-    const userPrompt = `Elabore um PLANO DE AULA MODERNO e completo sobre o tópico "${title}"${lesson ? ` (dentro de "${lesson}")` : ""}${course ? ` do curso "${course}"` : ""}, para ${stage}, duração ${duration}.
+    const sys = `Você é especialista em elaboração de planos de aula modernos alinhados à BNCC e à BNCC Computação/Digital do Brasil. Escreva em português com clareza pedagógica.
+REGRAS OBRIGATÓRIAS:
+(1) Objetivo ESPECÍFICO — liste os conceitos exatos a serem trabalhados (ex.: matéria, substância, mistura, propriedades físicas e químicas). NUNCA use fórmulas genéricas como "compreender os principais conceitos".
+(2) Sequência didática ATIVA em blocos curtos: Abertura ~5 min (pergunta disparadora), Desenvolvimento ~20 min (exposição dialogada em blocos ≤ 7 min intercalados com problematização), Atividade prática em grupo ~15 min, Fechamento ≥ 15 min (síntese, exercício, autoavaliação). Nenhum bloco expositivo contínuo acima de 10 min.
+(3) Atividade prática DETALHADA — descreva materiais (preferir do cotidiano: gelo, sal, vinagre, bicarbonato, etc.), passos e cuidados de segurança.
+(4) Avaliação DIVERSIFICADA — combine participação, produção escrita curta, apresentação oral em grupo E autoavaliação.
+(5) PROIBIDO repetir o título do tópico ou frases como "Introdução à Química Conceito e definição de..." — sintetize em uma única frase objetiva.
+(6) Códigos BNCC oficiais reais (Ciências da Natureza, Fundamental Anos Finais e/ou Ensino Médio) e BNCC Computação/Digital quando aplicável.
+Responda APENAS com JSON válido.`;
 
-CONTEXTO DO TÓPICO (para alinhamento):
+    const userPrompt = `Elabore um PLANO DE AULA MODERNO e refinado sobre "${title}"${lesson ? ` (dentro de "${lesson}")` : ""}${course ? ` — disciplina: ${course}` : ""}, para ${stage}, duração ${duration}${bimestre ? `, ${bimestre}` : ""}.
+
+CONTEXTO:
 """
 ${context || title}
 """
 
-O plano deve conter, em Markdown, as seções:
-1. **Identificação** (curso, tópico, público, duração)
-2. **Objetivos de aprendizagem** (verbos na taxonomia de Bloom)
-3. **Competências e habilidades BNCC** mobilizadas
-4. **Conteúdos abordados**
-5. **Metodologia ativa** (ex.: sala de aula invertida, aprendizagem baseada em problemas, gamificação, pensamento computacional)
-6. **Recursos didáticos** (físicos e digitais — simuladores PhET, planilhas, IA, vídeos)
-7. **Sequência didática detalhada** (abertura, desenvolvimento, fechamento — com tempos)
-8. **Avaliação formativa e somativa** (instrumentos e critérios)
-9. **Acessibilidade e inclusão**
-10. **Referências**
-
-Depois, extraia os **códigos BNCC** oficiais mais adequados (Ensino Fundamental Anos Finais e/ou Ensino Médio de Ciências da Natureza e suas Tecnologias) E os códigos **BNCC Computação/Digital** (Cultura Digital, Pensamento Computacional, Mundo Digital) aplicáveis. Use somente códigos que realmente existem.
-
-Retorne JSON EXATO:
+Retorne JSON EXATO com TODOS os campos abaixo (strings em português, sem markdown fora dos campos de texto):
 {
-  "plan": "markdown do plano de aula",
+  "objective": "Objetivo específico com os conceitos exatos a trabalhar",
+  "methodology": "Metodologia ativa, em blocos curtos; descrever brevemente as estratégias",
+  "curricular_components": "Componentes curriculares mobilizados",
+  "contents_topics": "Tópicos e conteúdos que serão abordados, em lista objetiva",
+  "competencies_codes": "Códigos das competências gerais (ex.: CG2, CG5, CG7)",
+  "competencies_text": "Descrição das competências desenvolvidas",
+  "skills_codes": "Códigos de habilidades BNCC (ex.: EF09CI03, EM13CNT301)",
+  "skills_text": "Descrição das habilidades trabalhadas",
+  "descriptors_codes": "Códigos de descritores (ex.: D1, D2)",
+  "descriptors_text": "Descrição dos descritores de avaliação",
+  "bncc_codes": "Lista textual dos códigos BNCC principais separados por vírgula",
+  "sequence": "Sequência didática detalhada: Abertura (5 min)... Desenvolvimento (20 min)... Atividade (15 min)... Fechamento (15 min)...",
+  "practical_activity": "Descrição concreta da atividade prática com materiais, passos e segurança",
+  "assessment": "Avaliação diversificada (participação, relatório breve, apresentação oral e autoavaliação)",
+  "plan": "Plano de aula completo em Markdown, reunindo todas as seções acima com títulos ## e sem repetir o título do tópico",
   "bncc": [
-    { "code": "EM13CNT301", "label": "Descrição oficial resumida", "type": "BNCC" },
-    { "code": "EF06CI01", "label": "Descrição", "type": "BNCC" },
+    { "code": "EF09CI03", "label": "Descrição oficial resumida", "type": "BNCC" },
     { "code": "EM13LGG703", "label": "Descrição", "type": "BNCC_DIGITAL" }
   ]
 }`;
@@ -80,18 +100,19 @@ Retorne JSON EXATO:
     if (!aiResp.ok) {
       const text = await aiResp.text().catch(() => "");
       console.warn("AI gateway falhou, usando template:", aiResp.status, text);
-      const fb = buildFallback({ title, lesson, course, stage, duration, context });
+      const fb = buildFallback({ title, lesson, course, stage, duration, context, bimestre });
       return json({ ...fb, fallback: true, reason: aiResp.status === 402 ? "credits" : aiResp.status === 429 ? "rate" : "error" });
     }
-    const aiData = await aiResp.json();
-    const content = aiData.choices?.[0]?.message?.content ?? "{}";
-    let parsed: any;
-    try { parsed = JSON.parse(content); } catch {
-      const fb = buildFallback({ title, lesson, course, stage, duration, context });
+
+    let parsed: any = {};
+    try {
+      const aiData = await aiResp.json();
+      parsed = JSON.parse(aiData.choices?.[0]?.message?.content ?? "{}");
+    } catch {
+      const fb = buildFallback({ title, lesson, course, stage, duration, context, bimestre });
       return json({ ...fb, fallback: true, reason: "parse" });
     }
 
-    const plan = String(parsed.plan ?? "").trim();
     const bncc = (Array.isArray(parsed.bncc) ? parsed.bncc : [])
       .map((b: any) => ({
         code: String(b.code ?? "").trim().toUpperCase(),
@@ -101,65 +122,105 @@ Retorne JSON EXATO:
       .filter((b: any) => b.code && b.label)
       .slice(0, 20);
 
-    if (!plan) {
-      const fb = buildFallback({ title, lesson, course, stage, duration, context });
+    const out: any = {
+      objective: str(parsed.objective),
+      methodology: str(parsed.methodology),
+      curricular_components: str(parsed.curricular_components),
+      contents_topics: str(parsed.contents_topics),
+      competencies_codes: str(parsed.competencies_codes),
+      competencies_text: str(parsed.competencies_text),
+      skills_codes: str(parsed.skills_codes),
+      skills_text: str(parsed.skills_text),
+      descriptors_codes: str(parsed.descriptors_codes),
+      descriptors_text: str(parsed.descriptors_text),
+      bncc_codes: str(parsed.bncc_codes) || bncc.map((b: any) => b.code).join(", "),
+      sequence: str(parsed.sequence),
+      practical_activity: str(parsed.practical_activity),
+      assessment: str(parsed.assessment),
+      plan: str(parsed.plan),
+      bncc,
+    };
+
+    if (!out.plan && !out.objective) {
+      const fb = buildFallback({ title, lesson, course, stage, duration, context, bimestre });
       return json({ ...fb, fallback: true, reason: "empty" });
     }
 
-    return json({ plan, bncc });
+    return json(out);
   } catch (e) {
     return json({ error: String(e) }, 500);
   }
 });
 
-function buildFallback(p: { title: string; lesson: string; course: string; stage: string; duration: string; context: string }) {
-  const { title, lesson, course, stage, duration, context } = p;
+function str(v: any) { return typeof v === "string" ? v.trim() : ""; }
+
+function buildFallback(p: { title: string; lesson: string; course: string; stage: string; duration: string; context: string; bimestre?: string }) {
+  const { title, lesson, course, stage, duration, context, bimestre } = p;
+  const objective = `Identificar e diferenciar os conceitos centrais de ${title} (matéria, substância, mistura, propriedades físicas e químicas), relacionando-os a situações do cotidiano e desenvolvendo argumentação científica.`;
+  const methodology = "Metodologia ativa em blocos curtos: exposição dialogada intercalada com problematização, demonstração prática e discussão em grupo. Uso de recursos digitais (slides, simuladores PhET, vídeos curtos).";
+  const sequence = `Abertura (5 min): pergunta disparadora "Onde a química aparece no seu dia a dia?" e levantamento de saberes prévios.
+Desenvolvimento (20 min): exposição dialogada em blocos de até 7 min, intercalada com perguntas problematizadoras e uma breve demonstração relacionada a ${title}.
+Atividade em grupo (15 min): experimento simples e seguro com gelo, sal, vinagre e bicarbonato — observar mudanças físicas e químicas, registrar em roteiro estruturado e discutir coletivamente.
+Fechamento (15 min): síntese coletiva no quadro, exercício rápido de fixação, apresentação oral breve dos grupos e autoavaliação escrita (o que aprendi / dúvidas).`;
+  const practical = "Distribuir aos grupos: 4 copos plásticos, cubos de gelo, sal grosso, vinagre e bicarbonato de sódio. Passos: (1) observar o gelo derretendo (física); (2) adicionar sal ao gelo e medir a temperatura; (3) misturar vinagre + bicarbonato (química, com efervescência); (4) registrar observações. Segurança: óculos de proteção, evitar contato com os olhos, ambiente ventilado.";
+  const assessment = "Avaliação diversificada: participação nas discussões, relatório breve do experimento em grupo, apresentação oral dos resultados (2–3 min por grupo) e autoavaliação escrita. Critérios: clareza conceitual, uso de vocabulário científico, colaboração e argumentação.";
+  const contents = `Conceitos de ${title}; relações com fenômenos cotidianos; propriedades e transformações observáveis; introdução à linguagem científica da área.`;
+
   const plan = `# Planejamento — ${title}
 
-**Disciplina:** ${course || "Ciências / Química"}  
-**Turma / Etapa:** ${stage}  
-**Duração:** ${duration}  
-${lesson ? `**Unidade / Aula:** ${lesson}  \n` : ""}
-## Objetivo
-Identificar e diferenciar os conceitos centrais de **${title}** (por exemplo: matéria, substância, mistura, propriedades físicas e químicas), relacionando-os a situações cotidianas e desenvolvendo a argumentação científica dos estudantes.
+**Disciplina:** ${course || "Ciências / Química"}  |  **Etapa:** ${stage}  |  **Duração:** ${duration}${bimestre ? `  |  **${bimestre}**` : ""}
+${lesson ? `**Unidade / Aula:** ${lesson}` : ""}
 
-## Componentes Curriculares
+## Objetivo
+${objective}
+
+## Componentes curriculares
 Ciências da Natureza — Química.
 
-## Competência
-Investigar fenômenos naturais e tecnológicos, utilizando conhecimentos científicos para resolver problemas, tomar decisões e comunicar resultados de forma ética e responsável.
-
-## Habilidades
-- Reconhecer e classificar os conceitos-chave abordados em ${title}.
-- Relacionar o conteúdo com fenômenos e materiais do dia a dia.
-- Formular hipóteses, registrar observações e argumentar cientificamente.
-- Trabalhar colaborativamente e comunicar resultados de forma oral e escrita.
+## Conteúdos e tópicos
+${contents}
 
 ## Metodologia
-Metodologia ativa, intercalando exposição dialogada curta com problematização, demonstração prática e discussão em grupos. Uso de recursos digitais (slides, simuladores PhET, vídeos curtos) para apoiar visualização e engajamento.
+${methodology}
 
 ## Sequência didática
-1. **Abertura (5 min)** — pergunta disparadora: "Onde a química aparece no seu dia a dia?"; levantamento de conhecimentos prévios.
-2. **Desenvolvimento (20 min)** — exposição dialogada em blocos curtos (máx. 7 min), intercalada com perguntas problematizadoras e uma breve demonstração relacionada a ${title}.
-3. **Atividade em grupo (15 min)** — experimento simples e seguro (ex.: observar mudanças físicas e químicas com gelo, sal, vinagre e bicarbonato); registro em roteiro estruturado e análise coletiva.
-4. **Fechamento (10 min)** — síntese coletiva no quadro, exercício rápido de fixação e autoavaliação (o que aprendi / o que ainda tenho dúvida).
+${sequence}
 
-## Recursos
-Quadro, projetor, slides, simuladores PhET, vídeos curtos, roteiro impresso do experimento e materiais de baixo custo (gelo, sal, vinagre, bicarbonato, copos plásticos).
+## Atividade prática
+${practical}
 
 ## Avaliação
-Avaliação formativa combinando: participação nas discussões, relatório breve do experimento em grupo, apresentação oral dos resultados e autoavaliação escrita. Critérios: clareza conceitual, uso de vocabulário científico, colaboração e argumentação.
+${assessment}
 
 ## Observações
-${context ? context.slice(0, 400) : "Adaptar linguagem, exemplos e nível de aprofundamento à realidade da turma; garantir segurança na atividade prática."}
+${context ? context.slice(0, 400) : "Adaptar linguagem e nível de aprofundamento à realidade da turma; garantir segurança na atividade prática."}
 `;
+
   const bncc = [
     { code: "EF09CI03", label: "Identificar modelos que descrevem a estrutura da matéria.", type: "BNCC" },
     { code: "EM13CNT301", label: "Construir questões, elaborar hipóteses e analisar fenômenos naturais.", type: "BNCC" },
     { code: "EM13CNT101", label: "Analisar fenômenos naturais e processos tecnológicos.", type: "BNCC" },
     { code: "EM13LGG703", label: "Utilizar tecnologias digitais de forma crítica e criativa.", type: "BNCC_DIGITAL" },
   ];
-  return { plan, bncc };
+
+  return {
+    objective,
+    methodology,
+    curricular_components: "Ciências da Natureza — Química",
+    contents_topics: contents,
+    competencies_codes: "CG2, CG5, CG7",
+    competencies_text: "Investigar fenômenos naturais e tecnológicos; argumentar com base em evidências; comunicar resultados de forma ética e responsável.",
+    skills_codes: bncc.map((b) => b.code).join(", "),
+    skills_text: "Reconhecer e classificar conceitos-chave do tópico; relacionar com fenômenos do cotidiano; registrar observações; comunicar oralmente e por escrito.",
+    descriptors_codes: "D1, D2, D3",
+    descriptors_text: "D1 — identifica conceitos; D2 — relaciona teoria e cotidiano; D3 — argumenta cientificamente.",
+    bncc_codes: bncc.map((b) => b.code).join(", "),
+    sequence,
+    practical_activity: practical,
+    assessment,
+    plan,
+    bncc,
+  };
 }
 
 function json(body: unknown, status = 200) {

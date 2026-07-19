@@ -1645,32 +1645,7 @@ export default function TopicoDetalhe() {
               </section>
             )}
 
-            {/* Aplicações e cotidiano — cartões com imagens */}
-            <section>
-              <div className="flex items-center gap-2 text-emerald-700 font-bold mb-3">
-                <FlaskConical size={18} /> Aplicações e cotidiano
-              </div>
-              <div className="grid sm:grid-cols-2 gap-3">
-                {c.examples.map((e, i) => (
-                  <div key={i} className="rounded-xl overflow-hidden border border-emerald-200 bg-emerald-50/50 flex flex-col">
-                    <div className="aspect-[16/10] bg-gradient-to-br from-emerald-100 to-emerald-200 relative overflow-hidden">
-                      <img
-                        src={imageForExample(e)}
-                        alt={`Exemplo cotidiano: ${e.slice(0, 60)}`}
-                        loading="lazy"
-                        className="w-full h-full object-cover"
-                        onError={(ev) => { (ev.target as HTMLImageElement).style.display = "none"; }}
-                      />
-                      <div className="absolute top-2 left-2 bg-white/90 text-emerald-700 text-[10px] font-bold px-2 py-0.5 rounded-full">
-                        Exemplo {i + 1}
-                      </div>
-                    </div>
-                    <div className="p-3 text-sm text-slate-700 leading-relaxed flex-1">{e}</div>
-                  </div>
-                ))}
-              </div>
-            </section>
-
+            {/* Aplicações e cotidiano — cartões com imagens (unificada) */}
             {(() => {
               const pack = funContent(classificationSource);
               const dailyLife = override?.daily_life?.length ? override.daily_life : pack.dailyLife;
@@ -1678,45 +1653,76 @@ export default function TopicoDetalhe() {
               const funFacts = override?.fun_facts?.length ? override.fun_facts : pack.funFacts;
               return (
                 <>
-                  <section className="rounded-xl p-4 bg-sky-50 border border-sky-200">
-                    <div className="flex items-center gap-2 text-sky-800 font-bold mb-2">
-                      <Home size={18} /> Aplicação no cotidiano
+                  <section>
+                    <div className="flex items-center gap-2 text-emerald-700 font-bold mb-3">
+                      <FlaskConical size={18} /> Aplicações no cotidiano
                     </div>
-                    <ul className="space-y-1.5 text-sm text-slate-700 list-disc pl-5">
-                      {dailyLife.map((t, i) => <li key={i}>{t}</li>)}
-                    </ul>
+                    <div className="grid sm:grid-cols-2 gap-3 mb-3">
+                      {c.examples.map((e, i) => (
+                        <div key={i} className="rounded-xl overflow-hidden border border-emerald-200 bg-emerald-50/50 flex flex-col">
+                          <div className="aspect-[16/10] bg-gradient-to-br from-emerald-100 to-emerald-200 relative overflow-hidden">
+                            <img
+                              src={imageForExample(e)}
+                              alt={`Exemplo cotidiano: ${e.slice(0, 60)}`}
+                              loading="lazy"
+                              className="w-full h-full object-cover"
+                              onError={(ev) => { (ev.target as HTMLImageElement).style.display = "none"; }}
+                            />
+                            <div className="absolute top-2 left-2 bg-white/90 text-emerald-700 text-[10px] font-bold px-2 py-0.5 rounded-full">
+                              Exemplo {i + 1}
+                            </div>
+                          </div>
+                          <div className="p-3 text-sm text-slate-700 leading-relaxed flex-1">{e}</div>
+                        </div>
+                      ))}
+                    </div>
+                    {dailyLife.length > 0 && (
+                      <div className="rounded-xl p-4 bg-sky-50 border border-sky-200">
+                        <div className="flex items-center gap-2 text-sky-800 font-bold mb-2 text-sm">
+                          <Home size={16} /> Mais exemplos práticos
+                        </div>
+                        <ul className="space-y-1.5 text-sm text-slate-700 list-disc pl-5">
+                          {dailyLife.map((t, i) => <li key={i}>{t}</li>)}
+                        </ul>
+                      </div>
+                    )}
                   </section>
 
+                  {/* Curiosidades (unificado: curiosidades + fatos engraçados) */}
                   <section className="rounded-xl p-4 bg-violet-50 border border-violet-200">
                     <div className="flex items-center gap-2 text-[#4C1D95] font-bold mb-2">
                       <Sparkles size={18} /> Curiosidades
                     </div>
-                    <ul className="space-y-1.5 text-sm text-slate-700 list-disc pl-5">
-                      {curiosities.map((t, i) => <li key={i}>{t}</li>)}
-                    </ul>
-                  </section>
-
-                  <section className="rounded-xl p-4 bg-amber-50 border border-amber-200">
-                    <div className="flex items-center gap-2 text-amber-800 font-bold mb-2">
-                      <Smile size={18} /> Fatos engraçados
-                    </div>
-                    <ul className="space-y-1.5 text-sm text-slate-700 list-disc pl-5">
-                      {funFacts.map((t, i) => <li key={i}>{t}</li>)}
-                    </ul>
+                    {curiosities.length > 0 && (
+                      <ul className="space-y-1.5 text-sm text-slate-700 list-disc pl-5 mb-3">
+                        {curiosities.map((t, i) => <li key={i}>{t}</li>)}
+                      </ul>
+                    )}
+                    {funFacts.length > 0 && (
+                      <>
+                        <div className="flex items-center gap-2 text-amber-800 font-semibold mt-2 mb-1 text-sm">
+                          <Smile size={14} /> Fatos divertidos
+                        </div>
+                        <ul className="space-y-1.5 text-sm text-slate-700 list-disc pl-5">
+                          {funFacts.map((t, i) => <li key={i}>{t}</li>)}
+                        </ul>
+                      </>
+                    )}
                   </section>
                 </>
               );
             })()}
 
-            {/* Erros comuns */}
+            {/* Erros comuns — alertas conceituais */}
             <section className="rounded-xl p-4 bg-red-50 border border-red-200">
               <div className="flex items-center gap-2 text-red-700 font-bold mb-2">
-                <AlertTriangle size={18} /> Erros comuns
+                <AlertTriangle size={18} /> Alertas: armadilhas conceituais
               </div>
               <ul className="space-y-1.5 text-sm text-slate-700 list-disc pl-5">
                 {c.pitfalls.map((p, i) => <li key={i}>{p}</li>)}
               </ul>
             </section>
+
 
             {/* Vídeo-aula (opcional) */}
             {override?.video_url && (
