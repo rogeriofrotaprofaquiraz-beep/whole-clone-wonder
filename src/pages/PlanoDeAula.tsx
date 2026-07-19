@@ -104,32 +104,57 @@ export default function PlanoDeAula() {
     if (!canGenerateAI) return toast.error("Informe Disciplina, Bimestre e Assunto");
     setBusy(true);
     try {
+      const turma = classes.find((c) => c.id === form.class_id);
+      const escola = schools.find((s) => s.id === form.school_id);
       const { data, error } = await supabase.functions.invoke("generate-topic-lesson-plan", {
         body: {
           topic: { title: form.title, description: form.contents_topics },
+          title: form.title,
           discipline: form.discipline,
           bimestre: form.bimestre,
+          lesson_date: form.lesson_date,
+          stage: (turma?.grade_year ?? 0) >= 10 ? "Ensino Médio" : "Ensino Fundamental",
+          grade_year: turma?.grade_year ?? null,
+          school: escola?.name ?? null,
+          class_name: turma?.name ?? null,
+          // TUDO que o professor digitou vai como contexto para a IA elaborar
+          user_inputs: {
+            contents_topics: form.contents_topics,
+            slides_material: form.slides_material,
+            bncc_codes: form.bncc_codes,
+            objective: form.objective,
+            methodology: form.methodology,
+            curricular_components: form.curricular_components,
+            competencies_codes: form.competencies_codes,
+            competencies_text: form.competencies_text,
+            skills_codes: form.skills_codes,
+            skills_text: form.skills_text,
+            descriptors_codes: form.descriptors_codes,
+            descriptors_text: form.descriptors_text,
+          },
         },
       });
       if (error || data?.error) return toast.error(data?.error ?? error?.message ?? "Falha na IA");
-      // fill fields when returned
+      // Preenche/expande todos os campos preservando o que já foi digitado como base
       setForm((f) => ({
         ...f,
-        objective: data?.objective ?? f.objective,
-        methodology: data?.methodology ?? f.methodology,
-        curricular_components: data?.curricular_components ?? f.curricular_components,
-        competencies_codes: data?.competencies_codes ?? f.competencies_codes,
-        competencies_text: data?.competencies_text ?? f.competencies_text,
-        skills_codes: data?.skills_codes ?? f.skills_codes,
-        skills_text: data?.skills_text ?? f.skills_text,
-        descriptors_codes: data?.descriptors_codes ?? f.descriptors_codes,
-        descriptors_text: data?.descriptors_text ?? f.descriptors_text,
-        bncc_codes: data?.bncc_codes ?? f.bncc_codes,
-        contents_topics: f.contents_topics || data?.contents_topics || "",
+        objective: data?.objective || f.objective,
+        methodology: data?.methodology || f.methodology,
+        curricular_components: data?.curricular_components || f.curricular_components,
+        competencies_codes: data?.competencies_codes || f.competencies_codes,
+        competencies_text: data?.competencies_text || f.competencies_text,
+        skills_codes: data?.skills_codes || f.skills_codes,
+        skills_text: data?.skills_text || f.skills_text,
+        descriptors_codes: data?.descriptors_codes || f.descriptors_codes,
+        descriptors_text: data?.descriptors_text || f.descriptors_text,
+        bncc_codes: data?.bncc_codes || f.bncc_codes,
+        contents_topics: data?.contents_topics || f.contents_topics,
+        slides_material: f.slides_material || data?.slides_material || "",
       }));
-      toast.success("Plano preenchido pela IA");
+      toast.success(data?.fallback ? "Plano gerado (modo offline)" : "Plano elaborado pela IA com base nos seus dados");
     } finally { setBusy(false); }
   };
+
 
   const generateActivities = async () => {
     if (!form.title.trim()) return toast.error("Informe o assunto");

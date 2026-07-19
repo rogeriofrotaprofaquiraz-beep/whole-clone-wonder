@@ -29,8 +29,6 @@ Deno.serve(async (req) => {
 
     const body = await req.json().catch(() => ({}));
 
-    // Aceita dois formatos: { title, lesson, course, stage, duration, context }
-    // OU { topic: { title, description }, discipline, bimestre, stage, duration }
     const topicObj = body.topic ?? {};
     const title = String(body.title ?? topicObj.title ?? "").trim();
     const lesson = String(body.lesson ?? "").trim();
@@ -38,54 +36,80 @@ Deno.serve(async (req) => {
     const stage = String(body.stage ?? "Ensino Médio").trim();
     const duration = String(body.duration ?? "50 minutos").trim();
     const bimestre = String(body.bimestre ?? "").trim();
+    const gradeYear = body.grade_year ?? null;
+    const school = String(body.school ?? "").trim();
+    const className = String(body.class_name ?? "").trim();
+    const lessonDate = String(body.lesson_date ?? "").trim();
     const context = String(body.context ?? topicObj.description ?? "").slice(0, 4000);
+    const ui = body.user_inputs ?? {};
     if (!title) return json({ error: "Assunto/título obrigatório" }, 400);
 
-    // Fallback imediato quando não há chave configurada
+    // Monta bloco com TUDO que o professor já digitou — a IA deve elaborar EM CIMA disso
+    const userNotes = Object.entries({
+      "Conteúdos e tópicos": ui.contents_topics,
+      "Slides / Material": ui.slides_material,
+      "Códigos BNCC informados": ui.bncc_codes,
+      "Objetivo (rascunho)": ui.objective,
+      "Metodologia (rascunho)": ui.methodology,
+      "Componentes curriculares": ui.curricular_components,
+      "Competências (códigos)": ui.competencies_codes,
+      "Competências (texto)": ui.competencies_text,
+      "Habilidades (códigos)": ui.skills_codes,
+      "Habilidades (texto)": ui.skills_text,
+      "Descritores (códigos)": ui.descriptors_codes,
+      "Descritores (texto)": ui.descriptors_text,
+    })
+      .filter(([, v]) => typeof v === "string" && v.trim().length > 0)
+      .map(([k, v]) => `- **${k}:** ${String(v).trim()}`)
+      .join("\n");
+
     if (!lovableKey) {
-      const fb = buildFallback({ title, lesson, course, stage, duration, context, bimestre });
+      const fb = buildFallback({ title, lesson, course, stage, duration, context, bimestre, ui });
       return json({ ...fb, fallback: true, reason: "no_key" });
     }
 
     const sys = `Você é especialista em elaboração de planos de aula modernos alinhados à BNCC e à BNCC Computação/Digital do Brasil. Escreva em português com clareza pedagógica.
 REGRAS OBRIGATÓRIAS:
-(1) Objetivo ESPECÍFICO — liste os conceitos exatos a serem trabalhados (ex.: matéria, substância, mistura, propriedades físicas e químicas). NUNCA use fórmulas genéricas como "compreender os principais conceitos".
-(2) Sequência didática ATIVA em blocos curtos: Abertura ~5 min (pergunta disparadora), Desenvolvimento ~20 min (exposição dialogada em blocos ≤ 7 min intercalados com problematização), Atividade prática em grupo ~15 min, Fechamento ≥ 15 min (síntese, exercício, autoavaliação). Nenhum bloco expositivo contínuo acima de 10 min.
-(3) Atividade prática DETALHADA — descreva materiais (preferir do cotidiano: gelo, sal, vinagre, bicarbonato, etc.), passos e cuidados de segurança.
-(4) Avaliação DIVERSIFICADA — combine participação, produção escrita curta, apresentação oral em grupo E autoavaliação.
-(5) PROIBIDO repetir o título do tópico ou frases como "Introdução à Química Conceito e definição de..." — sintetize em uma única frase objetiva.
-(6) Códigos BNCC oficiais reais (Ciências da Natureza, Fundamental Anos Finais e/ou Ensino Médio) e BNCC Computação/Digital quando aplicável.
+(1) USE COMO BASE tudo o que o professor já digitou (bloco "DADOS INFORMADOS PELO PROFESSOR"). Preserve termos, ênfases e códigos que ele indicou; expanda, refine e complete de forma coerente. NUNCA descarte informação fornecida.
+(2) Se um campo veio vazio, ELABORE do zero com qualidade. Se veio preenchido, REFINE mantendo a intenção do professor.
+(3) Objetivo ESPECÍFICO — liste os conceitos exatos a serem trabalhados. NUNCA "compreender os principais conceitos".
+(4) Sequência didática ATIVA em blocos curtos: Abertura ~5 min, Desenvolvimento ~20 min (blocos ≤ 7 min), Atividade prática em grupo ~15 min, Fechamento ≥ 15 min. Nenhum bloco expositivo > 10 min.
+(5) Atividade prática DETALHADA — materiais do cotidiano, passos e segurança.
+(6) Avaliação DIVERSIFICADA — participação + produção escrita + apresentação oral + autoavaliação.
+(7) PROIBIDO repetir o título do tópico como frase de abertura.
+(8) Códigos BNCC oficiais reais e BNCC Computação/Digital quando aplicável.
 Responda APENAS com JSON válido.`;
 
-    const userPrompt = `Elabore um PLANO DE AULA MODERNO e refinado sobre "${title}"${lesson ? ` (dentro de "${lesson}")` : ""}${course ? ` — disciplina: ${course}` : ""}, para ${stage}, duração ${duration}${bimestre ? `, ${bimestre}` : ""}.
+    const userPrompt = `Elabore/refine um PLANO DE AULA MODERNO sobre "${title}"${lesson ? ` (dentro de "${lesson}")` : ""}${course ? ` — disciplina: ${course}` : ""}, para ${stage}${gradeYear ? ` (${gradeYear}º ano)` : ""}, duração ${duration}${bimestre ? `, ${bimestre}` : ""}${lessonDate ? `, data ${lessonDate}` : ""}${school ? `, escola ${school}` : ""}${className ? `, turma ${className}` : ""}.
 
-CONTEXTO:
+DADOS INFORMADOS PELO PROFESSOR (use como base — expanda e refine, não descarte):
+${userNotes || "(nenhum dado adicional foi informado — elabore do zero)"}
+
+CONTEXTO ADICIONAL:
 """
 ${context || title}
 """
 
-Retorne JSON EXATO com TODOS os campos abaixo (strings em português, sem markdown fora dos campos de texto):
+Retorne JSON EXATO com TODOS os campos (strings em português):
 {
-  "objective": "Objetivo específico com os conceitos exatos a trabalhar",
-  "methodology": "Metodologia ativa, em blocos curtos; descrever brevemente as estratégias",
+  "objective": "Objetivo específico com conceitos exatos",
+  "methodology": "Metodologia ativa em blocos curtos",
   "curricular_components": "Componentes curriculares mobilizados",
-  "contents_topics": "Tópicos e conteúdos que serão abordados, em lista objetiva",
-  "competencies_codes": "Códigos das competências gerais (ex.: CG2, CG5, CG7)",
-  "competencies_text": "Descrição das competências desenvolvidas",
-  "skills_codes": "Códigos de habilidades BNCC (ex.: EF09CI03, EM13CNT301)",
-  "skills_text": "Descrição das habilidades trabalhadas",
-  "descriptors_codes": "Códigos de descritores (ex.: D1, D2)",
-  "descriptors_text": "Descrição dos descritores de avaliação",
-  "bncc_codes": "Lista textual dos códigos BNCC principais separados por vírgula",
-  "sequence": "Sequência didática detalhada: Abertura (5 min)... Desenvolvimento (20 min)... Atividade (15 min)... Fechamento (15 min)...",
-  "practical_activity": "Descrição concreta da atividade prática com materiais, passos e segurança",
-  "assessment": "Avaliação diversificada (participação, relatório breve, apresentação oral e autoavaliação)",
-  "plan": "Plano de aula completo em Markdown, reunindo todas as seções acima com títulos ## e sem repetir o título do tópico",
-  "bncc": [
-    { "code": "EF09CI03", "label": "Descrição oficial resumida", "type": "BNCC" },
-    { "code": "EM13LGG703", "label": "Descrição", "type": "BNCC_DIGITAL" }
-  ]
+  "contents_topics": "Tópicos e conteúdos em lista objetiva",
+  "competencies_codes": "Códigos das competências gerais",
+  "competencies_text": "Descrição das competências",
+  "skills_codes": "Códigos de habilidades BNCC",
+  "skills_text": "Descrição das habilidades",
+  "descriptors_codes": "Códigos de descritores",
+  "descriptors_text": "Descrição dos descritores",
+  "bncc_codes": "Lista textual dos códigos BNCC separados por vírgula",
+  "sequence": "Sequência didática detalhada com tempos",
+  "practical_activity": "Atividade prática com materiais, passos e segurança",
+  "assessment": "Avaliação diversificada",
+  "plan": "Plano completo em Markdown reunindo todas as seções (títulos ##)",
+  "bncc": [ { "code": "EF09CI03", "label": "Descrição oficial", "type": "BNCC" } ]
 }`;
+
 
     const aiResp = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
