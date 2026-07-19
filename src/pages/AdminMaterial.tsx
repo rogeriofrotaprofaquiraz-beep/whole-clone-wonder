@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import { areaMeta } from "@/lib/aula";
+import { parseBulkQuestions } from "@/lib/parseBulkQuestions";
 
 type Course = {
   id: string; title: string; description: string | null;
