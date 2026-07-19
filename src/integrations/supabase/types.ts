@@ -1550,6 +1550,7 @@ export type Database = {
           pitfalls: Json | null
           principles: Json | null
           refs: Json | null
+          section_images: Json
           simple: string | null
           slug: string
           title: string | null
@@ -1576,6 +1577,7 @@ export type Database = {
           pitfalls?: Json | null
           principles?: Json | null
           refs?: Json | null
+          section_images?: Json
           simple?: string | null
           slug: string
           title?: string | null
@@ -1602,6 +1604,7 @@ export type Database = {
           pitfalls?: Json | null
           principles?: Json | null
           refs?: Json | null
+          section_images?: Json
           simple?: string | null
           slug?: string
           title?: string | null
