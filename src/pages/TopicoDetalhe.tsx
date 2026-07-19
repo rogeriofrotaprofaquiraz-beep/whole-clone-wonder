@@ -1750,6 +1750,56 @@ export default function TopicoDetalhe() {
             )}
 
 
+            {/* Plano de aula (admin gera) */}
+            {(override?.lesson_plan || (override?.bncc_codes && override.bncc_codes.length > 0) || isAdmin) && (
+              <section className="rounded-xl p-4 bg-emerald-50 border border-emerald-200">
+                <div className="flex items-center justify-between gap-2 flex-wrap mb-3">
+                  <div className="flex items-center gap-2 text-emerald-800 font-bold">
+                    <FileText size={18} /> Plano de aula
+                  </div>
+                  {isAdmin && (
+                    <Button size="sm" onClick={generateLessonPlan} disabled={generatingPlan}
+                      className="bg-emerald-600 hover:bg-emerald-700">
+                      <Wand2 size={14} className="mr-1" />
+                      {generatingPlan ? "Gerando..." : override?.lesson_plan ? "Regenerar com IA" : "Gerar com IA"}
+                    </Button>
+                  )}
+                </div>
+                {override?.lesson_plan ? (
+                  <pre className="whitespace-pre-wrap font-sans text-sm text-slate-800 leading-relaxed">
+                    {override.lesson_plan}
+                  </pre>
+                ) : (
+                  <p className="text-xs text-emerald-800/80">
+                    {isAdmin
+                      ? "Nenhum plano publicado ainda. Clique em Gerar com IA para criar um plano moderno alinhado à BNCC."
+                      : "Plano de aula ainda não publicado para este tópico."}
+                  </p>
+                )}
+
+                {override?.bncc_codes && override.bncc_codes.length > 0 && (
+                  <div className="mt-4 pt-3 border-t border-emerald-200">
+                    <div className="flex items-center gap-2 text-emerald-800 font-bold mb-2 text-sm">
+                      <Tag size={14} /> Códigos BNCC / BNCC Digital
+                    </div>
+                    <ul className="grid sm:grid-cols-2 gap-2">
+                      {override.bncc_codes.map((b, i) => (
+                        <li key={i} className="flex items-start gap-2 text-xs bg-white border border-emerald-200 rounded-md px-2 py-1.5">
+                          <span className={`shrink-0 font-mono font-bold px-1.5 py-0.5 rounded ${b.type === "BNCC_DIGITAL" ? "bg-sky-100 text-sky-800" : "bg-emerald-100 text-emerald-800"}`}>
+                            {b.code}
+                          </span>
+                          <span className="text-slate-700">{b.label}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <p className="text-[10px] text-slate-500 mt-2">
+                      Legenda: <span className="font-mono text-emerald-700">verde</span> = BNCC · <span className="font-mono text-sky-700">azul</span> = BNCC Digital / Computação
+                    </p>
+                  </div>
+                )}
+              </section>
+            )}
+
             {/* Referências bibliográficas */}
             <section className="rounded-xl p-4 bg-slate-50 border border-slate-200">
               <div className="flex items-center gap-2 text-slate-700 font-bold mb-2">
