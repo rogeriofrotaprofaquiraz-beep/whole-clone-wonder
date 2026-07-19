@@ -1504,6 +1504,7 @@ type Material = { name: string; url: string };
 
 export default function TopicoDetalhe() {
   const { slug } = useParams();
+  const navigate = useNavigate();
   const [params] = useSearchParams();
   const title = params.get("t") || (slug ?? "Tópico").replace(/-/g, " ");
   const lesson = params.get("lesson") || "";
