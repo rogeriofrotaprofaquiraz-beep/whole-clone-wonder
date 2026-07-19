@@ -1849,7 +1849,16 @@ export default function TopicoDetalhe() {
               <div className="flex items-center gap-2 text-[#4C1D95] font-bold mb-2">
                 <BookOpen size={18} /> Ideia principal (fundamental)
               </div>
-              <p className="text-slate-700 leading-relaxed">{c.simple}</p>
+              <div className="grid md:grid-cols-[200px,1fr] gap-4 items-start">
+                <img
+                  src={topicImage(`${title} conceito`, 400, 300)}
+                  alt={`Ilustração — ${title}`}
+                  loading="lazy"
+                  className="w-full h-32 md:h-full object-cover rounded-lg border border-slate-200"
+                  onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
+                />
+                <p className="text-slate-700 leading-relaxed">{c.simple}</p>
+              </div>
             </section>
 
             {/* Definição formal */}
@@ -1857,7 +1866,16 @@ export default function TopicoDetalhe() {
               <div className="flex items-center gap-2 text-[#4C1D95] font-bold mb-2">
                 <Atom size={18} /> Definição formal (ensino médio / superior)
               </div>
-              <p className="text-slate-700 leading-relaxed">{c.formal}</p>
+              <div className="grid md:grid-cols-[1fr,200px] gap-4 items-start">
+                <p className="text-slate-700 leading-relaxed">{c.formal}</p>
+                <img
+                  src={topicImage(`${title} definicao formal`, 400, 300)}
+                  alt={`Definição de ${title}`}
+                  loading="lazy"
+                  className="w-full h-32 md:h-full object-cover rounded-lg border border-slate-200 order-first md:order-none"
+                  onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
+                />
+              </div>
             </section>
 
             {/* Conceitos-chave — cartões com explicação + imagem contextual */}
