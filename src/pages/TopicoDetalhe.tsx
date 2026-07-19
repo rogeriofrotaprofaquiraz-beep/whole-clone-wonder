@@ -1866,12 +1866,13 @@ export default function TopicoDetalhe() {
                 <BookOpen size={18} /> Ideia principal (fundamental)
               </div>
               <div className="grid md:grid-cols-[200px,1fr] gap-4 items-start">
-                <img
-                  src={topicImage(`${title} conceito`, 400, 300)}
+                <EditableImage
+                  src={sectionImg("simple") || topicImage(`${title} conceito`, 400, 300)}
                   alt={`Ilustração — ${title}`}
-                  loading="lazy"
-                  className="w-full h-32 md:h-full object-cover rounded-lg border border-slate-200"
-                  onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
+                  className="w-full h-32 md:h-40 rounded-lg border border-slate-200 overflow-hidden"
+                  isAdmin={isAdmin} slug={slug!} title={title} lesson={lesson}
+                  imageKey="simple" currentOverride={sectionImg("simple")}
+                  onChange={(u) => applySectionImage("simple", u)}
                 />
                 <p className="text-slate-700 leading-relaxed">{c.simple}</p>
               </div>
