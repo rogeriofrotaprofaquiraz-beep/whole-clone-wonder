@@ -16,6 +16,22 @@ import LockedQuiz from "@/components/LockedQuiz";
 
 type BnccCode = { code: string; label: string; type: "BNCC" | "BNCC_DIGITAL" };
 
+/* Imagem contextual baseada em palavras-chave do texto (Loremflickr) */
+const IMG_STOP = new Set(["de","da","do","dos","das","a","o","os","as","e","é","um","uma","que","por","para","com","em","no","na","nos","nas","ao","à","às","se","ou","the","of","and","to","in","on","um","uns","umas","sem","sob","sobre","como","mais","menos","muito","pouco","este","esta","isso","essa","esse","seus","suas","sua","seu","entre"]);
+function imageKeywords(text: string): string {
+  const words = (text || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9\s]/g, " ").split(/\s+/).filter((w) => w.length > 3 && !IMG_STOP.has(w));
+  const pick = words.slice(0, 2).join(",");
+  return (pick || "chemistry") + ",chemistry,science";
+}
+function topicImage(text: string, w = 480, h = 260): string {
+  let h1 = 0;
+  const s = text || "chem";
+  for (let i = 0; i < s.length; i++) h1 = ((h1 << 5) - h1 + s.charCodeAt(i)) | 0;
+  const lock = Math.abs(h1) % 100000;
+  return `https://loremflickr.com/${w}/${h}/${encodeURIComponent(imageKeywords(s))}?lock=${lock}`;
+}
+
 /* Conteúdo extra por categoria: aplicação no cotidiano, curiosidades e fatos engraçados */
 type FunPack = { dailyLife: string[]; curiosities: string[]; funFacts: string[] };
 function funContent(title: string): FunPack {
@@ -1833,7 +1849,16 @@ export default function TopicoDetalhe() {
               <div className="flex items-center gap-2 text-[#4C1D95] font-bold mb-2">
                 <BookOpen size={18} /> Ideia principal (fundamental)
               </div>
-              <p className="text-slate-700 leading-relaxed">{c.simple}</p>
+              <div className="grid md:grid-cols-[200px,1fr] gap-4 items-start">
+                <img
+                  src={topicImage(`${title} conceito`, 400, 300)}
+                  alt={`Ilustração — ${title}`}
+                  loading="lazy"
+                  className="w-full h-32 md:h-full object-cover rounded-lg border border-slate-200"
+                  onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
+                />
+                <p className="text-slate-700 leading-relaxed">{c.simple}</p>
+              </div>
             </section>
 
             {/* Definição formal */}
@@ -1841,25 +1866,43 @@ export default function TopicoDetalhe() {
               <div className="flex items-center gap-2 text-[#4C1D95] font-bold mb-2">
                 <Atom size={18} /> Definição formal (ensino médio / superior)
               </div>
-              <p className="text-slate-700 leading-relaxed">{c.formal}</p>
+              <div className="grid md:grid-cols-[1fr,200px] gap-4 items-start">
+                <p className="text-slate-700 leading-relaxed">{c.formal}</p>
+                <img
+                  src={topicImage(`${title} definicao formal`, 400, 300)}
+                  alt={`Definição de ${title}`}
+                  loading="lazy"
+                  className="w-full h-32 md:h-full object-cover rounded-lg border border-slate-200 order-first md:order-none"
+                  onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
+                />
+              </div>
             </section>
 
-            {/* Conceitos-chave — cartões com explicação */}
+            {/* Conceitos-chave — cartões com explicação + imagem contextual */}
             <section>
               <div className="flex items-center gap-2 text-[#4C1D95] font-bold mb-3">
                 <Lightbulb size={18} /> Conceitos-chave (com explicação)
               </div>
               <div className="grid sm:grid-cols-2 gap-3">
                 {c.key.map((k, i) => (
-                  <div key={i} className="rounded-lg border border-violet-200 bg-violet-50/60 p-3">
-                    <div className="text-sm font-bold text-[#4C1D95] mb-1">{k}</div>
-                    <div className="text-xs text-slate-700 leading-relaxed">{explainKey(k)}</div>
+                  <div key={i} className="rounded-lg border border-violet-200 bg-violet-50/60 overflow-hidden">
+                    <img
+                      src={topicImage(`${title} ${k}`, 480, 200)}
+                      alt={`Ilustração de ${k}`}
+                      loading="lazy"
+                      className="w-full h-28 object-cover"
+                      onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
+                    />
+                    <div className="p-3">
+                      <div className="text-sm font-bold text-[#4C1D95] mb-1">{k}</div>
+                      <div className="text-xs text-slate-700 leading-relaxed">{explainKey(k)}</div>
+                    </div>
                   </div>
                 ))}
               </div>
             </section>
 
-            {/* Princípios — cabeçalho destacado + explicação */}
+            {/* Princípios — cabeçalho destacado + explicação + imagem */}
             <section>
               <div className="flex items-center gap-2 text-[#4C1D95] font-bold mb-3">
                 <Target size={18} /> Princípios e leis fundamentais
@@ -1873,6 +1916,13 @@ export default function TopicoDetalhe() {
                       <div className="w-7 h-7 shrink-0 rounded-full bg-[#4C1D95] text-white text-xs font-bold flex items-center justify-center">
                         {i + 1}
                       </div>
+                      <img
+                        src={topicImage(`${title} ${head}`, 240, 240)}
+                        alt={`Ilustração de ${head}`}
+                        loading="lazy"
+                        className="w-20 h-20 rounded-md object-cover border border-slate-200 hidden sm:block"
+                        onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
+                      />
                       <div className="flex-1">
                         <div className="font-bold text-sm text-slate-900">{head}</div>
                         {rest && <div className="text-xs text-slate-700 mt-0.5 leading-relaxed">{rest}</div>}
@@ -1932,8 +1982,16 @@ export default function TopicoDetalhe() {
                     <div className="flex items-center gap-2 text-emerald-800 font-bold mb-2">
                       <FlaskConical size={18} /> Aplicações no cotidiano
                     </div>
-                    <ul className="space-y-1.5 text-sm text-slate-700 list-disc pl-5">
-                      {dailyLife.map((t, i) => <li key={i}>{t}</li>)}
+                    <ul className="space-y-3 text-sm text-slate-700">
+                      {dailyLife.map((t, i) => (
+                        <li key={i} className="flex gap-3">
+                          <img src={topicImage(`${title} ${t}`, 180, 180)} alt=""
+                            loading="lazy"
+                            className="w-14 h-14 rounded-md object-cover border border-emerald-200 shrink-0"
+                            onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }} />
+                          <span className="flex-1 leading-relaxed">{t}</span>
+                        </li>
+                      ))}
                     </ul>
                   </section>
 
@@ -1941,8 +1999,16 @@ export default function TopicoDetalhe() {
                     <div className="flex items-center gap-2 text-[#4C1D95] font-bold mb-2">
                       <Sparkles size={18} /> Curiosidades
                     </div>
-                    <ul className="space-y-1.5 text-sm text-slate-700 list-disc pl-5">
-                      {allCuriosities.map((t, i) => <li key={i}>{t}</li>)}
+                    <ul className="space-y-3 text-sm text-slate-700">
+                      {allCuriosities.map((t, i) => (
+                        <li key={i} className="flex gap-3">
+                          <img src={topicImage(`${title} ${t}`, 180, 180)} alt=""
+                            loading="lazy"
+                            className="w-14 h-14 rounded-md object-cover border border-violet-200 shrink-0"
+                            onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }} />
+                          <span className="flex-1 leading-relaxed">{t}</span>
+                        </li>
+                      ))}
                     </ul>
                   </section>
                 </>
