@@ -1589,6 +1589,7 @@ export default function TopicoDetalhe() {
           fun_facts: ((data as any).fun_facts as string[]) ?? undefined,
           lesson_plan: (data as any).lesson_plan ?? undefined,
           bncc_codes: ((data as any).bncc_codes as BnccCode[]) ?? undefined,
+          section_images: ((data as any).section_images as Record<string,string>) ?? {},
         });
       }
     })();
