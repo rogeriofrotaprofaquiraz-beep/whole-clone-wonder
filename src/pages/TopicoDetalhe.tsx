@@ -1261,6 +1261,245 @@ function hash(s: string) {
   let h = 0; for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) | 0; return h;
 }
 
+/**
+ * Detecta o "aspecto" do subtópico (Conceito, Breve história, Fundamentos,
+ * Classificação, Propriedades, Cotidiano, Aplicações, Curiosidade, Exercícios)
+ * a partir do título e reescreve o conteúdo para que cada botão do capítulo
+ * não mostre o mesmo texto genérico.
+ */
+type Aspect = "conceito" | "historia" | "fundamentos" | "classificacao" | "propriedades" | "cotidiano" | "aplicacoes" | "curiosidade" | "exercicios" | null;
+
+function detectAspect(title: string): Aspect {
+  const t = title.toLowerCase();
+  if (/(conceito|defini[cç][aã]o|introdu[cç][aã]o|o que [eé])/.test(t)) return "conceito";
+  if (/(breve hist[oó]ria|hist[oó]ria|linha do tempo|origem|cronolog)/.test(t)) return "historia";
+  if (/(fundamentos? te[oó]ricos?|teoria|princ[ií]pios? fundament|leis fundament)/.test(t)) return "fundamentos";
+  if (/(classifica[cç][aã]o|principais tipos|tipos de|categorias)/.test(t)) return "classificacao";
+  if (/(propriedades? e caracter|caracter[ií]sticas|propriedades)/.test(t)) return "propriedades";
+  if (/(qu[ií]mica do cotidiano|no cotidiano|dia a dia|no dia-a-dia)/.test(t)) return "cotidiano";
+  if (/(aplica[cç][oõ]es? pr[aá]ticas?|aplica[cç][oõ]es? industri|na ind[uú]stria|uso industrial)/.test(t)) return "aplicacoes";
+  if (/(curiosidade|voc[eê] sabia|fatos? interessantes?|fatos? engra[cç]ados?)/.test(t)) return "curiosidade";
+  if (/(exerc[ií]cios? resolvidos|quest[oõ]es de fixa|exerc[ií]cios de fixa|revis[aã]o|questoes|questões)/.test(t)) return "exercicios";
+  return null;
+}
+
+function applyAspect(base: Section, title: string, lesson: string): Section {
+  const aspect = detectAspect(title);
+  if (!aspect) return base;
+  const tema = lesson || title.replace(/^conceito e defini[cç][aã]o de\s+/i, "").trim() || "o tema";
+  const M = base; // shortcut para conteúdos "mãe" gerados pela categoria química
+
+  switch (aspect) {
+    case "conceito":
+      return {
+        ...M,
+        simple: `**O que é ${tema}?** ${M.simple} Aqui a ideia é criar uma imagem mental clara antes de entrar em fórmulas ou classificações.`,
+        formal: `**Definição formal.** ${M.formal} A conceituação delimita o objeto de estudo, os termos técnicos aceitos pela comunidade científica e as fronteiras do campo em relação a outras áreas correlatas.`,
+        key: ["Definição", "Objeto de estudo", "Termos técnicos", ...(M.key || []).slice(0, 4)],
+        principles: [
+          `${tema} tem uma definição operacional (o que faz) e uma definição teórica (o que é).`,
+          "Todo conceito químico precisa distinguir o nível macroscópico do microscópico.",
+          "A linguagem científica exige precisão: substância ≠ material ≠ mistura.",
+        ],
+        examples: [
+          `Definir ${tema} evita confusão com termos do senso comum (ex.: “natural” não significa “sem química”).`,
+          "A boa definição permite comunicar resultados de experimentos sem ambiguidade.",
+        ],
+        exercises: [
+          `Escreva, em UMA frase, sua definição de ${tema}.`,
+          `Cite três palavras-chave que você associa a ${tema} e justifique.`,
+          `Explique a diferença entre a visão do senso comum e a visão científica de ${tema}.`,
+        ],
+      };
+    case "historia":
+      return {
+        ...M,
+        simple: `**Como surgiu ${tema}?** A história ajuda a entender por que os conceitos atuais são como são. Muitas ideias foram substituídas quando novas evidências apareceram.`,
+        formal: `**Linha do tempo.** O desenvolvimento histórico de ${tema} passa da alquimia (antes do séc. XVII) → Lavoisier e a Lei da Conservação da Massa (1789) → Dalton e a teoria atômica (1808) → Mendeleev e a tabela periódica (1869) → modelos atômicos modernos (séc. XX) → química verde e materiais avançados (séc. XXI).`,
+        key: ["Alquimia", "Lavoisier (1789)", "Dalton (1808)", "Mendeleev (1869)", "Séc. XX — modelos atômicos", "Química contemporânea"],
+        principles: [
+          "A ciência é cumulativa: modelos antigos são refinados, não simplesmente descartados.",
+          "Cada descoberta depende do avanço técnico e instrumental da época.",
+          "Contexto social e econômico influencia o rumo das pesquisas.",
+        ],
+        formulas: [],
+        examples: [
+          "Lavoisier usou balanças de precisão para provar a conservação da massa.",
+          "Marie Curie (1867–1934) — descobriu polônio e rádio, dois Prêmios Nobel.",
+          "A química verde (anos 1990) é resposta ao impacto ambiental da indústria.",
+        ],
+        pitfalls: [
+          "Achar que a ciência avança em linha reta — há disputas, erros e revisões.",
+          "Reduzir a história a “nomes e datas” e ignorar as ideias por trás.",
+        ],
+        exercises: [
+          `Monte uma linha do tempo com 5 marcos importantes para ${tema}.`,
+          "Explique por que a Lei de Lavoisier foi um marco metodológico.",
+          "Pesquise uma cientista brasileira e descreva sua contribuição.",
+        ],
+      };
+    case "fundamentos":
+      return {
+        ...M,
+        simple: `**Fundamentos teóricos.** São as ideias e leis que sustentam ${tema}. Sem esses pilares, não dá para prever resultados nem explicar experimentos.`,
+        formal: `**Base teórica de ${tema}.** ${M.formal} O corpo teórico se organiza em: (1) postulados (afirmações aceitas como ponto de partida), (2) leis (regularidades observadas), (3) modelos (representações da realidade) e (4) teorias (explicações amplas e testáveis).`,
+        principles: M.principles,
+        examples: [
+          "Lei da Conservação da Massa (Lavoisier) — base de toda estequiometria.",
+          "Lei das Proporções Definidas (Proust) — composição fixa das substâncias.",
+          "Teoria atômica moderna — modelo explicativo unificador.",
+        ],
+        exercises: [
+          `Diferencie lei, modelo e teoria dentro de ${tema}.`,
+          "Escolha uma lei e cite um experimento simples que a confirme.",
+          "Explique por que uma teoria pode ser refutada por uma única evidência contrária.",
+        ],
+      };
+    case "classificacao":
+      return {
+        ...M,
+        simple: `**Classificação e principais tipos.** Organizar em categorias facilita estudar ${tema}: cada grupo compartilha propriedades e comportamento parecidos.`,
+        formal: `**Critérios de classificação.** Em ${tema}, os tipos são separados por: composição, comportamento em reações, estado físico, propriedades elétricas/térmicas e função química. A classificação é uma ferramenta — não um fim em si — e evolui com novas evidências.`,
+        key: ["Critérios de classificação", "Categorias principais", "Exceções", "Fronteiras entre grupos"],
+        principles: [
+          "Toda classificação parte de um critério explícito.",
+          "Existem casos-limite que dificultam encaixar em uma única categoria.",
+          "Reclassificar é comum quando surgem novas técnicas de medida.",
+        ],
+        examples: [
+          "Substâncias puras × misturas (critério: composição).",
+          "Metais × não metais × semimetais (critério: propriedades elétricas).",
+          "Ácidos × bases × sais × óxidos (critério: função química).",
+        ],
+        exercises: [
+          `Proponha dois critérios diferentes para classificar exemplos de ${tema}.`,
+          "Dê um exemplo de item difícil de classificar e explique por quê.",
+          "Monte uma tabela comparando três categorias com 3 propriedades cada.",
+        ],
+      };
+    case "propriedades":
+      return {
+        ...M,
+        simple: `**Propriedades e características.** São qualidades que ajudam a identificar e diferenciar exemplos de ${tema} — cor, cheiro, ponto de fusão, condutividade, reatividade...`,
+        formal: `**Propriedades físicas × químicas.** As propriedades físicas (densidade, PF, PE, solubilidade, condutividade) são observadas sem alterar a composição. As propriedades químicas (reatividade com O₂, ácidos, água) só se manifestam durante uma transformação química. Propriedades intensivas independem da quantidade; extensivas dependem.`,
+        key: ["Físicas × químicas", "Intensivas × extensivas", "Ponto de fusão / ebulição", "Densidade", "Solubilidade", "Reatividade"],
+        principles: [
+          "Propriedades intensivas (densidade, PF, PE) permitem identificar substâncias.",
+          "Propriedades extensivas (massa, volume) dependem da quantidade.",
+          "Toda medida vem com uma incerteza — precisa ser reportada.",
+        ],
+        formulas: [
+          { expr: "d = m / V", desc: "Densidade — massa por unidade de volume (g/cm³)." },
+          { expr: "PE(H₂O) = 100 °C a 1 atm", desc: "Ponto de ebulição depende da pressão." },
+        ],
+        examples: [
+          "Água tem d ≈ 1,00 g/cm³ a 4 °C; álcool ≈ 0,79 g/cm³.",
+          "Ouro é reconhecido pela densidade (19,3 g/cm³) e cor característica.",
+          "Ferro enferruja (propriedade química); ouro não (propriedade química).",
+        ],
+        exercises: [
+          `Liste 5 propriedades que ajudariam a identificar exemplos de ${tema}.`,
+          "Calcule a densidade de um objeto de 250 g que ocupa 100 cm³.",
+          "Classifique cada propriedade como física ou química: cor, inflamabilidade, PF, reatividade com HCl.",
+        ],
+      };
+    case "cotidiano":
+      return {
+        ...M,
+        simple: `**${tema} no seu dia a dia.** Cozinha, banheiro, farmácia, jardim, celular — em cada canto da casa há exemplos práticos de ${tema}.`,
+        formal: `**Química do cotidiano.** ${tema} explica fenômenos rotineiros: por que o pão cresce (fermentação — CO₂), por que o sabão limpa (micelas), por que a maçã escurece (oxidação enzimática), por que o vinagre desincrusta (ação ácida sobre carbonatos). A ciência ganha significado quando conecta teoria e vida real.`,
+        key: ["Cozinha", "Higiene e limpeza", "Alimentos e conservação", "Saúde e medicamentos", "Ambiente"],
+        principles: [
+          "Todo produto que você usa passou por processos químicos.",
+          "“Natural” não é sinônimo de “seguro”; “sintético” não é sinônimo de “tóxico”.",
+          "Rótulos e bulas trazem informação química — vale a pena ler.",
+        ],
+        examples: [
+          "Bicarbonato + vinagre → efervescência (reação ácido-base gerando CO₂).",
+          "Sabão em pó tem tensoativos que emulsionam gordura em água.",
+          "Aspirina (ácido acetilsalicílico) atua inibindo enzimas COX.",
+          "Panela de pressão eleva o ponto de ebulição da água (~120 °C).",
+        ],
+        exercises: [
+          `Escolha 3 produtos da sua casa e identifique onde ${tema} está presente.`,
+          "Leia o rótulo de um alimento e classifique cada aditivo.",
+          "Explique quimicamente por que geladeira conserva alimentos.",
+        ],
+      };
+    case "aplicacoes":
+      return {
+        ...M,
+        simple: `**Aplicações práticas e industriais.** ${tema} não fica só no livro — vira remédio, combustível, plástico, adubo, tinta, semicondutor e muito mais.`,
+        formal: `**Impacto industrial.** ${tema} sustenta setores estratégicos: petroquímico (combustíveis, polímeros), farmacêutico (fármacos, vacinas), agroquímico (fertilizantes, defensivos), siderúrgico (metais), eletrônico (semicondutores, baterias), alimentício (conservação, aditivos) e ambiental (tratamento de água e resíduos).`,
+        key: ["Petroquímica", "Farmacêutica", "Agroquímica", "Materiais", "Energia", "Ambiental"],
+        principles: [
+          "Escala industrial exige otimização de rendimento, custo e segurança.",
+          "Química verde busca processos com menos resíduos e reagentes tóxicos.",
+          "Toda aplicação industrial tem impacto econômico, social e ambiental.",
+        ],
+        examples: [
+          "Haber-Bosch (N₂ + H₂ → NH₃) — produção mundial de fertilizantes.",
+          "Craqueamento do petróleo — origem de gasolina, plásticos e solventes.",
+          "Baterias de íon-lítio — celulares, notebooks e carros elétricos.",
+          "Tratamento de água — cloração, floculação e filtração.",
+        ],
+        exercises: [
+          `Escolha um setor industrial e explique 3 usos de ${tema} nele.`,
+          "Pesquise um princípio da química verde e dê um exemplo.",
+          "Calcule quantos gramas de NH₃ se obtêm de 28 g de N₂ (rend. 100%).",
+        ],
+      };
+    case "curiosidade":
+      return {
+        ...M,
+        simple: `**Curiosidades sobre ${tema}.** Fatos que raramente aparecem nos livros didáticos, mas ajudam a fixar o conteúdo — e ainda rendem uma boa conversa.`,
+        formal: `**Curiosidades e fatos marcantes.** Anedotas científicas humanizam ${tema}, mostram serendipidade em descobertas e evidenciam como a química influenciou guerras, artes, culinária, esportes e até a moda ao longo dos séculos.`,
+        key: ["Fatos históricos", "Descobertas acidentais", "Recordes", "Química nas artes", "Química no esporte"],
+        principles: [
+          "Muitas descobertas foram acidentais (penicilina, teflon, super cola, post-it).",
+          "Nomes de elementos frequentemente homenageiam lugares e cientistas.",
+          "A química está presente em receitas culinárias há milênios.",
+        ],
+        examples: [
+          "O elemento gálio derrete na palma da mão (PF ≈ 29,8 °C).",
+          "O nome “oxigênio” (Lavoisier) significa “gerador de ácidos” — hoje sabemos que estava errado.",
+          "A cor azul do vitral gótico usa cobalto — segredo guardado séculos.",
+          "Refrigerante fica com gás por causa da alta pressão de CO₂ dissolvido.",
+        ],
+        exercises: [
+          "Pesquise a origem do nome de 3 elementos da tabela periódica.",
+          `Escolha uma curiosidade sobre ${tema} e explique a química por trás dela.`,
+          "Cite uma descoberta acidental e o que ela mudou no mundo.",
+        ],
+      };
+    case "exercicios":
+      return {
+        ...M,
+        simple: `**Exercícios resolvidos e questões de fixação.** Chegou a hora de treinar ${tema}: primeiro modelos resolvidos, depois questões para você tentar sozinho(a).`,
+        formal: `**Recomendações de estudo.** Resolva primeiro os exercícios sem consultar a resposta; use a resolução comentada apenas para conferir raciocínio, não para copiar. Reforce com questões de vestibular (ENEM, FUVEST, UNICAMP, UFRGS) — elas cobram interpretação, não decoreba.`,
+        key: ["Resolver antes de consultar", "Refazer o que errou", "Explicar para outra pessoa", "Simular tempo de prova"],
+        principles: [
+          "Aprende quem faz — leitura passiva não fixa conteúdo.",
+          "Errar é parte do processo: cada erro identifica uma lacuna.",
+          "Explicar em voz alta consolida mais do que reler.",
+        ],
+        examples: [
+          `Exemplo 1 — Identifique se cada item envolve ${tema}: (a) queima de vela; (b) derretimento do gelo; (c) enferrujamento.`,
+          `Exemplo 2 — Cite 3 conceitos-chave de ${tema} e um exemplo de cada.`,
+          `Exemplo 3 — Um problema típico de vestibular envolvendo ${tema}.`,
+        ],
+        exercises: [
+          `(ENEM-adap.) Descreva uma situação do cotidiano que envolva ${tema}.`,
+          `(FUVEST-adap.) Justifique por que ${tema} é importante para a sociedade.`,
+          `(UNICAMP-adap.) Elabore uma pergunta sobre ${tema} para outro estudante.`,
+          "Refaça, sem consultar, um exercício que você errou hoje.",
+          "Explique em 3 linhas, para alguém que nunca estudou, o que você aprendeu.",
+        ],
+      };
+    default:
+      return base;
+  }
+}
 
 type Material = { name: string; url: string };
 
@@ -1273,7 +1512,7 @@ export default function TopicoDetalhe() {
   const autoEdit = params.get("edit") === "1";
 
   const classificationSource = lesson && classify(title) === "geral" ? `${lesson} ${title}` : title;
-  const generated = buildContent(classificationSource);
+  const generated = applyAspect(buildContent(classificationSource), title, lesson);
   const displayTitle = lesson ? `${title} — ${lesson}` : title;
 
   const [isAdmin, setIsAdmin] = useState(false);
