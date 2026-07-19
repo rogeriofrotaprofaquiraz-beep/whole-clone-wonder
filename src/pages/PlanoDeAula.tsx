@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { ensureUserAccess } from "@/lib/ensureUserAccess";
@@ -6,64 +6,71 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { ArrowLeft, Wand2, Save, BookOpen, Eye, FileText, Trash2 } from "lucide-react";
+import { ArrowLeft, Wand2, Save, BookOpen, ListChecks, Pencil, Trash2, ChevronDown, FileText } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { toast } from "sonner";
 
 type GenQ = { question: string; options: string[]; correct_index: number; explanation?: string; difficulty?: number };
 
-type SavedPlan = { id: string; title: string; subject: string | null; grade_year: number | null; content: string; class_id: string | null; updated_at: string };
+type SavedPlan = {
+  id: string; title: string; subject: string | null; grade_year: number | null; content: string;
+  class_id: string | null; school_id: string | null; discipline: string | null;
+  lesson_date: string | null; bimestre: string | null; contents_topics: string | null;
+  slides_material: string | null; bncc_codes: string | null; objective: string | null;
+  methodology: string | null; curricular_components: string | null;
+  competencies_codes: string | null; competencies_text: string | null;
+  skills_codes: string | null; skills_text: string | null;
+  descriptors_codes: string | null; descriptors_text: string | null;
+  updated_at: string;
+};
+
+const BIMESTRES = ["1º Bimestre", "2º Bimestre", "3º Bimestre", "4º Bimestre"];
+const DISCIPLINAS = [
+  "Ciências", "Química", "Física", "Biologia", "Matemática",
+  "Português", "História", "Geografia", "Inglês", "Artes", "Educação Física",
+];
+
+const emptyForm = {
+  school_id: "",
+  class_id: "",
+  discipline: "",
+  lesson_date: new Date().toISOString().slice(0, 10),
+  bimestre: "1º Bimestre",
+  title: "",
+  contents_topics: "",
+  slides_material: "",
+  bncc_codes: "",
+  objective: "",
+  methodology: "",
+  curricular_components: "",
+  competencies_codes: "",
+  competencies_text: "",
+  skills_codes: "",
+  skills_text: "",
+  descriptors_codes: "",
+  descriptors_text: "",
+};
 
 export default function PlanoDeAula() {
   const navigate = useNavigate();
-  const [role, setRole] = useState<string | null>(null);
   const [userId, setUserId] = useState<string>("");
-  const [classes, setClasses] = useState<{ id: string; name: string; grade_year: number }[]>([]);
+  const [schools, setSchools] = useState<{ id: string; name: string }[]>([]);
+  const [classes, setClasses] = useState<{ id: string; name: string; grade_year: number; school_id?: string }[]>([]);
   const [savedPlans, setSavedPlans] = useState<SavedPlan[]>([]);
-  const [planTitle, setPlanTitle] = useState("");
-  const [form, setForm] = useState({
-    class_id: "",
-    grade_year: 6,
-    topic: "",
-    difficulty: 2,
-    count: 10,
-    plan: "",
-  });
+  const [form, setForm] = useState({ ...emptyForm });
+  const [editingId, setEditingId] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
-  const [questions, setQuestions] = useState<GenQ[]>([]);
-  const [preview, setPreview] = useState<SavedPlan | null>(null);
   const [activityFor, setActivityFor] = useState<SavedPlan | null>(null);
   const [activityQuestions, setActivityQuestions] = useState<GenQ[]>([]);
   const [genBusy, setGenBusy] = useState(false);
+  const [filterTurma, setFilterTurma] = useState<string>("all");
+  const [filterDisc, setFilterDisc] = useState<string>("all");
+  const [expanded, setExpanded] = useState<Record<string, boolean>>({});
 
-  const classNameOf = (cid: string | null) => {
-    if (!cid) return "—";
-    const c = classes.find((x) => x.id === cid);
-    return c ? `${c.name}` : "—";
-  };
+  const set = (k: keyof typeof emptyForm, v: any) => setForm((f) => ({ ...f, [k]: v }));
 
-  const generateActivityFor = async (p: SavedPlan) => {
-    setActivityFor(p);
-    setActivityQuestions([]);
-    setGenBusy(true);
-    try {
-      const { data, error } = await supabase.functions.invoke("generate-lesson-questions", {
-        body: {
-          class_id: p.class_id ?? "",
-          grade_year: p.grade_year ?? 6,
-          topic: p.subject || p.title,
-          difficulty: 2,
-          count: 10,
-          plan: p.content,
-        },
-      });
-      if (error || data?.error) { toast.error(data?.error ?? error?.message ?? "Falha ao gerar"); return; }
-      setActivityQuestions(data?.questions ?? []);
-      toast.success(`${(data?.questions ?? []).length} questões geradas`);
-    } finally { setGenBusy(false); }
-  };
+  const classNameOf = (cid: string | null) => classes.find((c) => c.id === cid)?.name ?? "—";
 
   const loadPlans = async (uid: string) => {
     const { data } = await supabase.from("lesson_plans").select("*").eq("teacher_id", uid).order("updated_at", { ascending: false });
@@ -75,257 +82,393 @@ export default function PlanoDeAula() {
       if (!session?.user) { navigate("/"); return; }
       setUserId(session.user.id);
       const r = await ensureUserAccess(session.user);
-      setRole(r);
       if (r !== "admin" && r !== "teacher") { toast.error("Acesso restrito a professores"); navigate("/"); return; }
-      const { data } = await supabase.from("classes").select("id, name, grade_year").order("grade_year");
-      setClasses(data ?? []);
+      const [{ data: sc }, { data: cl }] = await Promise.all([
+        supabase.from("schools").select("id, name").order("name"),
+        supabase.from("classes").select("id, name, grade_year, school_id").order("grade_year"),
+      ]);
+      setSchools(sc ?? []);
+      setClasses(cl ?? []);
       await loadPlans(session.user.id);
     });
   }, [navigate]);
 
-  const savePlan = async () => {
-    if (!planTitle.trim() || !form.plan.trim()) return toast.error("Informe título e conteúdo do plano");
-    const { error } = await supabase.from("lesson_plans").insert({
-      teacher_id: userId, title: planTitle, subject: form.topic || null,
-      grade_year: form.grade_year, content: form.plan, class_id: form.class_id || null,
-    });
+  const filteredClasses = useMemo(
+    () => (form.school_id ? classes.filter((c) => (c as any).school_id === form.school_id) : classes),
+    [classes, form.school_id],
+  );
+
+  const canGenerateAI = form.title.trim().length > 0 && !!form.discipline && !!form.bimestre;
+
+  const generateWithAI = async () => {
+    if (!canGenerateAI) return toast.error("Informe Disciplina, Bimestre e Assunto");
+    setBusy(true);
+    try {
+      const { data, error } = await supabase.functions.invoke("generate-topic-lesson-plan", {
+        body: {
+          topic: { title: form.title, description: form.contents_topics },
+          discipline: form.discipline,
+          bimestre: form.bimestre,
+        },
+      });
+      if (error || data?.error) return toast.error(data?.error ?? error?.message ?? "Falha na IA");
+      // fill fields when returned
+      setForm((f) => ({
+        ...f,
+        objective: data?.objective ?? f.objective,
+        methodology: data?.methodology ?? f.methodology,
+        curricular_components: data?.curricular_components ?? f.curricular_components,
+        competencies_codes: data?.competencies_codes ?? f.competencies_codes,
+        competencies_text: data?.competencies_text ?? f.competencies_text,
+        skills_codes: data?.skills_codes ?? f.skills_codes,
+        skills_text: data?.skills_text ?? f.skills_text,
+        descriptors_codes: data?.descriptors_codes ?? f.descriptors_codes,
+        descriptors_text: data?.descriptors_text ?? f.descriptors_text,
+        bncc_codes: data?.bncc_codes ?? f.bncc_codes,
+        contents_topics: f.contents_topics || data?.contents_topics || "",
+      }));
+      toast.success("Plano preenchido pela IA");
+    } finally { setBusy(false); }
+  };
+
+  const generateActivities = async () => {
+    if (!form.title.trim()) return toast.error("Informe o assunto");
+    setGenBusy(true);
+    setActivityQuestions([]);
+    try {
+      const { data, error } = await supabase.functions.invoke("generate-lesson-questions", {
+        body: {
+          class_id: form.class_id || "",
+          grade_year: classes.find((c) => c.id === form.class_id)?.grade_year ?? 6,
+          topic: form.title,
+          difficulty: 2,
+          count: 10,
+          plan: [form.objective, form.methodology, form.contents_topics].filter(Boolean).join("\n\n"),
+        },
+      });
+      if (error || data?.error) return toast.error(data?.error ?? error?.message ?? "Falha ao gerar");
+      setActivityQuestions(data?.questions ?? []);
+      setActivityFor({ id: "current", title: form.title } as any);
+      toast.success(`${(data?.questions ?? []).length} atividades geradas`);
+    } finally { setGenBusy(false); }
+  };
+
+  const save = async () => {
+    if (!form.title.trim() || !form.discipline || !form.bimestre) return toast.error("Preencha Disciplina, Bimestre e Assunto");
+    const payload = {
+      teacher_id: userId,
+      title: form.title,
+      subject: form.discipline,
+      discipline: form.discipline,
+      grade_year: classes.find((c) => c.id === form.class_id)?.grade_year ?? null,
+      class_id: form.class_id || null,
+      school_id: form.school_id || null,
+      lesson_date: form.lesson_date || null,
+      bimestre: form.bimestre,
+      contents_topics: form.contents_topics || null,
+      slides_material: form.slides_material || null,
+      bncc_codes: form.bncc_codes || null,
+      objective: form.objective || null,
+      methodology: form.methodology || null,
+      curricular_components: form.curricular_components || null,
+      competencies_codes: form.competencies_codes || null,
+      competencies_text: form.competencies_text || null,
+      skills_codes: form.skills_codes || null,
+      skills_text: form.skills_text || null,
+      descriptors_codes: form.descriptors_codes || null,
+      descriptors_text: form.descriptors_text || null,
+      content: [
+        `# ${form.title}`,
+        `**Disciplina:** ${form.discipline}  |  **Bimestre:** ${form.bimestre}  |  **Data:** ${form.lesson_date}`,
+        form.objective && `## Objetivo\n${form.objective}`,
+        form.methodology && `## Metodologia\n${form.methodology}`,
+        form.contents_topics && `## Conteúdos e Tópicos\n${form.contents_topics}`,
+        form.bncc_codes && `**BNCC:** ${form.bncc_codes}`,
+      ].filter(Boolean).join("\n\n"),
+    };
+    let error;
+    if (editingId) {
+      ({ error } = await supabase.from("lesson_plans").update(payload).eq("id", editingId));
+    } else {
+      ({ error } = await supabase.from("lesson_plans").insert(payload));
+    }
     if (error) return toast.error(error.message);
-    toast.success("Plano salvo");
-    setPlanTitle("");
+    toast.success(editingId ? "Planejamento atualizado" : "Planejamento salvo");
+    setForm({ ...emptyForm });
+    setEditingId(null);
     await loadPlans(userId);
   };
 
-  const loadPlan = (p: SavedPlan) => {
-    setPlanTitle(p.title);
-    setForm({ ...form, plan: p.content, topic: p.subject ?? "", grade_year: p.grade_year ?? 6, class_id: p.class_id ?? "" });
-    toast.success(`Plano "${p.title}" carregado`);
+  const editPlan = (p: SavedPlan) => {
+    setEditingId(p.id);
+    setForm({
+      school_id: p.school_id ?? "",
+      class_id: p.class_id ?? "",
+      discipline: p.discipline ?? p.subject ?? "",
+      lesson_date: p.lesson_date ?? new Date().toISOString().slice(0, 10),
+      bimestre: p.bimestre ?? "1º Bimestre",
+      title: p.title ?? "",
+      contents_topics: p.contents_topics ?? "",
+      slides_material: p.slides_material ?? "",
+      bncc_codes: p.bncc_codes ?? "",
+      objective: p.objective ?? "",
+      methodology: p.methodology ?? "",
+      curricular_components: p.curricular_components ?? "",
+      competencies_codes: p.competencies_codes ?? "",
+      competencies_text: p.competencies_text ?? "",
+      skills_codes: p.skills_codes ?? "",
+      skills_text: p.skills_text ?? "",
+      descriptors_codes: p.descriptors_codes ?? "",
+      descriptors_text: p.descriptors_text ?? "",
+    });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const deletePlan = async (id: string) => {
+    if (!confirm("Excluir este planejamento?")) return;
     await supabase.from("lesson_plans").delete().eq("id", id);
     setSavedPlans((p) => p.filter((x) => x.id !== id));
   };
 
-  const generate = async () => {
-    if (!form.plan.trim()) return toast.error("Cole o plano de aula");
-    setBusy(true);
-    try {
-      const { data, error } = await supabase.functions.invoke("generate-lesson-questions", { body: form });
-      if (error || data?.error) return toast.error(data?.error ?? error?.message ?? "Falha ao gerar");
-      setQuestions(data?.questions ?? []);
-      toast.success(`${(data?.questions ?? []).length} questões geradas`);
-    } finally { setBusy(false); }
-  };
-
-  const save = async () => {
-    if (!questions.length) return;
-    const rows = questions.map(q => ({
-      area: "geral" as const,
-      topic: form.topic || null,
-      difficulty: q.difficulty ?? form.difficulty,
-      school_level: "fundamental",
-      grade_year: form.grade_year,
-      class_id: form.class_id || null,
-      question: q.question,
-      options: q.options,
-      correct_index: q.correct_index,
-      answer_text: q.options[q.correct_index] ?? null,
-      explanation: q.explanation ?? null,
-    }));
-    const { data: { session } } = await supabase.auth.getSession();
-    const { error } = await supabase.from("chem_questions").insert(rows.map(r => ({ ...r, created_by: session!.user.id })));
-    if (error) return toast.error(error.message);
-    toast.success(`${rows.length} questões salvas no banco`);
-    setQuestions([]);
-  };
+  const disciplinas = useMemo(
+    () => Array.from(new Set(savedPlans.map((p) => p.discipline ?? p.subject).filter(Boolean))) as string[],
+    [savedPlans],
+  );
+  const filtered = savedPlans.filter(
+    (p) => (filterTurma === "all" || p.class_id === filterTurma) &&
+           (filterDisc === "all" || (p.discipline ?? p.subject) === filterDisc),
+  );
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white p-4 md:p-8">
-      <div className="max-w-5xl mx-auto">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 text-slate-900 p-4 md:p-8">
+      <div className="max-w-7xl mx-auto">
         <div className="flex items-center justify-between mb-6">
-          <Link to="/"><Button variant="ghost" className="text-white"><ArrowLeft className="w-4 h-4 mr-2"/>Voltar</Button></Link>
-          <h1 className="text-2xl md:text-3xl font-black italic uppercase">Plano de Aula → Perguntas</h1>
+          <Link to="/"><Button variant="ghost"><ArrowLeft className="w-4 h-4 mr-2"/>Voltar</Button></Link>
+          <h1 className="text-xl md:text-2xl font-bold">Planejamento Diário</h1>
           <div/>
         </div>
 
-        {savedPlans.length > 0 && (
-          <Card className="bg-slate-900/60 border-white/10 mb-6">
-            <CardHeader>
-              <CardTitle className="text-sm font-black uppercase tracking-widest flex items-center gap-2">
-                <BookOpen className="w-4 h-4 text-fuchsia-400" />
-                Planejamentos Cadastrados ({savedPlans.length})
+        <div className="grid lg:grid-cols-[1fr_360px] gap-6">
+          {/* Left: form */}
+          <Card className="bg-white border-slate-200 shadow-sm">
+            <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b border-slate-100">
+              <CardTitle className="flex items-center gap-2 text-base">
+                📝 {editingId ? "Editar Planejamento" : "Novo Planejamento Diário"}
               </CardTitle>
             </CardHeader>
-            <CardContent className="p-0">
-              <div className="overflow-x-auto">
-                <table className="w-full text-sm">
-                  <thead>
-                    <tr className="text-left text-[10px] uppercase text-white/50 border-b border-white/10">
-                      <th className="px-3 py-2">Data</th>
-                      <th className="px-3 py-2">Turma</th>
-                      <th className="px-3 py-2">Disciplina</th>
-                      <th className="px-3 py-2">Assunto</th>
-                      <th className="px-3 py-2 text-right">Ações</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {savedPlans.map((p) => (
-                      <tr key={p.id} className="border-b border-white/5 hover:bg-white/5">
-                        <td className="px-3 py-2 text-white/70 whitespace-nowrap">{new Date(p.updated_at).toLocaleDateString("pt-BR")}</td>
-                        <td className="px-3 py-2 text-white/70 whitespace-nowrap">{classNameOf(p.class_id)}</td>
-                        <td className="px-3 py-2"><Badge variant="secondary" className="text-[10px]">{p.subject ?? "—"}</Badge></td>
-                        <td className="px-3 py-2 font-medium">{p.title}</td>
-                        <td className="px-3 py-2">
-                          <div className="flex gap-1 justify-end">
-                            <Button size="icon" variant="outline" title="Visualizar plano completo" onClick={() => setPreview(p)}>
-                              <Eye className="w-4 h-4" />
-                            </Button>
-                            <Button size="icon" variant="outline" title="Gerar atividade" onClick={() => generateActivityFor(p)}>
-                              <FileText className="w-4 h-4 text-fuchsia-400" />
-                            </Button>
-                            <Button size="icon" variant="outline" title="Excluir" onClick={() => deletePlan(p.id)}>
-                              <Trash2 className="w-4 h-4 text-red-400" />
-                            </Button>
-                          </div>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+            <CardContent className="p-6 space-y-4">
+              <div className="grid sm:grid-cols-2 gap-4">
+                <Field label="Escola *">
+                  <Select value={form.school_id || undefined} onValueChange={(v) => set("school_id", v)}>
+                    <SelectTrigger><SelectValue placeholder="Selecione"/></SelectTrigger>
+                    <SelectContent>{schools.map((s) => <SelectItem key={s.id} value={s.id}>{s.name}</SelectItem>)}</SelectContent>
+                  </Select>
+                </Field>
+                <Field label="Turma *">
+                  <Select value={form.class_id || undefined} onValueChange={(v) => set("class_id", v)}>
+                    <SelectTrigger><SelectValue placeholder="Selecione"/></SelectTrigger>
+                    <SelectContent>{filteredClasses.map((c) => <SelectItem key={c.id} value={c.id}>{c.name} — {c.grade_year}º ano</SelectItem>)}</SelectContent>
+                  </Select>
+                </Field>
+                <Field label="Disciplina *">
+                  <Select value={form.discipline || undefined} onValueChange={(v) => set("discipline", v)}>
+                    <SelectTrigger><SelectValue placeholder="Selecione"/></SelectTrigger>
+                    <SelectContent>{DISCIPLINAS.map((d) => <SelectItem key={d} value={d}>{d}</SelectItem>)}</SelectContent>
+                  </Select>
+                </Field>
+                <Field label="Data da Aula *">
+                  <Input type="date" value={form.lesson_date} onChange={(e) => set("lesson_date", e.target.value)} />
+                </Field>
+                <Field label="Bimestre *">
+                  <Select value={form.bimestre} onValueChange={(v) => set("bimestre", v)}>
+                    <SelectTrigger><SelectValue/></SelectTrigger>
+                    <SelectContent>{BIMESTRES.map((b) => <SelectItem key={b} value={b}>{b}</SelectItem>)}</SelectContent>
+                  </Select>
+                </Field>
               </div>
-            </CardContent>
-          </Card>
-        )}
 
-        <Dialog open={!!preview} onOpenChange={(o) => !o && setPreview(null)}>
-          <DialogContent className="max-w-3xl bg-slate-900 border-white/10 text-white max-h-[85vh] overflow-y-auto">
-            <DialogHeader><DialogTitle className="text-lg">{preview?.title}</DialogTitle></DialogHeader>
-            {preview && (
-              <div className="space-y-3 text-sm">
-                <div className="grid grid-cols-3 gap-3 text-xs">
-                  <div><div className="text-white/50 uppercase text-[10px]">Data</div><div>{new Date(preview.updated_at).toLocaleDateString("pt-BR")}</div></div>
-                  <div><div className="text-white/50 uppercase text-[10px]">Turma</div><div>{classNameOf(preview.class_id)}</div></div>
-                  <div><div className="text-white/50 uppercase text-[10px]">Disciplina</div><div>{preview.subject ?? "—"}</div></div>
-                </div>
-                <div className="border-t border-white/10 pt-3 whitespace-pre-wrap leading-relaxed text-white/90">{preview.content}</div>
-                <div className="flex gap-2 pt-2">
-                  <Button size="sm" variant="secondary" onClick={() => { loadPlan(preview); setPreview(null); }}>Carregar no editor</Button>
-                  <Button size="sm" onClick={() => { setPreview(null); generateActivityFor(preview); }} className="bg-gradient-to-r from-fuchsia-600 to-violet-600">
-                    <FileText className="w-4 h-4 mr-1"/>Gerar atividade
+              <div>
+                <div className="flex items-end justify-between mb-1">
+                  <label className="text-sm font-semibold">Assunto da Aula *</label>
+                  <Button size="sm" variant="outline" onClick={generateWithAI} disabled={busy || !canGenerateAI}>
+                    <Wand2 className="w-3.5 h-3.5 mr-1"/>{busy ? "Gerando…" : "Gerar com IA"}
                   </Button>
                 </div>
+                <Input placeholder="Ex: Equações do 2° Grau" value={form.title} onChange={(e) => set("title", e.target.value)} />
               </div>
-            )}
-          </DialogContent>
-        </Dialog>
+
+              <Field label="Conteúdos e Tópicos">
+                <Textarea rows={4} placeholder="Descreva os tópicos que serão abordados…" value={form.contents_topics} onChange={(e) => set("contents_topics", e.target.value)} />
+              </Field>
+
+              <Field label="Slides / Material">
+                <Input placeholder="Link ou descrição dos slides" value={form.slides_material} onChange={(e) => set("slides_material", e.target.value)} />
+              </Field>
+
+              <Button
+                className="w-full bg-emerald-400 hover:bg-emerald-500 text-white shadow-sm"
+                onClick={generateActivities}
+                disabled={genBusy || !form.title.trim()}
+              >
+                <ListChecks className="w-4 h-4 mr-2"/>{genBusy ? "Gerando atividades…" : "Gerar Lista de 10 Atividades com IA"}
+              </Button>
+
+              <Field label="Códigos BNCC">
+                <Input placeholder="Ex: EF09CI01, EF09CI02, EF09CI03" value={form.bncc_codes} onChange={(e) => set("bncc_codes", e.target.value)} />
+              </Field>
+
+              <Field label="Objetivo da Aula">
+                <Textarea rows={3} value={form.objective} onChange={(e) => set("objective", e.target.value)} />
+              </Field>
+
+              <Field label="Metodologia">
+                <Textarea rows={3} value={form.methodology} onChange={(e) => set("methodology", e.target.value)} />
+              </Field>
+
+              <Field label="Componentes Curriculares">
+                <Textarea rows={2} value={form.curricular_components} onChange={(e) => set("curricular_components", e.target.value)} />
+              </Field>
+
+              <Field label="Competências">
+                <Input className="mb-2" placeholder="Códigos: CG1, CG2, CG3" value={form.competencies_codes} onChange={(e) => set("competencies_codes", e.target.value)} />
+                <Textarea rows={2} placeholder="Descreva as competências desenvolvidas…" value={form.competencies_text} onChange={(e) => set("competencies_text", e.target.value)} />
+              </Field>
+
+              <Field label="Habilidades">
+                <Input className="mb-2" placeholder="Códigos: EF09MA01, EF09MA02" value={form.skills_codes} onChange={(e) => set("skills_codes", e.target.value)} />
+                <Textarea rows={2} placeholder="Descreva as habilidades trabalhadas…" value={form.skills_text} onChange={(e) => set("skills_text", e.target.value)} />
+              </Field>
+
+              <Field label="Descritores">
+                <Input className="mb-2" placeholder="Códigos: D1, D2, D3, D4" value={form.descriptors_codes} onChange={(e) => set("descriptors_codes", e.target.value)} />
+                <Textarea rows={2} placeholder="Descreva os descritores de avaliação…" value={form.descriptors_text} onChange={(e) => set("descriptors_text", e.target.value)} />
+              </Field>
+
+              <Button className="w-full bg-slate-900 hover:bg-slate-800 text-white" onClick={save}>
+                <Save className="w-4 h-4 mr-2"/>{editingId ? "Atualizar Planejamento" : "Salvar Planejamento"}
+              </Button>
+
+              {editingId && (
+                <Button variant="ghost" className="w-full" onClick={() => { setEditingId(null); setForm({ ...emptyForm }); }}>
+                  Cancelar edição
+                </Button>
+              )}
+            </CardContent>
+          </Card>
+
+          {/* Right: saved plans */}
+          <div className="space-y-3">
+            <Card className="bg-white border-slate-200 shadow-sm">
+              <CardHeader className="bg-gradient-to-r from-fuchsia-50 to-pink-50 border-b border-slate-100">
+                <CardTitle className="flex items-center gap-2 text-base">
+                  📚 Planejamentos ({filtered.length})
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="p-4 space-y-3">
+                <div className="grid grid-cols-2 gap-2">
+                  <div>
+                    <label className="text-[11px] text-slate-500">Filtrar Turma</label>
+                    <Select value={filterTurma} onValueChange={setFilterTurma}>
+                      <SelectTrigger><SelectValue/></SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="all">Todas</SelectItem>
+                        {classes.map((c) => <SelectItem key={c.id} value={c.id}>{c.name}</SelectItem>)}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div>
+                    <label className="text-[11px] text-slate-500">Filtrar Disciplina</label>
+                    <Select value={filterDisc} onValueChange={setFilterDisc}>
+                      <SelectTrigger><SelectValue/></SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="all">Todas</SelectItem>
+                        {disciplinas.map((d) => <SelectItem key={d} value={d}>{d}</SelectItem>)}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
+
+                <div className="space-y-2 max-h-[70vh] overflow-y-auto pr-1">
+                  {filtered.length === 0 && (
+                    <div className="text-center text-sm text-slate-400 py-8">Nenhum planejamento.</div>
+                  )}
+                  {filtered.map((p) => {
+                    const isOpen = !!expanded[p.id];
+                    return (
+                      <div key={p.id} className="border border-slate-200 rounded-xl p-3 hover:shadow-sm transition-shadow">
+                        <div className="flex items-start gap-2">
+                          <BookOpen className="w-4 h-4 text-blue-500 mt-0.5 shrink-0"/>
+                          <div className="flex-1 min-w-0">
+                            <div className="font-semibold text-sm truncate">{p.title}</div>
+                            <div className="text-[11px] text-slate-500">
+                              {(p.discipline ?? p.subject) ?? "—"} • {classNameOf(p.class_id)}
+                            </div>
+                            <div className="text-[11px] text-slate-500">
+                              {p.bimestre ?? ""} {p.lesson_date ? `• ${new Date(p.lesson_date + "T00:00").toLocaleDateString("pt-BR")}` : ""}
+                            </div>
+                          </div>
+                          <button onClick={() => setExpanded((x) => ({ ...x, [p.id]: !isOpen }))} className="p-1 text-slate-400 hover:text-slate-700">
+                            <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? "rotate-180" : ""}`}/>
+                          </button>
+                          <button onClick={() => editPlan(p)} className="p-1 text-slate-500 hover:text-blue-600" title="Editar">
+                            <Pencil className="w-4 h-4"/>
+                          </button>
+                          <button onClick={() => deletePlan(p.id)} className="p-1 text-slate-500 hover:text-red-600" title="Excluir">
+                            <Trash2 className="w-4 h-4"/>
+                          </button>
+                        </div>
+                        {isOpen && (
+                          <div className="mt-3 pt-3 border-t border-slate-100 text-xs space-y-1 text-slate-600">
+                            {p.objective && <div><b>Objetivo:</b> {p.objective}</div>}
+                            {p.bncc_codes && <div><b>BNCC:</b> {p.bncc_codes}</div>}
+                            {p.methodology && <div><b>Metodologia:</b> {p.methodology}</div>}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
 
         <Dialog open={!!activityFor} onOpenChange={(o) => !o && setActivityFor(null)}>
-          <DialogContent className="max-w-3xl bg-slate-900 border-white/10 text-white max-h-[85vh] overflow-y-auto">
-            <DialogHeader><DialogTitle className="text-lg">Atividade — {activityFor?.title}</DialogTitle></DialogHeader>
-            {genBusy && <div className="text-center py-8 text-white/70">Gerando questões com IA…</div>}
-            {!genBusy && activityQuestions.length === 0 && <div className="text-center py-8 text-white/50 text-sm">Nenhuma questão gerada.</div>}
-            {!genBusy && activityQuestions.length > 0 && (
-              <div className="space-y-3">
-                {activityQuestions.map((q, i) => (
-                  <div key={i} className="bg-slate-950/60 border border-white/10 rounded-xl p-3">
-                    <p className="text-sm font-bold mb-2">{i + 1}. {q.question}</p>
-                    <ul className="space-y-1 text-xs">
-                      {q.options.map((o, oi) => (
-                        <li key={oi} className={oi === q.correct_index ? "text-emerald-400 font-bold" : "text-white/70"}>
-                          {String.fromCharCode(65 + oi)}) {o}
-                        </li>
-                      ))}
-                    </ul>
-                    {q.explanation && <p className="text-[11px] text-white/50 mt-2 italic">{q.explanation}</p>}
-                  </div>
-                ))}
-                <div className="flex gap-2 pt-2">
-                  <Button size="sm" variant="outline" onClick={() => window.print()}>Imprimir</Button>
-                </div>
-              </div>
-            )}
-          </DialogContent>
-        </Dialog>
-
-
-        <Card className="bg-slate-900/60 border-white/10 mb-6">
-          <CardHeader><CardTitle className="text-sm font-black uppercase tracking-widest flex items-center gap-2"><BookOpen className="w-4 h-4"/>Configurações</CardTitle></CardHeader>
-          <CardContent className="grid sm:grid-cols-2 gap-3">
-            <div>
-              <label className="text-[10px] uppercase text-white/60">Turma (opcional)</label>
-              <Select value={form.class_id} onValueChange={v => setForm({ ...form, class_id: v })}>
-                <SelectTrigger className="bg-slate-950 border-white/10"><SelectValue placeholder="Sem turma"/></SelectTrigger>
-                <SelectContent>{classes.map(c => <SelectItem key={c.id} value={c.id}>{c.name} — {c.grade_year}º ano</SelectItem>)}</SelectContent>
-              </Select>
-            </div>
-            <div>
-              <label className="text-[10px] uppercase text-white/60">Série</label>
-              <Select value={String(form.grade_year)} onValueChange={v => setForm({ ...form, grade_year: Number(v) })}>
-                <SelectTrigger className="bg-slate-950 border-white/10"><SelectValue/></SelectTrigger>
-                <SelectContent>{[6,7,8,9].map(g => <SelectItem key={g} value={String(g)}>{g}º ano</SelectItem>)}</SelectContent>
-              </Select>
-            </div>
-            <div>
-              <label className="text-[10px] uppercase text-white/60">Tema</label>
-              <Input value={form.topic} onChange={e => setForm({ ...form, topic: e.target.value })} placeholder="ex: Estados físicos da matéria" className="bg-slate-950 border-white/10"/>
-            </div>
-            <div className="grid grid-cols-2 gap-2">
-              <div>
-                <label className="text-[10px] uppercase text-white/60">Dificuldade</label>
-                <Select value={String(form.difficulty)} onValueChange={v => setForm({ ...form, difficulty: Number(v) })}>
-                  <SelectTrigger className="bg-slate-950 border-white/10"><SelectValue/></SelectTrigger>
-                  <SelectContent>{[1,2,3,4,5].map(d => <SelectItem key={d} value={String(d)}>{d}/5</SelectItem>)}</SelectContent>
-                </Select>
-              </div>
-              <div>
-                <label className="text-[10px] uppercase text-white/60">Quantidade</label>
-                <Input type="number" min={1} max={20} value={form.count} onChange={e => setForm({ ...form, count: Number(e.target.value) || 10 })} className="bg-slate-950 border-white/10"/>
-              </div>
-            </div>
-            <div className="sm:col-span-2">
-              <label className="text-[10px] uppercase text-white/60">Título do plano</label>
-              <Input value={planTitle} onChange={e => setPlanTitle(e.target.value)} placeholder="ex: Aula 1 - Estados da matéria" className="bg-slate-950 border-white/10"/>
-            </div>
-            <div className="sm:col-span-2">
-              <label className="text-[10px] uppercase text-white/60">Plano de aula (texto completo)</label>
-              <Textarea value={form.plan} onChange={e => setForm({ ...form, plan: e.target.value })} rows={8} placeholder="Cole aqui o plano de aula. A IA usará o conteúdo para gerar perguntas alinhadas ao tema e à série." className="bg-slate-950 border-white/10"/>
-            </div>
-            <div className="sm:col-span-2 flex gap-2 flex-wrap">
-              <Button onClick={generate} disabled={busy} className="bg-gradient-to-r from-fuchsia-600 to-violet-600">
-                <Wand2 className="w-4 h-4 mr-1"/>{busy ? "Gerando…" : "Gerar com IA"}
-              </Button>
-              <Button onClick={savePlan} variant="outline"><Save className="w-4 h-4 mr-1"/>Salvar plano</Button>
-              {questions.length > 0 && (
-                <Button onClick={save} variant="secondary"><Save className="w-4 h-4 mr-1"/>Salvar perguntas no banco</Button>
-              )}
-            </div>
-          </CardContent>
-        </Card>
-
-        {questions.length > 0 && (
-          <Card className="bg-slate-900/60 border-white/10">
-            <CardHeader><CardTitle className="text-sm">Pré-visualização ({questions.length})</CardTitle></CardHeader>
-            <CardContent className="space-y-3 max-h-[600px] overflow-y-auto">
-              {questions.map((q, i) => (
-                <div key={i} className="bg-slate-950/60 border border-white/10 rounded-xl p-3">
-                  <div className="flex items-start justify-between gap-2 mb-2">
-                    <p className="text-sm font-bold">{i + 1}. {q.question}</p>
-                    <Badge variant="outline" className="text-[10px]">Dif. {q.difficulty ?? form.difficulty}</Badge>
-                  </div>
+          <DialogContent className="max-w-3xl bg-white max-h-[85vh] overflow-y-auto">
+            <DialogHeader>
+              <DialogTitle className="text-lg flex items-center gap-2">
+                <FileText className="w-5 h-5 text-emerald-500"/>
+                Atividades — {activityFor?.title}
+              </DialogTitle>
+            </DialogHeader>
+            <div className="space-y-3">
+              {activityQuestions.map((q, i) => (
+                <div key={i} className="border border-slate-200 rounded-xl p-3">
+                  <p className="text-sm font-semibold mb-2">{i + 1}. {q.question}</p>
                   <ul className="space-y-1 text-xs">
                     {q.options.map((o, oi) => (
-                      <li key={oi} className={oi === q.correct_index ? "text-emerald-400 font-bold" : "text-white/70"}>
+                      <li key={oi} className={oi === q.correct_index ? "text-emerald-600 font-bold" : "text-slate-600"}>
                         {String.fromCharCode(65 + oi)}) {o}
                       </li>
                     ))}
                   </ul>
-                  {q.explanation && <p className="text-[11px] text-white/50 mt-2 italic">{q.explanation}</p>}
+                  {q.explanation && <p className="text-[11px] text-slate-500 mt-2 italic">{q.explanation}</p>}
                 </div>
               ))}
-            </CardContent>
-          </Card>
-        )}
+              <Button variant="outline" size="sm" onClick={() => window.print()}>Imprimir</Button>
+            </div>
+          </DialogContent>
+        </Dialog>
       </div>
+    </div>
+  );
+}
+
+function Field({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <div>
+      <label className="text-sm font-semibold block mb-1">{label}</label>
+      {children}
     </div>
   );
 }

@@ -888,33 +888,81 @@ export type Database = {
       }
       lesson_plans: {
         Row: {
+          bimestre: string | null
+          bncc_codes: string | null
           class_id: string | null
+          competencies_codes: string | null
+          competencies_text: string | null
           content: string
+          contents_topics: string | null
           created_at: string
+          curricular_components: string | null
+          descriptors_codes: string | null
+          descriptors_text: string | null
+          discipline: string | null
           grade_year: number | null
           id: string
+          lesson_date: string | null
+          methodology: string | null
+          objective: string | null
+          school_id: string | null
+          skills_codes: string | null
+          skills_text: string | null
+          slides_material: string | null
           subject: string | null
           teacher_id: string
           title: string
           updated_at: string
         }
         Insert: {
+          bimestre?: string | null
+          bncc_codes?: string | null
           class_id?: string | null
+          competencies_codes?: string | null
+          competencies_text?: string | null
           content: string
+          contents_topics?: string | null
           created_at?: string
+          curricular_components?: string | null
+          descriptors_codes?: string | null
+          descriptors_text?: string | null
+          discipline?: string | null
           grade_year?: number | null
           id?: string
+          lesson_date?: string | null
+          methodology?: string | null
+          objective?: string | null
+          school_id?: string | null
+          skills_codes?: string | null
+          skills_text?: string | null
+          slides_material?: string | null
           subject?: string | null
           teacher_id: string
           title: string
           updated_at?: string
         }
         Update: {
+          bimestre?: string | null
+          bncc_codes?: string | null
           class_id?: string | null
+          competencies_codes?: string | null
+          competencies_text?: string | null
           content?: string
+          contents_topics?: string | null
           created_at?: string
+          curricular_components?: string | null
+          descriptors_codes?: string | null
+          descriptors_text?: string | null
+          discipline?: string | null
           grade_year?: number | null
           id?: string
+          lesson_date?: string | null
+          methodology?: string | null
+          objective?: string | null
+          school_id?: string | null
+          skills_codes?: string | null
+          skills_text?: string | null
+          slides_material?: string | null
           subject?: string | null
           teacher_id?: string
           title?: string
