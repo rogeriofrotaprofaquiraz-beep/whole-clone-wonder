@@ -1904,13 +1904,16 @@ export default function TopicoDetalhe() {
               <div className="grid sm:grid-cols-2 gap-3">
                 {c.key.map((k, i) => (
                   <div key={i} className="rounded-lg border border-violet-200 bg-violet-50/60 overflow-hidden">
-                    <img
-                      src={topicImage(`${title} ${k}`, 480, 200)}
-                      alt={`Ilustração de ${k}`}
-                      loading="lazy"
-                      className="w-full h-28 object-cover"
-                      onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
-                    />
+                    <div className="w-full h-28 overflow-hidden">
+                      <EditableImage
+                        src={sectionImg(`key_${i}`) || topicImage(`${title} ${k}`, 480, 200)}
+                        alt={`Ilustração de ${k}`}
+                        className="w-full h-full"
+                        isAdmin={isAdmin} slug={slug!} title={title} lesson={lesson}
+                        imageKey={`key_${i}`} currentOverride={sectionImg(`key_${i}`)}
+                        onChange={(u) => applySectionImage(`key_${i}`, u)}
+                      />
+                    </div>
                     <div className="p-3">
                       <div className="text-sm font-bold text-[#4C1D95] mb-1">{k}</div>
                       <div className="text-xs text-slate-700 leading-relaxed">{explainKey(k)}</div>
