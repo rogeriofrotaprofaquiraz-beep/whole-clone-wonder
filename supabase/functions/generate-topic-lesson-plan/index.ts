@@ -124,7 +124,7 @@ Retorne JSON EXATO com TODOS os campos (strings em português):
     if (!aiResp.ok) {
       const text = await aiResp.text().catch(() => "");
       console.warn("AI gateway falhou, usando template:", aiResp.status, text);
-      const fb = buildFallback({ title, lesson, course, stage, duration, context, bimestre });
+      const fb = buildFallback({ title, lesson, course, stage, duration, context, bimestre, ui });
       return json({ ...fb, fallback: true, reason: aiResp.status === 402 ? "credits" : aiResp.status === 429 ? "rate" : "error" });
     }
 
@@ -133,7 +133,7 @@ Retorne JSON EXATO com TODOS os campos (strings em português):
       const aiData = await aiResp.json();
       parsed = JSON.parse(aiData.choices?.[0]?.message?.content ?? "{}");
     } catch {
-      const fb = buildFallback({ title, lesson, course, stage, duration, context, bimestre });
+      const fb = buildFallback({ title, lesson, course, stage, duration, context, bimestre, ui });
       return json({ ...fb, fallback: true, reason: "parse" });
     }
 
@@ -146,18 +146,19 @@ Retorne JSON EXATO com TODOS os campos (strings em português):
       .filter((b: any) => b.code && b.label)
       .slice(0, 20);
 
+    const keep = (aiVal: any, uiVal: any) => str(aiVal) || str(uiVal);
     const out: any = {
-      objective: str(parsed.objective),
-      methodology: str(parsed.methodology),
-      curricular_components: str(parsed.curricular_components),
-      contents_topics: str(parsed.contents_topics),
-      competencies_codes: str(parsed.competencies_codes),
-      competencies_text: str(parsed.competencies_text),
-      skills_codes: str(parsed.skills_codes),
-      skills_text: str(parsed.skills_text),
-      descriptors_codes: str(parsed.descriptors_codes),
-      descriptors_text: str(parsed.descriptors_text),
-      bncc_codes: str(parsed.bncc_codes) || bncc.map((b: any) => b.code).join(", "),
+      objective: keep(parsed.objective, ui.objective),
+      methodology: keep(parsed.methodology, ui.methodology),
+      curricular_components: keep(parsed.curricular_components, ui.curricular_components),
+      contents_topics: keep(parsed.contents_topics, ui.contents_topics),
+      competencies_codes: keep(parsed.competencies_codes, ui.competencies_codes),
+      competencies_text: keep(parsed.competencies_text, ui.competencies_text),
+      skills_codes: keep(parsed.skills_codes, ui.skills_codes),
+      skills_text: keep(parsed.skills_text, ui.skills_text),
+      descriptors_codes: keep(parsed.descriptors_codes, ui.descriptors_codes),
+      descriptors_text: keep(parsed.descriptors_text, ui.descriptors_text),
+      bncc_codes: keep(parsed.bncc_codes, ui.bncc_codes) || bncc.map((b: any) => b.code).join(", "),
       sequence: str(parsed.sequence),
       practical_activity: str(parsed.practical_activity),
       assessment: str(parsed.assessment),
@@ -166,9 +167,10 @@ Retorne JSON EXATO com TODOS os campos (strings em português):
     };
 
     if (!out.plan && !out.objective) {
-      const fb = buildFallback({ title, lesson, course, stage, duration, context, bimestre });
+      const fb = buildFallback({ title, lesson, course, stage, duration, context, bimestre, ui });
       return json({ ...fb, fallback: true, reason: "empty" });
     }
+
 
     return json(out);
   } catch (e) {
