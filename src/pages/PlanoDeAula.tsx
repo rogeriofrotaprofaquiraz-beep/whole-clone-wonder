@@ -33,6 +33,37 @@ export default function PlanoDeAula() {
   });
   const [busy, setBusy] = useState(false);
   const [questions, setQuestions] = useState<GenQ[]>([]);
+  const [preview, setPreview] = useState<SavedPlan | null>(null);
+  const [activityFor, setActivityFor] = useState<SavedPlan | null>(null);
+  const [activityQuestions, setActivityQuestions] = useState<GenQ[]>([]);
+  const [genBusy, setGenBusy] = useState(false);
+
+  const classNameOf = (cid: string | null) => {
+    if (!cid) return "—";
+    const c = classes.find((x) => x.id === cid);
+    return c ? `${c.name}` : "—";
+  };
+
+  const generateActivityFor = async (p: SavedPlan) => {
+    setActivityFor(p);
+    setActivityQuestions([]);
+    setGenBusy(true);
+    try {
+      const { data, error } = await supabase.functions.invoke("generate-lesson-questions", {
+        body: {
+          class_id: p.class_id ?? "",
+          grade_year: p.grade_year ?? 6,
+          topic: p.subject || p.title,
+          difficulty: 2,
+          count: 10,
+          plan: p.content,
+        },
+      });
+      if (error || data?.error) { toast.error(data?.error ?? error?.message ?? "Falha ao gerar"); return; }
+      setActivityQuestions(data?.questions ?? []);
+      toast.success(`${(data?.questions ?? []).length} questões geradas`);
+    } finally { setGenBusy(false); }
+  };
 
   const loadPlans = async (uid: string) => {
     const { data } = await supabase.from("lesson_plans").select("*").eq("teacher_id", uid).order("updated_at", { ascending: false });
