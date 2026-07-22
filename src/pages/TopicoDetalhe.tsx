@@ -1865,11 +1865,11 @@ export default function TopicoDetalhe() {
               <div className="flex items-center gap-2 text-[#4C1D95] font-bold mb-2">
                 <BookOpen size={18} /> Ideia principal (fundamental)
               </div>
-              <div className="grid md:grid-cols-[200px,1fr] gap-4 items-start">
+              <div className="flex flex-col gap-4">
                 <EditableImage
-                  src={sectionImg("simple") || topicImage(`${title} conceito`, 400, 300)}
+                  src={sectionImg("simple") || topicImage(`${title} conceito`, 1200, 500)}
                   alt={`Ilustração — ${title}`}
-                  className="w-full h-32 md:h-40 rounded-lg border border-slate-200 overflow-hidden"
+                  className="w-full h-56 md:h-72 rounded-lg border border-slate-200 overflow-hidden"
                   isAdmin={isAdmin} slug={slug!} title={title} lesson={lesson}
                   imageKey="simple" currentOverride={sectionImg("simple")}
                   onChange={(u) => applySectionImage("simple", u)}
@@ -1883,16 +1883,16 @@ export default function TopicoDetalhe() {
               <div className="flex items-center gap-2 text-[#4C1D95] font-bold mb-2">
                 <Atom size={18} /> Definição formal (ensino médio / superior)
               </div>
-              <div className="grid md:grid-cols-[1fr,200px] gap-4 items-start">
-                <p className="text-slate-700 leading-relaxed">{c.formal}</p>
+              <div className="flex flex-col gap-4">
                 <EditableImage
-                  src={sectionImg("formal") || topicImage(`${title} definicao formal`, 400, 300)}
+                  src={sectionImg("formal") || topicImage(`${title} definicao formal`, 1200, 500)}
                   alt={`Definição de ${title}`}
-                  className="w-full h-32 md:h-40 rounded-lg border border-slate-200 overflow-hidden order-first md:order-none"
+                  className="w-full h-56 md:h-72 rounded-lg border border-slate-200 overflow-hidden"
                   isAdmin={isAdmin} slug={slug!} title={title} lesson={lesson}
                   imageKey="formal" currentOverride={sectionImg("formal")}
                   onChange={(u) => applySectionImage("formal", u)}
                 />
+                <p className="text-slate-700 leading-relaxed">{c.formal}</p>
               </div>
             </section>
 
