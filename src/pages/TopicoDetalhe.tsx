@@ -17,20 +17,42 @@ import EditableImage from "@/components/EditableImage";
 
 type BnccCode = { code: string; label: string; type: "BNCC" | "BNCC_DIGITAL" };
 
-/* Imagem contextual baseada em palavras-chave do texto (Loremflickr) */
-const IMG_STOP = new Set(["de","da","do","dos","das","a","o","os","as","e","é","um","uma","que","por","para","com","em","no","na","nos","nas","ao","à","às","se","ou","the","of","and","to","in","on","um","uns","umas","sem","sob","sobre","como","mais","menos","muito","pouco","este","esta","isso","essa","esse","seus","suas","sua","seu","entre"]);
+/* Imagem contextual — mapa curado de figuras/temas + fallback único por seed */
+const IMG_STOP = new Set(["de","da","do","dos","das","a","o","os","as","e","é","um","uma","que","por","para","com","em","no","na","nos","nas","ao","à","às","se","ou","the","of","and","to","in","on","uns","umas","sem","sob","sobre","como","mais","menos","muito","pouco","este","esta","isso","essa","esse","seus","suas","sua","seu","entre"]);
+const CURATED: Array<[RegExp, string]> = [
+  [/alquimia|alchem/i, "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Joseph_Wright_of_Derby_The_Alchemist.jpg/800px-Joseph_Wright_of_Derby_The_Alchemist.jpg"],
+  [/lavoisier/i, "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/David_-_Portrait_of_Monsieur_Lavoisier_and_His_Wife.jpg/800px-David_-_Portrait_of_Monsieur_Lavoisier_and_His_Wife.jpg"],
+  [/dalton/i, "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Dalton_John_desk.jpg/600px-Dalton_John_desk.jpg"],
+  [/mendele/i, "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Dmitri_Mendeleev_1897.jpg/600px-Dmitri_Mendeleev_1897.jpg"],
+  [/bohr/i, "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Niels_Bohr.jpg/600px-Niels_Bohr.jpg"],
+  [/rutherford/i, "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Ernest_Rutherford_1908.jpg/600px-Ernest_Rutherford_1908.jpg"],
+  [/thomson/i, "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/J.J_Thomson.jpg/600px-J.J_Thomson.jpg"],
+  [/einstein/i, "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Albert_Einstein_Head.jpg/600px-Albert_Einstein_Head.jpg"],
+  [/curie/i, "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Marie_Curie_c._1920s.jpg/600px-Marie_Curie_c._1920s.jpg"],
+  [/atomo|átomo|atom/i, "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800"],
+  [/molécul|molecul/i, "https://images.unsplash.com/photo-1554475900-0a0350e3fc7b?w=800"],
+  [/tabela.*peri|periodic/i, "https://images.unsplash.com/photo-1628595351029-c2bf17511435?w=800"],
+  [/reaç|reaction/i, "https://images.unsplash.com/photo-1554475901-4538ddfbccc2?w=800"],
+  [/laborat/i, "https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=800"],
+  [/eletr|electron/i, "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800"],
+  [/gas|gás|gases/i, "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=800"],
+  [/ácido|acido|acid|base|ph/i, "https://images.unsplash.com/photo-1603126857599-f6e157fa2fe6?w=800"],
+  [/quimic|química|chem/i, "https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?w=800"],
+];
 function imageKeywords(text: string): string {
   const words = (text || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
     .replace(/[^a-z0-9\s]/g, " ").split(/\s+/).filter((w) => w.length > 3 && !IMG_STOP.has(w));
-  const pick = words.slice(0, 2).join(",");
-  return (pick || "chemistry") + ",chemistry,science";
+  const pick = words.slice(0, 3).join(",");
+  return (pick || "chemistry") + ",chemistry,science,laboratory";
 }
 function topicImage(text: string, w = 480, h = 260): string {
-  let h1 = 0;
   const s = text || "chem";
+  for (const [rx, url] of CURATED) if (rx.test(s)) return url;
+  let h1 = 0;
   for (let i = 0; i < s.length; i++) h1 = ((h1 << 5) - h1 + s.charCodeAt(i)) | 0;
-  const lock = Math.abs(h1) % 100000;
-  return `https://loremflickr.com/${w}/${h}/${encodeURIComponent(imageKeywords(s))}?lock=${lock}`;
+  const seed = Math.abs(h1);
+  // Picsum garante imagem única e sempre disponível por seed (fallback confiável)
+  return `https://picsum.photos/seed/${seed}-${encodeURIComponent(s.slice(0, 24))}/${w}/${h}`;
 }
 
 /* Conteúdo extra por categoria: aplicação no cotidiano, curiosidades e fatos engraçados */
