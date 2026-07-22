@@ -1923,12 +1923,12 @@ export default function TopicoDetalhe() {
               <div className="flex items-center gap-2 text-[#4C1D95] font-bold mb-3">
                 <Lightbulb size={18} /> Conceitos-chave (com explicação)
               </div>
-              <div className="grid sm:grid-cols-2 gap-3">
+              <div className="flex flex-col gap-5">
                 {c.key.map((k, i) => (
                   <div key={i} className="rounded-lg border border-violet-200 bg-violet-50/60 overflow-hidden">
-                    <div className="w-full h-28 overflow-hidden">
+                    <div className="w-full h-64 overflow-hidden">
                       <EditableImage
-                        src={sectionImg(`key_${i}`) || topicImage(`${title} ${k}`, 480, 200)}
+                        src={sectionImg(`key_${i}`) || topicImage(`${title} ${k}`, 960, 400)}
                         alt={`Ilustração de ${k}`}
                         className="w-full h-full"
                         isAdmin={isAdmin} slug={slug!} title={title} lesson={lesson}
@@ -1936,9 +1936,9 @@ export default function TopicoDetalhe() {
                         onChange={(u) => applySectionImage(`key_${i}`, u)}
                       />
                     </div>
-                    <div className="p-3">
-                      <div className="text-sm font-bold text-[#4C1D95] mb-1">{k}</div>
-                      <div className="text-xs text-slate-700 leading-relaxed">{explainKey(k)}</div>
+                    <div className="p-4">
+                      <div className="text-base font-bold text-[#4C1D95] mb-1">{k}</div>
+                      <div className="text-sm text-slate-700 leading-relaxed">{explainKey(k)}</div>
                     </div>
                   </div>
                 ))}
@@ -1950,18 +1950,15 @@ export default function TopicoDetalhe() {
               <div className="flex items-center gap-2 text-[#4C1D95] font-bold mb-3">
                 <Target size={18} /> Princípios e leis fundamentais
               </div>
-              <ol className="space-y-2">
+              <ol className="space-y-5">
                 {c.principles.map((p, i) => {
                   const { head, rest } = highlightPrinciple(p);
                   const explain = explainPrinciple(p);
                   return (
-                    <li key={i} className="rounded-lg border border-slate-200 bg-white p-3 flex gap-3">
-                      <div className="w-7 h-7 shrink-0 rounded-full bg-[#4C1D95] text-white text-xs font-bold flex items-center justify-center">
-                        {i + 1}
-                      </div>
-                      <div className="w-20 h-20 rounded-md border border-slate-200 hidden sm:block overflow-hidden shrink-0">
+                    <li key={i} className="rounded-lg border border-slate-200 bg-white overflow-hidden">
+                      <div className="w-full h-64 overflow-hidden">
                         <EditableImage
-                          src={sectionImg(`principle_${i}`) || topicImage(`${title} ${head}`, 240, 240)}
+                          src={sectionImg(`principle_${i}`) || topicImage(`${title} ${head}`, 960, 400)}
                           alt={`Ilustração de ${head}`}
                           className="w-full h-full"
                           isAdmin={isAdmin} slug={slug!} title={title} lesson={lesson}
@@ -1969,11 +1966,16 @@ export default function TopicoDetalhe() {
                           onChange={(u) => applySectionImage(`principle_${i}`, u)}
                         />
                       </div>
-                      <div className="flex-1">
-                        <div className="font-bold text-sm text-slate-900">{head}</div>
-                        {rest && <div className="text-xs text-slate-700 mt-0.5 leading-relaxed">{rest}</div>}
-                        <div className="text-xs text-slate-600 mt-2 leading-relaxed border-l-2 border-violet-300 pl-2 italic">
-                          {explain}
+                      <div className="p-4 flex gap-3">
+                        <div className="w-7 h-7 shrink-0 rounded-full bg-[#4C1D95] text-white text-xs font-bold flex items-center justify-center">
+                          {i + 1}
+                        </div>
+                        <div className="flex-1">
+                          <div className="font-bold text-sm text-slate-900">{head}</div>
+                          {rest && <div className="text-xs text-slate-700 mt-0.5 leading-relaxed">{rest}</div>}
+                          <div className="text-xs text-slate-600 mt-2 leading-relaxed border-l-2 border-violet-300 pl-2 italic">
+                            {explain}
+                          </div>
                         </div>
                       </div>
                     </li>
@@ -2028,12 +2030,12 @@ export default function TopicoDetalhe() {
                     <div className="flex items-center gap-2 text-emerald-800 font-bold mb-2">
                       <FlaskConical size={18} /> Aplicações no cotidiano
                     </div>
-                    <ul className="space-y-3 text-sm text-slate-700">
+                    <ul className="space-y-5 text-sm text-slate-700">
                       {dailyLife.map((t, i) => (
-                        <li key={i} className="flex gap-3">
-                          <div className="w-14 h-14 rounded-md border border-emerald-200 shrink-0 overflow-hidden">
+                        <li key={i} className="rounded-lg border border-emerald-200 bg-white overflow-hidden">
+                          <div className="w-full h-64 overflow-hidden">
                             <EditableImage
-                              src={sectionImg(`daily_${i}`) || topicImage(`${title} ${t}`, 180, 180)}
+                              src={sectionImg(`daily_${i}`) || topicImage(`${title} ${t}`, 960, 400)}
                               alt=""
                               className="w-full h-full"
                               isAdmin={isAdmin} slug={slug!} title={title} lesson={lesson}
@@ -2041,7 +2043,7 @@ export default function TopicoDetalhe() {
                               onChange={(u) => applySectionImage(`daily_${i}`, u)}
                             />
                           </div>
-                          <span className="flex-1 leading-relaxed">{t}</span>
+                          <div className="p-4 leading-relaxed">{t}</div>
                         </li>
                       ))}
                     </ul>
@@ -2051,12 +2053,12 @@ export default function TopicoDetalhe() {
                     <div className="flex items-center gap-2 text-[#4C1D95] font-bold mb-2">
                       <Sparkles size={18} /> Curiosidades
                     </div>
-                    <ul className="space-y-3 text-sm text-slate-700">
+                    <ul className="space-y-5 text-sm text-slate-700">
                       {allCuriosities.map((t, i) => (
-                        <li key={i} className="flex gap-3">
-                          <div className="w-14 h-14 rounded-md border border-violet-200 shrink-0 overflow-hidden">
+                        <li key={i} className="rounded-lg border border-violet-200 bg-white overflow-hidden">
+                          <div className="w-full h-64 overflow-hidden">
                             <EditableImage
-                              src={sectionImg(`curio_${i}`) || topicImage(`${title} ${t}`, 180, 180)}
+                              src={sectionImg(`curio_${i}`) || topicImage(`${title} ${t}`, 960, 400)}
                               alt=""
                               className="w-full h-full"
                               isAdmin={isAdmin} slug={slug!} title={title} lesson={lesson}
@@ -2064,7 +2066,7 @@ export default function TopicoDetalhe() {
                               onChange={(u) => applySectionImage(`curio_${i}`, u)}
                             />
                           </div>
-                          <span className="flex-1 leading-relaxed">{t}</span>
+                          <div className="p-4 leading-relaxed">{t}</div>
                         </li>
                       ))}
                     </ul>
