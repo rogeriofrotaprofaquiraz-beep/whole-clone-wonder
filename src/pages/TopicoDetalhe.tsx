@@ -1923,12 +1923,12 @@ export default function TopicoDetalhe() {
               <div className="flex items-center gap-2 text-[#4C1D95] font-bold mb-3">
                 <Lightbulb size={18} /> Conceitos-chave (com explicação)
               </div>
-              <div className="grid sm:grid-cols-2 gap-3">
+              <div className="flex flex-col gap-5">
                 {c.key.map((k, i) => (
                   <div key={i} className="rounded-lg border border-violet-200 bg-violet-50/60 overflow-hidden">
-                    <div className="w-full h-28 overflow-hidden">
+                    <div className="w-full h-64 overflow-hidden">
                       <EditableImage
-                        src={sectionImg(`key_${i}`) || topicImage(`${title} ${k}`, 480, 200)}
+                        src={sectionImg(`key_${i}`) || topicImage(`${title} ${k}`, 960, 400)}
                         alt={`Ilustração de ${k}`}
                         className="w-full h-full"
                         isAdmin={isAdmin} slug={slug!} title={title} lesson={lesson}
@@ -1936,9 +1936,9 @@ export default function TopicoDetalhe() {
                         onChange={(u) => applySectionImage(`key_${i}`, u)}
                       />
                     </div>
-                    <div className="p-3">
-                      <div className="text-sm font-bold text-[#4C1D95] mb-1">{k}</div>
-                      <div className="text-xs text-slate-700 leading-relaxed">{explainKey(k)}</div>
+                    <div className="p-4">
+                      <div className="text-base font-bold text-[#4C1D95] mb-1">{k}</div>
+                      <div className="text-sm text-slate-700 leading-relaxed">{explainKey(k)}</div>
                     </div>
                   </div>
                 ))}
