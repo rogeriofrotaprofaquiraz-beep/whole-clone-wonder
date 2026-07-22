@@ -1950,18 +1950,15 @@ export default function TopicoDetalhe() {
               <div className="flex items-center gap-2 text-[#4C1D95] font-bold mb-3">
                 <Target size={18} /> Princípios e leis fundamentais
               </div>
-              <ol className="space-y-2">
+              <ol className="space-y-5">
                 {c.principles.map((p, i) => {
                   const { head, rest } = highlightPrinciple(p);
                   const explain = explainPrinciple(p);
                   return (
-                    <li key={i} className="rounded-lg border border-slate-200 bg-white p-3 flex gap-3">
-                      <div className="w-7 h-7 shrink-0 rounded-full bg-[#4C1D95] text-white text-xs font-bold flex items-center justify-center">
-                        {i + 1}
-                      </div>
-                      <div className="w-20 h-20 rounded-md border border-slate-200 hidden sm:block overflow-hidden shrink-0">
+                    <li key={i} className="rounded-lg border border-slate-200 bg-white overflow-hidden">
+                      <div className="w-full h-64 overflow-hidden">
                         <EditableImage
-                          src={sectionImg(`principle_${i}`) || topicImage(`${title} ${head}`, 240, 240)}
+                          src={sectionImg(`principle_${i}`) || topicImage(`${title} ${head}`, 960, 400)}
                           alt={`Ilustração de ${head}`}
                           className="w-full h-full"
                           isAdmin={isAdmin} slug={slug!} title={title} lesson={lesson}
@@ -1969,11 +1966,16 @@ export default function TopicoDetalhe() {
                           onChange={(u) => applySectionImage(`principle_${i}`, u)}
                         />
                       </div>
-                      <div className="flex-1">
-                        <div className="font-bold text-sm text-slate-900">{head}</div>
-                        {rest && <div className="text-xs text-slate-700 mt-0.5 leading-relaxed">{rest}</div>}
-                        <div className="text-xs text-slate-600 mt-2 leading-relaxed border-l-2 border-violet-300 pl-2 italic">
-                          {explain}
+                      <div className="p-4 flex gap-3">
+                        <div className="w-7 h-7 shrink-0 rounded-full bg-[#4C1D95] text-white text-xs font-bold flex items-center justify-center">
+                          {i + 1}
+                        </div>
+                        <div className="flex-1">
+                          <div className="font-bold text-sm text-slate-900">{head}</div>
+                          {rest && <div className="text-xs text-slate-700 mt-0.5 leading-relaxed">{rest}</div>}
+                          <div className="text-xs text-slate-600 mt-2 leading-relaxed border-l-2 border-violet-300 pl-2 italic">
+                            {explain}
+                          </div>
                         </div>
                       </div>
                     </li>
