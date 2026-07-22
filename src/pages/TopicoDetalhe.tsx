@@ -2030,12 +2030,12 @@ export default function TopicoDetalhe() {
                     <div className="flex items-center gap-2 text-emerald-800 font-bold mb-2">
                       <FlaskConical size={18} /> Aplicações no cotidiano
                     </div>
-                    <ul className="space-y-3 text-sm text-slate-700">
+                    <ul className="space-y-5 text-sm text-slate-700">
                       {dailyLife.map((t, i) => (
-                        <li key={i} className="flex gap-3">
-                          <div className="w-14 h-14 rounded-md border border-emerald-200 shrink-0 overflow-hidden">
+                        <li key={i} className="rounded-lg border border-emerald-200 bg-white overflow-hidden">
+                          <div className="w-full h-64 overflow-hidden">
                             <EditableImage
-                              src={sectionImg(`daily_${i}`) || topicImage(`${title} ${t}`, 180, 180)}
+                              src={sectionImg(`daily_${i}`) || topicImage(`${title} ${t}`, 960, 400)}
                               alt=""
                               className="w-full h-full"
                               isAdmin={isAdmin} slug={slug!} title={title} lesson={lesson}
@@ -2043,7 +2043,7 @@ export default function TopicoDetalhe() {
                               onChange={(u) => applySectionImage(`daily_${i}`, u)}
                             />
                           </div>
-                          <span className="flex-1 leading-relaxed">{t}</span>
+                          <div className="p-4 leading-relaxed">{t}</div>
                         </li>
                       ))}
                     </ul>
@@ -2053,12 +2053,12 @@ export default function TopicoDetalhe() {
                     <div className="flex items-center gap-2 text-[#4C1D95] font-bold mb-2">
                       <Sparkles size={18} /> Curiosidades
                     </div>
-                    <ul className="space-y-3 text-sm text-slate-700">
+                    <ul className="space-y-5 text-sm text-slate-700">
                       {allCuriosities.map((t, i) => (
-                        <li key={i} className="flex gap-3">
-                          <div className="w-14 h-14 rounded-md border border-violet-200 shrink-0 overflow-hidden">
+                        <li key={i} className="rounded-lg border border-violet-200 bg-white overflow-hidden">
+                          <div className="w-full h-64 overflow-hidden">
                             <EditableImage
-                              src={sectionImg(`curio_${i}`) || topicImage(`${title} ${t}`, 180, 180)}
+                              src={sectionImg(`curio_${i}`) || topicImage(`${title} ${t}`, 960, 400)}
                               alt=""
                               className="w-full h-full"
                               isAdmin={isAdmin} slug={slug!} title={title} lesson={lesson}
@@ -2066,7 +2066,7 @@ export default function TopicoDetalhe() {
                               onChange={(u) => applySectionImage(`curio_${i}`, u)}
                             />
                           </div>
-                          <span className="flex-1 leading-relaxed">{t}</span>
+                          <div className="p-4 leading-relaxed">{t}</div>
                         </li>
                       ))}
                     </ul>
