@@ -1542,6 +1542,7 @@ export type Database = {
           created_at: string
           curiosities: string[] | null
           daily_life: string[] | null
+          edit_complete: boolean
           examples: Json | null
           exercises: Json | null
           footer_image_url: string | null
@@ -1555,7 +1556,9 @@ export type Database = {
           materials: Json
           pitfalls: Json | null
           principles: Json | null
+          published: boolean
           refs: Json | null
+          reviewed: boolean
           section_images: Json
           simple: string | null
           slug: string
@@ -1569,6 +1572,7 @@ export type Database = {
           created_at?: string
           curiosities?: string[] | null
           daily_life?: string[] | null
+          edit_complete?: boolean
           examples?: Json | null
           exercises?: Json | null
           footer_image_url?: string | null
@@ -1582,7 +1586,9 @@ export type Database = {
           materials?: Json
           pitfalls?: Json | null
           principles?: Json | null
+          published?: boolean
           refs?: Json | null
+          reviewed?: boolean
           section_images?: Json
           simple?: string | null
           slug: string
@@ -1596,6 +1602,7 @@ export type Database = {
           created_at?: string
           curiosities?: string[] | null
           daily_life?: string[] | null
+          edit_complete?: boolean
           examples?: Json | null
           exercises?: Json | null
           footer_image_url?: string | null
@@ -1609,7 +1616,9 @@ export type Database = {
           materials?: Json
           pitfalls?: Json | null
           principles?: Json | null
+          published?: boolean
           refs?: Json | null
+          reviewed?: boolean
           section_images?: Json
           simple?: string | null
           slug?: string
