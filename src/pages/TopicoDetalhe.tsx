@@ -1863,6 +1863,15 @@ export default function TopicoDetalhe() {
           <ArrowLeft size={18} /> Tópico anterior
         </button>
 
+        {isAdmin && <PublishChecklist
+          slug={slug!} title={title} lesson={lesson}
+          override={override}
+          content={c}
+          hasHeroImage={!!(sectionImg("hero") || override?.image_url)}
+          onFlagChange={(patch) => setOverride((o) => ({ ...(o || {}), ...patch }))}
+        />}
+
+
         <Card className="overflow-hidden mb-6 border-0">
           <div className="relative h-56 md:h-72 bg-gradient-to-br from-violet-700 to-indigo-900">
             <EditableImage
