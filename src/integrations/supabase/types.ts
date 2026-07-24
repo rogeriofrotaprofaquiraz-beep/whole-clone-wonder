@@ -591,11 +591,13 @@ export type Database = {
           cover_url: string | null
           created_at: string
           description: string | null
+          edit_complete: boolean
           hours: number
           id: string
           image_url: string | null
           level: string
           published: boolean
+          reviewed: boolean
           slide_url: string | null
           title: string
           updated_at: string
@@ -606,11 +608,13 @@ export type Database = {
           cover_url?: string | null
           created_at?: string
           description?: string | null
+          edit_complete?: boolean
           hours?: number
           id?: string
           image_url?: string | null
           level?: string
           published?: boolean
+          reviewed?: boolean
           slide_url?: string | null
           title: string
           updated_at?: string
@@ -621,11 +625,13 @@ export type Database = {
           cover_url?: string | null
           created_at?: string
           description?: string | null
+          edit_complete?: boolean
           hours?: number
           id?: string
           image_url?: string | null
           level?: string
           published?: boolean
+          reviewed?: boolean
           slide_url?: string | null
           title?: string
           updated_at?: string
