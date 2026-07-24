@@ -24,7 +24,7 @@ import { parseBulkQuestions } from "@/lib/parseBulkQuestions";
 
 type Course = {
   id: string; title: string; description: string | null;
-  area: string; level: string; published: boolean; created_at: string;
+  area: string; level: string; published: boolean; edit_complete?: boolean; reviewed?: boolean; created_at: string;
   image_url?: string | null; slide_url?: string | null;
 };
 type Lesson = {
