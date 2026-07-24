@@ -1612,6 +1612,9 @@ export default function TopicoDetalhe() {
           lesson_plan: (data as any).lesson_plan ?? undefined,
           bncc_codes: ((data as any).bncc_codes as BnccCode[]) ?? undefined,
           section_images: ((data as any).section_images as Record<string,string>) ?? {},
+          edit_complete: !!(data as any).edit_complete,
+          reviewed: !!(data as any).reviewed,
+          published: !!(data as any).published,
         });
       }
     })();
