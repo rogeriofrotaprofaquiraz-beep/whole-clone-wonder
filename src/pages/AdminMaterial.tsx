@@ -121,8 +121,48 @@ export default function AdminMaterial() {
       });
       setStats(s);
     }
+    // Load topic publication metadata
+    const { data: tos } = await supabase
+      .from("topic_overrides")
+      .select("slug,edit_complete,reviewed,published");
+    const tm: Record<string, { edit_complete: boolean; reviewed: boolean; published: boolean }> = {};
+    (tos ?? []).forEach((t: any) => {
+      tm[t.slug] = {
+        edit_complete: !!t.edit_complete,
+        reviewed: !!t.reviewed,
+        published: !!t.published,
+      };
+    });
+    setTopicMeta(tm);
     setLoading(false);
   };
+
+  const toggleTopicFlag = async (
+    topicSlug: string,
+    title: string,
+    lessonTitle: string,
+    flag: "edit_complete" | "reviewed" | "published",
+  ) => {
+    const cur = topicMeta[topicSlug] || { edit_complete: false, reviewed: false, published: false };
+    const next = !cur[flag];
+    if (flag === "published" && next && (!cur.edit_complete || !cur.reviewed)) {
+      toast.error("Marque 'Edição completa' e 'Revisado' antes de publicar");
+      return;
+    }
+    const patch: any = { slug: topicSlug, title, lesson: lessonTitle, [flag]: next };
+    // If unchecking a prior step, cascade unpublish
+    if (!next && flag !== "published" && cur.published) patch.published = false;
+    if (!next && flag === "edit_complete" && cur.reviewed) patch.reviewed = false;
+    const { error } = await supabase
+      .from("topic_overrides")
+      .upsert(patch, { onConflict: "slug" });
+    if (error) { toast.error(error.message); return; }
+    setTopicMeta(prev => ({
+      ...prev,
+      [topicSlug]: { ...cur, ...patch, edit_complete: patch.edit_complete ?? cur.edit_complete, reviewed: patch.reviewed ?? cur.reviewed, published: patch.published ?? cur.published },
+    }));
+  };
+
 
   useEffect(() => { if (isAdmin) loadAll(); }, [isAdmin]);
 
