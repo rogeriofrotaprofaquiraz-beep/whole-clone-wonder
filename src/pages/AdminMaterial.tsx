@@ -126,10 +126,26 @@ export default function AdminMaterial() {
   useEffect(() => { if (isAdmin) loadAll(); }, [isAdmin]);
 
   const togglePublished = async (c: Course) => {
-    const { error } = await supabase.from("courses").update({ published: !c.published }).eq("id", c.id);
+    const next = !c.published;
+    if (next && (!c.edit_complete || !c.reviewed)) {
+      toast.error("Marque 'Edição completa' e 'Revisado' antes de publicar");
+      return;
+    }
+    const { error } = await supabase.from("courses").update({ published: next }).eq("id", c.id);
     if (error) { toast.error(error.message); return; }
-    setCourses(prev => prev.map(x => x.id === c.id ? { ...x, published: !c.published } : x));
-    toast.success(!c.published ? "Curso publicado" : "Curso ocultado");
+    setCourses(prev => prev.map(x => x.id === c.id ? { ...x, published: next } : x));
+    toast.success(next ? "Curso publicado para alunos" : "Curso ocultado dos alunos");
+  };
+
+  const toggleFlag = async (c: Course, flag: "edit_complete" | "reviewed") => {
+    const next = !c[flag];
+    const patch: any = { [flag]: next };
+    // Se desmarcar edição/revisão, despublica automaticamente
+    if (!next && c.published) patch.published = false;
+    const { error } = await supabase.from("courses").update(patch).eq("id", c.id);
+    if (error) { toast.error(error.message); return; }
+    setCourses(prev => prev.map(x => x.id === c.id ? { ...x, ...patch } : x));
+    toast.success(next ? "Etapa confirmada" : "Etapa desmarcada");
   };
 
   const previewAsStudent = (c: Course) => {
