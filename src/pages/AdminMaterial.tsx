@@ -609,18 +609,38 @@ export default function AdminMaterial() {
                                       <div className="text-[11px] font-bold text-[#4C1D95] uppercase mb-1.5">
                                         Tópicos desta aula — clique para editar o conteúdo
                                       </div>
-                                      <div className="grid sm:grid-cols-2 gap-1.5">
-                                        {topics.map((t, i) => (
-                                          <Link
-                                            key={i}
-                                            to={`/topico/${slug(t)}?t=${encodeURIComponent(t)}&lesson=${encodeURIComponent(l.title)}&back=${encodeURIComponent("/admin/material")}&edit=1`}
-                                            className="flex items-center gap-2 text-xs px-2 py-1.5 rounded bg-white border border-violet-200 hover:border-violet-500 hover:bg-violet-100 text-[#4C1D95] font-medium"
-                                          >
-                                            <Pencil size={11} />
-                                            <span className="flex-1 truncate">{t}</span>
-                                          </Link>
-                                        ))}
+                                      <div className="grid gap-1.5">
+                                        {topics.map((t, i) => {
+                                          const s = slug(t);
+                                          const meta = topicMeta[s] || { edit_complete: false, reviewed: false, published: false };
+                                          return (
+                                            <div key={i} className="flex flex-wrap items-center gap-2 p-1.5 rounded bg-white border border-violet-200">
+                                              <Link
+                                                to={`/topico/${s}?t=${encodeURIComponent(t)}&lesson=${encodeURIComponent(l.title)}&back=${encodeURIComponent("/admin/material")}&edit=1`}
+                                                className="flex items-center gap-2 text-xs px-2 py-1 rounded hover:bg-violet-100 text-[#4C1D95] font-medium flex-1 min-w-[180px]"
+                                              >
+                                                <Pencil size={11} />
+                                                <span className="flex-1 truncate">{t}</span>
+                                              </Link>
+                                              <div className="flex items-center gap-1 text-[10px]">
+                                                <label className={`flex items-center gap-1 cursor-pointer px-1.5 py-0.5 rounded border ${meta.edit_complete ? "bg-amber-50 border-amber-300 text-amber-800" : "bg-white border-slate-200 text-slate-500"}`}>
+                                                  <input type="checkbox" checked={meta.edit_complete} onChange={() => toggleTopicFlag(s, t, l.title, "edit_complete")} className="accent-amber-600 w-3 h-3" />
+                                                  <span className="font-semibold">1. Edição</span>
+                                                </label>
+                                                <label className={`flex items-center gap-1 cursor-pointer px-1.5 py-0.5 rounded border ${meta.reviewed ? "bg-blue-50 border-blue-300 text-blue-800" : "bg-white border-slate-200 text-slate-500"} ${!meta.edit_complete ? "opacity-50 pointer-events-none" : ""}`}>
+                                                  <input type="checkbox" checked={meta.reviewed} disabled={!meta.edit_complete} onChange={() => toggleTopicFlag(s, t, l.title, "reviewed")} className="accent-blue-600 w-3 h-3" />
+                                                  <span className="font-semibold">2. Revisado</span>
+                                                </label>
+                                                <label className={`flex items-center gap-1 cursor-pointer px-1.5 py-0.5 rounded border ${meta.published ? "bg-emerald-50 border-emerald-300 text-emerald-800" : "bg-white border-slate-200 text-slate-500"} ${(!meta.edit_complete || !meta.reviewed) ? "opacity-50 pointer-events-none" : ""}`}>
+                                                  <input type="checkbox" checked={meta.published} disabled={!meta.edit_complete || !meta.reviewed} onChange={() => toggleTopicFlag(s, t, l.title, "published")} className="accent-emerald-600 w-3 h-3" />
+                                                  <span className="font-semibold">3. Publicar</span>
+                                                </label>
+                                              </div>
+                                            </div>
+                                          );
+                                        })}
                                       </div>
+
                                     </div>
                                   )}
                                   <details className="mt-2">
