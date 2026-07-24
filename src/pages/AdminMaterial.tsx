@@ -432,9 +432,23 @@ export default function AdminMaterial() {
                         <Badge variant="outline"><CheckCircle2 size={11} className="mr-1" />{st.done} concluídas</Badge>
                       </div>
                     </div>
-                    <div className="flex items-center gap-2 shrink-0">
-                      <span className="text-xs text-slate-500 hidden sm:inline">{c.published ? "Publicado" : "Oculto"}</span>
-                      <Switch checked={c.published} onCheckedChange={() => togglePublished(c)} />
+                    <div className="flex items-center gap-2 shrink-0" onClick={(e) => e.stopPropagation()}>
+                      <div className="hidden md:flex items-center gap-3 mr-2 text-xs">
+                        <label className={`flex items-center gap-1.5 cursor-pointer px-2 py-1 rounded border ${c.edit_complete ? "bg-amber-50 border-amber-300 text-amber-800" : "bg-white border-slate-200 text-slate-600"}`}>
+                          <input type="checkbox" checked={!!c.edit_complete} onChange={() => toggleFlag(c, "edit_complete")} className="accent-amber-600" />
+                          <span className="font-semibold">1. Edição completa</span>
+                        </label>
+                        <label className={`flex items-center gap-1.5 cursor-pointer px-2 py-1 rounded border ${c.reviewed ? "bg-blue-50 border-blue-300 text-blue-800" : "bg-white border-slate-200 text-slate-600"} ${!c.edit_complete ? "opacity-50 pointer-events-none" : ""}`}>
+                          <input type="checkbox" checked={!!c.reviewed} disabled={!c.edit_complete} onChange={() => toggleFlag(c, "reviewed")} className="accent-blue-600" />
+                          <span className="font-semibold">2. Revisado</span>
+                        </label>
+                        <label className={`flex items-center gap-1.5 cursor-pointer px-2 py-1 rounded border ${c.published ? "bg-emerald-50 border-emerald-300 text-emerald-800" : "bg-white border-slate-200 text-slate-600"} ${(!c.edit_complete || !c.reviewed) ? "opacity-50 pointer-events-none" : ""}`}>
+                          <input type="checkbox" checked={c.published} disabled={!c.edit_complete || !c.reviewed} onChange={() => togglePublished(c)} className="accent-emerald-600" />
+                          <span className="font-semibold">3. Publicar</span>
+                        </label>
+                      </div>
+                      <span className="text-xs text-slate-500 hidden sm:inline md:hidden">{c.published ? "Publicado" : "Oculto"}</span>
+                      <Switch className="md:hidden" checked={c.published} onCheckedChange={() => togglePublished(c)} />
                       <button
                         type="button"
                         onClick={(e) => { e.stopPropagation(); previewAsStudent(c); }}
