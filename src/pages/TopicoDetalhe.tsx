@@ -1609,11 +1609,21 @@ function PublishChecklist({
 
   return (
     <Card className="mb-4 p-4 bg-white/95 border-0">
-      <div className="flex items-center justify-between mb-3">
+      <div className="flex items-center justify-between mb-3 flex-wrap gap-2">
         <div className="flex items-center gap-2 text-[#4C1D95] font-bold">
           <Target size={18} /> Checklist de publicação (admin)
         </div>
-        <div className="text-xs font-semibold text-slate-600">{done}/{required.length} concluídos · {pct}%</div>
+        <div className="flex items-center gap-3 text-xs">
+          <span className="text-slate-600">
+            🕓 Última atualização:{" "}
+            <span className="font-semibold text-slate-800">
+              {override?.updated_at
+                ? new Date(override.updated_at as string).toLocaleString("pt-BR", { dateStyle: "short", timeStyle: "short" })
+                : "—"}
+            </span>
+          </span>
+          <span className="font-semibold text-slate-600">{done}/{required.length} · {pct}%</span>
+        </div>
       </div>
       <div className="w-full h-2 bg-slate-200 rounded overflow-hidden mb-3">
         <div className="h-full bg-gradient-to-r from-violet-500 to-emerald-500 transition-all" style={{ width: `${pct}%` }} />
