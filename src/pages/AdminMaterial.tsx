@@ -130,13 +130,14 @@ export default function AdminMaterial() {
     // Load topic publication metadata
     const { data: tos } = await supabase
       .from("topic_overrides")
-      .select("slug,edit_complete,reviewed,published");
-    const tm: Record<string, { edit_complete: boolean; reviewed: boolean; published: boolean }> = {};
+      .select("slug,edit_complete,reviewed,published,updated_at");
+    const tm: Record<string, { edit_complete: boolean; reviewed: boolean; published: boolean; updated_at?: string | null }> = {};
     (tos ?? []).forEach((t: any) => {
       tm[t.slug] = {
         edit_complete: !!t.edit_complete,
         reviewed: !!t.reviewed,
         published: !!t.published,
+        updated_at: t.updated_at ?? null,
       };
     });
     setTopicMeta(tm);
