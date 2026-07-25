@@ -1705,6 +1705,7 @@ export default function TopicoDetalhe() {
           edit_complete: !!(data as any).edit_complete,
           reviewed: !!(data as any).reviewed,
           published: !!(data as any).published,
+          updated_at: (data as any).updated_at ?? null,
         });
       }
     })();
