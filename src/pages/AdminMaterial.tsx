@@ -25,7 +25,13 @@ import { parseBulkQuestions } from "@/lib/parseBulkQuestions";
 type Course = {
   id: string; title: string; description: string | null;
   area: string; level: string; published: boolean; edit_complete?: boolean; reviewed?: boolean; created_at: string;
+  updated_at?: string | null;
   image_url?: string | null; slide_url?: string | null;
+};
+
+const fmtDT = (s?: string | null) => {
+  if (!s) return "—";
+  try { return new Date(s).toLocaleString("pt-BR", { dateStyle: "short", timeStyle: "short" }); } catch { return "—"; }
 };
 type Lesson = {
   id: string; course_id: string; title: string; content: string | null;
@@ -66,7 +72,7 @@ export default function AdminMaterial() {
   const [courses, setCourses] = useState<Course[]>([]);
   const [lessonsByCourse, setLessonsByCourse] = useState<Record<string, Lesson[]>>({});
   const [stats, setStats] = useState<Record<string, { enroll: number; done: number }>>({});
-  const [topicMeta, setTopicMeta] = useState<Record<string, { edit_complete: boolean; reviewed: boolean; published: boolean }>>({});
+  const [topicMeta, setTopicMeta] = useState<Record<string, { edit_complete: boolean; reviewed: boolean; published: boolean; updated_at?: string | null }>>({});
   const [q, setQ] = useState("");
   const [editing, setEditing] = useState<Lesson | null>(null);
   const [saving, setSaving] = useState(false);
@@ -93,7 +99,7 @@ export default function AdminMaterial() {
     setLoading(true);
     const { data: cs } = await supabase
       .from("courses")
-      .select("id,title,description,area,level,published,edit_complete,reviewed,created_at,image_url,slide_url")
+      .select("id,title,description,area,level,published,edit_complete,reviewed,created_at,updated_at,image_url,slide_url")
       .order("title", { ascending: true });
     const list = (cs ?? []) as Course[];
     setCourses(list);
@@ -124,13 +130,14 @@ export default function AdminMaterial() {
     // Load topic publication metadata
     const { data: tos } = await supabase
       .from("topic_overrides")
-      .select("slug,edit_complete,reviewed,published");
-    const tm: Record<string, { edit_complete: boolean; reviewed: boolean; published: boolean }> = {};
+      .select("slug,edit_complete,reviewed,published,updated_at");
+    const tm: Record<string, { edit_complete: boolean; reviewed: boolean; published: boolean; updated_at?: string | null }> = {};
     (tos ?? []).forEach((t: any) => {
       tm[t.slug] = {
         edit_complete: !!t.edit_complete,
         reviewed: !!t.reviewed,
         published: !!t.published,
+        updated_at: t.updated_at ?? null,
       };
     });
     setTopicMeta(tm);
@@ -472,6 +479,9 @@ export default function AdminMaterial() {
                         <Badge variant="outline"><Users size={11} className="mr-1" />{st.enroll}</Badge>
                         <Badge variant="outline"><CheckCircle2 size={11} className="mr-1" />{st.done} concluídas</Badge>
                       </div>
+                      <div className="text-[10px] text-slate-500 mt-1">
+                        Última atualização: <span className="font-semibold text-slate-700">{fmtDT(c.updated_at)}</span>
+                      </div>
                     </div>
                     <div className="flex items-center gap-2 shrink-0" onClick={(e) => e.stopPropagation()}>
                       <div className="hidden md:flex items-center gap-3 mr-2 text-xs">
@@ -622,6 +632,9 @@ export default function AdminMaterial() {
                                                 <Pencil size={11} />
                                                 <span className="flex-1 truncate">{t}</span>
                                               </Link>
+                                              <span className="text-[10px] text-slate-500 whitespace-nowrap" title="Última atualização">
+                                                🕓 {fmtDT(meta.updated_at)}
+                                              </span>
                                               <div className="flex items-center gap-1 text-[10px]">
                                                 <label className={`flex items-center gap-1 cursor-pointer px-1.5 py-0.5 rounded border ${meta.edit_complete ? "bg-amber-50 border-amber-300 text-amber-800" : "bg-white border-slate-200 text-slate-500"}`}>
                                                   <input type="checkbox" checked={meta.edit_complete} onChange={() => toggleTopicFlag(s, t, l.title, "edit_complete")} className="accent-amber-600 w-3 h-3" />
