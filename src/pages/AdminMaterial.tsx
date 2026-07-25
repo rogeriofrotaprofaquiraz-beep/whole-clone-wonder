@@ -632,6 +632,9 @@ export default function AdminMaterial() {
                                                 <Pencil size={11} />
                                                 <span className="flex-1 truncate">{t}</span>
                                               </Link>
+                                              <span className="text-[10px] text-slate-500 whitespace-nowrap" title="Última atualização">
+                                                🕓 {fmtDT(meta.updated_at)}
+                                              </span>
                                               <div className="flex items-center gap-1 text-[10px]">
                                                 <label className={`flex items-center gap-1 cursor-pointer px-1.5 py-0.5 rounded border ${meta.edit_complete ? "bg-amber-50 border-amber-300 text-amber-800" : "bg-white border-slate-200 text-slate-500"}`}>
                                                   <input type="checkbox" checked={meta.edit_complete} onChange={() => toggleTopicFlag(s, t, l.title, "edit_complete")} className="accent-amber-600 w-3 h-3" />
