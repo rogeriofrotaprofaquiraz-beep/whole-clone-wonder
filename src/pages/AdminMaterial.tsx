@@ -479,6 +479,9 @@ export default function AdminMaterial() {
                         <Badge variant="outline"><Users size={11} className="mr-1" />{st.enroll}</Badge>
                         <Badge variant="outline"><CheckCircle2 size={11} className="mr-1" />{st.done} concluídas</Badge>
                       </div>
+                      <div className="text-[10px] text-slate-500 mt-1">
+                        Última atualização: <span className="font-semibold text-slate-700">{fmtDT(c.updated_at)}</span>
+                      </div>
                     </div>
                     <div className="flex items-center gap-2 shrink-0" onClick={(e) => e.stopPropagation()}>
                       <div className="hidden md:flex items-center gap-3 mr-2 text-xs">
