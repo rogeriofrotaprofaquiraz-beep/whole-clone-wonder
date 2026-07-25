@@ -72,7 +72,7 @@ export default function AdminMaterial() {
   const [courses, setCourses] = useState<Course[]>([]);
   const [lessonsByCourse, setLessonsByCourse] = useState<Record<string, Lesson[]>>({});
   const [stats, setStats] = useState<Record<string, { enroll: number; done: number }>>({});
-  const [topicMeta, setTopicMeta] = useState<Record<string, { edit_complete: boolean; reviewed: boolean; published: boolean }>>({});
+  const [topicMeta, setTopicMeta] = useState<Record<string, { edit_complete: boolean; reviewed: boolean; published: boolean; updated_at?: string | null }>>({});
   const [q, setQ] = useState("");
   const [editing, setEditing] = useState<Lesson | null>(null);
   const [saving, setSaving] = useState(false);
