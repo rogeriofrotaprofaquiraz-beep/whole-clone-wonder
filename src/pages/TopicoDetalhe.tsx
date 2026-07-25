@@ -1555,6 +1555,96 @@ function applyAspect(base: Section, title: string, lesson: string): Section {
 
 type Material = { name: string; url: string };
 
+function PublishChecklist({
+  slug, title, lesson, override, content, hasHeroImage, onFlagChange,
+}: {
+  slug: string; title: string; lesson?: string;
+  override: any; content: Section; hasHeroImage: boolean;
+  onFlagChange: (patch: { edit_complete?: boolean; reviewed?: boolean; published?: boolean }) => void;
+}) {
+  const [busy, setBusy] = useState<string | null>(null);
+  const items: { key: string; label: string; ok: boolean }[] = [
+    { key: "hero", label: "Imagem de capa", ok: hasHeroImage },
+    { key: "simple", label: "Ideia principal (fundamental)", ok: !!(content.simple && content.simple.trim().length > 20) },
+    { key: "formal", label: "Definição formal (médio/superior)", ok: !!(content.formal && content.formal.trim().length > 20) },
+    { key: "key", label: "Conceitos-chave (mín. 3)", ok: (content.key?.length || 0) >= 3 },
+    { key: "principles", label: "Princípios e leis (mín. 2)", ok: (content.principles?.length || 0) >= 2 },
+    { key: "daily", label: "Aplicações no cotidiano", ok: (override?.daily_life?.length || 0) >= 1 },
+    { key: "curio", label: "Curiosidades", ok: (override?.curiosities?.length || 0) >= 1 },
+    { key: "pitfalls", label: "Alertas / erros comuns", ok: (content.pitfalls?.length || 0) >= 1 },
+    { key: "refs", label: "Referências", ok: (content.refs?.length || 0) >= 1 },
+    { key: "exercises", label: "Exercícios de revisão", ok: (content.exercises?.length || 0) >= 3 },
+    { key: "bncc", label: "Códigos BNCC", ok: (override?.bncc_codes?.length || 0) >= 1 },
+    { key: "plan", label: "Plano de aula", ok: !!(override?.lesson_plan && override.lesson_plan.length > 40) },
+    { key: "video", label: "Vídeo-aula (opcional)", ok: !!override?.video_url },
+    { key: "materials", label: "Materiais anexados (opcional)", ok: (override?.materials?.length || 0) >= 1 },
+  ];
+  const required = items.filter(i => !["video","materials"].includes(i.key));
+  const done = required.filter(i => i.ok).length;
+  const pct = Math.round((done / required.length) * 100);
+
+  const editComplete = !!override?.edit_complete;
+  const reviewed = !!override?.reviewed;
+  const published = !!override?.published;
+
+  const toggle = async (flag: "edit_complete" | "reviewed" | "published") => {
+    const cur = { edit_complete: editComplete, reviewed, published };
+    const next = !cur[flag];
+    if (flag === "reviewed" && next && !editComplete) { toast.error("Conclua 'Edição completa' antes"); return; }
+    if (flag === "published" && next && (!editComplete || !reviewed)) { toast.error("Conclua edição e revisão antes"); return; }
+    setBusy(flag);
+    const patch: any = { slug, title, lesson, [flag]: next };
+    if (!next && flag !== "published" && cur.published) patch.published = false;
+    if (!next && flag === "edit_complete" && cur.reviewed) patch.reviewed = false;
+    const { error } = await supabase.from("topic_overrides").upsert(patch, { onConflict: "slug" });
+    setBusy(null);
+    if (error) { toast.error(error.message); return; }
+    onFlagChange({
+      [flag]: next,
+      ...(patch.published === false ? { published: false } : {}),
+      ...(patch.reviewed === false && flag === "edit_complete" ? { reviewed: false } : {}),
+    });
+    toast.success("Atualizado");
+  };
+
+  return (
+    <Card className="mb-4 p-4 bg-white/95 border-0">
+      <div className="flex items-center justify-between mb-3">
+        <div className="flex items-center gap-2 text-[#4C1D95] font-bold">
+          <Target size={18} /> Checklist de publicação (admin)
+        </div>
+        <div className="text-xs font-semibold text-slate-600">{done}/{required.length} concluídos · {pct}%</div>
+      </div>
+      <div className="w-full h-2 bg-slate-200 rounded overflow-hidden mb-3">
+        <div className="h-full bg-gradient-to-r from-violet-500 to-emerald-500 transition-all" style={{ width: `${pct}%` }} />
+      </div>
+      <div className="grid sm:grid-cols-2 gap-1.5 mb-4">
+        {items.map(it => (
+          <div key={it.key} className={`flex items-center gap-2 text-xs px-2 py-1.5 rounded border ${it.ok ? "bg-emerald-50 border-emerald-200 text-emerald-800" : "bg-slate-50 border-slate-200 text-slate-600"}`}>
+            <input type="checkbox" checked={it.ok} readOnly className="accent-emerald-600" />
+            <span className="flex-1">{it.label}</span>
+          </div>
+        ))}
+      </div>
+      <div className="grid sm:grid-cols-3 gap-2 pt-3 border-t border-slate-200">
+        <label className={`flex items-center gap-2 cursor-pointer px-3 py-2 rounded border text-sm font-semibold ${editComplete ? "bg-amber-50 border-amber-300 text-amber-800" : "bg-white border-slate-300 text-slate-600"} ${busy === "edit_complete" ? "opacity-50" : ""}`}>
+          <input type="checkbox" checked={editComplete} disabled={busy !== null} onChange={() => toggle("edit_complete")} className="accent-amber-600" />
+          1. Edição completa
+        </label>
+        <label className={`flex items-center gap-2 cursor-pointer px-3 py-2 rounded border text-sm font-semibold ${reviewed ? "bg-blue-50 border-blue-300 text-blue-800" : "bg-white border-slate-300 text-slate-600"} ${!editComplete ? "opacity-50 pointer-events-none" : ""}`}>
+          <input type="checkbox" checked={reviewed} disabled={!editComplete || busy !== null} onChange={() => toggle("reviewed")} className="accent-blue-600" />
+          2. Revisado
+        </label>
+        <label className={`flex items-center gap-2 cursor-pointer px-3 py-2 rounded border text-sm font-semibold ${published ? "bg-emerald-50 border-emerald-300 text-emerald-800" : "bg-white border-slate-300 text-slate-600"} ${(!editComplete || !reviewed) ? "opacity-50 pointer-events-none" : ""}`}>
+          <input type="checkbox" checked={published} disabled={!editComplete || !reviewed || busy !== null} onChange={() => toggle("published")} className="accent-emerald-600" />
+          3. Publicar
+        </label>
+      </div>
+    </Card>
+  );
+}
+
+
 export default function TopicoDetalhe() {
   const { slug } = useParams();
   const navigate = useNavigate();
@@ -1569,7 +1659,7 @@ export default function TopicoDetalhe() {
   const displayTitle = lesson ? `${title} — ${lesson}` : title;
 
   const [isAdmin, setIsAdmin] = useState(false);
-  const [override, setOverride] = useState<(Partial<Section> & { image_url?: string; video_url?: string; footer_image_url?: string; materials?: Material[]; daily_life?: string[]; curiosities?: string[]; fun_facts?: string[]; lesson_plan?: string; bncc_codes?: BnccCode[]; section_images?: Record<string, string> }) | null>(null);
+  const [override, setOverride] = useState<(Partial<Section> & { image_url?: string; video_url?: string; footer_image_url?: string; materials?: Material[]; daily_life?: string[]; curiosities?: string[]; fun_facts?: string[]; lesson_plan?: string; bncc_codes?: BnccCode[]; section_images?: Record<string, string>; edit_complete?: boolean; reviewed?: boolean; published?: boolean }) | null>(null);
   const [editing, setEditing] = useState(false);
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
@@ -1612,6 +1702,9 @@ export default function TopicoDetalhe() {
           lesson_plan: (data as any).lesson_plan ?? undefined,
           bncc_codes: ((data as any).bncc_codes as BnccCode[]) ?? undefined,
           section_images: ((data as any).section_images as Record<string,string>) ?? {},
+          edit_complete: !!(data as any).edit_complete,
+          reviewed: !!(data as any).reviewed,
+          published: !!(data as any).published,
         });
       }
     })();
@@ -1859,6 +1952,15 @@ export default function TopicoDetalhe() {
         >
           <ArrowLeft size={18} /> Tópico anterior
         </button>
+
+        {isAdmin && <PublishChecklist
+          slug={slug!} title={title} lesson={lesson}
+          override={override}
+          content={c}
+          hasHeroImage={!!(sectionImg("hero") || override?.image_url)}
+          onFlagChange={(patch) => setOverride((o) => ({ ...(o || {}), ...patch }))}
+        />}
+
 
         <Card className="overflow-hidden mb-6 border-0">
           <div className="relative h-56 md:h-72 bg-gradient-to-br from-violet-700 to-indigo-900">
