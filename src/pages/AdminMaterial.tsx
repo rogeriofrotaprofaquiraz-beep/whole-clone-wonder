@@ -25,7 +25,13 @@ import { parseBulkQuestions } from "@/lib/parseBulkQuestions";
 type Course = {
   id: string; title: string; description: string | null;
   area: string; level: string; published: boolean; edit_complete?: boolean; reviewed?: boolean; created_at: string;
+  updated_at?: string | null;
   image_url?: string | null; slide_url?: string | null;
+};
+
+const fmtDT = (s?: string | null) => {
+  if (!s) return "—";
+  try { return new Date(s).toLocaleString("pt-BR", { dateStyle: "short", timeStyle: "short" }); } catch { return "—"; }
 };
 type Lesson = {
   id: string; course_id: string; title: string; content: string | null;
