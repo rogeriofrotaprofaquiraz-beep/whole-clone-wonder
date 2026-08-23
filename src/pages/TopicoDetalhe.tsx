@@ -1659,7 +1659,9 @@ export default function TopicoDetalhe() {
   const { slug } = useParams();
   const navigate = useNavigate();
   const [params] = useSearchParams();
-  const title = params.get("t") || (slug ?? "Tópico").replace(/-/g, " ");
+  const rawTitle = params.get("t") || (slug ?? "Tópico").replace(/-/g, " ");
+  const topicIndex = params.get("idx");
+  const title = rawTitle; // Original title used for logic
   const lesson = params.get("lesson") || "";
   const back = params.get("back") || "/cursos";
   const autoEdit = params.get("edit") === "1";
@@ -1957,12 +1959,9 @@ export default function TopicoDetalhe() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-[#4C1D95] to-slate-900">
       <div className="max-w-4xl mx-auto p-4 py-6">
-        <button
-          onClick={() => (window.history.length > 1 ? navigate(-1) : navigate(back))}
-          className="inline-flex items-center gap-2 text-white/80 hover:text-white mb-4"
-        >
-          <ArrowLeft size={18} /> Tópico anterior
-        </button>
+        <Link to={back} className="inline-flex items-center gap-2 text-white/80 hover:text-white mb-4">
+          <ArrowLeft size={18} /> Voltar para a aula
+        </Link>
 
         {isAdmin && <PublishChecklist
           slug={slug!} title={title} lesson={lesson}
@@ -1989,7 +1988,9 @@ export default function TopicoDetalhe() {
                 <GraduationCap size={12} /> {levelBadge(title)}
               </div>
               {lesson && <div className="text-xs uppercase tracking-wider text-white/70 mb-1">{lesson}</div>}
-              <h1 className="text-2xl md:text-4xl font-black leading-tight">{title}</h1>
+              <h1 className="text-2xl md:text-4xl font-black leading-tight">
+                {topicIndex ? `${topicIndex.padStart(2, '0')}. ${rawTitle}` : rawTitle}
+              </h1>
             </div>
           </div>
 
@@ -2050,7 +2051,7 @@ export default function TopicoDetalhe() {
                       />
                     </div>
                     <div className="p-4">
-                      <div className="text-base font-bold text-[#4C1D95] mb-1">{k}</div>
+                      <div className="text-base font-bold text-[#4C1D95] mb-1">{k.includes('. ') ? k : `${String(i + 1).padStart(2, '0')}. ${k}`}</div>
                       <div className="text-sm text-slate-700 leading-relaxed">{explainKey(k)}</div>
                     </div>
                   </div>
@@ -2081,7 +2082,7 @@ export default function TopicoDetalhe() {
                       </div>
                       <div className="p-4 flex gap-3">
                         <div className="w-7 h-7 shrink-0 rounded-full bg-[#4C1D95] text-white text-xs font-bold flex items-center justify-center">
-                          {i + 1}
+                          {String(i + 1).padStart(2, '0')}
                         </div>
                         <div className="flex-1">
                           <div className="font-bold text-sm text-slate-900">{head}</div>
@@ -2156,7 +2157,7 @@ export default function TopicoDetalhe() {
                               onChange={(u) => applySectionImage(`daily_${i}`, u)}
                             />
                           </div>
-                          <div className="p-4 leading-relaxed">{t}</div>
+                          <div className="p-4 leading-relaxed font-medium"><span className="text-[#059669] font-black mr-2">{String(i + 1).padStart(2, '0')}.</span>{t}</div>
                         </li>
                       ))}
                     </ul>
@@ -2179,7 +2180,7 @@ export default function TopicoDetalhe() {
                               onChange={(u) => applySectionImage(`curio_${i}`, u)}
                             />
                           </div>
-                          <div className="p-4 leading-relaxed">{t}</div>
+                          <div className="p-4 leading-relaxed font-medium"><span className="text-[#4C1D95] font-black mr-2">{String(i + 1).padStart(2, '0')}.</span>{t}</div>
                         </li>
                       ))}
                     </ul>
@@ -2194,7 +2195,12 @@ export default function TopicoDetalhe() {
                 <AlertTriangle size={18} /> Alertas (erros comuns)
               </div>
               <ul className="space-y-1.5 text-sm text-slate-700 list-disc pl-5">
-                {c.pitfalls.map((p, i) => <li key={i}>{p}</li>)}
+                {c.pitfalls.map((p, i) => (
+                  <li key={i} className="leading-relaxed">
+                    <span className="font-bold text-red-600 mr-1">{String(i + 1).padStart(2, '0')}.</span>
+                    {p}
+                  </li>
+                ))}
               </ul>
             </section>
 
@@ -2296,7 +2302,12 @@ export default function TopicoDetalhe() {
               </ul>
               <p className="text-xs font-semibold text-slate-700">Para se aprofundar neste tópico específico:</p>
               <ul className="text-xs text-slate-700 space-y-1 list-disc pl-5">
-                {c.refs.map((r, i) => <li key={i}>{r}</li>)}
+                {c.refs.map((r, i) => (
+                  <li key={i} className="leading-relaxed">
+                    <span className="font-bold text-slate-500 mr-1">{String(i + 1).padStart(2, '0')}.</span>
+                    {r}
+                  </li>
+                ))}
               </ul>
             </section>
 
@@ -2499,9 +2510,9 @@ export default function TopicoDetalhe() {
             )}
 
             <div className="flex flex-wrap gap-3 pt-2">
-              <Link to={back}>
-                <Button className="bg-[#4C1D95] hover:bg-[#3b1478]">Voltar para a aula</Button>
-              </Link>
+              <button onClick={() => navigate(-1)} className="bg-[#4C1D95] hover:bg-[#3b1478] text-white px-4 py-2 rounded-md transition-colors font-medium">
+                Tópico anterior
+              </button>
               <Link to="/cursos">
                 <Button variant="outline">Ver todos os cursos</Button>
               </Link>
