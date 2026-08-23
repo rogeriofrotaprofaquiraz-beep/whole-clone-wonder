@@ -67,57 +67,58 @@ export function classifyTopic(title: string): string {
 const PACKS: Record<string, Omit<PedagogicalPack, "categoria">> = {
   seduc_pedagogia: {
     fundamental: {
-      ideiaCentral: "A educação no Brasil é um direito de todos e deve preparar o cidadão para a vida e para o trabalho, seguindo leis como a LDB.",
-      analogia: "A LDB é como a 'Constituição da Educação': ela define as regras do jogo para escolas, professores e alunos em todo o país.",
+      ideiaCentral: "A educação no Ceará busca a equidade e o sucesso do aluno, focando em competências para a vida e cidadania crítica, integrando o saber científico ao cotidiano.",
+      analogia: "Preparar-se para a SEDUC é como equilibrar uma reação química: precisamos dos reagentes certos (LDB, Didática, BNCC) para obter o produto final (um ensino de qualidade).",
       vocabulario: [
-        { termo: "LDB", explicacao: "Lei de Diretrizes e Bases, a principal lei da educação no Brasil." },
-        { termo: "BNCC", explicacao: "Base Nacional Comum Curricular, que diz o que todos os alunos devem aprender." },
-        { termo: "PNE", explicacao: "Plano Nacional de Educação, que define metas para 10 anos." },
+        { termo: "Transposição Didática", explicacao: "Transformar o saber científico (Química) em saber ensinável para o aluno." },
+        { termo: "SPAECE", explicacao: "Sistema de Avaliação da Educação Básica do Ceará, referência em indicadores educacionais." },
+        { termo: "Itinerários Formativos", explicacao: "Caminhos de aprofundamento que o aluno escolhe no Novo Ensino Médio." },
       ],
       pratica: {
-        titulo: "Linha do Tempo da Minha Escola",
-        objetivo: "Entender a evolução da educação a partir da realidade local.",
-        materiais: ["Papel, canetas, acesso a fotos ou relatos antigos da escola."],
+        titulo: "Planejando a Aula de Química Perfeita",
+        objetivo: "Aplicar os princípios da BNCC e Didática no planejamento de uma aula experimental.",
+        materiais: ["Edital SEDUC 2026", "BNCC Ciências da Natureza", "Livro Didático de Química"],
         passos: [
-          "Pesquise quando sua escola foi fundada.",
-          "Identifique mudanças físicas e nas matérias estudadas ao longo das décadas.",
-          "Crie um cartaz comparando 'Antigamente' vs 'Hoje'.",
+          "Escolha um tópico de Química (ex: Ácidos e Bases).",
+          "Identifique a competência da BNCC relacionada.",
+          "Defina uma atividade prática contextualizada (ex: Indicador de pH com repolho roxo).",
+          "Estabeleça critérios de avaliação formativa.",
         ],
         discussao: [
-          "A educação melhorou com o tempo?",
-          "O que a LDB mudou na prática da nossa escola?",
+          "Como essa aula dialoga com o cotidiano do aluno cearense?",
+          "Quais princípios da LDB foram respeitados?",
         ],
       },
       perguntas: [
-        "Quem é responsável por garantir a educação no Brasil?",
-        "O que significa dizer que o ensino é 'laico'?",
+        "Qual o papel do professor de Química na gestão democrática da escola?",
+        "Como a interdisciplinaridade pode enriquecer o ensino de Ciências da Natureza?",
       ],
     },
     medio: {
-      aprofundamento: "A gestão democrática do ensino público (Art. 206, VI da CF/88) é um princípio que assegura a participação da comunidade escolar nas decisões. Teorias como o interacionismo de Vygotsky fundamentam a ideia de que o aprendizado ocorre na interação social, influenciando as tendências pedagógicas progressistas que norteiam a BNCC atual.",
+      aprofundamento: "O concurso para professor da rede estadual (SEDUC CE) exige o domínio não apenas da Química, mas da sua aplicação pedagógica. A gestão pública cearense destaca-se pela transparência e pelo regime de colaboração. Didaticamente, espera-se que o docente domine o ciclo de planejamento-ação-reflexão, utilizando a experimentação e as tecnologias digitais como ferramentas de engajamento e construção de conceitos estruturantes da Química.",
       conexoes: [
-        "Sociologia: A educação como fator de mobilidade social e reprodução cultural.",
-        "História: A Era Vargas e a reforma Francisco Campos na educação.",
+        "História: A evolução do ensino de Química no Ceará e as reformas educacionais.",
+        "Sociologia: O impacto da educação de tempo integral na comunidade escolar.",
       ],
       exemploResolvido: {
-        enunciado: "Analise o impacto da Lei 10.639/03 na construção da identidade nacional brasileira.",
+        enunciado: "Explique como o professor de Química pode trabalhar o tema 'Sustentabilidade' integrando a BNCC e a realidade local das energias renováveis no Ceará.",
         resolucao: [
-          "A lei torna obrigatório o ensino de História e Cultura Afro-Brasileira.",
-          "Visa combater o eurocentrismo nos currículos.",
-          "Fortalece a valorização da matriz africana na formação da sociedade.",
+          "Identificar a competência de análise de impactos ambientais na BNCC.",
+          "Contextualizar com as usinas eólicas e solares do estado.",
+          "Propor o estudo da eletroquímica e fotossíntese artificial.",
         ],
-        resposta: "A lei promove a equidade racial e o reconhecimento da diversidade na formação do cidadão.",
+        resposta: "A integração ocorre através da contextualização dos princípios químicos com os arranjos produtivos locais, promovendo a literacia científica.",
       },
       questoesVestibular: [
-        "O que define o Novo Ensino Médio segundo a Lei 13.415/17?",
-        "Diferencie as tendências pedagógicas liberais das progressistas.",
+        "Descreva os princípios da Administração Pública previstos na Constituição Federal.",
+        "Analise a estrutura do Novo Ensino Médio e o papel da Química nos itinerários.",
       ],
       autoavaliacao: [
-        "Conheço os principais marcos da LDB 9.394/96.",
-        "Entendo a diferença entre gestão democrática e gestão burocrática.",
+        "Compreendo a relação entre a LDB e a prática em sala de aula.",
+        "Consigo planejar aulas de Química alinhadas aos descritores do SPAECE.",
       ],
     },
-    bnccSugerida: ["EM13CHS101", "EM13CHS502", "EF09HI10"],
+    bnccSugerida: ["EM13CNT301", "EM13CNT307", "EF09CI01"],
   },
 
   atomo: {
