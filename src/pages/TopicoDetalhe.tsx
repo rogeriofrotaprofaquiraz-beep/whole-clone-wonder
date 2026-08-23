@@ -1960,7 +1960,7 @@ export default function TopicoDetalhe() {
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-[#4C1D95] to-slate-900">
       <div className="max-w-4xl mx-auto p-4 py-6">
         <Link to={back} className="inline-flex items-center gap-2 text-white/80 hover:text-white mb-4">
-          <ArrowLeft size={18} /> Voltar para a aula
+          <ArrowLeft size={18} /> 
         </Link>
 
         {isAdmin && <PublishChecklist
