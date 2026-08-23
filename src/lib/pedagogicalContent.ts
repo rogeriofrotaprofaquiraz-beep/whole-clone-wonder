@@ -44,6 +44,24 @@ export type PedagogicalPack = {
    manter o módulo autossuficiente). */
 export function classifyTopic(title: string): string {
   const t = title.toLowerCase();
+  if (/(história|evolução|dalton|thomson|rutherford|bohr|modelo|quântic)/.test(t)) return "atomo";
+  if (/(tabela|periódica|mendeleev|periódic)/.test(t)) return "periodica";
+  if (/(ligação|covalente|iônica|metálica|polaridade)/.test(t)) return "ligacoes";
+  if (/(reação|estequiometria|molb|cálculo)/.test(t)) return "reacoes";
+  if (/(ácido|base|funções|inorgânic|phb)/.test(t)) return "acidobase";
+  if (/(termoquím|entalpia|hess|calor)/.test(t)) return "termo";
+  if (/(cinética|velocidade|catalisador)/.test(t)) return "cinetica";
+  if (/(equilíbrio|le chatelier|kcb|kpb)/.test(t)) return "equilibrio";
+  if (/(solução|concentração|molaridade)/.test(t)) return "solucoes";
+  if (/(eletroquím|pilha|eletrólise|nox)/.test(t)) return "eletro";
+  if (/(orgânica|hidrocarboneto|função|isomeria)/.test(t)) return "organica";
+  if (/(bioquím|proteína|lipídio|carboidrat)/.test(t)) return "bioquimica";
+  if (/(ambiental|poluição|efeito estufa)/.test(t)) return "ambiental";
+  if (/(radioativid|nuclear|fissão|fusão)/.test(t)) return "nuclear";
+  if (/(matéria|estado físico|densidade)/.test(t)) return "materia";
+  if (/(unidade|sib|mediç)/.test(t)) return "unidades";
+  if (/(ensino|didática|pedagog)/.test(t)) return "ensino";
+  const t = title.toLowerCase();
   if (/(átomo|atomic|orbital|quântic|elétron|próton|nêutron|isótop|dalton|thomson|rutherford|bohr|modelo)/.test(t)) return "atomo";
   if (/(tabela periódic|periódic|família|grupo|período|eletronegativid|raio atômic|energia de ioniz)/.test(t)) return "periodica";
   if (/(ligaç|iônic|covalent|metálic|polaridade|geometria molecular|vsepr|hibridiz)/.test(t)) return "ligacoes";
