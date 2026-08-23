@@ -80,116 +80,75 @@ function funContent(title: string): FunPack {
 
     case "bioquimica":
       return {
-        simple: "Bioquímica é a química da vida. Estuda as moléculas que formam nosso corpo, como proteínas, gorduras e açúcares.",
-        formal: "Estudo das bases moleculares da vida. Foca em biomoléculas (carboidratos, lipídios, proteínas e ácidos nucleicos) e nas transformações químicas que ocorrem nos organismos vivos (metabolismo).",
-        key: ["Biomoléculas", "Metabolismo", "Proteínas", "Enzimas", "Ácidos Nucleicos", "ATP"],
-        principles: [
-          "Organismos vivos obedecem às leis da física e química.",
-          "A estrutura determina a função biológica.",
-          "Células mantêm alto grau de ordem às custas de energia (ATP).",
+        dailyLife: [
+          "Enzimas na sua saliva começam a quebrar o amido do pão antes mesmo de você engolir.",
+          "O DNA em cada uma de suas células contém as instruções para construir você inteiro.",
+          "Proteínas nos seus músculos permitem que você se mova, respire e mantenha o coração batendo.",
         ],
-        formulas: [
-          { expr: "C₆H₁₂O₆ + 6 O₂ → 6 CO₂ + 6 H₂O + Energia", desc: "Respiração celular." },
+        curiosities: [
+          "O corpo humano médio contém carbono suficiente para fabricar cerca de 900 lápis.",
+          "As enzimas podem acelerar reações químicas em até um milhão de vezes comparado ao processo natural.",
+          "O ATP é a 'moeda energética' da célula — você produz e consome seu próprio peso em ATP todos os dias.",
         ],
-        examples: [
-          "Enzimas agindo como catalisadores em segundos.",
-          "Duplicação do DNA para divisão celular.",
-          "Fotossíntese convertendo luz em energia química.",
+        funFacts: [
+          "Se você desenrolasse todo o DNA de uma única célula, ele teria cerca de 2 metros de comprimento.",
+          "Lactose é o açúcar do leite; quem é intolerante não produz a enzima lactase para quebrá-lo.",
+          "Proteínas são como legos biológicos: apenas 20 tipos de aminoácidos constroem milhões de proteínas diferentes.",
         ],
-        pitfalls: [
-          "Achar que carboidratos são apenas 'vilões' (são essenciais para energia).",
-          "Confundir as funções de DNA e RNA.",
-        ],
-        exercises: [
-          "Descreva a função principal de cada biomolécula.",
-          "Explique a importância das enzimas no metabolismo.",
-        ],
-        refs: ["Lehninger - Princípios de Bioquímica", "Stryer - Bioquímica"],
       };
     case "ambiental":
       return {
-        simple: "Química Ambiental estuda como os elementos químicos circulam na natureza e como a poluição afeta o planeta.",
-        formal: "Análise dos processos químicos que ocorrem no meio ambiente (ar, água e solo) e o impacto das atividades humanas nestes sistemas naturais.",
-        key: ["Ciclos Biogeoquímicos", "Poluição", "Efeito Estufa", "Chuva Ácida", "Sustentabilidade"],
-        principles: [
-          "A matéria circula em ciclos fechados na natureza.",
-          "Contaminantes podem se acumular na cadeia alimentar (bioacumulação).",
-          "A Química Verde busca processos industriais limpos.",
+        dailyLife: [
+          "O filtro de carvão ativado na sua geladeira ou filtro de água remove impurezas por adsorção química.",
+          "O sabão que você usa vai para o esgoto e precisa ser biodegradável para não matar os peixes nos rios.",
+          "Plásticos levam centenas de anos para se decompor porque suas cadeias de polímeros são muito resistentes.",
         ],
-        formulas: [
-          { expr: "CO₂ + H₂O ⇌ H₂CO₃", desc: "Acidificação dos oceanos." },
+        curiosities: [
+          "A camada de ozônio nos protege contra 98% da radiação UV prejudicial do Sol.",
+          "Um único átomo de cloro pode destruir 100.000 moléculas de ozônio na estratosfera.",
+          "A Química Verde foca em 'economia de átomos': desperdiçar o mínimo de matéria possível em processos industriais.",
         ],
-        examples: [
-          "Destruição da camada de ozônio por CFCs.",
-          "Tratamento de água e esgoto.",
-          "Uso de biocombustíveis para reduzir emissões.",
+        funFacts: [
+          "Chuva ácida não derrete pele humana, mas pode 'comer' estátuas de mármore e monumentos históricos.",
+          "O efeito estufa é natural e vital; sem ele, a Terra seria uma bola de gelo de -18 °C.",
+          "O 'cheiro de carro novo' é na verdade o cheiro de compostos orgânicos voláteis (VOCs) saindo dos plásticos e colas.",
         ],
-        pitfalls: [
-          "Confundir efeito estufa (natural) com aquecimento global (intensificado).",
-          "Achar que todo produto biodegradável é inofensivo se descartado incorretamente.",
-        ],
-        exercises: [
-          "Explique as causas e consequências da chuva ácida.",
-          "Cite 3 princípios da Química Verde.",
-        ],
-        refs: ["Baird - Química Ambiental", "Spiro - Química Ambiental"],
       };
     case "unidades":
       return {
-        simple: "Medição é fundamental na ciência. Usamos o Sistema Internacional (SI) para garantir que todos usem os mesmos padrões.",
-        formal: "Aplicação do Sistema Internacional de Unidades (SI) em Química, envolvendo grandezas físicas, conversão de unidades e notação científica.",
-        key: ["Massa", "Volume", "Densidade", "SI", "Notação Científica"],
-        principles: [
-          "Resultados científicos devem ter unidades claras.",
-          "A precisão depende dos instrumentos de medida.",
-          "Notação científica facilita lidar com números extremos.",
+        dailyLife: [
+          "Receitas de bolo dão errado se você confundir xícaras com gramas — unidades importam na cozinha!",
+          "Postos de combustível medem o volume de álcool/gasolina em litros; erro na bomba é crime de metrologia.",
+          "Exames de sangue medem glicose em mg/dL — saber a unidade ajuda a entender se o nível está alto.",
         ],
-        formulas: [
-          { expr: "d = m / V", desc: "Cálculo da densidade." },
-          { expr: "K = °C + 273,15", desc: "Conversão de temperatura." },
+        curiosities: [
+          "O quilograma padrão era um cilindro de platina em Paris até 2019; agora é definido por uma constante da física.",
+          "A escala Kelvin começa no 'zero absoluto' (-273,15 °C), onde teoricamente todo movimento atômico para.",
+          "Um 'mol' de rosquinhas cobriria a superfície da Terra a uma profundidade de 8 quilômetros.",
         ],
-        examples: [
-          "Cálculo da densidade de um metal desconhecido.",
-          "Conversão de mg/L para ppm em análise de água.",
-          "Uso de mols para contar átomos.",
+        funFacts: [
+          "A palavra 'metro' vem do grego metron, que significa medida.",
+          "Cientistas da NASA perderam uma sonda em Marte em 1999 porque uma equipe usou metros e outra usou pés.",
+          "O segundo é definido pelas vibrações de um átomo de Césio-133.",
         ],
-        pitfalls: [
-          "Esquecer de converter temperaturas para Kelvin em leis de gases.",
-          "Errar a ordem de grandeza na notação científica.",
-        ],
-        exercises: [
-          "Converta 250 mL para litros e metros cúbicos.",
-          "Escreva 0,0000045 em notação científica.",
-        ],
-        refs: ["IUPAC Green Book", "Manuais de Metrologia"],
       };
     case "ensino":
       return {
-        simple: "Didática da Química estuda as melhores formas de ensinar e aprender esta ciência de forma clara e interessante.",
-        formal: "Aplicação de teorias de aprendizagem e estratégias pedagógicas específicas para o ensino de conceitos químicos no ensino básico.",
-        key: ["BNCC", "LDB", "Transposição Didática", "Ensino por Investigação", "Experimentação"],
-        principles: [
-          "O conhecimento deve ser contextualizado com a realidade do aluno.",
-          "A experimentação é ferramenta de problematização, não só ilustração.",
-          "Alfabetização científica visa formar cidadãos críticos.",
+        dailyLife: [
+          "Entender química ajuda a ler rótulos e não cair em propagandas enganosas de 'produtos sem química'.",
+          "A BNCC define o que todo aluno no Brasil tem o direito de aprender, independente da escola onde estuda.",
+          "Mapas mentais e analogias ajudam seu cérebro a conectar informações novas com o que você já sabe.",
         ],
-        formulas: [
-          { expr: "Ensino = Problematização + Teorização", desc: "Ciclo pedagógico básico." },
+        curiosities: [
+          "A transposição didática é a arte de transformar o 'saber sábio' dos cientistas em 'saber ensinado' para os alunos.",
+          "Antigamente, a química era ensinada apenas como listas de nomes e fórmulas para decorar.",
+          "O ensino por investigação faz do aluno um 'pequeno cientista' que resolve problemas reais.",
         ],
-        examples: [
-          "Uso de analogias para explicar o modelo atômico.",
-          "Projetos interdisciplinares sobre reciclagem.",
-          "Uso de simuladores digitais em aulas de química.",
+        funFacts: [
+          "A melhor forma de aprender um assunto difícil é tentando explicá-lo para outra pessoa.",
+          "O cérebro aprende melhor quando a informação é visual e está conectada a uma emoção ou curiosidade.",
+          "O erro em sala de aula é uma 'janela' para o professor entender como o aluno está pensando.",
         ],
-        pitfalls: [
-          "Focar apenas na memorização de fórmulas e nomes.",
-          "Achar que o laboratório é a única forma de fazer química prática.",
-        ],
-        exercises: [
-          "Planeje uma aula de química usando o cotidiano do aluno.",
-          "Explique a importância da BNCC no ensino de ciências.",
-        ],
-        refs: ["Chassot - A Ciência através dos Tempos", "Maldaner - A Formação Inicial e Continuada de Professores de Química"],
       };
 
     case "seduc_pedagogia": return {
