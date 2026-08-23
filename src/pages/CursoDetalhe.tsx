@@ -122,7 +122,7 @@ function LessonContent({ text, backTo, lessonTitle }: { text: string; backTo: st
                       className="flex items-start gap-2 p-2 rounded-md border border-violet-200 bg-violet-50/60 hover:bg-violet-100 hover:border-violet-400 transition text-sm text-[#4C1D95] font-medium"
                     >
                       <span className="mt-0.5 font-bold text-xs bg-violet-200 w-5 h-5 flex items-center justify-center rounded-full shrink-0">{String(k + 1).padStart(2, '0')}</span>
-                      <span className="flex-1">{topic.includes('. ') ? topic : `${String(k + 1).padStart(2, '0')}. ${topic}`}</span>
+                      <span className="flex-1">{topic.includes('. ') ? topic : topic}</span>
                     </Link>
                   </li>
                 );
