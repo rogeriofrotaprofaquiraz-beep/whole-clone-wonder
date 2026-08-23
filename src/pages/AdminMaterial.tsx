@@ -626,7 +626,7 @@ export default function AdminMaterial() {
                                           return (
                                             <div key={i} className="flex flex-wrap items-center gap-2 p-1.5 rounded bg-white border border-violet-200">
                                               <Link
-                                                to={`/topico/${s}?t=${encodeURIComponent(t)}&lesson=${encodeURIComponent(l.title)}&back=${encodeURIComponent("/admin/material")}&edit=1`}
+                                                to={`/topico/${s}?t=${encodeURIComponent(t)}&lesson=${encodeURIComponent(l.title)}&back=${encodeURIComponent("/admin/material")}&edit=1&idx=${i + 1}`}
                                                 className="flex items-center gap-2 text-xs px-2 py-1 rounded hover:bg-violet-100 text-[#4C1D95] font-medium flex-1 min-w-[180px]"
                                               >
                                                 <span className="w-4 h-4 flex items-center justify-center bg-violet-200 text-[#4C1D95] rounded-full text-[9px] font-bold shrink-0">{String(i + 1).padStart(2, '0')}</span>
