@@ -1992,7 +1992,7 @@ export default function TopicoDetalhe() {
               </div>
               {lesson && <div className="text-xs uppercase tracking-wider text-white/70 mb-1">{lesson}</div>}
               <h1 className="text-2xl md:text-4xl font-black leading-tight">
-                {rawTitle.includes('. ') ? rawTitle : rawTitle}
+                {topicIndex ? `${topicIndex.padStart(2, '0')}. ${rawTitle}` : rawTitle}
               </h1>
             </div>
           </div>
