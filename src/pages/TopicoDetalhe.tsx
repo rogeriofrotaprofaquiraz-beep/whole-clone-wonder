@@ -77,6 +77,121 @@ function funContent(title: string): FunPack {
     ],
   };
   switch (cat) {
+
+    case "bioquimica":
+      return {
+        simple: "Bioquímica é a química da vida. Estuda as moléculas que formam nosso corpo, como proteínas, gorduras e açúcares.",
+        formal: "Estudo das bases moleculares da vida. Foca em biomoléculas (carboidratos, lipídios, proteínas e ácidos nucleicos) e nas transformações químicas que ocorrem nos organismos vivos (metabolismo).",
+        key: ["Biomoléculas", "Metabolismo", "Proteínas", "Enzimas", "Ácidos Nucleicos", "ATP"],
+        principles: [
+          "Organismos vivos obedecem às leis da física e química.",
+          "A estrutura determina a função biológica.",
+          "Células mantêm alto grau de ordem às custas de energia (ATP).",
+        ],
+        formulas: [
+          { expr: "C₆H₁₂O₆ + 6 O₂ → 6 CO₂ + 6 H₂O + Energia", desc: "Respiração celular." },
+        ],
+        examples: [
+          "Enzimas agindo como catalisadores em segundos.",
+          "Duplicação do DNA para divisão celular.",
+          "Fotossíntese convertendo luz em energia química.",
+        ],
+        pitfalls: [
+          "Achar que carboidratos são apenas 'vilões' (são essenciais para energia).",
+          "Confundir as funções de DNA e RNA.",
+        ],
+        exercises: [
+          "Descreva a função principal de cada biomolécula.",
+          "Explique a importância das enzimas no metabolismo.",
+        ],
+        refs: ["Lehninger - Princípios de Bioquímica", "Stryer - Bioquímica"],
+      };
+    case "ambiental":
+      return {
+        simple: "Química Ambiental estuda como os elementos químicos circulam na natureza e como a poluição afeta o planeta.",
+        formal: "Análise dos processos químicos que ocorrem no meio ambiente (ar, água e solo) e o impacto das atividades humanas nestes sistemas naturais.",
+        key: ["Ciclos Biogeoquímicos", "Poluição", "Efeito Estufa", "Chuva Ácida", "Sustentabilidade"],
+        principles: [
+          "A matéria circula em ciclos fechados na natureza.",
+          "Contaminantes podem se acumular na cadeia alimentar (bioacumulação).",
+          "A Química Verde busca processos industriais limpos.",
+        ],
+        formulas: [
+          { expr: "CO₂ + H₂O ⇌ H₂CO₃", desc: "Acidificação dos oceanos." },
+        ],
+        examples: [
+          "Destruição da camada de ozônio por CFCs.",
+          "Tratamento de água e esgoto.",
+          "Uso de biocombustíveis para reduzir emissões.",
+        ],
+        pitfalls: [
+          "Confundir efeito estufa (natural) com aquecimento global (intensificado).",
+          "Achar que todo produto biodegradável é inofensivo se descartado incorretamente.",
+        ],
+        exercises: [
+          "Explique as causas e consequências da chuva ácida.",
+          "Cite 3 princípios da Química Verde.",
+        ],
+        refs: ["Baird - Química Ambiental", "Spiro - Química Ambiental"],
+      };
+    case "unidades":
+      return {
+        simple: "Medição é fundamental na ciência. Usamos o Sistema Internacional (SI) para garantir que todos usem os mesmos padrões.",
+        formal: "Aplicação do Sistema Internacional de Unidades (SI) em Química, envolvendo grandezas físicas, conversão de unidades e notação científica.",
+        key: ["Massa", "Volume", "Densidade", "SI", "Notação Científica"],
+        principles: [
+          "Resultados científicos devem ter unidades claras.",
+          "A precisão depende dos instrumentos de medida.",
+          "Notação científica facilita lidar com números extremos.",
+        ],
+        formulas: [
+          { expr: "d = m / V", desc: "Cálculo da densidade." },
+          { expr: "K = °C + 273,15", desc: "Conversão de temperatura." },
+        ],
+        examples: [
+          "Cálculo da densidade de um metal desconhecido.",
+          "Conversão de mg/L para ppm em análise de água.",
+          "Uso de mols para contar átomos.",
+        ],
+        pitfalls: [
+          "Esquecer de converter temperaturas para Kelvin em leis de gases.",
+          "Errar a ordem de grandeza na notação científica.",
+        ],
+        exercises: [
+          "Converta 250 mL para litros e metros cúbicos.",
+          "Escreva 0,0000045 em notação científica.",
+        ],
+        refs: ["IUPAC Green Book", "Manuais de Metrologia"],
+      };
+    case "ensino":
+      return {
+        simple: "Didática da Química estuda as melhores formas de ensinar e aprender esta ciência de forma clara e interessante.",
+        formal: "Aplicação de teorias de aprendizagem e estratégias pedagógicas específicas para o ensino de conceitos químicos no ensino básico.",
+        key: ["BNCC", "LDB", "Transposição Didática", "Ensino por Investigação", "Experimentação"],
+        principles: [
+          "O conhecimento deve ser contextualizado com a realidade do aluno.",
+          "A experimentação é ferramenta de problematização, não só ilustração.",
+          "Alfabetização científica visa formar cidadãos críticos.",
+        ],
+        formulas: [
+          { expr: "Ensino = Problematização + Teorização", desc: "Ciclo pedagógico básico." },
+        ],
+        examples: [
+          "Uso de analogias para explicar o modelo atômico.",
+          "Projetos interdisciplinares sobre reciclagem.",
+          "Uso de simuladores digitais em aulas de química.",
+        ],
+        pitfalls: [
+          "Focar apenas na memorização de fórmulas e nomes.",
+          "Achar que o laboratório é a única forma de fazer química prática.",
+        ],
+        exercises: [
+          "Planeje uma aula de química usando o cotidiano do aluno.",
+          "Explique a importância da BNCC no ensino de ciências.",
+        ],
+        refs: ["Chassot - A Ciência através dos Tempos", "Maldaner - A Formação Inicial e Continuada de Professores de Química"],
+      };
+
     case "seduc_pedagogia": return {
       dailyLife: [
         "A escola onde você estudou segue as normas da LDB para definir o calendário escolar.",
@@ -458,6 +573,121 @@ function buildContent(title: string): Section {
   };
 
   switch (cat) {
+
+    case "bioquimica":
+      return {
+        simple: "Bioquímica é a química da vida. Estuda as moléculas que formam nosso corpo, como proteínas, gorduras e açúcares.",
+        formal: "Estudo das bases moleculares da vida. Foca em biomoléculas (carboidratos, lipídios, proteínas e ácidos nucleicos) e nas transformações químicas que ocorrem nos organismos vivos (metabolismo).",
+        key: ["Biomoléculas", "Metabolismo", "Proteínas", "Enzimas", "Ácidos Nucleicos", "ATP"],
+        principles: [
+          "Organismos vivos obedecem às leis da física e química.",
+          "A estrutura determina a função biológica.",
+          "Células mantêm alto grau de ordem às custas de energia (ATP).",
+        ],
+        formulas: [
+          { expr: "C₆H₁₂O₆ + 6 O₂ → 6 CO₂ + 6 H₂O + Energia", desc: "Respiração celular." },
+        ],
+        examples: [
+          "Enzimas agindo como catalisadores em segundos.",
+          "Duplicação do DNA para divisão celular.",
+          "Fotossíntese convertendo luz em energia química.",
+        ],
+        pitfalls: [
+          "Achar que carboidratos são apenas 'vilões' (são essenciais para energia).",
+          "Confundir as funções de DNA e RNA.",
+        ],
+        exercises: [
+          "Descreva a função principal de cada biomolécula.",
+          "Explique a importância das enzimas no metabolismo.",
+        ],
+        refs: ["Lehninger - Princípios de Bioquímica", "Stryer - Bioquímica"],
+      };
+    case "ambiental":
+      return {
+        simple: "Química Ambiental estuda como os elementos químicos circulam na natureza e como a poluição afeta o planeta.",
+        formal: "Análise dos processos químicos que ocorrem no meio ambiente (ar, água e solo) e o impacto das atividades humanas nestes sistemas naturais.",
+        key: ["Ciclos Biogeoquímicos", "Poluição", "Efeito Estufa", "Chuva Ácida", "Sustentabilidade"],
+        principles: [
+          "A matéria circula em ciclos fechados na natureza.",
+          "Contaminantes podem se acumular na cadeia alimentar (bioacumulação).",
+          "A Química Verde busca processos industriais limpos.",
+        ],
+        formulas: [
+          { expr: "CO₂ + H₂O ⇌ H₂CO₃", desc: "Acidificação dos oceanos." },
+        ],
+        examples: [
+          "Destruição da camada de ozônio por CFCs.",
+          "Tratamento de água e esgoto.",
+          "Uso de biocombustíveis para reduzir emissões.",
+        ],
+        pitfalls: [
+          "Confundir efeito estufa (natural) com aquecimento global (intensificado).",
+          "Achar que todo produto biodegradável é inofensivo se descartado incorretamente.",
+        ],
+        exercises: [
+          "Explique as causas e consequências da chuva ácida.",
+          "Cite 3 princípios da Química Verde.",
+        ],
+        refs: ["Baird - Química Ambiental", "Spiro - Química Ambiental"],
+      };
+    case "unidades":
+      return {
+        simple: "Medição é fundamental na ciência. Usamos o Sistema Internacional (SI) para garantir que todos usem os mesmos padrões.",
+        formal: "Aplicação do Sistema Internacional de Unidades (SI) em Química, envolvendo grandezas físicas, conversão de unidades e notação científica.",
+        key: ["Massa", "Volume", "Densidade", "SI", "Notação Científica"],
+        principles: [
+          "Resultados científicos devem ter unidades claras.",
+          "A precisão depende dos instrumentos de medida.",
+          "Notação científica facilita lidar com números extremos.",
+        ],
+        formulas: [
+          { expr: "d = m / V", desc: "Cálculo da densidade." },
+          { expr: "K = °C + 273,15", desc: "Conversão de temperatura." },
+        ],
+        examples: [
+          "Cálculo da densidade de um metal desconhecido.",
+          "Conversão de mg/L para ppm em análise de água.",
+          "Uso de mols para contar átomos.",
+        ],
+        pitfalls: [
+          "Esquecer de converter temperaturas para Kelvin em leis de gases.",
+          "Errar a ordem de grandeza na notação científica.",
+        ],
+        exercises: [
+          "Converta 250 mL para litros e metros cúbicos.",
+          "Escreva 0,0000045 em notação científica.",
+        ],
+        refs: ["IUPAC Green Book", "Manuais de Metrologia"],
+      };
+    case "ensino":
+      return {
+        simple: "Didática da Química estuda as melhores formas de ensinar e aprender esta ciência de forma clara e interessante.",
+        formal: "Aplicação de teorias de aprendizagem e estratégias pedagógicas específicas para o ensino de conceitos químicos no ensino básico.",
+        key: ["BNCC", "LDB", "Transposição Didática", "Ensino por Investigação", "Experimentação"],
+        principles: [
+          "O conhecimento deve ser contextualizado com a realidade do aluno.",
+          "A experimentação é ferramenta de problematização, não só ilustração.",
+          "Alfabetização científica visa formar cidadãos críticos.",
+        ],
+        formulas: [
+          { expr: "Ensino = Problematização + Teorização", desc: "Ciclo pedagógico básico." },
+        ],
+        examples: [
+          "Uso de analogias para explicar o modelo atômico.",
+          "Projetos interdisciplinares sobre reciclagem.",
+          "Uso de simuladores digitais em aulas de química.",
+        ],
+        pitfalls: [
+          "Focar apenas na memorização de fórmulas e nomes.",
+          "Achar que o laboratório é a única forma de fazer química prática.",
+        ],
+        exercises: [
+          "Planeje uma aula de química usando o cotidiano do aluno.",
+          "Explique a importância da BNCC no ensino de ciências.",
+        ],
+        refs: ["Chassot - A Ciência através dos Tempos", "Maldaner - A Formação Inicial e Continuada de Professores de Química"],
+      };
+
     case "seduc_pedagogia":
       return {
         simple: `O preparatório SEDUC foca nas diretrizes da educação brasileira, didática e administração pública. É a base legal e pedagógica para o concurso.`,
