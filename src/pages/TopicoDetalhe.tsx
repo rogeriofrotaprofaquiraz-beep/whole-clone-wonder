@@ -87,7 +87,7 @@ function funContent(title: string): FunPack {
         curiosities: [
           "O corpo humano médio contém carbono suficiente para fabricar cerca de 900 lápis.",
           "As enzimas podem acelerar reações químicas em até um milhão de vezes comparado ao processo natural.",
-          "O ATP é a \"moeda energética\" da célula — você produz e consome seu próprio peso em ATP todos os dias.",
+          "O ATP é a 'moeda energética' da célula — você produz e consome seu próprio peso em ATP todos os dias.",
         ],
         funFacts: [
           "Se você desenrolasse todo o DNA de uma única célula, ele teria cerca de 2 metros de comprimento.",
@@ -105,12 +105,12 @@ function funContent(title: string): FunPack {
         curiosities: [
           "A camada de ozônio nos protege contra 98% da radiação UV prejudicial do Sol.",
           "Um único átomo de cloro pode destruir 100.000 moléculas de ozônio na estratosfera.",
-          "A Química Verde foca em \"economia de átomos\": desperdiçar o mínimo de matéria possível em processos industriais.",
+          "A Química Verde foca em 'economia de átomos': desperdiçar o mínimo de matéria possível em processos industriais.",
         ],
         funFacts: [
-          "Chuva ácida não derrete pele humana, mas pode \"comer\" estátuas de mármore e monumentos históricos.",
+          "Chuva ácida não derrete pele humana, mas pode 'comer' estátuas de mármore e monumentos históricos.",
           "O efeito estufa é natural e vital; sem ele, a Terra seria uma bola de gelo de -18 °C.",
-          "O \"cheiro de carro novo\" é na verdade o cheiro de compostos orgânicos voláteis (VOCs) saindo dos plásticos e colas.",
+          "O 'cheiro de carro novo' é na verdade o cheiro de compostos orgânicos voláteis (VOCs) saindo dos plásticos e colas.",
         ],
       };
     case "unidades":
@@ -122,8 +122,8 @@ function funContent(title: string): FunPack {
         ],
         curiosities: [
           "O quilograma padrão era um cilindro de platina em Paris até 2019; agora é definido por uma constante da física.",
-          "A escala Kelvin começa no \"zero absoluto\" (-273,15 °C), onde teoricamente todo movimento atômico para.",
-          "Um \"mol\" de rosquinhas cobriria a superfície da Terra a uma profundidade de 8 quilômetros.",
+          "A escala Kelvin começa no 'zero absoluto' (-273,15 °C), onde teoricamente todo movimento atômico para.",
+          "Um 'mol' de rosquinhas cobriria a superfície da Terra a uma profundidade de 8 quilômetros.",
         ],
         funFacts: [
           "A palavra 'metro' vem do grego metron, que significa medida.",
@@ -134,19 +134,19 @@ function funContent(title: string): FunPack {
     case "ensino":
       return {
         dailyLife: [
-          "Entender química ajuda a ler rótulos e não cair em propagandas enganosas de \"produtos sem química\".",
+          "Entender química ajuda a ler rótulos e não cair em propagandas enganosas de 'produtos sem química'.",
           "A BNCC define o que todo aluno no Brasil tem o direito de aprender, independente da escola onde estuda.",
           "Mapas mentais e analogias ajudam seu cérebro a conectar informações novas com o que você já sabe.",
         ],
         curiosities: [
           "A transposição didática é a arte de transformar o "saber sábio" dos cientistas em "saber ensinado" para os alunos.",
           "Antigamente, a química era ensinada apenas como listas de nomes e fórmulas para decorar.",
-          "O ensino por investigação faz do aluno um \"pequeno cientista\" que resolve problemas reais.",
+          "O ensino por investigação faz do aluno um 'pequeno cientista' que resolve problemas reais.",
         ],
         funFacts: [
           "A melhor forma de aprender um assunto difícil é tentando explicá-lo para outra pessoa.",
           "O cérebro aprende melhor quando a informação é visual e está conectada a uma emoção ou curiosidade.",
-          "O erro em sala de aula é uma \"janela\" para o professor entender como o aluno está pensando.",
+          "O erro em sala de aula é uma 'janela' para o professor entender como o aluno está pensando.",
         ],
       };
 
