@@ -126,7 +126,7 @@ function funContent(title: string): FunPack {
           "Um \"mol\" de rosquinhas cobriria a superfície da Terra a uma profundidade de 8 quilômetros.",
         ],
         funFacts: [
-          "A palavra "metro" vem do grego metron, que significa medida.",
+          "A palavra 'metro' vem do grego metron, que significa medida.",
           "Cientistas da NASA perderam uma sonda em Marte em 1999 porque uma equipe usou metros e outra usou pés.",
           "O segundo é definido pelas vibrações de um átomo de Césio-133.",
         ],
@@ -1249,7 +1249,7 @@ const KEY_GLOSSARY: Record<string, string> = {
   "forcas intermoleculares": "Atrações entre moléculas (dipolo-dipolo, ligação de H, London) — definem ponto de ebulição.",
   "reagente produto": "Reagentes: consumidos (esquerda). Produtos: formados (direita da equação).",
   "coeficiente estequiometrico": "Número inteiro que balanceia a equação e indica a proporção em mols.",
-  "mol": "Quantidade de matéria: 1 mol = 6,022×10²³ entidades (constante de Avogadro).",
+  'mol': "Quantidade de matéria: 1 mol = 6,022×10²³ entidades (constante de Avogadro).",
   "massa molar": "Massa de 1 mol da substância, em g/mol — soma das massas atômicas.",
   "reagente limitante": "Reagente que se esgota primeiro e limita a quantidade máxima de produto.",
   "rendimento": "Razão percentual entre massa obtida experimentalmente e massa teórica esperada.",
