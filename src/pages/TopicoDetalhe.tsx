@@ -2510,7 +2510,7 @@ export default function TopicoDetalhe() {
             )}
 
             <div className="flex flex-wrap gap-3 pt-2">
-              <Link to={back}>
+              <button onClick={() => navigate(-1)}>
                 <Button className="bg-[#4C1D95] hover:bg-[#3b1478]">Tópico anterior</Button>
               </Link>
               <Link to="/cursos">
