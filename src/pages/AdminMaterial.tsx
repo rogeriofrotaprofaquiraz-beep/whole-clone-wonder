@@ -629,7 +629,7 @@ export default function AdminMaterial() {
                                                 to={`/topico/${s}?t=${encodeURIComponent(t)}&lesson=${encodeURIComponent(l.title)}&back=${encodeURIComponent("/admin/material")}&edit=1`}
                                                 className="flex items-center gap-2 text-xs px-2 py-1 rounded hover:bg-violet-100 text-[#4C1D95] font-medium flex-1 min-w-[180px]"
                                               >
-                                                <Pencil size={11} />
+                                                <span className="w-4 h-4 flex items-center justify-center bg-violet-200 text-[#4C1D95] rounded-full text-[9px] font-bold shrink-0">{i + 1}</span>
                                                 <span className="flex-1 truncate">{t}</span>
                                               </Link>
                                               <span className="text-[10px] text-slate-500 whitespace-nowrap" title="Última atualização">
