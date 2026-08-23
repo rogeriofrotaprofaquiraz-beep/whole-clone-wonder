@@ -2180,7 +2180,7 @@ export default function TopicoDetalhe() {
                               onChange={(u) => applySectionImage(`curio_${i}`, u)}
                             />
                           </div>
-                          <div className="p-4 leading-relaxed">{t}</div>
+                          <div className="p-4 leading-relaxed font-medium"><span className="text-[#4C1D95] font-black mr-2">{String(i + 1).padStart(2, '0')}.</span>{t}</div>
                         </li>
                       ))}
                     </ul>
