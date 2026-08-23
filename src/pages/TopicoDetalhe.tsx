@@ -2195,7 +2195,12 @@ export default function TopicoDetalhe() {
                 <AlertTriangle size={18} /> Alertas (erros comuns)
               </div>
               <ul className="space-y-1.5 text-sm text-slate-700 list-disc pl-5">
-                {c.pitfalls.map((p, i) => <li key={i}>{p}</li>)}
+                {c.pitfalls.map((p, i) => (
+                  <li key={i} className="leading-relaxed">
+                    <span className="font-bold text-red-600 mr-1">{String(i + 1).padStart(2, '0')}.</span>
+                    {p}
+                  </li>
+                ))}
               </ul>
             </section>
 
