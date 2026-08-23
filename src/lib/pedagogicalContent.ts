@@ -65,6 +65,61 @@ export function classifyTopic(title: string): string {
 /* Mapa completo por categoria. Cada bloco foi escrito para ser
    pedagogicamente autoaplicável, sem depender de laboratório especializado. */
 const PACKS: Record<string, Omit<PedagogicalPack, "categoria">> = {
+  seduc_pedagogia: {
+    fundamental: {
+      ideiaCentral: "A educação no Brasil é um direito de todos e deve preparar o cidadão para a vida e para o trabalho, seguindo leis como a LDB.",
+      analogia: "A LDB é como a 'Constituição da Educação': ela define as regras do jogo para escolas, professores e alunos em todo o país.",
+      vocabulario: [
+        { termo: "LDB", explicacao: "Lei de Diretrizes e Bases, a principal lei da educação no Brasil." },
+        { termo: "BNCC", explicacao: "Base Nacional Comum Curricular, que diz o que todos os alunos devem aprender." },
+        { termo: "PNE", explicacao: "Plano Nacional de Educação, que define metas para 10 anos." },
+      ],
+      pratica: {
+        titulo: "Linha do Tempo da Minha Escola",
+        objetivo: "Entender a evolução da educação a partir da realidade local.",
+        materiais: ["Papel, canetas, acesso a fotos ou relatos antigos da escola."],
+        passos: [
+          "Pesquise quando sua escola foi fundada.",
+          "Identifique mudanças físicas e nas matérias estudadas ao longo das décadas.",
+          "Crie um cartaz comparando 'Antigamente' vs 'Hoje'.",
+        ],
+        discussao: [
+          "A educação melhorou com o tempo?",
+          "O que a LDB mudou na prática da nossa escola?",
+        ],
+      },
+      perguntas: [
+        "Quem é responsável por garantir a educação no Brasil?",
+        "O que significa dizer que o ensino é 'laico'?",
+      ],
+    },
+    medio: {
+      aprofundamento: "A gestão democrática do ensino público (Art. 206, VI da CF/88) é um princípio que assegura a participação da comunidade escolar nas decisões. Teorias como o interacionismo de Vygotsky fundamentam a ideia de que o aprendizado ocorre na interação social, influenciando as tendências pedagógicas progressistas que norteiam a BNCC atual.",
+      conexoes: [
+        "Sociologia: A educação como fator de mobilidade social e reprodução cultural.",
+        "História: A Era Vargas e a reforma Francisco Campos na educação.",
+      ],
+      exemploResolvido: {
+        enunciado: "Analise o impacto da Lei 10.639/03 na construção da identidade nacional brasileira.",
+        resolucao: [
+          "A lei torna obrigatório o ensino de História e Cultura Afro-Brasileira.",
+          "Visa combater o eurocentrismo nos currículos.",
+          "Fortalece a valorização da matriz africana na formação da sociedade.",
+        ],
+        resposta: "A lei promove a equidade racial e o reconhecimento da diversidade na formação do cidadão.",
+      },
+      questoesVestibular: [
+        "O que define o Novo Ensino Médio segundo a Lei 13.415/17?",
+        "Diferencie as tendências pedagógicas liberais das progressistas.",
+      ],
+      autoavaliacao: [
+        "Conheço os principais marcos da LDB 9.394/96.",
+        "Entendo a diferença entre gestão democrática e gestão burocrática.",
+      ],
+    },
+    bnccSugerida: ["EM13CHS101", "EM13CHS502", "EF09HI10"],
+  },
+
   atomo: {
     fundamental: {
       ideiaCentral: "Tudo o que existe é feito de peças minúsculas chamadas átomos. Cada átomo tem um centro (núcleo) com prótons e nêutrons, e uma nuvem de elétrons em volta.",
