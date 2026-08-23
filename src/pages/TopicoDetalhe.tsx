@@ -478,7 +478,7 @@ function buildContent(title: string): Section {
           "Fotossíntese convertendo luz em energia química.",
         ],
         pitfalls: [
-          "Achar que carboidratos são apenas "vilões" (são essenciais para energia).",
+          "Achar que carboidratos são apenas 'vilões' (são essenciais para energia).",
           "Confundir as funções de DNA e RNA.",
         ],
         exercises: [
