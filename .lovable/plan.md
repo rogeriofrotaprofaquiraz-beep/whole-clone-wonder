@@ -1,41 +1,31 @@
-# Plano de Revisão e Detalhamento do Módulo 00 - Seleção SEDUC 2026
+# Plan - Expand Module 00 with P2 Chemistry Specifics
 
-O objetivo é transformar o Módulo 00 em um preparatório completo baseado no Edital SEDUC 2026, com conteúdos detalhados, simulados e atividades práticas.
+Expand "00. Seleção SEDUC 2026" with 17 new topics based on the "Conhecimentos Específicos (P2) – Professor de Química" section of the edital.
 
-## Conteúdo Programático (Baseado no Edital)
+## User Review Required
 
-### 1. Educação Brasileira: Temas Educacionais e Pedagógicos
-- **História da Educação:** Movimento dos Pioneiros até os dias atuais.
-- **Legislação Federal:** LDB (Lei 9.394/96), Leis 10.639 e 11.645 (Afro e Indígena).
-- **Planos Nacionais de Educação:** Análise dos planos 2001-2010, 2014-2025 e o novo 2026-2036.
-- **Didática:** Planejamento, estratégias, avaliação e a sala de aula como espaço de aprendizagem.
-- **BNCC:** Fundamentos, organização curricular e o Novo Ensino Médio.
+> [!IMPORTANT]
+> The new topics (09 to 25) will be added to the existing Module 00, which currently contains the basic P1 content.
 
-### 2. Administração Pública
-- **Conceitos e Princípios:** Legalidade, Impessoalidade, Moralidade, Publicidade e Eficiência.
-- **Modelos de Gestão:** Evolução do Patrimonialismo à Gestão Gerencial.
-- **Legislação Estadual:** Estatuto dos Servidores do Ceará e Código de Ética.
+- Are you okay with adding 17 more topics to the same module, or should we create a "Module 00.1" for P2? (Defaulting to adding to Module 00 as requested).
 
-### 3. Língua Portuguesa
-- **Interpretação de Texto:** Estratégias de leitura, inferência e textualidade.
-- **Gramática Normativa:** Ortografia, acentuação, concordância, regência e crase.
+## Proposed Changes
 
-### 4. Leitura e Interpretação de Dados e Indicadores
-- **Sistemas de Avaliação:** SPAECE, SAEB, PISA e ENEM.
-- **Estatística:** Interpretação de dados educacionais e indicadores Inep.
+### Database (Supabase)
+- Add 17 new lessons to `public.course_lessons` for course `bea67f55-082c-47a0-844e-dbd59e2386d7` (Module 00).
+- Assign sequential `order_index` starting from 9.
+- Include ementas for each based on the edital.
 
-## Ações Técnicas
+### Pedagogical Content (`src/lib/pedagogicalContent.ts`)
+- Create a new `seduc_especifico` pack or map existing ones to these new topics.
+- Add specific content for "Evolução histórica", "Ensino de Química", and "Simulado P2".
 
-1.  **Atualização do Banco de Dados:**
-    - Inserir/Atualizar `course_lessons` para o Módulo 00 com os tópicos acima.
-    - Criar `topic_overrides` detalhados para cada tópico com o conteúdo pedagógico extraído do edital.
-    - Configurar um `course_assessment` (Simulado Geral) para o Módulo 00 com 30 questões (conforme edital P1).
+### Simulations (`src/components/TopicExercise.tsx`)
+- Add a new `seduc_p2` bank with 10+ contextualized chemistry questions for the P2 simulation.
 
-2.  **Melhorias na Interface:**
-    - Garantir que a numeração `01.`, `02.` etc., esteja consistente em todos os tópicos.
-    - Adicionar seção de "Simulado do Tópico" ao final de cada aula no Módulo 00.
-    - Implementar a visualização de "Progresso por Área" (Didática, Legislação, etc.).
+### UI
+- Verify that `src/pages/CursoDetalhe.tsx` and `src/pages/TopicoDetalhe.tsx` correctly handle the new topics.
 
-3.  **Simulados e Avaliação:**
-    - Cada final de módulo terá um Simulado de 10 questões rápidas.
-    - O curso fecha com um Simulado Geral de 30 questões simulando a prova P1.
+## Technical Details
+- Course ID: `bea67f55-082c-47a0-844e-dbd59e2386d7`
+- The `classifyTopic` function in `src/pages/TopicoDetalhe.tsx` needs to be updated to detect these new topics and use the appropriate pedagogical pack.
