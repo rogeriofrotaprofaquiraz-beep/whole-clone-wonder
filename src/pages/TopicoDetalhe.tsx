@@ -77,6 +77,79 @@ function funContent(title: string): FunPack {
     ],
   };
   switch (cat) {
+    case "bioquimica":
+      return {
+        dailyLife: [
+          "Enzimas na sua saliva começam a quebrar o amido do pão antes mesmo de você engolir.",
+          "O DNA em cada uma de suas células contém as instruções para construir você inteiro.",
+          "Proteínas nos seus músculos permitem que você se mova, respire e mantenha o coração batendo.",
+        ],
+        curiosities: [
+          "O corpo humano médio contém carbono suficiente para fabricar cerca de 900 lápis.",
+          "As enzimas podem acelerar reações químicas em até um milhão de vezes comparado ao processo natural.",
+          "O ATP é a "moeda energética" da célula — você produz e consome seu próprio peso em ATP todos os dias.",
+        ],
+        funFacts: [
+          "Se você desenrolasse todo o DNA de uma única célula, ele teria cerca de 2 metros de comprimento.",
+          "Lactose é o açúcar do leite; quem é intolerante não produz a enzima lactase para quebrá-lo.",
+          "Proteínas são como legos biológicos: apenas 20 tipos de aminoácidos constroem milhões de proteínas diferentes.",
+        ],
+      };
+    case "ambiental":
+      return {
+        dailyLife: [
+          "O filtro de carvão ativado na sua geladeira ou filtro de água remove impurezas por adsorção química.",
+          "O sabão que você usa vai para o esgoto e precisa ser biodegradável para não matar os peixes nos rios.",
+          "Plásticos levam centenas de anos para se decompor porque suas cadeias de polímeros são muito resistentes.",
+        ],
+        curiosities: [
+          "A camada de ozônio nos protege contra 98% da radiação UV prejudicial do Sol.",
+          "Um único átomo de cloro pode destruir 100.000 moléculas de ozônio na estratosfera.",
+          "A Química Verde foca em "economia de átomos": desperdiçar o mínimo de matéria possível em processos industriais.",
+        ],
+        funFacts: [
+          "Chuva ácida não derrete pele humana, mas pode "comer" estátuas de mármore e monumentos históricos.",
+          "O efeito estufa é natural e vital; sem ele, a Terra seria uma bola de gelo de -18 °C.",
+          "O "cheiro de carro novo" é na verdade o cheiro de compostos orgânicos voláteis (VOCs) saindo dos plásticos e colas.",
+        ],
+      };
+    case "unidades":
+      return {
+        dailyLife: [
+          "Receitas de bolo dão errado se você confundir xícaras com gramas — unidades importam na cozinha!",
+          "Postos de combustível medem o volume de álcool/gasolina em litros; erro na bomba é crime de metrologia.",
+          "Exames de sangue medem glicose em mg/dL — saber a unidade ajuda a entender se o nível está alto.",
+        ],
+        curiosities: [
+          "O quilograma padrão era um cilindro de platina em Paris até 2019; agora é definido por uma constante da física.",
+          "A escala Kelvin começa no "zero absoluto" (-273,15 °C), onde teoricamente todo movimento atômico para.",
+          "Um "mol" de rosquinhas cobriria a superfície da Terra a uma profundidade de 8 quilômetros.",
+        ],
+        funFacts: [
+          "A palavra "metro" vem do grego metron, que significa medida.",
+          "Cientistas da NASA perderam uma sonda em Marte em 1999 porque uma equipe usou metros e outra usou pés.",
+          "O segundo é definido pelas vibrações de um átomo de Césio-133.",
+        ],
+      };
+    case "ensino":
+      return {
+        dailyLife: [
+          "Entender química ajuda a ler rótulos e não cair em propagandas enganosas de "produtos sem química".",
+          "A BNCC define o que todo aluno no Brasil tem o direito de aprender, independente da escola onde estuda.",
+          "Mapas mentais e analogias ajudam seu cérebro a conectar informações novas com o que você já sabe.",
+        ],
+        curiosities: [
+          "A transposição didática é a arte de transformar o "saber sábio" dos cientistas em "saber ensinado" para os alunos.",
+          "Antigamente, a química era ensinada apenas como listas de nomes e fórmulas para decorar.",
+          "O ensino por investigação faz do aluno um "pequeno cientista" que resolve problemas reais.",
+        ],
+        funFacts: [
+          "A melhor forma de aprender um assunto difícil é tentando explicá-lo para outra pessoa.",
+          "O cérebro aprende melhor quando a informação é visual e está conectada a uma emoção ou curiosidade.",
+          "O erro em sala de aula é uma "janela" para o professor entender como o aluno está pensando.",
+        ],
+      };
+
 
     case "seduc_pedagogia": return {
       dailyLife: [
