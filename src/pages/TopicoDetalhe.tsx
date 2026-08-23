@@ -2082,7 +2082,7 @@ export default function TopicoDetalhe() {
                       </div>
                       <div className="p-4 flex gap-3">
                         <div className="w-7 h-7 shrink-0 rounded-full bg-[#4C1D95] text-white text-xs font-bold flex items-center justify-center">
-                          {i + 1}
+                          {String(i + 1).padStart(2, '0')}
                         </div>
                         <div className="flex-1">
                           <div className="font-bold text-sm text-slate-900">{head}</div>
