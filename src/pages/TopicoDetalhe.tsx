@@ -2302,7 +2302,12 @@ export default function TopicoDetalhe() {
               </ul>
               <p className="text-xs font-semibold text-slate-700">Para se aprofundar neste tópico específico:</p>
               <ul className="text-xs text-slate-700 space-y-1 list-disc pl-5">
-                {c.refs.map((r, i) => <li key={i}>{r}</li>)}
+                {c.refs.map((r, i) => (
+                  <li key={i} className="leading-relaxed">
+                    <span className="font-bold text-slate-500 mr-1">{String(i + 1).padStart(2, '0')}.</span>
+                    {r}
+                  </li>
+                ))}
               </ul>
             </section>
 
