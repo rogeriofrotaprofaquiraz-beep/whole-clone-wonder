@@ -1659,7 +1659,9 @@ export default function TopicoDetalhe() {
   const { slug } = useParams();
   const navigate = useNavigate();
   const [params] = useSearchParams();
-  const title = params.get("t") || (slug ?? "Tópico").replace(/-/g, " ");
+  const rawTitle = params.get("t") || (slug ?? "Tópico").replace(/-/g, " ");
+  const title = rawTitle; // Preserve original for classification logic
+  const numberedTitle = rawTitle.includes('. ') ? rawTitle : rawTitle; // Placeholder for logic below
   const lesson = params.get("lesson") || "";
   const back = params.get("back") || "/cursos";
   const autoEdit = params.get("edit") === "1";
