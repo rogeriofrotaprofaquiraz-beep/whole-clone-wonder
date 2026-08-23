@@ -1,4 +1,5 @@
-import { supabase } from "./integrations/supabase/client";
+import { createClient } from "@supabase/supabase-js";
+const supabase = createClient(process.env.VITE_SUPABASE_URL!, process.env.VITE_SUPABASE_ANON_KEY!);
 
 const COURSE_ID = 'bea67f55-082c-47a0-844e-dbd59e2386d7';
 
