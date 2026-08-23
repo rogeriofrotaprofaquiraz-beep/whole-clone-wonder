@@ -1990,7 +1990,9 @@ export default function TopicoDetalhe() {
                 <GraduationCap size={12} /> {levelBadge(title)}
               </div>
               {lesson && <div className="text-xs uppercase tracking-wider text-white/70 mb-1">{lesson}</div>}
-              <h1 className="text-2xl md:text-4xl font-black leading-tight">{title}</h1>
+              <h1 className="text-2xl md:text-4xl font-black leading-tight">
+                {rawTitle.includes('. ') ? rawTitle : rawTitle}
+              </h1>
             </div>
           </div>
 
