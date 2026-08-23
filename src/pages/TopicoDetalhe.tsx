@@ -392,6 +392,12 @@ const BOOKS = [
 
 function classify(title: string): string {
   const t = title.toLowerCase();
+  
+  if (/(bioquím|proteína|lipídio|carboidrat|enzima|dna|rna)/.test(t)) return "bioquimica";
+  if (/(ambiental|poluição|efeito estufa|ozônio|ecologia)/.test(t)) return "ambiental";
+  if (/(unidade|si\b|medição|conversão|notação)/.test(t)) return "unidades";
+  if (/(ensino|didática|pedagogia|bncc|ldb|avaliação)/.test(t)) return "ensino";
+
   // SEDUC Expansion
   if (/(ldb|lei 9.394|educação brasileira|pioneiros|história da educação|pne|temas educacionais)/.test(t)) return "seduc_pedagogia";
   if (/(didática|planejamento|metodologia|avaliação|sala de aula|prática docente)/.test(t)) return "seduc_pedagogia";
