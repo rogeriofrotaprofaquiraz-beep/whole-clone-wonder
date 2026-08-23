@@ -2514,7 +2514,7 @@ export default function TopicoDetalhe() {
 
             <div className="flex flex-wrap gap-3 pt-2">
               <Link to={back}>
-                <Button className="bg-[#4C1D95] hover:bg-[#3b1478]">Voltar para a aula</Button>
+                <Button className="bg-[#4C1D95] hover:bg-[#3b1478]">Tópico anterior</Button>
               </Link>
               <Link to="/cursos">
                 <Button variant="outline">Ver todos os cursos</Button>
