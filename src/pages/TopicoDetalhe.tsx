@@ -1660,6 +1660,7 @@ export default function TopicoDetalhe() {
   const navigate = useNavigate();
   const [params] = useSearchParams();
   const rawTitle = params.get("t") || (slug ?? "Tópico").replace(/-/g, " ");
+  const topicIndex = params.get("idx");
   const title = rawTitle; // Original title used for logic
   const lesson = params.get("lesson") || "";
   const back = params.get("back") || "/cursos";
