@@ -1,32 +1,41 @@
-O objetivo é implementar as funcionalidades de Gerenciamento de Usuários e Rastreamento de Atividades solicitadas, além de finalizar o Módulo Administrador para torná-lo funcional e profissional.
+# Plano de Revisão e Detalhamento do Módulo 00 - Seleção SEDUC 2026
 
-### Alterações Propostas
+O objetivo é transformar o Módulo 00 em um preparatório completo baseado no Edital SEDUC 2026, com conteúdos detalhados, simulados e atividades práticas.
 
-#### 1. Módulo Administrador (AdminPanel.tsx)
-- **Renomeação Estrutural**:
-    - Renomear as abas para corresponder exatamente ao pedido: "GERENCIAR USUÁRIO" e "RASTREAR ATIVIDADE".
-    - Adicionar um painel de **Status do Sistema** (Dashboard) que mostre estatísticas rápidas: total de usuários, ações registradas hoje e nível de atividade.
-- **Gerenciamento de Usuários**:
-    - Adicionar uma barra de busca (Search) para filtrar usuários por nome ou e-mail.
-    - Exibir a data de criação da conta para melhor controle.
-    - Implementar a função de exclusão de usuário (com alerta de confirmação).
-- **Rastreador de Atividades**:
-    - Adicionar filtros por tipo de ação (Login, Mudança de Aba, Batalha, etc.).
-    - Melhorar a legibilidade dos logs, separando visualmente as ações automáticas das ações manuais.
+## Conteúdo Programático (Baseado no Edital)
 
-#### 2. Monitoramento de Atividade (Index.tsx)
-- **Logs Granulares**:
-    - Implementar logs para visualização de elementos específicos (ex: "Visualizou Hidrogênio").
-    - Registrar o início e fim de batalhas e quizzes.
-    - Garantir que todas as mudanças de aba sejam rastreadas com metadados úteis.
-- **Persistência e Segurança**:
-    - Verificar se os logs estão sendo inseridos corretamente no banco de dados.
+### 1. Educação Brasileira: Temas Educacionais e Pedagógicos
+- **História da Educação:** Movimento dos Pioneiros até os dias atuais.
+- **Legislação Federal:** LDB (Lei 9.394/96), Leis 10.639 e 11.645 (Afro e Indígena).
+- **Planos Nacionais de Educação:** Análise dos planos 2001-2010, 2014-2025 e o novo 2026-2036.
+- **Didática:** Planejamento, estratégias, avaliação e a sala de aula como espaço de aprendizagem.
+- **BNCC:** Fundamentos, organização curricular e o Novo Ensino Médio.
 
-#### 3. Experiência de Usuário (AuthSystem.tsx)
-- Adicionar log de atividade específico para quando um novo usuário se registra.
+### 2. Administração Pública
+- **Conceitos e Princípios:** Legalidade, Impessoalidade, Moralidade, Publicidade e Eficiência.
+- **Modelos de Gestão:** Evolução do Patrimonialismo à Gestão Gerencial.
+- **Legislação Estadual:** Estatuto dos Servidores do Ceará e Código de Ética.
 
-### Detalhes Técnicos
-- Utilização de `lucide-react` para novos ícones (Search, Trash, Activity).
-- Uso de componentes `Input` e `Select` do Shadcn para filtros.
-- Refinamento das políticas de RLS no Supabase (se necessário) para garantir que apenas administradores vejam os dados sensíveis.
-- O termo "Publicar" será interpretado como a finalização da interface e ativação total dos logs em tempo real.
+### 3. Língua Portuguesa
+- **Interpretação de Texto:** Estratégias de leitura, inferência e textualidade.
+- **Gramática Normativa:** Ortografia, acentuação, concordância, regência e crase.
+
+### 4. Leitura e Interpretação de Dados e Indicadores
+- **Sistemas de Avaliação:** SPAECE, SAEB, PISA e ENEM.
+- **Estatística:** Interpretação de dados educacionais e indicadores Inep.
+
+## Ações Técnicas
+
+1.  **Atualização do Banco de Dados:**
+    - Inserir/Atualizar `course_lessons` para o Módulo 00 com os tópicos acima.
+    - Criar `topic_overrides` detalhados para cada tópico com o conteúdo pedagógico extraído do edital.
+    - Configurar um `course_assessment` (Simulado Geral) para o Módulo 00 com 30 questões (conforme edital P1).
+
+2.  **Melhorias na Interface:**
+    - Garantir que a numeração `01.`, `02.` etc., esteja consistente em todos os tópicos.
+    - Adicionar seção de "Simulado do Tópico" ao final de cada aula no Módulo 00.
+    - Implementar a visualização de "Progresso por Área" (Didática, Legislação, etc.).
+
+3.  **Simulados e Avaliação:**
+    - Cada final de módulo terá um Simulado de 10 questões rápidas.
+    - O curso fecha com um Simulado Geral de 30 questões simulando a prova P1.
