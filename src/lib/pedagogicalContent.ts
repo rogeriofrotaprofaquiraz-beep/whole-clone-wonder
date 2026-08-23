@@ -44,6 +44,24 @@ export type PedagogicalPack = {
    manter o módulo autossuficiente). */
 export function classifyTopic(title: string): string {
   const t = title.toLowerCase();
+  if (/(história|evolução|dalton|thomson|rutherford|bohr|modelo|quântic)/.test(t)) return "atomo";
+  if (/(tabela|periódica|mendeleev|periódic)/.test(t)) return "periodica";
+  if (/(ligação|covalente|iônica|metálica|polaridade)/.test(t)) return "ligacoes";
+  if (/(reação|estequiometria|molb|cálculo)/.test(t)) return "reacoes";
+  if (/(ácido|base|funções|inorgânic|phb)/.test(t)) return "acidobase";
+  if (/(termoquím|entalpia|hess|calor)/.test(t)) return "termo";
+  if (/(cinética|velocidade|catalisador)/.test(t)) return "cinetica";
+  if (/(equilíbrio|le chatelier|kcb|kpb)/.test(t)) return "equilibrio";
+  if (/(solução|concentração|molaridade)/.test(t)) return "solucoes";
+  if (/(eletroquím|pilha|eletrólise|nox)/.test(t)) return "eletro";
+  if (/(orgânica|hidrocarboneto|função|isomeria)/.test(t)) return "organica";
+  if (/(bioquím|proteína|lipídio|carboidrat)/.test(t)) return "bioquimica";
+  if (/(ambiental|poluição|efeito estufa)/.test(t)) return "ambiental";
+  if (/(radioativid|nuclear|fissão|fusão)/.test(t)) return "nuclear";
+  if (/(matéria|estado físico|densidade)/.test(t)) return "materia";
+  if (/(unidade|sib|mediç)/.test(t)) return "unidades";
+  if (/(ensino|didática|pedagog)/.test(t)) return "ensino";
+  const t = title.toLowerCase();
   if (/(átomo|atomic|orbital|quântic|elétron|próton|nêutron|isótop|dalton|thomson|rutherford|bohr|modelo)/.test(t)) return "atomo";
   if (/(tabela periódic|periódic|família|grupo|período|eletronegativid|raio atômic|energia de ioniz)/.test(t)) return "periodica";
   if (/(ligaç|iônic|covalent|metálic|polaridade|geometria molecular|vsepr|hibridiz)/.test(t)) return "ligacoes";
@@ -1045,6 +1063,154 @@ const PACKS: Record<string, Omit<PedagogicalPack, "categoria">> = {
       ],
     },
     bnccSugerida: ["EF09CI06", "EM13CNT202", "EM13CNT301"],
+  },
+
+
+  bioquimica: {
+    fundamental: {
+      ideiaCentral: "Bioquímica é a química da vida. Estuda as moléculas que formam nosso corpo, como proteínas, gorduras e açúcares.",
+      analogia: "Imagine o corpo como uma cidade: as proteínas são os operários e construções, os carboidratos são a energia elétrica e os lipídios são o estoque de combustível.",
+      vocabulario: [
+        { termo: "Aminoácido", explicacao: "Blocos de construção das proteínas." },
+        { termo: "Glicose", explicacao: "O principal açúcar que nos dá energia rápida." },
+        { termo: "Enzima", explicacao: "Proteína que acelera as reações químicas no corpo." },
+      ],
+      pratica: {
+        titulo: "Detectando Amido nos Alimentos",
+        objetivo: "Identificar a presença de carboidratos complexos usando tintura de iodo.",
+        materiais: ["Batata, arroz, pão, maçã", "Tintura de iodo (farmácia)", "Conta-gotas"],
+        passos: [
+          "Pingue uma gota de iodo em cada alimento.",
+          "Observe a mudança de cor: o iodo (castanho) fica roxo/preto na presença de amido.",
+          "Compare os resultados entre os alimentos testados.",
+        ],
+        discussao: [
+          "Quais alimentos têm mais amido?",
+          "Por que a maçã não mudou tanto de cor?",
+        ],
+      },
+      perguntas: ["O que são proteínas?", "Para que servem os lipídios?"],
+    },
+    medio: {
+      aprofundamento: "A Bioquímica analisa a estrutura e função de biomoléculas (proteínas, ácidos nucleicos, carboidratos e lipídios) e as rotas metabólicas (glicólise, Ciclo de Krebs). O dogma central da biologia molecular descreve o fluxo de informação do DNA para as proteínas.",
+      conexoes: ["Nutrição: dietas balanceadas.", "Medicina: diagnóstico por exames de sangue."],
+      exemploResolvido: {
+        enunciado: "Explique a função das enzimas como catalisadores biológicos.",
+        resolucao: ["Baixam a energia de ativação.", "Têm alta especificidade (chave-fechadura)."],
+        resposta: "Enzimas aceleram reações vitais sem serem consumidas.",
+      },
+      questoesVestibular: ["(ENEM) Diferencie gorduras saturadas de insaturadas.", "(FUVEST) Descreva a estrutura secundária das proteínas."],
+      autoavaliacao: ["Entendo o papel do ATP.", "Diferencio DNA de RNA."],
+    },
+    bnccSugerida: ["EM13CNT202", "EM13CNT302"],
+  },
+
+  ambiental: {
+    fundamental: {
+      ideiaCentral: "Química Ambiental estuda como os elementos químicos circulam na natureza e como a poluição afeta o ar, a água e o solo.",
+      analogia: "A Terra é como um aquário gigante: se a água sujar ou o filtro parar, todos os peixes sofrem. Precisamos manter o equilíbrio químico.",
+      vocabulario: [
+        { termo: "Efeito Estufa", explicacao: "Retenção de calor por gases na atmosfera." },
+        { termo: "Biodegradável", explicacao: "Substância que a natureza consegue decompor rápido." },
+        { termo: "Chuva Ácida", explicacao: "Chuva com pH baixo devido a gases poluentes." },
+      ],
+      pratica: {
+        titulo: "Simulando a Chuva Ácida",
+        objetivo: "Observar o efeito do ácido no carbonato de cálcio (giz ou mármore).",
+        materiais: ["Giz de lousa", "Vinagre", "Copo"],
+        passos: [
+          "Coloque o giz no vinagre.",
+          "Observe as bolhas (CO₂) e o desgaste do giz.",
+          "Relacione com monumentos históricos corroídos pela chuva ácida.",
+        ],
+        discussao: ["O que aconteceu com o giz?", "Como evitar a chuva ácida?"],
+      },
+      perguntas: ["Quais gases causam o aquecimento global?", "O que é o ciclo da água?"],
+    },
+    medio: {
+      aprofundamento: "A Química Ambiental foca nos ciclos biogeoquímicos e nos impactos das atividades humanas. Temas como a camada de ozônio (CFCs), eutrofização de águas e tratamento de efluentes são fundamentais. A Química Verde propõe processos industriais menos poluentes.",
+      conexoes: ["Geografia: impactos climáticos.", "Ecologia: preservação de biomas."],
+      exemploResolvido: {
+        enunciado: "Explique o processo de destruição da camada de ozônio por CFCs.",
+        resolucao: ["Radiação UV quebra o CFC liberando Cl.", "O Cl catalisa a destruição do O₃ em O₂."],
+        resposta: "Um único átomo de Cloro pode destruir milhares de moléculas de Ozônio.",
+      },
+      questoesVestibular: ["(ENEM) Analise as consequências do derramamento de petróleo no mar.", "(FUVEST) Discuta o tratamento de água por floculação e decantação."],
+      autoavaliacao: ["Conheço os 12 princípios da Química Verde.", "Entendo o ciclo do Carbono."],
+    },
+    bnccSugerida: ["EM13CNT303", "EM13CNT306"],
+  },
+
+  unidades: {
+    fundamental: {
+      ideiaCentral: "Na ciência, usamos medidas padrão para que todos falem a mesma língua. O Sistema Internacional (SI) define como medimos massa, tempo e volume.",
+      analogia: "Medir sem padrão é como tentar seguir uma receita que usa 'um punhado' — cada mão tem um tamanho. Precisamos de réguas e balanças!",
+      vocabulario: [
+        { termo: "Massa", explicacao: "Quantidade de matéria (medida em gramas ou kg)." },
+        { termo: "Volume", explicacao: "Espaço que a matéria ocupa (litros, m³)." },
+        { termo: "Densidade", explicacao: "Quão 'apertada' a matéria está num espaço." },
+      ],
+      pratica: {
+        titulo: "Quem flutua e quem afunda?",
+        objetivo: "Entender densidade comparando objetos com a água.",
+        materiais: ["Recipiente com água", "Ovo, uva, tampa de caneta, clipe"],
+        passos: [
+          "Coloque os objetos na água e anote quem flutua.",
+          "Adicione sal na água e veja se o ovo que afundou passa a flutuar.",
+          "Explique por que a densidade da água mudou.",
+        ],
+        discussao: ["Por que o gelo flutua na água?", "Densidade e volume são a mesma coisa?"],
+      },
+      perguntas: ["Qual a unidade de massa no SI?", "Como se calcula a densidade?"],
+    },
+    medio: {
+      aprofundamento: "O Sistema Internacional de Unidades (SI) baseia-se em constantes físicas. A análise dimensional e o uso de notação científica são ferramentas essenciais para a resolução de problemas complexos em Química, garantindo a coerência entre grandezas.",
+      conexoes: ["Física: cinemática e dinâmica.", "Matemática: potências de 10."],
+      exemploResolvido: {
+        enunciado: "Converta 500 mL para m³ e g (considere d = 1 g/mL).",
+        resolucao: ["500 mL = 0,5 L = 0,0005 m³.", "Massa = d × V = 1 × 500 = 500 g."],
+        resposta: "0,0005 m³ e 500 g.",
+      },
+      questoesVestibular: ["(ENEM) Interprete escalas em gráficos de poluição.", "(FUVEST) Realize conversões de unidades de energia (J para cal)."],
+      autoavaliacao: ["Uso notação científica sem erro.", "Sei as 7 unidades base do SI."],
+    },
+    bnccSugerida: ["EF09CI01", "EM13CNT101"],
+  },
+
+  ensino: {
+    fundamental: {
+      ideiaCentral: "Ensinar Química é mostrar como o mundo invisível dos átomos explica o mundo visível. Usamos modelos e experimentos para aprender.",
+      analogia: "O professor de Química é um tradutor que fala a 'língua da natureza' e explica para os alunos.",
+      vocabulario: [
+        { termo: "Modelo", explicacao: "Representação simplificada de algo complexo." },
+        { termo: "Problematização", explicacao: "Partir de uma pergunta para chegar ao conceito." },
+      ],
+      pratica: {
+        titulo: "Debate: A Química é Boa ou Ruim?",
+        objetivo: "Discutir a imagem da química na sociedade e mídia.",
+        materiais: ["Notícias, embalagens de produtos 'sem química'"],
+        passos: [
+          "Divida a turma em dois grupos.",
+          "Um defende os benefícios (remédios, tecnologia).",
+          "Outro alerta sobre riscos (poluição, armas).",
+          "Conclua que o uso humano é que define o impacto.",
+        ],
+        discussao: ["Existe produto 'sem química'?", "Como a ciência evolui?"],
+      },
+      perguntas: ["O que é o método científico?", "Por que os modelos mudam com o tempo?"],
+    },
+    medio: {
+      aprofundamento: "A didática das Ciências da Natureza fundamenta-se na Alfabetização Científica e no Ensino por Investigação. A transposição didática exige que o docente relacione o conhecimento científico com o pedagógico, respeitando a BNCC e os Itinerários Formativos.",
+      conexoes: ["História da Ciência: contextos das descobertas.", "Pedagogia: Piaget e Vygotsky."],
+      exemploResolvido: {
+        enunciado: "Como aplicar o ciclo investigativo no ensino de equilíbrio químico?",
+        resolucao: ["Questão inicial → Hipóteses → Experimentação → Análise → Conclusão."],
+        resposta: "O aluno constrói o conceito ao tentar explicar o fenômeno observado.",
+      },
+      questoesVestibular: ["(SEDUC) Descreva as competências da área de Ciências da Natureza na BNCC.", "(CONCURSO) Analise a importância do laboratório escolar."],
+      autoavaliacao: ["Conheço a estrutura da BNCC.", "Sei planejar aulas investigativas."],
+    },
+    bnccSugerida: ["EM13CNT301", "EM13CNT307"],
   },
 
   geral: {
