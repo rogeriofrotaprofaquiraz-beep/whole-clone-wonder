@@ -2051,7 +2051,7 @@ export default function TopicoDetalhe() {
                       />
                     </div>
                     <div className="p-4">
-                      <div className="text-base font-bold text-[#4C1D95] mb-1">{k}</div>
+                      <div className="text-base font-bold text-[#4C1D95] mb-1">{k.includes('. ') ? k : `${String(i + 1).padStart(2, '0')}. ${k}`}</div>
                       <div className="text-sm text-slate-700 leading-relaxed">{explainKey(k)}</div>
                     </div>
                   </div>
