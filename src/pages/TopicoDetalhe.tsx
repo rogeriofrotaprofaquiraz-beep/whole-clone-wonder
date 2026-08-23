@@ -77,7 +77,25 @@ function funContent(title: string): FunPack {
     ],
   };
   switch (cat) {
+    case "seduc_pedagogia": return {
+      dailyLife: [
+        "A escola onde você estudou segue as normas da LDB para definir o calendário escolar.",
+        "O atendimento em repartições públicas deve seguir o princípio da impessoalidade.",
+        "A merenda e o transporte escolar são direitos garantidos por verbas federais e estaduais.",
+      ],
+      curiosities: [
+        "A LDB atual tem quase 30 anos e já passou por dezenas de atualizações para se adaptar ao mundo digital.",
+        "O Ceará é referência nacional em indicadores de alfabetização graças ao regime de colaboração entre estado e municípios.",
+        "Antigamente, o professor era a única fonte de informação; hoje, ele é o mediador do conhecimento.",
+      ],
+      funFacts: [
+        "O termo 'burocracia' hoje soa mal, mas surgiu para garantir que as regras fossem iguais para todos, sem favoritismos.",
+        "Você sabia que o Hino Nacional deve ser cantado nas escolas pelo menos uma vez por semana?",
+        "Estudar didática é como aprender os truques de mágica do conhecimento: você descobre como a mente do aluno 'acende' a luz.",
+      ],
+    };
     case "atomo": return {
+
       dailyLife: [
         "Detectores de fumaça usam amerício-241 (radioativo) para perceber partículas de fumaça no ar.",
         "Lâmpadas fluorescentes e letreiros de neon funcionam com elétrons pulando entre níveis de energia.",
@@ -374,6 +392,14 @@ const BOOKS = [
 
 function classify(title: string): string {
   const t = title.toLowerCase();
+  // SEDUC Expansion
+  if (/(ldb|lei 9.394|educação brasileira|pioneiros|história da educação|pne|temas educacionais)/.test(t)) return "seduc_pedagogia";
+  if (/(didática|planejamento|metodologia|avaliação|sala de aula|prática docente)/.test(t)) return "seduc_pedagogia";
+  if (/(administração pública|servidores|código de ética|estatuto|limpe|poder executivo)/.test(t)) return "seduc_pedagogia";
+  if (/(bncc|ensino médio|itinerários|educação integral)/.test(t)) return "seduc_pedagogia";
+  if (/(indicadores|spaece|saeb|pisa|enem|estatística)/.test(t)) return "seduc_pedagogia";
+  if (/(língua portuguesa|gramática|interpretação|textualidade)/.test(t)) return "seduc_pedagogia";
+
   if (/(átomo|atomic|orbital|quântic|elétron|próton|nêutron|isótop|dalton|thomson|rutherford|bohr|modelo)/.test(t)) return "atomo";
   if (/(tabela periódic|periódic|família|grupo|período|eletronegativid|raio atômic|energia de ioniz)/.test(t)) return "periodica";
   if (/(ligaç|iônic|covalent|metálic|polaridade|geometria molecular|vsepr|hibridiz)/.test(t)) return "ligacoes";
@@ -426,7 +452,41 @@ function buildContent(title: string): Section {
   };
 
   switch (cat) {
+    case "seduc_pedagogia":
+      return {
+        simple: `O preparatório SEDUC foca nas diretrizes da educação brasileira, didática e administração pública. É a base legal e pedagógica para o concurso.`,
+        formal: `Conteúdo extraído do Edital SEDUC 2026. Abrange LDB 9.394/96, BNCC, Plano Nacional de Educação e princípios da Administração Pública Estadual.`,
+        key: ["LDB", "BNCC", "PNE", "Gestão Democrática", "Didática", "LIMPE", "Indicadores"],
+        principles: [
+          "Educação como dever do Estado e direito do cidadão.",
+          "Gestão democrática e pluralismo de ideias.",
+          "Legalidade, Impessoalidade, Moralidade, Publicidade e Eficiência.",
+          "Igualdade, equidade e inclusão no ambiente escolar.",
+        ],
+        formulas: [
+          { expr: "IDEB = Aprov. × SAEB", desc: "Cálculo do Índice de Desenvolvimento da Educação Básica." },
+        ],
+        examples: [
+          "Aplicação da Lei 10.639/03 na prática escolar.",
+          "Elaboração de Projetos Políticos Pedagógicos (PPP).",
+          "Análise de dados do SPAECE para gestão pedagógica.",
+        ],
+        pitfalls: [
+          "Achar que o Novo Ensino Médio eliminou todas as disciplinas tradicionais.",
+          "Confundir princípios constitucionais da Administração Pública.",
+        ],
+        exercises: [
+          "Quais as finalidades da educação básica segundo a LDB?",
+          "Diferencie as tendências pedagógicas liberais das progressistas.",
+        ],
+        refs: [
+          "Edital SEDUC 2026",
+          "Lei Federal nº 9.394/96 (LDB)",
+          "Constituição Federal de 1988",
+        ],
+      };
     case "atomo":
+
       return {
         simple: `O átomo é a menor parte de um elemento que ainda tem as propriedades dele. Ele tem um núcleo (com prótons e nêutrons) e elétrons ao redor. É como um sistema solar bem pequenininho: o núcleo é o Sol e os elétrons são planetas — mas quânticos.`,
         formal: `${T} está no domínio da teoria atômica moderna. O átomo é constituído por núcleo denso — contendo prótons (Z) e nêutrons (N) — e por elétrons distribuídos em orbitais descritos por funções de onda ψ(r) (equação de Schrödinger). Modelos históricos: Dalton (esfera indivisível), Thomson (pudim de passas), Rutherford (núcleo denso), Bohr (níveis quantizados), Schrödinger (orbital probabilístico).`,
