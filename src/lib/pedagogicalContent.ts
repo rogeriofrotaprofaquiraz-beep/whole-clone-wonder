@@ -44,29 +44,15 @@ export type PedagogicalPack = {
    manter o módulo autossuficiente). */
 export function classifyTopic(title: string): string {
   const t = title.toLowerCase();
-  if (/(história|evolução|dalton|thomson|rutherford|bohr|modelo|quântic)/.test(t)) return "atomo";
-  if (/(tabela|periódica|mendeleev|periódic)/.test(t)) return "periodica";
-  if (/(ligação|covalente|iônica|metálica|polaridade)/.test(t)) return "ligacoes";
-  if (/(reação|estequiometria|molb|cálculo)/.test(t)) return "reacoes";
-  if (/(ácido|base|funções|inorgânic|phb)/.test(t)) return "acidobase";
-  if (/(termoquím|entalpia|hess|calor)/.test(t)) return "termo";
-  if (/(cinética|velocidade|catalisador)/.test(t)) return "cinetica";
-  if (/(equilíbrio|le chatelier|kcb|kpb)/.test(t)) return "equilibrio";
-  if (/(solução|concentração|molaridade)/.test(t)) return "solucoes";
-  if (/(eletroquím|pilha|eletrólise|nox)/.test(t)) return "eletro";
-  if (/(orgânica|hidrocarboneto|função|isomeria)/.test(t)) return "organica";
-  if (/(bioquím|proteína|lipídio|carboidrat)/.test(t)) return "bioquimica";
-  if (/(ambiental|poluição|efeito estufa)/.test(t)) return "ambiental";
-  if (/(radioativid|nuclear|fissão|fusão)/.test(t)) return "nuclear";
-  if (/(matéria|estado físico|densidade)/.test(t)) return "materia";
-  if (/(unidade|sib|mediç)/.test(t)) return "unidades";
-  if (/(ensino|didática|pedagog)/.test(t)) return "ensino";
-  const t = title.toLowerCase();
+  if (/(bioquím|proteína|lipídio|carboidrat|enzima|dna|rna)/.test(t)) return "bioquimica";
+  if (/(ambiental|poluição|efeito estufa|ozônio|ecologia)/.test(t)) return "ambiental";
+  if (/(unidade|si\b|medição|conversão|notação)/.test(t)) return "unidades";
+  if (/(ensino|didática|pedagogia|bncc|ldb|avaliação)/.test(t)) return "ensino";
   if (/(átomo|atomic|orbital|quântic|elétron|próton|nêutron|isótop|dalton|thomson|rutherford|bohr|modelo)/.test(t)) return "atomo";
-  if (/(tabela periódic|periódic|família|grupo|período|eletronegativid|raio atômic|energia de ioniz)/.test(t)) return "periodica";
+  if (/(tabela periódic|periódic|família|grupo|período|eletronegativid|raio atômic|energia de ioniz|mendeleev)/.test(t)) return "periodica";
   if (/(ligaç|iônic|covalent|metálic|polaridade|geometria molecular|vsepr|hibridiz)/.test(t)) return "ligacoes";
-  if (/(reaç|estequiometr|balanceam|mol\b|rendimento|reagente limitante)/.test(t)) return "reacoes";
-  if (/(ácid|base|ph\b|poh|arrhenius|brønsted|lewis|neutraliz|indicador)/.test(t)) return "acidobase";
+  if (/(reaç|estequiometr|balanceam|mol\b|rendimento|reagente limitante|cálculo)/.test(t)) return "reacoes";
+  if (/(ácid|base|ph\b|poh|arrhenius|brønsted|lewis|neutraliz|indicador|funções|inorgânic)/.test(t)) return "acidobase";
   if (/(termoquím|entalpi|hess|calor|termodinâm|entropi|energia livre|gibbs)/.test(t)) return "termo";
   if (/(cinétic|velocidade|catalisador|ordem de reação)/.test(t)) return "cinetica";
   if (/(equilíbr|kc\b|kp\b|le\s?chatelier|le châtelier)/.test(t)) return "equilibrio";
