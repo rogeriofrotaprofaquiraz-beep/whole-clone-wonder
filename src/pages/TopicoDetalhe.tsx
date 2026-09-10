@@ -139,7 +139,7 @@ function funContent(title: string): FunPack {
           "Mapas mentais e analogias ajudam seu cérebro a conectar informações novas com o que você já sabe.",
         ],
         curiosities: [
-          "A transposição didática é a arte de transformar o "saber sábio" dos cientistas em "saber ensinado" para os alunos.",
+          "A transposição didática é a arte de transformar o 'saber sábio' dos cientistas em 'saber ensinado' para os alunos.",
           "Antigamente, a química era ensinada apenas como listas de nomes e fórmulas para decorar.",
           "O ensino por investigação faz do aluno um 'pequeno cientista' que resolve problemas reais.",
         ],
