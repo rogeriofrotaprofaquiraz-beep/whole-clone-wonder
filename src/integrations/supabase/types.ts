@@ -1138,6 +1138,112 @@ export type Database = {
           },
         ]
       }
+      olympiad_attempts: {
+        Row: {
+          correct: number
+          created_at: string
+          exam_id: string
+          id: string
+          score: number
+          total: number
+          user_id: string
+        }
+        Insert: {
+          correct: number
+          created_at?: string
+          exam_id: string
+          id?: string
+          score: number
+          total: number
+          user_id: string
+        }
+        Update: {
+          correct?: number
+          created_at?: string
+          exam_id?: string
+          id?: string
+          score?: number
+          total?: number
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "olympiad_attempts_exam_id_fkey"
+            columns: ["exam_id"]
+            isOneToOne: false
+            referencedRelation: "olympiad_exams"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      olympiad_exams: {
+        Row: {
+          created_at: string
+          created_by: string | null
+          id: string
+          olympiad_id: string
+          questions: Json
+          source: string
+          title: string
+          year: number | null
+        }
+        Insert: {
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          olympiad_id: string
+          questions?: Json
+          source?: string
+          title: string
+          year?: number | null
+        }
+        Update: {
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          olympiad_id?: string
+          questions?: Json
+          source?: string
+          title?: string
+          year?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "olympiad_exams_olympiad_id_fkey"
+            columns: ["olympiad_id"]
+            isOneToOne: false
+            referencedRelation: "olympiads"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      olympiads: {
+        Row: {
+          acronym: string
+          created_at: string
+          created_by: string | null
+          description: string | null
+          id: string
+          name: string
+        }
+        Insert: {
+          acronym: string
+          created_at?: string
+          created_by?: string | null
+          description?: string | null
+          id?: string
+          name: string
+        }
+        Update: {
+          acronym?: string
+          created_at?: string
+          created_by?: string | null
+          description?: string | null
+          id?: string
+          name?: string
+        }
+        Relationships: []
+      }
       player_avatars: {
         Row: {
           accessories: string[] | null
@@ -1290,6 +1396,7 @@ export type Database = {
           guardian_phone: string | null
           guardian_relationship: string | null
           id: string
+          is_olympiad: boolean
           level: number | null
           losses: number | null
           rank_points: number | null
@@ -1309,6 +1416,7 @@ export type Database = {
           guardian_phone?: string | null
           guardian_relationship?: string | null
           id: string
+          is_olympiad?: boolean
           level?: number | null
           losses?: number | null
           rank_points?: number | null
@@ -1328,6 +1436,7 @@ export type Database = {
           guardian_phone?: string | null
           guardian_relationship?: string | null
           id?: string
+          is_olympiad?: boolean
           level?: number | null
           losses?: number | null
           rank_points?: number | null
