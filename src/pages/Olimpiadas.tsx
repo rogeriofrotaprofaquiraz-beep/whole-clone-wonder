@@ -46,14 +46,45 @@ export default function Olimpiadas() {
     if (!sel && o?.length) setSel(o[0] as any);
   };
 
+  const [allowed, setAllowed] = useState<boolean | null>(null);
+  const [students, setStudents] = useState<{ id: string; username: string | null; email: string | null; is_olympiad: boolean }[]>([]);
+  const [picked, setPicked] = useState<Set<string>>(new Set());
+  const [filter, setFilter] = useState("");
+
+  const loadStudents = async () => {
+    const { data: roles } = await supabase.from("user_roles").select("user_id").eq("role", "student");
+    const ids = [...new Set((roles ?? []).map((r) => r.user_id))];
+    if (!ids.length) return setStudents([]);
+    const { data } = await supabase.from("profiles").select("id, username, email, is_olympiad").in("id", ids);
+    const list = (data ?? []) as any[];
+    setStudents(list);
+    setPicked(new Set(list.filter((s) => s.is_olympiad).map((s) => s.id)));
+  };
+
+  const releaseAll = async () => {
+    setBusy("release");
+    const on = students.filter((s) => picked.has(s.id)).map((s) => s.id);
+    const off = students.filter((s) => !picked.has(s.id)).map((s) => s.id);
+    const r1 = on.length ? await supabase.from("profiles").update({ is_olympiad: true }).in("id", on) : { error: null };
+    const r2 = off.length ? await supabase.from("profiles").update({ is_olympiad: false }).in("id", off) : { error: null };
+    setBusy(null);
+    if (r1.error || r2.error) return toast.error((r1.error || r2.error)!.message);
+    toast.success(`Olimpíadas liberadas para ${on.length} aluno(s)`);
+    loadStudents();
+  };
+
   useEffect(() => {
     load();
     (async () => {
       const { data: u } = await supabase.auth.getUser();
-      if (!u.user) return;
+      if (!u.user) { setAllowed(false); return; }
       setUserId(u.user.id);
-      const r = await Promise.all(["admin", "teacher", "moderator"].map((role) => supabase.rpc("has_role", { _user_id: u.user!.id, _role: role as any })));
-      setCanManage(r.some((x) => x.data));
+      const r = await Promise.all(["admin", "teacher", "moderator", "director", "coordinator"].map((role) => supabase.rpc("has_role", { _user_id: u.user!.id, _role: role as any })));
+      const staff = r.some((x) => x.data);
+      setCanManage(staff);
+      if (staff) { setAllowed(true); loadStudents(); return; }
+      const { data: p } = await supabase.from("profiles").select("is_olympiad").eq("id", u.user.id).maybeSingle();
+      setAllowed(!!p?.is_olympiad);
     })();
   }, []);
 
