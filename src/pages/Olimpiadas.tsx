@@ -65,10 +65,9 @@ export default function Olimpiadas() {
     setBusy("release");
     const on = students.filter((s) => picked.has(s.id)).map((s) => s.id);
     const off = students.filter((s) => !picked.has(s.id)).map((s) => s.id);
-    const r1 = on.length ? await supabase.from("profiles").update({ is_olympiad: true }).in("id", on) : { error: null };
-    const r2 = off.length ? await supabase.from("profiles").update({ is_olympiad: false }).in("id", off) : { error: null };
+    const { error } = await supabase.rpc("set_olympiad_students" as any, { _on: on, _off: off });
     setBusy(null);
-    if (r1.error || r2.error) return toast.error((r1.error || r2.error)!.message);
+    if (error) return toast.error(error.message);
     toast.success(`Olimpíadas liberadas para ${on.length} aluno(s)`);
     loadStudents();
   };
