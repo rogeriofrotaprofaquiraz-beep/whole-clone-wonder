@@ -37,7 +37,7 @@ export default function Escola() {
   const [editStudent, setEditStudent] = useState<null | {
     user_id: string; username: string; level: number; xp: number; coins: number; class_role: string;
     email: string; guardian_name: string; guardian_email: string; guardian_phone: string; guardian_relationship: string;
-    access_code: string;
+    access_code: string; is_olympiad: boolean;
   }>(null);
 
 
@@ -136,7 +136,7 @@ export default function Escola() {
   const openEdit = async (uid: string) => {
     if (!activeClass) return;
     const [{ data: prof }, { data: wallet }, { data: cm }] = await Promise.all([
-      supabase.from("profiles").select("username, level, xp, email, guardian_name, guardian_email, guardian_phone, guardian_relationship, access_code").eq("id", uid).maybeSingle(),
+      supabase.from("profiles").select("username, level, xp, email, guardian_name, guardian_email, guardian_phone, guardian_relationship, access_code, is_olympiad").eq("id", uid).maybeSingle(),
       supabase.from("player_wallet").select("coins").eq("user_id", uid).maybeSingle(),
       supabase.from("class_members").select("role").eq("class_id", activeClass.id).eq("user_id", uid).maybeSingle(),
     ]);
@@ -158,6 +158,7 @@ export default function Escola() {
       guardian_phone: prof?.guardian_phone ?? "",
       guardian_relationship: prof?.guardian_relationship ?? "",
       access_code: code,
+      is_olympiad: !!(prof as any)?.is_olympiad,
     });
     loadSendLog(uid);
   };
@@ -218,6 +219,7 @@ export default function Escola() {
         guardian_email: e.guardian_email || null,
         guardian_phone: e.guardian_phone || null,
         guardian_relationship: e.guardian_relationship || null,
+        is_olympiad: e.is_olympiad,
       }).eq("id", e.user_id);
     if (pe) return toast.error(pe.message);
     const cur = await supabase.from("player_wallet").select("coins").eq("user_id", e.user_id).maybeSingle();
@@ -504,6 +506,10 @@ export default function Escola() {
                 <label className="text-[11px] font-black uppercase text-white/70">E-mail do aluno</label>
                 <Input type="email" value={editStudent.email} onChange={e => setEditStudent({ ...editStudent, email: e.target.value })} className="bg-slate-950 border-white/20 text-white font-bold"/>
               </div>
+              <label className="flex items-center gap-2 text-sm font-bold text-white cursor-pointer">
+                <input type="checkbox" checked={editStudent.is_olympiad} onChange={e => setEditStudent({ ...editStudent, is_olympiad: e.target.checked })} className="h-4 w-4"/>
+                🏅 Aluno de olimpíada
+              </label>
               <div className="border-t border-white/10 pt-3 space-y-2">
                 <p className="text-[11px] font-black uppercase tracking-widest text-cyan-300">Responsável</p>
                 <div className="grid grid-cols-2 gap-2">

@@ -1,3 +1,4 @@
+import Olimpiadas from "./pages/Olimpiadas";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -55,6 +56,7 @@ const App = () => (
           <Route path="/topico/:slug" element={<TopicoDetalhe />} />
           <Route path="/admin/material" element={<AdminMaterial />} />
           <Route path="/historico" element={<Historico />} />
+          <Route path="/olimpiadas" element={<Olimpiadas />} />
           
           
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
