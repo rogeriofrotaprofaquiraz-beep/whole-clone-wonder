@@ -47,6 +47,36 @@ export type Database = {
         }
         Relationships: []
       }
+      access_rules: {
+        Row: {
+          allowed: boolean
+          class_id: string | null
+          feature_key: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          updated_at: string
+          updated_by: string | null
+        }
+        Insert: {
+          allowed?: boolean
+          class_id?: string | null
+          feature_key: string
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Update: {
+          allowed?: boolean
+          class_id?: string | null
+          feature_key?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Relationships: []
+      }
       activity_logs: {
         Row: {
           action: string
@@ -1244,6 +1274,27 @@ export type Database = {
         }
         Relationships: []
       }
+      parent_links: {
+        Row: {
+          created_at: string
+          id: string
+          parent_id: string
+          student_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          parent_id: string
+          student_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          parent_id?: string
+          student_id?: string
+        }
+        Relationships: []
+      }
       player_avatars: {
         Row: {
           accessories: string[] | null
@@ -1883,11 +1934,20 @@ export type Database = {
         }[]
       }
       join_class_by_code: { Args: { _code: string }; Returns: string }
+      link_child_by_code: { Args: { _code: string }; Returns: string }
       lookup_user_ids_by_emails: {
         Args: { _emails: string[] }
         Returns: {
           email: string
           user_id: string
+        }[]
+      }
+      parent_child_overview: { Args: { _student_id: string }; Returns: Json }
+      parent_children: {
+        Args: never
+        Returns: {
+          student_id: string
+          username: string
         }[]
       }
       submit_assessment:
