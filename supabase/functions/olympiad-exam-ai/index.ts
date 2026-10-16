@@ -37,7 +37,7 @@ Deno.serve(async (req) => {
       method: "POST",
       headers: { "Content-Type": "application/json", Authorization: `Bearer ${Deno.env.get("LOVABLE_API_KEY")}` },
       body: JSON.stringify({
-        model: "google/gemini-2.5-flash",
+        model: "google/gemini-3.8-flash",
         messages: [{ role: "system", content: "Você é especialista em olimpíadas científicas brasileiras (ONC, OBQ, OBMEP)." }, { role: "user", content }],
         response_format: { type: "json_object" },
       }),
