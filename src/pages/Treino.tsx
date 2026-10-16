@@ -7,6 +7,7 @@ import { AREAS, AreaValue, LEVELS, LevelValue, DIFFICULTIES } from "@/lib/aula";
 import { Forca } from "@/components/aula/Forca";
 import { CacaPalavras } from "@/components/aula/CacaPalavras";
 import { Memoria } from "@/components/aula/Memoria";
+import { useFeatureAccess } from "@/lib/featureAccess";
 
 
 const GAMES = [
@@ -20,6 +21,8 @@ export default function Treino() {
   const [area, setArea] = useState<AreaValue>("geral");
   const [level, setLevel] = useState<LevelValue>("medio");
   const [difficulty, setDifficulty] = useState<number>(2);
+  const { can } = useFeatureAccess();
+  const games = GAMES.filter((g) => can(`jogo_${g.id}`));
   const [game, setGame] = useState<typeof GAMES[number]["id"]>("forca");
 
   return (
@@ -71,7 +74,8 @@ export default function Treino() {
           <div>
             <div className="font-bold mb-2 text-sm">Jogo</div>
             <div className="flex flex-wrap gap-2">
-              {GAMES.map((g) => (
+              {games.length === 0 && <span className="text-sm text-muted-foreground">Nenhum jogo liberado pelo professor.</span>}
+              {games.map((g) => (
                 <button key={g.id} onClick={() => setGame(g.id)}
                   className={`px-3 py-2 rounded-lg text-sm font-bold border-2 transition ${game === g.id ? "bg-[#4C1D95] text-white border-[#4C1D95]" : "bg-white border-slate-200"}`}>
                   {g.emoji} {g.label}
@@ -81,9 +85,9 @@ export default function Treino() {
           </div>
         </Card>
 
-        {game === "forca" && <Forca area={area} level={level} difficulty={difficulty} />}
-        {game === "caca" && <CacaPalavras area={area} />}
-        {game === "memoria" && <Memoria area={area} />}
+        {game === "forca" && can("jogo_forca") && <Forca area={area} level={level} difficulty={difficulty} />}
+        {game === "caca" && can("jogo_caca") && <CacaPalavras area={area} />}
+        {game === "memoria" && can("jogo_memoria") && <Memoria area={area} />}
       </div>
     </div>
   );

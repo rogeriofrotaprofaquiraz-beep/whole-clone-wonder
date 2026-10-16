@@ -430,6 +430,8 @@ const Index = () => {
             <Link to="/ranking" className="px-4 py-2.5 rounded-xl text-sm font-semibold gap-1.5 inline-flex items-center text-yellow-300 hover:text-white">
               <Trophy className="w-4 h-4" /> Ranking
             </Link>
+            <Link to="/pais" className="px-4 py-2.5 rounded-xl text-sm font-semibold inline-flex items-center text-amber-300 hover:text-white">👪 Pais</Link>
+            <Link to="/controle-acesso" className="px-4 py-2.5 rounded-xl text-sm font-semibold inline-flex items-center text-amber-300 hover:text-white">🔒 Acessos</Link>
             <Link to="/olimpiadas" className="px-4 py-2.5 rounded-xl text-sm font-semibold gap-1.5 inline-flex items-center text-amber-300 hover:text-white">
               <Trophy className="w-4 h-4" /> Olimpíadas
             </Link>
