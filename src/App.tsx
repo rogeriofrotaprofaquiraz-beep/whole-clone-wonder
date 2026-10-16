@@ -23,6 +23,9 @@ import TopicoDetalhe from "./pages/TopicoDetalhe.tsx";
 import AdminMaterial from "./pages/AdminMaterial.tsx";
 import Avaliacao from "./pages/Avaliacao.tsx";
 import Certificado from "./pages/Certificado.tsx";
+import Pais from "./pages/Pais.tsx";
+import ControleAcesso from "./pages/ControleAcesso.tsx";
+import { FeatureGuard } from "./components/FeatureGuard";
 
 
 
@@ -38,27 +41,29 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/aula" element={<Aula />} />
+          <Route path="/aula" element={<FeatureGuard feature="pagina_aula"><Aula /></FeatureGuard>} />
           <Route path="/aula/sala/:code" element={<Aula />} />
-          <Route path="/aula/treino" element={<Treino />} />
-          <Route path="/perfil" element={<Perfil />} />
-          <Route path="/carteira" element={<Carteira />} />
-          <Route path="/progresso" element={<Progresso />} />
+          <Route path="/aula/treino" element={<FeatureGuard feature="pagina_aula"><Treino /></FeatureGuard>} />
+          <Route path="/perfil" element={<FeatureGuard feature="pagina_perfil"><Perfil /></FeatureGuard>} />
+          <Route path="/carteira" element={<FeatureGuard feature="pagina_carteira"><Carteira /></FeatureGuard>} />
+          <Route path="/progresso" element={<FeatureGuard feature="pagina_progresso"><Progresso /></FeatureGuard>} />
           <Route path="/escola" element={<Escola />} />
-          <Route path="/ranking" element={<RankingPage />} />
+          <Route path="/ranking" element={<FeatureGuard feature="pagina_ranking"><RankingPage /></FeatureGuard>} />
           <Route path="/plano-de-aula" element={<PlanoDeAula />} />
           <Route path="/permissoes" element={<Permissoes />} />
           <Route path="/banco" element={<Banco />} />
-          <Route path="/cursos" element={<Cursos />} />
+          <Route path="/cursos" element={<FeatureGuard feature="pagina_cursos"><Cursos /></FeatureGuard>} />
           <Route path="/cursos/:id" element={<CursoDetalhe />} />
           <Route path="/cursos/:id/avaliacao" element={<Avaliacao />} />
           <Route path="/certificado/:code" element={<Certificado />} />
           <Route path="/topico/:slug" element={<TopicoDetalhe />} />
           <Route path="/admin/material" element={<AdminMaterial />} />
           <Route path="/historico" element={<Historico />} />
-          <Route path="/olimpiadas" element={<Olimpiadas />} />
+          <Route path="/olimpiadas" element={<FeatureGuard feature="pagina_olimpiadas"><Olimpiadas /></FeatureGuard>} />
           
           
+          <Route path="/pais" element={<Pais />} />
+          <Route path="/controle-acesso" element={<ControleAcesso />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
