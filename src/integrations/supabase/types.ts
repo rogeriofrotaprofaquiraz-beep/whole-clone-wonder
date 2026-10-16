@@ -1950,6 +1950,10 @@ export type Database = {
           username: string
         }[]
       }
+      set_olympiad_students: {
+        Args: { _off: string[]; _on: string[] }
+        Returns: number
+      }
       submit_assessment:
         | { Args: { _answers: Json; _course_id: string }; Returns: Json }
         | {

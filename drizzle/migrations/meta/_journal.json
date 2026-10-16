@@ -15,6 +15,13 @@
       "when": 1792164031450,
       "tag": "0001_parental_control_access_rules",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1792164985946,
+      "tag": "0002_set_olympiad_students",
+      "breakpoints": true
     }
   ]
 }

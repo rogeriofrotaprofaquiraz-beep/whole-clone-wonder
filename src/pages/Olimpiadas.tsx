@@ -46,14 +46,44 @@ export default function Olimpiadas() {
     if (!sel && o?.length) setSel(o[0] as any);
   };
 
+  const [allowed, setAllowed] = useState<boolean | null>(null);
+  const [students, setStudents] = useState<{ id: string; username: string | null; email: string | null; is_olympiad: boolean }[]>([]);
+  const [picked, setPicked] = useState<Set<string>>(new Set());
+  const [filter, setFilter] = useState("");
+
+  const loadStudents = async () => {
+    const { data: roles } = await supabase.from("user_roles").select("user_id").eq("role", "student");
+    const ids = [...new Set((roles ?? []).map((r) => r.user_id))];
+    if (!ids.length) return setStudents([]);
+    const { data } = await supabase.from("profiles").select("id, username, email, is_olympiad").in("id", ids);
+    const list = (data ?? []) as any[];
+    setStudents(list);
+    setPicked(new Set(list.filter((s) => s.is_olympiad).map((s) => s.id)));
+  };
+
+  const releaseAll = async () => {
+    setBusy("release");
+    const on = students.filter((s) => picked.has(s.id)).map((s) => s.id);
+    const off = students.filter((s) => !picked.has(s.id)).map((s) => s.id);
+    const { error } = await supabase.rpc("set_olympiad_students" as any, { _on: on, _off: off });
+    setBusy(null);
+    if (error) return toast.error(error.message);
+    toast.success(`Olimpíadas liberadas para ${on.length} aluno(s)`);
+    loadStudents();
+  };
+
   useEffect(() => {
     load();
     (async () => {
       const { data: u } = await supabase.auth.getUser();
-      if (!u.user) return;
+      if (!u.user) { setAllowed(false); return; }
       setUserId(u.user.id);
-      const r = await Promise.all(["admin", "teacher", "moderator"].map((role) => supabase.rpc("has_role", { _user_id: u.user!.id, _role: role as any })));
-      setCanManage(r.some((x) => x.data));
+      const r = await Promise.all(["admin", "teacher", "moderator", "director", "coordinator"].map((role) => supabase.rpc("has_role", { _user_id: u.user!.id, _role: role as any })));
+      const staff = r.some((x) => x.data);
+      setCanManage(staff);
+      if (staff) { setAllowed(true); loadStudents(); return; }
+      const { data: p } = await supabase.from("profiles").select("is_olympiad").eq("id", u.user.id).maybeSingle();
+      setAllowed(!!p?.is_olympiad);
     })();
   }, []);
 
@@ -106,6 +136,17 @@ export default function Olimpiadas() {
 
   const selExams = exams.filter((e) => e.olympiad_id === sel?.id);
 
+  if (allowed === false) return (
+    <div className="min-h-screen p-8 max-w-xl mx-auto space-y-4 text-center">
+      <Medal className="mx-auto text-primary" />
+      <h1 className="text-2xl font-black">Olimpíadas</h1>
+      <p className="text-muted-foreground">As olimpíadas ainda não foram liberadas para você. Fale com seu professor.</p>
+      <Link to="/"><Button variant="outline">Voltar</Button></Link>
+    </div>
+  );
+
+  const shown = students.filter((s) => `${s.username ?? ""} ${s.email ?? ""}`.toLowerCase().includes(filter.toLowerCase()));
+
   return (
     <div className="min-h-screen p-4 md:p-8 max-w-6xl mx-auto space-y-6">
       <div className="flex items-center gap-3">
@@ -113,6 +154,36 @@ export default function Olimpiadas() {
         <Medal className="text-primary" />
         <h1 className="text-3xl font-black">Olimpíadas do Campeonato</h1>
       </div>
+
+      {canManage && (
+        <Card className="p-5 space-y-3">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <h2 className="text-xl font-black">Alunos das olimpíadas</h2>
+            <Badge>{picked.size} selecionado(s)</Badge>
+          </div>
+          <p className="text-sm text-muted-foreground">Marque os alunos e clique em "Liberar" para dar acesso a todas as olimpíadas de uma só vez.</p>
+          <div className="flex flex-wrap gap-2">
+            <Input placeholder="Buscar aluno" value={filter} onChange={(e) => setFilter(e.target.value)} className="max-w-xs" />
+            <Button variant="outline" onClick={() => setPicked(new Set([...picked, ...shown.map((s) => s.id)]))}>Marcar todos</Button>
+            <Button variant="outline" onClick={() => setPicked(new Set())}>Desmarcar todos</Button>
+            <Button onClick={releaseAll} disabled={busy === "release"}>
+              {busy === "release" ? <Loader2 className="animate-spin" /> : "Liberar para selecionados"}
+            </Button>
+          </div>
+          <div className="max-h-64 overflow-auto grid sm:grid-cols-2 gap-1">
+            {shown.length === 0 && <p className="text-sm text-muted-foreground">Nenhum aluno encontrado.</p>}
+            {shown.map((s) => (
+              <label key={s.id} className="flex items-center gap-2 text-sm p-1 rounded hover:bg-muted">
+                <input type="checkbox" className="h-4 w-4" checked={picked.has(s.id)}
+                  onChange={(e) => { const n = new Set(picked); e.target.checked ? n.add(s.id) : n.delete(s.id); setPicked(n); }} />
+                <span className="font-medium">{s.username || s.email || "Aluno"}</span>
+                {s.is_olympiad && <Badge variant="secondary">liberado</Badge>}
+              </label>
+            ))}
+          </div>
+        </Card>
+      )}
+
 
       <div className="flex flex-wrap gap-2">
         {olympiads.map((o) => (
