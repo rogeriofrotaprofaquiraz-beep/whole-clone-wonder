@@ -244,6 +244,18 @@ export default function Perfil() {
   const [photoBase64, setPhotoBase64] = useState<string | null>(null);
   const [photoPreview, setPhotoPreview] = useState<string | null>(null);
   const [profileName, setProfileName] = useState<string>("");
+  const [editingName, setEditingName] = useState(false);
+  const [nameDraft, setNameDraft] = useState("");
+  const saveName = async () => {
+    const n = nameDraft.trim();
+    if (n.length < 2) return toast.error("Nome muito curto");
+    const { data: u } = await supabase.auth.getUser();
+    if (!u.user) return;
+    const { error } = await supabase.from("profiles").update({ username: n }).eq("id", u.user.id);
+    if (error) return toast.error(error.message);
+    await supabase.from("player_stats").update({ display_name: n }).eq("user_id", u.user.id);
+    setProfileName(n); setEditingName(false); toast.success("Nome atualizado");
+  };
   const [optionsOpen, setOptionsOpen] = useState(false);
   const [optionUrls, setOptionUrls] = useState<string[]>([]);
 
@@ -468,8 +480,22 @@ export default function Perfil() {
                   <Progress value={progress.percent}/>
                   <div className="text-[10px] text-white/40 mt-1">{progress.current}/{progress.needed} para o próximo nível</div>
                 </div>
-                <div className="text-xs text-white/70">
-                  <span className="font-bold">@{profileName || session.user.email?.split("@")[0]}</span>
+                <div className="text-xs text-white/70 flex items-center gap-2">
+                  {editingName ? (
+                    <>
+                      <input value={nameDraft} onChange={(e) => setNameDraft(e.target.value)} maxLength={40} placeholder="Nome do perfil"
+                        className="flex-1 rounded bg-white/10 px-2 py-1 text-white outline-none border border-white/20"/>
+                      <Button size="sm" onClick={saveName}>Salvar</Button>
+                      <Button size="sm" variant="ghost" onClick={() => setEditingName(false)}>Cancelar</Button>
+                    </>
+                  ) : (
+                    <>
+                      <span className="font-bold">@{profileName || session.user.email?.split("@")[0]}</span>
+                      <button className="underline text-white/60 hover:text-white" onClick={() => { setNameDraft(profileName); setEditingName(true); }}>
+                        {profileName ? "Editar nome" : "Adicionar nome"}
+                      </button>
+                    </>
+                  )}
                 </div>
                 <Button onClick={handleGenerate} disabled={generating || busy} className="w-full bg-gradient-to-r from-fuchsia-600 to-violet-600 text-white font-black">
                   <Wand2 className="w-4 h-4 mr-2"/>
