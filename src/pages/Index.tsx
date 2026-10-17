@@ -366,6 +366,7 @@ const Index = () => {
         </p>
       </header>
 
+      {session ? (
         <Tabs defaultValue="collection" value={activeTab} onValueChange={setActiveTab} className="w-full max-w-[1440px] flex flex-col items-center">
           <TabsList className="bg-slate-950/70 border border-white/5 px-2 py-1.5 rounded-2xl mb-12 h-auto gap-1 backdrop-blur-xl flex flex-wrap justify-center">
             <TabsTrigger value="battle"
@@ -622,6 +623,14 @@ const Index = () => {
           </TabsContent>
         )}
       </Tabs>
+      ) : (
+        <div className="flex flex-col items-center gap-4 mt-4">
+          <p className="text-slate-400 text-sm">Faça login para acessar o conteúdo.</p>
+          <Button onClick={() => setShowAuth(true)} size="lg" className="bg-blue-600 hover:bg-blue-700 font-bold rounded-xl px-10">
+            ENTRAR / REGISTRAR
+          </Button>
+        </div>
+      )}
 
       {showAuth && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 animate-in fade-in duration-300">
