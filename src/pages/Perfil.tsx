@@ -40,6 +40,14 @@ const APPEARANCE_LABELS: Record<string, string> = {
   scene: "Fundo",
 };
 
+const APPEARANCE_GROUPS: Array<{ title: string; keys: string[] }> = [
+  { title: "🧬 Categorias básicas", keys: ["gender", "speciesType"] },
+  { title: "💪 Aparência física", keys: ["body", "skin", "faceShape", "hairStyle", "hairColor", "eyeColor"] },
+  { title: "🦸 Equipamento e traje", keys: ["mask", "uniform", "chestSymbol"] },
+  { title: "✨ Detalhes e poderes", keys: ["cape", "gloves", "boots", "aura", "mainPower"] },
+  { title: "🎒 Acessórios, posição e fundo", keys: ["accessory", "pose", "scene"] },
+];
+
 // helpers
 const opt = (v: string, l: string, extra: any = {}) => ({ v, l, ...extra });
 
@@ -258,6 +266,15 @@ export default function Perfil() {
   };
   const [optionsOpen, setOptionsOpen] = useState(false);
   const [optionUrls, setOptionUrls] = useState<string[]>([]);
+  const [prices, setPrices] = useState<Record<string, number>>({});
+  const [editPrices, setEditPrices] = useState(false);
+  useEffect(() => {
+    supabase.from("appearance_prices").select("category,option_value,price").then(({ data }) => {
+      const m: Record<string, number> = {};
+      (data ?? []).forEach((r: any) => { m[`${r.category}:${r.option_value}`] = r.price; });
+      setPrices(m);
+    });
+  }, []);
 
 
 
@@ -348,11 +365,31 @@ export default function Perfil() {
     } finally { setBusy(false); }
   };
 
+  const ownedItems = new Set<string>(avatar?.unlocked_items ?? []);
+  const priceOf = (cat: string, v: string) => prices[`${cat}:${v}`] ?? 0;
   const updateAppearance = async (patch: Record<string, string>) => {
     if (!session?.user) return;
+    const [cat, v] = Object.entries(patch)[0];
+    const key = `${cat}:${v}`;
+    const price = priceOf(cat, v);
+    let nextItems = avatar?.unlocked_items ?? [];
+    if (price > 0 && !admin && !ownedItems.has(key)) {
+      if (!confirm(`Desbloquear "${v}" por ${price}${COIN_SYMBOL}?`)) return;
+      const r = await spendCoins(session.user.id, price, "desbloquear opção de avatar");
+      if (!r.ok) { toast.error(r.reason ?? "Saldo insuficiente"); return; }
+      nextItems = [...nextItems, key];
+      setWallet((w: any) => ({ ...w, coins: (w?.coins ?? 0) - price }));
+      toast.success(`Desbloqueado! -${price}${COIN_SYMBOL}`);
+    }
     const nextApp = { ...(avatar?.appearance ?? {}), ...patch };
-    await supabase.from("player_avatars").update({ appearance: nextApp }).eq("user_id", session.user.id);
-    setAvatar({ ...avatar, appearance: nextApp });
+    await supabase.from("player_avatars").update({ appearance: nextApp, unlocked_items: nextItems }).eq("user_id", session.user.id);
+    setAvatar({ ...avatar, appearance: nextApp, unlocked_items: nextItems });
+  };
+  const savePrice = async (cat: string, v: string, raw: string) => {
+    const price = Math.max(0, Math.floor(Number(raw) || 0));
+    const { error } = await supabase.from("appearance_prices").upsert({ category: cat, option_value: v, price, updated_by: session?.user?.id });
+    if (error) return toast.error(error.message);
+    setPrices((p) => ({ ...p, [`${cat}:${v}`]: price }));
   };
 
   // Aplica avatar composto localmente (SVG) — SEMPRE grátis, sem consumir Átomos nem créditos.
