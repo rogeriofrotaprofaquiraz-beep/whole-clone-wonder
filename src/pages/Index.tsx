@@ -15,6 +15,7 @@ import { AuthSystem } from "@/components/game/AuthSystem";
 import { Ranking } from "@/components/game/Ranking";
 import { ElementList } from "@/components/game/ElementList";
 import { HeroCollection } from "@/components/game/HeroCollection";
+import { AvatarPromo } from "@/components/game/AvatarPromo";
 import { RARITY_FRAME, FAMILY_BADGE, getFamily, calcRarity } from "@/lib/heroStyles";
 
 import { ensureUserAccess } from "@/lib/ensureUserAccess";
@@ -625,6 +626,7 @@ const Index = () => {
       </Tabs>
       ) : (
         <div className="flex flex-col items-center gap-4 mt-4">
+          <AvatarPromo onCta={() => setShowAuth(true)} />
           <p className="text-slate-400 text-sm">Faça login para acessar o conteúdo.</p>
           <Button onClick={() => setShowAuth(true)} size="lg" className="bg-blue-600 hover:bg-blue-700 font-bold rounded-xl px-10">
             ENTRAR / REGISTRAR
