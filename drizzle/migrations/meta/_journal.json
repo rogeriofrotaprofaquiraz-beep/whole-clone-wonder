@@ -22,6 +22,13 @@
       "when": 1792164985946,
       "tag": "0002_set_olympiad_students",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1792244561220,
+      "tag": "0003_appearance_prices",
+      "breakpoints": true
     }
   ]
 }

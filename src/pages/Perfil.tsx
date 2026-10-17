@@ -40,6 +40,14 @@ const APPEARANCE_LABELS: Record<string, string> = {
   scene: "Fundo",
 };
 
+const APPEARANCE_GROUPS: Array<{ title: string; keys: string[] }> = [
+  { title: "🧬 Categorias básicas", keys: ["gender", "speciesType"] },
+  { title: "💪 Aparência física", keys: ["body", "skin", "faceShape", "hairStyle", "hairColor", "eyeColor"] },
+  { title: "🦸 Equipamento e traje", keys: ["mask", "uniform", "chestSymbol"] },
+  { title: "✨ Detalhes e poderes", keys: ["cape", "gloves", "boots", "aura", "mainPower"] },
+  { title: "🎒 Acessórios, posição e fundo", keys: ["accessory", "pose", "scene"] },
+];
+
 // helpers
 const opt = (v: string, l: string, extra: any = {}) => ({ v, l, ...extra });
 
@@ -258,6 +266,15 @@ export default function Perfil() {
   };
   const [optionsOpen, setOptionsOpen] = useState(false);
   const [optionUrls, setOptionUrls] = useState<string[]>([]);
+  const [prices, setPrices] = useState<Record<string, number>>({});
+  const [editPrices, setEditPrices] = useState(false);
+  useEffect(() => {
+    supabase.from("appearance_prices").select("category,option_value,price").then(({ data }) => {
+      const m: Record<string, number> = {};
+      (data ?? []).forEach((r: any) => { m[`${r.category}:${r.option_value}`] = r.price; });
+      setPrices(m);
+    });
+  }, []);
 
 
 
@@ -348,11 +365,31 @@ export default function Perfil() {
     } finally { setBusy(false); }
   };
 
+  const ownedItems = new Set<string>(avatar?.unlocked_items ?? []);
+  const priceOf = (cat: string, v: string) => prices[`${cat}:${v}`] ?? 0;
   const updateAppearance = async (patch: Record<string, string>) => {
     if (!session?.user) return;
+    const [cat, v] = Object.entries(patch)[0];
+    const key = `${cat}:${v}`;
+    const price = priceOf(cat, v);
+    let nextItems = avatar?.unlocked_items ?? [];
+    if (price > 0 && !admin && !ownedItems.has(key)) {
+      if (!confirm(`Desbloquear "${v}" por ${price}${COIN_SYMBOL}?`)) return;
+      const r = await spendCoins(session.user.id, price, "desbloquear opção de avatar");
+      if (!r.ok) { toast.error(r.reason ?? "Saldo insuficiente"); return; }
+      nextItems = [...nextItems, key];
+      setWallet((w: any) => ({ ...w, coins: (w?.coins ?? 0) - price }));
+      toast.success(`Desbloqueado! -${price}${COIN_SYMBOL}`);
+    }
     const nextApp = { ...(avatar?.appearance ?? {}), ...patch };
-    await supabase.from("player_avatars").update({ appearance: nextApp }).eq("user_id", session.user.id);
-    setAvatar({ ...avatar, appearance: nextApp });
+    await supabase.from("player_avatars").update({ appearance: nextApp, unlocked_items: nextItems }).eq("user_id", session.user.id);
+    setAvatar({ ...avatar, appearance: nextApp, unlocked_items: nextItems });
+  };
+  const savePrice = async (cat: string, v: string, raw: string) => {
+    const price = Math.max(0, Math.floor(Number(raw) || 0));
+    const { error } = await supabase.from("appearance_prices").upsert({ category: cat, option_value: v, price, updated_by: session?.user?.id });
+    if (error) return toast.error(error.message);
+    setPrices((p) => ({ ...p, [`${cat}:${v}`]: price }));
   };
 
   // Aplica avatar composto localmente (SVG) — SEMPRE grátis, sem consumir Átomos nem créditos.
@@ -683,14 +720,26 @@ export default function Perfil() {
                       </div>
                     </details>
 
-                    {Object.entries(APPEARANCE_OPTIONS).map(([key, opts]) => {
+                    {admin && (
+                      <div className="flex items-center justify-between rounded-xl border border-amber-300/40 bg-amber-500/10 px-3 py-2">
+                        <span className="text-[11px] font-black text-amber-100">💰 Preços das opções (0 = grátis)</span>
+                        <Button size="sm" variant={editPrices ? "default" : "outline"} onClick={() => setEditPrices((v) => !v)}>
+                          {editPrices ? "Concluir preços" : "Editar preços"}
+                        </Button>
+                      </div>
+                    )}
+                    {APPEARANCE_GROUPS.map((g) => (
+                    <details key={g.title} open className="rounded-2xl border-2 border-fuchsia-400/30 bg-slate-950/40">
+                      <summary className="cursor-pointer px-4 py-3 text-sm font-black uppercase tracking-widest text-fuchsia-100">{g.title}</summary>
+                      <div className="px-4 pb-4">
+                    {g.keys.filter((k) => APPEARANCE_OPTIONS[k]).map((key) => {
+                      const opts = APPEARANCE_OPTIONS[key];
                       const current = avatar?.appearance?.[key];
                       return (
                         <div key={key} className="pt-4 border-t-2 border-white/10">
                           <label className="text-[10px] uppercase tracking-widest text-white font-black mb-2 block">
                             {APPEARANCE_LABELS[key] ?? key} <span className="text-white/40">— escolha 1</span>
                           </label>
-                          {/* Barra horizontal de referência — divisor visual de estilos */}
                           <div className="w-full rounded-lg overflow-hidden border border-white/15 bg-slate-950/60 mb-3">
                             <img
                               src={`/assets/banco/${key}.png`}
@@ -703,6 +752,19 @@ export default function Perfil() {
                           <div className="flex flex-wrap gap-2">
                             {opts.map((o: any) => {
                               const selected = current === o.v;
+                              const price = priceOf(key, o.v);
+                              const owned = admin || price === 0 || ownedItems.has(`${key}:${o.v}`);
+                              if (editPrices && admin) {
+                                return (
+                                  <label key={o.v} className="inline-flex items-center gap-1 px-2 py-1 rounded-xl border border-amber-300/40 bg-slate-950/70 text-[11px] font-black text-white">
+                                    {o.l}
+                                    <input type="number" min={0} defaultValue={price}
+                                      onBlur={(e) => savePrice(key, o.v, e.target.value)}
+                                      className="w-16 rounded bg-slate-800 px-1 text-amber-200" />
+                                    {COIN_SYMBOL}
+                                  </label>
+                                );
+                              }
                               return (
                                 <button
                                   key={o.v}
@@ -715,6 +777,8 @@ export default function Perfil() {
                                   )}
                                   {"e" in o && <span className="text-sm">{o.e}</span>}
                                   <span>{o.l}</span>
+                                  {!owned && <span className="ml-1 inline-flex items-center gap-0.5 text-amber-300"><Lock className="w-3 h-3" />{price}{COIN_SYMBOL}</span>}
+                                  {owned && price > 0 && !admin && <span className="text-emerald-300 text-[9px]">✓ seu</span>}
                                   {selected && <Check className="w-3 h-3 text-emerald-300" />}
                                 </button>
                               );
@@ -723,6 +787,9 @@ export default function Perfil() {
                         </div>
                       );
                     })}
+                      </div>
+                    </details>
+                    ))}
 
                     {/* Compositor local — SEM créditos de IA */}
                     <div className="border-t-2 border-emerald-400/40 pt-4">
