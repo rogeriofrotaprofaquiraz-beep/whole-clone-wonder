@@ -170,6 +170,30 @@ export type Database = {
         }
         Relationships: []
       }
+      appearance_prices: {
+        Row: {
+          category: string
+          option_value: string
+          price: number
+          updated_at: string
+          updated_by: string | null
+        }
+        Insert: {
+          category: string
+          option_value: string
+          price?: number
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Update: {
+          category?: string
+          option_value?: string
+          price?: number
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Relationships: []
+      }
       assessment_attempts: {
         Row: {
           answers: Json
