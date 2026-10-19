@@ -328,8 +328,9 @@ export default function Perfil() {
 
   // Prévia local do compositor — usada apenas na aba de personalização, NUNCA no card principal
   const livePreview = buildAvatarDataUrl(avatar?.appearance ?? {}, currentSymbol);
-  // Card principal: avatar gerado pela IA → carta ORIGINAL ultrarrealista do elemento
-  const avatarImage = avatar?.generated_url || currentEl.heroImage;
+  // Card principal: SOMENTE arte de IA. Desenhos simples (SVG) nunca são exibidos.
+  const gen = avatar?.generated_url as string | undefined;
+  const avatarImage = gen && !gen.startsWith("data:image/svg") ? gen : currentEl.heroImage;
 
 
   const unlockedSet = new Set<string>(avatar?.unlocked_cards ?? ["H"]);
@@ -792,34 +793,6 @@ export default function Perfil() {
                     ))}
 
                     {/* Compositor local — SEM créditos de IA */}
-                    <div className="border-t-2 border-emerald-400/40 pt-4">
-                      <div className="flex items-center justify-between mb-2">
-                        <label className="text-[10px] uppercase tracking-widest text-emerald-200 font-black">
-                          Prévia ao vivo (compositor grátis)
-                        </label>
-                        <Badge variant="outline" className="border-emerald-400/40 text-emerald-300 font-black">
-                          Sem créditos de IA · Sem Átomos
-                        </Badge>
-                      </div>
-                      <div className="grid grid-cols-[160px_1fr] gap-3 items-center">
-                        <div className="rounded-xl overflow-hidden border-2 border-emerald-400/40 bg-slate-950 aspect-[2/3]">
-                          <img src={localPreview} alt="Prévia local do avatar" className="w-full h-full object-cover"/>
-                        </div>
-                        <div className="space-y-2">
-                          <p className="text-[11px] text-white/80 font-bold">
-                            Cada clique nas opções acima atualiza a prévia instantaneamente. Quando gostar, aplique como seu avatar — <span className="text-emerald-300">sem gastar nada</span>.
-                          </p>
-                          <Button
-                            onClick={applyLocalAvatar}
-                            disabled={busy}
-                            className="w-full h-11 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white font-black uppercase tracking-widest"
-                          >
-                            <Check className="w-4 h-4 mr-2"/>
-                            Aplicar como avatar (grátis)
-                          </Button>
-                        </div>
-                      </div>
-                    </div>
 
 
                     {/* Cenário de fundo baseado no elemento equipado */}
