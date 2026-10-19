@@ -225,7 +225,7 @@ const Index = () => {
             name: el.name,
             heroName: el.hero_name,
             heroDescription: el.hero_description,
-            heroImage: el.hero_image,
+            heroImage: el.hero_image && !/fallback-|\.svg/i.test(el.hero_image) ? el.hero_image : ELEMENTS_DATA[el.symbol].heroImage,
             rarity: el.rarity,
             attributes: el.attributes,
           };
