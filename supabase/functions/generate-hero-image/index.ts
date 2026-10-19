@@ -176,10 +176,10 @@ Deno.serve(async (req) => {
     if (successes.length > 0) {
       return json({ urls: successes, url: successes[0], count: successes.length, requested: count });
     }
-    // All failed → produce a single SVG fallback (backwards compatible)
-    const fallback = await saveFallback(results[0]?.reason || "Sem créditos de IA — avatar offline criado.");
-    const fbBody = await fallback.json();
-    return json({ urls: fbBody.url ? [fbBody.url] : [], url: fbBody.url, fallback: true, reason: fbBody.reason });
+    // All failed → never produce a simple SVG drawing; report the real reason instead
+    void saveFallback;
+    const reason = results[0]?.reason || "IA não retornou imagem";
+    return json({ urls: [], error: `Não foi possível gerar o herói ultrarrealista: ${reason}. Nenhum Átomo foi cobrado.` }, 200);
   } catch (e) {
     return json({ error: String(e) }, 500);
   }
