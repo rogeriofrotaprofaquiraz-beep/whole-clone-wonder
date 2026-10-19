@@ -545,50 +545,29 @@ export default function Perfil() {
 
           {/* Personalização + Cartas */}
           <div className="md:col-span-2">
-            <Tabs defaultValue="gallery">
+            <Tabs defaultValue="customize">
               <TabsList className="bg-slate-900/60 border border-white/10">
-                <TabsTrigger value="gallery">Galeria (grátis)</TabsTrigger>
-                <TabsTrigger value="bank">Banco de Modelos (grátis)</TabsTrigger>
-                <TabsTrigger value="customize">Aparência (IA)</TabsTrigger>
+                <TabsTrigger value="customize">1. Criar avatar ultrarrealista</TabsTrigger>
+                <TabsTrigger value="gallery">2. Galeria de heróis</TabsTrigger>
               </TabsList>
-
-              <TabsContent value="bank">
-                <Card className="bg-slate-900/60 border-white/10">
-                  <CardHeader>
-                    <CardTitle className="text-sm font-black uppercase tracking-widest flex items-center justify-between">
-                      <span>Banco de Modelos — Criador de Super-Heróis</span>
-                      <Badge variant="outline" className="border-emerald-400/40 text-emerald-300 font-black">Sem créditos de IA</Badge>
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-3">
-                    <p className="text-[12px] text-white/80 font-bold">
-                      Use este banco visual como referência para escolher cada característica do seu herói nas seções abaixo —
-                      <span className="text-emerald-300"> nenhuma geração de IA é consumida</span>.
-                    </p>
-                    <p className="text-[11px] text-white/60">
-                      Categorias disponíveis: Gênero, Tipo de Corpo, Tom de Pele, Formato do Rosto, Estilo e Cor de Cabelo, Olhos, Máscara, Uniforme, Símbolo no Peito, Capa, Luvas, Botas, Aura, Poder Principal, Acessórios, Posição e Fundo.
-                    </p>
-                  </CardContent>
-                </Card>
-              </TabsContent>
 
               <TabsContent value="gallery">
                 <Card className="bg-slate-900/60 border-white/10">
                   <CardHeader>
                     <CardTitle className="text-sm font-black uppercase tracking-widest flex items-center justify-between">
-                      <span>Escolha um avatar pronto</span>
-                      <Badge variant="outline" className="border-emerald-400/40 text-emerald-300 font-black">Sem gastar créditos</Badge>
+                      <span>Escolha o herói base</span>
+                      <Badge variant="outline" className="border-fuchsia-400/40 text-fuchsia-300 font-black">Ultrarrealista com IA</Badge>
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-[11px] text-white/70 mb-3 font-bold">
-                      Selecione uma das opções abaixo — a troca é instantânea e <span className="text-emerald-300">não consome créditos de IA nem Átomos</span>.
+                      Escolha o herói que servirá de base. Depois vá em <span className="text-fuchsia-300">"1. Criar avatar ultrarrealista"</span> e gere seu personagem com IA.
                     </p>
                     <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3 max-h-[600px] overflow-y-auto pr-2">
                       {allCards
                         .filter((el) => el.heroImage && !el.heroImage.endsWith(".mp4"))
                         .map((el) => {
-                          const selected = avatar?.generated_url === el.heroImage;
+                          const selected = avatar?.current_card === el.symbol;
                           return (
                             <button
                               key={el.symbol}
@@ -599,10 +578,10 @@ export default function Perfil() {
                                 setBusy(true);
                                 try {
                                   await supabase.from("player_avatars")
-                                    .update({ generated_url: el.heroImage, current_card: el.symbol })
+                                    .update({ current_card: el.symbol })
                                     .eq("user_id", session.user.id);
                                   await refresh(session.user.id);
-                                  toast.success(`Avatar definido: ${el.heroName}`);
+                                  toast.success(`Herói base: ${el.heroName}. Agora gere seu avatar com IA.`);
                                 } finally { setBusy(false); }
                               }}
                               className={`relative rounded-xl overflow-hidden border-2 transition-all hover:scale-[1.03] ${selected ? "border-emerald-400 ring-2 ring-emerald-400" : "border-white/10 hover:border-white/40"}`}
@@ -797,66 +776,6 @@ export default function Perfil() {
                       </div>
                     </div>
 
-                    {/* Variações grátis por opção selecionada — sem créditos Lovable */}
-                    <div className="border-t border-white/10 pt-4">
-                      <label className="text-[10px] uppercase tracking-widest text-white font-black mb-2 block">
-                        Variações sugeridas (7 opções grátis — sem gastar créditos)
-                      </label>
-                      <p className="text-[10px] text-white/70 font-bold mb-3">
-                        Toda vez que você muda uma opção acima, geramos 7 sugestões prontas a partir das cartas existentes. Clique em uma para usá-la como seu avatar.
-                      </p>
-                      <div className="grid grid-cols-7 gap-2">
-
-                        {(() => {
-                          const app = avatar?.appearance ?? {};
-                          const seedStr = `${app.gender ?? ""}|${app.body ?? ""}|${app.skin ?? ""}|${app.hairStyle ?? ""}|${app.hairColor ?? ""}|${currentSymbol}`;
-                          let h = 2166136261;
-                          for (let i = 0; i < seedStr.length; i++) { h ^= seedStr.charCodeAt(i); h = Math.imul(h, 16777619); }
-                          const pool = allCards.filter((e) => e.heroImage && !e.heroImage.endsWith(".mp4"));
-                          const picks: typeof pool = [];
-                          const used = new Set<number>();
-                          let s = h >>> 0;
-                          while (picks.length < 7 && used.size < pool.length) {
-                            s = (s * 1664525 + 1013904223) >>> 0;
-                            const idx = s % pool.length;
-                            if (!used.has(idx)) { used.add(idx); picks.push(pool[idx]); }
-                          }
-                          return picks.map((el, i) => {
-                            const selected = avatar?.generated_url === el.heroImage;
-                            return (
-                              <button
-                                key={`${el.symbol}-${i}`}
-                                type="button"
-                                disabled={busy}
-                                onClick={async () => {
-                                  if (!session?.user) return;
-                                  setBusy(true);
-                                  try {
-                                    await supabase.from("player_avatars")
-                                      .update({ generated_url: el.heroImage, current_card: el.symbol })
-                                      .eq("user_id", session.user.id);
-                                    await refresh(session.user.id);
-                                    toast.success(`Avatar atualizado: ${el.heroName}`);
-                                  } finally { setBusy(false); }
-                                }}
-                                className={`relative rounded-lg overflow-hidden border-2 transition-all hover:scale-[1.05] ${selected ? "border-emerald-400 ring-2 ring-emerald-400" : "border-white/15 hover:border-fuchsia-400"}`}
-                                title={el.heroName}
-                              >
-                                <div className="aspect-[2/3] bg-slate-950">
-                                  <img src={el.heroImage} alt={el.heroName} className="w-full h-full object-cover" loading="lazy"/>
-                                </div>
-                                <div className="absolute top-0.5 left-0.5 text-[8px] font-black bg-black/70 rounded px-1">{el.symbol}</div>
-                                {selected && (
-                                  <div className="absolute inset-0 flex items-center justify-center bg-emerald-500/30">
-                                    <Check className="w-4 h-4 text-white"/>
-                                  </div>
-                                )}
-                              </button>
-                            );
-                          });
-                        })()}
-                      </div>
-                    </div>
 
                     <div className="sm:col-span-2 border-t border-white/10 pt-4 mt-2">
                       <label className="text-[10px] uppercase tracking-widest text-white font-black mb-2 block">
