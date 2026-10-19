@@ -565,14 +565,6 @@ export default function Perfil() {
                       Use este banco visual como referência para escolher cada característica do seu herói nas seções abaixo —
                       <span className="text-emerald-300"> nenhuma geração de IA é consumida</span>.
                     </p>
-                    <a href="/__l5e/assets-v1/303a12d9-7e7c-412a-b8a5-1d1cfd97c138/banco-modelos.png" target="_blank" rel="noreferrer" className="block rounded-xl overflow-hidden border-2 border-white/10 hover:border-amber-300 transition-all">
-                      <img
-                        src="/__l5e/assets-v1/303a12d9-7e7c-412a-b8a5-1d1cfd97c138/banco-modelos.png"
-                        alt="Banco de modelos — Criador de Super-Heróis"
-                        className="w-full h-auto"
-                        loading="lazy"
-                      />
-                    </a>
                     <p className="text-[11px] text-white/60">
                       Clique na imagem para abrir em tela cheia. Categorias disponíveis: Gênero, Tipo de Corpo, Tom de Pele, Formato do Rosto, Estilo e Cor de Cabelo, Olhos, Máscara, Uniforme, Símbolo no Peito, Capa, Luvas, Botas, Aura, Poder Principal, Acessórios, Posição e Fundo.
                     </p>
@@ -698,28 +690,6 @@ export default function Perfil() {
                     <CardTitle className="text-sm font-black uppercase tracking-widest">Aparência do Personagem</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-5">
-                    {/* Banco de Modelos — referência visual ao escolher cada opção */}
-                    <details open className="rounded-xl border-2 border-amber-300/40 bg-slate-950/60 overflow-hidden">
-                      <summary className="cursor-pointer select-none px-4 py-3 flex items-center justify-between gap-3 bg-gradient-to-r from-amber-500/20 to-fuchsia-500/10 hover:from-amber-500/30">
-                        <span className="text-xs font-black uppercase tracking-widest text-amber-100">
-                          📖 Banco de Modelos — use como referência para cada opção abaixo
-                        </span>
-                        <span className="text-[10px] font-bold text-white/70">clique para expandir / recolher</span>
-                      </summary>
-                      <div className="p-3">
-                        <a href="/__l5e/assets-v1/303a12d9-7e7c-412a-b8a5-1d1cfd97c138/banco-modelos.png" target="_blank" rel="noreferrer" className="block rounded-lg overflow-hidden border border-white/10 hover:border-amber-300 transition-all">
-                          <img
-                            src="/__l5e/assets-v1/303a12d9-7e7c-412a-b8a5-1d1cfd97c138/banco-modelos.png"
-                            alt="Banco de Modelos — referência de tipos de corpo, pele, cabelo, máscara, uniforme, capa, luvas, botas, aura e poses"
-                            className="w-full h-auto block"
-                            loading="lazy"
-                          />
-                        </a>
-                        <p className="text-[10px] text-white/70 font-bold mt-2 text-center">
-                          Encontre a linha desejada (corpo, pele, cabelo, máscara, uniforme, capa, luvas, botas, aura, poder, pose...) e selecione a opção correspondente nos swatches abaixo.
-                        </p>
-                      </div>
-                    </details>
 
                     {admin && (
                       <div className="flex items-center justify-between rounded-xl border border-amber-300/40 bg-amber-500/10 px-3 py-2">
@@ -729,15 +699,18 @@ export default function Perfil() {
                         </Button>
                       </div>
                     )}
-                    {APPEARANCE_GROUPS.map((g) => (
-                    <details key={g.title} open className="rounded-2xl border-2 border-fuchsia-400/30 bg-slate-950/40">
-                      <summary className="cursor-pointer px-4 py-3 text-sm font-black uppercase tracking-widest text-fuchsia-100">{g.title}</summary>
-                      <div className="px-4 pb-4">
-                    {g.keys.filter((k) => APPEARANCE_OPTIONS[k]).map((key) => {
+                    {(() => { const allKeys = APPEARANCE_GROUPS.flatMap((g) => g.keys).filter((k) => APPEARANCE_OPTIONS[k]); return (
+                    <Tabs defaultValue={allKeys[0]} className="w-full">
+                      <TabsList className="flex flex-wrap h-auto gap-1 bg-slate-950/60 p-1 justify-start">
+                        {allKeys.map((k) => (
+                          <TabsTrigger key={k} value={k} className="text-[10px] font-black uppercase">{APPEARANCE_LABELS[k] ?? k}</TabsTrigger>
+                        ))}
+                      </TabsList>
+                    {allKeys.map((key) => {
                       const opts = APPEARANCE_OPTIONS[key];
                       const current = avatar?.appearance?.[key];
                       return (
-                        <div key={key} className="pt-4 border-t-2 border-white/10">
+                        <TabsContent key={key} value={key} className="pt-3">
                           <label className="text-[10px] uppercase tracking-widest text-white font-black mb-2 block">
                             {APPEARANCE_LABELS[key] ?? key} <span className="text-white/40">— escolha 1</span>
                           </label>
@@ -785,12 +758,10 @@ export default function Perfil() {
                               );
                             })}
                           </div>
-                        </div>
+                        </TabsContent>
                       );
                     })}
-                      </div>
-                    </details>
-                    ))}
+                    </Tabs>); })()}
 
                     {/* Compositor local — SEM créditos de IA */}
 
