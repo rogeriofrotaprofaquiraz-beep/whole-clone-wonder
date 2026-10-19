@@ -330,7 +330,8 @@ export default function Perfil() {
   const livePreview = buildAvatarDataUrl(avatar?.appearance ?? {}, currentSymbol);
   // Card principal: SOMENTE arte de IA. Desenhos simples (SVG) nunca são exibidos.
   const gen = avatar?.generated_url as string | undefined;
-  const avatarImage = gen && !gen.startsWith("data:image/svg") ? gen : currentEl.heroImage;
+  const isSimpleDrawing = !!gen && (gen.startsWith("data:image/svg") || /\.svg(\?|$)/i.test(gen) || gen.includes("/fallback-"));
+  const avatarImage = gen && !isSimpleDrawing ? gen : currentEl.heroImage;
 
 
   const unlockedSet = new Set<string>(avatar?.unlocked_cards ?? ["H"]);
@@ -578,7 +579,7 @@ export default function Perfil() {
                                 setBusy(true);
                                 try {
                                   await supabase.from("player_avatars")
-                                    .update({ current_card: el.symbol })
+                                    .update({ current_card: el.symbol, generated_url: null })
                                     .eq("user_id", session.user.id);
                                   await refresh(session.user.id);
                                   toast.success(`Herói base: ${el.heroName}. Agora gere seu avatar com IA.`);
