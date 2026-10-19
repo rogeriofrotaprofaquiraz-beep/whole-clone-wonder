@@ -566,7 +566,7 @@ export default function Perfil() {
                       <span className="text-emerald-300"> nenhuma geração de IA é consumida</span>.
                     </p>
                     <p className="text-[11px] text-white/60">
-                      Clique na imagem para abrir em tela cheia. Categorias disponíveis: Gênero, Tipo de Corpo, Tom de Pele, Formato do Rosto, Estilo e Cor de Cabelo, Olhos, Máscara, Uniforme, Símbolo no Peito, Capa, Luvas, Botas, Aura, Poder Principal, Acessórios, Posição e Fundo.
+                      Categorias disponíveis: Gênero, Tipo de Corpo, Tom de Pele, Formato do Rosto, Estilo e Cor de Cabelo, Olhos, Máscara, Uniforme, Símbolo no Peito, Capa, Luvas, Botas, Aura, Poder Principal, Acessórios, Posição e Fundo.
                     </p>
                   </CardContent>
                 </Card>
