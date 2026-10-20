@@ -5,6 +5,7 @@ import { ELEMENTS_DATA, PeriodicElement } from '../data/elements';
 import { Card, CardContent } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Badge } from "@/components/ui/badge";
+import { MainMenu } from "@/components/MainMenu";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { BattleSystem } from "@/components/game/BattleSystem";
@@ -369,93 +370,7 @@ const Index = () => {
 
       {session ? (
         <Tabs defaultValue="collection" value={activeTab} onValueChange={setActiveTab} className="w-full max-w-[1440px] flex flex-col items-center">
-          <TabsList className="bg-slate-950/70 border border-white/5 px-2 py-1.5 rounded-2xl mb-12 h-auto gap-1 backdrop-blur-xl flex flex-wrap justify-center">
-            <TabsTrigger value="battle"
-              className="px-4 py-2.5 rounded-xl font-semibold text-sm gap-1.5 transition-all data-[state=active]:bg-violet-600 data-[state=active]:text-white data-[state=inactive]:bg-transparent text-slate-200 hover:text-white">
-              <UserIcon className="w-4 h-4" /> Jogar
-            </TabsTrigger>
-            <Link to="/perfil" className="px-4 py-2.5 rounded-xl text-sm font-semibold gap-1.5 inline-flex items-center text-fuchsia-300 hover:text-white">
-              <UserIcon className="w-4 h-4" /> Perfil
-            </Link>
-            {[
-              { value: "heroes", label: "Coleção", Icon: LayoutGrid, color: "text-slate-200" },
-              { value: "collection", label: "Tabela", Icon: Gamepad2, color: "text-slate-200" },
-              { value: "quiz", label: "Campeonato", Icon: Trophy, color: "text-slate-200" },
-              { value: "ranking", label: "Ranking", Icon: Trophy, color: "text-slate-200" },
-              { value: "list", label: "Galeria", Icon: Atom, color: "text-slate-200" },
-            ].map(({ value, label, Icon, color }) => (
-              <TabsTrigger key={value} value={value}
-                className={`px-4 py-2.5 rounded-xl font-semibold text-sm gap-1.5 transition-all data-[state=active]:bg-violet-600 data-[state=active]:text-white data-[state=inactive]:bg-transparent ${color} hover:text-white`}>
-                <Icon className="w-4 h-4" /> {label}
-              </TabsTrigger>
-            ))}
-
-            {userRole === 'teacher' && (
-              <TabsTrigger value="admin"
-                className="px-4 py-2.5 rounded-xl font-semibold text-sm gap-1.5 text-emerald-400 hover:text-emerald-300 data-[state=active]:bg-violet-600 data-[state=active]:text-white">
-                <GraduationCap className="w-4 h-4" /> Professor
-              </TabsTrigger>
-            )}
-            {userRole === 'admin' && (
-              <>
-                <TabsTrigger value="admin"
-                  className="px-4 py-2.5 rounded-xl font-semibold text-sm gap-1.5 text-amber-400 hover:text-amber-300 data-[state=active]:bg-violet-600 data-[state=active]:text-white">
-                  <Settings className="w-4 h-4" /> Admin
-                </TabsTrigger>
-                <TabsTrigger value="tracking"
-                  className="px-4 py-2.5 rounded-xl font-semibold text-sm gap-1.5 text-rose-400 hover:text-rose-300 data-[state=active]:bg-violet-600 data-[state=active]:text-white">
-                  <Activity className="w-4 h-4" /> Rastreamento
-                </TabsTrigger>
-              </>
-            )}
-            <Link
-              to="/aula"
-              className="px-4 py-2.5 rounded-xl text-sm font-bold gap-1.5 inline-flex items-center text-white bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 shadow-lg shadow-violet-900/40"
-              title="Acesse o Painel do Professor para gerar questões e criar partidas"
-            >
-              <GraduationCap className="w-4 h-4" /> Painel do Professor
-            </Link>
-            <Link to="/aula/treino" className="px-4 py-2.5 rounded-xl text-sm font-semibold gap-1.5 inline-flex items-center text-emerald-300 hover:text-white">
-              <Dumbbell className="w-4 h-4" /> Treino
-            </Link>
-
-
-            <Link to="/carteira" className="px-4 py-2.5 rounded-xl text-sm font-semibold gap-1.5 inline-flex items-center text-amber-300 hover:text-white">
-              <Atom className="w-4 h-4" /> Carteira
-            </Link>
-            <Link to="/progresso" className="px-4 py-2.5 rounded-xl text-sm font-semibold gap-1.5 inline-flex items-center text-violet-300 hover:text-white">
-              <Trophy className="w-4 h-4" /> Progresso
-            </Link>
-            <Link to="/escola" className="px-4 py-2.5 rounded-xl text-sm font-semibold gap-1.5 inline-flex items-center text-cyan-300 hover:text-white">
-              <GraduationCap className="w-4 h-4" /> Escola
-            </Link>
-            <Link to="/ranking" className="px-4 py-2.5 rounded-xl text-sm font-semibold gap-1.5 inline-flex items-center text-yellow-300 hover:text-white">
-              <Trophy className="w-4 h-4" /> Ranking
-            </Link>
-            <Link to="/pais" className="px-4 py-2.5 rounded-xl text-sm font-semibold inline-flex items-center text-amber-300 hover:text-white">👪 Pais</Link>
-            <Link to="/controle-acesso" className="px-4 py-2.5 rounded-xl text-sm font-semibold inline-flex items-center text-amber-300 hover:text-white">🔒 Acessos</Link>
-            <Link to="/olimpiadas" className="px-4 py-2.5 rounded-xl text-sm font-semibold gap-1.5 inline-flex items-center text-amber-300 hover:text-white">
-              <Trophy className="w-4 h-4" /> Olimpíadas
-            </Link>
-            <Link to="/cursos" className="px-4 py-2.5 rounded-xl text-sm font-bold gap-1.5 inline-flex items-center text-white bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 shadow-lg shadow-sky-900/40">
-              <GraduationCap className="w-4 h-4" /> Cursos
-            </Link>
-            {userRole === 'admin' && (
-              <Link to="/admin/material" className="px-4 py-2.5 rounded-xl text-sm font-semibold gap-1.5 inline-flex items-center text-pink-300 hover:text-white">
-                <List className="w-4 h-4" /> Material
-              </Link>
-            )}
-            {(userRole === 'admin' || userRole === 'teacher') && (
-              <Link to="/plano-de-aula" className="px-4 py-2.5 rounded-xl text-sm font-semibold gap-1.5 inline-flex items-center text-emerald-300 hover:text-white">
-                <List className="w-4 h-4" /> Plano de Aula
-              </Link>
-            )}
-            {(userRole === 'admin' || userRole === 'teacher') && (
-              <Link to="/banco" className="px-4 py-2.5 rounded-xl text-sm font-semibold gap-1.5 inline-flex items-center text-amber-300 hover:text-white">
-                <List className="w-4 h-4" /> Banco
-              </Link>
-            )}
-          </TabsList>
+          <MainMenu activeTab={activeTab} setActiveTab={setActiveTab} role={userRole} />
 
 
         <TabsContent value="collection" className="w-full animate-in fade-in zoom-in-95 duration-500">
