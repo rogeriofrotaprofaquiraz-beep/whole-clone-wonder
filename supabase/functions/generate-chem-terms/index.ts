@@ -7,6 +7,7 @@ const AREA_LABELS: Record<string, string> = {
   geral: "Química Geral (elementos, ligações, átomos, moléculas, tabela periódica, estequiometria)",
   ambiental: "Química Ambiental (poluentes, gases estufa, ozônio, sustentabilidade)",
   farmacologia: "Química Farmacêutica (analgésicos, antibióticos, anestésicos, vitaminas, princípios ativos famosos)",
+  ciencias: "Ciências da Natureza do Ensino Fundamental (seres vivos, plantas, corpo humano, ecologia, matéria e energia, Terra e Universo) — BNCC",
 };
 
 Deno.serve(async (req) => {
@@ -28,14 +29,14 @@ Deno.serve(async (req) => {
     const { data: isAdmin } = await admin.rpc("has_role", { _user_id: user.id, _role: "admin" });
     if (!isAdmin) return json({ error: "Forbidden — admin only" }, 403);
 
-    const { area, count = 15, difficulty = 2, school_level = "medio" } = await req.json();
+    const { area, count = 15, difficulty = 2, school_level = "medio", content = "" } = await req.json();
     if (!area || !AREA_LABELS[area]) return json({ error: "Invalid area" }, 400);
     const level = school_level === "fundamental" ? "fundamental" : "medio";
     const levelLabel = level === "fundamental" ? "Ensino Fundamental (linguagem simples, conceitos básicos)" : "Ensino Médio (rigor científico)";
     const n = Math.min(Math.max(parseInt(String(count)) || 15, 1), 30);
 
     const sys = `Você cria listas de termos de química em PT-BR para jogos educativos (forca, caça-palavras). Responda APENAS com JSON válido.`;
-    const userPrompt = `Liste ${n} termos sobre ${AREA_LABELS[area]} adequados para jogos de palavras.
+    const userPrompt = `Liste ${n} termos sobre ${AREA_LABELS[area]} adequados para jogos de palavras.${content ? `\nUse SOMENTE termos deste CONTEÚDO do professor:\n"""\n${String(content).slice(0,12000)}\n"""` : ""}
 Público: ${levelLabel}. Dificuldade: ${difficulty}/5.
 Regras:
 - Cada termo entre 4 e 14 letras
@@ -63,9 +64,9 @@ Formato JSON:
       return json({ error: "AI error: " + text }, 500);
     }
     const aiData = await aiResp.json();
-    const content = aiData.choices?.[0]?.message?.content ?? "{}";
+    const aiText = aiData.choices?.[0]?.message?.content ?? "{}";
     let parsed: any;
-    try { parsed = JSON.parse(content); } catch { return json({ error: "Resposta da IA não é JSON" }, 500); }
+    try { parsed = JSON.parse(aiText); } catch { return json({ error: "Resposta da IA não é JSON" }, 500); }
     const terms = Array.isArray(parsed.terms) ? parsed.terms : [];
 
     const clean = terms

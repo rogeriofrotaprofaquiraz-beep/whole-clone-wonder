@@ -3,6 +3,7 @@ export const AREAS = [
   { value: "inorganica", label: "Inorgânica", color: "#4C1D95", emoji: "⚗️" },
   { value: "geral", label: "Geral", color: "#D97706", emoji: "🔬" },
   { value: "ambiental", label: "Ambiental", color: "#16A34A", emoji: "🌱" },
+  { value: "ciencias", label: "Ciências (Fundamental)", color: "#0EA5E9", emoji: "🌿" },
   { value: "farmacologia", label: "Farmacologia", color: "#DB2777", emoji: "💊" },
 ] as const;
 

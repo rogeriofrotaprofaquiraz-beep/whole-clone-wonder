@@ -7,6 +7,7 @@ const AREA_LABELS: Record<string, string> = {
   geral: "Química Geral (estrutura atômica, tabela periódica, ligações químicas, estequiometria, soluções)",
   ambiental: "Química Ambiental (poluição do ar/água, aquecimento global, efeito estufa, camada de ozônio, chuva ácida, sustentabilidade)",
   farmacologia: "Química das Drogas / Farmacologia (analgésicos, antibióticos, anestésicos, vitaminas, princípios ativos, dosagem)",
+  ciencias: "Ciências da Natureza do Ensino Fundamental (seres vivos, plantas, corpo humano, ecologia, matéria e energia, Terra e Universo) — BNCC",
 };
 
 Deno.serve(async (req) => {
@@ -29,19 +30,19 @@ Deno.serve(async (req) => {
     const { data: isAdmin } = await admin.rpc("has_role", { _user_id: user.id, _role: "admin" });
     if (!isAdmin) return json({ error: "Forbidden — admin only" }, 403);
 
-    const { area, count = 10, difficulty = 2, topic, school_level = "medio" } = await req.json();
+    const { area, count = 10, difficulty = 2, topic, school_level = "medio", content = "" } = await req.json();
     if (!area || !AREA_LABELS[area]) return json({ error: "Invalid area" }, 400);
     const level = school_level === "fundamental" ? "fundamental" : "medio";
     const levelLabel = level === "fundamental" ? "Ensino Fundamental (linguagem acessível, sem fórmulas complexas)" : "Ensino Médio";
     const n = Math.min(Math.max(parseInt(String(count)) || 10, 1), 25);
 
-    const sys = `Você é um professor de química brasileiro criando questões de múltipla escolha. Responda APENAS com JSON válido, sem markdown.`;
+    const sys = `Você é um professor de ciências e química brasileiro criando questões de múltipla escolha. Responda APENAS com JSON válido, sem markdown.`;
     const userPrompt = `Crie ${n} questões objetivas em PORTUGUÊS sobre ${AREA_LABELS[area]}${topic ? ` — tópico: ${topic}` : ""}.
 Público-alvo: ${levelLabel}. Dificuldade: ${difficulty}/5.
-Cada questão com EXATAMENTE 4 alternativas plausíveis e uma única correta. Inclua explicação curta.
+Cada questão com EXATAMENTE 4 alternativas plausíveis e uma única correta. Inclua explicação curta e uma MINI-AULA (\"lesson\", 2 a 4 frases) que ensine o conceito ANTES da pergunta, sem revelar a resposta.${content ? `\nBaseie-se EXCLUSIVAMENTE neste CONTEÚDO/PLANEJAMENTO do professor:\n"""\n${String(content).slice(0,12000)}\n"""` : ""}
 
 Retorne JSON:
-{ "questions": [ { "question": "...", "options": ["A","B","C","D"], "correct_index": 0, "explanation": "...", "topic": "..." } ] }`;
+{ "questions": [ { "question": "...", "options": ["A","B","C","D"], "correct_index": 0, "explanation": "...", "lesson": "...", "topic": "..." } ] }`;
 
     const aiResp = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
@@ -60,9 +61,9 @@ Retorne JSON:
       return json({ error: "AI error: " + text }, 500);
     }
     const aiData = await aiResp.json();
-    const content = aiData.choices?.[0]?.message?.content ?? "{}";
+    const aiText = aiData.choices?.[0]?.message?.content ?? "{}";
     let parsed: any;
-    try { parsed = JSON.parse(content); } catch { return json({ error: "Resposta da IA não é JSON" }, 500); }
+    try { parsed = JSON.parse(aiText); } catch { return json({ error: "Resposta da IA não é JSON" }, 500); }
     const questions = Array.isArray(parsed.questions) ? parsed.questions : [];
     if (!questions.length) return json({ error: "Nenhuma questão gerada" }, 500);
 
@@ -73,6 +74,7 @@ Retorne JSON:
       correct_index: Math.max(0, Math.min(3, parseInt(q.correct_index) || 0)),
       answer_text: q.options?.[q.correct_index] ?? null,
       explanation: q.explanation ?? null,
+      lesson: q.lesson ?? null,
       created_by: user.id,
     })).filter((r) => r.question && r.options.length === 4);
 

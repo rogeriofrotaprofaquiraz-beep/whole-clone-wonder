@@ -304,6 +304,8 @@ export type Database = {
           explanation: string | null
           grade_year: number | null
           id: string
+          image_url: string | null
+          lesson: string | null
           options: Json
           question: string
           school_level: string
@@ -321,6 +323,8 @@ export type Database = {
           explanation?: string | null
           grade_year?: number | null
           id?: string
+          image_url?: string | null
+          lesson?: string | null
           options?: Json
           question: string
           school_level?: string
@@ -338,6 +342,8 @@ export type Database = {
           explanation?: string | null
           grade_year?: number | null
           id?: string
+          image_url?: string | null
+          lesson?: string | null
           options?: Json
           question?: string
           school_level?: string
@@ -2001,6 +2007,7 @@ export type Database = {
         | "geral"
         | "ambiental"
         | "farmacologia"
+        | "ciencias"
       game_mode: "quiz" | "forca" | "caca_palavras" | "cruzada" | "memoria"
       session_status: "lobby" | "active" | "paused" | "finished"
     }
@@ -2146,6 +2153,7 @@ export const Constants = {
         "geral",
         "ambiental",
         "farmacologia",
+        "ciencias",
       ],
       game_mode: ["quiz", "forca", "caca_palavras", "cruzada", "memoria"],
       session_status: ["lobby", "active", "paused", "finished"],
