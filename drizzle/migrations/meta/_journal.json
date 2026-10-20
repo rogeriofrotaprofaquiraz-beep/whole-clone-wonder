@@ -29,6 +29,13 @@
       "when": 1792244561220,
       "tag": "0003_appearance_prices",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1792500861489,
+      "tag": "0004_ciencias_area_and_lesson",
+      "breakpoints": true
     }
   ]
 }
