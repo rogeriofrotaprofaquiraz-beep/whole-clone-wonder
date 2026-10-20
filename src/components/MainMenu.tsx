@@ -15,20 +15,20 @@ export function MainMenu({ activeTab, setActiveTab, role }: {
   const groups: Group[] = [
     { label: "Jogos e Competições", emoji: "🎮", items: [
       { label: "Jogar", emoji: "⚔️", tab: "battle" },
+      { label: "Treino", emoji: "🏋️", to: "/aula/treino" },
       { label: "Tabela", emoji: "🧪", tab: "collection" },
       { label: "Campeonato", emoji: "🏆", tab: "quiz" },
       { label: "Olimpíadas", emoji: "🏅", to: "/olimpiadas" },
       { label: "Ranking da partida", emoji: "📊", tab: "ranking" },
       { label: "Ranking geral", emoji: "🥇", to: "/ranking" },
     ]},
-    { label: "Desempenho", emoji: "📈", items: [
-      { label: "Perfil", emoji: "👤", to: "/perfil" },
-      { label: "Progresso", emoji: "📈", to: "/progresso" },
-      { label: "Rastreamento", emoji: "📍", tab: "tracking", show: role === "admin" },
-      { label: "Treino", emoji: "🏋️", to: "/aula/treino" },
-      { label: "Carteira", emoji: "⚛️", to: "/carteira" },
+    { label: "Coleção e Galeria", emoji: "🃏", items: [
       { label: "Coleção", emoji: "🃏", tab: "heroes" },
       { label: "Galeria", emoji: "🖼️", tab: "list" },
+    ]},
+    { label: "Desempenho", emoji: "📈", items: [
+      { label: "Progresso", emoji: "📈", to: "/progresso" },
+      { label: "Rastreamento", emoji: "📍", tab: "tracking", show: role === "admin" },
     ]},
     { label: "Aprendizagem", emoji: "🎓", items: [
       { label: "Escola", emoji: "🏫", to: "/escola" },
@@ -39,9 +39,10 @@ export function MainMenu({ activeTab, setActiveTab, role }: {
     ]},
     { label: "Comunidade e Família", emoji: "👪", items: [
       { label: "Pais", emoji: "👪", to: "/pais" },
-      { label: "Acessos", emoji: "🔒", to: "/controle-acesso" },
     ]},
     { label: "Gestão", emoji: "⚙️", items: [
+      { label: "Carteira", emoji: "⚛️", to: "/carteira" },
+      { label: "Acessos", emoji: "🔒", to: "/controle-acesso" },
       { label: "Painel do Professor", emoji: "🧑‍🏫", to: "/aula" },
       { label: "Admin", emoji: "🛠️", tab: "admin", show: staff },
     ]},
@@ -51,6 +52,10 @@ export function MainMenu({ activeTab, setActiveTab, role }: {
 
   return (
     <nav className="mb-12 flex flex-wrap justify-center gap-1 rounded-2xl border border-white/5 bg-slate-950/70 px-2 py-1.5 backdrop-blur-xl">
+      <button onClick={() => navigate("/perfil")}
+        className="inline-flex items-center gap-1.5 rounded-xl px-4 py-2.5 text-sm font-semibold text-slate-200 hover:text-white hover:bg-white/5">
+        <span>👤</span> Perfil
+      </button>
       {groups.map((g) => {
         const items = g.items.filter((i) => i.show !== false);
         if (!items.length) return null;
