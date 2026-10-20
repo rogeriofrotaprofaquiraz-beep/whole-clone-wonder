@@ -23,6 +23,8 @@ export function TeacherPanel({ userId }: { userId: string }) {
   const [generating, setGenerating] = useState(false);
   const [generatingTerms, setGeneratingTerms] = useState(false);
   const [creating, setCreating] = useState(false);
+  const [content, setContent] = useState("");
+  const [generatingAll, setGeneratingAll] = useState(false);
   const [stats, setStats] = useState<Record<string, number>>({});
   const [sessions, setSessions] = useState<any[]>([]);
 
@@ -57,7 +59,7 @@ export function TeacherPanel({ userId }: { userId: string }) {
     setGenerating(true);
     try {
       const { data, error } = await supabase.functions.invoke("generate-chem-questions", {
-        body: { area, count, difficulty, topic: topic || undefined, school_level: level },
+        body: { area, count, difficulty, topic: topic || undefined, school_level: level, content: content || undefined },
       });
       if (error) throw error;
       if ((data as any)?.error) throw new Error((data as any).error);
@@ -74,7 +76,7 @@ export function TeacherPanel({ userId }: { userId: string }) {
     setGeneratingTerms(true);
     try {
       const { data, error } = await supabase.functions.invoke("generate-chem-terms", {
-        body: { area, count: 15, difficulty, school_level: level },
+        body: { area, count: 15, difficulty, school_level: level, content: content || undefined },
       });
       if (error) throw error;
       if ((data as any)?.error) throw new Error((data as any).error);
@@ -87,6 +89,24 @@ export function TeacherPanel({ userId }: { userId: string }) {
   };
 
 
+
+  const loadFile = async (f: File) => {
+    try {
+      if (f.name.toLowerCase().endsWith(".docx")) {
+        const mammoth: any = await import("mammoth");
+        const r = await mammoth.extractRawText({ arrayBuffer: await f.arrayBuffer() });
+        setContent(r.value);
+      } else setContent(await f.text());
+      toast.success("Conteúdo carregado");
+    } catch { toast.error("Não foi possível ler o arquivo"); }
+  };
+
+  const generateAll = async () => {
+    setGeneratingAll(true);
+    try {
+      await Promise.all([generateQuestions(), generateTerms()]);
+    } finally { setGeneratingAll(false); }
+  };
 
   const createSession = async () => {
     if ((stats[area] ?? 0) < 1) {
@@ -175,7 +195,17 @@ export function TeacherPanel({ userId }: { userId: string }) {
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-2 mt-4">
+        <div className="mt-3 space-y-1">
+          <Label>Conteúdo / planejamento da aula (opcional)</Label>
+          <Input type="file" accept=".docx,.txt,.md" onChange={(e) => e.target.files?.[0] && loadFile(e.target.files[0])} />
+          <textarea value={content} onChange={(e) => setContent(e.target.value)} rows={5}
+            placeholder="Cole aqui o conteúdo ou anexe a aula (.docx). As questões e termos serão criados com base nele."
+            className="w-full rounded-md border border-input bg-background p-2 text-sm" />
+        </div>
+        <Button onClick={generateAll} disabled={generatingAll || generating || generatingTerms} className="w-full mt-4 bg-[#059669] hover:bg-[#047857]">
+          {generatingAll ? <><Loader2 className="animate-spin mr-2" />Gerando para todos os jogos...</> : <><Sparkles className="mr-2" />Gerar para TODOS os jogos (Quiz, Forca, Caça-palavras, Memória)</>}
+        </Button>
+        <div className="grid grid-cols-2 gap-2 mt-2">
           <Button onClick={generateQuestions} disabled={generating} className="bg-[#D97706] hover:bg-[#B45309]">
             {generating ? <><Loader2 className="animate-spin mr-2" />Gerando...</> : <><Sparkles className="mr-2" />Gerar Quiz</>}
           </Button>
