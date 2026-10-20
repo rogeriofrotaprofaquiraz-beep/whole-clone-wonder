@@ -61,9 +61,9 @@ Retorne JSON:
       return json({ error: "AI error: " + text }, 500);
     }
     const aiData = await aiResp.json();
-    const content = aiData.choices?.[0]?.message?.content ?? "{}";
+    const aiText = aiData.choices?.[0]?.message?.content ?? "{}";
     let parsed: any;
-    try { parsed = JSON.parse(content); } catch { return json({ error: "Resposta da IA não é JSON" }, 500); }
+    try { parsed = JSON.parse(aiText); } catch { return json({ error: "Resposta da IA não é JSON" }, 500); }
     const questions = Array.isArray(parsed.questions) ? parsed.questions : [];
     if (!questions.length) return json({ error: "Nenhuma questão gerada" }, 500);
 
