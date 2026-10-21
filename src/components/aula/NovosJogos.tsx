@@ -44,27 +44,45 @@ function useTerms(area: AreaValue) {
 }
 
 /* ---------------- Palavras Cruzadas (cruzadinha com palavra-chave) ---------------- */
+const CROSS_SIZES = [5, 10, 15, 20, 25];
+const CROSS_COINS = [1, 2, 4, 7, 10]; // Átomos por palavra conforme dificuldade 1★..5★
+type CTerm = { term: string; clue: string; difficulty: number };
 export function PalavrasCruzadas({ area }: { area: AreaValue }) {
   const meta = areaMeta(area);
-  const terms = useTerms(area);
-  const [words, setWords] = useState<{ term: string; clue: string }[]>([]);
+  const [terms, setTerms] = useState<CTerm[] | null>(null);
+  const [size, setSize] = useState(5);
+  useEffect(() => {
+    setTerms(null);
+    supabase.from("chem_terms").select("term,clue,difficulty").eq("area", area).limit(400).then(({ data }) => setTerms((data ?? []) as CTerm[]));
+  }, [area]);
+  const [words, setWords] = useState<CTerm[]>([]);
   const [answers, setAnswers] = useState<string[]>([]);
   const [done, setDone] = useState<boolean[]>([]);
   const reset = () => {
-    const w = shuffle((terms ?? []).filter((t) => t.term.length >= 3 && t.term.length <= 12)).slice(0, 6);
+    const pool = (terms ?? []).filter((t) => t.term.length >= 3 && t.term.length <= 14);
+    // mistura todos os níveis e ordena do mais fácil ao mais difícil
+    const w = shuffle(pool).slice(0, size).sort((a, b) => (a.difficulty ?? 1) - (b.difficulty ?? 1));
     setWords(w); setAnswers(w.map(() => "")); setDone(w.map(() => false));
   };
-  useEffect(() => { if (terms) reset(); }, [terms]);
+  useEffect(() => { if (terms) reset(); /* eslint-disable-next-line */ }, [terms, size]);
   if (terms === null) return <Card className="p-6">Carregando…</Card>;
   if (!words.length) return <Card className="p-6 text-center">Sem termos para esta área. Gere no painel do professor.</Card>;
   const check = (i: number) => {
     if (norm(answers[i]) === norm(words[i].term)) {
-      setDone((d) => d.map((x, k) => (k === i ? true : x))); reward(3, "Correto!");
+      const d = Math.max(1, Math.min(5, words[i].difficulty ?? 1));
+      setDone((x) => x.map((v, k) => (k === i ? true : v))); reward(CROSS_COINS[d - 1], `Correto! (${"★".repeat(d)})`);
     } else toast.error("Ainda não… tente de novo");
   };
   return (
     <div className="space-y-4">
-      <Header title={`Palavras Cruzadas · ${meta.label}`} sub={`${done.filter(Boolean).length}/${words.length} resolvidas`} onReset={reset} color={meta.color} />
+      <Header title={`Palavras Cruzadas · ${meta.label}`} sub={`${done.filter(Boolean).length}/${words.length} resolvidas · 1★=1⚛ 2★=2⚛ 3★=4⚛ 4★=7⚛ 5★=10⚛`} onReset={reset} color={meta.color} />
+      <div className="flex flex-wrap gap-2 items-center">
+        <span className="text-sm font-bold">Palavras por rodada:</span>
+        {CROSS_SIZES.map((n) => (
+          <Button key={n} size="sm" variant={size === n ? "default" : "outline"} onClick={() => setSize(n)}>{n}</Button>
+        ))}
+        {words.length < size && <span className="text-xs text-muted-foreground">Só há {words.length} termos nesta área.</span>}
+      </div>
       {words.map((w, i) => (
         <Card key={i} className="p-4 space-y-2">
           <div className="text-sm"><b>{i + 1}.</b> {w.clue} <span className="text-muted-foreground">({w.term.length} letras)</span></div>
