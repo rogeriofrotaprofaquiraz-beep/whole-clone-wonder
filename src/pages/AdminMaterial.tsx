@@ -474,7 +474,20 @@ export default function AdminMaterial() {
                       <div className="font-black truncate">{c.title}</div>
                       <div className="flex gap-1 flex-wrap mt-1">
                         <Badge variant="secondary">{m.label}</Badge>
-                        <Badge variant="outline">{c.level}</Badge>
+                        <select value={c.level} onClick={(e) => e.stopPropagation()}
+                          onChange={async (e) => {
+                            const level = e.target.value;
+                            const { error } = await supabase.from("courses").update({ level }).eq("id", c.id);
+                            if (error) return toast.error(error.message);
+                            setCourses(prev => prev.map(x => x.id === c.id ? { ...x, level } : x));
+                            toast.success("Nível atualizado");
+                          }}
+                          className="text-xs border rounded px-1 py-0.5 bg-background">
+                          <option value="fundamental">🎒 Fundamental</option>
+                          <option value="medio">🎓 Médio</option>
+                          <option value="olimpiada">🏅 Olimpíada</option>
+                          {!["fundamental","medio","olimpiada"].includes(c.level) && <option value={c.level}>{c.level}</option>}
+                        </select>
                         <Badge variant="outline">{ls.length} aulas</Badge>
                         <Badge variant="outline"><Users size={11} className="mr-1" />{st.enroll}</Badge>
                         <Badge variant="outline"><CheckCircle2 size={11} className="mr-1" />{st.done} concluídas</Badge>
