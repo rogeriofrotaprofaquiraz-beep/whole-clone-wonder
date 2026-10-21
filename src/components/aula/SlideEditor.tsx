@@ -47,7 +47,7 @@ export function SlideView({ slide }: { slide: Slide }) {
 export function SlideEditor({ value, image, onChange }: { value: string | null; image: string | null; onChange: (v: string | null) => void }) {
   const s: Slide = parseSlide(value, image) ?? { v: 1, title: "", body: "", ...THEMES[0], size: 22, align: "left", bold: false, italic: false, layout: image ? "top" : "none", image };
   const set = (p: Partial<Slide>) => onChange(JSON.stringify({ ...s, ...p }));
-  const tog = (on: boolean) => (on ? "default" : "outline") as const;
+  const tog = (on: boolean): "default" | "outline" => (on ? "default" : "outline");
   return (
     <div className="space-y-2 border rounded-lg p-2">
       <div className="flex flex-wrap items-center gap-1">
