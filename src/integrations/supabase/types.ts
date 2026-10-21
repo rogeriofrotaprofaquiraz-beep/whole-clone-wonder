@@ -47,12 +47,51 @@ export type Database = {
         }
         Relationships: []
       }
+      access_profiles: {
+        Row: {
+          base_role: Database["public"]["Enums"]["app_role"]
+          builtin: boolean
+          class_id: string | null
+          created_at: string
+          created_by: string | null
+          id: string
+          name: string
+        }
+        Insert: {
+          base_role?: Database["public"]["Enums"]["app_role"]
+          builtin?: boolean
+          class_id?: string | null
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          name: string
+        }
+        Update: {
+          base_role?: Database["public"]["Enums"]["app_role"]
+          builtin?: boolean
+          class_id?: string | null
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          name?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "access_profiles_class_id_fkey"
+            columns: ["class_id"]
+            isOneToOne: false
+            referencedRelation: "classes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       access_rules: {
         Row: {
           allowed: boolean
           class_id: string | null
           feature_key: string
           id: string
+          profile_id: string | null
           role: Database["public"]["Enums"]["app_role"]
           updated_at: string
           updated_by: string | null
@@ -62,6 +101,7 @@ export type Database = {
           class_id?: string | null
           feature_key: string
           id?: string
+          profile_id?: string | null
           role: Database["public"]["Enums"]["app_role"]
           updated_at?: string
           updated_by?: string | null
@@ -71,11 +111,20 @@ export type Database = {
           class_id?: string | null
           feature_key?: string
           id?: string
+          profile_id?: string | null
           role?: Database["public"]["Enums"]["app_role"]
           updated_at?: string
           updated_by?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "access_rules_profile_id_fkey"
+            columns: ["profile_id"]
+            isOneToOne: false
+            referencedRelation: "access_profiles"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       activity_logs: {
         Row: {
@@ -397,6 +446,7 @@ export type Database = {
         Row: {
           class_id: string
           joined_at: string
+          profile_id: string | null
           role: string
           status: string
           user_id: string
@@ -404,6 +454,7 @@ export type Database = {
         Insert: {
           class_id: string
           joined_at?: string
+          profile_id?: string | null
           role?: string
           status?: string
           user_id: string
@@ -411,6 +462,7 @@ export type Database = {
         Update: {
           class_id?: string
           joined_at?: string
+          profile_id?: string | null
           role?: string
           status?: string
           user_id?: string
@@ -421,6 +473,13 @@ export type Database = {
             columns: ["class_id"]
             isOneToOne: false
             referencedRelation: "classes"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "class_members_profile_id_fkey"
+            columns: ["profile_id"]
+            isOneToOne: false
+            referencedRelation: "access_profiles"
             referencedColumns: ["id"]
           },
         ]
