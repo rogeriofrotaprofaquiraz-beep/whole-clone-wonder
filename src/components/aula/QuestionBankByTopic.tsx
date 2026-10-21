@@ -134,7 +134,7 @@ export function QuestionBankByTopic({ userId }: { userId: string }) {
                       </label>
                       <button type="button" title="Editar" onClick={(e) => { e.preventDefault(); setEdit({ ...q, options: Array.isArray(q.options) ? [...q.options] : [] }); }} className="text-muted-foreground hover:text-foreground"><Pencil size={16} /></button>
                       <span className="text-xs text-muted-foreground whitespace-nowrap">{"★".repeat(q.difficulty)} · {LEVELS.find((l) => l.value === q.school_level)?.label ?? q.school_level}</span>
-                    </label>
+                    </div>
                   ))}
                 </div>
               )}
