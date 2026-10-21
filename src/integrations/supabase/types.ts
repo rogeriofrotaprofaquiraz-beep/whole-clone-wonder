@@ -358,6 +358,8 @@ export type Database = {
           options: Json
           question: string
           school_level: string
+          school_levels: string[]
+          slide_content: string | null
           topic: string | null
           updated_at: string
         }
@@ -377,6 +379,8 @@ export type Database = {
           options?: Json
           question: string
           school_level?: string
+          school_levels?: string[]
+          slide_content?: string | null
           topic?: string | null
           updated_at?: string
         }
@@ -396,6 +400,8 @@ export type Database = {
           options?: Json
           question?: string
           school_level?: string
+          school_levels?: string[]
+          slide_content?: string | null
           topic?: string | null
           updated_at?: string
         }
