@@ -43,6 +43,13 @@
       "when": 1792587973609,
       "tag": "0005_custom_access_profiles",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1792621714073,
+      "tag": "0006_widen_question_levels",
+      "breakpoints": true
     }
   ]
 }
