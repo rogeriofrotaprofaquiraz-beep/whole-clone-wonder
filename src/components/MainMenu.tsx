@@ -35,13 +35,13 @@ export function MainMenu({ activeTab, setActiveTab, role }: {
       { label: "Cursos", emoji: "📚", to: "/cursos" },
       { label: "Material", emoji: "📝", to: "/admin/material", show: role === "admin" },
       { label: "Plano de Aula", emoji: "🗒️", to: "/plano-de-aula", show: staff },
-      { label: "Banco de Questões", emoji: "❓", to: "/banco", show: staff },
     ]},
     { label: "Comunidade e Família", emoji: "👪", items: [
       { label: "Pais", emoji: "👪", to: "/pais" },
     ]},
     { label: "Gestão", emoji: "⚙️", items: [
       { label: "Carteira", emoji: "⚛️", to: "/carteira" },
+      { label: "Banco de Átomos", emoji: "⚛️", to: "/banco", show: staff },
       { label: "Acessos", emoji: "🔒", to: "/controle-acesso" },
       { label: "Painel do Professor", emoji: "🧑‍🏫", to: "/aula" },
       { label: "Admin", emoji: "🛠️", tab: "admin", show: staff },
