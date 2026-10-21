@@ -1,0 +1,2 @@
+ALTER TABLE public.chem_questions DROP CONSTRAINT chem_questions_school_level_check;
+ALTER TABLE public.chem_questions ADD CONSTRAINT chem_questions_school_level_check CHECK (school_level = ANY (ARRAY['fundamental','medio','olimpiada','superior']));
