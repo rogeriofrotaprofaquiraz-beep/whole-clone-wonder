@@ -6,6 +6,12 @@ export const GAME_FEATURES = [
   { key: "jogo_forca", label: "Forca" },
   { key: "jogo_caca", label: "Caça-palavras" },
   { key: "jogo_memoria", label: "Memória" },
+  { key: "jogo_cruzada", label: "Palavras Cruzadas" },
+  { key: "jogo_tabuleiro", label: "Tabuleiro Químico" },
+  { key: "jogo_naval", label: "Batalha Naval" },
+  { key: "jogo_stop", label: "Stop Químico" },
+  { key: "jogo_bingo", label: "Bingo Químico" },
+  { key: "jogo_tangram", label: "Tangram Molecular" },
   { key: "jogo_batalha", label: "Batalha de cartas" },
 ] as const;
 
