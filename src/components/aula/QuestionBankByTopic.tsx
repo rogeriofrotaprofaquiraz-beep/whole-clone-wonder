@@ -9,6 +9,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { toast } from "sonner";
 import { areaMeta, genCode, LEVELS } from "@/lib/aula";
 import { BookOpen, Trophy, Medal, ChevronDown, ChevronUp, Pencil, ImagePlus } from "lucide-react";
+import { SlideEditor } from "./SlideEditor";
 
 type Q = { id: string; question: string; options: any; correct_index: number; explanation: string | null; area: string; difficulty: number; school_level: string; topic: string | null; lesson: string | null; image_url: string | null; school_levels: string[] | null; slide_content: string | null };
 type Group = { key: string; area: string; items: Q[] };
@@ -193,7 +194,7 @@ export function QuestionBankByTopic({ userId }: { userId: string }) {
               </div>
               <div className="space-y-1">
                 <div className="font-semibold">Slide de conteúdo (aparece antes da questão)</div>
-                <textarea className="w-full border rounded-md p-2 bg-background" rows={5} placeholder="Explique o assunto em poucas linhas. O aluno lê este slide e depois responde à questão." value={edit.slide_content ?? ""} onChange={(e) => setEdit({ ...edit, slide_content: e.target.value || null })} />
+                <SlideEditor value={edit.slide_content} image={edit.image_url} onChange={(v) => setEdit({ ...edit, slide_content: v })} />
               </div>
               <div className="space-y-1">
                 <div className="font-semibold">Imagem</div>

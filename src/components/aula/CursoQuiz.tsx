@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { DIFFICULTIES } from "@/lib/aula";
 import { addCoins, COIN_SYMBOL } from "@/lib/playerEconomy";
 import { toast } from "sonner";
+import { SlideView, parseSlide } from "./SlideEditor";
 
 type Q = { id: string; question: string; options: any; correct_index: number; explanation: string | null; image_url: string | null; difficulty: number; slide_content: string | null };
 
@@ -76,8 +77,7 @@ export function CursoQuiz({ topic, content, level }: { topic: string; content?: 
   if (q.slide_content && slideSeen !== q.id) return (
     <Card className="p-8 space-y-4 min-h-[320px] flex flex-col justify-center">
       <div className="text-xs text-muted-foreground">🖥️ Slide · Questão {i + 1}/{qs.length}</div>
-      {q.image_url && <img src={q.image_url} alt="" className="max-h-56 rounded-lg mx-auto" />}
-      <div className="text-lg leading-relaxed whitespace-pre-line">{q.slide_content}</div>
+      <SlideView slide={{ ...parseSlide(q.slide_content, q.image_url)!, image: q.image_url }} />
       <Button onClick={() => setSlideSeen(q.id)}>Ir para a questão</Button>
     </Card>
   );
