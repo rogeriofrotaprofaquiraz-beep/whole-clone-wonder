@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { areaMeta, AreaValue } from "@/lib/aula";
 import { RotateCcw, Trophy } from "lucide-react";
 import { toast } from "sonner";
+import { addCoins } from "@/lib/playerEconomy";
 
 type Tile = { id: number; key: string; face: string; sub?: string; flipped: boolean; matched: boolean };
 
@@ -46,7 +47,8 @@ export function Memoria({ area }: { area: AreaValue }) {
         setTimeout(() => {
           setTiles((cur) => cur.map((x, i) => i === a || i === b ? { ...x, matched: true } : x));
           setFlipped([]); setBusy(false);
-          toast.success("Par!");
+          toast.success("Par! +2 ⚛");
+          supabase.auth.getUser().then(({ data }) => { if (data.user) addCoins(data.user.id, 2).catch(() => {}); });
         }, 350);
       } else {
         setTimeout(() => {

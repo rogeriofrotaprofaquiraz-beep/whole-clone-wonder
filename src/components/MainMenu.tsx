@@ -14,7 +14,7 @@ export function MainMenu({ activeTab, setActiveTab, role }: {
   const staff = role === "admin" || role === "teacher";
   const groups: Group[] = [
     { label: "Jogos e Competições", emoji: "🎮", items: [
-      { label: "Jogar", emoji: "⚔️", tab: "battle" },
+      { label: "Desafio dos Elementos", emoji: "⚔️", tab: "battle" },
       { label: "Treino", emoji: "🏋️", to: "/aula/treino" },
       { label: "Tabela", emoji: "🧪", tab: "collection" },
       { label: "Campeonato", emoji: "🏆", tab: "quiz" },
