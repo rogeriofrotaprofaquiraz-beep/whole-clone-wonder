@@ -10,7 +10,7 @@ import { toast } from "sonner";
 import { areaMeta, genCode, LEVELS } from "@/lib/aula";
 import { BookOpen, Trophy, Medal, ChevronDown, ChevronUp, Pencil, ImagePlus } from "lucide-react";
 
-type Q = { id: string; question: string; options: any; correct_index: number; explanation: string | null; area: string; difficulty: number; school_level: string; topic: string | null; lesson: string | null; image_url: string | null };
+type Q = { id: string; question: string; options: any; correct_index: number; explanation: string | null; area: string; difficulty: number; school_level: string; topic: string | null; lesson: string | null; image_url: string | null; school_levels: string[] | null; slide_content: string | null };
 type Group = { key: string; area: string; items: Q[] };
 
 /** Banco de questões agrupado por assunto, com envio para campeonato (sala) ou olimpíada. */
@@ -41,7 +41,7 @@ export function QuestionBankByTopic({ userId }: { userId: string }) {
     setSaving(true);
     const { error } = await supabase.from("chem_questions").update({
       question: q.question, options: q.options, correct_index: q.correct_index, explanation: q.explanation,
-      difficulty: q.difficulty, school_level: q.school_level, lesson: q.lesson, image_url: q.image_url,
+      difficulty: q.difficulty, school_level: (q.school_levels?.[0] ?? q.school_level), school_levels: q.school_levels?.length ? q.school_levels : [q.school_level], slide_content: q.slide_content, lesson: q.lesson, image_url: q.image_url,
     } as any).eq("id", q.id);
     setSaving(false);
     if (error) return toast.error(error.message);
@@ -51,7 +51,7 @@ export function QuestionBankByTopic({ userId }: { userId: string }) {
   };
 
   useEffect(() => {
-    supabase.from("chem_questions").select("id,question,options,correct_index,explanation,area,difficulty,school_level,topic,lesson,image_url")
+    supabase.from("chem_questions").select("id,question,options,correct_index,explanation,area,difficulty,school_level,topic,lesson,image_url,school_levels,slide_content")
       .order("created_at", { ascending: false }).limit(1000).then(({ data }) => setQs((data ?? []) as Q[]));
     supabase.from("olympiads").select("id,acronym,name").order("acronym").then(({ data }) => setOlympiads(data ?? []));
   }, []);
@@ -133,7 +133,7 @@ export function QuestionBankByTopic({ userId }: { userId: string }) {
                         <input type="file" accept="image/*" className="hidden" onChange={(e) => e.target.files?.[0] && uploadImage(q, e.target.files[0])} />
                       </label>
                       <button type="button" title="Editar" onClick={(e) => { e.preventDefault(); setEdit({ ...q, options: Array.isArray(q.options) ? [...q.options] : [] }); }} className="text-muted-foreground hover:text-foreground"><Pencil size={16} /></button>
-                      <span className="text-xs text-muted-foreground whitespace-nowrap">{"★".repeat(q.difficulty)} · {LEVELS.find((l) => l.value === q.school_level)?.label ?? q.school_level}</span>
+                      <span className="text-xs text-muted-foreground whitespace-nowrap">{"★".repeat(q.difficulty)} · {(q.school_levels?.length ? q.school_levels : [q.school_level]).map((v) => LEVELS.find((l) => l.value === v)?.label ?? v).join(", ")}{q.slide_content ? " · 🖥️ slide" : ""}</span>
                     </div>
                   ))}
                 </div>
@@ -175,9 +175,25 @@ export function QuestionBankByTopic({ userId }: { userId: string }) {
                 <select className="border rounded-md p-2 bg-background" value={edit.difficulty} onChange={(e) => setEdit({ ...edit, difficulty: +e.target.value })}>
                   {[1, 2, 3, 4, 5].map((d) => <option key={d} value={d}>{"★".repeat(d)}</option>)}
                 </select>
-                <select className="border rounded-md p-2 bg-background" value={edit.school_level} onChange={(e) => setEdit({ ...edit, school_level: e.target.value })}>
-                  {LEVELS.map((l) => <option key={l.value} value={l.value}>{l.label}</option>)}
-                </select>
+                <div className="flex flex-wrap gap-2 items-center">
+                  {LEVELS.map((l) => {
+                    const cur = edit.school_levels?.length ? edit.school_levels : [edit.school_level];
+                    const on = cur.includes(l.value);
+                    return (
+                      <label key={l.value} className="flex items-center gap-1 text-xs">
+                        <input type="checkbox" checked={on} onChange={() => {
+                          const next = on ? cur.filter((x) => x !== l.value) : [...cur, l.value];
+                          if (!next.length) return;
+                          setEdit({ ...edit, school_levels: next, school_level: next[0] });
+                        }} />{l.label}
+                      </label>
+                    );
+                  })}
+                </div>
+              </div>
+              <div className="space-y-1">
+                <div className="font-semibold">Slide de conteúdo (aparece antes da questão)</div>
+                <textarea className="w-full border rounded-md p-2 bg-background" rows={5} placeholder="Explique o assunto em poucas linhas. O aluno lê este slide e depois responde à questão." value={edit.slide_content ?? ""} onChange={(e) => setEdit({ ...edit, slide_content: e.target.value || null })} />
               </div>
               <div className="space-y-1">
                 <div className="font-semibold">Imagem</div>
