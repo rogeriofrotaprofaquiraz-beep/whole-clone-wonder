@@ -11,6 +11,8 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "
 import { ArrowLeft, Plus, School, Users, Trash2, Copy, UserPlus, QrCode, Check, X, Pencil } from "lucide-react";
 import { toast } from "sonner";
 import { QRCodeSVG } from "qrcode.react";
+import { ClassGamesDialog } from "@/components/ClassGamesDialog";
+import { Gamepad2 } from "lucide-react";
 
 type SchoolRow = { id: string; name: string; city: string | null };
 type ClassRow = { id: string; school_id: string; name: string; grade_year: number; invite_code: string };
@@ -27,6 +29,7 @@ export default function Escola() {
   const [members, setMembers] = useState<MemberRow[]>([]);
   const [teams, setTeams] = useState<TeamRow[]>([]);
   const [teamMembers, setTeamMembers] = useState<Record<string, string[]>>({});
+  const [gamesClass, setGamesClass] = useState<ClassRow | null>(null);
 
   const [newSchool, setNewSchool] = useState({ name: "", city: "" });
   const [newClass, setNewClass] = useState({ school_id: "", name: "", grade_year: 6 });
@@ -343,6 +346,7 @@ export default function Escola() {
                       <span className="font-mono">{c.invite_code}</span>
                       <Copy className="w-3 h-3 cursor-pointer" onClick={(e) => { e.stopPropagation(); navigator.clipboard.writeText(c.invite_code); toast.success("Código copiado"); }}/>
                       <QrCode className="w-3 h-3 cursor-pointer text-cyan-300" onClick={(e) => { e.stopPropagation(); setQrClass(c); }}/>
+                      <span title="Jogos permitidos" className="inline-flex items-center gap-0.5 cursor-pointer text-emerald-300" onClick={(e) => { e.stopPropagation(); setGamesClass(c); }}><Gamepad2 className="w-3 h-3"/> jogos</span>
                     </div>
                   </button>
                 );
@@ -566,6 +570,7 @@ export default function Escola() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
+    <ClassGamesDialog cls={gamesClass} onClose={() => setGamesClass(null)} />
     </div>
   );
 }

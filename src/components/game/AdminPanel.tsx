@@ -53,12 +53,12 @@ const normalizeAttributes = (raw: any): ElementAttribute[] => {
   });
 };
 
-export const AdminPanel = ({ userRole, initialSymbol }: { userRole?: string | null; initialSymbol?: string | null }) => {
+export const AdminPanel = ({ userRole, initialSymbol, usersOnly }: { userRole?: string | null; initialSymbol?: string | null; usersOnly?: boolean }) => {
   const [logs, setLogs] = useState<any[]>([]);
   const [profiles, setProfiles] = useState<any[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [logFilter, setLogFilter] = useState("all");
-  const [activeSubTab, setActiveSubTab] = useState(userRole === 'admin' ? "users" : "editor");
+  const [activeSubTab, setActiveSubTab] = useState(usersOnly ? "users" : "editor");
   const [editingSymbol, setEditingSymbol] = useState<string>("H");
   const [formData, setFormData] = useState<Partial<PeriodicElement>>(ELEMENTS_DATA["H"] || {
     number: 0,
@@ -402,8 +402,8 @@ export const AdminPanel = ({ userRole, initialSymbol }: { userRole?: string | nu
   return (
     <div className="flex flex-col gap-8 p-4 max-w-[1600px] mx-auto animate-in fade-in duration-700">
       <Tabs value={activeSubTab} onValueChange={setActiveSubTab} className="w-full">
-        <TabsList className="bg-slate-900/60 border border-white/10 p-1 rounded-xl mb-6 h-auto gap-2 backdrop-blur-xl">
-          {userRole === 'admin' && (
+        {!usersOnly && <TabsList className="bg-slate-900/60 border border-white/10 p-1 rounded-xl mb-6 h-auto gap-2 backdrop-blur-xl">
+          {false && (
             <TabsTrigger value="users" className="px-6 py-2 rounded-lg data-[state=active]:bg-emerald-600 font-bold transition-all gap-2">
               <Users className="w-4 h-4" /> GERENCIAR USUÁRIOS
             </TabsTrigger>
@@ -416,7 +416,7 @@ export const AdminPanel = ({ userRole, initialSymbol }: { userRole?: string | nu
               <History className="w-4 h-4" /> RASTREAR ATIVIDADES
             </TabsTrigger>
           )}
-        </TabsList>
+        </TabsList>}
 
         <TabsContent value="editor">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
