@@ -19,7 +19,7 @@ const GAMES = [
 ] as const;
 
 type C = { id: string; title: string; area: string; level: string };
-type L = { id: string; title: string };
+type L = { id: string; title: string; content: string | null };
 
 export default function Treino() {
   const navigate = useNavigate();
@@ -45,7 +45,7 @@ export default function Treino() {
     if (!courseId) return;
     const c = courses.find((x) => x.id === courseId);
     if (c && AREAS.some((a) => a.value === c.area)) setArea(c.area as AreaValue);
-    supabase.from("course_lessons").select("id,title").eq("course_id", courseId).order("order_index")
+    supabase.from("course_lessons").select("id,title,content").eq("course_id", courseId).order("order_index")
       .then(({ data }) => setLessons((data ?? []) as L[]));
   }, [courseId]);
 
@@ -125,7 +125,7 @@ export default function Treino() {
           </div>
         </Card>
 
-        {game === "assunto" && (topic ? <CursoQuiz topic={topic} /> : <Card className="p-6 text-sm text-muted-foreground">Escolha um curso e um assunto acima para jogar com as questões dele.</Card>)}
+        {game === "assunto" && (topic ? <CursoQuiz topic={topic} level={level} content={lessons.find((l) => l.title === topic)?.content} /> : <Card className="p-6 text-sm text-muted-foreground">Escolha um curso e um assunto acima para jogar com as questões dele.</Card>)}
         {game === "forca" && can("jogo_forca") && <Forca area={area} level={termLevel} difficulty={difficulty} />}
         {game === "caca" && can("jogo_caca") && <CacaPalavras area={area} />}
         {game === "memoria" && can("jogo_memoria") && <Memoria area={area} />}
