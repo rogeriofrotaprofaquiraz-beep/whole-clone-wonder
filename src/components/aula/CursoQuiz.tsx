@@ -6,7 +6,7 @@ import { DIFFICULTIES } from "@/lib/aula";
 import { addCoins, COIN_SYMBOL } from "@/lib/playerEconomy";
 import { toast } from "sonner";
 
-type Q = { id: string; question: string; options: any; correct_index: number; explanation: string | null; image_url: string | null; difficulty: number };
+type Q = { id: string; question: string; options: any; correct_index: number; explanation: string | null; image_url: string | null; difficulty: number; slide_content: string | null };
 
 /** Átomos por acerto conforme a dificuldade (1★ → 5★). */
 export const COINS_BY_DIFFICULTY = [1, 2, 4, 7, 10];
@@ -26,13 +26,14 @@ export function CursoQuiz({ topic, content, level }: { topic: string; content?: 
   const [earned, setEarned] = useState(0);
   const [loading, setLoading] = useState(true);
   const [started, setStarted] = useState(false);
+  const [slideSeen, setSlideSeen] = useState<string | null>(null);
 
   useEffect(() => {
     setLoading(true); setI(0); setPick(null); setScore(0); setEarned(0); setStarted(false);
     const word = topic.replace(/^\d+\.\s*/, "").split(/[\s:–-]+/).filter((w) => w.length > 4).slice(0, 2);
     const ors = [`lesson.ilike.%${topic.replace(/[%,()]/g, "")}%`, ...word.map((w) => `topic.ilike.%${w}%`), ...word.map((w) => `question.ilike.%${w}%`)].join(",");
-    let q = supabase.from("chem_questions").select("id,question,options,correct_index,explanation,image_url,difficulty").or(ors).limit(40);
-    if (level) q = q.eq("school_level", level);
+    let q = supabase.from("chem_questions").select("id,question,options,correct_index,explanation,image_url,difficulty,slide_content").or(ors).limit(40);
+    if (level) q = q.or(`school_level.eq.${level},school_levels.cs.{${level}}`);
     q.then(({ data }) => {
       const list = ((data ?? []) as Q[]).sort(() => Math.random() - 0.5).slice(0, 10).sort((a, b) => a.difficulty - b.difficulty);
       setQs(list); setLoading(false);
@@ -72,6 +73,14 @@ export function CursoQuiz({ topic, content, level }: { topic: string; content?: 
     </Card>
   );
   const q = qs[i];
+  if (q.slide_content && slideSeen !== q.id) return (
+    <Card className="p-8 space-y-4 min-h-[320px] flex flex-col justify-center">
+      <div className="text-xs text-muted-foreground">🖥️ Slide · Questão {i + 1}/{qs.length}</div>
+      {q.image_url && <img src={q.image_url} alt="" className="max-h-56 rounded-lg mx-auto" />}
+      <div className="text-lg leading-relaxed whitespace-pre-line">{q.slide_content}</div>
+      <Button onClick={() => setSlideSeen(q.id)}>Ir para a questão</Button>
+    </Card>
+  );
   const opts: string[] = Array.isArray(q.options) ? q.options : [];
   const d = Math.max(1, Math.min(5, q.difficulty));
   return (
