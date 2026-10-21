@@ -1,0 +1,3 @@
+CREATE POLICY "Staff can update questions" ON public.chem_questions FOR UPDATE TO authenticated
+USING (public.has_role(auth.uid(),'teacher') OR public.has_role(auth.uid(),'coordinator') OR public.has_role(auth.uid(),'director') OR public.has_role(auth.uid(),'moderator'))
+WITH CHECK (public.has_role(auth.uid(),'teacher') OR public.has_role(auth.uid(),'coordinator') OR public.has_role(auth.uid(),'director') OR public.has_role(auth.uid(),'moderator'));
