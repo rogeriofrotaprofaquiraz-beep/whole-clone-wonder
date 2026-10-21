@@ -9,7 +9,7 @@ import { MainMenu } from "@/components/MainMenu";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { BattleSystem } from "@/components/game/BattleSystem";
-import { ElementQuiz } from "@/components/game/ElementQuiz";
+import { CampeonatoJogos } from "@/components/game/CampeonatoJogos";
 import { AdminPanel } from "@/components/game/AdminPanel";
 import Permissoes from "@/pages/Permissoes";
 import { AuthSystem } from "@/components/game/AuthSystem";
@@ -505,7 +505,7 @@ const Index = () => {
         </TabsContent>
 
         <TabsContent value="quiz" className="w-full animate-in fade-in slide-in-from-left-10 duration-500">
-          <ElementQuiz />
+          <CampeonatoJogos />
         </TabsContent>
 
         <TabsContent value="ranking" className="w-full animate-in fade-in slide-in-from-top-10 duration-500">

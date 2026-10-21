@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { areaMeta, AreaValue } from "@/lib/aula";
 import { toast } from "sonner";
 import { RotateCcw, Trophy } from "lucide-react";
+import { addCoins } from "@/lib/playerEconomy";
 
 const SIZE = 14;
 const DIRS = [[1, 0], [0, 1], [1, 1], [1, -1], [-1, 0], [0, -1]];
@@ -82,7 +83,8 @@ export function CacaPalavras({ area }: { area: AreaValue }) {
     const hit = grid.placed.find((p) => (p.term === word || p.term === rev) && !found.has(p.term));
     if (hit) {
       setFound((f) => new Set(f).add(hit.term));
-      toast.success(`+${hit.term}`);
+      toast.success(`+${hit.term} · +2 ⚛`);
+      supabase.auth.getUser().then(({ data }) => { if (data.user) addCoins(data.user.id, 2).catch(() => {}); });
     }
     setSel([]);
   };
