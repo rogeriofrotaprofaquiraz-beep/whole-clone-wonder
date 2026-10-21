@@ -32,9 +32,9 @@ export function MainMenu({ activeTab, setActiveTab, role }: {
     ]},
     { label: "Aprendizagem", emoji: "🎓", items: [
       { label: "Escola", emoji: "🏫", to: "/escola" },
-      { label: "Cursos", emoji: "📚", to: "/cursos" },
-      { label: "Material", emoji: "📝", to: "/admin/material", show: role === "admin" },
       { label: "Plano de Aula", emoji: "🗒️", to: "/plano-de-aula", show: staff },
+      { label: "Material", emoji: "📝", to: "/admin/material", show: role === "admin" },
+      { label: "Cursos", emoji: "📚", to: "/cursos" },
     ]},
     { label: "Comunidade e Família", emoji: "👪", items: [
       { label: "Pais", emoji: "👪", to: "/pais" },

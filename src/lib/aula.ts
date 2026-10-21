@@ -12,6 +12,7 @@ export type AreaValue = (typeof AREAS)[number]["value"];
 export const LEVELS = [
   { value: "fundamental", label: "Ensino Fundamental", emoji: "🎒" },
   { value: "medio", label: "Ensino Médio", emoji: "🎓" },
+  { value: "olimpiada", label: "Olimpíada", emoji: "🏅" },
 ] as const;
 export type LevelValue = (typeof LEVELS)[number]["value"];
 
