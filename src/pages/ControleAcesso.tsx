@@ -31,6 +31,7 @@ export default function ControleAcesso() {
   const [newName, setNewName] = useState("");
   const [editing, setEditing] = useState<string | null>(null);
   const [editName, setEditName] = useState("");
+  const [courseFeats, setCourseFeats] = useState<{ key: string; label: string }[]>([]);
   const [members, setMembers] = useState<{ user_id: string; username: string; profile_id: string | null }[]>([]);
 
   useEffect(() => {
@@ -43,6 +44,8 @@ export default function ControleAcesso() {
       setAllowedUser((roles ?? []).some((r: any) => STAFF.includes(r.role)));
       const { data: cls } = await supabase.from("classes").select("id,name,grade_year").order("name");
       setClasses(cls ?? []);
+      const { data: cs } = await supabase.from("courses").select("id,title").order("title");
+      setCourseFeats(((cs ?? []) as any[]).sort((a, b) => a.title.localeCompare(b.title, "pt-BR", { numeric: true })).map((c) => ({ key: "curso_" + c.id, label: c.title })));
       loadProfiles();
     })();
   }, []);
@@ -208,6 +211,7 @@ export default function ControleAcesso() {
         <Section title="Jogos" items={GAME_FEATURES} />
         <Section title="Páginas do site" items={PAGE_FEATURES} />
       </div>
+      <Section title="Cursos (liberar um por um)" items={courseFeats} />
     </div>
   );
 
