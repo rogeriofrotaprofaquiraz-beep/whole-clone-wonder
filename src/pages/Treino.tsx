@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -7,14 +7,19 @@ import { AREAS, AreaValue, LEVELS, LevelValue, DIFFICULTIES } from "@/lib/aula";
 import { Forca } from "@/components/aula/Forca";
 import { CacaPalavras } from "@/components/aula/CacaPalavras";
 import { Memoria } from "@/components/aula/Memoria";
+import { CursoQuiz } from "@/components/aula/CursoQuiz";
 import { useFeatureAccess } from "@/lib/featureAccess";
-
+import { supabase } from "@/integrations/supabase/client";
 
 const GAMES = [
+  { id: "assunto", label: "Quiz do assunto", emoji: "📚" },
   { id: "forca", label: "Forca", emoji: "🎯" },
   { id: "caca", label: "Caça-palavras", emoji: "🔤" },
   { id: "memoria", label: "Memória", emoji: "🧠" },
 ] as const;
+
+type C = { id: string; title: string; area: string; level: string };
+type L = { id: string; title: string };
 
 export default function Treino() {
   const navigate = useNavigate();
@@ -22,16 +27,34 @@ export default function Treino() {
   const [level, setLevel] = useState<LevelValue>("medio");
   const [difficulty, setDifficulty] = useState<number>(2);
   const { can } = useFeatureAccess();
-  const games = GAMES.filter((g) => can(`jogo_${g.id}`));
-  const [game, setGame] = useState<typeof GAMES[number]["id"]>("forca");
+  const games = GAMES.filter((g) => g.id === "assunto" || can(`jogo_${g.id}`));
+  const [game, setGame] = useState<typeof GAMES[number]["id"]>("assunto");
+  const [courses, setCourses] = useState<C[]>([]);
+  const [courseId, setCourseId] = useState("");
+  const [lessons, setLessons] = useState<L[]>([]);
+  const [topic, setTopic] = useState("");
+
+  useEffect(() => {
+    supabase.from("courses").select("id,title,area,level").eq("published", true)
+      .then(({ data }) => setCourses(((data ?? []) as C[]).sort((a, b) => a.title.localeCompare(b.title, "pt-BR", { numeric: true }))));
+  }, []);
+  const levelCourses = courses.filter((c) => c.level === level);
+  useEffect(() => { setCourseId(""); setTopic(""); }, [level]);
+  useEffect(() => {
+    setLessons([]); setTopic("");
+    if (!courseId) return;
+    const c = courses.find((x) => x.id === courseId);
+    if (c && AREAS.some((a) => a.value === c.area)) setArea(c.area as AreaValue);
+    supabase.from("course_lessons").select("id,title").eq("course_id", courseId).order("order_index")
+      .then(({ data }) => setLessons((data ?? []) as L[]));
+  }, [courseId]);
+
+  const termLevel = (level === "olimpiada" ? "fundamental" : level) as LevelValue;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-violet-50 p-4">
       <div className="max-w-4xl mx-auto">
         <Button variant="ghost" onClick={() => navigate("/aula")} className="mb-3"><ArrowLeft size={16} className="mr-1" />Voltar</Button>
-
-        
-
 
         <Card className="p-4 mb-4 space-y-4">
           <div>
@@ -43,6 +66,24 @@ export default function Treino() {
                   {l.emoji} {l.label}
                 </button>
               ))}
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-3">
+            <div>
+              <div className="font-bold mb-2 text-sm">Curso</div>
+              <select value={courseId} onChange={(e) => setCourseId(e.target.value)} className="w-full border rounded-lg px-3 py-2 text-sm bg-background">
+                <option value="">— Escolha um curso deste nível —</option>
+                {levelCourses.map((c) => <option key={c.id} value={c.id}>{c.title}</option>)}
+              </select>
+              {!levelCourses.length && <div className="text-xs text-muted-foreground mt-1">Nenhum curso neste nível ainda.</div>}
+            </div>
+            <div>
+              <div className="font-bold mb-2 text-sm">Assunto</div>
+              <select value={topic} onChange={(e) => setTopic(e.target.value)} disabled={!lessons.length} className="w-full border rounded-lg px-3 py-2 text-sm bg-background">
+                <option value="">— Escolha o assunto —</option>
+                {lessons.map((l) => <option key={l.id} value={l.title}>{l.title}</option>)}
+              </select>
             </div>
           </div>
 
@@ -74,7 +115,6 @@ export default function Treino() {
           <div>
             <div className="font-bold mb-2 text-sm">Jogo</div>
             <div className="flex flex-wrap gap-2">
-              {games.length === 0 && <span className="text-sm text-muted-foreground">Nenhum jogo liberado pelo professor.</span>}
               {games.map((g) => (
                 <button key={g.id} onClick={() => setGame(g.id)}
                   className={`px-3 py-2 rounded-lg text-sm font-bold border-2 transition ${game === g.id ? "bg-[#4C1D95] text-white border-[#4C1D95]" : "bg-white border-slate-200"}`}>
@@ -85,7 +125,8 @@ export default function Treino() {
           </div>
         </Card>
 
-        {game === "forca" && can("jogo_forca") && <Forca area={area} level={level} difficulty={difficulty} />}
+        {game === "assunto" && (topic ? <CursoQuiz topic={topic} /> : <Card className="p-6 text-sm text-muted-foreground">Escolha um curso e um assunto acima para jogar com as questões dele.</Card>)}
+        {game === "forca" && can("jogo_forca") && <Forca area={area} level={termLevel} difficulty={difficulty} />}
         {game === "caca" && can("jogo_caca") && <CacaPalavras area={area} />}
         {game === "memoria" && can("jogo_memoria") && <Memoria area={area} />}
       </div>
