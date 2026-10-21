@@ -8,9 +8,9 @@ import { Input } from "@/components/ui/input";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { toast } from "sonner";
 import { areaMeta, genCode, LEVELS } from "@/lib/aula";
-import { BookOpen, Trophy, Medal, ChevronDown, ChevronUp } from "lucide-react";
+import { BookOpen, Trophy, Medal, ChevronDown, ChevronUp, Pencil, ImagePlus } from "lucide-react";
 
-type Q = { id: string; question: string; options: any; correct_index: number; explanation: string | null; area: string; difficulty: number; school_level: string; topic: string | null; lesson: string | null };
+type Q = { id: string; question: string; options: any; correct_index: number; explanation: string | null; area: string; difficulty: number; school_level: string; topic: string | null; lesson: string | null; image_url: string | null };
 type Group = { key: string; area: string; items: Q[] };
 
 /** Banco de questões agrupado por assunto, com envio para campeonato (sala) ou olimpíada. */
@@ -24,9 +24,34 @@ export function QuestionBankByTopic({ userId }: { userId: string }) {
   const [olyDialog, setOlyDialog] = useState<Group | null>(null);
   const [olyId, setOlyId] = useState("");
   const [olyTitle, setOlyTitle] = useState("");
+  const [edit, setEdit] = useState<Q | null>(null);
+  const [saving, setSaving] = useState(false);
+
+  const uploadImage = async (q: Q, file: File) => {
+    const path = `questions/${q.id}-${Date.now()}.${file.name.split(".").pop()}`;
+    const { error } = await supabase.storage.from("course-materials").upload(path, file);
+    if (error) return toast.error(error.message);
+    const { data: signed } = await supabase.storage.from("course-materials").createSignedUrl(path, 60 * 60 * 24 * 365 * 10);
+    const url = signed?.signedUrl ?? null;
+    if (edit && edit.id === q.id) setEdit({ ...edit, image_url: url });
+    else await saveQ({ ...q, image_url: url });
+  };
+
+  const saveQ = async (q: Q) => {
+    setSaving(true);
+    const { error } = await supabase.from("chem_questions").update({
+      question: q.question, options: q.options, correct_index: q.correct_index, explanation: q.explanation,
+      difficulty: q.difficulty, school_level: q.school_level, lesson: q.lesson, image_url: q.image_url,
+    } as any).eq("id", q.id);
+    setSaving(false);
+    if (error) return toast.error(error.message);
+    setQs((all) => all.map((x) => (x.id === q.id ? q : x)));
+    toast.success("Questão salva");
+    setEdit(null);
+  };
 
   useEffect(() => {
-    supabase.from("chem_questions").select("id,question,options,correct_index,explanation,area,difficulty,school_level,topic,lesson")
+    supabase.from("chem_questions").select("id,question,options,correct_index,explanation,area,difficulty,school_level,topic,lesson,image_url")
       .order("created_at", { ascending: false }).limit(1000).then(({ data }) => setQs((data ?? []) as Q[]));
     supabase.from("olympiads").select("id,acronym,name").order("acronym").then(({ data }) => setOlympiads(data ?? []));
   }, []);
@@ -99,9 +124,15 @@ export function QuestionBankByTopic({ userId }: { userId: string }) {
               {isOpen && (
                 <div className="border-t p-3 space-y-1">
                   {g.items.sort((a, b) => a.difficulty - b.difficulty).map((q) => (
-                    <label key={q.id} className="flex items-start gap-2 text-sm py-1">
+                    <div key={q.id} className="flex items-start gap-2 text-sm py-1">
                       <input type="checkbox" checked={selected.has(q.id)} onChange={() => toggle(q.id)} className="mt-1" />
+                      {q.image_url && <img src={q.image_url} alt="" className="w-10 h-10 object-cover rounded" />}
                       <span className="flex-1">{q.question}</span>
+                      <label className="cursor-pointer text-muted-foreground hover:text-foreground" title="Adicionar imagem">
+                        <ImagePlus size={16} />
+                        <input type="file" accept="image/*" className="hidden" onChange={(e) => e.target.files?.[0] && uploadImage(q, e.target.files[0])} />
+                      </label>
+                      <button type="button" title="Editar" onClick={(e) => { e.preventDefault(); setEdit({ ...q, options: Array.isArray(q.options) ? [...q.options] : [] }); }} className="text-muted-foreground hover:text-foreground"><Pencil size={16} /></button>
                       <span className="text-xs text-muted-foreground whitespace-nowrap">{"★".repeat(q.difficulty)} · {LEVELS.find((l) => l.value === q.school_level)?.label ?? q.school_level}</span>
                     </label>
                   ))}
@@ -124,6 +155,41 @@ export function QuestionBankByTopic({ userId }: { userId: string }) {
             <div className="text-xs text-muted-foreground">{olyDialog && pickIds(olyDialog).length} questões serão enviadas.</div>
             <Button className="w-full" onClick={toOlympiad}>Criar prova</Button>
           </div>
+        </DialogContent>
+      </Dialog>
+      <Dialog open={!!edit} onOpenChange={(o) => !o && setEdit(null)}>
+        <DialogContent className="max-h-[90vh] overflow-y-auto">
+          <DialogHeader><DialogTitle>Editar questão</DialogTitle></DialogHeader>
+          {edit && (
+            <div className="space-y-3 text-sm">
+              <textarea className="w-full border rounded-md p-2 bg-background" rows={3} value={edit.question} onChange={(e) => setEdit({ ...edit, question: e.target.value })} />
+              {(edit.options as string[]).map((o, k) => (
+                <div key={k} className="flex items-center gap-2">
+                  <input type="radio" checked={edit.correct_index === k} onChange={() => setEdit({ ...edit, correct_index: k })} title="Resposta certa" />
+                  <Input value={o} onChange={(e) => setEdit({ ...edit, options: (edit.options as string[]).map((x, j) => (j === k ? e.target.value : x)) })} />
+                </div>
+              ))}
+              <textarea className="w-full border rounded-md p-2 bg-background" rows={2} placeholder="Explicação" value={edit.explanation ?? ""} onChange={(e) => setEdit({ ...edit, explanation: e.target.value || null })} />
+              <Input placeholder="Assunto (aula)" value={edit.lesson ?? ""} onChange={(e) => setEdit({ ...edit, lesson: e.target.value || null })} />
+              <div className="grid grid-cols-2 gap-2">
+                <select className="border rounded-md p-2 bg-background" value={edit.difficulty} onChange={(e) => setEdit({ ...edit, difficulty: +e.target.value })}>
+                  {[1, 2, 3, 4, 5].map((d) => <option key={d} value={d}>{"★".repeat(d)}</option>)}
+                </select>
+                <select className="border rounded-md p-2 bg-background" value={edit.school_level} onChange={(e) => setEdit({ ...edit, school_level: e.target.value })}>
+                  {LEVELS.map((l) => <option key={l.value} value={l.value}>{l.label}</option>)}
+                </select>
+              </div>
+              <div className="space-y-1">
+                <div className="font-semibold">Imagem</div>
+                {edit.image_url && <img src={edit.image_url} alt="" className="max-h-40 rounded" />}
+                <div className="flex gap-2">
+                  <Input type="file" accept="image/*" onChange={(e) => e.target.files?.[0] && uploadImage(edit, e.target.files[0])} />
+                  {edit.image_url && <Button variant="outline" size="sm" onClick={() => setEdit({ ...edit, image_url: null })}>Remover</Button>}
+                </div>
+              </div>
+              <Button className="w-full" disabled={saving} onClick={() => saveQ(edit)}>{saving ? "Salvando…" : "Salvar"}</Button>
+            </div>
+          )}
         </DialogContent>
       </Dialog>
     </Card>
