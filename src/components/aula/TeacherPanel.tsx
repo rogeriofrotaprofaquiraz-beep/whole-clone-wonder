@@ -10,6 +10,7 @@ import { toast } from "sonner";
 import { AREAS, MODES, genCode, areaMeta, AreaValue, LEVELS, LevelValue, DIFFICULTIES } from "@/lib/aula";
 import { Sparkles, Play, Copy, Loader2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { QuestionBankByTopic } from "./QuestionBankByTopic";
 
 export function TeacherPanel({ userId }: { userId: string }) {
   const navigate = useNavigate();
@@ -216,6 +217,9 @@ export function TeacherPanel({ userId }: { userId: string }) {
         <p className="text-xs text-muted-foreground mt-2">"Quiz" alimenta o Quiz competitivo. "Termos" alimenta Forca, Caça-palavras e Memória (treino solo).</p>
       </Card>
 
+
+
+      <QuestionBankByTopic userId={userId} />
 
 
 

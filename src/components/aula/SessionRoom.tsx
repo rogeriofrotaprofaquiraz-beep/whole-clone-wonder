@@ -135,11 +135,20 @@ export function SessionRoom({ code, isHost }: { code: string; isHost: boolean })
   // ---------- Host actions ----------
   const nextQuestion = async () => {
     const usedIds = answers.map((a) => a.question_id).filter(Boolean);
-    let query = supabase.from("chem_questions").select("*").eq("area", session.area).limit(50);
-    const { data: pool } = await query;
-    const candidates = (pool ?? []).filter((q) => q.id !== session.current_question_id);
-    if (!candidates.length) { toast.error("Sem mais questões nessa área"); return; }
-    const pick = candidates[Math.floor(Math.random() * candidates.length)];
+    const fixedIds: string[] = Array.isArray(session.settings?.question_ids) ? session.settings.question_ids : [];
+    let pick: any;
+    if (fixedIds.length) {
+      const id = fixedIds[session.current_round];
+      if (!id) return finishSession();
+      const { data } = await supabase.from("chem_questions").select("*").eq("id", id).maybeSingle();
+      pick = data;
+      if (!pick) { toast.error("Questão não encontrada"); return; }
+    } else {
+      const { data: pool } = await supabase.from("chem_questions").select("*").eq("area", session.area).limit(50);
+      const candidates = (pool ?? []).filter((q) => q.id !== session.current_question_id);
+      if (!candidates.length) { toast.error("Sem mais questões nessa área"); return; }
+      pick = candidates[Math.floor(Math.random() * candidates.length)];
+    }
     const nextRound = session.current_round + 1;
     if (nextRound > session.total_rounds) { return finishSession(); }
     await supabase.from("game_sessions").update({
