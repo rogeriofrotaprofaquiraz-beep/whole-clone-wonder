@@ -85,6 +85,13 @@
       "when": 1793553702009,
       "tag": "0011_game_results_assignments",
       "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "7",
+      "when": 1793555254060,
+      "tag": "0012_profile_registration_approval",
+      "breakpoints": true
     }
   ]
 }
