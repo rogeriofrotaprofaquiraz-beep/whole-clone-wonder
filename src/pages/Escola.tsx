@@ -285,44 +285,44 @@ export default function Escola() {
   const canTeach = role === "admin" || role === "teacher";
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white p-4 md:p-8">
+    <div className="min-h-screen bg-slate-300 text-slate-900 p-4 md:p-8" style={{ fontFamily: "'Amasis MT', 'Amasis MT Pro', Georgia, serif" }}>
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center justify-between mb-6">
-          <Link to="/"><Button variant="ghost" className="text-white"><ArrowLeft className="w-4 h-4 mr-2"/>Voltar</Button></Link>
+          <Link to="/"><Button variant="ghost" className="text-slate-900"><ArrowLeft className="w-4 h-4 mr-2"/>Voltar</Button></Link>
           <h1 className="text-2xl md:text-3xl font-black italic uppercase">Escola</h1>
           <div/>
         </div>
 
         {/* Aluno: entrar com código */}
-        <Card className="bg-slate-900/60 border-white/20 mb-6">
-          <CardHeader><CardTitle className="text-base font-black uppercase tracking-widest text-white">Entrar em uma turma</CardTitle></CardHeader>
+        <Card className="bg-slate-200 border-slate-300 mb-6">
+          <CardHeader><CardTitle className="text-base font-black uppercase tracking-widest text-slate-900">Entrar em uma turma</CardTitle></CardHeader>
           <CardContent className="flex gap-2">
-            <Input placeholder="Código de convite" value={joinCode} onChange={(e) => setJoinCode(e.target.value.toUpperCase())} className="bg-slate-950 border-white/20 uppercase text-white font-bold placeholder:text-white/60"/>
+            <Input placeholder="Código de convite" value={joinCode} onChange={(e) => setJoinCode(e.target.value.toUpperCase())} className="bg-white border-slate-300 uppercase text-slate-900 font-bold placeholder:text-slate-500"/>
             <Button onClick={joinByCode}><UserPlus className="w-4 h-4 mr-1"/>Entrar</Button>
           </CardContent>
         </Card>
 
         {canTeach && (
           <div className="grid md:grid-cols-2 gap-6 mb-6">
-            <Card className="bg-slate-900/60 border-white/20">
-              <CardHeader><CardTitle className="text-base font-black uppercase tracking-widest flex items-center gap-2 text-white"><School className="w-4 h-4"/>Nova Escola</CardTitle></CardHeader>
+            <Card className="bg-slate-200 border-slate-300">
+              <CardHeader><CardTitle className="text-base font-black uppercase tracking-widest flex items-center gap-2 text-slate-900"><School className="w-4 h-4"/>Nova Escola</CardTitle></CardHeader>
               <CardContent className="space-y-2">
-                <Input placeholder="Nome da escola" value={newSchool.name} onChange={e => setNewSchool({ ...newSchool, name: e.target.value })} className="bg-slate-950 border-white/20 text-white font-bold placeholder:text-white/60"/>
-                <Input placeholder="Cidade" value={newSchool.city} onChange={e => setNewSchool({ ...newSchool, city: e.target.value })} className="bg-slate-950 border-white/20 text-white font-bold placeholder:text-white/60"/>
+                <Input placeholder="Nome da escola" value={newSchool.name} onChange={e => setNewSchool({ ...newSchool, name: e.target.value })} className="bg-white border-slate-300 text-slate-900 font-bold placeholder:text-slate-500"/>
+                <Input placeholder="Cidade" value={newSchool.city} onChange={e => setNewSchool({ ...newSchool, city: e.target.value })} className="bg-white border-slate-300 text-slate-900 font-bold placeholder:text-slate-500"/>
                 <Button onClick={createSchool} className="w-full"><Plus className="w-4 h-4 mr-1"/>Criar Escola</Button>
               </CardContent>
             </Card>
 
-            <Card className="bg-slate-900/60 border-white/20">
-              <CardHeader><CardTitle className="text-base font-black uppercase tracking-widest flex items-center gap-2 text-white"><Users className="w-4 h-4"/>Nova Turma (6º–9º)</CardTitle></CardHeader>
+            <Card className="bg-slate-200 border-slate-300">
+              <CardHeader><CardTitle className="text-base font-black uppercase tracking-widest flex items-center gap-2 text-slate-900"><Users className="w-4 h-4"/>Nova Turma (6º–9º)</CardTitle></CardHeader>
               <CardContent className="space-y-2">
                 <Select value={newClass.school_id} onValueChange={v => setNewClass({ ...newClass, school_id: v })}>
-                  <SelectTrigger className="bg-slate-950 border-white/20 text-white font-bold"><SelectValue placeholder="Selecione a escola"/></SelectTrigger>
+                  <SelectTrigger className="bg-white border-slate-300 text-slate-900 font-bold"><SelectValue placeholder="Selecione a escola"/></SelectTrigger>
                   <SelectContent>{schools.map(s => <SelectItem key={s.id} value={s.id}>{s.name}</SelectItem>)}</SelectContent>
                 </Select>
-                <Input placeholder="Nome da turma (ex: A, B…)" value={newClass.name} onChange={e => setNewClass({ ...newClass, name: e.target.value })} className="bg-slate-950 border-white/20 text-white font-bold placeholder:text-white/60"/>
+                <Input placeholder="Nome da turma (ex: A, B…)" value={newClass.name} onChange={e => setNewClass({ ...newClass, name: e.target.value })} className="bg-white border-slate-300 text-slate-900 font-bold placeholder:text-slate-500"/>
                 <Select value={String(newClass.grade_year)} onValueChange={v => setNewClass({ ...newClass, grade_year: Number(v) })}>
-                  <SelectTrigger className="bg-slate-950 border-white/20 text-white font-bold"><SelectValue placeholder="Ano"/></SelectTrigger>
+                  <SelectTrigger className="bg-white border-slate-300 text-slate-900 font-bold"><SelectValue placeholder="Ano"/></SelectTrigger>
                   <SelectContent>{[6,7,8,9].map(g => <SelectItem key={g} value={String(g)}>{g}º ano</SelectItem>)}</SelectContent>
                 </Select>
                 <Button onClick={createClass} className="w-full"><Plus className="w-4 h-4 mr-1"/>Criar Turma</Button>
@@ -332,21 +332,21 @@ export default function Escola() {
         )}
 
         <div className="grid md:grid-cols-3 gap-6">
-          <Card className="bg-slate-900/60 border-white/10 md:col-span-1">
+          <Card className="bg-slate-200 border-slate-300 md:col-span-1">
             <CardHeader><CardTitle className="text-sm font-black uppercase tracking-widest">Turmas</CardTitle></CardHeader>
             <CardContent className="space-y-2 max-h-[500px] overflow-y-auto">
-              {classes.length === 0 && <p className="text-xs text-white/50">Nenhuma turma ainda.</p>}
+              {classes.length === 0 && <p className="text-xs text-slate-600">Nenhuma turma ainda.</p>}
               {classes.map(c => {
                 const sch = schools.find(s => s.id === c.school_id);
                 return (
-                  <button key={c.id} onClick={() => loadClassDetails(c)} className={`w-full text-left p-3 rounded-xl border ${activeClass?.id === c.id ? "bg-violet-600/20 border-violet-500" : "bg-slate-950/60 border-white/10"}`}>
+                  <button key={c.id} onClick={() => loadClassDetails(c)} className={`w-full text-left p-3 rounded-xl border ${activeClass?.id === c.id ? "bg-violet-600/20 border-violet-500" : "bg-slate-100 border-slate-300"}`}>
                     <div className="font-bold text-sm">{c.name} <Badge variant="outline" className="ml-1 text-[10px]">{c.grade_year}º ano</Badge></div>
-                    <div className="text-[10px] text-white/50">{sch?.name ?? "—"}</div>
-                    <div className="text-[10px] text-amber-300 mt-1 flex items-center gap-2">
+                    <div className="text-[10px] text-slate-600">{sch?.name ?? "—"}</div>
+                    <div className="text-[10px] text-amber-700 mt-1 flex items-center gap-2">
                       <span className="font-mono">{c.invite_code}</span>
                       <Copy className="w-3 h-3 cursor-pointer" onClick={(e) => { e.stopPropagation(); navigator.clipboard.writeText(c.invite_code); toast.success("Código copiado"); }}/>
-                      <QrCode className="w-3 h-3 cursor-pointer text-cyan-300" onClick={(e) => { e.stopPropagation(); setQrClass(c); }}/>
-                      <span title="Jogos permitidos" className="inline-flex items-center gap-0.5 cursor-pointer text-emerald-300" onClick={(e) => { e.stopPropagation(); setGamesClass(c); }}><Gamepad2 className="w-3 h-3"/> jogos</span>
+                      <QrCode className="w-3 h-3 cursor-pointer text-cyan-700" onClick={(e) => { e.stopPropagation(); setQrClass(c); }}/>
+                      <span title="Jogos permitidos" className="inline-flex items-center gap-0.5 cursor-pointer text-emerald-700" onClick={(e) => { e.stopPropagation(); setGamesClass(c); }}><Gamepad2 className="w-3 h-3"/> jogos</span>
                     </div>
                   </button>
                 );
@@ -357,18 +357,18 @@ export default function Escola() {
           <div className="md:col-span-2 space-y-6">
             {activeClass ? (
               <>
-                <Card className="bg-slate-900/60 border-white/10">
+                <Card className="bg-slate-200 border-slate-300">
                   <CardHeader><CardTitle className="text-sm font-black uppercase tracking-widest">Alunos — {activeClass.name}</CardTitle></CardHeader>
                   <CardContent>
                     {canTeach && (
                       <div className="flex gap-2 mb-3">
-                        <Input placeholder="e-mails separados por vírgula" value={emailsRaw} onChange={e => setEmailsRaw(e.target.value)} className="bg-slate-950 border-white/10"/>
+                        <Input placeholder="e-mails separados por vírgula" value={emailsRaw} onChange={e => setEmailsRaw(e.target.value)} className="bg-white border-slate-300"/>
                         <Button onClick={addStudentsByEmail}><UserPlus className="w-4 h-4"/></Button>
                       </div>
                     )}
                     {canTeach && members.some(m => m.status === "pending") && (
                       <div className="mb-3 p-2 rounded-lg border border-amber-500/40 bg-amber-500/10">
-                        <div className="text-[11px] font-black uppercase text-amber-300 mb-1">Solicitações pendentes</div>
+                        <div className="text-[11px] font-black uppercase text-amber-700 mb-1">Solicitações pendentes</div>
                         <div className="space-y-1">
                           {members.filter(m => m.status === "pending").map(m => (
                             <div key={m.user_id} className="flex items-center justify-between text-xs">
@@ -383,13 +383,13 @@ export default function Escola() {
                       </div>
                     )}
                     <div className="space-y-1 max-h-[300px] overflow-y-auto">
-                      {members.filter(m => m.status === "approved").length === 0 && <p className="text-xs text-white/50">Sem alunos aprovados. Compartilhe o código <strong className="text-amber-300">{activeClass.invite_code}</strong> ou o QR Code.</p>}
+                      {members.filter(m => m.status === "approved").length === 0 && <p className="text-xs text-slate-600">Sem alunos aprovados. Compartilhe o código <strong className="text-amber-700">{activeClass.invite_code}</strong> ou o QR Code.</p>}
                       {members.filter(m => m.status === "approved").map(m => (
-                        <div key={m.user_id} className="flex items-center justify-between bg-slate-950/60 border border-white/10 rounded-lg px-3 py-2 text-xs">
+                        <div key={m.user_id} className="flex items-center justify-between bg-slate-100 border border-slate-300 rounded-lg px-3 py-2 text-xs">
                           <span>@{m.username} <Badge variant="outline" className="ml-2 text-[9px]">{m.role}</Badge></span>
                           <div className="flex gap-1">
                             {role === "admin" && (
-                              <Button size="sm" variant="ghost" onClick={() => openEdit(m.user_id)} title="Editar cadastro"><Pencil className="w-3 h-3 text-cyan-300"/></Button>
+                              <Button size="sm" variant="ghost" onClick={() => openEdit(m.user_id)} title="Editar cadastro"><Pencil className="w-3 h-3 text-cyan-700"/></Button>
                             )}
                             {canTeach && <Button size="sm" variant="ghost" onClick={() => removeMember(m.user_id)}><Trash2 className="w-3 h-3 text-rose-400"/></Button>}
                           </div>
@@ -399,19 +399,19 @@ export default function Escola() {
                   </CardContent>
                 </Card>
 
-                <Card className="bg-slate-900/60 border-white/10">
+                <Card className="bg-slate-200 border-slate-300">
                   <CardHeader><CardTitle className="text-sm font-black uppercase tracking-widest">Equipes</CardTitle></CardHeader>
                   <CardContent>
                     {canTeach && (
                       <div className="flex gap-2 mb-3">
-                        <Input placeholder="Nome da equipe" value={newTeam.name} onChange={e => setNewTeam({ ...newTeam, name: e.target.value })} className="bg-slate-950 border-white/10"/>
-                        <input type="color" value={newTeam.color} onChange={e => setNewTeam({ ...newTeam, color: e.target.value })} className="w-12 h-10 rounded bg-slate-950 border border-white/10"/>
+                        <Input placeholder="Nome da equipe" value={newTeam.name} onChange={e => setNewTeam({ ...newTeam, name: e.target.value })} className="bg-white border-slate-300"/>
+                        <input type="color" value={newTeam.color} onChange={e => setNewTeam({ ...newTeam, color: e.target.value })} className="w-12 h-10 rounded bg-white border border-slate-300"/>
                         <Button onClick={createTeam}><Plus className="w-4 h-4"/></Button>
                       </div>
                     )}
                     <div className="grid sm:grid-cols-2 gap-3">
                       {teams.map(t => (
-                        <div key={t.id} className="bg-slate-950/60 border border-white/10 rounded-xl p-3">
+                        <div key={t.id} className="bg-slate-100 border border-slate-300 rounded-xl p-3">
                           <div className="flex items-center justify-between mb-2">
                             <div className="flex items-center gap-2">
                               <span className="w-3 h-3 rounded-full" style={{ background: t.color }}/>
@@ -423,7 +423,7 @@ export default function Escola() {
                             {members.map(m => {
                               const inTeam = (teamMembers[t.id] ?? []).includes(m.user_id);
                               return canTeach ? (
-                                <label key={m.user_id} className="flex items-center gap-2 text-[11px] cursor-pointer hover:bg-white/5 rounded px-1">
+                                <label key={m.user_id} className="flex items-center gap-2 text-[11px] cursor-pointer hover:bg-slate-200 rounded px-1">
                                   <input type="checkbox" checked={inTeam} onChange={() => toggleTeamMember(t.id, m.user_id)}/>
                                   @{m.username}
                                 </label>
@@ -432,13 +432,13 @@ export default function Escola() {
                           </div>
                         </div>
                       ))}
-                      {teams.length === 0 && <p className="text-xs text-white/50">Nenhuma equipe ainda.</p>}
+                      {teams.length === 0 && <p className="text-xs text-slate-600">Nenhuma equipe ainda.</p>}
                     </div>
                   </CardContent>
                 </Card>
               </>
             ) : (
-              <div className="text-white/50 text-sm p-8 text-center bg-slate-900/30 rounded-xl border border-dashed border-white/10">
+              <div className="text-slate-600 text-sm p-8 text-center bg-slate-100 rounded-xl border border-dashed border-slate-300">
                 Selecione uma turma à esquerda para ver alunos e equipes.
               </div>
             )}
@@ -447,9 +447,9 @@ export default function Escola() {
       </div>
 
       <Dialog open={!!qrClass} onOpenChange={(o) => !o && setQrClass(null)}>
-        <DialogContent className="bg-slate-900 border-white/20 text-white max-w-md">
+        <DialogContent className="bg-slate-100 border-slate-300 text-slate-900 max-w-md">
           <DialogHeader>
-            <DialogTitle className="font-black uppercase tracking-widest text-white">QR Code — Turma {qrClass?.name}</DialogTitle>
+            <DialogTitle className="font-black uppercase tracking-widest text-slate-900">QR Code — Turma {qrClass?.name}</DialogTitle>
           </DialogHeader>
           {qrClass && (
             <div className="flex flex-col items-center gap-4 py-4">
@@ -457,48 +457,48 @@ export default function Escola() {
                 <QRCodeSVG value={buildJoinUrl(qrClass.invite_code)} size={240} level="M"/>
               </div>
               <div className="text-center">
-                <div className="text-xs text-white/60 uppercase tracking-widest font-bold">Código</div>
-                <div className="font-mono text-3xl font-black tracking-widest text-amber-300">{qrClass.invite_code}</div>
+                <div className="text-xs text-slate-600 uppercase tracking-widest font-bold">Código</div>
+                <div className="font-mono text-3xl font-black tracking-widest text-amber-700">{qrClass.invite_code}</div>
               </div>
-              <div className="text-[11px] text-white/70 text-center font-bold break-all">{buildJoinUrl(qrClass.invite_code)}</div>
+              <div className="text-[11px] text-slate-600 text-center font-bold break-all">{buildJoinUrl(qrClass.invite_code)}</div>
               <Button onClick={() => { navigator.clipboard.writeText(buildJoinUrl(qrClass.invite_code)); toast.success("Link copiado"); }} className="w-full">
                 <Copy className="w-4 h-4 mr-2"/>Copiar link de convite
               </Button>
-              <p className="text-[11px] text-white/60 text-center">Alunos escaneiam o QR ou digitam o código. A entrada precisa ser <strong className="text-amber-300">aprovada pelo professor</strong>.</p>
+              <p className="text-[11px] text-slate-600 text-center">Alunos escaneiam o QR ou digitam o código. A entrada precisa ser <strong className="text-amber-700">aprovada pelo professor</strong>.</p>
             </div>
           )}
         </DialogContent>
       </Dialog>
 
       <Dialog open={!!editStudent} onOpenChange={(o) => !o && setEditStudent(null)}>
-        <DialogContent className="bg-slate-900 border-white/20 text-white max-w-md">
+        <DialogContent className="bg-slate-100 border-slate-300 text-slate-900 max-w-md">
           <DialogHeader>
             <DialogTitle className="font-black uppercase tracking-widest">Editar Aluno</DialogTitle>
           </DialogHeader>
           {editStudent && (
             <div className="space-y-3 py-2">
               <div>
-                <label className="text-[11px] font-black uppercase text-white/70">Nome de usuário</label>
-                <Input value={editStudent.username} onChange={e => setEditStudent({ ...editStudent, username: e.target.value })} className="bg-slate-950 border-white/20 text-white font-bold"/>
+                <label className="text-[11px] font-black uppercase text-slate-600">Nome de usuário</label>
+                <Input value={editStudent.username} onChange={e => setEditStudent({ ...editStudent, username: e.target.value })} className="bg-white border-slate-300 text-slate-900 font-bold"/>
               </div>
               <div className="grid grid-cols-3 gap-2">
                 <div>
-                  <label className="text-[11px] font-black uppercase text-white/70">Nível</label>
-                  <Input type="number" value={editStudent.level} onChange={e => setEditStudent({ ...editStudent, level: parseInt(e.target.value) || 0 })} className="bg-slate-950 border-white/20 text-white font-bold"/>
+                  <label className="text-[11px] font-black uppercase text-slate-600">Nível</label>
+                  <Input type="number" value={editStudent.level} onChange={e => setEditStudent({ ...editStudent, level: parseInt(e.target.value) || 0 })} className="bg-white border-slate-300 text-slate-900 font-bold"/>
                 </div>
                 <div>
-                  <label className="text-[11px] font-black uppercase text-white/70">XP</label>
-                  <Input type="number" value={editStudent.xp} onChange={e => setEditStudent({ ...editStudent, xp: parseInt(e.target.value) || 0 })} className="bg-slate-950 border-white/20 text-white font-bold"/>
+                  <label className="text-[11px] font-black uppercase text-slate-600">XP</label>
+                  <Input type="number" value={editStudent.xp} onChange={e => setEditStudent({ ...editStudent, xp: parseInt(e.target.value) || 0 })} className="bg-white border-slate-300 text-slate-900 font-bold"/>
                 </div>
                 <div>
-                  <label className="text-[11px] font-black uppercase text-white/70">Átomos</label>
-                  <Input type="number" value={editStudent.coins} onChange={e => setEditStudent({ ...editStudent, coins: parseInt(e.target.value) || 0 })} className="bg-slate-950 border-white/20 text-white font-bold"/>
+                  <label className="text-[11px] font-black uppercase text-slate-600">Átomos</label>
+                  <Input type="number" value={editStudent.coins} onChange={e => setEditStudent({ ...editStudent, coins: parseInt(e.target.value) || 0 })} className="bg-white border-slate-300 text-slate-900 font-bold"/>
                 </div>
               </div>
               <div>
-                <label className="text-[11px] font-black uppercase text-white/70">Papel na turma</label>
+                <label className="text-[11px] font-black uppercase text-slate-600">Papel na turma</label>
                 <Select value={editStudent.class_role} onValueChange={v => setEditStudent({ ...editStudent, class_role: v })}>
-                  <SelectTrigger className="bg-slate-950 border-white/20 text-white font-bold"><SelectValue/></SelectTrigger>
+                  <SelectTrigger className="bg-white border-slate-300 text-slate-900 font-bold"><SelectValue/></SelectTrigger>
                   <SelectContent>
                     <SelectItem value="student">Aluno</SelectItem>
                     <SelectItem value="assistant">Monitor</SelectItem>
@@ -507,60 +507,60 @@ export default function Escola() {
                 </Select>
               </div>
               <div>
-                <label className="text-[11px] font-black uppercase text-white/70">E-mail do aluno</label>
-                <Input type="email" value={editStudent.email} onChange={e => setEditStudent({ ...editStudent, email: e.target.value })} className="bg-slate-950 border-white/20 text-white font-bold"/>
+                <label className="text-[11px] font-black uppercase text-slate-600">E-mail do aluno</label>
+                <Input type="email" value={editStudent.email} onChange={e => setEditStudent({ ...editStudent, email: e.target.value })} className="bg-white border-slate-300 text-slate-900 font-bold"/>
               </div>
-              <label className="flex items-center gap-2 text-sm font-bold text-white cursor-pointer">
+              <label className="flex items-center gap-2 text-sm font-bold text-slate-900 cursor-pointer">
                 <input type="checkbox" checked={editStudent.is_olympiad} onChange={e => setEditStudent({ ...editStudent, is_olympiad: e.target.checked })} className="h-4 w-4"/>
                 🏅 Aluno de olimpíada
               </label>
-              <div className="border-t border-white/10 pt-3 space-y-2">
-                <p className="text-[11px] font-black uppercase tracking-widest text-cyan-300">Responsável</p>
+              <div className="border-t border-slate-300 pt-3 space-y-2">
+                <p className="text-[11px] font-black uppercase tracking-widest text-cyan-700">Responsável</p>
                 <div className="grid grid-cols-2 gap-2">
                   <div>
-                    <label className="text-[11px] font-black uppercase text-white/70">Nome</label>
-                    <Input value={editStudent.guardian_name} onChange={e => setEditStudent({ ...editStudent, guardian_name: e.target.value })} className="bg-slate-950 border-white/20 text-white font-bold"/>
+                    <label className="text-[11px] font-black uppercase text-slate-600">Nome</label>
+                    <Input value={editStudent.guardian_name} onChange={e => setEditStudent({ ...editStudent, guardian_name: e.target.value })} className="bg-white border-slate-300 text-slate-900 font-bold"/>
                   </div>
                   <div>
-                    <label className="text-[11px] font-black uppercase text-white/70">Parentesco</label>
-                    <Input placeholder="Mãe, pai, tutor..." value={editStudent.guardian_relationship} onChange={e => setEditStudent({ ...editStudent, guardian_relationship: e.target.value })} className="bg-slate-950 border-white/20 text-white font-bold"/>
+                    <label className="text-[11px] font-black uppercase text-slate-600">Parentesco</label>
+                    <Input placeholder="Mãe, pai, tutor..." value={editStudent.guardian_relationship} onChange={e => setEditStudent({ ...editStudent, guardian_relationship: e.target.value })} className="bg-white border-slate-300 text-slate-900 font-bold"/>
                   </div>
                   <div>
-                    <label className="text-[11px] font-black uppercase text-white/70">E-mail</label>
-                    <Input type="email" value={editStudent.guardian_email} onChange={e => setEditStudent({ ...editStudent, guardian_email: e.target.value })} className="bg-slate-950 border-white/20 text-white font-bold"/>
+                    <label className="text-[11px] font-black uppercase text-slate-600">E-mail</label>
+                    <Input type="email" value={editStudent.guardian_email} onChange={e => setEditStudent({ ...editStudent, guardian_email: e.target.value })} className="bg-white border-slate-300 text-slate-900 font-bold"/>
                   </div>
                   <div>
-                    <label className="text-[11px] font-black uppercase text-white/70">Telefone</label>
-                    <Input value={editStudent.guardian_phone} onChange={e => setEditStudent({ ...editStudent, guardian_phone: e.target.value })} className="bg-slate-950 border-white/20 text-white font-bold"/>
+                    <label className="text-[11px] font-black uppercase text-slate-600">Telefone</label>
+                    <Input value={editStudent.guardian_phone} onChange={e => setEditStudent({ ...editStudent, guardian_phone: e.target.value })} className="bg-white border-slate-300 text-slate-900 font-bold"/>
                   </div>
                 </div>
               </div>
-              <div className="border-t border-white/10 pt-3 space-y-2">
-                <p className="text-[11px] font-black uppercase tracking-widest text-amber-300">Código de Acesso</p>
+              <div className="border-t border-slate-300 pt-3 space-y-2">
+                <p className="text-[11px] font-black uppercase tracking-widest text-amber-700">Código de Acesso</p>
                 <div className="flex gap-2 items-center">
-                  <Input readOnly value={editStudent.access_code} className="bg-slate-950 border-amber-500/40 text-amber-200 font-black tracking-widest text-center"/>
-                  <Button size="sm" variant="ghost" onClick={() => { navigator.clipboard.writeText(editStudent.access_code); toast.success("Código copiado"); }} title="Copiar"><Copy className="w-4 h-4 text-white"/></Button>
+                  <Input readOnly value={editStudent.access_code} className="bg-white border-amber-500/40 text-amber-200 font-black tracking-widest text-center"/>
+                  <Button size="sm" variant="ghost" onClick={() => { navigator.clipboard.writeText(editStudent.access_code); toast.success("Código copiado"); }} title="Copiar"><Copy className="w-4 h-4 text-slate-900"/></Button>
                 </div>
                 <div className="grid grid-cols-3 gap-2">
                   <Button size="sm" variant="secondary" onClick={regenAccessCode}>Gerar novo</Button>
                   <Button size="sm" onClick={() => sendAccessCode("email")} className="bg-cyan-600 hover:bg-cyan-700">Enviar e-mail</Button>
                   <Button size="sm" onClick={() => sendAccessCode("sms")} className="bg-emerald-600 hover:bg-emerald-700">Enviar SMS</Button>
                 </div>
-                <p className="text-[10px] text-white/50">O código é gerado no cadastro. Envia por e-mail do aluno/responsável ou SMS do responsável.</p>
+                <p className="text-[10px] text-slate-600">O código é gerado no cadastro. Envia por e-mail do aluno/responsável ou SMS do responsável.</p>
                 {sendLog.length > 0 && (
-                  <div className="mt-2 max-h-32 overflow-y-auto rounded border border-white/10 bg-slate-950/60 text-xs">
-                    <div className="px-2 py-1 font-black text-white/70 uppercase tracking-wider border-b border-white/10">Log de envios</div>
+                  <div className="mt-2 max-h-32 overflow-y-auto rounded border border-slate-300 bg-slate-100 text-xs">
+                    <div className="px-2 py-1 font-black text-slate-600 uppercase tracking-wider border-b border-slate-300">Log de envios</div>
                     {sendLog.map((l, i) => (
                       <div key={i} className="px-2 py-1 flex justify-between gap-2 border-b border-white/5">
-                        <span className="font-bold text-cyan-300 uppercase">{l.channel}</span>
-                        <span className="truncate flex-1 text-white/80">{l.recipient}</span>
-                        <span className="text-white/40">{new Date(l.created_at).toLocaleString()}</span>
+                        <span className="font-bold text-cyan-700 uppercase">{l.channel}</span>
+                        <span className="truncate flex-1 text-slate-900/80">{l.recipient}</span>
+                        <span className="text-slate-900/40">{new Date(l.created_at).toLocaleString()}</span>
                       </div>
                     ))}
                   </div>
                 )}
               </div>
-              <p className="text-[10px] text-white/50">ID: {editStudent.user_id}</p>
+              <p className="text-[10px] text-slate-600">ID: {editStudent.user_id}</p>
             </div>
 
           )}
