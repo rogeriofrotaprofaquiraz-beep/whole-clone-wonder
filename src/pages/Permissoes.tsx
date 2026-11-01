@@ -289,7 +289,7 @@ export default function Permissoes({ embedded = false }: { embedded?: boolean } 
   const selectedEff = selected ? effectivePermsFor(selected.roles) : null;
 
   return (
-    <div className={embedded ? "text-white" : "min-h-screen p-4 md:p-8 text-white"}>
+    <div className={embedded ? "text-white rounded-2xl bg-slate-950 p-4 md:p-6" : "min-h-screen p-4 md:p-8 text-white"}>
       <div className={embedded ? "space-y-6" : "max-w-7xl mx-auto space-y-6"}>
         <div className="flex items-center justify-between gap-3 flex-wrap">
           <div className="flex items-center gap-3">
@@ -299,7 +299,7 @@ export default function Permissoes({ embedded = false }: { embedded?: boolean } 
               </Link>
             )}
             <div>
-              <h1 className="text-3xl font-black flex items-center gap-2">
+              <h1 className={embedded ? "text-2xl font-black flex items-center gap-2" : "text-3xl font-black flex items-center gap-2"}>
                 <Shield className="w-7 h-7 text-rose-400" /> Gestão de Usuários e Permissões
               </h1>
               <p className="text-white/70 text-sm">
@@ -321,13 +321,13 @@ export default function Permissoes({ embedded = false }: { embedded?: boolean } 
 
         <Tabs defaultValue="users" className="w-full">
           <TabsList className="bg-slate-900/60 border border-white/10">
-            <TabsTrigger value="users" className="data-[state=active]:bg-white/10">
+            <TabsTrigger value="users" className="text-white/70 data-[state=active]:bg-white/15 data-[state=active]:text-white">
               <Users className="w-4 h-4 mr-1" /> Usuários ({profiles.length})
             </TabsTrigger>
-            <TabsTrigger value="roles" className="data-[state=active]:bg-white/10">
+            <TabsTrigger value="roles" className="text-white/70 data-[state=active]:bg-white/15 data-[state=active]:text-white">
               <UserCog className="w-4 h-4 mr-1" /> Perfis
             </TabsTrigger>
-            <TabsTrigger value="matrix" className="data-[state=active]:bg-white/10">
+            <TabsTrigger value="matrix" className="text-white/70 data-[state=active]:bg-white/15 data-[state=active]:text-white">
               <Shield className="w-4 h-4 mr-1" /> Matriz de Permissões
             </TabsTrigger>
           </TabsList>
