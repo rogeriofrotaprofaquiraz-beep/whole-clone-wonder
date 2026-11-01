@@ -34,14 +34,14 @@ const ROLE_LABEL: Record<Role, string> = {
 };
 
 const ROLE_COLOR: Record<Role, string> = {
-  student: "bg-sky-500/20 border-sky-400/40 text-sky-100",
-  parent: "bg-amber-500/20 border-amber-400/40 text-amber-100",
-  teacher: "bg-emerald-500/20 border-emerald-400/40 text-emerald-100",
-  coordinator: "bg-indigo-500/20 border-indigo-400/40 text-indigo-100",
-  director: "bg-purple-500/20 border-purple-400/40 text-purple-100",
-  admin: "bg-rose-500/20 border-rose-400/40 text-rose-100",
-  moderator: "bg-orange-500/20 border-orange-400/40 text-orange-100",
-  user: "bg-slate-500/20 border-slate-400/40 text-slate-100",
+  student: "bg-sky-500/20 border-sky-400/40 text-sky-800",
+  parent: "bg-amber-500/20 border-amber-400/40 text-amber-800",
+  teacher: "bg-emerald-500/20 border-emerald-400/40 text-emerald-800",
+  coordinator: "bg-indigo-500/20 border-indigo-400/40 text-indigo-800",
+  director: "bg-purple-500/20 border-purple-400/40 text-purple-800",
+  admin: "bg-rose-500/20 border-rose-400/40 text-rose-800",
+  moderator: "bg-orange-500/20 border-orange-400/40 text-orange-800",
+  user: "bg-slate-500/20 border-slate-400/40 text-slate-800",
 };
 
 const ROLE_ORDER: Role[] = [
@@ -265,7 +265,7 @@ export default function Permissoes({ embedded = false }: { embedded?: boolean } 
 
   if (loading) {
     return (
-      <div className="min-h-screen grid place-items-center text-white">
+      <div className="min-h-screen grid place-items-center text-slate-900">
         <Loader2 className="animate-spin" />
       </div>
     );
@@ -289,20 +289,20 @@ export default function Permissoes({ embedded = false }: { embedded?: boolean } 
   const selectedEff = selected ? effectivePermsFor(selected.roles) : null;
 
   return (
-    <div className={embedded ? "text-white rounded-2xl bg-slate-950 p-4 md:p-6" : "min-h-screen p-4 md:p-8 text-white"}>
+    <div className={embedded ? "text-slate-900 rounded-2xl bg-slate-50 border border-slate-200 p-4 md:p-6" : "min-h-screen p-4 md:p-8 text-slate-900 bg-slate-50"}>
       <div className={embedded ? "space-y-6" : "max-w-7xl mx-auto space-y-6"}>
         <div className="flex items-center justify-between gap-3 flex-wrap">
           <div className="flex items-center gap-3">
             {!embedded && (
-              <Link to="/" className="inline-flex items-center gap-2 text-white/80 hover:text-white">
+              <Link to="/" className="inline-flex items-center gap-2 text-slate-600 hover:text-slate-900">
                 <ArrowLeft size={18} /> Voltar
               </Link>
             )}
             <div>
               <h1 className={embedded ? "text-2xl font-black flex items-center gap-2" : "text-3xl font-black flex items-center gap-2"}>
-                <Shield className="w-7 h-7 text-rose-400" /> Gestão de Usuários e Permissões
+                <Shield className="w-7 h-7 text-rose-600" /> Gestão de Usuários e Permissões
               </h1>
-              <p className="text-white/70 text-sm">
+              <p className="text-slate-600 text-sm">
                 Cada perfil abaixo consome direto das regras da matriz — mudanças aqui refletem
                 imediatamente no acesso dos usuários.
               </p>
@@ -320,29 +320,29 @@ export default function Permissoes({ embedded = false }: { embedded?: boolean } 
         </div>
 
         <Tabs defaultValue="users" className="w-full">
-          <TabsList className="bg-slate-900/60 border border-white/10">
-            <TabsTrigger value="users" className="text-white/70 data-[state=active]:bg-white/15 data-[state=active]:text-white">
+          <TabsList className="bg-white border border-slate-200">
+            <TabsTrigger value="users" className="text-slate-600 data-[state=active]:bg-white data-[state=active]:shadow data-[state=active]:text-slate-900">
               <Users className="w-4 h-4 mr-1" /> Usuários ({profiles.length})
             </TabsTrigger>
-            <TabsTrigger value="roles" className="text-white/70 data-[state=active]:bg-white/15 data-[state=active]:text-white">
+            <TabsTrigger value="roles" className="text-slate-600 data-[state=active]:bg-white data-[state=active]:shadow data-[state=active]:text-slate-900">
               <UserCog className="w-4 h-4 mr-1" /> Perfis
             </TabsTrigger>
-            <TabsTrigger value="matrix" className="text-white/70 data-[state=active]:bg-white/15 data-[state=active]:text-white">
+            <TabsTrigger value="matrix" className="text-slate-600 data-[state=active]:bg-white data-[state=active]:shadow data-[state=active]:text-slate-900">
               <Shield className="w-4 h-4 mr-1" /> Matriz de Permissões
             </TabsTrigger>
           </TabsList>
 
           {/* ===== USUÁRIOS ===== */}
           <TabsContent value="users" className="space-y-4 mt-4">
-            <Card className="p-4 bg-slate-900/60 border-white/10">
+            <Card className="p-4 bg-white border-slate-200">
               <div className="flex flex-wrap items-center gap-2 mb-3">
-                <Filter className="w-4 h-4 text-cyan-300" />
+                <Filter className="w-4 h-4 text-cyan-600" />
                 <button
                   onClick={() => setRoleFilter("all")}
                   className={`px-3 py-1 rounded-full text-xs border ${
                     roleFilter === "all"
-                      ? "bg-cyan-500/30 border-cyan-400"
-                      : "bg-white/5 border-white/10 hover:bg-white/10"
+                      ? "bg-cyan-200 border-cyan-400"
+                      : "bg-slate-100 border-slate-200 hover:bg-slate-200"
                   }`}
                 >
                   Todos ({roleCounts.all})
@@ -353,8 +353,8 @@ export default function Permissoes({ embedded = false }: { embedded?: boolean } 
                     onClick={() => setRoleFilter(r)}
                     className={`px-3 py-1 rounded-full text-xs border ${
                       roleFilter === r
-                        ? "bg-cyan-500/30 border-cyan-400"
-                        : "bg-white/5 border-white/10 hover:bg-white/10"
+                        ? "bg-cyan-200 border-cyan-400"
+                        : "bg-slate-100 border-slate-200 hover:bg-slate-200"
                     }`}
                   >
                     {ROLE_LABEL[r]} ({roleCounts[r] ?? 0})
@@ -364,8 +364,8 @@ export default function Permissoes({ embedded = false }: { embedded?: boolean } 
                   onClick={() => setRoleFilter("none")}
                   className={`px-3 py-1 rounded-full text-xs border ${
                     roleFilter === "none"
-                      ? "bg-cyan-500/30 border-cyan-400"
-                      : "bg-white/5 border-white/10 hover:bg-white/10"
+                      ? "bg-cyan-200 border-cyan-400"
+                      : "bg-slate-100 border-slate-200 hover:bg-slate-200"
                   }`}
                 >
                   Sem perfil ({roleCounts.none})
@@ -373,17 +373,17 @@ export default function Permissoes({ embedded = false }: { embedded?: boolean } 
                 <div className="flex-1" />
                 <Input
                   placeholder="Buscar por nome ou código"
-                  className="max-w-xs bg-slate-800 border-white/10 text-white"
+                  className="max-w-xs bg-white border-slate-200 text-slate-900"
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                 />
               </div>
 
               <div className="grid md:grid-cols-[1fr,380px] gap-4">
-                <div className="overflow-x-auto max-h-[600px] overflow-y-auto rounded border border-white/10">
+                <div className="overflow-x-auto max-h-[600px] overflow-y-auto rounded border border-slate-200">
                   <table className="w-full text-sm">
-                    <thead className="sticky top-0 bg-slate-900">
-                      <tr className="text-left border-b border-white/10">
+                    <thead className="sticky top-0 bg-slate-100">
+                      <tr className="text-left border-b border-slate-200">
                         <th className="py-2 px-2 font-black">Usuário</th>
                         <th className="py-2 px-2 font-black">Perfis</th>
                         <th className="py-2 px-2 font-black w-44">Adicionar</th>
@@ -394,19 +394,19 @@ export default function Permissoes({ embedded = false }: { embedded?: boolean } 
                         <tr
                           key={p.id}
                           onClick={() => setSelectedUser(p.id)}
-                          className={`border-b border-white/5 cursor-pointer ${
-                            selectedUser === p.id ? "bg-cyan-500/10" : "hover:bg-white/5"
+                          className={`border-b border-slate-100 cursor-pointer ${
+                            selectedUser === p.id ? "bg-cyan-50" : "hover:bg-slate-50"
                           }`}
                         >
                           <td className="py-2 px-2">
                             <div className="font-semibold">{p.username ?? p.id.slice(0, 8)}</div>
                             {p.access_code && (
-                              <div className="text-[10px] text-white/50 font-mono">{p.access_code}</div>
+                              <div className="text-[10px] text-slate-500 font-mono">{p.access_code}</div>
                             )}
                           </td>
                           <td className="py-2 px-2">
                             <div className="flex flex-wrap gap-1">
-                              {p.roles.length === 0 && <span className="text-white/40 text-xs">nenhum</span>}
+                              {p.roles.length === 0 && <span className="text-slate-400 text-xs">nenhum</span>}
                               {p.roles.map((r) => (
                                 <button
                                   key={r}
@@ -424,7 +424,7 @@ export default function Permissoes({ embedded = false }: { embedded?: boolean } 
                           </td>
                           <td className="py-2 px-2" onClick={(e) => e.stopPropagation()}>
                             <Select onValueChange={(v) => setUserRole(p.id, v as Role, false)}>
-                              <SelectTrigger className="bg-slate-800 border-white/10 text-white h-8 text-xs">
+                              <SelectTrigger className="bg-white border-slate-200 text-slate-900 h-8 text-xs">
                                 <SelectValue placeholder="+ perfil" />
                               </SelectTrigger>
                               <SelectContent>
@@ -441,27 +441,27 @@ export default function Permissoes({ embedded = false }: { embedded?: boolean } 
                     </tbody>
                   </table>
                   {filteredProfiles.length === 0 && (
-                    <p className="text-center text-white/50 text-sm py-6">Nenhum usuário encontrado.</p>
+                    <p className="text-center text-slate-500 text-sm py-6">Nenhum usuário encontrado.</p>
                   )}
                 </div>
 
                 {/* Painel lateral com permissões efetivas */}
-                <div className="rounded border border-white/10 bg-slate-950/60 p-3">
+                <div className="rounded border border-slate-200 bg-white p-3">
                   {!selected ? (
-                    <div className="text-center text-white/50 text-sm py-10">
+                    <div className="text-center text-slate-500 text-sm py-10">
                       <UserCog className="w-10 h-10 mx-auto mb-2 opacity-40" />
                       Selecione um usuário para ver o acesso efetivo derivado da matriz.
                     </div>
                   ) : (
                     <>
                       <div className="mb-3">
-                        <div className="text-xs text-white/50">Usuário selecionado</div>
+                        <div className="text-xs text-slate-500">Usuário selecionado</div>
                         <div className="text-lg font-black">
                           {selected.username ?? selected.id.slice(0, 8)}
                         </div>
                         <div className="flex flex-wrap gap-1 mt-1">
                           {selected.roles.length === 0 ? (
-                            <Badge variant="outline" className="text-white/60">
+                            <Badge variant="outline" className="text-slate-500">
                               sem perfil — acesso mínimo
                             </Badge>
                           ) : (
@@ -475,8 +475,8 @@ export default function Permissoes({ embedded = false }: { embedded?: boolean } 
                       </div>
 
                       {/* Link + QR de acesso individual */}
-                      <div className="mb-4 rounded-lg border border-cyan-400/30 bg-cyan-500/5 p-3">
-                        <div className="text-xs font-black text-cyan-200 uppercase mb-2 flex items-center gap-1">
+                      <div className="mb-4 rounded-lg border border-cyan-400/30 bg-cyan-50 p-3">
+                        <div className="text-xs font-black text-cyan-800 uppercase mb-2 flex items-center gap-1">
                           <QrCode className="w-3.5 h-3.5" /> Acesso do usuário
                         </div>
                         {selected.access_code ? (
@@ -485,13 +485,13 @@ export default function Permissoes({ embedded = false }: { embedded?: boolean } 
                             const url = `${origin}/?ac=${encodeURIComponent(selected.access_code)}`;
                             return (
                               <div className="space-y-2">
-                                <div className="flex items-center gap-2 bg-slate-900/60 rounded border border-white/10 px-2 py-1">
-                                  <LinkIcon className="w-3 h-3 text-white/50 shrink-0" />
-                                  <span className="text-[10px] font-mono text-white/80 truncate flex-1">{url}</span>
+                                <div className="flex items-center gap-2 bg-white rounded border border-slate-200 px-2 py-1">
+                                  <LinkIcon className="w-3 h-3 text-slate-500 shrink-0" />
+                                  <span className="text-[10px] font-mono text-slate-600 truncate flex-1">{url}</span>
                                   <Button
                                     size="sm"
                                     variant="ghost"
-                                    className="h-6 px-2 text-white/70 hover:text-white"
+                                    className="h-6 px-2 text-slate-600 hover:text-slate-900"
                                     onClick={() => {
                                       navigator.clipboard.writeText(url);
                                       toast.success("Link copiado");
@@ -504,8 +504,8 @@ export default function Permissoes({ embedded = false }: { embedded?: boolean } 
                                   <div className="bg-white p-2 rounded">
                                     <QRCodeSVG value={url} size={110} level="M" />
                                   </div>
-                                  <div className="text-[11px] text-white/60 leading-relaxed flex-1">
-                                    Código: <span className="font-mono text-white">{selected.access_code}</span>
+                                  <div className="text-[11px] text-slate-500 leading-relaxed flex-1">
+                                    Código: <span className="font-mono text-slate-900">{selected.access_code}</span>
                                     <br />
                                     Ao entrar por este link, o usuário acessa o ambiente com as permissões do seu perfil.
                                     <div className="flex gap-1 mt-2">
@@ -541,7 +541,7 @@ export default function Permissoes({ embedded = false }: { embedded?: boolean } 
                           })()
                         ) : (
                           <div className="flex items-center justify-between gap-2">
-                            <span className="text-xs text-white/60">Sem código de acesso ainda.</span>
+                            <span className="text-xs text-slate-500">Sem código de acesso ainda.</span>
                             <Button
                               size="sm"
                               className="h-7 text-xs"
@@ -561,7 +561,7 @@ export default function Permissoes({ embedded = false }: { embedded?: boolean } 
                         )}
                       </div>
 
-                      <div className="text-xs font-black text-white/70 uppercase mb-2">
+                      <div className="text-xs font-black text-slate-600 uppercase mb-2">
                         Acesso efetivo por funcionalidade
                       </div>
                       <div className="space-y-1 max-h-[480px] overflow-y-auto pr-1">
@@ -569,16 +569,16 @@ export default function Permissoes({ embedded = false }: { embedded?: boolean } 
                           Object.entries(selectedEff).map(([key, v]) => (
                             <div
                               key={key}
-                              className="flex items-center justify-between bg-white/5 rounded px-2 py-1.5"
+                              className="flex items-center justify-between bg-slate-100 rounded px-2 py-1.5"
                             >
                               <div>
                                 <div className="text-sm font-semibold">{v.label}</div>
-                                <div className="text-[10px] text-white/40 font-mono">{key}</div>
+                                <div className="text-[10px] text-slate-400 font-mono">{key}</div>
                               </div>
                               <div className="flex gap-2 text-xs">
                                 <span
                                   className={`inline-flex items-center gap-1 px-1.5 py-0.5 rounded ${
-                                    v.view ? "bg-emerald-500/30 text-emerald-100" : "bg-white/5 text-white/30"
+                                    v.view ? "bg-emerald-200 text-emerald-800" : "bg-slate-100 text-slate-400"
                                   }`}
                                   title="Pode visualizar"
                                 >
@@ -587,7 +587,7 @@ export default function Permissoes({ embedded = false }: { embedded?: boolean } 
                                 </span>
                                 <span
                                   className={`inline-flex items-center gap-1 px-1.5 py-0.5 rounded ${
-                                    v.edit ? "bg-amber-500/30 text-amber-100" : "bg-white/5 text-white/30"
+                                    v.edit ? "bg-amber-200 text-amber-800" : "bg-slate-100 text-slate-400"
                                   }`}
                                   title="Pode editar"
                                 >
@@ -602,7 +602,7 @@ export default function Permissoes({ embedded = false }: { embedded?: boolean } 
                   )}
                 </div>
               </div>
-              <p className="text-xs text-white/50 mt-2">
+              <p className="text-xs text-slate-500 mt-2">
                 Mostrando até 200 usuários filtrados. Clique em uma linha para ver o acesso efetivo.
               </p>
             </Card>
@@ -615,7 +615,7 @@ export default function Permissoes({ embedded = false }: { embedded?: boolean } 
               const active = rs.filter((r) => r.can_view).length;
               const editing = editingRole === role;
               return (
-                <Card key={role} className="p-5 bg-slate-900/60 border-white/10 border-t-4 border-t-cyan-400">
+                <Card key={role} className="p-5 bg-white border-slate-200 border-t-4 border-t-cyan-400">
                   <div className="flex items-start justify-between gap-3 flex-wrap">
                     <div className="flex items-center gap-3">
                       <div className={`w-12 h-12 rounded-xl grid place-items-center border ${ROLE_COLOR[role]}`}>
@@ -623,42 +623,42 @@ export default function Permissoes({ embedded = false }: { embedded?: boolean } 
                       </div>
                       <div>
                         <div className="text-xl font-black">{ROLE_LABEL[role]}</div>
-                        <div className="text-sm text-white/60">{ROLE_DESC[role]}</div>
+                        <div className="text-sm text-slate-500">{ROLE_DESC[role]}</div>
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
-                      <code className="text-xs bg-white/10 rounded px-2 py-1">{role}</code>
+                      <code className="text-xs bg-slate-200 rounded px-2 py-1">{role}</code>
                       <Button size="sm" variant={editing ? "default" : "outline"} onClick={() => setEditingRole(editing ? null : role)}>
                         <Pencil className="w-4 h-4 mr-1" /> {editing ? "Fechar" : "Editar"}
                       </Button>
                     </div>
                   </div>
                   <div className="flex items-center justify-between mt-4 mb-2">
-                    <div className="text-sm font-bold text-white/80">Permissões ativas:</div>
-                    <Badge variant="outline" className="text-white">{active} de {rs.length}</Badge>
+                    <div className="text-sm font-bold text-slate-600">Permissões ativas:</div>
+                    <Badge variant="outline" className="text-slate-900">{active} de {rs.length}</Badge>
                   </div>
                   {editing && (
                     <div className="flex flex-wrap gap-2 mb-3 text-xs">
                       {PERM_FIELDS.map((pf) => (
-                        <div key={pf.key} className="flex items-center gap-1 bg-white/5 rounded px-2 py-1">
+                        <div key={pf.key} className="flex items-center gap-1 bg-slate-100 rounded px-2 py-1">
                           <span>{pf.label}:</span>
-                          <button className="underline text-emerald-300" onClick={() => setRoleAll(role, pf.key, true)}>todos</button>
-                          <button className="underline text-rose-300" onClick={() => setRoleAll(role, pf.key, false)}>nenhum</button>
+                          <button className="underline text-emerald-700" onClick={() => setRoleAll(role, pf.key, true)}>todos</button>
+                          <button className="underline text-rose-600" onClick={() => setRoleAll(role, pf.key, false)}>nenhum</button>
                         </div>
                       ))}
                     </div>
                   )}
                   <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-2">
                     {rs.map((r) => (
-                      <div key={r.feature_key} className={`rounded-lg border px-3 py-2 ${r.can_view ? "bg-emerald-500/10 border-emerald-400/30" : "bg-white/5 border-white/10 text-white/40"}`}>
+                      <div key={r.feature_key} className={`rounded-lg border px-3 py-2 ${r.can_view ? "bg-emerald-50 border-emerald-400/30" : "bg-slate-100 border-slate-200 text-slate-400"}`}>
                         <div className="flex items-center gap-2 text-sm font-semibold">
-                          <span className={`w-2 h-2 rounded-full ${r.can_view ? "bg-emerald-400" : "bg-white/30"}`} />
+                          <span className={`w-2 h-2 rounded-full ${r.can_view ? "bg-emerald-400" : "bg-slate-300"}`} />
                           {r.feature_label}
                         </div>
                         {editing ? (
                           <div className="flex flex-wrap gap-x-3 gap-y-1 mt-2">
                             {PERM_FIELDS.map((pf) => (
-                              <label key={pf.key} className="flex items-center gap-1 text-[11px] text-white">
+                              <label key={pf.key} className="flex items-center gap-1 text-[11px] text-slate-900">
                                 <Checkbox checked={!!r[pf.key]} onCheckedChange={(v) => togglePerm(role, r.feature_key, pf.key, !!v)} />
                                 {pf.short}
                               </label>
@@ -666,7 +666,7 @@ export default function Permissoes({ embedded = false }: { embedded?: boolean } 
                           </div>
                         ) : (
                           r.can_view && (
-                            <div className="text-[10px] text-white/60 mt-1">
+                            <div className="text-[10px] text-slate-500 mt-1">
                               {PERM_FIELDS.filter((pf) => r[pf.key]).map((pf) => pf.short).join(" · ")}
                             </div>
                           )
@@ -677,20 +677,20 @@ export default function Permissoes({ embedded = false }: { embedded?: boolean } 
                 </Card>
               );
             })}
-            <p className="text-xs text-white/50">Depois de editar, clique em <strong>Salvar Alterações</strong> no topo.</p>
+            <p className="text-xs text-slate-500">Depois de editar, clique em <strong>Salvar Alterações</strong> no topo.</p>
           </TabsContent>
 
           {/* ===== MATRIZ ===== */}
           <TabsContent value="matrix" className="mt-4">
-            <Card className="p-4 overflow-x-auto bg-slate-900/60 border-white/10">
+            <Card className="p-4 overflow-x-auto bg-white border-slate-200">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="text-left border-b border-white/10">
-                    <th className="py-2 px-2 font-black text-white">Funcionalidade</th>
+                  <tr className="text-left border-b border-slate-200">
+                    <th className="py-2 px-2 font-black text-slate-900">Funcionalidade</th>
                     {ROLE_ORDER.map((r) => (
-                      <th key={r} className="py-2 px-2 text-center font-black text-white whitespace-nowrap">
+                      <th key={r} className="py-2 px-2 text-center font-black text-slate-900 whitespace-nowrap">
                         {ROLE_LABEL[r]}
-                        <div className="text-[10px] font-normal text-white/50">
+                        <div className="text-[10px] font-normal text-slate-500">
                           {roleCounts[r] ?? 0} usuários
                         </div>
                       </th>
@@ -699,10 +699,10 @@ export default function Permissoes({ embedded = false }: { embedded?: boolean } 
                 </thead>
                 <tbody>
                   {features.map((f) => (
-                    <tr key={f.key} className="border-b border-white/5 hover:bg-white/5">
+                    <tr key={f.key} className="border-b border-slate-100 hover:bg-slate-50">
                       <td className="py-3 px-2 font-bold">
                         {f.label}
-                        <div className="text-[10px] text-white/50">{f.key}</div>
+                        <div className="text-[10px] text-slate-500">{f.key}</div>
                       </td>
                       {ROLE_ORDER.map((role) => {
                         const r = rowsByRoleKey.get(`${role}::${f.key}`);
@@ -727,7 +727,7 @@ export default function Permissoes({ embedded = false }: { embedded?: boolean } 
                   ))}
                 </tbody>
               </table>
-              <p className="text-xs text-white/50 mt-2">
+              <p className="text-xs text-slate-500 mt-2">
                 Marcar Editar, Adicionar ou Excluir ativa <strong>Acessar</strong>; <strong>Admin geral</strong> ativa tudo. Não esqueça
                 de <strong>Salvar Alterações</strong>.
               </p>
