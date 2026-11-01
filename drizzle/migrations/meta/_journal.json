@@ -78,6 +78,13 @@
       "when": 1793551150890,
       "tag": "0010_role_permissions_crud",
       "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "7",
+      "when": 1793553702009,
+      "tag": "0011_game_results_assignments",
+      "breakpoints": true
     }
   ]
 }
