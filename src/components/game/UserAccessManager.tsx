@@ -9,10 +9,21 @@ import { GAME_FEATURES, PAGE_FEATURES } from "@/lib/featureAccess";
 
 const FEATURES = [...GAME_FEATURES.map((f) => ({ ...f, group: "Jogos" })), ...PAGE_FEATURES.map((f) => ({ key: f.key, label: f.label, group: "Páginas" }))];
 const ALL = "__all";
+export const ROLE_OPTIONS = [
+  { value: "student", label: "Aluno" },
+  { value: "user", label: "Usuário comum" },
+  { value: "parent", label: "Pais / Responsável" },
+  { value: "teacher", label: "Professor" },
+  { value: "coordinator", label: "Coordenador" },
+  { value: "director", label: "Diretor" },
+  { value: "moderator", label: "Moderador" },
+  { value: "admin", label: "Admin" },
+];
+const roleLabel = (r?: string) => ROLE_OPTIONS.find((o) => o.value === r)?.label ?? "Usuário comum";
 
 type Props = {
   profiles: any[];
-  onRole: (id: string, r: "admin" | "moderator" | "user") => void;
+  onRole: (id: string, r: string) => void;
   onCoins: (id: string, v: number) => void;
   onDelete: (id: string) => void;
   onGrantAll: () => void;
@@ -144,7 +155,7 @@ export function UserAccessManager({ profiles, onRole, onCoins, onDelete, onGrant
                   <div className="truncate font-semibold">{p.username || "Sem nome"}</div>
                   <div className="truncate text-xs text-muted-foreground">{cl.length ? cl.map((c: any) => `${c.name}${c.grade_year ? ` • ${c.grade_year}` : ""}`).join(", ") : (p.email || "sem turma")}</div>
                 </div>
-                <span className="hidden sm:inline rounded bg-muted px-2 py-0.5 text-[10px] font-bold uppercase">{p.role || "user"}</span>
+                <span className="hidden sm:inline rounded bg-muted px-2 py-0.5 text-[10px] font-bold uppercase">{roleLabel(p.role)}</span>
                 <span className="text-sm font-bold text-accent-foreground">{p.coins ?? 0} ⚛</span>
                 <div className="hidden md:flex gap-1">
                   {FEATURES.map((f) => <span key={f.key} title={f.label} className={`h-2 w-2 rounded-full ${allowedFor(p.id, f.key) ? "bg-primary" : "bg-destructive"}`} />)}
@@ -156,10 +167,10 @@ export function UserAccessManager({ profiles, onRole, onCoins, onDelete, onGrant
                   <div className="grid gap-3 md:grid-cols-2">
                     <div className="space-y-2">
                       <p className="text-[10px] uppercase text-muted-foreground">Nível de acesso · desde {new Date(p.created_at).toLocaleDateString("pt-BR")}</p>
-                      <div className="flex gap-2">
-                        {(["user", "moderator", "admin"] as const).map((r) => (
-                          <Button key={r} size="sm" className="flex-1 h-8 text-xs" variant={p.role === r ? "default" : "outline"} onClick={() => onRole(p.id, r)}>
-                            {r === "user" ? "Usuário" : r === "moderator" ? "Moderador" : "Admin"}
+                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                        {ROLE_OPTIONS.map((r) => (
+                          <Button key={r.value} size="sm" className="h-8 text-xs" variant={p.role === r.value ? "default" : "outline"} onClick={() => onRole(p.id, r.value)}>
+                            {r.label}
                           </Button>
                         ))}
                       </div>
