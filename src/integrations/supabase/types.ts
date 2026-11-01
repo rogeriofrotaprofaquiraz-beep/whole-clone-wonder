@@ -1599,32 +1599,41 @@ export type Database = {
       }
       role_permissions: {
         Row: {
+          can_create: boolean
+          can_delete: boolean
           can_edit: boolean
           can_view: boolean
           created_at: string
           feature_key: string
           feature_label: string
           id: string
+          is_admin: boolean
           role: Database["public"]["Enums"]["app_role"]
           updated_at: string
         }
         Insert: {
+          can_create?: boolean
+          can_delete?: boolean
           can_edit?: boolean
           can_view?: boolean
           created_at?: string
           feature_key: string
           feature_label: string
           id?: string
+          is_admin?: boolean
           role: Database["public"]["Enums"]["app_role"]
           updated_at?: string
         }
         Update: {
+          can_create?: boolean
+          can_delete?: boolean
           can_edit?: boolean
           can_view?: boolean
           created_at?: string
           feature_key?: string
           feature_label?: string
           id?: string
+          is_admin?: boolean
           role?: Database["public"]["Enums"]["app_role"]
           updated_at?: string
         }

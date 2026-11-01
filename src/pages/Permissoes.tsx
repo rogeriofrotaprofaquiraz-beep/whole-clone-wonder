@@ -47,11 +47,33 @@ const ROLE_COLOR: Record<Role, string> = {
 const ROLE_ORDER: Role[] = [
   "student",
   "parent",
+  "user",
   "teacher",
   "coordinator",
   "director",
+  "moderator",
   "admin",
 ];
+
+type PermField = "can_view" | "can_edit" | "can_create" | "can_delete" | "is_admin";
+const PERM_FIELDS: { key: PermField; label: string; short: string }[] = [
+  { key: "can_view", label: "Acessar", short: "Acessar" },
+  { key: "can_edit", label: "Editar / Modificar", short: "Editar" },
+  { key: "can_create", label: "Adicionar", short: "Adicionar" },
+  { key: "can_delete", label: "Excluir", short: "Excluir" },
+  { key: "is_admin", label: "Admin geral", short: "Admin" },
+];
+
+const ROLE_DESC: Record<Role, string> = {
+  student: "Acessa jogos, cursos e o próprio progresso",
+  parent: "Acompanha o desempenho dos filhos vinculados",
+  user: "Usuário comum, acesso básico ao site",
+  teacher: "Gerencia turmas, questões, aulas e campeonatos",
+  coordinator: "Coordena professores e turmas da escola",
+  director: "Administrador de uma escola específica",
+  moderator: "Ajuda a moderar conteúdo e usuários",
+  admin: "Acesso total ao sistema, pode gerenciar várias escolas",
+};
 
 type PermRow = {
   id?: string;
@@ -60,6 +82,9 @@ type PermRow = {
   feature_label: string;
   can_view: boolean;
   can_edit: boolean;
+  can_create: boolean;
+  can_delete: boolean;
+  is_admin: boolean;
   dirty?: boolean;
 };
 
@@ -147,15 +172,25 @@ export default function Permissoes({ embedded = false }: { embedded?: boolean } 
     return c;
   }, [profiles]);
 
-  const togglePerm = (role: Role, key: string, field: "can_view" | "can_edit", value: boolean) => {
+  const togglePerm = (role: Role, key: string, field: PermField, value: boolean) => {
     setRows((prev) =>
-      prev.map((r) =>
-        r.role === role && r.feature_key === key
-          ? { ...r, [field]: value, dirty: true, ...(field === "can_edit" && value ? { can_view: true } : {}) }
-          : r,
-      ),
+      prev.map((r) => {
+        if (r.role !== role || r.feature_key !== key) return r;
+        const n: PermRow = { ...r, [field]: value, dirty: true };
+        if (field === "is_admin" && value) Object.assign(n, { can_view: true, can_edit: true, can_create: true, can_delete: true });
+        if (field !== "can_view" && value) n.can_view = true;
+        if (field === "can_view" && !value) Object.assign(n, { can_edit: false, can_create: false, can_delete: false, is_admin: false });
+        if (field !== "is_admin" && !value) n.is_admin = false;
+        return n;
+      }),
     );
   };
+
+  const setRoleAll = (role: Role, field: PermField, value: boolean) => {
+    features.forEach((f) => togglePerm(role, f.key, field, value));
+  };
+
+  const [editingRole, setEditingRole] = useState<Role | null>(null);
 
   const saveAll = async () => {
     setSaving(true);
@@ -164,7 +199,7 @@ export default function Permissoes({ embedded = false }: { embedded?: boolean } 
       for (const r of dirty) {
         await supabase
           .from("role_permissions")
-          .update({ can_view: r.can_view, can_edit: r.can_edit })
+          .update({ can_view: r.can_view, can_edit: r.can_edit, can_create: r.can_create, can_delete: r.can_delete, is_admin: r.is_admin })
           .eq("id", r.id!);
       }
       setRows((prev) => prev.map((r) => ({ ...r, dirty: false })));
@@ -186,6 +221,9 @@ export default function Permissoes({ embedded = false }: { embedded?: boolean } 
       feature_label: label,
       can_view: role === "admin",
       can_edit: role === "admin",
+      can_create: role === "admin",
+      can_delete: role === "admin",
+      is_admin: role === "admin",
     }));
     const { data, error } = await supabase.from("role_permissions").insert(ins).select();
     if (error) return toast.error(error.message);
@@ -285,6 +323,9 @@ export default function Permissoes({ embedded = false }: { embedded?: boolean } 
           <TabsList className="bg-slate-900/60 border border-white/10">
             <TabsTrigger value="users" className="data-[state=active]:bg-white/10">
               <Users className="w-4 h-4 mr-1" /> Usuários ({profiles.length})
+            </TabsTrigger>
+            <TabsTrigger value="roles" className="data-[state=active]:bg-white/10">
+              <UserCog className="w-4 h-4 mr-1" /> Perfis
             </TabsTrigger>
             <TabsTrigger value="matrix" className="data-[state=active]:bg-white/10">
               <Shield className="w-4 h-4 mr-1" /> Matriz de Permissões
@@ -567,6 +608,78 @@ export default function Permissoes({ embedded = false }: { embedded?: boolean } 
             </Card>
           </TabsContent>
 
+          {/* ===== PERFIS ===== */}
+          <TabsContent value="roles" className="mt-4 space-y-4">
+            {ROLE_ORDER.map((role) => {
+              const rs = features.map((f) => rowsByRoleKey.get(`${role}::${f.key}`)).filter(Boolean) as PermRow[];
+              const active = rs.filter((r) => r.can_view).length;
+              const editing = editingRole === role;
+              return (
+                <Card key={role} className="p-5 bg-slate-900/60 border-white/10 border-t-4 border-t-cyan-400">
+                  <div className="flex items-start justify-between gap-3 flex-wrap">
+                    <div className="flex items-center gap-3">
+                      <div className={`w-12 h-12 rounded-xl grid place-items-center border ${ROLE_COLOR[role]}`}>
+                        <Shield className="w-6 h-6" />
+                      </div>
+                      <div>
+                        <div className="text-xl font-black">{ROLE_LABEL[role]}</div>
+                        <div className="text-sm text-white/60">{ROLE_DESC[role]}</div>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <code className="text-xs bg-white/10 rounded px-2 py-1">{role}</code>
+                      <Button size="sm" variant={editing ? "default" : "outline"} onClick={() => setEditingRole(editing ? null : role)}>
+                        <Pencil className="w-4 h-4 mr-1" /> {editing ? "Fechar" : "Editar"}
+                      </Button>
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-between mt-4 mb-2">
+                    <div className="text-sm font-bold text-white/80">Permissões ativas:</div>
+                    <Badge variant="outline" className="text-white">{active} de {rs.length}</Badge>
+                  </div>
+                  {editing && (
+                    <div className="flex flex-wrap gap-2 mb-3 text-xs">
+                      {PERM_FIELDS.map((pf) => (
+                        <div key={pf.key} className="flex items-center gap-1 bg-white/5 rounded px-2 py-1">
+                          <span>{pf.label}:</span>
+                          <button className="underline text-emerald-300" onClick={() => setRoleAll(role, pf.key, true)}>todos</button>
+                          <button className="underline text-rose-300" onClick={() => setRoleAll(role, pf.key, false)}>nenhum</button>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-2">
+                    {rs.map((r) => (
+                      <div key={r.feature_key} className={`rounded-lg border px-3 py-2 ${r.can_view ? "bg-emerald-500/10 border-emerald-400/30" : "bg-white/5 border-white/10 text-white/40"}`}>
+                        <div className="flex items-center gap-2 text-sm font-semibold">
+                          <span className={`w-2 h-2 rounded-full ${r.can_view ? "bg-emerald-400" : "bg-white/30"}`} />
+                          {r.feature_label}
+                        </div>
+                        {editing ? (
+                          <div className="flex flex-wrap gap-x-3 gap-y-1 mt-2">
+                            {PERM_FIELDS.map((pf) => (
+                              <label key={pf.key} className="flex items-center gap-1 text-[11px] text-white">
+                                <Checkbox checked={!!r[pf.key]} onCheckedChange={(v) => togglePerm(role, r.feature_key, pf.key, !!v)} />
+                                {pf.short}
+                              </label>
+                            ))}
+                          </div>
+                        ) : (
+                          r.can_view && (
+                            <div className="text-[10px] text-white/60 mt-1">
+                              {PERM_FIELDS.filter((pf) => r[pf.key]).map((pf) => pf.short).join(" · ")}
+                            </div>
+                          )
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </Card>
+              );
+            })}
+            <p className="text-xs text-white/50">Depois de editar, clique em <strong>Salvar Alterações</strong> no topo.</p>
+          </TabsContent>
+
           {/* ===== MATRIZ ===== */}
           <TabsContent value="matrix" className="mt-4">
             <Card className="p-4 overflow-x-auto bg-slate-900/60 border-white/10">
@@ -596,21 +709,16 @@ export default function Permissoes({ embedded = false }: { embedded?: boolean } 
                         if (!r) return <td key={role} />;
                         return (
                           <td key={role} className="py-3 px-2 text-center">
-                            <div className="flex items-center justify-center gap-3">
-                              <label className="flex items-center gap-1 text-xs">
-                                <Checkbox
-                                  checked={r.can_view}
-                                  onCheckedChange={(v) => togglePerm(role, f.key, "can_view", !!v)}
-                                />
-                                Ver
-                              </label>
-                              <label className="flex items-center gap-1 text-xs">
-                                <Checkbox
-                                  checked={r.can_edit}
-                                  onCheckedChange={(v) => togglePerm(role, f.key, "can_edit", !!v)}
-                                />
-                                Editar
-                              </label>
+                            <div className="flex flex-col items-start gap-1 mx-auto w-fit">
+                              {PERM_FIELDS.map((pf) => (
+                                <label key={pf.key} className="flex items-center gap-1 text-[11px]">
+                                  <Checkbox
+                                    checked={!!r[pf.key]}
+                                    onCheckedChange={(v) => togglePerm(role, f.key, pf.key, !!v)}
+                                  />
+                                  {pf.short}
+                                </label>
+                              ))}
                             </div>
                           </td>
                         );
@@ -620,7 +728,7 @@ export default function Permissoes({ embedded = false }: { embedded?: boolean } 
                 </tbody>
               </table>
               <p className="text-xs text-white/50 mt-2">
-                Marcar <strong>Editar</strong> ativa <strong>Ver</strong> automaticamente. Não esqueça
+                Marcar Editar, Adicionar ou Excluir ativa <strong>Acessar</strong>; <strong>Admin geral</strong> ativa tudo. Não esqueça
                 de <strong>Salvar Alterações</strong>.
               </p>
             </Card>
