@@ -1,3 +1,4 @@
+import Permissoes from "@/pages/Permissoes";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
@@ -218,14 +219,16 @@ export default function ControleAcesso() {
 
   return (
     <div className="min-h-screen p-4">
-      <div className="max-w-5xl mx-auto space-y-4">
+      <div className="max-w-7xl mx-auto space-y-4">
         <Button variant="ghost" onClick={() => navigate(-1)}><ArrowLeft size={16} className="mr-1" />Voltar</Button>
         {isAdmin ? (
           <Tabs defaultValue="rules">
             <TabsList>
-              <TabsTrigger value="rules">Controle por perfil</TabsTrigger>
-              <TabsTrigger value="users">Gerenciar usuários</TabsTrigger>
+              <TabsTrigger value="rules">🎮 Jogos e páginas</TabsTrigger>
+              <TabsTrigger value="perms">🛡️ Usuários e permissões</TabsTrigger>
+              <TabsTrigger value="users">⚛️ Átomos e bloqueios</TabsTrigger>
             </TabsList>
+            <TabsContent value="perms"><Permissoes embedded /></TabsContent>
             <TabsContent value="rules">{rulesView}</TabsContent>
             <TabsContent value="users"><AdminPanel userRole="admin" usersOnly /></TabsContent>
           </Tabs>
