@@ -15,6 +15,15 @@ export function RegistrationGate({ children }: { children: ReactNode }) {
   const [ready, setReady] = useState(false);
   const [form, setForm] = useState({ full_name: "", birth_date: "", guardian_email: "" });
   const [saving, setSaving] = useState(false);
+  const [schools, setSchools] = useState<{ id: string; name: string }[]>([]);
+  const [classes, setClasses] = useState<{ id: string; name: string; school_id: string }[]>([]);
+  const [schoolId, setSchoolId] = useState("");
+  const [classId, setClassId] = useState("");
+  useEffect(() => {
+    if (!uid || prof?.registration_completed !== false) return;
+    supabase.from("schools").select("id, name").order("name").then(({ data }) => setSchools((data as any) ?? []));
+    supabase.from("classes").select("id, name, school_id").order("name").then(({ data }) => setClasses((data as any) ?? []));
+  }, [uid, prof?.registration_completed]);
 
   const load = async (id: string | null, mail: string) => {
     setUid(id); setEmail(mail);
@@ -43,7 +52,12 @@ export function RegistrationGate({ children }: { children: ReactNode }) {
   if (!prof.registration_completed) {
     const salvar = async () => {
       if (!form.full_name.trim() || !form.birth_date || !form.guardian_email.trim()) { toast.error("Preencha todos os campos"); return; }
+      if (schools.length && (!schoolId || !classId)) { toast.error("Escolha sua escola e turma"); return; }
       setSaving(true);
+      if (classId) {
+        const { error: ce } = await supabase.from("class_members").upsert({ class_id: classId, user_id: uid, role: "student" } as any, { onConflict: "class_id,user_id", ignoreDuplicates: true });
+        if (ce) { setSaving(false); toast.error(ce.message); return; }
+      }
       const row = { id: uid, full_name: form.full_name.trim(), birth_date: form.birth_date, guardian_email: form.guardian_email.trim(), registration_completed: true };
       const { error } = await supabase.from("profiles").upsert(row as any);
       setSaving(false);
@@ -59,6 +73,16 @@ export function RegistrationGate({ children }: { children: ReactNode }) {
           <div><Label>Nome completo</Label><Input value={form.full_name} onChange={(e) => setForm({ ...form, full_name: e.target.value })} /></div>
           <div><Label>E-mail</Label><Input value={email} disabled /></div>
           <div><Label>Data de nascimento</Label><Input type="date" value={form.birth_date} onChange={(e) => setForm({ ...form, birth_date: e.target.value })} /></div>
+          <div><Label>Escola</Label>
+            <select className="w-full h-10 rounded-md border bg-background px-3 text-sm" value={schoolId} onChange={(e) => { setSchoolId(e.target.value); setClassId(""); }}>
+              <option value="">Selecione a escola</option>
+              {schools.map((x) => <option key={x.id} value={x.id}>{x.name}</option>)}
+            </select></div>
+          <div><Label>Turma</Label>
+            <select className="w-full h-10 rounded-md border bg-background px-3 text-sm" value={classId} disabled={!schoolId} onChange={(e) => setClassId(e.target.value)}>
+              <option value="">Selecione a turma</option>
+              {classes.filter((c) => c.school_id === schoolId).map((x) => <option key={x.id} value={x.id}>{x.name}</option>)}
+            </select></div>
           <div><Label>E-mail do responsável</Label><Input type="email" value={form.guardian_email} onChange={(e) => setForm({ ...form, guardian_email: e.target.value })} /></div>
           <Button className="w-full" onClick={salvar} disabled={saving}>{saving ? "Enviando..." : "Enviar cadastro"}</Button>
           <Button variant="ghost" className="w-full" onClick={sair}>Sair</Button>
