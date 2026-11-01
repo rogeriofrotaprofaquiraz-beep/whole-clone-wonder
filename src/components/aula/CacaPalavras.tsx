@@ -1,3 +1,4 @@
+import { recordHit } from "@/lib/gameStats";
 import { useEffect, useMemo, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Card } from "@/components/ui/card";
@@ -84,6 +85,7 @@ export function CacaPalavras({ area }: { area: AreaValue }) {
     if (hit) {
       setFound((f) => new Set(f).add(hit.term));
       toast.success(`+${hit.term} · +2 ⚛`);
+      recordHit(2, "caca");
       supabase.auth.getUser().then(({ data }) => { if (data.user) addCoins(data.user.id, 2).catch(() => {}); });
     }
     setSel([]);

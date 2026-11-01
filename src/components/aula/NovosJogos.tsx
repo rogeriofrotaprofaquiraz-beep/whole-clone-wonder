@@ -1,3 +1,4 @@
+import { recordHit, recordMiss } from "@/lib/gameStats";
 import { useEffect, useMemo, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Card } from "@/components/ui/card";
@@ -15,6 +16,7 @@ const shuffle = <T,>(a: T[]) => [...a].sort(() => Math.random() - 0.5);
 const norm = (s: string) => s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase().trim();
 const reward = (n: number, msg: string) => {
   toast.success(`${msg} +${n} ⚛`);
+  recordHit(n);
   supabase.auth.getUser().then(({ data }) => { if (data.user) addCoins(data.user.id, n).catch(() => {}); });
 };
 
@@ -200,7 +202,7 @@ export function BatalhaNaval() {
     if (o !== el.name) { toast.error(`Errou! ${el.symbol} é ${el.name}. Tiro perdido.`); setAsk(null); return; }
     const hit = ships.has(ask.idx);
     setShots((s) => new Map(s).set(ask.idx, hit));
-    if (hit) reward(2, "Acertou um navio!"); else toast("Água 🌊");
+    if (hit) reward(2, "Acertou um navio!"); else { toast("Água 🌊"); recordMiss(); };
     setAsk(null);
   };
   const hits = [...shots.values()].filter(Boolean).length;
@@ -349,7 +351,7 @@ export function TangramMolecular() {
   const check = () => {
     const keys = new Set([...Object.keys(m.formula), ...Object.keys(built)]);
     const ok = [...keys].every((k) => (m.formula[k] ?? 0) === (built[k] ?? 0));
-    if (ok) { reward(3, `${fmt(m.formula)} montada!`); setI(i + 1); setBuilt({}); } else toast.error("Fórmula diferente, ajuste as peças");
+    if (ok) { reward(3, `${fmt(m.formula)} montada!`); setI(i + 1); setBuilt({}); } else { toast.error("Fórmula diferente, ajuste as peças"); recordMiss(); };
   };
   if (i >= order.length) return <Win text="Todas as moléculas montadas!" onAgain={reset} />;
   return (
