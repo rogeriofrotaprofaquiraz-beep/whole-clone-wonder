@@ -12,6 +12,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
 import { Plus, Save, Wand2, Trash2, List, Settings, History, Users, Shield, User as UserIcon, Search, Activity, Trash } from 'lucide-react';
 import { HeroOptionsDialog } from "./HeroOptionsDialog";
+import { UserAccessManager } from "./UserAccessManager";
 
 const ATTRIBUTE_LABELS = [
   "Fraquezas", "Risco/Benefício à natureza", "Risco à saúde", "Benefício",
@@ -719,84 +720,7 @@ export const AdminPanel = ({ userRole, initialSymbol, usersOnly }: { userRole?: 
             </TabsContent>
 
             <TabsContent value="users">
-              <Card className="bg-slate-900/50 border-white/10 backdrop-blur-xl">
-                <CardHeader className="flex flex-row items-center justify-between space-y-0">
-                  <CardTitle className="flex items-center gap-2">
-                    <Shield className="w-5 h-5 text-emerald-400" /> Gestão de Usuários
-                  </CardTitle>
-                  <div className="flex gap-2">
-                    <div className="relative">
-                      <Search className="absolute left-2 top-1/2 -translate-y-1/2 w-3 h-3 text-slate-500" />
-                      <Input 
-                        placeholder="Buscar por nome ou e-mail..." 
-                        className="pl-8 h-8 text-xs bg-black/40 border-white/10 w-64"
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                      />
-                    </div>
-                     <Button variant="outline" size="sm" onClick={() => grantAll(50)} className="text-amber-300 border-amber-500/40">+50 ⚛ Todos</Button>
-                     <Button variant="outline" size="sm" onClick={fetchProfiles}>Atualizar</Button>
-                   </div>
-                 </CardHeader>
-
-                <CardContent>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {filteredProfiles.map(profile => (
-                      <div key={profile.id} className="p-4 bg-white/5 rounded-xl border border-white/5 space-y-4 relative group">
-                        <Button 
-                          variant="ghost" 
-                          size="icon" 
-                          className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 text-red-400 hover:text-red-300 hover:bg-red-400/10 transition-all h-8 w-8"
-                          onClick={() => deleteUser(profile.id)}
-                        >
-                          <Trash className="w-4 h-4" />
-                        </Button>
-                        <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 bg-emerald-600/20 rounded-full flex items-center justify-center border border-emerald-500/30">
-                            <UserIcon className="w-5 h-5 text-emerald-400" />
-                          </div>
-                          <div className="flex flex-col overflow-hidden">
-                            <span className="font-bold truncate text-sm">{profile.username || 'Sem nome'}</span>
-                            <span className="text-[9px] text-slate-500 truncate">{profile.email}</span>
-                          </div>
-                        </div>
-                        <div className="flex flex-col gap-2">
-                          <div className="flex justify-between items-center">
-                            <Label className="text-[9px] uppercase text-slate-500">Nível de Acesso</Label>
-                            <span className="text-[8px] text-slate-600">Desde: {new Date(profile.created_at).toLocaleDateString()}</span>
-                          </div>
-                          <div className="flex gap-2">
-                            {(['user', 'moderator', 'admin'] as const).map(r => (
-                              <Button
-                                key={r}
-                                size="sm"
-                                variant={profile.role === r ? 'default' : 'outline'}
-                                className={`text-[9px] h-7 flex-1 font-black ${profile.role === r ? (r === 'admin' ? 'bg-red-600' : r === 'moderator' ? 'bg-blue-600' : 'bg-slate-600') : 'border-white/5'}`}
-                                onClick={() => updateUserRole(profile.id, r)}
-                              >
-                                {r.toUpperCase()}
-                              </Button>
-                             ))}
-                           </div>
-                           <div className="mt-2 p-2 bg-amber-500/10 border border-amber-500/20 rounded-lg space-y-2">
-                             <div className="flex items-center justify-between">
-                               <Label className="text-[9px] uppercase text-amber-300">⚛ Átomos</Label>
-                               <span className="text-sm font-black text-amber-200">{profile.coins ?? 0}</span>
-                             </div>
-                             <div className="flex gap-1">
-                               {[10, 50, 100, 500].map(v => (
-                                 <Button key={v} size="sm" className="text-[9px] h-6 flex-1 bg-amber-600 hover:bg-amber-500 px-1" onClick={() => grantCoins(profile.id, v)}>+{v}</Button>
-                               ))}
-                               <Button size="sm" variant="outline" className="text-[9px] h-6 px-2 border-red-500/40 text-red-300" onClick={() => grantCoins(profile.id, -(profile.coins ?? 0))}>Zerar</Button>
-                             </div>
-                           </div>
-                         </div>
-                       </div>
-                     ))}
-
-                  </div>
-                </CardContent>
-              </Card>
+              <UserAccessManager profiles={profiles} onRole={updateUserRole} onCoins={grantCoins} onDelete={deleteUser} onGrantAll={() => grantAll(50)} onRefresh={fetchProfiles} />
             </TabsContent>
           </>
         )}
