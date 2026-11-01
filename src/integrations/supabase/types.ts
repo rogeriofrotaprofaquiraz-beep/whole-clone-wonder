@@ -95,6 +95,7 @@ export type Database = {
           role: Database["public"]["Enums"]["app_role"]
           updated_at: string
           updated_by: string | null
+          user_id: string | null
         }
         Insert: {
           allowed?: boolean
@@ -105,6 +106,7 @@ export type Database = {
           role: Database["public"]["Enums"]["app_role"]
           updated_at?: string
           updated_by?: string | null
+          user_id?: string | null
         }
         Update: {
           allowed?: boolean
@@ -115,6 +117,7 @@ export type Database = {
           role?: Database["public"]["Enums"]["app_role"]
           updated_at?: string
           updated_by?: string | null
+          user_id?: string | null
         }
         Relationships: [
           {
