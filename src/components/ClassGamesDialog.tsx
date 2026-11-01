@@ -11,7 +11,7 @@ export function ClassGamesDialog({ cls, onClose }: { cls: { id: string; name: st
   const load = async () => {
     if (!cls) return;
     const { data } = await supabase.from("access_rules").select("id,feature_key,allowed")
-      .eq("class_id", cls.id).eq("role", "student").is("profile_id", null);
+      .eq("class_id", cls.id).eq("role", "student").is("profile_id", null).is("user_id", null);
     const m: Record<string, any> = {};
     (data ?? []).forEach((r: any) => (m[r.feature_key] = { id: r.id, allowed: r.allowed }));
     setRules(m);

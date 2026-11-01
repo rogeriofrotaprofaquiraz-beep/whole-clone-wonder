@@ -64,6 +64,7 @@ export default function ControleAcesso() {
   const load = async () => {
     let q = supabase.from("access_rules").select("id,feature_key,allowed").eq("role", selRole as any);
     q = isCustom ? q.eq("profile_id", selId) : q.is("profile_id", null);
+    q = q.is("user_id", null);
     q = classId === ALL ? q.is("class_id", null) : q.eq("class_id", classId);
     const { data } = await q;
     const m: Record<string, any> = {};
