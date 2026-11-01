@@ -1597,9 +1597,12 @@ export type Database = {
       profiles: {
         Row: {
           access_code: string | null
+          approved: boolean
           avatar_url: string | null
+          birth_date: string | null
           created_at: string
           email: string | null
+          full_name: string | null
           guardian_email: string | null
           guardian_name: string | null
           guardian_phone: string | null
@@ -1609,6 +1612,7 @@ export type Database = {
           level: number | null
           losses: number | null
           rank_points: number | null
+          registration_completed: boolean
           streak: number | null
           updated_at: string
           username: string | null
@@ -1617,9 +1621,12 @@ export type Database = {
         }
         Insert: {
           access_code?: string | null
+          approved?: boolean
           avatar_url?: string | null
+          birth_date?: string | null
           created_at?: string
           email?: string | null
+          full_name?: string | null
           guardian_email?: string | null
           guardian_name?: string | null
           guardian_phone?: string | null
@@ -1629,6 +1636,7 @@ export type Database = {
           level?: number | null
           losses?: number | null
           rank_points?: number | null
+          registration_completed?: boolean
           streak?: number | null
           updated_at?: string
           username?: string | null
@@ -1637,9 +1645,12 @@ export type Database = {
         }
         Update: {
           access_code?: string | null
+          approved?: boolean
           avatar_url?: string | null
+          birth_date?: string | null
           created_at?: string
           email?: string | null
+          full_name?: string | null
           guardian_email?: string | null
           guardian_name?: string | null
           guardian_phone?: string | null
@@ -1649,6 +1660,7 @@ export type Database = {
           level?: number | null
           losses?: number | null
           rank_points?: number | null
+          registration_completed?: boolean
           streak?: number | null
           updated_at?: string
           username?: string | null
@@ -2121,6 +2133,10 @@ export type Database = {
       set_olympiad_students: {
         Args: { _off: string[]; _on: string[] }
         Returns: number
+      }
+      set_user_approved: {
+        Args: { _approved: boolean; _user_id: string }
+        Returns: undefined
       }
       submit_assessment:
         | { Args: { _answers: Json; _course_id: string }; Returns: Json }

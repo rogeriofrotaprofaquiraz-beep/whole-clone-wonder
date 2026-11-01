@@ -92,6 +92,11 @@ type ProfileRow = {
   id: string;
   username: string | null;
   access_code: string | null;
+  email: string | null;
+  full_name: string | null;
+  birth_date: string | null;
+  guardian_email: string | null;
+  approved: boolean;
   roles: Role[];
 };
 
@@ -130,7 +135,7 @@ export default function Permissoes({ embedded = false }: { embedded?: boolean } 
   const reloadAll = async () => {
     const [{ data: perms }, { data: profs }, { data: allRoles }] = await Promise.all([
       supabase.from("role_permissions").select("*").order("feature_label"),
-      supabase.from("profiles").select("id, username, access_code").order("username"),
+      supabase.from("profiles").select("id, username, access_code, email, full_name, birth_date, guardian_email, approved").order("username"),
       supabase.from("user_roles").select("user_id, role"),
     ]);
     setRows((perms ?? []) as any);
@@ -143,6 +148,11 @@ export default function Permissoes({ embedded = false }: { embedded?: boolean } 
         id: p.id,
         username: p.username,
         access_code: p.access_code,
+        email: p.email,
+        full_name: p.full_name,
+        birth_date: p.birth_date,
+        guardian_email: p.guardian_email,
+        approved: !!p.approved,
         roles: byUser[p.id] ?? [],
       })),
     );
@@ -275,6 +285,8 @@ export default function Permissoes({ embedded = false }: { embedded?: boolean } 
   const filteredProfiles = profiles.filter((p) => {
     const matchesSearch =
       (p.username ?? "").toLowerCase().includes(search.toLowerCase()) ||
+      (p.email ?? "").toLowerCase().includes(search.toLowerCase()) ||
+      (p.full_name ?? "").toLowerCase().includes(search.toLowerCase()) ||
       (p.access_code ?? "").toLowerCase().includes(search.toLowerCase());
     const matchesRole =
       roleFilter === "all"
@@ -399,7 +411,26 @@ export default function Permissoes({ embedded = false }: { embedded?: boolean } 
                           }`}
                         >
                           <td className="py-2 px-2">
-                            <div className="font-semibold">{p.username ?? p.id.slice(0, 8)}</div>
+                            <div className="font-semibold">{p.full_name || p.username || p.id.slice(0, 8)}</div>
+                            <div className="text-xs text-slate-600 break-all">{p.email ?? "sem e-mail"}</div>
+                            {(p.birth_date || p.guardian_email) && (
+                              <div className="text-[10px] text-slate-500">
+                                {p.birth_date && <>Nasc.: {p.birth_date.split("-").reverse().join("/")} </>}
+                                {p.guardian_email && <>• Resp.: {p.guardian_email}</>}
+                              </div>
+                            )}
+                            <button
+                              onClick={async (e) => {
+                                e.stopPropagation();
+                                const { error } = await supabase.rpc("set_user_approved" as any, { _user_id: p.id, _approved: !p.approved });
+                                if (error) { toast.error(error.message); return; }
+                                toast.success(p.approved ? "Acesso bloqueado" : "Usuário liberado");
+                                reloadAll();
+                              }}
+                              className={`mt-1 px-2 py-0.5 rounded-full text-[11px] font-bold border ${p.approved ? "bg-emerald-50 text-emerald-700 border-emerald-300" : "bg-amber-50 text-amber-700 border-amber-300"}`}
+                            >
+                              {p.approved ? "✅ Liberado (clique p/ bloquear)" : "⏳ Aguardando — clique para liberar"}
+                            </button>
                             {p.access_code && (
                               <div className="text-[10px] text-slate-500 font-mono">{p.access_code}</div>
                             )}
