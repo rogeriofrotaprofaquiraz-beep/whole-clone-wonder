@@ -97,6 +97,7 @@ type ProfileRow = {
   birth_date: string | null;
   guardian_email: string | null;
   approved: boolean;
+  school_class: string | null;
   roles: Role[];
 };
 
@@ -138,6 +139,15 @@ export default function Permissoes({ embedded = false }: { embedded?: boolean } 
       supabase.from("profiles").select("id, username, access_code, email, full_name, birth_date, guardian_email, approved").order("username"),
       supabase.from("user_roles").select("user_id, role"),
     ]);
+    const [{ data: mem }, { data: cls }, { data: sch }] = await Promise.all([
+      supabase.from("class_members").select("user_id, class_id"),
+      supabase.from("classes").select("id, name, school_id"),
+      supabase.from("schools").select("id, name"),
+    ]);
+    const schName: Record<string, string> = {}; (sch ?? []).forEach((x: any) => (schName[x.id] = x.name));
+    const clsLbl: Record<string, string> = {}; (cls ?? []).forEach((x: any) => (clsLbl[x.id] = `${schName[x.school_id] ?? "Escola"} • ${x.name}`));
+    const memBy: Record<string, string[]> = {};
+    (mem ?? []).forEach((m: any) => { if (clsLbl[m.class_id]) memBy[m.user_id] = [...(memBy[m.user_id] ?? []), clsLbl[m.class_id]]; });
     setRows((perms ?? []) as any);
     const byUser: Record<string, Role[]> = {};
     (allRoles ?? []).forEach((r: any) => {
@@ -153,6 +163,7 @@ export default function Permissoes({ embedded = false }: { embedded?: boolean } 
         birth_date: p.birth_date,
         guardian_email: p.guardian_email,
         approved: !!p.approved,
+        school_class: memBy[p.id]?.join(" | ") ?? null,
         roles: byUser[p.id] ?? [],
       })),
     );
@@ -413,6 +424,7 @@ export default function Permissoes({ embedded = false }: { embedded?: boolean } 
                           <td className="py-2 px-2">
                             <div className="font-semibold">{p.full_name || p.username || p.id.slice(0, 8)}</div>
                             <div className="text-xs text-slate-600 break-all">{p.email ?? "sem e-mail"}</div>
+                            <div className="text-[11px] text-indigo-700">🏫 {p.school_class ?? "Sem escola/turma"}</div>
                             {(p.birth_date || p.guardian_email) && (
                               <div className="text-[10px] text-slate-500">
                                 {p.birth_date && <>Nasc.: {p.birth_date.split("-").reverse().join("/")} </>}
