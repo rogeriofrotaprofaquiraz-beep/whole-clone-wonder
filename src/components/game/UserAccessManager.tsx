@@ -6,6 +6,7 @@ import { Switch } from "@/components/ui/switch";
 import { toast } from "sonner";
 import { ChevronDown, ChevronUp, Search, Shield, Trash, CheckCircle2, XCircle } from "lucide-react";
 import { GAME_FEATURES, PAGE_FEATURES } from "@/lib/featureAccess";
+import { UserGamePanel } from "./UserGamePanel";
 
 const FEATURES = [...GAME_FEATURES.map((f) => ({ ...f, group: "Jogos" })), ...PAGE_FEATURES.map((f) => ({ key: f.key, label: f.label, group: "Páginas" }))];
 const ALL = "__all";
@@ -183,6 +184,7 @@ export function UserAccessManager({ profiles, onRole, onCoins, onDelete, onGrant
                       </div>
                     </div>
                   </div>
+                  <UserGamePanel userId={p.id} />
                   {(["Jogos", "Páginas"] as const).map((g) => (
                     <div key={g} className="space-y-2">
                       <p className="text-xs font-semibold text-muted-foreground">{g}</p>
