@@ -1,3 +1,6 @@
+import { setCurrentGame, PENDING_GAME_KEY } from "@/lib/gameStats";
+import { useEffect } from "react";
+import { supabase } from "@/integrations/supabase/client";
 import { useState } from "react";
 import { ElementQuiz } from "@/components/game/ElementQuiz";
 import { Forca } from "@/components/aula/Forca";
@@ -34,11 +37,37 @@ export function CampeonatoJogos() {
   const games = GAME_MODES.filter((g) => g.id === "quiz" || can(`jogo_${g.id}`));
   const shown = games.filter((g) => filter === "todos" || g.level === filter);
   const mode = GAME_MODES.find((g) => g.id === game);
+  const [assigned, setAssigned] = useState<any[]>([]);
+  useEffect(() => { setCurrentGame(game); return () => setCurrentGame(null); }, [game]);
+  useEffect(() => {
+    const pend = sessionStorage.getItem(PENDING_GAME_KEY);
+    if (pend) { sessionStorage.removeItem(PENDING_GAME_KEY); setGame(pend); }
+    supabase.auth.getUser().then(async ({ data }) => {
+      if (!data.user) return;
+      const { data: a } = await (supabase as any).from("game_assignments").select("*").eq("user_id", data.user.id).is("completed_at", null).order("created_at", { ascending: false });
+      setAssigned(a ?? []);
+    });
+  }, []);
+  const openAssigned = async (a: any) => {
+    await (supabase as any).from("game_assignments").update({ completed_at: new Date().toISOString() }).eq("id", a.id);
+    setAssigned((x) => x.filter((y) => y.id !== a.id));
+    setGame(a.game_key);
+  };
 
   if (!mode) return (
     <div className="w-full max-w-6xl mx-auto space-y-4">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <h2 className="text-2xl font-black">🎮 Modos de Jogo</h2>
+        {assigned.length > 0 && (
+          <div className="w-full space-y-2 rounded-xl border-2 border-primary bg-primary/10 p-3">
+            <p className="text-sm font-bold">📌 Seu professor indicou:</p>
+            {assigned.map((a) => { const m = GAME_MODES.find((g) => g.id === a.game_key); return (
+              <div key={a.id} className="flex flex-wrap items-center gap-2">
+                <span className="text-sm">{m?.emoji} {m?.label ?? a.game_key}{a.note ? ` — ${a.note}` : ""}</span>
+                <Button size="sm" onClick={() => openAssigned(a)}>Jogar agora</Button>
+              </div>); })}
+          </div>
+        )}
         <div className="flex gap-2">
           {(["todos", "fácil", "médio", "difícil"] as const).map((f) => (
             <Button key={f} size="sm" variant={filter === f ? "default" : "outline"} onClick={() => setFilter(f)} className="capitalize">{f}</Button>

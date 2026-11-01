@@ -903,6 +903,66 @@ export type Database = {
         }
         Relationships: []
       }
+      game_assignments: {
+        Row: {
+          assigned_by: string | null
+          completed_at: string | null
+          created_at: string
+          game_key: string
+          id: string
+          note: string | null
+          user_id: string
+        }
+        Insert: {
+          assigned_by?: string | null
+          completed_at?: string | null
+          created_at?: string
+          game_key: string
+          id?: string
+          note?: string | null
+          user_id: string
+        }
+        Update: {
+          assigned_by?: string | null
+          completed_at?: string | null
+          created_at?: string
+          game_key?: string
+          id?: string
+          note?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      game_results: {
+        Row: {
+          correct: number
+          created_at: string
+          game_key: string
+          id: string
+          points: number
+          user_id: string
+          wrong: number
+        }
+        Insert: {
+          correct?: number
+          created_at?: string
+          game_key: string
+          id?: string
+          points?: number
+          user_id: string
+          wrong?: number
+        }
+        Update: {
+          correct?: number
+          created_at?: string
+          game_key?: string
+          id?: string
+          points?: number
+          user_id?: string
+          wrong?: number
+        }
+        Relationships: []
+      }
       game_sessions: {
         Row: {
           area: Database["public"]["Enums"]["chem_area"]
@@ -2040,6 +2100,7 @@ export type Database = {
           xp: number
         }[]
       }
+      is_staff: { Args: { _uid: string }; Returns: boolean }
       join_class_by_code: { Args: { _code: string }; Returns: string }
       link_child_by_code: { Args: { _code: string }; Returns: string }
       lookup_user_ids_by_emails: {

@@ -1,3 +1,4 @@
+import { recordHit, recordMiss } from "@/lib/gameStats";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Card } from "@/components/ui/card";
@@ -48,9 +49,11 @@ export function Memoria({ area }: { area: AreaValue }) {
           setTiles((cur) => cur.map((x, i) => i === a || i === b ? { ...x, matched: true } : x));
           setFlipped([]); setBusy(false);
           toast.success("Par! +2 ⚛");
+          recordHit(2, "memoria");
           supabase.auth.getUser().then(({ data }) => { if (data.user) addCoins(data.user.id, 2).catch(() => {}); });
         }, 350);
       } else {
+        recordMiss("memoria");
         setTimeout(() => {
           setTiles((cur) => cur.map((x, i) => i === a || i === b ? { ...x, flipped: false } : x));
           setFlipped([]); setBusy(false);

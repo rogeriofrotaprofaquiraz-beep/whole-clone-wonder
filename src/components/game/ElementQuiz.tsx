@@ -1,3 +1,4 @@
+import { recordHit, recordMiss } from "@/lib/gameStats";
 import React, { useEffect, useState } from 'react';
 import { ELEMENTS_DATA } from '@/data/elements';
 import { Button } from "@/components/ui/button";
@@ -79,9 +80,10 @@ export const ElementQuiz = () => {
     if (option === cur.correct) {
       setScore((s) => s + 1);
       toast.success(`Correto! +5 ⚛️`);
+      recordHit(5);
       supabase.auth.getUser().then(({ data }) => { if (data.user) addCoins(data.user.id, 5).catch(() => {}); });
     } else {
-      toast.error(`Incorreto! Resposta: ${cur.correct}`);
+      toast.error(`Incorreto! Resposta: ${cur.correct}`); recordMiss();
     }
     setTimeout(() => {
       if (idx + 1 < questions.length) { setIdx((i) => i + 1); setAnswered(false); setSelected(null); }

@@ -1,3 +1,4 @@
+import { recordHit, recordMiss } from "@/lib/gameStats";
 import { useEffect, useMemo, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
@@ -71,6 +72,7 @@ export function Forca({ area, level, difficulty }: { area: AreaValue; level: Lev
       const c = consecutiveWrong + 1;
       setConsecutiveWrong(c);
       setErrors((e) => e + 1);
+      if (errors + 1 >= MAX_ERRORS) recordMiss("forca");
       if (c >= 2 && !hintRevealed) {
         setHintRevealed(true);
         toast.info("Dica revelada! (sua pontuação será menor)");
@@ -87,6 +89,7 @@ export function Forca({ area, level, difficulty }: { area: AreaValue; level: Lev
         const coins = coinsFor(difficulty, elapsedMs);
         setScore((s) => s + pts);
         setWins((w) => w + 1);
+        recordHit(coins, "forca");
         toast.success(`Acertou! +${pts} pts · +${coins} 🪙`);
         supabase.auth.getUser().then(({ data }) => {
           if (data.user) addCoins(data.user.id, coins).catch(() => {});
