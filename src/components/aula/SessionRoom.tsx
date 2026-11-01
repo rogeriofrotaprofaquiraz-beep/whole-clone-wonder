@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
 import { TEAM_COLORS, areaMeta } from "@/lib/aula";
+import { SlideView, parseSlide } from "./SlideEditor";
 import { Trophy, Users, Play, SkipForward, Square, Loader2, Check, X } from "lucide-react";
 
 const STORAGE_KEY = "aula_member_v1";
@@ -223,12 +224,14 @@ export function SessionRoom({ code, isHost }: { code: string; isHost: boolean })
       {question && session.status === "active" && (
         <Card className="p-6">
           <Badge className="mb-3" style={{ background: meta.color }}>{meta.label}</Badge>
-          {question.lesson && !lessonSeen[question.id] && !isHost ? (
+          {(question.slide_content || question.lesson) && !lessonSeen[question.id] && !isHost ? (
             <div className="space-y-4">
-              <h3 className="text-xl font-bold">📖 Aprenda antes de responder</h3>
-              {question.image_url && <img src={question.image_url} alt="" className="max-h-64 rounded-lg mx-auto" />}
-              <p className="text-base leading-relaxed">{question.lesson}</p>
-              <Button className="w-full" onClick={() => setLessonSeen((m) => ({ ...m, [question.id]: true }))}>Entendi, ver a pergunta →</Button>
+              {(() => { const s = parseSlide(question.slide_content ?? null, question.image_url ?? null); return s ? <SlideView slide={s} /> : (<>
+                <h3 className="text-xl font-bold">📖 Aprenda antes de responder</h3>
+                {question.image_url && <img src={question.image_url} alt="" className="max-h-64 rounded-lg mx-auto" />}
+                <p className="text-base leading-relaxed">{question.lesson}</p>
+              </>); })()}
+              <Button className="w-full" onClick={() => setLessonSeen((m) => ({ ...m, [question.id]: true }))}>Ir para a questão →</Button>
             </div>
           ) : (<>
           {question.lesson && isHost && <div className="mb-3 p-3 rounded bg-sky-50 border border-sky-200 text-sm"><strong>📖 Mini-aula:</strong> {question.lesson}</div>}
