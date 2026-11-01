@@ -353,10 +353,10 @@ export const AdminPanel = ({ userRole, initialSymbol, usersOnly }: { userRole?: 
     }
   }, [initialSymbol]);
 
-  const updateUserRole = async (userId: string, newRole: 'admin' | 'moderator' | 'user') => {
+  const updateUserRole = async (userId: string, newRole: string) => {
     // Remove any existing roles for this user, then insert the new one
     await supabase.from('user_roles').delete().eq('user_id', userId);
-    const { error } = await supabase.from('user_roles').insert({ user_id: userId, role: newRole });
+    const { error } = await supabase.from('user_roles').insert({ user_id: userId, role: newRole as any });
     if (error) {
       toast.error("Erro ao atualizar nível de acesso");
     } else {
