@@ -26,6 +26,7 @@ import Certificado from "./pages/Certificado.tsx";
 import Pais from "./pages/Pais.tsx";
 import ControleAcesso from "./pages/ControleAcesso.tsx";
 import { FeatureGuard } from "./components/FeatureGuard";
+import { RegistrationGate } from "./components/RegistrationGate";
 
 
 
@@ -39,6 +40,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <RegistrationGate>
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/aula" element={<FeatureGuard feature="pagina_aula"><Aula /></FeatureGuard>} />
@@ -67,6 +69,7 @@ const App = () => (
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
+        </RegistrationGate>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
