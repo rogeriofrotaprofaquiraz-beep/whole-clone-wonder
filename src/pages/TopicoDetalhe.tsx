@@ -1936,6 +1936,7 @@ export default function TopicoDetalhe() {
   const [isAdmin, setIsAdmin] = useState(false);
   const [override, setOverride] = useState<(Partial<Section> & { image_url?: string; video_url?: string; footer_image_url?: string; materials?: Material[]; daily_life?: string[]; curiosities?: string[]; fun_facts?: string[]; lesson_plan?: string; bncc_codes?: BnccCode[]; section_images?: Record<string, string>; custom_fields?: CustomField[]; subtopics?: any[]; slide_deck?: any[] | null; edit_complete?: boolean; reviewed?: boolean; published?: boolean; updated_at?: string | null }) | null>(null);
   const [editing, setEditing] = useState(false);
+  const [showFullPage, setShowFullPage] = useState(false);
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
   const [uploadingFooter, setUploadingFooter] = useState(false);
@@ -2283,6 +2284,14 @@ export default function TopicoDetalhe() {
           <div className="mb-4 flex flex-wrap gap-2"><Button variant="secondary" onClick={() => setAdminPreview((v) => !v)}>{adminPreview ? "✖ Fechar visão do aluno" : "👁️ Ver slides como aluno"}</Button>
           <Button variant="secondary" onClick={() => { setAdminPreview(false); setDeckEditing(true); }}>✏️ Editar slides</Button></div>
         )}
+        {isAdmin && !editing && !deckEditing && !adminPreview && !showFullPage && (
+          <SlideDeckEditor slug={slug!} title={title} lesson={lesson} initial={deckSlides}
+            onClose={() => setShowFullPage(true)}
+            onSaved={(sl) => { setOverride((o) => ({ ...(o || {}), slide_deck: sl })); }} />
+        )}
+        {isAdmin && !editing && !adminPreview && (
+          <div className="mb-4"><Button variant="outline" onClick={() => setShowFullPage((v) => !v)}>{showFullPage ? "🖼️ Voltar para os slides" : "📄 Ver página completa"}</Button></div>
+        )}
         {isAdmin && deckEditing && (
           <SlideDeckEditor slug={slug!} title={title} lesson={lesson} initial={deckSlides}
             onClose={() => setDeckEditing(false)}
@@ -2294,7 +2303,7 @@ export default function TopicoDetalhe() {
             slides={deckSlides}
             onFinish={() => { if (isAdmin) { setAdminPreview(false); return; } localStorage.setItem(`deck-done:${slug}`, "1"); setDeckDone(true); window.scrollTo({ top: 0, behavior: "smooth" }); }}
           />
-        ) : (<>
+        ) : (isAdmin && !editing && !showFullPage) ? null : (<>
         {!isAdmin && deckDone && <div className="mb-4 text-emerald-300 font-semibold">🏆 Slides concluídos! Agora revise o conteúdo completo abaixo. <button className="underline ml-2" onClick={() => { localStorage.removeItem(`deck-done:${slug}`); localStorage.removeItem(`deck-progress:${slug}`); setDeckDone(false); }}>Refazer slides</button></div>}
         <Card className="overflow-hidden mb-6 border-0">
           <div className="relative h-56 md:h-72 bg-gradient-to-br from-violet-700 to-indigo-900">
