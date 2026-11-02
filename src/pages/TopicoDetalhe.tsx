@@ -1943,6 +1943,7 @@ export default function TopicoDetalhe() {
   const [form, setForm] = useState<any>(null);
   const [deckDone, setDeckDone] = useState(() => typeof window !== "undefined" && !!slug && localStorage.getItem(`deck-done:${slug}`) === "1");
   const [adminPreview, setAdminPreview] = useState(false);
+  const [deckEditing, setDeckEditing] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -2021,7 +2022,7 @@ export default function TopicoDetalhe() {
   const imgUrl = override?.image_url || `https://loremflickr.com/1200/600/${encodeURIComponent(heroQuery)}?lock=${Math.abs(hash(displayTitle)) % 9999}`;
 
   const sectionImg = (key: string) => override?.section_images?.[key];
-  const [deckEditing, setDeckEditing] = useState(false);
+  const deckSlides = (Array.isArray(override?.slide_deck) && override!.slide_deck!.length) ? override!.slide_deck as any[] : buildSlides({ ...c, daily_life: override?.daily_life, curiosities: override?.curiosities }, override?.subtopics, sectionImg("hero") || imgUrl);
   const applySectionImage = (key: string, url: string | null) => {
     setOverride((o) => {
       const cur = { ...(o?.section_images || {}) };
