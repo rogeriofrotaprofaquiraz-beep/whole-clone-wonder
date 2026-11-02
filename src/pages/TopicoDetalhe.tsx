@@ -2077,6 +2077,19 @@ export default function TopicoDetalhe() {
     // eslint-disable-next-line
   }, [autoEdit, isAdmin]);
 
+  const [uploadingCover, setUploadingCover] = useState(false);
+  const uploadCover = async (file: File) => {
+    if (!slug) return;
+    setUploadingCover(true);
+    const path = `topicos/${slug}/capa-${Date.now()}-${file.name.replace(/[^a-zA-Z0-9._-]+/g, "_")}`;
+    const { error } = await supabase.storage.from("course-materials").upload(path, file, { upsert: false });
+    if (error) { setUploadingCover(false); toast.error(error.message); return; }
+    const { data: signed } = await supabase.storage.from("course-materials").createSignedUrl(path, 60 * 60 * 24 * 365 * 10);
+    setForm((f: any) => ({ ...f, image_url: signed?.signedUrl || "" }));
+    setUploadingCover(false);
+    toast.success("Imagem de capa enviada — lembre de salvar");
+  };
+
   const uploadMaterial = async (file: File) => {
     if (!slug) return;
     setUploading(true);
@@ -2730,7 +2743,15 @@ export default function TopicoDetalhe() {
                     <div className="text-sm font-bold text-slate-800 pt-1">4. Mídia, plano de aula e BNCC</div>
                     <div id="fld-hero">
                       <label className="text-xs font-semibold text-slate-700">URL da imagem de capa</label>
-                      <Input value={form.image_url} onChange={e => setForm({ ...form, image_url: e.target.value })} placeholder="https://..." />
+                      <Input value={form.image_url} onChange={e => setForm({ ...form, image_url: e.target.value })} placeholder="https://... ou envie uma imagem" />
+                      <div className="mt-2 flex items-center gap-3 flex-wrap">
+                        <label className="inline-flex items-center gap-1 text-xs px-3 py-1.5 rounded border border-indigo-300 bg-white hover:bg-indigo-50 text-indigo-700 cursor-pointer">
+                          <Upload size={12} /> {uploadingCover ? "Enviando..." : "Enviar imagem do computador"}
+                          <input type="file" accept="image/*" className="hidden" disabled={uploadingCover}
+                            onChange={(e) => { const f = e.target.files?.[0]; if (f) uploadCover(f); e.currentTarget.value = ""; }} />
+                        </label>
+                        {form.image_url && <img src={form.image_url} alt="Capa" className="h-14 rounded border border-slate-200 object-cover" />}
+                      </div>
                     </div>
                     <div id="fld-video">
                       <label className="text-xs font-semibold text-slate-700 flex items-center gap-1">
