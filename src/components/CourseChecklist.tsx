@@ -3,6 +3,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Card } from "@/components/ui/card";
 import { Target } from "lucide-react";
 import { toast } from "sonner";
+import EditableChecklistGrid from "@/components/EditableChecklistGrid";
 
 type Lesson = { id: string; title: string; content?: string | null; video_url?: string | null; image_url?: string | null; slide_url?: string | null };
 
@@ -11,6 +12,7 @@ export default function CourseChecklist({ courseId, lessons }: { courseId: strin
   const [c, setC] = useState<any>(null);
   const [assess, setAssess] = useState<number>(0);
   const [busy, setBusy] = useState<string | null>(null);
+  const [prog, setProg] = useState({ done: 0, total: 1 });
 
   useEffect(() => {
     (async () => {
@@ -40,12 +42,11 @@ export default function CourseChecklist({ courseId, lessons }: { courseId: strin
     { key: "lessons", label: "Aulas cadastradas (mín. 3)", ok: lessons.length >= 3, info: `${lessons.length}/3` },
     { key: "content", label: "Aulas com conteúdo", ok: lessons.length > 0 && withContent === lessons.length, info: `${withContent}/${lessons.length}` },
     { key: "assess", label: "Avaliação final (mín. 5 questões)", ok: assess >= 5, info: `${assess}/5` },
-    { key: "media", label: "Aulas com vídeo/imagem/slide (opcional)", ok: withMedia > 0, info: "opcional" },
-    { key: "slide", label: "Slide do curso (opcional)", ok: !!c.slide_url, info: "opcional" },
+    { key: "media", label: "Aulas com vídeo/imagem/slide (opcional)", ok: withMedia > 0, info: "opcional", optional: true },
+    { key: "slide", label: "Slide do curso (opcional)", ok: !!c.slide_url, info: "opcional", optional: true },
   ];
-  const required = items.filter(i => !["media", "slide"].includes(i.key));
-  const done = required.filter(i => i.ok).length;
-  const pct = Math.round((done / required.length) * 100);
+  const done = prog.done; const required = { length: prog.total };
+  const pct = Math.round((done / Math.max(1, prog.total)) * 100);
   const editComplete = !!c.edit_complete, reviewed = !!c.reviewed, published = !!c.published;
 
   const toggle = async (flag: "edit_complete" | "reviewed" | "published") => {
@@ -81,15 +82,7 @@ export default function CourseChecklist({ courseId, lessons }: { courseId: strin
       <div className="w-full h-2 bg-slate-200 rounded overflow-hidden mb-3">
         <div className="h-full bg-gradient-to-r from-violet-500 to-emerald-500 transition-all" style={{ width: `${pct}%` }} />
       </div>
-      <div className="grid sm:grid-cols-2 gap-1.5 mb-4">
-        {items.map(it => (
-          <div key={it.key} className={`flex items-center gap-2 text-xs px-2 py-1.5 rounded border ${it.ok ? "bg-emerald-50 border-emerald-200 text-emerald-800" : "bg-rose-50 border-rose-200 text-rose-700"}`}>
-            <span>{it.ok ? "✅" : "⬜"}</span>
-            <span className="flex-1">{it.label}</span>
-            <span className="text-[10px] opacity-70">{it.info}</span>
-          </div>
-        ))}
-      </div>
+      <EditableChecklistGrid scope="course" targetId={courseId} auto={items} onProgress={(d, t) => setProg({ done: d, total: t })} />
       <div className="grid sm:grid-cols-3 gap-2 pt-3 border-t border-slate-200">
         <label className={box(editComplete, "bg-amber-50 border-amber-300 text-amber-800", busy !== null)}>
           <input type="checkbox" checked={editComplete} onChange={() => toggle("edit_complete")} className="accent-amber-600" /> 1. Edição completa
