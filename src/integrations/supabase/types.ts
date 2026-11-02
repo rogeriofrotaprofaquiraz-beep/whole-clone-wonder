@@ -1940,6 +1940,7 @@ export type Database = {
           reviewed: boolean
           section_images: Json
           simple: string | null
+          slide_deck: Json | null
           slug: string
           subtopics: Json
           title: string | null
@@ -1972,6 +1973,7 @@ export type Database = {
           reviewed?: boolean
           section_images?: Json
           simple?: string | null
+          slide_deck?: Json | null
           slug: string
           subtopics?: Json
           title?: string | null
@@ -2004,6 +2006,7 @@ export type Database = {
           reviewed?: boolean
           section_images?: Json
           simple?: string | null
+          slide_deck?: Json | null
           slug?: string
           subtopics?: Json
           title?: string | null
