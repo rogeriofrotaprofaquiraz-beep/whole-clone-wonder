@@ -2080,6 +2080,17 @@ export type Database = {
           feature_label: string
         }[]
       }
+      get_my_permissions_full: {
+        Args: never
+        Returns: {
+          can_create: boolean
+          can_delete: boolean
+          can_edit: boolean
+          can_view: boolean
+          feature_key: string
+          is_admin: boolean
+        }[]
+      }
       grant_coins_to_user: {
         Args: { _amount: number; _reason: string; _user_id: string }
         Returns: number
