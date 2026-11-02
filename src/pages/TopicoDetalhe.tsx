@@ -2277,7 +2277,7 @@ export default function TopicoDetalhe() {
           content={liveContent as any}
           editing={editing}
           onGoTo={goToField}
-          onOpenItem={(_k, label) => { if (editing && !confirm("Sair da edição do conteúdo e abrir o slide? Alterações não salvas serão perdidas.")) return; setEditing(false); setAdminPreview(false); setShowFullPage(false); setDeckEditing(false); setFocusTitle(null); setTimeout(() => setFocusTitle(label), 0); }}
+          onOpenItem={(_k, label) => { setAdminPreview(false); setShowFullPage(false); setDeckEditing(false); setFocusTitle(null); setTimeout(() => setFocusTitle(label), 0); }}
           slideStatus={(label) => { const f = normSlide(label); const sl = deckSlides.find((x: any) => normSlide(x.title) === f); if (!sl) return null; const st = SLIDE_STATUS.find(o => o.key === (sl.status || "postado")); return st ? <span className={`text-[10px] px-1.5 rounded-full border ${st.cls}`}>{st.label}</span> : null; }}
           hasHeroImage={!!(sectionImg("hero") || (editing && form ? (form.image_url || "").trim() : override?.image_url))}
           onFlagChange={(patch) => setOverride((o) => ({ ...(o || {}), ...patch }))}
@@ -2288,7 +2288,7 @@ export default function TopicoDetalhe() {
           <div className="mb-4 flex flex-wrap gap-2"><Button variant="secondary" onClick={() => setAdminPreview((v) => !v)}>{adminPreview ? "✖ Fechar visão do aluno" : "👁️ Ver slides como aluno"}</Button>
           <Button variant="secondary" onClick={() => { setAdminPreview(false); setDeckEditing(true); }}>✏️ Editar slides</Button></div>
         )}
-        {isAdmin && !editing && !deckEditing && !adminPreview && !showFullPage && (
+        {isAdmin && (!editing || !!focusTitle) && !deckEditing && !adminPreview && !showFullPage && (
           <SlideDeckEditor key={override?.slide_deck ? "saved" : "auto"} slug={slug!} title={title} lesson={lesson} initial={deckSlides} focusTitle={focusTitle}
             onClose={() => setShowFullPage(true)}
             onSaved={(sl) => { setOverride((o) => ({ ...(o || {}), slide_deck: sl })); }} />
