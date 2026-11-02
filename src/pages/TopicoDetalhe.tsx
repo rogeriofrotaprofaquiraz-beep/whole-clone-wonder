@@ -1812,28 +1812,31 @@ function applyAspect(base: Section, title: string, lesson: string): Section {
 type Material = { name: string; url: string };
 
 function PublishChecklist({
-  slug, title, lesson, override, content, hasHeroImage, onFlagChange,
+  slug, title, lesson, override, content, hasHeroImage, onFlagChange, onGoTo, editing,
 }: {
   slug: string; title: string; lesson?: string;
   override: any; content: Section; hasHeroImage: boolean;
   onFlagChange: (patch: { edit_complete?: boolean; reviewed?: boolean; published?: boolean }) => void;
+  onGoTo?: (key: string) => void; editing?: boolean;
 }) {
   const [busy, setBusy] = useState<string | null>(null);
-  const items: { key: string; label: string; ok: boolean }[] = [
-    { key: "hero", label: "Imagem de capa", ok: hasHeroImage },
-    { key: "simple", label: "Ideia principal (fundamental)", ok: !!(content.simple && content.simple.trim().length > 20) },
-    { key: "formal", label: "Definição formal (médio/superior)", ok: !!(content.formal && content.formal.trim().length > 20) },
-    { key: "key", label: "Conceitos-chave (mín. 3)", ok: (content.key?.length || 0) >= 3 },
-    { key: "principles", label: "Princípios e leis (mín. 2)", ok: (content.principles?.length || 0) >= 2 },
-    { key: "daily", label: "Aplicações no cotidiano", ok: (override?.daily_life?.length || 0) >= 1 },
-    { key: "curio", label: "Curiosidades", ok: (override?.curiosities?.length || 0) >= 1 },
-    { key: "pitfalls", label: "Alertas / erros comuns", ok: (content.pitfalls?.length || 0) >= 1 },
-    { key: "refs", label: "Referências", ok: (content.refs?.length || 0) >= 1 },
-    { key: "exercises", label: "Exercícios de revisão", ok: (content.exercises?.length || 0) >= 3 },
-    { key: "bncc", label: "Códigos BNCC", ok: (override?.bncc_codes?.length || 0) >= 1 },
-    { key: "plan", label: "Plano de aula", ok: !!(override?.lesson_plan && override.lesson_plan.length > 40) },
-    { key: "video", label: "Vídeo-aula (opcional)", ok: !!override?.video_url },
-    { key: "materials", label: "Materiais anexados (opcional)", ok: (override?.materials?.length || 0) >= 1 },
+  const L = content as any;
+  const n = (v: any) => (Array.isArray(v) ? v.length : 0);
+  const items: { key: string; label: string; ok: boolean; info: string }[] = [
+    { key: "hero", label: "Imagem de capa", ok: hasHeroImage, info: hasHeroImage ? "ok" : "falta" },
+    { key: "simple", label: "Ideia principal (fundamental)", ok: (L.simple || "").trim().length > 20, info: `${(L.simple || "").trim().length}/21 letras` },
+    { key: "formal", label: "Definição formal (médio/superior)", ok: (L.formal || "").trim().length > 20, info: `${(L.formal || "").trim().length}/21 letras` },
+    { key: "keys", label: "Conceitos-chave (mín. 3)", ok: n(L.key) >= 3, info: `${n(L.key)}/3` },
+    { key: "principles", label: "Princípios e leis (mín. 2)", ok: n(L.principles) >= 2, info: `${n(L.principles)}/2` },
+    { key: "daily_life", label: "Aplicações no cotidiano", ok: n(L.daily_life) >= 1, info: `${n(L.daily_life)}/1` },
+    { key: "curiosities", label: "Curiosidades", ok: n(L.curiosities) >= 1, info: `${n(L.curiosities)}/1` },
+    { key: "pitfalls", label: "Alertas / erros comuns", ok: n(L.pitfalls) >= 1, info: `${n(L.pitfalls)}/1` },
+    { key: "refs", label: "Referências", ok: n(L.refs) >= 1, info: `${n(L.refs)}/1` },
+    { key: "exercises", label: "Exercícios de revisão (mín. 3)", ok: n(L.exercises) >= 3, info: `${n(L.exercises)}/3` },
+    { key: "bncc_codes", label: "Códigos BNCC", ok: n(L.bncc_codes) >= 1, info: `${n(L.bncc_codes)}/1` },
+    { key: "lesson_plan", label: "Plano de aula", ok: (L.lesson_plan || "").trim().length > 40, info: `${(L.lesson_plan || "").trim().length}/41 letras` },
+    { key: "video", label: "Vídeo-aula (opcional)", ok: !!(L.video_url || "").trim(), info: "opcional" },
+    { key: "materials", label: "Materiais anexados (opcional)", ok: n(L.materials) >= 1, info: "opcional" },
   ];
   const required = items.filter(i => !["video","materials"].includes(i.key));
   const done = required.filter(i => i.ok).length;
@@ -1868,6 +1871,7 @@ function PublishChecklist({
       <div className="flex items-center justify-between mb-3 flex-wrap gap-2">
         <div className="flex items-center gap-2 text-[#4C1D95] font-bold">
           <Target size={18} /> Checklist de publicação (admin)
+          <span className="text-[11px] font-normal text-slate-500">{editing ? "· conferindo o que está digitado agora (salve para valer)" : "· conferindo o conteúdo salvo deste tópico"}</span>
         </div>
         <div className="flex items-center gap-3 text-xs">
           <span className="text-slate-600">
@@ -1886,10 +1890,11 @@ function PublishChecklist({
       </div>
       <div className="grid sm:grid-cols-2 gap-1.5 mb-4">
         {items.map(it => (
-          <div key={it.key} className={`flex items-center gap-2 text-xs px-2 py-1.5 rounded border ${it.ok ? "bg-emerald-50 border-emerald-200 text-emerald-800" : "bg-slate-50 border-slate-200 text-slate-600"}`}>
-            <input type="checkbox" checked={it.ok} readOnly className="accent-emerald-600" />
+          <button type="button" key={it.key} onClick={() => onGoTo?.(it.key)} title="Ir para o campo" className={`text-left flex items-center gap-2 text-xs px-2 py-1.5 rounded border hover:ring-2 hover:ring-violet-300 ${it.ok ? "bg-emerald-50 border-emerald-200 text-emerald-800" : "bg-rose-50 border-rose-200 text-rose-700"}`}>
+            <span>{it.ok ? "✅" : "⬜"}</span>
             <span className="flex-1">{it.label}</span>
-          </div>
+            <span className="text-[10px] opacity-70">{it.info}</span>
+          </button>
         ))}
       </div>
       <div className="grid sm:grid-cols-3 gap-2 pt-3 border-t border-slate-200">
@@ -2017,6 +2022,28 @@ export default function TopicoDetalhe() {
     });
   };
 
+  const lns = (v?: string) => (v || "").split("\n").map((x) => x.trim()).filter(Boolean);
+  const liveContent = editing && form
+    ? {
+        simple: form.simple, formal: form.formal, key: lns(form.keys), principles: lns(form.principles),
+        pitfalls: lns(form.pitfalls), refs: lns(form.refs), exercises: lns(form.exercises),
+        daily_life: lns(form.daily_life), curiosities: lns(form.curiosities),
+        bncc_codes: lns(form.bncc_codes), lesson_plan: form.lesson_plan, video_url: form.video_url, materials: lns(form.materials),
+      }
+    : {
+        simple: override?.simple, formal: override?.formal, key: override?.key, principles: override?.principles,
+        pitfalls: override?.pitfalls, refs: override?.refs, exercises: override?.exercises,
+        daily_life: override?.daily_life, curiosities: override?.curiosities,
+        bncc_codes: override?.bncc_codes, lesson_plan: override?.lesson_plan, video_url: override?.video_url, materials: override?.materials,
+      };
+  const goToField = (key: string) => {
+    const go = () => {
+      const el = document.getElementById(`fld-${key}`);
+      if (el) { el.scrollIntoView({ behavior: "smooth", block: "center" }); (el.querySelector("textarea,input") as HTMLElement | null)?.focus(); }
+    };
+    if (!editing) { startEdit(); setTimeout(go, 150); } else go();
+  };
+
   const startEdit = () => {
     const pack = funContent(classificationSource);
     setForm({
@@ -2093,7 +2120,7 @@ export default function TopicoDetalhe() {
   const save = async () => {
     if (!slug) return;
     setSaving(true);
-    const toLines = (s: string) => s.split("\n").map(x => x.trim()).filter(Boolean);
+    const toLines = (s: string) => (s || "").split("\n").map(x => x.trim().replace(/^([•●▪◦\-–*]|\d+[.)])\s+/, "").trim()).filter(Boolean);
     const formulas = toLines(form.formulas).map((l: string) => {
       const [expr, ...rest] = l.split("|");
       return { expr: expr.trim(), desc: rest.join("|").trim() };
@@ -2116,7 +2143,7 @@ export default function TopicoDetalhe() {
       title,
       lesson,
       simple: form.simple.trim(),
-      formal: form.formal.trim(),
+      formal: (form.formal || "").trim(),
       keys: toLines(form.keys),
       principles: toLines(form.principles),
       formulas,
@@ -2222,8 +2249,10 @@ export default function TopicoDetalhe() {
         {isAdmin && <PublishChecklist
           slug={slug!} title={title} lesson={lesson}
           override={override}
-          content={c}
-          hasHeroImage={!!(sectionImg("hero") || override?.image_url)}
+          content={liveContent as any}
+          editing={editing}
+          onGoTo={goToField}
+          hasHeroImage={!!(sectionImg("hero") || (editing && form ? (form.image_url || "").trim() : override?.image_url))}
           onFlagChange={(patch) => setOverride((o) => ({ ...(o || {}), ...patch }))}
         />}
 
@@ -2655,64 +2684,61 @@ export default function TopicoDetalhe() {
 
                 {editing && form && (
                   <div className="space-y-3 mt-3">
-                    <div>
-                      <label className="text-xs font-semibold text-slate-700">Ideia principal (linguagem simples)</label>
-                      <Textarea rows={3} value={form.simple} onChange={e => setForm({ ...form, simple: e.target.value })} />
-                    </div>
-                    <div>
-                      <label className="text-xs font-semibold text-slate-700">Conceitos-chave (um por linha)</label>
-                      <Textarea rows={4} value={form.keys} onChange={e => setForm({ ...form, keys: e.target.value })} />
-                    </div>
-                    <div>
-                      <label className="text-xs font-semibold text-slate-700">Princípios / leis (um por linha)</label>
-                      <Textarea rows={4} value={form.principles} onChange={e => setForm({ ...form, principles: e.target.value })} />
-                    </div>
-                    <div>
-                      <label className="text-xs font-semibold text-slate-700">Fórmulas (uma por linha, formato: <code>expressão | descrição</code>)</label>
-                      <Textarea rows={3} value={form.formulas} onChange={e => setForm({ ...form, formulas: e.target.value })} placeholder="E = h·ν | Energia do fóton" />
-                    </div>
-
-                    <div>
-                      <label className="text-xs font-semibold text-slate-700">Erros comuns (um por linha)</label>
-                      <Textarea rows={3} value={form.pitfalls} onChange={e => setForm({ ...form, pitfalls: e.target.value })} />
-                    </div>
-                    <div>
-                      <label className="text-xs font-semibold text-sky-800 flex items-center gap-1">
-                        <Home size={12} /> Aplicação no cotidiano (um item por linha)
-                      </label>
-                      <Textarea rows={4} value={form.daily_life} onChange={e => setForm({ ...form, daily_life: e.target.value })} />
-                    </div>
-                    <div>
-                      <label className="text-xs font-semibold text-[#4C1D95] flex items-center gap-1">
-                        <Sparkles size={12} /> Curiosidades (uma por linha)
-                      </label>
-                      <Textarea rows={4} value={form.curiosities} onChange={e => setForm({ ...form, curiosities: e.target.value })} />
-                    </div>
-                    <div>
-                      <label className="text-xs font-semibold text-amber-800 flex items-center gap-1">
-                        <Smile size={12} /> Fatos engraçados (um por linha)
-                      </label>
-                      <Textarea rows={4} value={form.fun_facts} onChange={e => setForm({ ...form, fun_facts: e.target.value })} />
-                    </div>
-                    <div>
-                      <label className="text-xs font-semibold text-slate-700">Exercícios sugeridos (um por linha)</label>
-                      <Textarea rows={3} value={form.exercises} onChange={e => setForm({ ...form, exercises: e.target.value })} />
-                    </div>
-                    <div>
-                      <label className="text-xs font-semibold text-slate-700">Referências (uma por linha)</label>
-                      <Textarea rows={3} value={form.refs} onChange={e => setForm({ ...form, refs: e.target.value })} />
-                    </div>
-                    <div>
-                      <label className="text-xs font-semibold text-slate-700">URL da imagem de capa (opcional)</label>
+                    <p className="text-xs text-slate-600 bg-white rounded border border-amber-200 p-2">
+                      Cada caixa mostra quanto falta para o checklist. Nas listas, coloque <b>um item por linha</b> (pode colar de Word/PDF; marcadores como "•", "-" ou "1." são removidos ao salvar).
+                    </p>
+                    {[
+                      { step: "1. Explicação", fields: [
+                        { k: "simple", f: "simple", label: "Ideia principal (linguagem simples, mín. 21 letras)", rows: 3, text: true },
+                        { k: "formal", f: "formal", label: "Definição formal (médio/superior, mín. 21 letras)", rows: 3, text: true },
+                        { k: "keys", f: "keys", label: "Conceitos-chave (mín. 3)", rows: 4, min: 3 },
+                        { k: "principles", f: "principles", label: "Princípios e leis (mín. 2)", rows: 4, min: 2 },
+                        { k: "formulas", f: "formulas", label: "Fórmulas (expressão | descrição)", rows: 3, ph: "E = h·ν | Energia do fóton" },
+                        { k: "examples", f: "examples", label: "Exemplos", rows: 3 },
+                      ]},
+                      { step: "2. Contexto", fields: [
+                        { k: "daily_life", f: "daily_life", label: "Aplicações no cotidiano (mín. 1)", rows: 4, min: 1 },
+                        { k: "curiosities", f: "curiosities", label: "Curiosidades (mín. 1)", rows: 4, min: 1 },
+                        { k: "fun_facts", f: "fun_facts", label: "Fatos engraçados", rows: 3 },
+                        { k: "pitfalls", f: "pitfalls", label: "Alertas / erros comuns (mín. 1)", rows: 3, min: 1 },
+                      ]},
+                      { step: "3. Prática e fontes", fields: [
+                        { k: "exercises", f: "exercises", label: "Exercícios de revisão (mín. 3)", rows: 4, min: 3 },
+                        { k: "refs", f: "refs", label: "Referências (mín. 1)", rows: 3, min: 1 },
+                      ]},
+                    ].map((g) => (
+                      <div key={g.step} className="rounded-lg border border-slate-200 bg-white p-3 space-y-3">
+                        <div className="text-sm font-bold text-slate-800">{g.step}</div>
+                        {g.fields.map((fd: any) => {
+                          const val = form[fd.f] || "";
+                          const cnt = fd.text ? val.trim().length : lns(val).length;
+                          const ok = fd.text ? cnt > 20 : fd.min ? cnt >= fd.min : true;
+                          return (
+                            <div key={fd.k} id={`fld-${fd.k}`}>
+                              <div className="flex items-center justify-between">
+                                <label className="text-xs font-semibold text-slate-700">{fd.label}</label>
+                                <span className={`text-[10px] px-1.5 rounded ${ok ? "bg-emerald-100 text-emerald-800" : "bg-rose-100 text-rose-700"}`}>
+                                  {fd.text ? `${cnt} letras` : `${cnt} ${cnt === 1 ? "item" : "itens"}`}{fd.min && !ok ? ` · faltam ${fd.min - cnt}` : ""}
+                                </span>
+                              </div>
+                              <Textarea rows={fd.rows} value={val} placeholder={fd.ph} onChange={(e) => setForm({ ...form, [fd.f]: e.target.value })} />
+                            </div>
+                          );
+                        })}
+                      </div>
+                    ))}
+                    <div className="text-sm font-bold text-slate-800 pt-1">4. Mídia, plano de aula e BNCC</div>
+                    <div id="fld-hero">
+                      <label className="text-xs font-semibold text-slate-700">URL da imagem de capa</label>
                       <Input value={form.image_url} onChange={e => setForm({ ...form, image_url: e.target.value })} placeholder="https://..." />
                     </div>
-                    <div>
+                    <div id="fld-video">
                       <label className="text-xs font-semibold text-slate-700 flex items-center gap-1">
                         <Video size={12} /> URL do vídeo (YouTube, Vimeo ou embed direto)
                       </label>
                       <Input value={form.video_url} onChange={e => setForm({ ...form, video_url: e.target.value })} placeholder="https://youtu.be/..." />
                     </div>
-                    <div>
+                    <div id="fld-materials">
                       <label className="text-xs font-semibold text-slate-700 flex items-center gap-1">
                         <Paperclip size={12} /> Materiais complementares (um por linha, formato: <code>nome | url</code>)
                       </label>
@@ -2728,7 +2754,7 @@ export default function TopicoDetalhe() {
                       </div>
                     </div>
 
-                    <div className="rounded-lg border border-emerald-200 bg-emerald-50/60 p-3 space-y-2">
+                    <div id="fld-lesson_plan" className="rounded-lg border border-emerald-200 bg-emerald-50/60 p-3 space-y-2">
                       <label className="text-xs font-semibold text-emerald-800 flex items-center gap-1">
                         <FileText size={12} /> Plano de aula moderno (Markdown)
                       </label>
@@ -2743,7 +2769,7 @@ export default function TopicoDetalhe() {
                       </div>
                     </div>
 
-                    <div>
+                    <div id="fld-bncc_codes">
                       <label className="text-xs font-semibold text-slate-700 flex items-center gap-1">
                         <Tag size={12} /> Códigos BNCC / BNCC Digital (um por linha: <code>BNC|CÓDIGO|descrição</code> ou <code>DIG|CÓDIGO|descrição</code>)
                       </label>
@@ -2752,7 +2778,7 @@ export default function TopicoDetalhe() {
                     </div>
 
 
-                    <div className="flex gap-2 pt-1">
+                    <div className="sticky bottom-2 z-10 flex gap-2 p-2 rounded-lg bg-amber-100/95 border border-amber-300 shadow">
                       <Button size="sm" onClick={save} disabled={saving} className="bg-emerald-600 hover:bg-emerald-700">
                         <Save size={14} className="mr-1" /> {saving ? "Salvando..." : "Salvar edição"}
                       </Button>
