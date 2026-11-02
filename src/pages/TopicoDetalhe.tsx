@@ -2308,7 +2308,7 @@ export default function TopicoDetalhe() {
                   imageKey="simple" currentOverride={sectionImg("simple")}
                   onChange={(u) => applySectionImage("simple", u)}
                 />
-                <p className="text-slate-700 leading-relaxed">{c.simple}</p>
+                <p className="text-slate-700 leading-relaxed whitespace-pre-line">{c.simple}</p>
               </div>
             </section>
 
@@ -2326,7 +2326,7 @@ export default function TopicoDetalhe() {
                   imageKey="formal" currentOverride={sectionImg("formal")}
                   onChange={(u) => applySectionImage("formal", u)}
                 />
-                <p className="text-slate-700 leading-relaxed">{c.formal}</p>
+                <p className="text-slate-700 leading-relaxed whitespace-pre-line">{c.formal}</p>
               </div>
             </section>
 
