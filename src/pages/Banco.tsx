@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
+import { usePermission } from "@/lib/permissions";
 import { ArrowLeft, Coins, Percent, Settings, Loader2, Plus, Save } from "lucide-react";
 
 type Profile = { id: string; username: string | null };
@@ -23,6 +24,7 @@ export default function Banco() {
   const [loading, setLoading] = useState(true);
   const [authorized, setAuthorized] = useState(false);
   const [me, setMe] = useState<string>("");
+  const perm = usePermission("banco");
 
   const [profiles, setProfiles] = useState<Profile[]>([]);
   const [search, setSearch] = useState("");
@@ -72,6 +74,7 @@ export default function Banco() {
   );
 
   const grant = async () => {
+    if (!perm.create) return toast.error("Seu perfil não tem permissão para dar Átomos.");
     if (!grantUser || !grantAmount) return toast.error("Informe usuário e valor");
     const { data, error } = await supabase.rpc("grant_coins_to_user", {
       _user_id: grantUser, _amount: grantAmount, _reason: grantReason,
@@ -81,6 +84,7 @@ export default function Banco() {
   };
 
   const saveEcon = async () => {
+    if (!perm.edit) return toast.error("Seu perfil não tem permissão para editar custos.");
     const dirty = econ.filter((e) => e.dirty);
     for (const e of dirty) {
       await supabase.from("economy_settings").update({ cost: e.cost, label: e.label }).eq("id", e.id);
@@ -90,6 +94,7 @@ export default function Banco() {
   };
 
   const addPromo = async () => {
+    if (!perm.create) return toast.error("Seu perfil não tem permissão para criar promoções.");
     if (!newPromo.name) return toast.error("Nome obrigatório");
     const { data, error } = await supabase.from("credit_promotions").insert({
       ...newPromo, created_by: me,
@@ -102,6 +107,7 @@ export default function Banco() {
   };
 
   const togglePromo = async (id: string, active: boolean) => {
+    if (!perm.edit) return toast.error("Seu perfil não tem permissão para editar promoções.");
     await supabase.from("credit_promotions").update({ active }).eq("id", id);
     setPromos((p) => p.map((x) => (x.id === id ? { ...x, active } : x)));
   };

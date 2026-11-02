@@ -11,6 +11,7 @@ import { useFeatureAccess } from "@/lib/featureAccess";
 import { Input } from "@/components/ui/input";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Plus } from "lucide-react";
+import { usePermission } from "@/lib/permissions";
 
 type Course = {
   id: string;
@@ -34,6 +35,7 @@ export default function Cursos() {
   const [open, setOpen] = useState(false);
   const [form, setForm] = useState({ title: "", description: "", area: "geral", level: "medio", hours: 40, base: "" });
   const [saving, setSaving] = useState(false);
+  const perm = usePermission("painel_professor");
 
   useEffect(() => {
     if (!user?.id) return;
@@ -42,6 +44,7 @@ export default function Cursos() {
   }, [user?.id]);
 
   const createCourse = async () => {
+    if (!perm.create) return toast.error("Seu perfil não tem permissão para criar cursos.");
     if (!form.title.trim()) return toast.error("Digite o nome do curso");
     setSaving(true);
     const { data: c, error } = await supabase.from("courses").insert({
