@@ -1,3 +1,4 @@
+import EditableChecklistGrid from "@/components/EditableChecklistGrid";
 import { CustomFieldsView, type CustomField } from "@/components/aula/TopicFieldsDialog";
 import { Link, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { Card } from "@/components/ui/card";
@@ -1823,7 +1824,7 @@ function PublishChecklist({
   const [busy, setBusy] = useState<string | null>(null);
   const L = content as any;
   const n = (v: any) => (Array.isArray(v) ? v.length : 0);
-  const items: { key: string; label: string; ok: boolean; info: string }[] = [
+  const items: { key: string; label: string; ok: boolean; info: string; optional?: boolean }[] = [
     { key: "hero", label: "Imagem de capa", ok: hasHeroImage, info: hasHeroImage ? "ok" : "falta" },
     { key: "simple", label: "Ideia principal (fundamental)", ok: (L.simple || "").trim().length > 20, info: `${(L.simple || "").trim().length}/21 letras` },
     { key: "formal", label: "Definição formal (médio/superior)", ok: (L.formal || "").trim().length > 20, info: `${(L.formal || "").trim().length}/21 letras` },
@@ -1836,12 +1837,12 @@ function PublishChecklist({
     { key: "exercises", label: "Exercícios de revisão (mín. 3)", ok: n(L.exercises) >= 3, info: `${n(L.exercises)}/3` },
     { key: "bncc_codes", label: "Códigos BNCC", ok: n(L.bncc_codes) >= 1, info: `${n(L.bncc_codes)}/1` },
     { key: "lesson_plan", label: "Plano de aula", ok: (L.lesson_plan || "").trim().length > 40, info: `${(L.lesson_plan || "").trim().length}/41 letras` },
-    { key: "video", label: "Vídeo-aula (opcional)", ok: !!(L.video_url || "").trim(), info: "opcional" },
-    { key: "materials", label: "Materiais anexados (opcional)", ok: n(L.materials) >= 1, info: "opcional" },
+    { key: "video", label: "Vídeo-aula (opcional)", ok: !!(L.video_url || "").trim(), info: "opcional", optional: true },
+    { key: "materials", label: "Materiais anexados (opcional)", ok: n(L.materials) >= 1, info: "opcional", optional: true },
   ];
-  const required = items.filter(i => !["video","materials"].includes(i.key));
-  const done = required.filter(i => i.ok).length;
-  const pct = Math.round((done / required.length) * 100);
+  const [prog, setProg] = useState({ done: 0, total: 1 });
+  const done = prog.done; const required = { length: prog.total };
+  const pct = Math.round((done / Math.max(1, prog.total)) * 100);
 
   const editComplete = !!override?.edit_complete;
   const reviewed = !!override?.reviewed;
@@ -1889,15 +1890,7 @@ function PublishChecklist({
       <div className="w-full h-2 bg-slate-200 rounded overflow-hidden mb-3">
         <div className="h-full bg-gradient-to-r from-violet-500 to-emerald-500 transition-all" style={{ width: `${pct}%` }} />
       </div>
-      <div className="grid sm:grid-cols-2 gap-1.5 mb-4">
-        {items.map(it => (
-          <button type="button" key={it.key} onClick={() => onGoTo?.(it.key)} title="Ir para o campo" className={`text-left flex items-center gap-2 text-xs px-2 py-1.5 rounded border hover:ring-2 hover:ring-violet-300 ${it.ok ? "bg-emerald-50 border-emerald-200 text-emerald-800" : "bg-rose-50 border-rose-200 text-rose-700"}`}>
-            <span>{it.ok ? "✅" : "⬜"}</span>
-            <span className="flex-1">{it.label}</span>
-            <span className="text-[10px] opacity-70">{it.info}</span>
-          </button>
-        ))}
-      </div>
+      <EditableChecklistGrid scope="topic" targetId={slug} auto={items} onGoTo={onGoTo} onProgress={(d, t) => setProg({ done: d, total: t })} />
       <div className="grid sm:grid-cols-3 gap-2 pt-3 border-t border-slate-200">
         <label className={`flex items-center gap-2 cursor-pointer px-3 py-2 rounded border text-sm font-semibold ${editComplete ? "bg-amber-50 border-amber-300 text-amber-800" : "bg-white border-slate-300 text-slate-600"} ${busy === "edit_complete" ? "opacity-50" : ""}`}>
           <input type="checkbox" checked={editComplete} disabled={busy !== null} onChange={() => toggle("edit_complete")} className="accent-amber-600" />
