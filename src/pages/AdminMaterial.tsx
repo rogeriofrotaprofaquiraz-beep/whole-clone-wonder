@@ -22,6 +22,7 @@ import { toast } from "sonner";
 import { areaMeta } from "@/lib/aula";
 import { parseBulkQuestions } from "@/lib/parseBulkQuestions";
 import TopicFieldsDialog from "@/components/aula/TopicFieldsDialog";
+import SubtopicsDialog from "@/components/aula/SubtopicsDialog";
 
 type Course = {
   id: string; title: string; description: string | null;
@@ -298,6 +299,7 @@ export default function AdminMaterial() {
   };
 
   const [fieldsTopic, setFieldsTopic] = useState<{ slug: string; title: string; lesson: string; courseId: string } | null>(null);
+  const [subTopic, setSubTopic] = useState<{ slug: string; title: string; lesson: string; courseId: string } | null>(null);
 
   const saveLesson = async () => {
     if (!editing) return;
@@ -708,6 +710,10 @@ export default function AdminMaterial() {
                                                   onClick={() => setFieldsTopic({ slug: s, title: t, lesson: l.title, courseId: l.course_id })}>
                                                   🧩 Campos
                                                 </Button>
+                                                <Button size="sm" variant="outline" className="h-6 px-2 text-[10px]" title="Subtópicos"
+                                                  onClick={() => setSubTopic({ slug: s, title: t, lesson: l.title, courseId: l.course_id })}>
+                                                  🌿 Subtópicos
+                                                </Button>
                                                 <Button size="sm" variant="outline" className="h-6 w-6 p-0" title="Renomear" onClick={() => renameTopic(l, i, t)}>
                                                   <Pencil size={11} />
                                                 </Button>
@@ -766,6 +772,11 @@ export default function AdminMaterial() {
         <TopicFieldsDialog open onClose={() => setFieldsTopic(null)}
           slug={fieldsTopic.slug} title={fieldsTopic.title} lesson={fieldsTopic.lesson}
           upload={(f) => uploadCourseFile(f, fieldsTopic.courseId)} />
+      )}
+      {subTopic && (
+        <SubtopicsDialog open onClose={() => setSubTopic(null)}
+          slug={subTopic.slug} title={subTopic.title} lesson={subTopic.lesson}
+          upload={(f) => uploadCourseFile(f, subTopic.courseId)} />
       )}
 
       {/* ===== Lesson editor ===== */}

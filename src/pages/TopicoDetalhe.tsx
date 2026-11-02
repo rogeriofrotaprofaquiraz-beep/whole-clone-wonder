@@ -1,5 +1,6 @@
 import EditableChecklistGrid from "@/components/EditableChecklistGrid";
 import { CustomFieldsView, type CustomField } from "@/components/aula/TopicFieldsDialog";
+import { SubtopicsView } from "@/components/aula/SubtopicsDialog";
 import { Link, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -1970,6 +1971,7 @@ export default function TopicoDetalhe() {
           bncc_codes: ((data as any).bncc_codes as BnccCode[]) ?? undefined,
           section_images: ((data as any).section_images as Record<string,string>) ?? {},
           custom_fields: ((data as any).custom_fields as CustomField[]) ?? [],
+          subtopics: (data as any).subtopics ?? [],
           edit_complete: !!(data as any).edit_complete,
           reviewed: !!(data as any).reviewed,
           published: !!(data as any).published,
@@ -2514,6 +2516,7 @@ export default function TopicoDetalhe() {
 
             {/* Campos definidos pelo administrador */}
             <CustomFieldsView fields={(override as any)?.custom_fields} />
+            <SubtopicsView items={(override as any)?.subtopics} />
 
             {/* Materiais complementares */}
             {override?.materials && override.materials.length > 0 && (
