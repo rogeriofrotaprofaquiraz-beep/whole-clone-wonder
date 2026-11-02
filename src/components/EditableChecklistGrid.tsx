@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import { DndContext, closestCenter, KeyboardSensor, PointerSensor, useSensor, useSensors, type DragEndEvent } from "@dnd-kit/core";
+import { SortableContext, arrayMove, sortableKeyboardCoordinates, verticalListSortingStrategy } from "@dnd-kit/sortable";
+import SortableStructureRow from "@/components/SortableStructureRow";
 
 export type AutoItem = { key: string; label: string; ok: boolean; info: string; optional?: boolean };
 type CfgItem = { key: string; label: string; optional?: boolean };
@@ -16,6 +19,18 @@ export default function EditableChecklistGrid({ scope, targetId, auto, onGoTo, o
   const [editing, setEditing] = useState(false);
   const [draft, setDraft] = useState<CfgItem[]>([]);
   const [newLabel, setNewLabel] = useState("");
+  const sensors = useSensors(
+    useSensor(PointerSensor, { activationConstraint: { distance: 6 } }),
+    useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates }),
+  );
+  const reorder = ({ active, over }: DragEndEvent) => {
+    if (!over || active.id === over.id) return;
+    setDraft(items => {
+      const from = items.findIndex(item => item.key === active.id);
+      const to = items.findIndex(item => item.key === over.id);
+      return from < 0 || to < 0 ? items : arrayMove(items, from, to);
+    });
+  };
 
   useEffect(() => {
     (async () => {
@@ -65,16 +80,20 @@ export default function EditableChecklistGrid({ scope, targetId, auto, onGoTo, o
     const missing = auto.filter(a => !draft.some(d => d.key === a.key));
     return (
       <div className="mb-4 space-y-1.5">
+        <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={reorder}>
+        <SortableContext items={draft.map(d => d.key)} strategy={verticalListSortingStrategy}>
         {draft.map((d, i) => (
-          <div key={d.key} className="flex items-center gap-2 text-xs">
+          <SortableStructureRow key={d.key} id={d.key} label={d.label}>
             <button type="button" className="px-1 text-slate-500" disabled={i === 0} onClick={() => { const n = [...draft]; [n[i - 1], n[i]] = [n[i], n[i - 1]]; setDraft(n); }}>▲</button>
             <button type="button" className="px-1 text-slate-500" disabled={i === draft.length - 1} onClick={() => { const n = [...draft]; [n[i + 1], n[i]] = [n[i], n[i + 1]]; setDraft(n); }}>▼</button>
             <input value={d.label} onChange={e => setDraft(draft.map((x, j) => j === i ? { ...x, label: e.target.value } : x))} className="flex-1 border border-slate-300 rounded px-2 py-1 text-slate-800 bg-white" />
             <span className="text-[10px] text-slate-500 w-16">{auto.some(a => a.key === d.key) ? "automático" : "manual"}</span>
             <label className="flex items-center gap-1 text-slate-600"><input type="checkbox" checked={!!d.optional} onChange={e => setDraft(draft.map((x, j) => j === i ? { ...x, optional: e.target.checked } : x))} /> opcional</label>
             <button type="button" className="text-rose-600 px-2" onClick={() => setDraft(draft.filter((_, j) => j !== i))}>🗑️</button>
-          </div>
+          </SortableStructureRow>
         ))}
+        </SortableContext>
+        </DndContext>
         <div className="flex gap-2 pt-2">
           <input value={newLabel} onChange={e => setNewLabel(e.target.value)} placeholder="Nome do novo item" className="flex-1 border border-slate-300 rounded px-2 py-1 text-xs text-slate-800 bg-white" />
           <button type="button" className="text-xs px-3 py-1 rounded bg-violet-600 text-white" onClick={() => { if (!newLabel.trim()) return; setDraft([...draft, { key: "c_" + Date.now(), label: newLabel.trim() }]); setNewLabel(""); }}>➕ Inserir</button>
