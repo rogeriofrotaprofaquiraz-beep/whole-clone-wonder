@@ -20,6 +20,7 @@ type MemberRow = { user_id: string; role: string; status: string; username?: str
 type TeamRow = { id: string; class_id: string; name: string; color: string };
 
 export default function Escola() {
+  const perm = usePermission("escola");
   const navigate = useNavigate();
   const [params] = useSearchParams();
   const [role, setRole] = useState<string | null>(null);
@@ -96,6 +97,7 @@ export default function Escola() {
   };
 
   const createSchool = async () => {
+    if (!perm.create) return toast.error("Seu perfil não tem permissão para adicionar");
     if (!newSchool.name.trim()) return toast.error("Informe o nome da escola");
     const { data: { session } } = await supabase.auth.getSession();
     const { error } = await supabase.from("schools").insert({ name: newSchool.name.trim(), city: newSchool.city.trim() || null, owner_id: session!.user.id });
@@ -106,6 +108,7 @@ export default function Escola() {
   };
 
   const createClass = async () => {
+    if (!perm.create) return toast.error("Seu perfil não tem permissão para adicionar");
     if (!newClass.school_id || !newClass.name.trim()) return toast.error("Selecione escola e nome");
     const { error } = await supabase.from("classes").insert({ school_id: newClass.school_id, name: newClass.name.trim(), grade_year: newClass.grade_year });
     if (error) return toast.error(error.message);
@@ -132,6 +135,7 @@ export default function Escola() {
 
   const removeMember = async (uid: string) => {
     if (!activeClass) return;
+    if (!perm.remove) return toast.error("Seu perfil não tem permissão para excluir");
     await supabase.from("class_members").delete().eq("class_id", activeClass.id).eq("user_id", uid);
     loadClassDetails(activeClass);
   };
@@ -251,6 +255,7 @@ export default function Escola() {
   };
 
   const deleteTeam = async (id: string) => {
+    if (!perm.remove) return toast.error("Seu perfil não tem permissão para excluir");
     await supabase.from("class_teams").delete().eq("id", id);
     if (activeClass) loadClassDetails(activeClass);
   };
