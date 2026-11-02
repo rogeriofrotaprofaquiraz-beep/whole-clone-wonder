@@ -89,7 +89,7 @@ export function QuestionBankByTopic({ userId }: { userId: string }) {
   const toOlympiad = async () => {
     if (!olyDialog || !olyId) return toast.error("Escolha a olimpíada");
     const list = pickIds(olyDialog);
-    const questions = list.map((q) => ({ q: q.question, options: Array.isArray(q.options) ? q.options : [], correct: q.correct_index, explanation: q.explanation ?? undefined }));
+    const questions = list.map((q: any) => ({ q: q.question, options: Array.isArray(q.options) ? q.options : [], correct: q.correct_index, explanation: q.explanation ?? undefined, slide: q.slide_content ?? undefined, image: q.image_url ?? undefined }));
     const { error } = await supabase.from("olympiad_exams").insert({
       olympiad_id: olyId, title: olyTitle || olyDialog.key, source: "banco", questions: questions as any, created_by: userId,
     } as any);
