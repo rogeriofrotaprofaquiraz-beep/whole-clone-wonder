@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { usePermission } from "@/lib/permissions";
 import { Link, useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { ensureUserAccess } from "@/lib/ensureUserAccess";
@@ -53,6 +54,7 @@ const emptyForm = {
 };
 
 export default function PlanoDeAula() {
+  const perm = usePermission("plano_aula");
   const navigate = useNavigate();
   const [userId, setUserId] = useState<string>("");
   const [schools, setSchools] = useState<{ id: string; name: string }[]>([]);
@@ -213,8 +215,10 @@ export default function PlanoDeAula() {
     };
     let error;
     if (editingId) {
+      if (!perm.edit) return toast.error("Seu perfil não tem permissão para editar");
       ({ error } = await supabase.from("lesson_plans").update(payload).eq("id", editingId));
     } else {
+      if (!perm.create) return toast.error("Seu perfil não tem permissão para adicionar");
       ({ error } = await supabase.from("lesson_plans").insert(payload));
     }
     if (error) return toast.error(error.message);
@@ -250,6 +254,7 @@ export default function PlanoDeAula() {
   };
 
   const deletePlan = async (id: string) => {
+    if (!perm.remove) return toast.error("Seu perfil não tem permissão para excluir");
     if (!confirm("Excluir este planejamento?")) return;
     await supabase.from("lesson_plans").delete().eq("id", id);
     setSavedPlans((p) => p.filter((x) => x.id !== id));
