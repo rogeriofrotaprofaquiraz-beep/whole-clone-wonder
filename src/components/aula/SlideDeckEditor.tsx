@@ -1,16 +1,37 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 
-export type DeckSlide = { title: string; emoji: string; lines: string[]; image?: string };
+export type SlideStatus = "editando" | "concluido" | "revisado" | "postado";
+export type DeckSlide = { title: string; emoji: string; lines: string[]; image?: string; status?: SlideStatus };
+export const SLIDE_STATUS: { key: SlideStatus; label: string; cls: string }[] = [
+  { key: "editando", label: "✏️ Editando", cls: "bg-amber-100 text-amber-800 border-amber-300" },
+  { key: "concluido", label: "✅ Concluído", cls: "bg-sky-100 text-sky-800 border-sky-300" },
+  { key: "revisado", label: "🔍 Revisado", cls: "bg-violet-100 text-violet-800 border-violet-300" },
+  { key: "postado", label: "🚀 Postado", cls: "bg-emerald-100 text-emerald-800 border-emerald-300" },
+];
+export const norm = (t: string) => (t || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, " ").trim();
+/** Slides que o aluno pode ver: postados (slides antigos sem status continuam visíveis). */
+export const visibleToStudent = (s: DeckSlide) => !s.status || s.status === "postado";
 
 /** Editor dos slides do tópico (professor/admin): texto, imagem, ordem, inserir e excluir. */
-export default function SlideDeckEditor({ slug, title, lesson, initial, onSaved, onClose }: {
-  slug: string; title: string; lesson?: string; initial: DeckSlide[];
+export default function SlideDeckEditor({ slug, title, lesson, initial, onSaved, onClose, focusTitle }: {
+  slug: string; title: string; lesson?: string; initial: DeckSlide[]; focusTitle?: string | null;
   onSaved: (slides: DeckSlide[] | null) => void; onClose: () => void;
 }) {
   const [slides, setSlides] = useState<DeckSlide[]>(() => initial.map(s => ({ ...s, lines: [...s.lines] })));
+  const refs = useRef<(HTMLDivElement | null)[]>([]);
+  const [focusIdx, setFocusIdx] = useState<number | null>(null);
+  useEffect(() => {
+    if (!focusTitle) return;
+    const f = norm(focusTitle);
+    let idx = slides.findIndex(s => norm(s.title) === f || (norm(s.title) && (norm(s.title).includes(f) || f.includes(norm(s.title)))));
+    if (idx < 0) { idx = slides.length; setSlides(a => [...a, { title: focusTitle, emoji: "📌", lines: [""], status: "editando" }]); }
+    setFocusIdx(idx);
+    setTimeout(() => refs.current[idx]?.scrollIntoView({ behavior: "smooth", block: "center" }), 120);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [focusTitle]);
   const [busy, setBusy] = useState<number | null>(null);
   const upd = (i: number, p: Partial<DeckSlide>) => setSlides(a => a.map((s, k) => (k === i ? { ...s, ...p } : s)));
   const move = (i: number, d: number) => setSlides(a => { const n = [...a]; const j = i + d; if (j < 0 || j >= n.length) return a; [n[i], n[j]] = [n[j], n[i]]; return n; });
@@ -42,7 +63,15 @@ export default function SlideDeckEditor({ slug, title, lesson, initial, onSaved,
         <Button className="bg-violet-700 hover:bg-violet-800" onClick={() => save(slides)}>Salvar slides</Button>
       </div>
       {slides.map((s, i) => (
-        <div key={i} className="border border-slate-200 rounded-xl p-3 space-y-2 bg-slate-50">
+        <div key={i} ref={el => (refs.current[i] = el)} className={`border rounded-xl p-3 space-y-2 bg-slate-50 ${focusIdx === i ? "border-violet-500 ring-2 ring-violet-300" : "border-slate-200"}`}>
+          <div className="flex flex-wrap gap-1 items-center text-xs">
+            <span className="font-semibold text-slate-600 mr-1">Status:</span>
+            {SLIDE_STATUS.map(st => (
+              <button type="button" key={st.key} onClick={() => upd(i, { status: st.key })}
+                className={`px-2 py-0.5 rounded-full border ${(s.status || "postado") === st.key ? st.cls + " font-bold" : "bg-white text-slate-500 border-slate-200"}`}>{st.label}</button>
+            ))}
+            <span className="ml-auto text-slate-500">{(s.status || "postado") === "postado" ? "Visível para o aluno" : "Oculto do aluno"}</span>
+          </div>
           <div className="flex gap-2 items-center">
             <span className="text-xs font-bold text-slate-500 w-14">Slide {i + 1}</span>
             <input className="w-14 border rounded px-2 py-1 text-center bg-white" value={s.emoji} onChange={e => upd(i, { emoji: e.target.value })} aria-label="Emoji" />
@@ -61,10 +90,10 @@ export default function SlideDeckEditor({ slug, title, lesson, initial, onSaved,
             </label>
             {s.image && <><img src={s.image} alt="" className="h-12 w-20 object-cover rounded" /><button type="button" className="text-red-600 text-xs" onClick={() => upd(i, { image: "" })}>remover</button></>}
           </div>
-          <button type="button" className="text-xs text-violet-700" onClick={() => setSlides(a => [...a.slice(0, i + 1), { title: "Novo slide", emoji: "📌", lines: [""] }, ...a.slice(i + 1)])}>➕ Inserir slide abaixo</button>
+          <button type="button" className="text-xs text-violet-700" onClick={() => setSlides(a => [...a.slice(0, i + 1), { title: "Novo slide", emoji: "📌", lines: [""], status: "editando" as SlideStatus }, ...a.slice(i + 1)])}>➕ Inserir slide abaixo</button>
         </div>
       ))}
-      <Button variant="outline" onClick={() => setSlides(a => [...a, { title: "Novo slide", emoji: "📌", lines: [""] }])}>➕ Adicionar slide</Button>
+      <Button variant="outline" onClick={() => setSlides(a => [...a, { title: "Novo slide", emoji: "📌", lines: [""], status: "editando" as SlideStatus }])}>➕ Adicionar slide</Button>
     </div>
   );
 }

@@ -14,9 +14,10 @@ type CfgItem = { key: string; label: string; optional?: boolean };
 
 /** Lista de verificação editável pelo admin: inserir, renomear, excluir itens.
  *  Itens com chave de um item automático usam a verificação automática; os demais são marcados à mão. */
-export default function EditableChecklistGrid({ scope, targetId, auto, onGoTo, onProgress }: {
+export default function EditableChecklistGrid({ scope, targetId, auto, onGoTo, onProgress, onOpenItem, slideStatus }: {
   scope: "topic" | "course"; targetId: string; auto: AutoItem[];
   onGoTo?: (key: string) => void; onProgress?: (done: number, total: number) => void;
+  onOpenItem?: (key: string, label: string) => void; slideStatus?: (label: string) => React.ReactNode;
 }) {
   const [cfg, setCfg] = useState<CfgItem[] | null>(null);
   const [checks, setChecks] = useState<Set<string>>(new Set());
@@ -160,11 +161,17 @@ export default function EditableChecklistGrid({ scope, targetId, auto, onGoTo, o
       </div>
       <div className="grid sm:grid-cols-2 gap-1.5">
         {rows.map(it => (
-          <button type="button" key={it.key} onClick={() => it.manual ? toggleManual(it.key) : onGoTo?.(it.key)} title={it.manual ? "Marcar / desmarcar" : "Ir para o campo"} className={`text-left flex items-center gap-2 text-xs px-2 py-1.5 rounded border hover:ring-2 hover:ring-violet-300 ${it.ok ? "bg-emerald-50 border-emerald-200 text-emerald-800" : "bg-rose-50 border-rose-200 text-rose-700"}`}>
-            <span>{it.ok ? "✅" : "⬜"}</span>
+          <div key={it.key} role="button" tabIndex={0}
+            onClick={() => onOpenItem ? onOpenItem(it.key, it.label) : (it.manual ? toggleManual(it.key) : onGoTo?.(it.key))}
+            onKeyDown={e => { if (e.key === "Enter") (e.currentTarget as HTMLElement).click(); }}
+            title={onOpenItem ? "Abrir slide de edição" : (it.manual ? "Marcar / desmarcar" : "Ir para o campo")} className={`cursor-pointer text-left flex items-center gap-2 text-xs px-2 py-1.5 rounded border hover:ring-2 hover:ring-violet-300 ${it.ok ? "bg-emerald-50 border-emerald-200 text-emerald-800" : "bg-rose-50 border-rose-200 text-rose-700"}`}>
+            {it.manual && onOpenItem
+              ? <button type="button" title="Marcar / desmarcar" onClick={e => { e.stopPropagation(); toggleManual(it.key); }}>{it.ok ? "✅" : "⬜"}</button>
+              : <span>{it.ok ? "✅" : "⬜"}</span>}
             <span className="flex-1">{it.label}</span>
+            {slideStatus?.(it.label)}
             <span className="text-[10px] opacity-70">{it.info}</span>
-          </button>
+          </div>
         ))}
       </div>
     </div>
