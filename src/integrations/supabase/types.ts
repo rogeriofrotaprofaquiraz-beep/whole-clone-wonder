@@ -344,6 +344,45 @@ export type Database = {
           },
         ]
       }
+      checklist_checks: {
+        Row: {
+          checked_by: string | null
+          created_at: string
+          item_key: string
+          target_id: string
+        }
+        Insert: {
+          checked_by?: string | null
+          created_at?: string
+          item_key: string
+          target_id: string
+        }
+        Update: {
+          checked_by?: string | null
+          created_at?: string
+          item_key?: string
+          target_id?: string
+        }
+        Relationships: []
+      }
+      checklist_config: {
+        Row: {
+          items: Json
+          scope: string
+          updated_at: string
+        }
+        Insert: {
+          items?: Json
+          scope: string
+          updated_at?: string
+        }
+        Update: {
+          items?: Json
+          scope?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       chem_questions: {
         Row: {
           answer_text: string | null
