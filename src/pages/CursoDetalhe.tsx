@@ -10,6 +10,7 @@ import { toast } from "sonner";
 import { areaMeta } from "@/lib/aula";
 import { addCoins } from "@/lib/playerEconomy";
 import TopicExercise from "@/components/TopicExercise";
+import CourseChecklist from "@/components/CourseChecklist";
 
 function reviewCategoryFor(course: { title: string; area: string }): string {
   const t = (course.title + " " + course.area).toLowerCase();
@@ -221,6 +222,8 @@ export default function CursoDetalhe() {
         <Link to="/cursos" className="inline-flex items-center gap-2 text-white/80 hover:text-white mb-4">
           <ArrowLeft size={18} /> Cursos
         </Link>
+
+        <CourseChecklist courseId={course.id} lessons={lessons as any} />
 
         <Card className="p-6 mb-6" style={{ background: `linear-gradient(135deg, ${m!.color}, #1e293b)`, color: "#fff", border: 0 }}>
           <div className="flex items-start gap-4">
