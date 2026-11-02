@@ -138,7 +138,16 @@ export default function EditableChecklistGrid({ scope, targetId, auto, onGoTo, o
         <div className="flex gap-2 pt-2">
           <button type="button" className="text-xs px-3 py-1 rounded bg-emerald-600 text-white" onClick={save}>💾 Salvar checklist</button>
           <button type="button" className="text-xs px-3 py-1 rounded border border-slate-300 text-slate-700" onClick={() => setEditing(false)}>Cancelar</button>
-          <button type="button" className="text-xs px-3 py-1 rounded border border-slate-300 text-slate-500 ml-auto" onClick={reset}>Restaurar padrão</button>
+          <button type="button" className="text-xs px-3 py-1 rounded border border-violet-300 text-violet-700 ml-auto" title="Reordena os itens na mesma ordem das seções da página, mantendo nomes editados"
+            onClick={() => {
+              const extras = draft.filter(x => !auto.some(a => a.key === x.key)).length;
+              const keep = extras > 0 && confirm(`Há ${extras} itens manuais que não são seções da página. OK = manter no final · Cancelar = remover`);
+              setDraft(d => [
+                ...auto.map(a => d.find(x => x.key === a.key) ?? { key: a.key, label: a.label, optional: a.optional }),
+                ...(keep ? d.filter(x => !auto.some(a => a.key === x.key)) : []),
+              ]);
+            }}>🔄 Alinhar à estrutura real</button>
+          <button type="button" className="text-xs px-3 py-1 rounded border border-slate-300 text-slate-500" onClick={reset}>Restaurar padrão</button>
         </div>
       </div>
     );

@@ -1827,20 +1827,25 @@ function PublishChecklist({
   const L = content as any;
   const n = (v: any) => (Array.isArray(v) ? v.length : 0);
   const items: { key: string; label: string; ok: boolean; info: string; optional?: boolean }[] = [
+    // Mesma ordem em que as seções aparecem na página do tópico
     { key: "hero", label: "Imagem de capa", ok: hasHeroImage, info: hasHeroImage ? "ok" : "falta" },
     { key: "simple", label: "Ideia principal (fundamental)", ok: (L.simple || "").trim().length > 20, info: `${(L.simple || "").trim().length}/21 letras` },
     { key: "formal", label: "Definição formal (médio/superior)", ok: (L.formal || "").trim().length > 20, info: `${(L.formal || "").trim().length}/21 letras` },
     { key: "keys", label: "Conceitos-chave (mín. 3)", ok: n(L.key) >= 3, info: `${n(L.key)}/3` },
     { key: "principles", label: "Princípios e leis (mín. 2)", ok: n(L.principles) >= 2, info: `${n(L.principles)}/2` },
-    { key: "daily_life", label: "Aplicações no cotidiano", ok: n(L.daily_life) >= 1, info: `${n(L.daily_life)}/1` },
+    { key: "formulas", label: "Fórmulas e equações (opcional)", ok: n(L.formulas) >= 1, info: "opcional", optional: true },
+    { key: "daily_life", label: "Aplicações no cotidiano", ok: n(L.daily_life) + n(L.examples) >= 1, info: `${n(L.daily_life) + n(L.examples)}/1` },
     { key: "curiosities", label: "Curiosidades", ok: n(L.curiosities) >= 1, info: `${n(L.curiosities)}/1` },
-    { key: "pitfalls", label: "Alertas / erros comuns", ok: n(L.pitfalls) >= 1, info: `${n(L.pitfalls)}/1` },
-    { key: "refs", label: "Referências", ok: n(L.refs) >= 1, info: `${n(L.refs)}/1` },
-    { key: "exercises", label: "Exercícios de revisão (mín. 3)", ok: n(L.exercises) >= 3, info: `${n(L.exercises)}/3` },
-    { key: "bncc_codes", label: "Códigos BNCC", ok: n(L.bncc_codes) >= 1, info: `${n(L.bncc_codes)}/1` },
-    { key: "lesson_plan", label: "Plano de aula", ok: (L.lesson_plan || "").trim().length > 40, info: `${(L.lesson_plan || "").trim().length}/41 letras` },
+    { key: "pitfalls", label: "Alertas (erros comuns)", ok: n(L.pitfalls) >= 1, info: `${n(L.pitfalls)}/1` },
+    { key: "custom_fields", label: "Campos personalizados (opcional)", ok: n(L.custom_fields ?? override?.custom_fields) >= 1, info: "opcional", optional: true },
+    { key: "subtopics", label: "Subtópicos (opcional)", ok: n(L.subtopics ?? override?.subtopics) >= 1, info: "opcional", optional: true },
     { key: "video", label: "Vídeo-aula (opcional)", ok: !!(L.video_url || "").trim(), info: "opcional", optional: true },
-    { key: "materials", label: "Materiais anexados (opcional)", ok: n(L.materials) >= 1, info: "opcional", optional: true },
+    { key: "materials", label: "Materiais complementares (opcional)", ok: n(L.materials) >= 1, info: "opcional", optional: true },
+    { key: "lesson_plan", label: "Plano de aula", ok: (L.lesson_plan || "").trim().length > 40, info: `${(L.lesson_plan || "").trim().length}/41 letras` },
+    { key: "bncc_codes", label: "Códigos BNCC / BNCC Digital", ok: n(L.bncc_codes) >= 1, info: `${n(L.bncc_codes)}/1` },
+    { key: "refs", label: "Referências bibliográficas", ok: n(L.refs) >= 1, info: `${n(L.refs)}/1` },
+    { key: "exercises", label: "Exercícios / quiz avaliativo (mín. 3)", ok: n(L.exercises) >= 3, info: `${n(L.exercises)}/3` },
+    { key: "footer_image", label: "Imagem final do tópico (opcional)", ok: !!(L.footer_image_url || override?.footer_image_url), info: "opcional", optional: true },
   ];
   const [prog, setProg] = useState({ done: 0, total: 1 });
   const done = prog.done; const required = { length: prog.total };
