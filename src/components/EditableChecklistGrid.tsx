@@ -4,6 +4,10 @@ import { toast } from "sonner";
 import { DndContext, closestCenter, KeyboardSensor, PointerSensor, useSensor, useSensors, type DragEndEvent } from "@dnd-kit/core";
 import { SortableContext, arrayMove, sortableKeyboardCoordinates, verticalListSortingStrategy } from "@dnd-kit/sortable";
 import SortableStructureRow from "@/components/SortableStructureRow";
+import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
+import { ClipboardPaste, Plus } from "lucide-react";
+import { parseTopicList } from "@/lib/parseTopicList";
 
 export type AutoItem = { key: string; label: string; ok: boolean; info: string; optional?: boolean };
 type CfgItem = { key: string; label: string; optional?: boolean };
@@ -19,6 +23,15 @@ export default function EditableChecklistGrid({ scope, targetId, auto, onGoTo, o
   const [editing, setEditing] = useState(false);
   const [draft, setDraft] = useState<CfgItem[]>([]);
   const [newLabel, setNewLabel] = useState("");
+  const [bulkOpen, setBulkOpen] = useState(false);
+  const [bulkText, setBulkText] = useState("");
+  const pastedTopics = parseTopicList(bulkText);
+  const insertPastedTopics = () => {
+    if (!pastedTopics.length) return;
+    setDraft(items => [...items, ...pastedTopics.map(label => ({ key: `c_${crypto.randomUUID()}`, label }))]);
+    setBulkText("");
+    setBulkOpen(false);
+  };
   const sensors = useSensors(
     useSensor(PointerSensor, { activationConstraint: { distance: 6 } }),
     useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates }),
@@ -94,6 +107,24 @@ export default function EditableChecklistGrid({ scope, targetId, auto, onGoTo, o
         ))}
         </SortableContext>
         </DndContext>
+        <div className="pt-2">
+          <Button type="button" size="sm" variant="outline" onClick={() => setBulkOpen(open => !open)} aria-expanded={bulkOpen}>
+            <ClipboardPaste /> Colar vários tópicos
+          </Button>
+          {bulkOpen && (
+            <div className="mt-2 space-y-2">
+              <label htmlFor={`bulk-topics-${scope}-${targetId}`} className="text-xs font-medium text-foreground">Tópicos (um por linha)</label>
+              <Textarea id={`bulk-topics-${scope}-${targetId}`} value={bulkText} onChange={e => setBulkText(e.target.value)} rows={7}
+                placeholder={"Sólido\nLíquido\nGasoso\nPlasma"} />
+              <div className="flex flex-wrap items-center gap-2">
+                <Button type="button" size="sm" disabled={!pastedTopics.length} onClick={insertPastedTopics}>
+                  <Plus /> Inserir tópicos{pastedTopics.length ? ` (${pastedTopics.length})` : ""}
+                </Button>
+                <Button type="button" size="sm" variant="ghost" onClick={() => { setBulkText(""); setBulkOpen(false); }}>Cancelar</Button>
+              </div>
+            </div>
+          )}
+        </div>
         <div className="flex gap-2 pt-2">
           <input value={newLabel} onChange={e => setNewLabel(e.target.value)} placeholder="Nome do novo item" className="flex-1 border border-slate-300 rounded px-2 py-1 text-xs text-slate-800 bg-white" />
           <button type="button" className="text-xs px-3 py-1 rounded bg-violet-600 text-white" onClick={() => { if (!newLabel.trim()) return; setDraft([...draft, { key: "c_" + Date.now(), label: newLabel.trim() }]); setNewLabel(""); }}>➕ Inserir</button>
