@@ -1,4 +1,5 @@
 import TopicSlideDeck, { buildSlides } from "@/components/aula/TopicSlideDeck";
+import SlideDeckEditor from "@/components/aula/SlideDeckEditor";
 import EditableChecklistGrid from "@/components/EditableChecklistGrid";
 import { CustomFieldsView, type CustomField } from "@/components/aula/TopicFieldsDialog";
 import { SubtopicsView } from "@/components/aula/SubtopicsDialog";
@@ -1933,7 +1934,7 @@ export default function TopicoDetalhe() {
   const displayTitle = lesson ? `${title} — ${lesson}` : title;
 
   const [isAdmin, setIsAdmin] = useState(false);
-  const [override, setOverride] = useState<(Partial<Section> & { image_url?: string; video_url?: string; footer_image_url?: string; materials?: Material[]; daily_life?: string[]; curiosities?: string[]; fun_facts?: string[]; lesson_plan?: string; bncc_codes?: BnccCode[]; section_images?: Record<string, string>; custom_fields?: CustomField[]; subtopics?: any[]; edit_complete?: boolean; reviewed?: boolean; published?: boolean; updated_at?: string | null }) | null>(null);
+  const [override, setOverride] = useState<(Partial<Section> & { image_url?: string; video_url?: string; footer_image_url?: string; materials?: Material[]; daily_life?: string[]; curiosities?: string[]; fun_facts?: string[]; lesson_plan?: string; bncc_codes?: BnccCode[]; section_images?: Record<string, string>; custom_fields?: CustomField[]; subtopics?: any[]; slide_deck?: any[] | null; edit_complete?: boolean; reviewed?: boolean; published?: boolean; updated_at?: string | null }) | null>(null);
   const [editing, setEditing] = useState(false);
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
@@ -1942,6 +1943,7 @@ export default function TopicoDetalhe() {
   const [form, setForm] = useState<any>(null);
   const [deckDone, setDeckDone] = useState(() => typeof window !== "undefined" && !!slug && localStorage.getItem(`deck-done:${slug}`) === "1");
   const [adminPreview, setAdminPreview] = useState(false);
+  const [deckEditing, setDeckEditing] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -1980,6 +1982,7 @@ export default function TopicoDetalhe() {
           section_images: ((data as any).section_images as Record<string,string>) ?? {},
           custom_fields: ((data as any).custom_fields as CustomField[]) ?? [],
           subtopics: (data as any).subtopics ?? [],
+          slide_deck: (data as any).slide_deck ?? null,
           edit_complete: !!(data as any).edit_complete,
           reviewed: !!(data as any).reviewed,
           published: !!(data as any).published,
@@ -2019,6 +2022,7 @@ export default function TopicoDetalhe() {
   const imgUrl = override?.image_url || `https://loremflickr.com/1200/600/${encodeURIComponent(heroQuery)}?lock=${Math.abs(hash(displayTitle)) % 9999}`;
 
   const sectionImg = (key: string) => override?.section_images?.[key];
+  const deckSlides = (Array.isArray(override?.slide_deck) && override!.slide_deck!.length) ? override!.slide_deck as any[] : buildSlides({ ...c, daily_life: override?.daily_life, curiosities: override?.curiosities }, override?.subtopics, sectionImg("hero") || imgUrl);
   const applySectionImage = (key: string, url: string | null) => {
     setOverride((o) => {
       const cur = { ...(o?.section_images || {}) };
@@ -2276,12 +2280,18 @@ export default function TopicoDetalhe() {
 
 
         {isAdmin && !editing && (
-          <div className="mb-4"><Button variant="secondary" onClick={() => setAdminPreview((v) => !v)}>{adminPreview ? "✖ Fechar visão do aluno" : "👁️ Ver slides como aluno"}</Button></div>
+          <div className="mb-4 flex flex-wrap gap-2"><Button variant="secondary" onClick={() => setAdminPreview((v) => !v)}>{adminPreview ? "✖ Fechar visão do aluno" : "👁️ Ver slides como aluno"}</Button>
+          <Button variant="secondary" onClick={() => { setAdminPreview(false); setDeckEditing(true); }}>✏️ Editar slides</Button></div>
+        )}
+        {isAdmin && deckEditing && (
+          <SlideDeckEditor slug={slug!} title={title} lesson={lesson} initial={deckSlides}
+            onClose={() => setDeckEditing(false)}
+            onSaved={(sl) => { setOverride((o) => ({ ...(o || {}), slide_deck: sl })); setDeckEditing(false); }} />
         )}
         {((!isAdmin && !deckDone) || (isAdmin && adminPreview)) ? (
           <TopicSlideDeck
             slug={slug!}
-            slides={buildSlides({ ...c, daily_life: override?.daily_life, curiosities: override?.curiosities }, override?.subtopics, sectionImg("hero") || imgUrl)}
+            slides={deckSlides}
             onFinish={() => { if (isAdmin) { setAdminPreview(false); return; } localStorage.setItem(`deck-done:${slug}`, "1"); setDeckDone(true); window.scrollTo({ top: 0, behavior: "smooth" }); }}
           />
         ) : (<>
