@@ -21,6 +21,7 @@ import {
 import { toast } from "sonner";
 import { areaMeta } from "@/lib/aula";
 import { parseBulkQuestions } from "@/lib/parseBulkQuestions";
+import TopicFieldsDialog from "@/components/aula/TopicFieldsDialog";
 
 type Course = {
   id: string; title: string; description: string | null;
@@ -760,6 +761,12 @@ export default function AdminMaterial() {
           </Accordion>
         )}
       </div>
+
+      {fieldsTopic && (
+        <TopicFieldsDialog open onClose={() => setFieldsTopic(null)}
+          slug={fieldsTopic.slug} title={fieldsTopic.title} lesson={fieldsTopic.lesson}
+          upload={(f) => uploadCourseFile(f, fieldsTopic.courseId)} />
+      )}
 
       {/* ===== Lesson editor ===== */}
       <Dialog open={!!editing} onOpenChange={(o) => !o && setEditing(null)}>
