@@ -9,8 +9,9 @@ import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
 import { ArrowLeft, Medal, Plus, FileUp, Sparkles, Loader2, Trash2, Play } from "lucide-react";
 import { parseBulkQuestions } from "@/lib/parseBulkQuestions";
+import { SlideView, parseSlide } from "@/components/aula/SlideEditor";
 
-type Q = { q: string; options: string[]; correct: number; explanation?: string };
+type Q = { q: string; options: string[]; correct: number; explanation?: string; slide?: string; image?: string };
 type Olympiad = { id: string; acronym: string; name: string; description: string | null };
 type Exam = { id: string; olympiad_id: string; title: string; year: number | null; source: string; questions: Q[] };
 
@@ -280,6 +281,7 @@ function TakeExam({ exam, userId, onClose }: { exam: Exam; userId: string | null
       {done && <Card className="p-4 text-center font-black text-xl">Nota {done.score.toFixed(1)} · {done.correct}/{exam.questions.length} acertos</Card>}
       {exam.questions.map((q, i) => (
         <Card key={i} className="p-4 space-y-2">
+          {(() => { const s = parseSlide(q.slide ?? null, q.image ?? null); return s ? <SlideView slide={s} /> : q.image ? <img src={q.image} alt="" className="max-h-64 mx-auto rounded" /> : null; })()}
           <p className="font-bold">{String(i + 1).padStart(2, "0")}. {q.q}</p>
           {q.options.map((o, j) => {
             const chosen = answers[i] === j;
