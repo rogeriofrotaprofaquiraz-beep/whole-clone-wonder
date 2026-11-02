@@ -1,5 +1,5 @@
 import TopicSlideDeck, { buildSlides } from "@/components/aula/TopicSlideDeck";
-import SlideDeckEditor from "@/components/aula/SlideDeckEditor";
+import SlideDeckEditor, { SLIDE_STATUS, norm as normSlide, visibleToStudent } from "@/components/aula/SlideDeckEditor";
 import EditableChecklistGrid from "@/components/EditableChecklistGrid";
 import { CustomFieldsView, type CustomField } from "@/components/aula/TopicFieldsDialog";
 import { SubtopicsView } from "@/components/aula/SubtopicsDialog";
@@ -1817,12 +1817,13 @@ function applyAspect(base: Section, title: string, lesson: string): Section {
 type Material = { name: string; url: string };
 
 function PublishChecklist({
-  slug, title, lesson, override, content, hasHeroImage, onFlagChange, onGoTo, editing,
+  slug, title, lesson, override, content, hasHeroImage, onFlagChange, onGoTo, editing, onOpenItem, slideStatus,
 }: {
   slug: string; title: string; lesson?: string;
   override: any; content: Section; hasHeroImage: boolean;
   onFlagChange: (patch: { edit_complete?: boolean; reviewed?: boolean; published?: boolean }) => void;
   onGoTo?: (key: string) => void; editing?: boolean;
+  onOpenItem?: (key: string, label: string) => void; slideStatus?: (label: string) => React.ReactNode;
 }) {
   const [busy, setBusy] = useState<string | null>(null);
   const L = content as any;
@@ -1898,7 +1899,7 @@ function PublishChecklist({
       <div className="w-full h-2 bg-slate-200 rounded overflow-hidden mb-3">
         <div className="h-full bg-gradient-to-r from-violet-500 to-emerald-500 transition-all" style={{ width: `${pct}%` }} />
       </div>
-      <EditableChecklistGrid scope="topic" targetId={slug} auto={items} onGoTo={onGoTo} onProgress={(d, t) => setProg({ done: d, total: t })} />
+      <EditableChecklistGrid scope="topic" targetId={slug} auto={items} onGoTo={onGoTo} onOpenItem={onOpenItem} slideStatus={slideStatus} onProgress={(d, t) => setProg({ done: d, total: t })} />
       <div className="grid sm:grid-cols-3 gap-2 pt-3 border-t border-slate-200">
         <label className={`flex items-center gap-2 cursor-pointer px-3 py-2 rounded border text-sm font-semibold ${editComplete ? "bg-amber-50 border-amber-300 text-amber-800" : "bg-white border-slate-300 text-slate-600"} ${busy === "edit_complete" ? "opacity-50" : ""}`}>
           <input type="checkbox" checked={editComplete} disabled={busy !== null} onChange={() => toggle("edit_complete")} className="accent-amber-600" />
@@ -1945,6 +1946,7 @@ export default function TopicoDetalhe() {
   const [deckDone, setDeckDone] = useState(() => typeof window !== "undefined" && !!slug && localStorage.getItem(`deck-done:${slug}`) === "1");
   const [adminPreview, setAdminPreview] = useState(false);
   const [deckEditing, setDeckEditing] = useState(false);
+  const [focusTitle, setFocusTitle] = useState<string | null>(null);
 
   useEffect(() => {
     (async () => {
@@ -2275,6 +2277,8 @@ export default function TopicoDetalhe() {
           content={liveContent as any}
           editing={editing}
           onGoTo={goToField}
+          onOpenItem={(_k, label) => { setAdminPreview(false); setShowFullPage(false); setDeckEditing(false); setFocusTitle(null); setTimeout(() => setFocusTitle(label), 0); }}
+          slideStatus={(label) => { const f = normSlide(label); const sl = deckSlides.find((x: any) => normSlide(x.title) === f); if (!sl) return null; const st = SLIDE_STATUS.find(o => o.key === (sl.status || "postado")); return st ? <span className={`text-[10px] px-1.5 rounded-full border ${st.cls}`}>{st.label}</span> : null; }}
           hasHeroImage={!!(sectionImg("hero") || (editing && form ? (form.image_url || "").trim() : override?.image_url))}
           onFlagChange={(patch) => setOverride((o) => ({ ...(o || {}), ...patch }))}
         />}
@@ -2285,7 +2289,7 @@ export default function TopicoDetalhe() {
           <Button variant="secondary" onClick={() => { setAdminPreview(false); setDeckEditing(true); }}>✏️ Editar slides</Button></div>
         )}
         {isAdmin && !editing && !deckEditing && !adminPreview && !showFullPage && (
-          <SlideDeckEditor slug={slug!} title={title} lesson={lesson} initial={deckSlides}
+          <SlideDeckEditor key={override?.slide_deck ? "saved" : "auto"} slug={slug!} title={title} lesson={lesson} initial={deckSlides} focusTitle={focusTitle}
             onClose={() => setShowFullPage(true)}
             onSaved={(sl) => { setOverride((o) => ({ ...(o || {}), slide_deck: sl })); }} />
         )}
@@ -2300,7 +2304,7 @@ export default function TopicoDetalhe() {
         {((!isAdmin && !deckDone) || (isAdmin && adminPreview)) ? (
           <TopicSlideDeck
             slug={slug!}
-            slides={deckSlides}
+            slides={isAdmin ? deckSlides : deckSlides.filter(visibleToStudent)}
             onFinish={() => { if (isAdmin) { setAdminPreview(false); return; } localStorage.setItem(`deck-done:${slug}`, "1"); setDeckDone(true); window.scrollTo({ top: 0, behavior: "smooth" }); }}
           />
         ) : (isAdmin && !editing && !showFullPage) ? null : (<>
