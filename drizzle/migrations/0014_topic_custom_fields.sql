@@ -1,0 +1,1 @@
+ALTER TABLE public.topic_overrides ADD COLUMN IF NOT EXISTS custom_fields jsonb NOT NULL DEFAULT '[]'::jsonb;

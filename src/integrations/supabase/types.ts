@@ -1880,6 +1880,7 @@ export type Database = {
           bncc_codes: Json
           created_at: string
           curiosities: string[] | null
+          custom_fields: Json
           daily_life: string[] | null
           edit_complete: boolean
           examples: Json | null
@@ -1910,6 +1911,7 @@ export type Database = {
           bncc_codes?: Json
           created_at?: string
           curiosities?: string[] | null
+          custom_fields?: Json
           daily_life?: string[] | null
           edit_complete?: boolean
           examples?: Json | null
@@ -1940,6 +1942,7 @@ export type Database = {
           bncc_codes?: Json
           created_at?: string
           curiosities?: string[] | null
+          custom_fields?: Json
           daily_life?: string[] | null
           edit_complete?: boolean
           examples?: Json | null

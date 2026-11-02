@@ -1,3 +1,4 @@
+import { CustomFieldsView, type CustomField } from "@/components/aula/TopicFieldsDialog";
 import { Link, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -1932,7 +1933,7 @@ export default function TopicoDetalhe() {
   const displayTitle = lesson ? `${title} — ${lesson}` : title;
 
   const [isAdmin, setIsAdmin] = useState(false);
-  const [override, setOverride] = useState<(Partial<Section> & { image_url?: string; video_url?: string; footer_image_url?: string; materials?: Material[]; daily_life?: string[]; curiosities?: string[]; fun_facts?: string[]; lesson_plan?: string; bncc_codes?: BnccCode[]; section_images?: Record<string, string>; edit_complete?: boolean; reviewed?: boolean; published?: boolean; updated_at?: string | null }) | null>(null);
+  const [override, setOverride] = useState<(Partial<Section> & { image_url?: string; video_url?: string; footer_image_url?: string; materials?: Material[]; daily_life?: string[]; curiosities?: string[]; fun_facts?: string[]; lesson_plan?: string; bncc_codes?: BnccCode[]; section_images?: Record<string, string>; custom_fields?: CustomField[]; edit_complete?: boolean; reviewed?: boolean; published?: boolean; updated_at?: string | null }) | null>(null);
   const [editing, setEditing] = useState(false);
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
@@ -1975,6 +1976,7 @@ export default function TopicoDetalhe() {
           lesson_plan: (data as any).lesson_plan ?? undefined,
           bncc_codes: ((data as any).bncc_codes as BnccCode[]) ?? undefined,
           section_images: ((data as any).section_images as Record<string,string>) ?? {},
+          custom_fields: ((data as any).custom_fields as CustomField[]) ?? [],
           edit_complete: !!(data as any).edit_complete,
           reviewed: !!(data as any).reviewed,
           published: !!(data as any).published,
@@ -2516,6 +2518,9 @@ export default function TopicoDetalhe() {
                 </div>
               </section>
             )}
+
+            {/* Campos definidos pelo administrador */}
+            <CustomFieldsView fields={(override as any)?.custom_fields} />
 
             {/* Materiais complementares */}
             {override?.materials && override.materials.length > 0 && (

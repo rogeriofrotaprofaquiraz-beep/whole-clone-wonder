@@ -21,6 +21,7 @@ import {
 import { toast } from "sonner";
 import { areaMeta } from "@/lib/aula";
 import { parseBulkQuestions } from "@/lib/parseBulkQuestions";
+import TopicFieldsDialog from "@/components/aula/TopicFieldsDialog";
 
 type Course = {
   id: string; title: string; description: string | null;
@@ -243,6 +244,60 @@ export default function AdminMaterial() {
     }));
     toast.success("Aula excluída");
   };
+
+  // ===== Tópicos (linhas com marcador no conteúdo da aula) =====
+  const topicSlug = (s: string) => s.toLowerCase().normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "").slice(0, 80);
+
+  const writeLessonContent = async (lesson: Lesson, content: string) => {
+    const { error } = await supabase.from("course_lessons").update({ content }).eq("id", lesson.id);
+    if (error) { toast.error(error.message); return false; }
+    setLessonsByCourse(prev => ({
+      ...prev, [lesson.course_id]: (prev[lesson.course_id] || []).map(l => l.id === lesson.id ? { ...l, content } : l),
+    }));
+    return true;
+  };
+
+  const mapTopicLine = (content: string, idx: number, fn: (line: string) => string | null) => {
+    let n = -1;
+    const out: string[] = [];
+    for (const line of content.split("\n")) {
+      if (/^\s*[-•*]\s+.+$/.test(line)) {
+        n++;
+        if (n === idx) { const r = fn(line); if (r !== null) out.push(r); continue; }
+      }
+      out.push(line);
+    }
+    return out.join("\n");
+  };
+
+  const addTopic = async (lesson: Lesson) => {
+    const name = prompt("Nome do novo tópico:")?.trim();
+    if (!name) return;
+    const cur = lesson.content ?? "";
+    if (await writeLessonContent(lesson, (cur.trimEnd() ? cur.trimEnd() + "\n" : "") + `- ${name}`)) toast.success("Tópico adicionado");
+  };
+
+  const renameTopic = async (lesson: Lesson, idx: number, oldName: string) => {
+    const name = prompt("Novo nome do tópico:", oldName)?.trim();
+    if (!name || name === oldName) return;
+    const next = mapTopicLine(lesson.content ?? "", idx, line => line.replace(/^(\s*[-•*]\s+).+$/, `$1${name}`));
+    if (!(await writeLessonContent(lesson, next))) return;
+    const oldS = topicSlug(oldName), newS = topicSlug(name);
+    if (oldS !== newS && topicMeta[oldS]) {
+      await supabase.from("topic_overrides").update({ slug: newS, title: name } as any).eq("slug", oldS);
+      setTopicMeta(prev => { const c = { ...prev, [newS]: prev[oldS] }; delete c[oldS]; return c; });
+    }
+    toast.success("Tópico renomeado");
+  };
+
+  const deleteTopic = async (lesson: Lesson, idx: number, name: string) => {
+    if (!confirm(`Excluir o tópico "${name}" desta aula?`)) return;
+    if (await writeLessonContent(lesson, mapTopicLine(lesson.content ?? "", idx, () => null))) toast.success("Tópico excluído");
+  };
+
+  const [fieldsTopic, setFieldsTopic] = useState<{ slug: string; title: string; lesson: string; courseId: string } | null>(null);
 
   const saveLesson = async () => {
     if (!editing) return;
@@ -618,20 +673,23 @@ export default function AdminMaterial() {
                                 </Button>
                               </div>
                             </div>
-                            {l.content && (() => {
-                              const topics = (l.content.match(/^\s*[-•*]\s+(.+)$/gm) || [])
-                                .map(s => s.replace(/^\s*[-•*]\s+/, "").replace(/\*\*/g, "").trim())
-                                .filter(Boolean);
-                              const slug = (s: string) => s.toLowerCase().normalize("NFD")
-                                .replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-")
-                                .replace(/^-+|-+$/g, "").slice(0, 80);
+                            {(() => {
+                              const topics = ((l.content ?? "").match(/^\s*[-•*]\s+(.+)$/gm) || [])
+                                .map(s => s.replace(/^\s*[-•*]\s+/, "").replace(/\*\*/g, "").trim());
+                              const slug = topicSlug;
                               return (
                                 <>
-                                  {topics.length > 0 && (
+                                  {(
                                     <div className="mt-2 p-2 rounded border border-violet-200 bg-violet-50/60">
-                                      <div className="text-[11px] font-bold text-[#4C1D95] uppercase mb-1.5">
-                                        Tópicos desta aula — clique para editar o conteúdo
+                                      <div className="flex items-center justify-between mb-1.5 gap-2">
+                                        <div className="text-[11px] font-bold text-[#4C1D95] uppercase">
+                                          Tópicos desta aula — clique para editar o conteúdo
+                                        </div>
+                                        <Button size="sm" variant="outline" className="h-7 text-xs" onClick={() => addTopic(l)}>
+                                          <Plus size={12} className="mr-1" /> Adicionar tópico
+                                        </Button>
                                       </div>
+                                      {topics.length === 0 && <p className="text-xs italic text-slate-500">Nenhum tópico ainda.</p>}
                                       <div className="grid gap-1.5">
                                         {topics.map((t, i) => {
                                           const s = slug(t);
@@ -643,8 +701,20 @@ export default function AdminMaterial() {
                                                 className="flex items-center gap-2 text-xs px-2 py-1 rounded hover:bg-violet-100 text-[#4C1D95] font-medium flex-1 min-w-[180px]"
                                               >
                                                 <span className="w-4 h-4 flex items-center justify-center bg-violet-200 text-[#4C1D95] rounded-full text-[9px] font-bold shrink-0">{String(i + 1).padStart(2, '0')}</span>
-                                                <span className="flex-1 truncate">{t.includes('. ') ? t : t}</span>
+                                                <span className="flex-1 truncate">{t}</span>
                                               </Link>
+                                              <div className="flex items-center gap-1">
+                                                <Button size="sm" variant="outline" className="h-6 px-2 text-[10px]" title="Campos (texto, imagem, vídeo)"
+                                                  onClick={() => setFieldsTopic({ slug: s, title: t, lesson: l.title, courseId: l.course_id })}>
+                                                  🧩 Campos
+                                                </Button>
+                                                <Button size="sm" variant="outline" className="h-6 w-6 p-0" title="Renomear" onClick={() => renameTopic(l, i, t)}>
+                                                  <Pencil size={11} />
+                                                </Button>
+                                                <Button size="sm" variant="outline" className="h-6 w-6 p-0 text-red-600 border-red-200" title="Excluir" onClick={() => deleteTopic(l, i, t)}>
+                                                  <Trash2 size={11} />
+                                                </Button>
+                                              </div>
                                               <span className="text-[10px] text-slate-500 whitespace-nowrap" title="Última atualização">
                                                 🕓 {fmtDT(meta.updated_at)}
                                               </span>
@@ -669,12 +739,14 @@ export default function AdminMaterial() {
 
                                     </div>
                                   )}
+                                  {l.content && (
                                   <details className="mt-2">
                                     <summary className="text-xs text-[#4C1D95] cursor-pointer font-semibold">Ver conteúdo completo</summary>
                                     <div className="mt-2 p-3 bg-white border rounded whitespace-pre-wrap text-xs text-slate-700 max-h-96 overflow-auto">
                                       {l.content}
                                     </div>
                                   </details>
+                                  )}
                                 </>
                               );
                             })()}
@@ -689,6 +761,12 @@ export default function AdminMaterial() {
           </Accordion>
         )}
       </div>
+
+      {fieldsTopic && (
+        <TopicFieldsDialog open onClose={() => setFieldsTopic(null)}
+          slug={fieldsTopic.slug} title={fieldsTopic.title} lesson={fieldsTopic.lesson}
+          upload={(f) => uploadCourseFile(f, fieldsTopic.courseId)} />
+      )}
 
       {/* ===== Lesson editor ===== */}
       <Dialog open={!!editing} onOpenChange={(o) => !o && setEditing(null)}>
