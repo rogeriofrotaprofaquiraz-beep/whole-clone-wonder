@@ -672,20 +672,23 @@ export default function AdminMaterial() {
                                 </Button>
                               </div>
                             </div>
-                            {l.content && (() => {
-                              const topics = (l.content.match(/^\s*[-•*]\s+(.+)$/gm) || [])
-                                .map(s => s.replace(/^\s*[-•*]\s+/, "").replace(/\*\*/g, "").trim())
-                                .filter(Boolean);
-                              const slug = (s: string) => s.toLowerCase().normalize("NFD")
-                                .replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-")
-                                .replace(/^-+|-+$/g, "").slice(0, 80);
+                            {(() => {
+                              const topics = ((l.content ?? "").match(/^\s*[-•*]\s+(.+)$/gm) || [])
+                                .map(s => s.replace(/^\s*[-•*]\s+/, "").replace(/\*\*/g, "").trim());
+                              const slug = topicSlug;
                               return (
                                 <>
-                                  {topics.length > 0 && (
+                                  {(
                                     <div className="mt-2 p-2 rounded border border-violet-200 bg-violet-50/60">
-                                      <div className="text-[11px] font-bold text-[#4C1D95] uppercase mb-1.5">
-                                        Tópicos desta aula — clique para editar o conteúdo
+                                      <div className="flex items-center justify-between mb-1.5 gap-2">
+                                        <div className="text-[11px] font-bold text-[#4C1D95] uppercase">
+                                          Tópicos desta aula — clique para editar o conteúdo
+                                        </div>
+                                        <Button size="sm" variant="outline" className="h-7 text-xs" onClick={() => addTopic(l)}>
+                                          <Plus size={12} className="mr-1" /> Adicionar tópico
+                                        </Button>
                                       </div>
+                                      {topics.length === 0 && <p className="text-xs italic text-slate-500">Nenhum tópico ainda.</p>}
                                       <div className="grid gap-1.5">
                                         {topics.map((t, i) => {
                                           const s = slug(t);
@@ -697,8 +700,20 @@ export default function AdminMaterial() {
                                                 className="flex items-center gap-2 text-xs px-2 py-1 rounded hover:bg-violet-100 text-[#4C1D95] font-medium flex-1 min-w-[180px]"
                                               >
                                                 <span className="w-4 h-4 flex items-center justify-center bg-violet-200 text-[#4C1D95] rounded-full text-[9px] font-bold shrink-0">{String(i + 1).padStart(2, '0')}</span>
-                                                <span className="flex-1 truncate">{t.includes('. ') ? t : t}</span>
+                                                <span className="flex-1 truncate">{t}</span>
                                               </Link>
+                                              <div className="flex items-center gap-1">
+                                                <Button size="sm" variant="outline" className="h-6 px-2 text-[10px]" title="Campos (texto, imagem, vídeo)"
+                                                  onClick={() => setFieldsTopic({ slug: s, title: t, lesson: l.title, courseId: l.course_id })}>
+                                                  🧩 Campos
+                                                </Button>
+                                                <Button size="sm" variant="outline" className="h-6 w-6 p-0" title="Renomear" onClick={() => renameTopic(l, i, t)}>
+                                                  <Pencil size={11} />
+                                                </Button>
+                                                <Button size="sm" variant="outline" className="h-6 w-6 p-0 text-red-600 border-red-200" title="Excluir" onClick={() => deleteTopic(l, i, t)}>
+                                                  <Trash2 size={11} />
+                                                </Button>
+                                              </div>
                                               <span className="text-[10px] text-slate-500 whitespace-nowrap" title="Última atualização">
                                                 🕓 {fmtDT(meta.updated_at)}
                                               </span>
