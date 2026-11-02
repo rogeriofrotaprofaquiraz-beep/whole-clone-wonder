@@ -2838,6 +2838,7 @@ export default function TopicoDetalhe() {
 
           </div>
         </Card>
+        </>)}
       </div>
     </div>
   );
