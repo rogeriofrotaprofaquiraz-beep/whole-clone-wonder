@@ -1,3 +1,4 @@
+import TopicSlideDeck, { buildSlides } from "@/components/aula/TopicSlideDeck";
 import EditableChecklistGrid from "@/components/EditableChecklistGrid";
 import { CustomFieldsView, type CustomField } from "@/components/aula/TopicFieldsDialog";
 import { SubtopicsView } from "@/components/aula/SubtopicsDialog";
@@ -1934,6 +1935,8 @@ export default function TopicoDetalhe() {
   const [uploadingFooter, setUploadingFooter] = useState(false);
   const [generatingPlan, setGeneratingPlan] = useState(false);
   const [form, setForm] = useState<any>(null);
+  const [deckDone, setDeckDone] = useState(() => typeof window !== "undefined" && !!slug && localStorage.getItem(`deck-done:${slug}`) === "1");
+  const [adminPreview, setAdminPreview] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -2267,6 +2270,17 @@ export default function TopicoDetalhe() {
         />}
 
 
+        {isAdmin && !editing && (
+          <div className="mb-4"><Button variant="secondary" onClick={() => setAdminPreview((v) => !v)}>{adminPreview ? "✖ Fechar visão do aluno" : "👁️ Ver slides como aluno"}</Button></div>
+        )}
+        {((!isAdmin && !deckDone) || (isAdmin && adminPreview)) ? (
+          <TopicSlideDeck
+            slug={slug!}
+            slides={buildSlides({ ...c, daily_life: override?.daily_life, curiosities: override?.curiosities }, override?.subtopics, sectionImg("hero") || imgUrl)}
+            onFinish={() => { if (isAdmin) { setAdminPreview(false); return; } localStorage.setItem(`deck-done:${slug}`, "1"); setDeckDone(true); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+          />
+        ) : (<>
+        {!isAdmin && deckDone && <div className="mb-4 text-emerald-300 font-semibold">🏆 Slides concluídos! Agora revise o conteúdo completo abaixo. <button className="underline ml-2" onClick={() => { localStorage.removeItem(`deck-done:${slug}`); localStorage.removeItem(`deck-progress:${slug}`); setDeckDone(false); }}>Refazer slides</button></div>}
         <Card className="overflow-hidden mb-6 border-0">
           <div className="relative h-56 md:h-72 bg-gradient-to-br from-violet-700 to-indigo-900">
             <EditableImage
@@ -2824,6 +2838,7 @@ export default function TopicoDetalhe() {
 
           </div>
         </Card>
+        </>)}
       </div>
     </div>
   );
