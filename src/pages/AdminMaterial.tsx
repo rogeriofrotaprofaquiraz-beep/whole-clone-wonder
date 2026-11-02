@@ -244,6 +244,60 @@ export default function AdminMaterial() {
     toast.success("Aula excluída");
   };
 
+  // ===== Tópicos (linhas com marcador no conteúdo da aula) =====
+  const topicSlug = (s: string) => s.toLowerCase().normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "").slice(0, 80);
+
+  const writeLessonContent = async (lesson: Lesson, content: string) => {
+    const { error } = await supabase.from("course_lessons").update({ content }).eq("id", lesson.id);
+    if (error) { toast.error(error.message); return false; }
+    setLessonsByCourse(prev => ({
+      ...prev, [lesson.course_id]: (prev[lesson.course_id] || []).map(l => l.id === lesson.id ? { ...l, content } : l),
+    }));
+    return true;
+  };
+
+  const mapTopicLine = (content: string, idx: number, fn: (line: string) => string | null) => {
+    let n = -1;
+    const out: string[] = [];
+    for (const line of content.split("\n")) {
+      if (/^\s*[-•*]\s+.+$/.test(line)) {
+        n++;
+        if (n === idx) { const r = fn(line); if (r !== null) out.push(r); continue; }
+      }
+      out.push(line);
+    }
+    return out.join("\n");
+  };
+
+  const addTopic = async (lesson: Lesson) => {
+    const name = prompt("Nome do novo tópico:")?.trim();
+    if (!name) return;
+    const cur = lesson.content ?? "";
+    if (await writeLessonContent(lesson, (cur.trimEnd() ? cur.trimEnd() + "\n" : "") + `- ${name}`)) toast.success("Tópico adicionado");
+  };
+
+  const renameTopic = async (lesson: Lesson, idx: number, oldName: string) => {
+    const name = prompt("Novo nome do tópico:", oldName)?.trim();
+    if (!name || name === oldName) return;
+    const next = mapTopicLine(lesson.content ?? "", idx, line => line.replace(/^(\s*[-•*]\s+).+$/, `$1${name}`));
+    if (!(await writeLessonContent(lesson, next))) return;
+    const oldS = topicSlug(oldName), newS = topicSlug(name);
+    if (oldS !== newS && topicMeta[oldS]) {
+      await supabase.from("topic_overrides").update({ slug: newS, title: name } as any).eq("slug", oldS);
+      setTopicMeta(prev => { const c = { ...prev, [newS]: prev[oldS] }; delete c[oldS]; return c; });
+    }
+    toast.success("Tópico renomeado");
+  };
+
+  const deleteTopic = async (lesson: Lesson, idx: number, name: string) => {
+    if (!confirm(`Excluir o tópico "${name}" desta aula?`)) return;
+    if (await writeLessonContent(lesson, mapTopicLine(lesson.content ?? "", idx, () => null))) toast.success("Tópico excluído");
+  };
+
+  const [fieldsTopic, setFieldsTopic] = useState<{ slug: string; title: string; lesson: string; courseId: string } | null>(null);
+
   const saveLesson = async () => {
     if (!editing) return;
     setSaving(true);
