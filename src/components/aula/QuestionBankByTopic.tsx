@@ -10,6 +10,7 @@ import { toast } from "sonner";
 import { areaMeta, genCode, LEVELS } from "@/lib/aula";
 import { BookOpen, Trophy, Medal, ChevronDown, ChevronUp, Pencil, ImagePlus } from "lucide-react";
 import { SlideEditor } from "./SlideEditor";
+import { usePermission } from "@/lib/permissions";
 
 type Q = { id: string; question: string; options: any; correct_index: number; explanation: string | null; area: string; difficulty: number; school_level: string; topic: string | null; lesson: string | null; image_url: string | null; school_levels: string[] | null; slide_content: string | null };
 type Group = { key: string; area: string; items: Q[] };
@@ -27,8 +28,10 @@ export function QuestionBankByTopic({ userId }: { userId: string }) {
   const [olyTitle, setOlyTitle] = useState("");
   const [edit, setEdit] = useState<Q | null>(null);
   const [saving, setSaving] = useState(false);
+  const perm = usePermission("painel_professor");
 
   const uploadImage = async (q: Q, file: File) => {
+    if (!perm.edit) return toast.error("Seu perfil não tem permissão para editar questões.");
     const path = `questions/${q.id}-${Date.now()}.${file.name.split(".").pop()}`;
     const { error } = await supabase.storage.from("course-materials").upload(path, file);
     if (error) return toast.error(error.message);
@@ -39,6 +42,7 @@ export function QuestionBankByTopic({ userId }: { userId: string }) {
   };
 
   const saveQ = async (q: Q) => {
+    if (!perm.edit) return toast.error("Seu perfil não tem permissão para editar questões.");
     setSaving(true);
     const { error } = await supabase.from("chem_questions").update({
       question: q.question, options: q.options, correct_index: q.correct_index, explanation: q.explanation,
@@ -75,6 +79,7 @@ export function QuestionBankByTopic({ userId }: { userId: string }) {
   };
 
   const toChampionship = async (g: Group) => {
+    if (!perm.create) return toast.error("Seu perfil não tem permissão para criar campeonatos.");
     const list = pickIds(g);
     const code = genCode();
     const { data, error } = await supabase.from("game_sessions").insert({
@@ -87,6 +92,7 @@ export function QuestionBankByTopic({ userId }: { userId: string }) {
   };
 
   const toOlympiad = async () => {
+    if (!perm.create) return toast.error("Seu perfil não tem permissão para criar provas.");
     if (!olyDialog || !olyId) return toast.error("Escolha a olimpíada");
     const list = pickIds(olyDialog);
     const questions = list.map((q: any) => ({ q: q.question, options: Array.isArray(q.options) ? q.options : [], correct: q.correct_index, explanation: q.explanation ?? undefined, slide: q.slide_content ?? undefined, image: q.image_url ?? undefined }));
