@@ -1,0 +1,1 @@
+ALTER TABLE public.topic_overrides ADD COLUMN IF NOT EXISTS subtopics jsonb NOT NULL DEFAULT '[]'::jsonb;

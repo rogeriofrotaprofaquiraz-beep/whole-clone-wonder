@@ -1941,6 +1941,7 @@ export type Database = {
           section_images: Json
           simple: string | null
           slug: string
+          subtopics: Json
           title: string | null
           updated_at: string
           updated_by: string | null
@@ -1972,6 +1973,7 @@ export type Database = {
           section_images?: Json
           simple?: string | null
           slug: string
+          subtopics?: Json
           title?: string | null
           updated_at?: string
           updated_by?: string | null
@@ -2003,6 +2005,7 @@ export type Database = {
           section_images?: Json
           simple?: string | null
           slug?: string
+          subtopics?: Json
           title?: string | null
           updated_at?: string
           updated_by?: string | null
