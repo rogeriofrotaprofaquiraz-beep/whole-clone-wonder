@@ -738,12 +738,14 @@ export default function AdminMaterial() {
 
                                     </div>
                                   )}
+                                  {l.content && (
                                   <details className="mt-2">
                                     <summary className="text-xs text-[#4C1D95] cursor-pointer font-semibold">Ver conteúdo completo</summary>
                                     <div className="mt-2 p-3 bg-white border rounded whitespace-pre-wrap text-xs text-slate-700 max-h-96 overflow-auto">
                                       {l.content}
                                     </div>
                                   </details>
+                                  )}
                                 </>
                               );
                             })()}
