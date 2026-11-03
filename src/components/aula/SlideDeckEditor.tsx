@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import { ImagePlus, Trash2 } from "lucide-react";
+import { applyGroupHeader, groupSlides } from "@/lib/slideGroups";
 import SlideCanvas, { type CanvasSlide, type SlideHeader, type SlideObject } from "./SlideCanvas";
 
 export type SlideStatus = "nao_editado" | "editando" | "postado" | "concluido" | "revisado";
@@ -37,6 +39,22 @@ export default function SlideDeckEditor({ slug, title, lesson, initial, onSaved,
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [focusTitle]);
   const [busy, setBusy] = useState<number | null>(null);
+  const [headerBusy, setHeaderBusy] = useState<string | null>(null);
+  const uploadGroupHeader = async (key: string, indices: number[], file: File) => {
+    setHeaderBusy(key);
+    try {
+      if (!file.type.startsWith("image/")) throw new Error("Selecione uma imagem.");
+      const path = `topicos/${slug}/header-${crypto.randomUUID()}-${file.name.replace(/[^a-zA-Z0-9._-]+/g, "_")}`;
+      const { error } = await supabase.storage.from("course-materials").upload(path, file);
+      if (error) throw error;
+      const { data, error: urlError } = await supabase.storage.from("course-materials").createSignedUrl(path, 60 * 60 * 24 * 365 * 10);
+      if (urlError || !data?.signedUrl) throw urlError || new Error("Não foi possível abrir a imagem.");
+      setSlides(current => applyGroupHeader(current, indices, data.signedUrl));
+      toast.success("Cabeçalho aplicado ao grupo. Salve os slides para confirmar.");
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : "Não foi possível enviar o cabeçalho.");
+    } finally { setHeaderBusy(null); }
+  };
   const [preview, setPreview] = useState(false);
   const [pv, setPv] = useState(0);
   const [sel, setSel] = useState<string | null>(null);
@@ -69,7 +87,7 @@ export default function SlideDeckEditor({ slug, title, lesson, initial, onSaved,
         <Button variant={preview ? "default" : "outline"} onClick={() => { setPreview(p => !p); setSel(null); }}>{preview ? "🧩 Voltar à edição" : "👁️ Visualização final"}</Button>
         <Button variant="outline" onClick={() => { if (confirm("Descartar edições e voltar aos slides automáticos?")) save(null); }}>Restaurar automático</Button>
         <Button variant="ghost" onClick={onClose}>Cancelar</Button>
-        <Button className="bg-violet-700 hover:bg-violet-800" onClick={() => save(slides)}>Salvar slides</Button>
+        <Button className="bg-violet-700 hover:bg-violet-800" disabled={headerBusy !== null} onClick={() => save(slides)}>Salvar slides</Button>
       </div>
       {preview && slides.length > 0 && (() => { const i = Math.min(pv, slides.length - 1); const s = slides[i]; return (
         <div className="space-y-3">
@@ -90,21 +108,26 @@ export default function SlideDeckEditor({ slug, title, lesson, initial, onSaved,
           </div>
         </div>); })()}
       {!preview && (() => {
-        const groups: { key: string; label: string; idx: number[] }[] = [];
-        slides.forEach((s, i) => {
-          const m = s.title.trim().match(/^(\d+)(?:[.)\s]|$)/);
-          const isHead = m && !/^\d+\.\d/.test(s.title.trim());
-          const last = groups[groups.length - 1];
-          if (m && (!last || last.key !== m[1])) groups.push({ key: m[1], label: isHead ? s.title.trim() : `Módulo ${m[1]}`, idx: [i] });
-          else if (last) last.idx.push(i);
-          else groups.push({ key: "geral", label: "Geral", idx: [i] });
-        });
+        const groups = groupSlides(slides);
         return groups.map((g, gi) => (
           <details key={gi} open className="border border-violet-200 rounded-2xl p-3 bg-violet-50/40">
             <summary className="cursor-pointer font-black text-violet-800">
               {g.key === "geral" ? "📁 Geral" : `📦 Módulo ${g.key}`} — {g.label} <span className="text-xs font-normal text-slate-500">({g.idx.length} slide{g.idx.length > 1 ? "s" : ""})</span>
             </summary>
             <div className="space-y-3 mt-3">
+              <div className="space-y-2 border-b border-border pb-3 text-foreground">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="text-sm font-semibold">Cabeçalho do grupo · 16:3</span>
+                  <Button variant="outline" size="sm" asChild disabled={headerBusy !== null}>
+                    <label className={headerBusy !== null ? "pointer-events-none opacity-50" : "cursor-pointer"}>
+                      <ImagePlus className="mr-2 h-4 w-4" />{headerBusy === g.key ? "Enviando…" : "Enviar cabeçalho"}
+                      <input aria-label={`Enviar cabeçalho do grupo ${g.key}`} type="file" accept="image/*" className="sr-only" disabled={headerBusy !== null} onChange={e => { const file = e.target.files?.[0]; if (file) void uploadGroupHeader(g.key, g.idx, file); e.target.value = ""; }} />
+                    </label>
+                  </Button>
+                  {slides[g.idx[0]]?.header?.image && <Button variant="ghost" size="sm" aria-label={`Remover cabeçalho do grupo ${g.key}`} disabled={headerBusy !== null} onClick={() => setSlides(current => applyGroupHeader(current, g.idx, ""))}><Trash2 className="h-4 w-4" /></Button>}
+                </div>
+                {slides[g.idx[0]]?.header?.image && <img src={slides[g.idx[0]].header?.image} alt={`Cabeçalho do módulo ${g.key}`} className="block w-full aspect-[16/3] object-contain bg-background border border-border rounded" />}
+              </div>
             {g.idx.map(i => { const s = slides[i]; return (
         <div key={i} ref={el => (refs.current[i] = el)} className={`border rounded-xl p-3 space-y-2 bg-slate-50 ${focusIdx === i ? "border-violet-500 ring-2 ring-violet-300" : "border-slate-200"}`}>
           <div className="flex flex-wrap gap-1 items-center text-xs">
@@ -154,14 +177,14 @@ export default function SlideDeckEditor({ slug, title, lesson, initial, onSaved,
             </div>
             <div className="mt-2 max-w-2xl"><SlideCanvas slide={s} editable selected={sel} onSelect={setSel} onChange={p => upd(i, p)} /></div>
           </details>
-          <button type="button" className="text-xs text-violet-700" onClick={() => setSlides(a => [...a.slice(0, i + 1), { title: "Novo slide", emoji: "📌", lines: [""], status: "nao_editado" as SlideStatus }, ...a.slice(i + 1)])}>➕ Inserir slide abaixo</button>
+          <button type="button" className="text-xs text-violet-700" onClick={() => setSlides(a => [...a.slice(0, i + 1), { title: "Novo slide", emoji: "📌", lines: [""], header: s.header?.image ? { image: s.header.image, show: true } : undefined, status: "nao_editado" as SlideStatus }, ...a.slice(i + 1)])}>➕ Inserir slide abaixo</button>
         </div>
             ); })}
             </div>
           </details>
         ));
       })()}
-      <Button variant="outline" onClick={() => setSlides(a => [...a, { title: "Novo slide", emoji: "📌", lines: [""], status: "nao_editado" as SlideStatus }])}>➕ Adicionar slide</Button>
+      <Button variant="outline" onClick={() => setSlides(a => [...a, { title: "Novo slide", emoji: "📌", lines: [""], header: a[a.length - 1]?.header?.image ? { image: a[a.length - 1].header?.image, show: true } : undefined, status: "nao_editado" as SlideStatus }])}>➕ Adicionar slide</Button>
     </div>
   );
 }

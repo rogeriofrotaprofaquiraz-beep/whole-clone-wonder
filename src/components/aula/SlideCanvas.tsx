@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 
-export type SlideHeader = { show?: boolean; bg?: string; color?: string; align?: "left" | "center" | "right"; subtitle?: string; size?: number; font?: string; bold?: boolean; italic?: boolean };
+export type SlideHeader = { image?: string; show?: boolean; bg?: string; color?: string; align?: "left" | "center" | "right"; subtitle?: string; size?: number; font?: string; bold?: boolean; italic?: boolean };
 export type SlideObject = { id: string; src: string; x: number; y: number; w: number };
 export type SlideTextStyle = { font?: string; size?: number; align?: "left" | "center" | "right" | "justify"; lineHeight?: number; html?: string };
 export type ImagePos = { x: number; y: number; w: number };
@@ -105,6 +105,7 @@ export default function SlideCanvas({ slide, editable, onChange, selected, onSel
       <div ref={box} onPointerDown={() => onSelect?.(null)}
         className="relative w-full overflow-hidden rounded-xl border border-slate-300 shadow"
         style={{ background: slide.bg || "#ffffff", color: slide.textColor || "#0f172a", minHeight: 0, aspectRatio: pos || !slide.image ? "16 / 9" : undefined }}>
+        {h.show && h.image && <img src={h.image} alt="Cabeçalho do grupo" draggable={false} className="block w-full aspect-[16/3] object-contain bg-background" />}
         {h.show && (
           <div className="px-[4%] py-[2.5%]" style={{ background: h.bg, color: h.color, textAlign: h.align, fontFamily: h.font }}>
             <div style={{ fontSize: scale(h.size), fontWeight: h.bold ? 900 : 500, fontStyle: h.italic ? "italic" : undefined }} className="leading-tight">
