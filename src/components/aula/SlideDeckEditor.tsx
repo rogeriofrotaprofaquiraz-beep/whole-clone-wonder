@@ -2,18 +2,22 @@ import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import SlideCanvas, { type SlideHeader, type SlideObject } from "./SlideCanvas";
 
-export type SlideStatus = "editando" | "concluido" | "revisado" | "postado";
-export type DeckSlide = { title: string; emoji: string; lines: string[]; image?: string; status?: SlideStatus };
+export type SlideStatus = "nao_editado" | "editando" | "postado" | "concluido" | "revisado";
+export type DeckSlide = { title: string; emoji: string; lines: string[]; image?: string; status?: SlideStatus; header?: SlideHeader; objects?: SlideObject[]; bg?: string; textColor?: string };
 export const SLIDE_STATUS: { key: SlideStatus; label: string; cls: string }[] = [
-  { key: "editando", label: "✏️ Editando", cls: "bg-amber-100 text-amber-800 border-amber-300" },
-  { key: "concluido", label: "✅ Concluído", cls: "bg-sky-100 text-sky-800 border-sky-300" },
-  { key: "revisado", label: "🔍 Revisado", cls: "bg-violet-100 text-violet-800 border-violet-300" },
-  { key: "postado", label: "🚀 Postado", cls: "bg-emerald-100 text-emerald-800 border-emerald-300" },
+  { key: "nao_editado", label: "⏸️ Não editado", cls: "bg-orange-700 text-white border-orange-800" },
+  { key: "editando", label: "✏️ Editando", cls: "bg-yellow-300 text-yellow-900 border-yellow-500" },
+  { key: "postado", label: "🚀 Postado", cls: "bg-green-600 text-white border-green-700" },
 ];
+/** Status normalizado (antigos "concluído/revisado" contam como editando; sem status = postado). */
+export const statusOf = (s?: { status?: SlideStatus }): SlideStatus => {
+  const v = s?.status || "postado"; return v === "concluido" || v === "revisado" ? "editando" : v;
+};
 export const norm = (t: string) => (t || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, " ").trim();
 /** Slides que o aluno pode ver: postados (slides antigos sem status continuam visíveis). */
-export const visibleToStudent = (s: DeckSlide) => !s.status || s.status === "postado";
+export const visibleToStudent = (s: DeckSlide) => statusOf(s) === "postado";
 
 /** Editor dos slides do tópico (professor/admin): texto, imagem, ordem, inserir e excluir. */
 export default function SlideDeckEditor({ slug, title, lesson, initial, onSaved, onClose, focusTitle }: {
@@ -27,22 +31,26 @@ export default function SlideDeckEditor({ slug, title, lesson, initial, onSaved,
     if (!focusTitle) return;
     const f = norm(focusTitle);
     let idx = slides.findIndex(s => norm(s.title) === f || (norm(s.title) && (norm(s.title).includes(f) || f.includes(norm(s.title)))));
-    if (idx < 0) { idx = slides.length; setSlides(a => [...a, { title: focusTitle, emoji: "📌", lines: [""], status: "editando" }]); }
+    if (idx < 0) { idx = slides.length; setSlides(a => [...a, { title: focusTitle, emoji: "📌", lines: [""], status: "nao_editado" }]); }
     setFocusIdx(idx);
     setTimeout(() => refs.current[idx]?.scrollIntoView({ behavior: "smooth", block: "center" }), 120);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [focusTitle]);
   const [busy, setBusy] = useState<number | null>(null);
+  const [preview, setPreview] = useState(false);
+  const [pv, setPv] = useState(0);
+  const [sel, setSel] = useState<string | null>(null);
+  const addObject = (i: number, src: string) => setSlides(a => a.map((s, k) => k === i ? { ...s, objects: [...(s.objects || []), { id: crypto.randomUUID(), src, x: 55, y: 30, w: 30 }] } : s));
   const upd = (i: number, p: Partial<DeckSlide>) => setSlides(a => a.map((s, k) => (k === i ? { ...s, ...p } : s)));
   const move = (i: number, d: number) => setSlides(a => { const n = [...a]; const j = i + d; if (j < 0 || j >= n.length) return a; [n[i], n[j]] = [n[j], n[i]]; return n; });
 
-  const upload = async (i: number, file: File) => {
+  const upload = async (i: number, file: File, free = false) => {
     setBusy(i);
     const path = `topicos/${slug}/slide-${Date.now()}-${file.name.replace(/[^a-zA-Z0-9._-]+/g, "_")}`;
     const { error } = await supabase.storage.from("course-materials").upload(path, file);
     if (error) { setBusy(null); toast.error(error.message); return; }
     const { data } = await supabase.storage.from("course-materials").createSignedUrl(path, 60 * 60 * 24 * 365 * 10);
-    upd(i, { image: data?.signedUrl || "" });
+    if (free) addObject(i, data?.signedUrl || ""); else upd(i, { image: data?.signedUrl || "" });
     setBusy(null);
   };
 
@@ -58,11 +66,30 @@ export default function SlideDeckEditor({ slug, title, lesson, initial, onSaved,
     <div className="rounded-2xl bg-white text-slate-900 shadow-2xl mb-6 p-5 space-y-4">
       <div className="flex flex-wrap items-center gap-2">
         <h2 className="text-xl font-black mr-auto">✏️ Editar slides</h2>
+        <Button variant={preview ? "default" : "outline"} onClick={() => { setPreview(p => !p); setSel(null); }}>{preview ? "🧩 Voltar à edição" : "👁️ Visualização final"}</Button>
         <Button variant="outline" onClick={() => { if (confirm("Descartar edições e voltar aos slides automáticos?")) save(null); }}>Restaurar automático</Button>
         <Button variant="ghost" onClick={onClose}>Cancelar</Button>
         <Button className="bg-violet-700 hover:bg-violet-800" onClick={() => save(slides)}>Salvar slides</Button>
       </div>
-      {(() => {
+      {preview && slides.length > 0 && (() => { const i = Math.min(pv, slides.length - 1); const s = slides[i]; return (
+        <div className="space-y-3">
+          <p className="text-xs text-slate-500">Versão final. Clique no título, subtítulo ou texto para editar direto; arraste as imagens e use o quadradinho do canto para mudar o tamanho.</p>
+          <SlideCanvas slide={s} editable selected={sel} onSelect={setSel} onChange={p => upd(i, p)} />
+          <div className="flex flex-wrap items-center gap-2">
+            <Button variant="outline" disabled={i === 0} onClick={() => setPv(i - 1)}>◀</Button>
+            <span className="text-sm font-semibold">Slide {i + 1} de {slides.length}</span>
+            <Button variant="outline" disabled={i === slides.length - 1} onClick={() => setPv(i + 1)}>▶</Button>
+            <label className="cursor-pointer px-3 py-1 rounded border border-violet-300 text-violet-700 bg-white text-sm">
+              {busy === i ? "Enviando..." : "🖼️ Inserir imagem no slide"}
+              <input type="file" accept="image/*" className="hidden" onChange={e => { const f = e.target.files?.[0]; if (f) upload(i, f, true); e.target.value = ""; }} />
+            </label>
+            <span className="ml-auto flex gap-1">{SLIDE_STATUS.map(st => (
+              <button type="button" key={st.key} onClick={() => upd(i, { status: st.key })}
+                className={`px-2 py-0.5 text-xs rounded-full border ${statusOf(s) === st.key ? st.cls + " font-bold" : "bg-white text-slate-500 border-slate-200"}`}>{st.label}</button>
+            ))}</span>
+          </div>
+        </div>); })()}
+      {!preview && (() => {
         const groups: { key: string; label: string; idx: number[] }[] = [];
         slides.forEach((s, i) => {
           const m = s.title.trim().match(/^(\d+)(?:[.)\s]|$)/);
@@ -84,9 +111,9 @@ export default function SlideDeckEditor({ slug, title, lesson, initial, onSaved,
             <span className="font-semibold text-slate-600 mr-1">Status:</span>
             {SLIDE_STATUS.map(st => (
               <button type="button" key={st.key} onClick={() => upd(i, { status: st.key })}
-                className={`px-2 py-0.5 rounded-full border ${(s.status || "postado") === st.key ? st.cls + " font-bold" : "bg-white text-slate-500 border-slate-200"}`}>{st.label}</button>
+                className={`px-2 py-0.5 rounded-full border ${statusOf(s) === st.key ? st.cls + " font-bold" : "bg-white text-slate-500 border-slate-200"}`}>{st.label}</button>
             ))}
-            <span className="ml-auto text-slate-500">{(s.status || "postado") === "postado" ? "Visível para o aluno" : "Oculto do aluno"}</span>
+            <span className="ml-auto text-slate-500">{statusOf(s) === "postado" ? "Visível para o aluno" : "Oculto do aluno"}</span>
           </div>
           <div className="flex gap-2 items-center">
             <span className="text-xs font-bold text-slate-500 w-14">Slide {i + 1}</span>
@@ -106,14 +133,35 @@ export default function SlideDeckEditor({ slug, title, lesson, initial, onSaved,
             </label>
             {s.image && <><img src={s.image} alt="" className="h-12 w-20 object-cover rounded" /><button type="button" className="text-red-600 text-xs" onClick={() => upd(i, { image: "" })}>remover</button></>}
           </div>
-          <button type="button" className="text-xs text-violet-700" onClick={() => setSlides(a => [...a.slice(0, i + 1), { title: "Novo slide", emoji: "📌", lines: [""], status: "editando" as SlideStatus }, ...a.slice(i + 1)])}>➕ Inserir slide abaixo</button>
+          <details className="text-sm">
+            <summary className="cursor-pointer font-semibold text-violet-700">🎨 Cabeçalho, cores e imagens soltas</summary>
+            <div className="flex flex-wrap items-center gap-3 mt-2">
+              <label className="flex items-center gap-1"><input type="checkbox" checked={s.header?.show !== false} onChange={e => upd(i, { header: { ...s.header, show: e.target.checked } })} /> Mostrar cabeçalho</label>
+              <label className="flex items-center gap-1">Fundo do cabeçalho <input type="color" value={s.header?.bg || "#5b21b6"} onChange={e => upd(i, { header: { ...s.header, bg: e.target.value } })} /></label>
+              <label className="flex items-center gap-1">Cor do título <input type="color" value={s.header?.color || "#ffffff"} onChange={e => upd(i, { header: { ...s.header, color: e.target.value } })} /></label>
+              <select className="border rounded px-1 bg-white" value={s.header?.align || "left"} onChange={e => upd(i, { header: { ...s.header, align: e.target.value as any } })}>
+                <option value="left">Título à esquerda</option><option value="center">Centralizado</option><option value="right">À direita</option>
+              </select>
+              <label className="flex items-center gap-1">Tamanho <input type="number" min={16} max={60} className="w-16 border rounded px-1 bg-white" value={s.header?.size || 28} onChange={e => upd(i, { header: { ...s.header, size: Number(e.target.value) } })} /></label>
+              <input className="flex-1 min-w-[180px] border rounded px-2 py-1 bg-white" value={s.header?.subtitle || ""} onChange={e => upd(i, { header: { ...s.header, subtitle: e.target.value } })} placeholder="Subtítulo do cabeçalho (opcional)" />
+              <label className="flex items-center gap-1">Fundo do slide <input type="color" value={s.bg || "#ffffff"} onChange={e => upd(i, { bg: e.target.value })} /></label>
+              <label className="flex items-center gap-1">Cor do texto <input type="color" value={s.textColor || "#0f172a"} onChange={e => upd(i, { textColor: e.target.value })} /></label>
+              <label className="cursor-pointer px-3 py-1 rounded border border-violet-300 text-violet-700 bg-white">
+                {busy === i ? "Enviando..." : "🖼️ Imagem em qualquer lugar"}
+                <input type="file" accept="image/*" className="hidden" onChange={e => { const f = e.target.files?.[0]; if (f) upload(i, f, true); e.target.value = ""; }} />
+              </label>
+              <button type="button" className="px-3 py-1 rounded border bg-white" onClick={() => { const u = prompt("Link da imagem"); if (u) addObject(i, u); }}>🔗 Imagem por link</button>
+            </div>
+            <div className="mt-2 max-w-2xl"><SlideCanvas slide={s} editable selected={sel} onSelect={setSel} onChange={p => upd(i, p)} /></div>
+          </details>
+          <button type="button" className="text-xs text-violet-700" onClick={() => setSlides(a => [...a.slice(0, i + 1), { title: "Novo slide", emoji: "📌", lines: [""], status: "nao_editado" as SlideStatus }, ...a.slice(i + 1)])}>➕ Inserir slide abaixo</button>
         </div>
             ); })}
             </div>
           </details>
         ));
       })()}
-      <Button variant="outline" onClick={() => setSlides(a => [...a, { title: "Novo slide", emoji: "📌", lines: [""], status: "editando" as SlideStatus }])}>➕ Adicionar slide</Button>
+      <Button variant="outline" onClick={() => setSlides(a => [...a, { title: "Novo slide", emoji: "📌", lines: [""], status: "nao_editado" as SlideStatus }])}>➕ Adicionar slide</Button>
     </div>
   );
 }
