@@ -1,8 +1,9 @@
+import SlideCanvas, { type CanvasSlide } from "./SlideCanvas";
 import { useMemo, useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, Lock, Star, Trophy } from "lucide-react";
 
-type Slide = { title: string; emoji: string; lines: string[]; image?: string };
+type Slide = CanvasSlide;
 
 const STOP = new Set(["porque","quando","também","através","sobre","entre","outros","outras","assim","sendo","podem","sempre","muito","maior","menor","dessa","desse","nesta","neste","cada","qual","quais","mesmo","forma","ainda","depois","antes","apenas","pelos","pelas","essas","esses","todos","todas"]);
 const clean = (w: string) => w.replace(/[^\p{L}\p{N}-]/gu, "");
@@ -104,12 +105,14 @@ export default function TopicSlideDeck({ slug, slides, onFinish }: { slug: strin
       </div>
 
       <div className="p-6 md:p-10 min-h-[360px] text-slate-900">
+        {(sl.header || sl.objects?.length || sl.bg) ? <div className="mb-4"><SlideCanvas slide={{ ...sl, lines: sl.lines.map((l, k) => k === challenge?.lineIdx && !answered ? l.replace(challenge.answer, "_____") : l) }} /></div> : <>
         <div className="text-4xl mb-2">{sl.emoji}</div>
         <h2 className="text-2xl md:text-3xl font-black mb-4">{sl.title}</h2>
         {sl.image && <img src={sl.image} alt="" className="w-full max-h-56 object-cover rounded-xl mb-4" />}
         {sl.lines.length === 1
           ? <p className="text-lg leading-relaxed whitespace-pre-line">{renderLine(sl.lines[0], 0)}</p>
           : <ul className="space-y-2 text-lg">{sl.lines.map((l, k) => <li key={k} className="flex gap-2"><span className="text-violet-600">•</span><span>{renderLine(l, k)}</span></li>)}</ul>}
+        </>}
 
         {challenge && (
           <div className="mt-6 p-4 rounded-xl bg-violet-50 border border-violet-200">
