@@ -2288,12 +2288,12 @@ export default function TopicoDetalhe() {
           <div className="mb-4 flex flex-wrap gap-2"><Button variant="secondary" onClick={() => setAdminPreview((v) => !v)}>{adminPreview ? "✖ Fechar visão do aluno" : "👁️ Ver slides como aluno"}</Button>
           <Button variant="secondary" onClick={() => { setAdminPreview(false); setDeckEditing(true); }}>✏️ Editar slides</Button></div>
         )}
-        {isAdmin && (!editing || !!focusTitle) && !deckEditing && !adminPreview && !showFullPage && (
+        {isAdmin && !deckEditing && !adminPreview && !showFullPage && (
           <SlideDeckEditor key={override?.slide_deck ? "saved" : "auto"} slug={slug!} title={title} lesson={lesson} initial={deckSlides} focusTitle={focusTitle}
             onClose={() => setShowFullPage(true)}
             onSaved={(sl) => { setOverride((o) => ({ ...(o || {}), slide_deck: sl })); }} />
         )}
-        {isAdmin && !editing && !adminPreview && (
+        {isAdmin && !adminPreview && (
           <div className="mb-4"><Button variant="outline" onClick={() => setShowFullPage((v) => !v)}>{showFullPage ? "🖼️ Voltar para os slides" : "📄 Ver página completa"}</Button></div>
         )}
         {isAdmin && deckEditing && (
@@ -2307,7 +2307,7 @@ export default function TopicoDetalhe() {
             slides={isAdmin ? deckSlides : deckSlides.filter(visibleToStudent)}
             onFinish={() => { if (isAdmin) { setAdminPreview(false); return; } localStorage.setItem(`deck-done:${slug}`, "1"); setDeckDone(true); window.scrollTo({ top: 0, behavior: "smooth" }); }}
           />
-        ) : (isAdmin && !editing && !showFullPage) ? null : (<>
+        ) : (isAdmin && !showFullPage) ? null : (<>
         {!isAdmin && deckDone && <div className="mb-4 text-emerald-300 font-semibold">🏆 Slides concluídos! Agora revise o conteúdo completo abaixo. <button className="underline ml-2" onClick={() => { localStorage.removeItem(`deck-done:${slug}`); localStorage.removeItem(`deck-progress:${slug}`); setDeckDone(false); }}>Refazer slides</button></div>}
         <Card className="overflow-hidden mb-6 border-0">
           <div className="relative h-56 md:h-72 bg-gradient-to-br from-violet-700 to-indigo-900">
