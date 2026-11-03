@@ -2,10 +2,10 @@ import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import SlideCanvas, { type SlideHeader, type SlideObject } from "./SlideCanvas";
+import SlideCanvas, { type CanvasSlide, type SlideHeader, type SlideObject } from "./SlideCanvas";
 
 export type SlideStatus = "nao_editado" | "editando" | "postado" | "concluido" | "revisado";
-export type DeckSlide = { title: string; emoji: string; lines: string[]; image?: string; status?: SlideStatus; header?: SlideHeader; objects?: SlideObject[]; bg?: string; textColor?: string };
+export type DeckSlide = CanvasSlide & { status?: SlideStatus };
 export const SLIDE_STATUS: { key: SlideStatus; label: string; cls: string }[] = [
   { key: "nao_editado", label: "⏸️ Não editado", cls: "bg-orange-700 text-white border-orange-800" },
   { key: "editando", label: "✏️ Editando", cls: "bg-yellow-300 text-yellow-900 border-yellow-500" },
