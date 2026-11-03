@@ -57,7 +57,6 @@ export default function SlideCanvas({ slide, editable, onChange, selected, onSel
   const setH = (p: Partial<SlideHeader>) => onChange?.({ header: { ...h, ...p } });
 
   // Se o aluno vê texto com lacuna (lines alteradas), não usamos o html salvo.
-  const htmlMatches = t.html && textRef.current == null ? true : !!t.html;
   const useHtml = !!t.html && (editable || slide.lines.join("\n") === (slide.text?.html ? htmlToText(slide.text.html) : ""));
 
   const pos = slide.imagePos;
