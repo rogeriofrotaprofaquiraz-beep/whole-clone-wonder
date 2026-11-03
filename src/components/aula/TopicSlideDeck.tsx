@@ -105,7 +105,7 @@ export default function TopicSlideDeck({ slug, slides, onFinish }: { slug: strin
       </div>
 
       <div className="p-6 md:p-10 min-h-[360px] text-slate-900">
-        {(sl.header || sl.objects?.length || sl.bg) ? <div className="mb-4"><SlideCanvas slide={{ ...sl, lines: sl.lines.map((l, k) => k === challenge?.lineIdx && !answered ? l.replace(challenge.answer, "_____") : l) }} /></div> : <>
+        {(sl.header || sl.objects?.length || sl.bg) ? <div className="mb-4"><SlideCanvas slide={{ ...sl, lines: sl.lines.map((l, k) => k === challenge?.lineIdx && !solved ? l.replace(challenge!.answer, "_____") : l) }} /></div> : <>
         <div className="text-4xl mb-2">{sl.emoji}</div>
         <h2 className="text-2xl md:text-3xl font-black mb-4">{sl.title}</h2>
         {sl.image && <img src={sl.image} alt="" className="w-full max-h-56 object-cover rounded-xl mb-4" />}
