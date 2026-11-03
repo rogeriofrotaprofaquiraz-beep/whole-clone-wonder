@@ -62,7 +62,23 @@ export default function SlideDeckEditor({ slug, title, lesson, initial, onSaved,
         <Button variant="ghost" onClick={onClose}>Cancelar</Button>
         <Button className="bg-violet-700 hover:bg-violet-800" onClick={() => save(slides)}>Salvar slides</Button>
       </div>
-      {slides.map((s, i) => (
+      {(() => {
+        const groups: { key: string; label: string; idx: number[] }[] = [];
+        slides.forEach((s, i) => {
+          const m = s.title.trim().match(/^(\d+)(?:[.)\s]|$)/);
+          const isHead = m && !/^\d+\.\d/.test(s.title.trim());
+          const last = groups[groups.length - 1];
+          if (m && (!last || last.key !== m[1])) groups.push({ key: m[1], label: isHead ? s.title.trim() : `Módulo ${m[1]}`, idx: [i] });
+          else if (last) last.idx.push(i);
+          else groups.push({ key: "geral", label: "Geral", idx: [i] });
+        });
+        return groups.map((g, gi) => (
+          <details key={gi} open className="border border-violet-200 rounded-2xl p-3 bg-violet-50/40">
+            <summary className="cursor-pointer font-black text-violet-800">
+              {g.key === "geral" ? "📁 Geral" : `📦 Módulo ${g.key}`} — {g.label} <span className="text-xs font-normal text-slate-500">({g.idx.length} slide{g.idx.length > 1 ? "s" : ""})</span>
+            </summary>
+            <div className="space-y-3 mt-3">
+            {g.idx.map(i => { const s = slides[i]; return (
         <div key={i} ref={el => (refs.current[i] = el)} className={`border rounded-xl p-3 space-y-2 bg-slate-50 ${focusIdx === i ? "border-violet-500 ring-2 ring-violet-300" : "border-slate-200"}`}>
           <div className="flex flex-wrap gap-1 items-center text-xs">
             <span className="font-semibold text-slate-600 mr-1">Status:</span>
@@ -92,7 +108,11 @@ export default function SlideDeckEditor({ slug, title, lesson, initial, onSaved,
           </div>
           <button type="button" className="text-xs text-violet-700" onClick={() => setSlides(a => [...a.slice(0, i + 1), { title: "Novo slide", emoji: "📌", lines: [""], status: "editando" as SlideStatus }, ...a.slice(i + 1)])}>➕ Inserir slide abaixo</button>
         </div>
-      ))}
+            ); })}
+            </div>
+          </details>
+        ));
+      })()}
       <Button variant="outline" onClick={() => setSlides(a => [...a, { title: "Novo slide", emoji: "📌", lines: [""], status: "editando" as SlideStatus }])}>➕ Adicionar slide</Button>
     </div>
   );
