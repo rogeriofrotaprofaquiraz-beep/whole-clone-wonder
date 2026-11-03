@@ -1,5 +1,5 @@
 import TopicSlideDeck, { buildSlides } from "@/components/aula/TopicSlideDeck";
-import SlideDeckEditor, { SLIDE_STATUS, norm as normSlide, visibleToStudent } from "@/components/aula/SlideDeckEditor";
+import SlideDeckEditor, { SLIDE_STATUS, norm as normSlide, visibleToStudent, statusOf } from "@/components/aula/SlideDeckEditor";
 import EditableChecklistGrid from "@/components/EditableChecklistGrid";
 import { CustomFieldsView, type CustomField } from "@/components/aula/TopicFieldsDialog";
 import { SubtopicsView } from "@/components/aula/SubtopicsDialog";
@@ -2278,7 +2278,7 @@ export default function TopicoDetalhe() {
           editing={editing}
           onGoTo={goToField}
           onOpenItem={(_k, label) => { setAdminPreview(false); setShowFullPage(false); setDeckEditing(false); setFocusTitle(null); setTimeout(() => setFocusTitle(label), 0); }}
-          slideStatus={(label) => { const f = normSlide(label); const sl = deckSlides.find((x: any) => normSlide(x.title) === f); if (!sl) return null; const st = SLIDE_STATUS.find(o => o.key === (sl.status || "postado")); return st ? <span className={`text-[10px] px-1.5 rounded-full border ${st.cls}`}>{st.label}</span> : null; }}
+          slideStatus={(label) => { const f = normSlide(label); const sl = deckSlides.find((x: any) => normSlide(x.title) === f); const st = SLIDE_STATUS.find(o => o.key === (sl ? statusOf(sl) : "nao_editado")); return st ? <span className={`text-[10px] px-1.5 rounded-full border ${st.cls}`}>{st.label}</span> : null; }}
           hasHeroImage={!!(sectionImg("hero") || (editing && form ? (form.image_url || "").trim() : override?.image_url))}
           onFlagChange={(patch) => setOverride((o) => ({ ...(o || {}), ...patch }))}
         />}
