@@ -1,7 +1,6 @@
 import TopicSlideDeck, { buildSlides } from "@/components/aula/TopicSlideDeck";
 import { clearLocalDeck } from "@/lib/deckScore";
 import SlideDeckEditor, { SLIDE_STATUS, norm as normSlide, visibleToStudent, statusOf } from "@/components/aula/SlideDeckEditor";
-import EditableChecklistGrid from "@/components/EditableChecklistGrid";
 import { CustomFieldsView, type CustomField } from "@/components/aula/TopicFieldsDialog";
 import { SubtopicsView } from "@/components/aula/SubtopicsDialog";
 import { Link, useNavigate, useParams, useSearchParams } from "react-router-dom";
