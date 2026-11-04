@@ -2,6 +2,7 @@ import SlideCanvas, { type CanvasSlide } from "./SlideCanvas";
 import { groupSlides } from "@/lib/slideGroups";
 import { deckPercent, saveDeckScore, logDeckScore, PASS_PERCENT } from "@/lib/deckScore";
 import { useMemo, useState, useEffect } from "react";
+import { ActivityPlayer } from "./ActivityBuilder";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, Lock, Star, Trophy } from "lucide-react";
 
@@ -57,7 +58,7 @@ export default function TopicSlideDeck({ slug, slides, onFinish }: { slug: strin
   // Pergunta de compreensão: qual frase está correta segundo o texto do slide (sem lacuna).
   const challenge = useMemo(() => {
     const sl = slides[i];
-    if (!sl) return null;
+    if (!sl || sl.kind === "atividade") return null;
     const sentences = sl.lines.join(" ").split(/(?<=[.!?;])\s+/).map((x) => x.trim()).filter((x) => x.length > 25 && pickWord(x));
     if (!sentences.length) return null;
     const correct = sentences[Math.floor(Math.random() * sentences.length)];
@@ -88,7 +89,8 @@ export default function TopicSlideDeck({ slug, slides, onFinish }: { slug: strin
     else setTries((t) => t + 1);
   };
 
-  const canNext = solved || (!challenge && readEnough);
+  const isAct = slides[i]?.kind === "atividade";
+  const canNext = solved || (!isAct && !challenge && readEnough);
   const next = () => {
     if (!canNext) return;
     const final = !challenge && !solved ? { ...done, [i]: 3 } : done;
@@ -118,7 +120,9 @@ export default function TopicSlideDeck({ slug, slides, onFinish }: { slug: strin
       </div>
 
       <div className="p-6 md:p-10 min-h-[360px] text-slate-900">
-        {(sl.header || sl.objects?.length || sl.bg || sl.text || sl.imagePos) ? <div className="mb-4"><SlideCanvas slide={sl} /></div> : <>
+        {isAct ? <><div className="text-3xl mb-1">{sl.emoji}</div><h2 className="text-2xl font-black mb-4">{sl.title}</h2>
+          {solved ? <p className="text-emerald-700 font-bold">✅ Atividade feita — +{done[i]} ⭐</p> : <ActivityPlayer key={i} activity={sl.activity || { questions: [] }} onDone={st => setDone(d => ({ ...d, [i]: st }))} />}</> :
+        (sl.header || sl.objects?.length || sl.bg || sl.text || sl.imagePos) ? <div className="mb-4"><SlideCanvas slide={sl} /></div> : <>
         <div className="text-4xl mb-2">{sl.emoji}</div>
         <h2 className="text-2xl md:text-3xl font-black mb-4">{sl.title}</h2>
         {sl.image && <img src={sl.image} alt="" className="w-full max-h-56 object-cover rounded-xl mb-4" />}
@@ -149,7 +153,7 @@ export default function TopicSlideDeck({ slug, slides, onFinish }: { slug: strin
             )}
           </div>
         )}
-        {!challenge && !readEnough && <p className="mt-6 text-violet-800">📖 Leia com atenção... ({MIN_SECONDS - seconds}s)</p>}
+        {!isAct && !challenge && !readEnough && <p className="mt-6 text-violet-800">📖 Leia com atenção... ({MIN_SECONDS - seconds}s)</p>}
       </div>
 
       <div className="flex items-center justify-between px-5 py-4 bg-slate-50 border-t">

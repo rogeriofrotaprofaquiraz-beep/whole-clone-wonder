@@ -4,6 +4,8 @@ import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { ImagePlus, Trash2 } from "lucide-react";
 import { applyGroupHeader, groupSlides } from "@/lib/slideGroups";
+import { ActivityEditor, ActivityTypePicker } from "./ActivityBuilder";
+import { newQuestion, type ActivityType } from "@/lib/activities";
 import SlideCanvas, { type CanvasSlide, type SlideHeader, type SlideObject } from "./SlideCanvas";
 
 export type SlideStatus = "nao_editado" | "editando" | "postado" | "concluido" | "revisado";
@@ -55,6 +57,34 @@ export default function SlideDeckEditor({ slug, title, lesson, initial, onSaved,
       toast.error(error instanceof Error ? error.message : "Não foi possível enviar o cabeçalho.");
     } finally { setHeaderBusy(null); }
   };
+  const [insertAt, setInsertAt] = useState<number | null>(null);
+  const [pickType, setPickType] = useState<"atividade" | "par" | null>(null);
+  const blank = (ref?: DeckSlide): DeckSlide => ({ title: "Novo slide", emoji: "📌", lines: [""], kind: "conteudo", header: ref?.header?.image ? { image: ref.header.image, show: true } : undefined, status: "nao_editado" });
+  const actSlide = (t: ActivityType, ref?: DeckSlide): DeckSlide => ({ ...blank(ref), title: `Atividade: ${ref?.title || "slide anterior"}`.replace(/^Atividade: \d+(\.\d+)*\.?\s*/, "Atividade: "), emoji: "🎯", kind: "atividade", activity: { questions: [newQuestion(t, ref?.title)] } });
+  const doInsert = (what: "conteudo" | "atividade" | "par", t?: ActivityType) => {
+    const at = insertAt === -2 || insertAt === null ? slides.length - 1 : insertAt;
+    setSlides(a => {
+      const ref = a[at]; const c = blank(ref);
+      const add = what === "conteudo" ? [c] : what === "atividade" ? [actSlide(t!, ref)] : [c, actSlide(t!, c)];
+      return [...a.slice(0, at + 1), ...add, ...a.slice(at + 1)];
+    });
+    setInsertAt(null); setPickType(null);
+  };
+  const insertMenu = (
+    <div className="border-2 border-violet-300 rounded-xl p-3 bg-white space-y-3">
+      {!pickType ? <div className="flex flex-wrap gap-2 items-center">
+        <span className="font-semibold mr-2">Que tipo de slide?</span>
+        <Button variant="outline" onClick={() => doInsert("conteudo")}>📄 Conteúdo</Button>
+        <Button variant="outline" onClick={() => setPickType("atividade")}>🎯 Atividade</Button>
+        <Button variant="outline" onClick={() => setPickType("par")}>📄+🎯 Conteúdo + atividade</Button>
+        <Button variant="ghost" onClick={() => setInsertAt(null)}>Cancelar</Button>
+      </div> : <>
+        <p className="font-bold">Criar com tipo de pergunta</p>
+        <ActivityTypePicker onPick={t => doInsert(pickType, t)} />
+        <Button variant="ghost" size="sm" onClick={() => setPickType(null)}>◀ Voltar</Button>
+      </>}
+    </div>
+  );
   const [preview, setPreview] = useState(false);
   const [pv, setPv] = useState(0);
   const [sel, setSel] = useState<string | null>(null);
@@ -73,7 +103,7 @@ export default function SlideDeckEditor({ slug, title, lesson, initial, onSaved,
   };
 
   const save = async (value: DeckSlide[] | null) => {
-    const clean = value?.map(s => ({ ...s, lines: s.lines.map(l => l.trim()).filter(Boolean) })).filter(s => s.title.trim() || s.lines.length) ?? null;
+    const clean = value?.map(s => ({ ...s, lines: s.lines.map(l => l.trim()).filter(Boolean) })).filter(s => s.title.trim() || s.lines.length || s.activity?.questions.length) ?? null;
     const { error } = await supabase.from("topic_overrides").upsert({ slug, title, lesson, slide_deck: clean as any } as any, { onConflict: "slug" });
     if (error) { toast.error(error.message); return; }
     toast.success(value ? "Slides salvos" : "Slides voltaram ao automático");
@@ -92,7 +122,7 @@ export default function SlideDeckEditor({ slug, title, lesson, initial, onSaved,
       {preview && slides.length > 0 && (() => { const i = Math.min(pv, slides.length - 1); const s = slides[i]; return (
         <div className="space-y-3">
           <p className="text-xs text-slate-500">Versão final. Clique no título, subtítulo ou texto para editar direto; arraste as imagens e use o quadradinho do canto para mudar o tamanho.</p>
-          <SlideCanvas slide={s} editable selected={sel} onSelect={setSel} onChange={p => upd(i, p)} />
+          {s.kind === "atividade" ? <ActivityEditor activity={s.activity || { questions: [] }} about={slides[i - 1]?.title} onChange={a => upd(i, { activity: a })} /> : <SlideCanvas slide={s} editable selected={sel} onSelect={setSel} onChange={p => upd(i, p)} />}
           <div className="flex flex-wrap items-center gap-2">
             <Button variant="outline" disabled={i === 0} onClick={() => setPv(i - 1)}>◀</Button>
             <span className="text-sm font-semibold">Slide {i + 1} de {slides.length}</span>
@@ -146,6 +176,7 @@ export default function SlideDeckEditor({ slug, title, lesson, initial, onSaved,
             <button type="button" className="px-1" onClick={() => move(i, 1)} disabled={i === slides.length - 1}>▼</button>
             <button type="button" className="px-1" title="Excluir" onClick={() => setSlides(a => a.filter((_, k) => k !== i))}>🗑️</button>
           </div>
+          {s.kind === "atividade" ? <div className="rounded-lg bg-pink-50 border border-pink-200 p-2"><p className="text-xs font-semibold text-pink-700 mb-2">🎯 Slide de atividade — perguntas sobre o slide anterior</p><ActivityEditor activity={s.activity || { questions: [] }} about={slides[i - 1]?.title} onChange={a => upd(i, { activity: a })} /></div> : <>
           <textarea className="w-full border rounded px-2 py-1 bg-white text-sm" rows={4} value={s.lines.join("\n")}
             onChange={e => upd(i, { lines: e.target.value.split("\n") })} placeholder="Texto do slide (cada linha vira um tópico)" />
           <div className="flex flex-wrap items-center gap-2 text-sm">
@@ -176,15 +207,15 @@ export default function SlideDeckEditor({ slug, title, lesson, initial, onSaved,
               <button type="button" className="px-3 py-1 rounded border bg-white" onClick={() => { const u = prompt("Link da imagem"); if (u) addObject(i, u); }}>🔗 Imagem por link</button>
             </div>
             <div className="mt-2 max-w-2xl"><SlideCanvas slide={s} editable selected={sel} onSelect={setSel} onChange={p => upd(i, p)} /></div>
-          </details>
-          <button type="button" className="text-xs text-violet-700" onClick={() => setSlides(a => [...a.slice(0, i + 1), { title: "Novo slide", emoji: "📌", lines: [""], header: s.header?.image ? { image: s.header.image, show: true } : undefined, status: "nao_editado" as SlideStatus }, ...a.slice(i + 1)])}>➕ Inserir slide abaixo</button>
+          </details></>}
+          {insertAt === i ? insertMenu : <button type="button" className="text-xs text-violet-700" onClick={() => { setInsertAt(i); setPickType(null); }}>➕ Inserir slide abaixo</button>}
         </div>
             ); })}
             </div>
           </details>
         ));
       })()}
-      <Button variant="outline" onClick={() => setSlides(a => [...a, { title: "Novo slide", emoji: "📌", lines: [""], header: a[a.length - 1]?.header?.image ? { image: a[a.length - 1].header?.image, show: true } : undefined, status: "nao_editado" as SlideStatus }])}>➕ Adicionar slide</Button>
+      {insertAt === -2 ? insertMenu : <Button variant="outline" onClick={() => { setInsertAt(-2); setPickType(null); }}>➕ Adicionar slide</Button>}
     </div>
   );
 }
