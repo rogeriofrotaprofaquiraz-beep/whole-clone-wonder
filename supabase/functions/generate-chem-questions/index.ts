@@ -32,8 +32,14 @@ Deno.serve(async (req) => {
 
     const { area, count = 10, difficulty = 2, topic, school_level = "medio", content = "" } = await req.json();
     if (!area || !AREA_LABELS[area]) return json({ error: "Invalid area" }, 400);
-    const level = school_level === "fundamental" ? "fundamental" : "medio";
-    const levelLabel = level === "fundamental" ? "Ensino Fundamental (linguagem acessível, sem fórmulas complexas)" : "Ensino Médio";
+    const LEVEL_LABELS: Record<string, string> = {
+      fundamental: "Ensino Fundamental II (linguagem acessível, sem fórmulas complexas)",
+      medio: "Ensino Médio",
+      olimpiada: "Olimpíada de Química/Ciências (raciocínio aprofundado, estilo OBQ/ONC)",
+      superior: "Ensino Superior (nível universitário)",
+    };
+    const level = LEVEL_LABELS[school_level] ? school_level : "medio";
+    const levelLabel = LEVEL_LABELS[level];
     const n = Math.min(Math.max(parseInt(String(count)) || 10, 1), 25);
 
     const sys = `Você é um professor de ciências e química brasileiro criando questões de múltipla escolha. Responda APENAS com JSON válido, sem markdown.`;

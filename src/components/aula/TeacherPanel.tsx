@@ -29,6 +29,33 @@ export function TeacherPanel({ userId }: { userId: string }) {
   const [stats, setStats] = useState<Record<string, number>>({});
   const [sessions, setSessions] = useState<any[]>([]);
 
+  const [stdProgress, setStdProgress] = useState("");
+
+  const generateStandard = async () => {
+    const jobs: { area: string; school_level: string; difficulty: number }[] = [];
+    for (const a of AREAS) for (const l of LEVELS) for (const d of DIFFICULTIES)
+      jobs.push({ area: a.value, school_level: l.value, difficulty: d.value });
+    if (!confirm(`Gerar 5 questões para cada combinação (${jobs.length} combinações, ~${jobs.length * 5} questões)? Pode levar alguns minutos.`)) return;
+    let done = 0, ok = 0, fail = 0;
+    setStdProgress(`0/${jobs.length}`);
+    const queue = [...jobs];
+    const worker = async () => {
+      while (queue.length) {
+        const j = queue.shift()!;
+        try {
+          const { data, error } = await supabase.functions.invoke("generate-chem-questions", { body: { ...j, count: 5 } });
+          if (error || (data as any)?.error) fail++; else ok += (data as any)?.inserted ?? 0;
+        } catch { fail++; }
+        done++;
+        setStdProgress(`${done}/${jobs.length}`);
+      }
+    };
+    await Promise.all([worker(), worker(), worker(), worker()]);
+    setStdProgress("");
+    toast.success(`Banco padrão: ${ok} questões criadas${fail ? ` (${fail} combinações falharam)` : ""}`);
+    loadStats();
+  };
+
   const loadStats = async () => {
     const out: Record<string, number> = {};
     for (const a of AREAS) {
@@ -205,6 +232,9 @@ export function TeacherPanel({ userId }: { userId: string }) {
         </div>
         <Button onClick={generateAll} disabled={generatingAll || generating || generatingTerms} className="w-full mt-4 bg-[#059669] hover:bg-[#047857]">
           {generatingAll ? <><Loader2 className="animate-spin mr-2" />Gerando para todos os jogos...</> : <><Sparkles className="mr-2" />Gerar para TODOS os jogos (Quiz, Forca, Caça-palavras, Memória)</>}
+        </Button>
+        <Button onClick={generateStandard} disabled={!!stdProgress || generatingAll} variant="outline" className="w-full mt-2">
+          {stdProgress ? <><Loader2 className="animate-spin mr-2" />Banco padrão: {stdProgress}</> : <><Sparkles className="mr-2" />Gerar banco padrão (5 questões por dificuldade · todas as áreas e níveis)</>}
         </Button>
         <div className="grid grid-cols-2 gap-2 mt-2">
           <Button onClick={generateQuestions} disabled={generating} className="bg-[#D97706] hover:bg-[#B45309]">
