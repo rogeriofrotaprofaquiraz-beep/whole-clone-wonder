@@ -1,0 +1,1 @@
+ALTER TABLE public.topic_overrides ADD COLUMN IF NOT EXISTS progress_reset_at timestamptz;
