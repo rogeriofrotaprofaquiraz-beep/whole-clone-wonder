@@ -1835,6 +1835,30 @@ export type Database = {
           },
         ]
       }
+      student_lesson_resets: {
+        Row: {
+          course_id: string
+          lesson_id: string
+          reset_at: string
+          reset_by: string | null
+          user_id: string
+        }
+        Insert: {
+          course_id: string
+          lesson_id: string
+          reset_at?: string
+          reset_by?: string | null
+          user_id: string
+        }
+        Update: {
+          course_id?: string
+          lesson_id?: string
+          reset_at?: string
+          reset_by?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
       team_members: {
         Row: {
           display_name: string
