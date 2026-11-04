@@ -7,6 +7,7 @@ import { AREAS, AreaValue, LEVELS, LevelValue, DIFFICULTIES } from "@/lib/aula";
 import { Forca } from "@/components/aula/Forca";
 import { CacaPalavras } from "@/components/aula/CacaPalavras";
 import { Memoria } from "@/components/aula/Memoria";
+import { QuestionGate } from "@/components/aula/QuestionGate";
 import { CursoQuiz } from "@/components/aula/CursoQuiz";
 import { useFeatureAccess } from "@/lib/featureAccess";
 import { supabase } from "@/integrations/supabase/client";
@@ -48,6 +49,11 @@ export default function Treino() {
     supabase.from("course_lessons").select("id,title,content").eq("course_id", courseId).order("order_index")
       .then(({ data }) => setLessons((data ?? []) as L[]));
   }, [courseId]);
+
+  const [phase, setPhase] = useState(1);
+  const [unlocked, setUnlocked] = useState(false);
+  useEffect(() => { setPhase(1); setUnlocked(false); }, [game, area, level]);
+  const nextPhase = () => { setPhase((p) => p + 1); setUnlocked(false); };
 
   const termLevel = (level === "olimpiada" ? "fundamental" : level) as LevelValue;
 
@@ -125,10 +131,18 @@ export default function Treino() {
           </div>
         </Card>
 
+        {!unlocked ? <QuestionGate area={area} level={level} phase={phase} onPass={() => setUnlocked(true)} /> : (
+          <div key={phase} className="space-y-3">
+            <div className="flex items-center justify-between">
+              <span className="font-bold text-sm">🏁 Fase {phase}</span>
+              <Button size="sm" onClick={nextPhase}>Próxima fase →</Button>
+            </div>
         {game === "assunto" && (topic ? <CursoQuiz topic={topic} level={level} content={lessons.find((l) => l.title === topic)?.content} /> : <Card className="p-6 text-sm text-muted-foreground">Escolha um curso e um assunto acima para jogar com as questões dele.</Card>)}
         {game === "forca" && can("jogo_forca") && <Forca area={area} level={termLevel} difficulty={difficulty} />}
         {game === "caca" && can("jogo_caca") && <CacaPalavras area={area} />}
         {game === "memoria" && can("jogo_memoria") && <Memoria area={area} />}
+          </div>
+        )}
       </div>
     </div>
   );
