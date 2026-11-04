@@ -33,6 +33,7 @@ export function MainMenu({ activeTab, setActiveTab, role }: {
     { label: "Aprendizagem", emoji: "🎓", items: [
       { label: "Escola", emoji: "🏫", to: "/escola" },
       { label: "Plano de Aula", emoji: "🗒️", to: "/plano-de-aula", show: staff },
+      { label: "Desempenho dos alunos", emoji: "📊", to: "/desempenho", show: staff },
       { label: "Conteúdo do Curso", emoji: "📝", to: "/admin/material", show: role === "admin" },
       { label: "Área de Aprendizagem", emoji: "📚", to: "/cursos" },
     ]},
