@@ -95,6 +95,9 @@ export default function SlideCanvas({ slide, editable, onChange, selected, onSel
           {(["left", "center", "right", "justify"] as const).map(a => <Btn key={a} on={t.align === a} onClick={() => setT({ align: a })}>{a === "left" ? "⯇" : a === "center" ? "≡" : a === "right" ? "⯈" : "☰"}</Btn>)}
           <select title="Espaçamento" className="border rounded bg-white px-1 py-0.5" value={t.lineHeight} onChange={e => setT({ lineHeight: Number(e.target.value) })}>{[1, 1.15, 1.5, 2].map(v => <option key={v} value={v}>↕ {v}</option>)}</select>
           <span className="mx-1 h-5 w-px bg-slate-300" />
+          <select title="Trocar ou excluir o ícone principal do título" className="border rounded bg-white px-1 py-0.5" value={slide.emoji || ""} onChange={e => onChange?.({ emoji: e.target.value })}>
+            <option value="">Ícone principal: nenhum</option>{[...new Set([slide.emoji, ...ICONS, "📌", "🔑", "⚖️", "🧩", "📝"].filter(Boolean))].map(i => <option key={i} value={i}>{i}</option>)}
+          </select>
           <select title="Inserir ícone na faixa do título" className="border rounded bg-white px-1 py-0.5" value="" onChange={e => e.target.value && setH({ icons: [...(h.icons || []), e.target.value] })}>
             <option value="">＋ Ícone no título</option>{ICONS.map(i => <option key={i} value={i}>{i}</option>)}
           </select>
@@ -114,13 +117,18 @@ export default function SlideCanvas({ slide, editable, onChange, selected, onSel
         </div>
       )}
       <div ref={box} onPointerDown={() => onSelect?.(null)}
-        className="relative w-full overflow-hidden rounded-xl border border-slate-300 shadow"
-        style={{ background: slide.bg || "#ffffff", color: slide.textColor || "#0f172a", minHeight: 0, aspectRatio: pos || !slide.image ? "16 / 9" : undefined }}>
-        {h.show && h.image && <img src={h.image} alt="Cabeçalho do grupo" draggable={false} className="block w-full aspect-[16/3] object-cover" />}
+        className="relative w-full overflow-hidden rounded-xl border border-slate-300 shadow flex flex-col"
+        style={{ background: slide.bg || "#ffffff", color: slide.textColor || "#0f172a", aspectRatio: "16 / 9" }}>
+        {h.show && h.image && <img src={h.image} alt="Cabeçalho do grupo" draggable={false} className="block w-full aspect-[16/3] object-cover shrink-0" />}
         {h.show && (
-          <div className="px-[4%] py-[2.5%]" style={{ background: h.bg, color: h.color, textAlign: h.align, fontFamily: h.font }}>
+          <div className="px-[4%] py-[2.5%] shrink-0" style={{ background: h.bg, color: h.color, textAlign: h.align, fontFamily: h.font }}>
             <div style={{ fontSize: scale(h.size), fontWeight: h.bold ? 900 : 500, fontStyle: h.italic ? "italic" : undefined }} className="leading-tight">
-              <span>{slide.emoji} </span>
+              {slide.emoji && (
+                <span className="relative inline-block mr-1">{slide.emoji}
+                  {editable && <button type="button" title="Excluir ícone" onMouseDown={e => e.preventDefault()} onClick={() => onChange?.({ emoji: "" })}
+                    className="absolute -top-2 -right-2 bg-white text-slate-700 border rounded-full w-4 h-4 text-[9px] leading-none">✕</button>}
+                </span>
+              )}
               {(h.icons || []).map((ic, n) => (
                 <span key={n} className="relative inline-block mr-1">{ic}
                   {editable && <button type="button" title="Excluir ícone" onMouseDown={e => e.preventDefault()} onClick={() => setH({ icons: (h.icons || []).filter((_, j) => j !== n) })}
@@ -131,7 +139,7 @@ export default function SlideCanvas({ slide, editable, onChange, selected, onSel
             {(h.subtitle || editable) && <div {...edit("subtitle")} className={`opacity-90 min-h-[1em] ${ring}`} style={{ fontSize: scale(Math.max(12, h.size * 0.5)) }} data-placeholder="Subtítulo">{h.subtitle}</div>}
           </div>
         )}
-        <div className={`px-[4%] py-[3%] flex gap-[3%] flex-row items-start`}>
+        <div className={`px-[4%] py-[3%] flex gap-[3%] flex-row items-start flex-1 min-h-0 overflow-auto`}>
           <div className={`relative ${slide.textWidth ? "shrink-0" : "flex-1"} min-w-0`} style={slide.textWidth ? { width: `${slide.textWidth}%` } : undefined}>
           <div ref={textRef}
             {...(editable ? { contentEditable: true, suppressContentEditableWarning: true, onBlur: saveText } : {})}
@@ -153,10 +161,10 @@ export default function SlideCanvas({ slide, editable, onChange, selected, onSel
           )}
           </div>
           {slide.image && !pos && (
-            <figure className="shrink-0 m-0" style={{ width: imgW }}>
+            <figure className="shrink-0 m-0 h-full flex flex-col" style={{ width: imgW }}>
               <img src={slide.image} alt={slide.imageCaption || slide.title} draggable={false}
                 onLoad={e => setRatio(e.currentTarget.naturalWidth / Math.max(1, e.currentTarget.naturalHeight))}
-                className="w-full h-auto object-contain rounded-lg" />
+                className="w-full min-h-0 flex-1 object-contain rounded-lg" />
               {(slide.imageCaption || editable) && (
                 <figcaption {...(editable ? { contentEditable: true, suppressContentEditableWarning: true, onBlur: (e: React.FocusEvent<HTMLElement>) => onChange?.({ imageCaption: e.currentTarget.innerText.trim() }) } : {})}
                   className={`mt-1 text-center italic opacity-80 min-h-[1em] ${ring}`} style={{ fontSize: scale(12) }}>
