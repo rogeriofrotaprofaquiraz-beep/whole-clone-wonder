@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Card } from "@/components/ui/card";
-import { getDeckScore, isTopicUnlocked, PASS_PERCENT } from "@/lib/deckScore";
+import { getDeckScore, isTopicUnlocked, PASS_PERCENT, isLessonUnlocked, lessonPercent, lessonTopics, slugifyTopic } from "@/lib/deckScore";
+import CourseHistory from "@/components/CourseHistory";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
@@ -170,6 +171,8 @@ export default function CursoDetalhe() {
   const [saving, setSaving] = useState(false);
   const [failedAttempts, setFailedAttempts] = useState(0);
   const [passed, setPassed] = useState(false);
+  const [scores, setScores] = useState<Record<string, number>>({});
+  const [isAdmin, setIsAdmin] = useState(false);
 
 
   useEffect(() => {
@@ -192,6 +195,16 @@ export default function CursoDetalhe() {
         .in("lesson_id", ls.map((l: any) => l.id))
         .eq("user_id", user.id);
       setDone(new Set((cs ?? []).map((x: any) => x.lesson_id)));
+    }
+    if (user?.id) {
+      const { data: r } = await supabase.rpc("has_role", { _user_id: user.id, _role: "admin" });
+      setIsAdmin(!!r);
+      const { data: en } = await supabase.from("course_enrollments").select("id").eq("course_id", id).eq("user_id", user.id).limit(1);
+      if (!en?.length) await supabase.from("course_enrollments").insert({ course_id: id, user_id: user.id });
+      const { data: lg } = await supabase.from("activity_logs").select("page,metadata").eq("user_id", user.id).eq("action", "deck_score");
+      const sc: Record<string, number> = {};
+      (lg ?? []).forEach((g: any) => { if (g.page) sc[g.page] = Math.max(sc[g.page] ?? 0, Number(g.metadata?.pct ?? 0)); });
+      setScores(sc);
     }
     if (user?.id) {
       const { data: att } = await supabase
@@ -223,6 +236,16 @@ export default function CursoDetalhe() {
     setDone(new Set([...done, lesson.id]));
     toast.success(`+${lesson.xp_reward} XP e +${lesson.coin_reward} ⚛`);
     setSaving(false);
+  };
+
+  const topicScore = (t: string) => { const k = slugifyTopic(t); const a = scores[k], b = getDeckScore(k); return a == null && b == null ? null : Math.max(a ?? 0, b ?? 0); };
+  const lessonPct = (l: Lesson) => lessonPercent(lessonTopics(l.content).map(topicScore));
+  const lessonOpen = (l: Lesson) => {
+    if (isAdmin) return true;
+    const k = lessons.findIndex(x => x.id === l.id);
+    if (k <= 0) return true;
+    const prev = lessons[k - 1];
+    return isLessonUnlocked(k, lessonPct(prev), done.has(prev.id));
   };
 
   const progress = lessons.length ? Math.round((done.size / lessons.length) * 100) : 0;
@@ -323,6 +346,23 @@ export default function CursoDetalhe() {
               {lessons.map((l) => {
                 const isDone = done.has(l.id);
                 const isActive = active?.id === l.id;
+                const open = lessonOpen(l);
+                const pct = lessonPct(l);
+                if (!open) {
+                  const prev = lessons[lessons.findIndex(x => x.id === l.id) - 1];
+                  return (
+                    <li key={l.id}>
+                      <div className="w-full p-3 rounded-lg border bg-slate-100 text-slate-500 flex items-start gap-3 cursor-not-allowed">
+                        <span className="shrink-0">🔒</span>
+                        <div className="flex-1">
+                          <div className="text-xs">Aula {l.order_index}</div>
+                          <div className="font-semibold text-sm leading-tight">{l.title}</div>
+                          <div className="text-[11px] mt-1">Precisa de {PASS_PERCENT}% na Aula {prev?.order_index} (você tem {lessonPct(prev) ?? 0}%)</div>
+                        </div>
+                      </div>
+                    </li>
+                  );
+                }
                 return (
                   <li key={l.id}>
                     <button
@@ -335,7 +375,7 @@ export default function CursoDetalhe() {
                         ? <CheckCircle2 className="text-emerald-600 shrink-0 mt-0.5" size={20} />
                         : <Circle className="text-slate-400 shrink-0 mt-0.5" size={20} />}
                       <div className="flex-1">
-                        <div className="text-xs text-slate-500">Aula {l.order_index}</div>
+                        <div className="text-xs text-slate-500">Aula {l.order_index}{pct !== null && <span className={`ml-2 font-bold ${pct >= PASS_PERCENT ? "text-emerald-600" : "text-amber-600"}`}>{pct}%</span>}</div>
                         <div className="font-semibold text-sm leading-tight">{l.title}</div>
                         <div className="flex gap-2 mt-1 text-[11px] text-slate-500">
                           <span className="inline-flex items-center gap-0.5"><Zap size={11} />{l.xp_reward}</span>
@@ -408,7 +448,7 @@ export default function CursoDetalhe() {
                   {active.order_index < lessons.length && (
                     <Button variant="outline" onClick={() => {
                       const next = lessons.find(l => l.order_index === active.order_index + 1);
-                      if (next) setActive(next);
+                      if (next && lessonOpen(next)) setActive(next); else toast.info(`Faça pelo menos ${PASS_PERCENT}% nesta aula para liberar a próxima`);
                     }}>Próxima →</Button>
                   )}
                 </div>
@@ -425,6 +465,8 @@ export default function CursoDetalhe() {
             courseId={course.id}
           />
         </div>
+
+        {user?.id && <CourseHistory courseId={course.id} lessons={lessons} userId={user.id} isAdmin={isAdmin} />}
 
         <Card className="p-6 mt-6">
           <h2 className="text-xl font-black mb-1">Ementa completa do curso</h2>
@@ -454,7 +496,7 @@ export default function CursoDetalhe() {
                   </div>
                 )}
                 <div className="mt-2">
-                  <Button size="sm" variant="outline" onClick={() => {
+                  <Button size="sm" variant="outline" disabled={!lessonOpen(l)} onClick={() => {
                     setActive(l);
                     window.scrollTo({ top: 0, behavior: "smooth" });
                   }}>

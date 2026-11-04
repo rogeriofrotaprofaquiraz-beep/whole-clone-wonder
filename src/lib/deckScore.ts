@@ -27,3 +27,34 @@ export function isTopicUnlocked(index: number, prevScore: number | null) {
   if (index === 0) return true;
   return (prevScore ?? 0) >= PASS_PERCENT;
 }
+
+export function slugifyTopic(s: string) {
+  return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 80);
+}
+
+/** Tópicos (bullets) listados no conteúdo de uma aula. */
+export function lessonTopics(content: string | null | undefined): string[] {
+  return (content || "").split("\n").map(l => l.match(/^\s*[-•*]\s+(.+)$/)?.[1]?.replace(/\*\*/g, "").trim()).filter((x): x is string => !!x);
+}
+
+/** Média (0-100) das notas dos tópicos de uma aula; tópicos não feitos contam 0. Aula sem tópicos = null. */
+export function lessonPercent(scores: (number | null)[]): number | null {
+  if (!scores.length) return null;
+  return Math.round(scores.reduce<number>((a, b) => a + (b ?? 0), 0) / scores.length);
+}
+
+/** Aula 1 sempre liberada; as seguintes exigem 70% na aula anterior (ou aula anterior concluída se não tiver tópicos). */
+export function isLessonUnlocked(index: number, prevPct: number | null, prevDone: boolean) {
+  if (index === 0) return true;
+  if (prevPct === null) return prevDone;
+  return prevPct >= PASS_PERCENT;
+}
+
+/** Registra a nota no histórico do aluno (servidor). */
+export async function logDeckScore(slug: string, pct: number) {
+  const { supabase } = await import("@/integrations/supabase/client");
+  const { data } = await supabase.auth.getUser();
+  if (!data.user) return;
+  await supabase.from("activity_logs").insert({ user_id: data.user.id, action: "deck_score", page: slug, metadata: { slug, pct } as any });
+}
