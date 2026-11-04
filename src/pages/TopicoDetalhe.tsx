@@ -2742,7 +2742,7 @@ export default function TopicoDetalhe() {
             )}
 
 
-            {isAdmin && (
+            {false && isAdmin && (
               <section id="topic-admin-editor" className="rounded-xl p-4 bg-amber-50 border border-amber-300">
                 <div className="flex items-center justify-between mb-3 gap-2 flex-wrap">
                   <div className="flex items-center gap-2 text-amber-800 font-bold">
