@@ -67,7 +67,7 @@ export default function SlideCanvas({ slide, editable, onChange, selected, onSel
     <div className="space-y-1">
       {editable && (
         <div className="flex flex-wrap items-center gap-1 rounded-lg border bg-slate-50 p-1.5 text-xs text-slate-800" onPointerDown={e => e.stopPropagation()}>
-          <span className="font-bold px-1">Cabeçalho:</span>
+          <span className="font-bold px-1" title="Faixa colorida com o título do slide (a imagem 16:3 do grupo fica acima dela)">Faixa do título:</span>
           <select className="border rounded bg-white px-1 py-0.5" value={h.font} onChange={e => setH({ font: e.target.value })}>{FONTS.map(f => <option key={f} style={{ fontFamily: f }}>{f}</option>)}</select>
           <select className="border rounded bg-white px-1 py-0.5" value={h.size} onChange={e => setH({ size: Number(e.target.value) })}>{SIZES.concat([44, 52]).sort((a, b) => a - b).map(s => <option key={s}>{s}</option>)}</select>
           <Btn on={h.bold} onClick={() => setH({ bold: !h.bold })}><b>N</b></Btn>
@@ -105,7 +105,7 @@ export default function SlideCanvas({ slide, editable, onChange, selected, onSel
       <div ref={box} onPointerDown={() => onSelect?.(null)}
         className="relative w-full overflow-hidden rounded-xl border border-slate-300 shadow"
         style={{ background: slide.bg || "#ffffff", color: slide.textColor || "#0f172a", minHeight: 0, aspectRatio: pos || !slide.image ? "16 / 9" : undefined }}>
-        {h.show && h.image && <img src={h.image} alt="Cabeçalho do grupo" draggable={false} className="block w-full aspect-[16/3] object-contain bg-background" />}
+        {h.show && h.image && <img src={h.image} alt="Cabeçalho do grupo" draggable={false} className="block w-full aspect-[16/3] object-cover" />}
         {h.show && (
           <div className="px-[4%] py-[2.5%]" style={{ background: h.bg, color: h.color, textAlign: h.align, fontFamily: h.font }}>
             <div style={{ fontSize: scale(h.size), fontWeight: h.bold ? 900 : 500, fontStyle: h.italic ? "italic" : undefined }} className="leading-tight">
