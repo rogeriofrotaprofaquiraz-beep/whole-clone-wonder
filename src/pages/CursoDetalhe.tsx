@@ -205,6 +205,14 @@ export default function CursoDetalhe() {
       const { data: rs } = await supabase.from("topic_overrides").select("slug,progress_reset_at").not("progress_reset_at", "is", null);
       const resets: Record<string, string> = {};
       (rs ?? []).forEach((r: any) => { resets[r.slug] = r.progress_reset_at; });
+      const { data: lr } = await (supabase as any).from("student_lesson_resets").select("lesson_id,reset_at").eq("user_id", user.id).eq("course_id", id);
+      (lr ?? []).forEach((r: any) => {
+        const l = (ls ?? []).find((x: any) => x.id === r.lesson_id);
+        lessonTopics((l as any)?.content).forEach(t => {
+          const s = slugifyTopic(t);
+          if (!resets[s] || new Date(r.reset_at) > new Date(resets[s])) resets[s] = r.reset_at;
+        });
+      });
       rememberResets(resets);
       const sc: Record<string, number> = {};
       (lg ?? []).forEach((g: any) => { if (g.page && isAfterReset(g.created_at, resets[g.page])) sc[g.page] = Math.max(sc[g.page] ?? 0, Number(g.metadata?.pct ?? 0)); });
