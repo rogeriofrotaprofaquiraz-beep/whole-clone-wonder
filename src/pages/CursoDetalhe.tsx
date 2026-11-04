@@ -77,6 +77,15 @@ function LessonContent({ text, backTo, lessonTitle }: { text: string; backTo: st
     current.paragraphs.push(line);
   }
 
+  const [adminFree, setAdminFree] = useState(false);
+  useEffect(() => {
+    supabase.auth.getUser().then(async ({ data: u }) => {
+      if (!u.user) return;
+      const { data } = await supabase.rpc("has_role", { _user_id: u.user.id, _role: "admin" });
+      setAdminFree(!!data);
+    });
+  }, []);
+
   const nonEmpty = sections.filter(s => s.heading || s.bullets.length || s.paragraphs.length);
 
   return (
@@ -116,6 +125,18 @@ function LessonContent({ text, backTo, lessonTitle }: { text: string; backTo: st
               {s.bullets.map((topic, k) => {
                 const lessonParam = lessonTitle ? `&lesson=${encodeURIComponent(lessonTitle)}` : "";
                 const url = `/topico/${slugify(topic)}?t=${encodeURIComponent(topic)}${lessonParam}&back=${encodeURIComponent(backTo)}`;
+                const prevSlug = k > 0 ? slugify(s.bullets[k - 1]) : "";
+                const prevScore = k > 0 ? getDeckScore(prevSlug) : null;
+                const unlocked = adminFree || isTopicUnlocked(k, prevScore);
+                if (!unlocked) return (
+                  <li key={k}>
+                    <div title={`Faça pelo menos ${PASS_PERCENT}% nos slides do tópico anterior para liberar`}
+                      className="flex items-start gap-2 p-2 rounded-md border border-slate-200 bg-slate-100 text-sm text-slate-500 font-medium cursor-not-allowed">
+                      <span className="mt-0.5 font-bold text-xs bg-slate-200 w-5 h-5 flex items-center justify-center rounded-full shrink-0">🔒</span>
+                      <span className="flex-1">{topic}<span className="block text-[11px]">Precisa de {PASS_PERCENT}% no anterior{prevScore !== null ? ` (você fez ${prevScore}%)` : ""}</span></span>
+                    </div>
+                  </li>
+                );
                 return (
                   <li key={k}>
                     <Link
