@@ -1,6 +1,8 @@
 import { useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ACTIVITY_TYPES, blanksOf, grade, isGraded, newQuestion, type Activity, type ActivityType, type Question } from "@/lib/activities";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
+import { ACTIVITY_TYPES, parseChart, blanksOf, grade, isGraded, newQuestion, type Activity, type ActivityType, type Question } from "@/lib/activities";
 
 /** Grade de tipos de pergunta (estilo Wayground). */
 export function ActivityTypePicker({ onPick }: { onPick: (t: ActivityType) => void }) {
@@ -24,6 +26,28 @@ export function ActivityTypePicker({ onPick }: { onPick: (t: ActivityType) => vo
   );
 }
 
+/** Gráfico de barras simples desenhado a partir das linhas "Rótulo: valor". */
+export function MiniChart({ text }: { text?: string }) {
+  const d = parseChart(text);
+  if (!d.length) return null;
+  const max = Math.max(...d.map(x => Math.abs(x.value)), 1);
+  return (
+    <div className="space-y-1 p-3 rounded-lg bg-white border">
+      {d.map((x, k) => (
+        <div key={k} className="flex items-center gap-2 text-sm">
+          <span className="w-28 truncate text-slate-700">{x.label}</span>
+          <div className="flex-1 bg-slate-100 rounded h-5 overflow-hidden"><div className="h-full bg-violet-500" style={{ width: `${(Math.abs(x.value) / max) * 100}%` }} /></div>
+          <span className="w-12 text-right font-semibold text-slate-800">{x.value}</span>
+        </div>))}
+    </div>
+  );
+}
+
+function QuestionMedia({ q }: { q: Question }) {
+  if (!q.image && !q.chart) return null;
+  return <div className="space-y-2">{q.image && <img src={q.image} alt="" className="max-h-72 w-auto mx-auto rounded-lg border object-contain" />}<MiniChart text={q.chart} /></div>;
+}
+
 const label = (t: ActivityType) => ACTIVITY_TYPES.find(x => x.key === t)?.label || t;
 
 /** Editor das perguntas de um slide de atividade. */
@@ -32,6 +56,13 @@ export function ActivityEditor({ activity, about, onChange }: { activity: Activi
   const qs = activity.questions;
   const set = (i: number, p: Partial<Question>) => onChange({ questions: qs.map((q, k) => k === i ? { ...q, ...p } : q) });
   const inp = "border rounded px-2 py-1 bg-white text-sm";
+  const uploadImg = async (file: File) => {
+    const path = `activities/${Date.now()}-${file.name.replace(/[^\w.]+/g, "_")}`;
+    const { error } = await supabase.storage.from("course-materials").upload(path, file);
+    if (error) { toast.error(error.message); return null; }
+    const { data } = await supabase.storage.from("course-materials").createSignedUrl(path, 60 * 60 * 24 * 365 * 10);
+    return data?.signedUrl ?? null;
+  };
   return (
     <div className="space-y-3">
       {qs.map((q, i) => (
@@ -41,6 +72,17 @@ export function ActivityEditor({ activity, about, onChange }: { activity: Activi
             <button type="button" className="ml-auto" title="Excluir pergunta" onClick={() => onChange({ questions: qs.filter((_, k) => k !== i) })}>🗑️</button>
           </div>
           <input className={`${inp} w-full font-semibold`} value={q.prompt} onChange={e => set(i, { prompt: e.target.value })} placeholder="Enunciado" />
+          <div className="flex flex-wrap gap-2 items-center text-xs">
+            <label className="cursor-pointer px-2 py-1 rounded border border-violet-300 text-violet-700 hover:bg-violet-50">🖼️ {q.image ? "Trocar imagem" : "Inserir imagem"}
+              <input type="file" accept="image/*" className="hidden" onChange={async e => { const f = e.target.files?.[0]; e.target.value = ""; if (!f) return; const url = await uploadImg(f); if (url) set(i, { image: url }); }} /></label>
+            {q.image && <button type="button" className="px-2 py-1 rounded border text-red-600" onClick={() => set(i, { image: undefined })}>🗑️ Tirar imagem</button>}
+            <button type="button" className="px-2 py-1 rounded border border-violet-300 text-violet-700 hover:bg-violet-50" onClick={() => set(i, { chart: q.chart === undefined ? "Item A: 10\nItem B: 20\nItem C: 15" : undefined })}>📊 {q.chart === undefined ? "Inserir gráfico" : "Tirar gráfico"}</button>
+          </div>
+          {q.chart !== undefined && <div className="grid md:grid-cols-2 gap-2">
+            <div><textarea className={`${inp} w-full`} rows={4} value={q.chart} onChange={e => set(i, { chart: e.target.value })} />
+              <p className="text-[11px] text-slate-500">Uma barra por linha, no formato <b>Nome: valor</b>.</p></div>
+            <MiniChart text={q.chart} /></div>}
+          {q.image && <img src={q.image} alt="" className="max-h-40 rounded border object-contain" />}
           {q.options && (
             <div className="space-y-1">
               {q.options.map((o, k) => (
@@ -115,6 +157,7 @@ function QuestionPlayer({ q, onResult }: { q: Question; onResult: (ok: boolean) 
   return (
     <div className="space-y-3">
       <p className="font-bold text-lg text-violet-900">{q.prompt}</p>
+      <QuestionMedia q={q} />
       {(q.type === "multipla" || q.type === "vf" || q.type === "enquete") && <div className="grid md:grid-cols-2 gap-2">
         {q.options!.map((o, k) => <button key={k} type="button" disabled={locked} className={`${btn} ${r === k ? "border-violet-600 ring-2 ring-violet-300" : ""}`} onClick={() => { setR(k); }}>{o}</button>)}
       </div>}
