@@ -1,6 +1,6 @@
 import SlideCanvas, { type CanvasSlide } from "./SlideCanvas";
 import { groupSlides } from "@/lib/slideGroups";
-import { deckPercent, saveDeckScore, PASS_PERCENT } from "@/lib/deckScore";
+import { deckPercent, saveDeckScore, logDeckScore, PASS_PERCENT } from "@/lib/deckScore";
 import { useMemo, useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, Lock, Star, Trophy } from "lucide-react";
@@ -96,6 +96,7 @@ export default function TopicSlideDeck({ slug, slides, onFinish }: { slug: strin
     if (!isLast) { setI(i + 1); return; }
     const pct = deckPercent(Object.values(final).reduce((a, b) => a + b, 0), slides.length);
     saveDeckScore(slug, pct);
+    logDeckScore(slug, pct).catch(() => {});
     if (pct < PASS_PERCENT) {
       alert(`Você fez ${pct}%. É preciso pelo menos ${PASS_PERCENT}% para liberar o próximo tópico. Refaça os slides!`);
       setDone({}); setI(0); return;

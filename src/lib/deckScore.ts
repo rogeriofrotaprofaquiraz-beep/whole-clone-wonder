@@ -50,3 +50,11 @@ export function isLessonUnlocked(index: number, prevPct: number | null, prevDone
   if (prevPct === null) return prevDone;
   return prevPct >= PASS_PERCENT;
 }
+
+/** Registra a nota no histórico do aluno (servidor). */
+export async function logDeckScore(slug: string, pct: number) {
+  const { supabase } = await import("@/integrations/supabase/client");
+  const { data } = await supabase.auth.getUser();
+  if (!data.user) return;
+  await supabase.from("activity_logs").insert({ user_id: data.user.id, action: "deck_score", page: slug, metadata: { slug, pct } as any });
+}
