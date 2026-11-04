@@ -13,6 +13,7 @@ import Carteira from "./pages/Carteira.tsx";
 import Progresso from "./pages/Progresso.tsx";
 import Escola from "./pages/Escola.tsx";
 import Historico from "./pages/Historico.tsx";
+import PainelDesempenho from "./pages/PainelDesempenho.tsx";
 import RankingPage from "./pages/Ranking.tsx";
 import PlanoDeAula from "./pages/PlanoDeAula.tsx";
 import Permissoes from "./pages/Permissoes.tsx";
@@ -61,6 +62,7 @@ const App = () => (
           <Route path="/topico/:slug" element={<TopicoDetalhe />} />
           <Route path="/admin/material" element={<AdminMaterial />} />
           <Route path="/historico" element={<Historico />} />
+          <Route path="/desempenho" element={<PainelDesempenho />} />
           <Route path="/olimpiadas" element={<FeatureGuard feature="pagina_olimpiadas"><Olimpiadas /></FeatureGuard>} />
           
           
