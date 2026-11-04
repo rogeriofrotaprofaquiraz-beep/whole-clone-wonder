@@ -7,6 +7,7 @@ export type ImagePos = { x: number; y: number; w: number };
 export type CanvasSlide = {
   title: string; emoji: string; lines: string[]; image?: string; header?: SlideHeader; objects?: SlideObject[];
   textColor?: string; bg?: string; text?: SlideTextStyle; imagePos?: ImagePos | null; imageCaption?: string; textWidth?: number;
+  kind?: "conteudo" | "atividade"; activity?: import("@/lib/activities").Activity;
 };
 
 export const FONTS = ["Amasis MT Pro Black", "Amasis MT", "Georgia", "Arial", "Calibri", "Verdana", "Times New Roman", "Trebuchet MS", "Comic Sans MS", "Courier New"];
