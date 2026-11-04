@@ -2,20 +2,21 @@ import { useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import { GamePlayer, GAME_TYPES } from "./ActivityGames";
 import { ACTIVITY_TYPES, parseChart, blanksOf, grade, isGraded, newQuestion, type Activity, type ActivityType, type Question } from "@/lib/activities";
 
 /** Grade de tipos de pergunta (estilo Wayground). */
 export function ActivityTypePicker({ onPick }: { onPick: (t: ActivityType) => void }) {
   return (
     <div className="space-y-3">
-      {(["basico", "interativo"] as const).map(g => (
+      {(["basico", "interativo", "jogo"] as const).map(g => (
         <div key={g}>
-          <p className="font-semibold text-slate-500 mb-1">{g === "basico" ? "Básico" : "Interativo e de ordem superior"}</p>
+          <p className="font-semibold text-slate-500 mb-1">{g === "basico" ? "Básico" : g === "jogo" ? "🎮 Jogos e competições" : "Interativo e de ordem superior"}</p>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-1">
             {ACTIVITY_TYPES.filter(t => t.group === g).map(t => (
               <button key={t.key} type="button" disabled={!t.ready} onClick={() => onPick(t.key)}
                 className="flex items-center gap-2 px-2 py-1.5 rounded text-left text-sm hover:bg-violet-100 disabled:opacity-40 disabled:cursor-not-allowed">
-                <span className={`w-7 h-7 grid place-items-center rounded text-white ${g === "basico" ? "bg-pink-500" : "bg-emerald-600"}`}>{t.icon}</span>
+                <span className={`w-7 h-7 grid place-items-center rounded text-white ${g === "basico" ? "bg-pink-500" : g === "jogo" ? "bg-amber-500" : "bg-emerald-600"}`}>{t.icon}</span>
                 <span className="font-medium">{t.label}</span>{!t.ready && <span className="text-[10px] text-slate-500">em breve</span>}
               </button>
             ))}
@@ -101,7 +102,8 @@ export function ActivityEditor({ activity, about, onChange }: { activity: Activi
             <textarea className={`${inp} w-full`} rows={2} value={q.text || ""} onChange={e => set(i, { text: e.target.value })} />
             <p className="text-[11px] text-slate-500">Coloque entre [colchetes] as palavras que o aluno deve escrever. Lacunas: {blanksOf(q.text).join(", ") || "nenhuma"}</p>
           </>}
-          {q.type === "combinar" && <div className="space-y-1">
+          {GAME_TYPES.includes(q.type) && <p className="text-[11px] text-slate-500">{["roleta", "domino", "memoria"].includes(q.type) ? "Cada linha: pergunta (esquerda) e resposta (direita)." : "Cada linha: dica (esquerda) e palavra-resposta (direita)."}</p>}
+          {(q.type === "combinar" || GAME_TYPES.includes(q.type)) && q.pairs && <div className="space-y-1">
             {q.pairs!.map((p, k) => (
               <div key={k} className="flex gap-2 items-center">
                 <input className={`${inp} flex-1`} value={p.a} placeholder="Item" onChange={e => set(i, { pairs: q.pairs!.map((x, j) => j === k ? { ...x, a: e.target.value } : x) })} />🔗
@@ -182,7 +184,8 @@ function QuestionPlayer({ q, onResult }: { q: Question; onResult: (ok: boolean) 
         <div key={it} className="flex items-center gap-2"><span className="flex-1">{it}</span>
           <select disabled={locked} className="border rounded px-2 py-1 bg-white" value={r?.[it] || ""} onChange={e => setR({ ...r, [it]: e.target.value })}>
             <option value="" disabled>Categoria…</option>{q.categories!.map(c => <option key={c.name}>{c.name}</option>)}</select></div>))}</div>}
-      {!locked && <Button className="bg-violet-700 hover:bg-violet-800" onClick={() => check()}>Responder</Button>}
+      {GAME_TYPES.includes(q.type) && <GamePlayer q={q} locked={locked} submit={v => check(v)} />}
+      {!locked && !GAME_TYPES.includes(q.type) && <Button className="bg-violet-700 hover:bg-violet-800" onClick={() => check()}>Responder</Button>}
       {res === true && isGraded(q) && <p className="text-emerald-700 font-bold">✅ Correto!</p>}
       {res !== null && !isGraded(q) && <p className="text-emerald-700 font-bold">✅ Resposta registrada!</p>}
       {res === false && isGraded(q) && <p className="text-red-600">Ops! Releia o slide anterior e tente de novo.</p>}
