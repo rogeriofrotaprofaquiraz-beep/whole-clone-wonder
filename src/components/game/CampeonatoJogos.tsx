@@ -8,6 +8,7 @@ import { CacaPalavras } from "@/components/aula/CacaPalavras";
 import { Memoria } from "@/components/aula/Memoria";
 import { PalavrasCruzadas, TabuleiroQuimico, BatalhaNaval, StopQuimico, BingoQuimico, TangramMolecular } from "@/components/aula/NovosJogos";
 import { AREAS, AreaValue, DIFFICULTIES } from "@/lib/aula";
+import { QuestionGate } from "@/components/aula/QuestionGate";
 import { useFeatureAccess } from "@/lib/featureAccess";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -38,6 +39,17 @@ export function CampeonatoJogos() {
   const shown = games.filter((g) => filter === "todos" || g.level === filter);
   const mode = GAME_MODES.find((g) => g.id === game);
   const [assigned, setAssigned] = useState<any[]>([]);
+  const [topics, setTopics] = useState<string[]>([]);
+  const [topic, setTopic] = useState("");
+  const [topicSearch, setTopicSearch] = useState("");
+  const [phase, setPhase] = useState(1);
+  const [unlocked, setUnlocked] = useState(false);
+  useEffect(() => { setPhase(1); setUnlocked(false); }, [game, area, topic]);
+  useEffect(() => {
+    supabase.from("chem_questions").select("topic").not("topic", "is", null).limit(1000).then(({ data }) =>
+      setTopics([...new Set((data ?? []).map((r: any) => String(r.topic).trim()).filter(Boolean))].sort((a, b) => a.localeCompare(b, "pt-BR", { numeric: true }))));
+  }, []);
+  const shownTopics = topics.filter((t) => t.toLowerCase().includes(topicSearch.toLowerCase()));
   useEffect(() => { setCurrentGame(game); return () => setCurrentGame(null); }, [game]);
   useEffect(() => {
     const pend = sessionStorage.getItem(PENDING_GAME_KEY);
@@ -109,6 +121,18 @@ export function CampeonatoJogos() {
           ))}
         </div>
       )}
+      <Card className="p-3 space-y-2">
+        <div className="text-sm font-bold">🔎 Assunto das perguntas (banco de questões por assunto)</div>
+        <div className="flex flex-wrap gap-2">
+          <input value={topicSearch} onChange={(e) => setTopicSearch(e.target.value)} placeholder="Buscar assunto…" className="border rounded-lg px-3 py-2 text-sm bg-background flex-1 min-w-[180px]" />
+          <select value={topic} onChange={(e) => setTopic(e.target.value)} className="border rounded-lg px-3 py-2 text-sm bg-background flex-1 min-w-[180px]">
+            <option value="">Todos os assuntos (pela área)</option>
+            {shownTopics.map((t) => <option key={t} value={t}>{t}</option>)}
+          </select>
+        </div>
+      </Card>
+      {!unlocked ? <QuestionGate area={area} topic={topic || undefined} phase={phase} onPass={() => setUnlocked(true)} /> : (<div key={phase} className="space-y-3">
+      <div className="flex items-center justify-between"><span className="font-bold text-sm">🏁 Fase {phase}</span><Button size="sm" onClick={() => { setPhase((p) => p + 1); setUnlocked(false); }}>Próxima fase →</Button></div>
       {game === "quiz" && <ElementQuiz />}
       {game === "forca" && <Forca area={area} level="medio" difficulty={difficulty} />}
       {game === "caca" && <CacaPalavras area={area} />}
@@ -119,6 +143,7 @@ export function CampeonatoJogos() {
       {game === "stop" && <StopQuimico />}
       {game === "bingo" && <BingoQuimico />}
       {game === "tangram" && <TangramMolecular />}
+      </div>)}
     </div>
   );
 }

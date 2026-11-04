@@ -6,7 +6,7 @@ import { supabase } from "@/integrations/supabase/client";
 type Q = { id: string; question: string; options: string[]; correct_index: number; difficulty: number; explanation: string | null };
 
 /** Uma pergunta de nível (dificuldade) aleatório que libera a fase do jogo. Errou = não passa. */
-export function QuestionGate({ area, level, phase, onPass }: { area: string; level: string; phase: number; onPass: () => void }) {
+export function QuestionGate({ area, level, phase, onPass, topic }: { area: string; level?: string; topic?: string; phase: number; onPass: () => void }) {
   const [q, setQ] = useState<Q | null>(null);
   const [loading, setLoading] = useState(true);
   const [picked, setPicked] = useState<number | null>(null);
@@ -17,9 +17,9 @@ export function QuestionGate({ area, level, phase, onPass }: { area: string; lev
     (async () => {
       setLoading(true); setPicked(null); setQ(null);
       const difficulty = 1 + Math.floor(Math.random() * 5);
-      const base = () => supabase.from("chem_questions").select("id,question,options,correct_index,difficulty,explanation").eq("area", area as never);
-      let { data } = await base().eq("difficulty", difficulty).contains("school_levels", [level]).limit(50);
-      if (!data?.length) ({ data } = await base().contains("school_levels", [level]).limit(50));
+      const base = () => { let b = supabase.from("chem_questions").select("id,question,options,correct_index,difficulty,explanation"); b = topic ? b.eq("topic", topic) : b.eq("area", area as never); return b; };
+      let { data } = level ? await base().eq("difficulty", difficulty).contains("school_levels", [level]).limit(50) : await base().eq("difficulty", difficulty).limit(50);
+      if (!data?.length && level) ({ data } = await base().contains("school_levels", [level]).limit(50));
       if (!data?.length) ({ data } = await base().limit(50));
       if (!alive) return;
       const list = (data ?? []) as unknown as Q[];
@@ -27,7 +27,7 @@ export function QuestionGate({ area, level, phase, onPass }: { area: string; lev
       setLoading(false);
     })();
     return () => { alive = false; };
-  }, [area, level, nonce]);
+  }, [area, level, topic, nonce]);
 
   if (loading) return <Card className="p-6 text-sm text-muted-foreground">Sorteando pergunta…</Card>;
   if (!q) return (
