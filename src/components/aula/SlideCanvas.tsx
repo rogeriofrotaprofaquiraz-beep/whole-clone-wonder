@@ -1,15 +1,17 @@
 import { useRef, useState } from "react";
 
-export type SlideHeader = { image?: string; show?: boolean; bg?: string; color?: string; align?: "left" | "center" | "right"; subtitle?: string; size?: number; font?: string; bold?: boolean; italic?: boolean };
+export type SlideHeader = { image?: string; show?: boolean; bg?: string; color?: string; align?: "left" | "center" | "right"; subtitle?: string; size?: number; font?: string; bold?: boolean; italic?: boolean; icons?: string[] };
 export type SlideObject = { id: string; src: string; x: number; y: number; w: number };
 export type SlideTextStyle = { font?: string; size?: number; align?: "left" | "center" | "right" | "justify"; lineHeight?: number; html?: string };
 export type ImagePos = { x: number; y: number; w: number };
 export type CanvasSlide = {
   title: string; emoji: string; lines: string[]; image?: string; header?: SlideHeader; objects?: SlideObject[];
-  textColor?: string; bg?: string; text?: SlideTextStyle; imagePos?: ImagePos | null; imageCaption?: string;
+  textColor?: string; bg?: string; text?: SlideTextStyle; imagePos?: ImagePos | null; imageCaption?: string; textWidth?: number;
 };
 
 export const FONTS = ["Amasis MT Pro Black", "Amasis MT", "Georgia", "Arial", "Calibri", "Verdana", "Times New Roman", "Trebuchet MS", "Comic Sans MS", "Courier New"];
+const ICONS = ["⚗️","🧪","⚛️","🔬","🧬","💧","🔥","⚡","🌍","🧲","📘","💡","⭐","✅","❗","🎯","🏆","🧠"];
+const iconSrc = (e: string) => `data:image/svg+xml;utf8,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text x="50" y="80" font-size="80" text-anchor="middle">${e}</text></svg>`)}`;
 const SIZES = [10, 11, 12, 14, 16, 18, 20, 24, 28, 32, 36, 40, 48, 60];
 
 /** Slide estilo PowerPoint: cabeçalho e caixa de texto com fonte, tamanho e formatação; imagem principal móvel e ajuste automático da altura. */
@@ -92,8 +94,17 @@ export default function SlideCanvas({ slide, editable, onChange, selected, onSel
           <Btn onClick={() => cmd("removeFormat")}>🧽</Btn>
           {(["left", "center", "right", "justify"] as const).map(a => <Btn key={a} on={t.align === a} onClick={() => setT({ align: a })}>{a === "left" ? "⯇" : a === "center" ? "≡" : a === "right" ? "⯈" : "☰"}</Btn>)}
           <select title="Espaçamento" className="border rounded bg-white px-1 py-0.5" value={t.lineHeight} onChange={e => setT({ lineHeight: Number(e.target.value) })}>{[1, 1.15, 1.5, 2].map(v => <option key={v} value={v}>↕ {v}</option>)}</select>
+          <span className="mx-1 h-5 w-px bg-slate-300" />
+          <select title="Inserir ícone na faixa do título" className="border rounded bg-white px-1 py-0.5" value="" onChange={e => e.target.value && setH({ icons: [...(h.icons || []), e.target.value] })}>
+            <option value="">＋ Ícone no título</option>{ICONS.map(i => <option key={i} value={i}>{i}</option>)}
+          </select>
+          <select title="Inserir ícone solto no slide (pode mover, aumentar e excluir)" className="border rounded bg-white px-1 py-0.5" value="" onChange={e => e.target.value && onChange?.({ objects: [...objs, { id: crypto.randomUUID(), src: iconSrc(e.target.value), x: 80, y: 40, w: 10 }] })}>
+            <option value="">＋ Ícone no slide</option>{ICONS.map(i => <option key={i} value={i}>{i}</option>)}
+          </select>
+          <Btn onClick={() => onChange?.({ textWidth: slide.textWidth ? undefined : 60 })}>{slide.textWidth ? "↔ Caixa automática" : "↔ Redimensionar caixa"}</Btn>
           {slide.image && (
             <>
+              <Btn onClick={() => confirm("Excluir a imagem deste slide?") && onChange?.({ image: undefined, imagePos: null })}>🗑️ Excluir imagem</Btn>
               <span className="mx-1 h-5 w-px bg-slate-300" />
               {pos
                 ? <Btn onClick={() => onChange?.({ imagePos: null })}>📐 Ajuste automático da imagem</Btn>
@@ -109,19 +120,38 @@ export default function SlideCanvas({ slide, editable, onChange, selected, onSel
         {h.show && (
           <div className="px-[4%] py-[2.5%]" style={{ background: h.bg, color: h.color, textAlign: h.align, fontFamily: h.font }}>
             <div style={{ fontSize: scale(h.size), fontWeight: h.bold ? 900 : 500, fontStyle: h.italic ? "italic" : undefined }} className="leading-tight">
-              <span>{slide.emoji} </span><span {...edit("title")} className={ring}>{slide.title}</span>
+              <span>{slide.emoji} </span>
+              {(h.icons || []).map((ic, n) => (
+                <span key={n} className="relative inline-block mr-1">{ic}
+                  {editable && <button type="button" title="Excluir ícone" onMouseDown={e => e.preventDefault()} onClick={() => setH({ icons: (h.icons || []).filter((_, j) => j !== n) })}
+                    className="absolute -top-2 -right-2 bg-white text-slate-700 border rounded-full w-4 h-4 text-[9px] leading-none">✕</button>}
+                </span>
+              ))}<span {...edit("title")} className={ring}>{slide.title}</span>
             </div>
             {(h.subtitle || editable) && <div {...edit("subtitle")} className={`opacity-90 min-h-[1em] ${ring}`} style={{ fontSize: scale(Math.max(12, h.size * 0.5)) }} data-placeholder="Subtítulo">{h.subtitle}</div>}
           </div>
         )}
-        <div className={`px-[4%] py-[3%] flex gap-[3%] ${tall || !slide.image || pos ? "flex-row" : "flex-row"} items-start`}>
+        <div className={`px-[4%] py-[3%] flex gap-[3%] flex-row items-start`}>
+          <div className={`relative ${slide.textWidth ? "shrink-0" : "flex-1"} min-w-0`} style={slide.textWidth ? { width: `${slide.textWidth}%` } : undefined}>
           <div ref={textRef}
             {...(editable ? { contentEditable: true, suppressContentEditableWarning: true, onBlur: saveText } : {})}
             onPointerDown={e => e.stopPropagation()}
-            className={`flex-1 min-w-0 whitespace-pre-line ${editable ? "outline-none ring-1 ring-dashed ring-slate-300 focus:ring-2 focus:ring-violet-400 rounded p-1" : ""}`}
+            className={`w-full whitespace-pre-line ${editable ? "outline-none ring-1 ring-dashed ring-slate-300 focus:ring-2 focus:ring-violet-400 rounded p-1" : ""}`}
             style={{ fontFamily: t.font, fontSize: scale(t.size || 18), textAlign: t.align, lineHeight: t.lineHeight }}
             {...(useHtml ? { dangerouslySetInnerHTML: { __html: t.html! } } : { children: slide.lines.join("\n") })}
           />
+          {editable && slide.textWidth && (
+            <span title="Arraste para mudar a largura da caixa de texto"
+              onPointerDown={e => {
+                e.preventDefault(); e.stopPropagation();
+                const r = box.current!.getBoundingClientRect(); const sx = e.clientX; const ow = slide.textWidth!;
+                const mv = (ev: PointerEvent) => onChange?.({ textWidth: Math.round(Math.max(20, Math.min(92, ow + ((ev.clientX - sx) / r.width) * 100))) });
+                const up = () => { window.removeEventListener("pointermove", mv); window.removeEventListener("pointerup", up); };
+                window.addEventListener("pointermove", mv); window.addEventListener("pointerup", up);
+              }}
+              className="absolute top-1/2 -right-2 -translate-y-1/2 w-3 h-8 bg-violet-600 rounded cursor-ew-resize" />
+          )}
+          </div>
           {slide.image && !pos && (
             <figure className="shrink-0 m-0" style={{ width: imgW }}>
               <img src={slide.image} alt={slide.imageCaption || slide.title} draggable={false}
