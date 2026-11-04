@@ -1,6 +1,6 @@
 import TopicSlideDeck, { buildSlides } from "@/components/aula/TopicSlideDeck";
+import { clearLocalDeck } from "@/lib/deckScore";
 import SlideDeckEditor, { SLIDE_STATUS, norm as normSlide, visibleToStudent, statusOf } from "@/components/aula/SlideDeckEditor";
-import EditableChecklistGrid from "@/components/EditableChecklistGrid";
 import { CustomFieldsView, type CustomField } from "@/components/aula/TopicFieldsDialog";
 import { SubtopicsView } from "@/components/aula/SubtopicsDialog";
 import { Link, useNavigate, useParams, useSearchParams } from "react-router-dom";
@@ -1817,13 +1817,14 @@ function applyAspect(base: Section, title: string, lesson: string): Section {
 type Material = { name: string; url: string };
 
 function PublishChecklist({
-  slug, title, lesson, override, content, hasHeroImage, onFlagChange, onGoTo, editing, onOpenItem, slideStatus,
+  slug, title, lesson, override, content, hasHeroImage, onFlagChange, onGoTo, editing, onOpenItem, slideStatus, slides = [],
 }: {
   slug: string; title: string; lesson?: string;
   override: any; content: Section; hasHeroImage: boolean;
   onFlagChange: (patch: { edit_complete?: boolean; reviewed?: boolean; published?: boolean }) => void;
   onGoTo?: (key: string) => void; editing?: boolean;
   onOpenItem?: (key: string, label: string) => void; slideStatus?: (label: string) => React.ReactNode;
+  slides?: any[];
 }) {
   const [busy, setBusy] = useState<string | null>(null);
   const L = content as any;
@@ -1849,7 +1850,9 @@ function PublishChecklist({
     { key: "exercises", label: "Exercícios / quiz avaliativo (mín. 3)", ok: n(L.exercises) >= 3, info: `${n(L.exercises)}/3` },
     { key: "footer_image", label: "Imagem final do tópico (opcional)", ok: !!(L.footer_image_url || override?.footer_image_url), info: "opcional", optional: true },
   ];
-  const [prog, setProg] = useState({ done: 0, total: 1 });
+  void items; void onGoTo; void slideStatus;
+  // O checklist acompanha a lista de slides: cada slide é um item; fica pronto quando está "Postado".
+  const prog = { done: slides.filter((x: any) => statusOf(x) === "postado").length, total: Math.max(1, slides.length) };
   const done = prog.done; const required = { length: prog.total };
   const pct = Math.round((done / Math.max(1, prog.total)) * 100);
 
@@ -1899,7 +1902,20 @@ function PublishChecklist({
       <div className="w-full h-2 bg-slate-200 rounded overflow-hidden mb-3">
         <div className="h-full bg-gradient-to-r from-violet-500 to-emerald-500 transition-all" style={{ width: `${pct}%` }} />
       </div>
-      <EditableChecklistGrid scope="topic" targetId={slug} auto={items} onGoTo={onGoTo} onOpenItem={onOpenItem} slideStatus={slideStatus} onProgress={(d, t) => setProg({ done: d, total: t })} />
+      {slides.length === 0 ? <p className="text-sm text-slate-500 mb-3">Este tópico ainda não tem slides. Clique em "✏️ Editar slides" para criar.</p> : (
+        <div className="grid sm:grid-cols-2 gap-1.5 mb-3">
+          {slides.map((sl: any, k: number) => {
+            const st = SLIDE_STATUS.find(o => o.key === statusOf(sl));
+            return (
+              <button key={k} type="button" onClick={() => onOpenItem?.(`slide-${k}`, sl.title || `Slide ${k + 1}`)}
+                className="flex items-center gap-2 text-left px-2 py-1.5 rounded border border-slate-200 bg-white hover:bg-violet-50 text-sm">
+                <span className="text-xs text-slate-500 w-6">{k + 1}.</span>
+                <span className="flex-1 text-slate-800">{sl.kind === "atividade" ? "🎯 " : ""}{sl.title || `Slide ${k + 1}`}</span>
+                {st && <span className={`text-[10px] px-1.5 rounded-full border ${st.cls}`}>{st.label}</span>}
+              </button>
+            );
+          })}
+        </div>)}
       <div className="grid sm:grid-cols-3 gap-2 pt-3 border-t border-slate-200">
         <label className={`flex items-center gap-2 cursor-pointer px-3 py-2 rounded border text-sm font-semibold ${editComplete ? "bg-amber-50 border-amber-300 text-amber-800" : "bg-white border-slate-300 text-slate-600"} ${busy === "edit_complete" ? "opacity-50" : ""}`}>
           <input type="checkbox" checked={editComplete} disabled={busy !== null} onChange={() => toggle("edit_complete")} className="accent-amber-600" />
@@ -1944,6 +1960,22 @@ export default function TopicoDetalhe() {
   const [generatingPlan, setGeneratingPlan] = useState(false);
   const [form, setForm] = useState<any>(null);
   const [deckDone, setDeckDone] = useState(() => typeof window !== "undefined" && !!slug && localStorage.getItem(`deck-done:${slug}`) === "1");
+  // Professor mandou refazer do zero: apaga o progresso deste aparelho uma única vez por reinício.
+  useEffect(() => {
+    const r = (override as any)?.progress_reset_at as string | undefined;
+    if (!r || !slug) return;
+    const seen = `deck-reset-seen:${slug}`;
+    if (localStorage.getItem(seen) === r) return;
+    clearLocalDeck(slug); localStorage.setItem(seen, r); setDeckDone(false);
+  }, [(override as any)?.progress_reset_at, slug]);
+  const resetStudents = async () => {
+    if (!confirm("Todos os alunos vão refazer este tópico do zero (slides e atividades). As notas anteriores deixam de contar. Continuar?")) return;
+    const at = new Date().toISOString();
+    const { error } = await supabase.from("topic_overrides").upsert({ slug: slug!, title, lesson, progress_reset_at: at } as any, { onConflict: "slug" });
+    if (error) { toast.error(error.message); return; }
+    setOverride((o: any) => ({ ...(o || {}), progress_reset_at: at }));
+    toast.success("Pronto! Os alunos vão começar este tópico do zero.");
+  };
   const [adminPreview, setAdminPreview] = useState(false);
   const [deckEditing, setDeckEditing] = useState(false);
   const [focusTitle, setFocusTitle] = useState<string | null>(null);
@@ -2281,12 +2313,15 @@ export default function TopicoDetalhe() {
           slideStatus={(label) => { const f = normSlide(label); const sl = deckSlides.find((x: any) => normSlide(x.title) === f); const st = SLIDE_STATUS.find(o => o.key === (sl ? statusOf(sl) : "nao_editado")); return st ? <span className={`text-[10px] px-1.5 rounded-full border ${st.cls}`}>{st.label}</span> : null; }}
           hasHeroImage={!!(sectionImg("hero") || (editing && form ? (form.image_url || "").trim() : override?.image_url))}
           onFlagChange={(patch) => setOverride((o) => ({ ...(o || {}), ...patch }))}
+          slides={deckSlides}
         />}
 
 
         {isAdmin && !editing && (
           <div className="mb-4 flex flex-wrap gap-2"><Button variant="secondary" onClick={() => setAdminPreview((v) => !v)}>{adminPreview ? "✖ Fechar visão do aluno" : "👁️ Ver slides como aluno"}</Button>
-          <Button variant="secondary" onClick={() => { setAdminPreview(false); setDeckEditing(true); }}>✏️ Editar slides</Button></div>
+          <Button variant="secondary" onClick={() => { setAdminPreview(false); setDeckEditing(true); }}>✏️ Editar slides</Button>
+          <Button variant="secondary" onClick={resetStudents}>🔄 Alunos refazem do zero</Button>
+          {(override as any)?.progress_reset_at && <span className="self-center text-xs text-white/70">Último reinício: {new Date((override as any).progress_reset_at).toLocaleString("pt-BR", { dateStyle: "short", timeStyle: "short" })}</span>}</div>
         )}
         {isAdmin && !deckEditing && !adminPreview && !showFullPage && (
           <SlideDeckEditor key={override?.slide_deck ? "saved" : "auto"} slug={slug!} title={title} lesson={lesson} initial={deckSlides} focusTitle={focusTitle}

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Card } from "@/components/ui/card";
-import { getDeckScore, isTopicUnlocked, PASS_PERCENT, isLessonUnlocked, lessonPercent, lessonTopics, slugifyTopic } from "@/lib/deckScore";
+import { rememberResets, isAfterReset, getDeckScore, isTopicUnlocked, PASS_PERCENT, isLessonUnlocked, lessonPercent, lessonTopics, slugifyTopic } from "@/lib/deckScore";
 import CourseHistory from "@/components/CourseHistory";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -201,9 +201,13 @@ export default function CursoDetalhe() {
       setIsAdmin(!!r);
       const { data: en } = await supabase.from("course_enrollments").select("id").eq("course_id", id).eq("user_id", user.id).limit(1);
       if (!en?.length) await supabase.from("course_enrollments").insert({ course_id: id, user_id: user.id });
-      const { data: lg } = await supabase.from("activity_logs").select("page,metadata").eq("user_id", user.id).eq("action", "deck_score");
+      const { data: lg } = await supabase.from("activity_logs").select("page,metadata,created_at").eq("user_id", user.id).eq("action", "deck_score");
+      const { data: rs } = await supabase.from("topic_overrides").select("slug,progress_reset_at").not("progress_reset_at", "is", null);
+      const resets: Record<string, string> = {};
+      (rs ?? []).forEach((r: any) => { resets[r.slug] = r.progress_reset_at; });
+      rememberResets(resets);
       const sc: Record<string, number> = {};
-      (lg ?? []).forEach((g: any) => { if (g.page) sc[g.page] = Math.max(sc[g.page] ?? 0, Number(g.metadata?.pct ?? 0)); });
+      (lg ?? []).forEach((g: any) => { if (g.page && isAfterReset(g.created_at, resets[g.page])) sc[g.page] = Math.max(sc[g.page] ?? 0, Number(g.metadata?.pct ?? 0)); });
       setScores(sc);
     }
     if (user?.id) {

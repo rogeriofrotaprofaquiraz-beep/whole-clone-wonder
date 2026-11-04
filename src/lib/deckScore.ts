@@ -12,12 +12,19 @@ export function saveDeckScore(slug: string, pct: number) {
   try {
     const prev = getDeckScore(slug) ?? 0;
     localStorage.setItem(key(slug), String(Math.max(prev, pct)));
+    localStorage.setItem(`${key(slug)}:at`, new Date().toISOString());
   } catch { /* ignore */ }
 }
 
-export function getDeckScore(slug: string): number | null {
+const knownResets: Record<string, string> = {};
+/** Guarda as datas de "refazer do zero" lidas do servidor (slug → data). */
+export function rememberResets(map: Record<string, string>) { Object.assign(knownResets, map); }
+
+/** resetAt: data em que o professor mandou refazer do zero; notas anteriores são ignoradas. */
+export function getDeckScore(slug: string, resetAt: string | null | undefined = knownResets[slug]): number | null {
   try {
     const v = localStorage.getItem(key(slug));
+    if (v !== null && !isAfterReset(localStorage.getItem(`${key(slug)}:at`), resetAt)) return null;
     return v === null ? null : Number(v);
   } catch { return null; }
 }
@@ -57,4 +64,16 @@ export async function logDeckScore(slug: string, pct: number) {
   const { data } = await supabase.auth.getUser();
   if (!data.user) return;
   await supabase.from("activity_logs").insert({ user_id: data.user.id, action: "deck_score", page: slug, metadata: { slug, pct } as any });
+}
+
+/** Uma nota só vale se foi feita depois do último "refazer do zero" do professor. Nota sem data = antiga. */
+export function isAfterReset(at: string | null | undefined, resetAt: string | null | undefined) {
+  if (!resetAt) return true;
+  if (!at) return false;
+  return new Date(at).getTime() > new Date(resetAt).getTime();
+}
+
+/** Apaga o progresso local do aluno num tópico (slides, nota e "concluído"). */
+export function clearLocalDeck(slug: string) {
+  try { ["deck-done:", "deck-progress:", "deck-score:"].forEach(p => { localStorage.removeItem(p + slug); }); localStorage.removeItem(`deck-score:${slug}:at`); } catch { /* ignore */ }
 }

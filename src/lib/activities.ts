@@ -11,6 +11,8 @@ export type Question = {
   pairs?: { a: string; b: string }[];              // combinar
   items?: string[];                                // reordenar (ordem correta)
   categories?: { name: string; items: string[] }[]; // categorizar
+  image?: string;                                  // imagem de apoio da pergunta
+  chart?: string;                                  // gráfico de barras: uma linha "Rótulo: valor"
 };
 export type Activity = { questions: Question[] };
 
@@ -75,4 +77,10 @@ export function grade(q: Question, r: any): boolean {
     case "categorizar": return (q.categories || []).every(c => c.items.filter(Boolean).every(it => r?.[it] === c.name));
     default: return false;
   }
+}
+
+/** Lê o gráfico digitado pelo professor: uma linha por barra, no formato "Rótulo: valor". */
+export function parseChart(text = ""): { label: string; value: number }[] {
+  return text.split("\n").map(l => l.match(/^\s*(.+?)\s*[:=;]\s*(-?[\d.,]+)\s*$/)).filter((m): m is RegExpMatchArray => !!m)
+    .map(m => ({ label: m[1], value: Number(m[2].replace(",", ".")) })).filter(x => Number.isFinite(x.value));
 }

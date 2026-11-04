@@ -1935,6 +1935,7 @@ export type Database = {
           materials: Json
           pitfalls: Json | null
           principles: Json | null
+          progress_reset_at: string | null
           published: boolean
           refs: Json | null
           reviewed: boolean
@@ -1968,6 +1969,7 @@ export type Database = {
           materials?: Json
           pitfalls?: Json | null
           principles?: Json | null
+          progress_reset_at?: string | null
           published?: boolean
           refs?: Json | null
           reviewed?: boolean
@@ -2001,6 +2003,7 @@ export type Database = {
           materials?: Json
           pitfalls?: Json | null
           principles?: Json | null
+          progress_reset_at?: string | null
           published?: boolean
           refs?: Json | null
           reviewed?: boolean

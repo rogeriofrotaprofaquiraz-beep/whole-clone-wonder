@@ -18,3 +18,10 @@ describe("correção das atividades", () => {
     expect(grade(q, ["b", "a", "c"])).toBe(false);
   });
 });
+
+import { parseChart } from "./activities";
+describe("gráfico da atividade", () => {
+  it("lê linhas Nome: valor e ignora linhas inválidas", () => {
+    expect(parseChart("Água: 10\nSal: 2,5\nlixo")).toEqual([{ label: "Água", value: 10 }, { label: "Sal", value: 2.5 }]);
+  });
+});
