@@ -16,8 +16,12 @@ export function saveDeckScore(slug: string, pct: number) {
   } catch { /* ignore */ }
 }
 
+const knownResets: Record<string, string> = {};
+/** Guarda as datas de "refazer do zero" lidas do servidor (slug → data). */
+export function rememberResets(map: Record<string, string>) { Object.assign(knownResets, map); }
+
 /** resetAt: data em que o professor mandou refazer do zero; notas anteriores são ignoradas. */
-export function getDeckScore(slug: string, resetAt?: string | null): number | null {
+export function getDeckScore(slug: string, resetAt: string | null | undefined = knownResets[slug]): number | null {
   try {
     const v = localStorage.getItem(key(slug));
     if (v !== null && !isAfterReset(localStorage.getItem(`${key(slug)}:at`), resetAt)) return null;
