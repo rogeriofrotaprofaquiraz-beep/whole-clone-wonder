@@ -1,4 +1,5 @@
 import TopicSlideDeck, { buildSlides } from "@/components/aula/TopicSlideDeck";
+import { clearLocalDeck } from "@/lib/deckScore";
 import SlideDeckEditor, { SLIDE_STATUS, norm as normSlide, visibleToStudent, statusOf } from "@/components/aula/SlideDeckEditor";
 import EditableChecklistGrid from "@/components/EditableChecklistGrid";
 import { CustomFieldsView, type CustomField } from "@/components/aula/TopicFieldsDialog";
@@ -1944,6 +1945,22 @@ export default function TopicoDetalhe() {
   const [generatingPlan, setGeneratingPlan] = useState(false);
   const [form, setForm] = useState<any>(null);
   const [deckDone, setDeckDone] = useState(() => typeof window !== "undefined" && !!slug && localStorage.getItem(`deck-done:${slug}`) === "1");
+  // Professor mandou refazer do zero: apaga o progresso deste aparelho uma única vez por reinício.
+  useEffect(() => {
+    const r = (override as any)?.progress_reset_at as string | undefined;
+    if (!r || !slug) return;
+    const seen = `deck-reset-seen:${slug}`;
+    if (localStorage.getItem(seen) === r) return;
+    clearLocalDeck(slug); localStorage.setItem(seen, r); setDeckDone(false);
+  }, [(override as any)?.progress_reset_at, slug]);
+  const resetStudents = async () => {
+    if (!confirm("Todos os alunos vão refazer este tópico do zero (slides e atividades). As notas anteriores deixam de contar. Continuar?")) return;
+    const at = new Date().toISOString();
+    const { error } = await supabase.from("topic_overrides").upsert({ slug: slug!, title, lesson, progress_reset_at: at } as any, { onConflict: "slug" });
+    if (error) { toast.error(error.message); return; }
+    setOverride((o: any) => ({ ...(o || {}), progress_reset_at: at }));
+    toast.success("Pronto! Os alunos vão começar este tópico do zero.");
+  };
   const [adminPreview, setAdminPreview] = useState(false);
   const [deckEditing, setDeckEditing] = useState(false);
   const [focusTitle, setFocusTitle] = useState<string | null>(null);
@@ -2286,7 +2303,9 @@ export default function TopicoDetalhe() {
 
         {isAdmin && !editing && (
           <div className="mb-4 flex flex-wrap gap-2"><Button variant="secondary" onClick={() => setAdminPreview((v) => !v)}>{adminPreview ? "✖ Fechar visão do aluno" : "👁️ Ver slides como aluno"}</Button>
-          <Button variant="secondary" onClick={() => { setAdminPreview(false); setDeckEditing(true); }}>✏️ Editar slides</Button></div>
+          <Button variant="secondary" onClick={() => { setAdminPreview(false); setDeckEditing(true); }}>✏️ Editar slides</Button>
+          <Button variant="secondary" onClick={resetStudents}>🔄 Alunos refazem do zero</Button>
+          {(override as any)?.progress_reset_at && <span className="self-center text-xs text-white/70">Último reinício: {new Date((override as any).progress_reset_at).toLocaleString("pt-BR", { dateStyle: "short", timeStyle: "short" })}</span>}</div>
         )}
         {isAdmin && !deckEditing && !adminPreview && !showFullPage && (
           <SlideDeckEditor key={override?.slide_deck ? "saved" : "auto"} slug={slug!} title={title} lesson={lesson} initial={deckSlides} focusTitle={focusTitle}
