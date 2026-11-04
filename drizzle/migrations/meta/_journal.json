@@ -134,6 +134,13 @@
       "when": 1793798954060,
       "tag": "0018_migration",
       "breakpoints": true
+    },
+    {
+      "idx": 19,
+      "version": "7",
+      "when": 1793802257233,
+      "tag": "0019_student_lesson_resets",
+      "breakpoints": true
     }
   ]
 }
