@@ -17,3 +17,10 @@ describe("liberação de aulas", () => {
   it("tópico não feito conta 0 na média", () => expect(lessonPercent([100, null])).toBe(50));
   it("lê tópicos do conteúdo", () => expect(lessonTopics("# A\n- **01 X**\ntexto\n• Y")).toEqual(["01 X", "Y"]));
 });
+
+import { isAfterReset } from "./deckScore";
+describe("refazer do zero", () => {
+  it("ignora nota feita antes do reinício", () => { expect(isAfterReset("2026-01-01T00:00:00Z", "2026-02-01T00:00:00Z")).toBe(false); });
+  it("vale nota feita depois do reinício", () => { expect(isAfterReset("2026-03-01T00:00:00Z", "2026-02-01T00:00:00Z")).toBe(true); });
+  it("sem reinício toda nota vale; nota sem data é ignorada após reinício", () => { expect(isAfterReset(null, null)).toBe(true); expect(isAfterReset(null, "2026-02-01T00:00:00Z")).toBe(false); });
+});
