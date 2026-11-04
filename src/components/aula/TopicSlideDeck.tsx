@@ -90,8 +90,16 @@ export default function TopicSlideDeck({ slug, slides, onFinish }: { slug: strin
   const canNext = solved || (!challenge && readEnough);
   const next = () => {
     if (!canNext) return;
-    if (!challenge && !solved) setDone((d) => ({ ...d, [i]: 3 }));
-    if (isLast) onFinish(); else setI(i + 1);
+    const final = !challenge && !solved ? { ...done, [i]: 3 } : done;
+    if (!challenge && !solved) setDone(final);
+    if (!isLast) { setI(i + 1); return; }
+    const pct = deckPercent(Object.values(final).reduce((a, b) => a + b, 0), slides.length);
+    saveDeckScore(slug, pct);
+    if (pct < PASS_PERCENT) {
+      alert(`Você fez ${pct}%. É preciso pelo menos ${PASS_PERCENT}% para liberar o próximo tópico. Refaça os slides!`);
+      setDone({}); setI(0); return;
+    }
+    onFinish();
   };
 
   const renderLine = (l: string, _idx: number) => l;
