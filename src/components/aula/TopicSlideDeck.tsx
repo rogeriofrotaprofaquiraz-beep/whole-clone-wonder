@@ -1,4 +1,5 @@
 import SlideCanvas, { type CanvasSlide } from "./SlideCanvas";
+import { groupSlides } from "@/lib/slideGroups";
 import { useMemo, useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, Lock, Star, Trophy } from "lucide-react";
@@ -21,12 +22,12 @@ export function buildSlides(c: any, subtopics: any[] = [], heroImg?: string): Sl
   const arr = (v: any) => (Array.isArray(v) ? v.filter(Boolean).map(String) : []);
   if (c.simple) s.push({ title: "Ideia principal", emoji: "💡", lines: [c.simple], image: heroImg });
   if (c.formal) s.push({ title: "Definição formal", emoji: "📘", lines: [c.formal] });
-  if (arr(c.key).length) s.push({ title: "Conceitos-chave", emoji: "🔑", lines: arr(c.key).slice(0, 6) });
-  if (arr(c.principles).length) s.push({ title: "Princípios", emoji: "⚖️", lines: arr(c.principles).slice(0, 6) });
-  if (arr(c.examples).length) s.push({ title: "Exemplos", emoji: "🧪", lines: arr(c.examples).slice(0, 5) });
-  if (arr(c.daily_life).length) s.push({ title: "No dia a dia", emoji: "🏠", lines: arr(c.daily_life).slice(0, 5) });
-  if (arr(c.pitfalls).length) s.push({ title: "Cuidado com os erros", emoji: "⚠️", lines: arr(c.pitfalls).slice(0, 5) });
-  if (arr(c.curiosities).length) s.push({ title: "Curiosidades", emoji: "✨", lines: arr(c.curiosities).slice(0, 4) });
+  if (arr(c.key).length) s.push({ title: "Conceitos-chave", emoji: "🔑", lines: arr(c.key) });
+  if (arr(c.principles).length) s.push({ title: "Princípios", emoji: "⚖️", lines: arr(c.principles) });
+  if (arr(c.examples).length) s.push({ title: "Exemplos", emoji: "🧪", lines: arr(c.examples) });
+  if (arr(c.daily_life).length) s.push({ title: "No dia a dia", emoji: "🏠", lines: arr(c.daily_life) });
+  if (arr(c.pitfalls).length) s.push({ title: "Cuidado com os erros", emoji: "⚠️", lines: arr(c.pitfalls) });
+  if (arr(c.curiosities).length) s.push({ title: "Curiosidades", emoji: "✨", lines: arr(c.curiosities) });
   for (const st of subtopics || []) {
     if (st?.title && st?.text) s.push({ title: st.title, emoji: "🌿", lines: [st.text], image: st.image_url || undefined });
   }
@@ -52,18 +53,25 @@ export default function TopicSlideDeck({ slug, slides, onFinish }: { slug: strin
 
   const allWords = useMemo(() => slides.flatMap((sl) => sl.lines.join(" ").split(/\s+/).map(clean)).filter((w) => w.length >= 6 && !STOP.has(w.toLowerCase())), [slides]);
 
+  // Pergunta de compreensão: qual frase está correta segundo o texto do slide (sem lacuna).
   const challenge = useMemo(() => {
     const sl = slides[i];
     if (!sl) return null;
-    const lineIdx = sl.lines.findIndex((l) => pickWord(l));
-    if (lineIdx < 0) return null;
-    const answer = pickWord(sl.lines[lineIdx])!;
-    const pool = Array.from(new Set(allWords.filter((w) => w.toLowerCase() !== answer.toLowerCase())));
-    const distract: string[] = [];
-    while (distract.length < 2 && pool.length) distract.push(pool.splice(Math.floor(Math.random() * pool.length), 1)[0]);
-    const opts = [answer, ...distract].sort(() => Math.random() - 0.5);
-    return { lineIdx, answer, opts };
+    const sentences = sl.lines.join(" ").split(/(?<=[.!?;])\s+/).map((x) => x.trim()).filter((x) => x.length > 25 && pickWord(x));
+    if (!sentences.length) return null;
+    const correct = sentences[Math.floor(Math.random() * sentences.length)];
+    const key = pickWord(correct)!;
+    const pool = Array.from(new Set(allWords.filter((w) => w.toLowerCase() !== key.toLowerCase() && !correct.toLowerCase().includes(w.toLowerCase()))));
+    const wrong: string[] = [];
+    while (wrong.length < 2 && pool.length) {
+      const w = pool.splice(Math.floor(Math.random() * pool.length), 1)[0];
+      wrong.push(correct.replace(key, w));
+    }
+    if (!wrong.length) return null;
+    const opts = [correct, ...wrong].sort(() => Math.random() - 0.5);
+    return { answer: correct, opts };
   }, [i, slides, allWords]);
+  const groups = useMemo(() => groupSlides(slides), [slides]);
 
   if (!slides.length) return null;
   const sl = slides[i];
@@ -86,18 +94,13 @@ export default function TopicSlideDeck({ slug, slides, onFinish }: { slug: strin
     if (isLast) onFinish(); else setI(i + 1);
   };
 
-  const renderLine = (l: string, idx: number) => {
-    if (challenge && idx === challenge.lineIdx && !solved) {
-      const parts = l.split(challenge.answer);
-      return <>{parts[0]}<span className="inline-block min-w-[6ch] border-b-4 border-amber-400 text-amber-500 font-bold mx-1">____</span>{parts.slice(1).join(challenge.answer)}</>;
-    }
-    return l;
-  };
+  const renderLine = (l: string, _idx: number) => l;
+  const group = groups.find((g) => g.idx.includes(i));
 
   return (
     <div className="rounded-2xl overflow-hidden bg-white shadow-2xl mb-6">
       <div className="flex items-center justify-between px-5 py-3 bg-slate-100 text-slate-700 text-sm">
-        <span className="font-semibold">Slide {i + 1} de {slides.length}</span>
+        <span className="font-semibold">{group && group.label !== "Geral" ? `📦 ${group.label} · ` : ""}Slide {group ? group.idx.indexOf(i) + 1 : i + 1} de {group ? group.idx.length : slides.length}</span>
         <span className="flex items-center gap-1 font-bold text-amber-600"><Star size={16} className="fill-amber-400 text-amber-400" /> {stars} estrelas</span>
       </div>
       <div className="h-2 bg-slate-200">
@@ -105,7 +108,7 @@ export default function TopicSlideDeck({ slug, slides, onFinish }: { slug: strin
       </div>
 
       <div className="p-6 md:p-10 min-h-[360px] text-slate-900">
-        {(sl.header || sl.objects?.length || sl.bg || sl.text || sl.imagePos) ? <div className="mb-4"><SlideCanvas slide={{ ...sl, lines: sl.lines.map((l, k) => k === challenge?.lineIdx && !solved ? l.replace(challenge!.answer, "_____") : l) }} /></div> : <>
+        {(sl.header || sl.objects?.length || sl.bg || sl.text || sl.imagePos) ? <div className="mb-4"><SlideCanvas slide={sl} /></div> : <>
         <div className="text-4xl mb-2">{sl.emoji}</div>
         <h2 className="text-2xl md:text-3xl font-black mb-4">{sl.title}</h2>
         {sl.image && <img src={sl.image} alt="" className="w-full max-h-56 object-cover rounded-xl mb-4" />}
@@ -119,13 +122,13 @@ export default function TopicSlideDeck({ slug, slides, onFinish }: { slug: strin
             {!readEnough ? (
               <p className="text-violet-800 font-medium">📖 Leia com atenção... o desafio libera em {MIN_SECONDS - seconds}s</p>
             ) : solved ? (
-              <p className="text-emerald-700 font-bold">✅ Correto! Palavra: “{challenge.answer}” — +{done[i]} ⭐</p>
+              <p className="text-emerald-700 font-bold">✅ Correto! Você entendeu o texto — +{done[i]} ⭐</p>
             ) : (
               <>
-                <p className="text-violet-900 font-semibold mb-3">🎯 Complete a lacuna para avançar:</p>
-                <div className="flex flex-wrap gap-2">
+                <p className="text-violet-900 font-semibold mb-3">🎯 Segundo o texto deste slide, qual afirmação está correta?</p>
+                <div className="flex flex-col gap-2">
                   {challenge.opts.map((o) => (
-                    <Button key={o} variant="outline" onClick={() => answer(o)}
+                    <Button key={o} variant="outline" onClick={() => answer(o)} style={{ whiteSpace: "normal", height: "auto", textAlign: "left", justifyContent: "flex-start" }}
                       className={picked === o && o !== challenge.answer ? "border-red-400 bg-red-50 text-red-700 animate-pulse" : ""}>
                       {o}
                     </Button>
