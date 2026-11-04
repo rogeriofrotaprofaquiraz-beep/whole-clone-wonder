@@ -1,5 +1,6 @@
 import SlideCanvas, { type CanvasSlide } from "./SlideCanvas";
 import { groupSlides } from "@/lib/slideGroups";
+import { deckPercent, saveDeckScore, PASS_PERCENT } from "@/lib/deckScore";
 import { useMemo, useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, Lock, Star, Trophy } from "lucide-react";
