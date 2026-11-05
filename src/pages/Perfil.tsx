@@ -462,6 +462,25 @@ export default function Perfil() {
                       </div>
                     )}
                     {(() => { const allKeys = APPEARANCE_GROUPS.flatMap((g) => g.keys).filter((k) => APPEARANCE_OPTIONS[k]); return (
+                    <div className="grid lg:grid-cols-[240px_1fr] gap-4 items-start">
+                    <div className="lg:sticky lg:top-4 space-y-2">
+                      <div className="rounded-2xl overflow-hidden border-2 border-fuchsia-400/50 bg-slate-950 aspect-[9/13]">
+                        <img src={localPreview} alt="Prévia do seu super-herói com as características escolhidas" className="w-full h-full object-cover" />
+                      </div>
+                      <p className="text-[10px] font-black uppercase tracking-widest text-fuchsia-200">Seu herói com esta combinação</p>
+                      <ul className="grid grid-cols-2 gap-x-2 gap-y-0.5 text-[10px] text-white/80">
+                        {allKeys.map((k) => {
+                          const val = avatar?.appearance?.[k];
+                          const o = APPEARANCE_OPTIONS[k].find((x) => x.v === val);
+                          return (
+                            <li key={k} className="truncate">
+                              <span className="text-white/50">{APPEARANCE_LABELS[k]}:</span>{" "}
+                              <span className={o ? "font-bold text-white" : "text-white/40"}>{o ? o.l : "—"}</span>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </div>
                     <Tabs defaultValue={allKeys[0]} className="w-full">
                       <TabsList className="flex flex-wrap h-auto gap-1 bg-slate-950/60 p-1 justify-start">
                         {allKeys.map((k) => (
@@ -523,7 +542,8 @@ export default function Perfil() {
                         </TabsContent>
                       );
                     })}
-                    </Tabs>); })()}
+                    </Tabs>
+                    </div>); })()}
 
                     {/* Compositor local — SEM créditos de IA */}
 
