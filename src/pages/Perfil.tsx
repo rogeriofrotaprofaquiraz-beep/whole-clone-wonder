@@ -116,10 +116,7 @@ export default function Perfil() {
   const avatarImage = gen && !isSimpleDrawing ? gen : currentEl.heroImage;
 
   // Arte da carta que pode servir de referência visual para a IA (imagem fixa, não vídeo/SVG)
-  const usableCardArt =
-    currentEl.heroImage && !/\.(mp4|mov|webm|svg)(\?|$)/i.test(currentEl.heroImage) && !/fallback-/i.test(currentEl.heroImage)
-      ? currentEl.heroImage
-      : undefined;
+  const usableCardArt = usableCardReference(currentEl.heroImage);
 
 
   const unlockedSet = new Set<string>(avatar?.unlocked_cards ?? ["H"]);

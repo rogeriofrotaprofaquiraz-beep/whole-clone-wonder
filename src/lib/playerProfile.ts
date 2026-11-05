@@ -51,3 +51,16 @@ export function listAllCards() {
     .filter((e) => e && e.symbol && e.symbol !== "Element" && e.symbol !== "Elemento")
     .sort((a, b) => a.number - b.number);
 }
+
+/**
+ * Arte da carta que pode servir de referência visual para a IA gerar o avatar
+ * ultrarrealista: precisa ser imagem fixa acessível por http(s).
+ * Vídeos (.mp4/.mov/.webm), SVG e artes de placeholder não servem.
+ */
+export function usableCardReference(url?: string | null): string | undefined {
+  if (!url) return undefined;
+  if (!/^https?:\/\//i.test(url)) return undefined;
+  if (/\.(mp4|mov|webm|svg)(\?|$)/i.test(url)) return undefined;
+  if (/fallback-/i.test(url)) return undefined;
+  return url;
+}
