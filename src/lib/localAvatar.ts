@@ -270,7 +270,7 @@ function poseOf(pose?: string, color = "#1e3a8a", sec = "#dc2626"): Pose {
         arms: `<path d='M-170 -280 L-200 -620 L-130 -630 L-110 -280 Z M170 -280 L200 -620 L130 -630 L110 -280 Z' fill='${color}'/>`,
         hands: [[-165, -650], [165, -650]],
         legs: `<path d='M-70 260 L-60 520 L10 520 L-10 280 Z M70 260 L140 500 L80 520 L10 280 Z' fill='${sec}'/>`,
-        feet: [[-25, 520], [110, 520]], dy: -160, rotate: -12,
+        feet: [[-25, 520], [110, 520]], dy: -90, rotate: -12,
       };
     case "atacando":
       return {
@@ -284,14 +284,14 @@ function poseOf(pose?: string, color = "#1e3a8a", sec = "#dc2626"): Pose {
         arms: `<path d='M-170 -280 L-200 20 L-140 40 L-120 -260 Z M170 -280 L200 20 L140 40 L120 -260 Z' fill='${color}'/>`,
         hands: [[-170, 50], [170, 50]],
         legs: `<path d='M-170 300 C-100 240 100 240 170 300 L180 360 C100 330 -100 330 -180 360 Z' fill='${sec}'/>`,
-        feet: [[-170, 345], [170, 345]], dy: 120, rotate: 0,
+        feet: [[-170, 345], [170, 345]], dy: 90, rotate: 0,
       };
     case "agachado":
       return {
         arms: `<path d='M-170 -280 L-240 120 L-170 140 L-120 -260 Z M170 -280 L240 120 L170 140 L120 -260 Z' fill='${color}'/>`,
         hands: [[-205, 160], [205, 160]],
         legs: `<path d='M-70 260 L-200 340 L-130 420 L-10 280 Z M70 260 L200 340 L130 420 L10 280 Z' fill='${sec}'/>`,
-        feet: [[-165, 420], [165, 420]], dy: 80, rotate: 0,
+        feet: [[-165, 420], [165, 420]], dy: 60, rotate: 0,
       };
     case "correndo":
       return {
@@ -305,7 +305,7 @@ function poseOf(pose?: string, color = "#1e3a8a", sec = "#dc2626"): Pose {
         arms: `<path d='M-170 -280 L-330 -120 L-300 -70 L-120 -260 Z M170 -280 L330 -120 L300 -70 L120 -260 Z' fill='${color}'/>`,
         hands: [[-320, -90], [320, -90]],
         legs: `<path d='M-70 260 L-80 470 L-20 470 L-10 280 Z M70 260 L80 470 L20 470 L10 280 Z' fill='${sec}'/>`,
-        feet: [[-50, 470], [50, 470]], dy: -110, rotate: 0,
+        feet: [[-50, 470], [50, 470]], dy: -70, rotate: 0,
       };
     case "punhos":
       return {
@@ -467,6 +467,7 @@ export function buildAvatarSVG(appearance: App = {}, elSymbol = "H"): string {
   const scene = SCENES[appearance.scene ?? ""] ?? "<rect width='900' height='1300' fill='url(#bg)'/>";
   const shadowRy = pose.dy < 0 ? 14 : 30;
 
+  const auraVar = aura || "#7c3aed";
   return `<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1300" width="900" height="1300">
   <defs>
@@ -487,8 +488,8 @@ export function buildAvatarSVG(appearance: App = {}, elSymbol = "H"): string {
   </defs>
   ${scene}
   <ellipse cx="450" cy="${700 + pose.dy}" rx="420" ry="600" fill="url(#glow)"/>
-  <ellipse cx="450" cy="1230" rx="${pose.dy < 0 ? 140 : 240}" ry="${shadowRy}" fill="#000" opacity=".45"/>
-  <g transform="translate(450 ${740 + pose.dy}) rotate(${pose.rotate}) scale(${scale} 1)" filter="url(#drop)">
+  <ellipse cx="450" cy="1210" rx="${pose.dy < 0 ? 140 : 240}" ry="${shadowRy}" fill="#000" opacity=".45"/>
+  <g transform="translate(450 ${800 + pose.dy}) rotate(${pose.rotate}) scale(${(0.8 * scale).toFixed(3)} 0.8)" filter="url(#drop)">
     ${aura ? `<ellipse cx="0" cy="-100" rx="330" ry="640" fill="none" stroke="${aura}" stroke-width="14" opacity=".55"/>` : ""}
     ${accessoryBack(appearance.accessory, uniSec)}
     ${capeEl(appearance.cape, uniSec)}
@@ -516,7 +517,7 @@ export function buildAvatarSVG(appearance: App = {}, elSymbol = "H"): string {
     ${powerEl(appearance.mainPower, pose.hands)}
   </g>
   <text x="450" y="1270" text-anchor="middle" font-family="Arial Black" font-size="36" font-weight="900" fill="#fff" opacity=".85">${elSymbol}</text>
-</svg>`;
+</svg>`.replace(/var\(--hair\)/g, hair).replace(/var\(--aura\)/g, auraVar);
 }
 
 export function buildAvatarDataUrl(appearance: App = {}, elSymbol = "H"): string {
