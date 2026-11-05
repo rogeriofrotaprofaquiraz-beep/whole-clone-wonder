@@ -2,9 +2,9 @@ import { useEffect, useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { ensureUserAccess } from "@/lib/ensureUserAccess";
-import { loadAvatar, loadWallet, isAdmin, spendCoins, COIN_SYMBOL, COIN_NAME, COSTS } from "@/lib/playerEconomy";
+import { loadAvatar, loadWallet, isAdmin, spendCoins, addCoins, COIN_SYMBOL, COIN_NAME, COSTS } from "@/lib/playerEconomy";
 import { ELEMENTS_DATA } from "@/data/elements";
-import { levelFromLifetime, xpProgress, maxAtomicForLevel, canUnlockCard, cardUnlockCost, listAllCards } from "@/lib/playerProfile";
+import { levelFromLifetime, xpProgress, maxAtomicForLevel, canUnlockCard, cardUnlockCost, listAllCards, usableCardReference } from "@/lib/playerProfile";
 import { RARITY_FRAME, FAMILY_BADGE, getFamily, calcRarity } from "@/lib/heroStyles";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -115,6 +115,9 @@ export default function Perfil() {
   const isSimpleDrawing = !!gen && (gen.startsWith("data:image/svg") || /\.svg(\?|$)/i.test(gen) || gen.includes("/fallback-"));
   const avatarImage = gen && !isSimpleDrawing ? gen : currentEl.heroImage;
 
+  // Arte da carta que pode servir de referência visual para a IA (imagem fixa, não vídeo/SVG)
+  const usableCardArt = usableCardReference(currentEl.heroImage);
+
 
   const unlockedSet = new Set<string>(avatar?.unlocked_cards ?? ["H"]);
 
@@ -205,17 +208,20 @@ export default function Perfil() {
     }
     setGenerating(true);
     setOptionUrls([]);
+    let charged = 0;
 
     try {
       if (!admin) {
-        const ok = await spendCoins(session.user.id, cost, "generate_avatar_ai");
-        if (!ok) { toast.error("Falha ao debitar Átomos."); setOptionsOpen(false); return; }
+        const r = await spendCoins(session.user.id, cost, "generate_avatar_ai");
+        if (!r.ok) { toast.error(r.reason ?? "Falha ao debitar Átomos."); setOptionsOpen(false); return; }
+        charged = r.charged ?? 0;
       }
       const { data, error } = await supabase.functions.invoke("generate-player-avatar", {
         body: {
           cardSymbol: currentSymbol,
           appearance: avatar?.appearance ?? {},
           photoBase64: photoBase64 ?? undefined,
+          cardImageUrl: usableCardArt,
           count: 1,
         },
       });
@@ -229,7 +235,14 @@ export default function Perfil() {
 
       await refresh(session.user.id);
     } catch (e: any) {
-      toast.error(e?.message ?? "Falha ao gerar avatar");
+      // A geração falhou: devolve os Átomos debitados.
+      if (charged > 0) {
+        await addCoins(session.user.id, charged);
+        setWallet((w: any) => ({ ...w, coins: (w?.coins ?? 0) + charged }));
+        toast.error(`${e?.message ?? "Falha ao gerar avatar"} — ${charged}${COIN_SYMBOL} devolvidos.`);
+      } else {
+        toast.error(e?.message ?? "Falha ao gerar avatar");
+      }
       setOptionsOpen(false);
     } finally { setGenerating(false); }
   };

@@ -1,11 +1,34 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { corsHeaders } from "npm:@supabase/supabase-js@2/cors";
 
+/**
+ * Avatar ULTRARREALISTA.
+ *
+ * Modelo padrão do workspace para imagens: openai/gpt-image-2.5-sunburst (retenção zero).
+ * - Com imagem de referência da carta -> multipart POST /v1/images/edits (campo image[])
+ * - Sem referência                   -> JSON POST /v1/images/generations (somente prompt)
+ * Fallback de contrato: Google gemini-chat em /v1/images/generations
+ * (messages com partes text + image_url, modalities ["image","text"], image_config.aspect_ratio).
+ */
+
+const GATEWAY = "https://ai.gateway.lovable.dev";
+const IMAGE_MODEL = "openai/gpt-image-2.5-sunburst";
+const CHAT_FALLBACK_MODELS = ["google/gemini-3.1-flash-image", "google/gemini-3-pro-image"];
+const SIZE = "1024x1536"; // vertical 2:3
+const QUALITY = "medium";
+const ASPECT_RATIO = "2:3";
+
+const isUsableReference = (u?: string | null) =>
+  !!u && /^https?:\/\//i.test(u) && !/\.(mp4|mov|webm|svg)(\?|$)/i.test(u);
+
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response("ok", { headers: corsHeaders });
 
   const json = (body: unknown, status = 200) =>
-    new Response(JSON.stringify(body), { status, headers: { ...corsHeaders, "Content-Type": "application/json" } });
+    new Response(JSON.stringify(body), {
+      status,
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
+    });
 
   try {
     const authHeader = req.headers.get("Authorization");
@@ -23,7 +46,7 @@ Deno.serve(async (req) => {
 
     const admin = createClient(supabaseUrl, serviceKey);
 
-    const { cardSymbol, appearance, photoBase64, equipped, count } = await req.json();
+    const { cardSymbol, appearance, photoBase64, cardImageUrl, equipped, count } = await req.json();
     if (!cardSymbol) return json({ error: "cardSymbol required" }, 400);
     const nWanted = Math.max(1, Math.min(5, Number(count) || 1));
 
@@ -133,9 +156,9 @@ Deno.serve(async (req) => {
     const hairColor = a.hairStyle === "careca" ? "" : (hairColorMap[a.hairColor] ?? a.hairColor ?? "brown");
 
     const outfitMap: Record<string, string> = {
-      outfit_casual: "casual streetwear superhero outfit: fitted t-shirt, jacket and jeans, with subtle glowing element emblem on chest",
-      outfit_cientista: "futuristic scientist hero outfit: long white lab coat over tactical suit, glowing tech panels, element emblem on chest",
-      outfit_heroi: "classic premium superhero bodysuit with armored chest plate, utility belt, glowing element emblem at the center of the chest",
+      outfit_casual: "casual streetwear hero outfit: fitted t-shirt, jacket and jeans, with subtle glowing element emblem on chest",
+      outfit_cientista: "futuristic scientist outfit: long white lab coat over tactical suit, glowing tech panels, element emblem on chest",
+      outfit_heroi: "premium hero bodysuit with armored chest plate, utility belt, glowing element emblem at the center of the chest",
       outfit_futurista: "high-tech futuristic exosuit with neon circuitry, holographic plating, glowing element emblem on chest",
       outfit_formal: "formal tailored suit with hero cape, sharp lines, glowing element emblem as a lapel pin",
     };
@@ -159,29 +182,33 @@ Deno.serve(async (req) => {
 
     const eq = equipped ?? {};
     const outfitDesc = eq.outfit ? (outfitMap[eq.outfit.id] ?? eq.outfit.name) : outfitMap.outfit_heroi;
-    const bgDesc = eq.background ? (bgMap[eq.background.id] ?? eq.background.name) : "dramatic elemental background matching the element";
+    const bgDesc = eq.background ? (bgMap[eq.background.id] ?? eq.background.name) : "";
     const accDesc = eq.accessory ? (accMap[eq.accessory.id] ?? eq.accessory.name) : "";
 
-    const cat = (el.attributes as any)?.category ?? "";
+    // ---------- Imagem de referência da carta ----------
+    // 1) arte oficial salva no banco  2) arte enviada pelo app  3) nenhuma (só texto)
+    const referenceUrl = isUsableReference(el.hero_image) ? el.hero_image : (isUsableReference(cardImageUrl) ? cardImageUrl : null);
 
-    // Baixa a CARTA do herói para usar como referência visual principal
+    let refBytes: Uint8Array | null = null;
+    let refMime = "image/png";
     let cardImageDataUrl: string | null = null;
-    if (el.hero_image) {
+
+    if (referenceUrl) {
       try {
-        const r = await fetch(el.hero_image);
+        const r = await fetch(referenceUrl);
         if (r.ok) {
           const buf = new Uint8Array(await r.arrayBuffer());
-          const mimeIn = r.headers.get("content-type")?.split(";")[0] || "image/png";
+          refMime = r.headers.get("content-type")?.split(";")[0] || "image/png";
+          if (!refMime.startsWith("image/")) refMime = "image/png";
+          refBytes = buf;
           let bin = "";
           for (let i = 0; i < buf.length; i++) bin += String.fromCharCode(buf[i]);
-          cardImageDataUrl = `data:${mimeIn};base64,${btoa(bin)}`;
+          cardImageDataUrl = `data:${refMime};base64,${btoa(bin)}`;
         }
       } catch (_) { /* segue sem referência da carta */ }
     }
 
-    if (!cardImageDataUrl) {
-      return json({ error: "Esta carta não tem imagem oficial — não há como editar. Gere a arte da carta primeiro no painel admin." }, 400);
-    }
+    const hasReference = !!refBytes;
 
     const variationTwists = [
       "Pose: standing heroically, feet apart, fists clenched at sides, slight 3/4 turn to the LEFT, calm confident gaze.",
@@ -206,39 +233,43 @@ Deno.serve(async (req) => {
     ];
 
     const buildPrompt = (variationIdx: number) => [
-      `Generate an ULTRA-PHOTOREALISTIC cinematic full-body portrait of a NEW personalized superhero — VARIATION ${variationIdx + 1} OF 5, MUST BE VISUALLY DIFFERENT from the other 4 variations (different face, different pose, different framing).`,
-      `The ATTACHED HERO CARD is ONLY a reference for: suit DESIGN, chest EMBLEM shape, COLOR palette and overall MOOD.`,
-      `IGNORE the character shown on the card — DO NOT copy his face, body, hair, ethnicity, gender or pose. Replace him entirely with the personalized character described below.`,
+      `Generate an ULTRA-PHOTOREALISTIC cinematic full-body portrait of a NEW personalized character — VARIATION ${variationIdx + 1} OF ${nWanted}, MUST BE VISUALLY DIFFERENT from the other variations (different face, different pose, different framing).`,
+      hasReference
+        ? `The ATTACHED REFERENCE IMAGE is ONLY a reference for: suit DESIGN, chest EMBLEM shape, COLOR palette and overall MOOD.`
+        : `No reference image is attached: build the character entirely from the description below.`,
+      hasReference
+        ? `IGNORE the character shown in the reference — DO NOT copy his face, body, hair, ethnicity, gender or pose. Replace him entirely with the personalized character described below.`
+        : ``,
       ``,
       `FORMAT: vertical 2:3, full bleed photo, no borders, no UI, no text, no logos, no watermark, no numbers, no captions.`,
       ``,
-      `CHARACTER (MANDATORY — overrides the card's character completely):`,
+      `CHARACTER (MANDATORY):`,
       `- Gender presentation: ${genderEn} (MUST clearly look ${genderEn}).`,
       `- Species: ${speciesDesc}.`,
       `- Body type: ${body}.`,
-      `- Skin tone: ${skin} (KEEP IDENTICAL across all 5 variations).`,
-      `- Hair: ${hairStyle}${hairColor ? `, ${hairColor} color` : ""} (KEEP IDENTICAL across all 5 variations).`,
+      `- Skin tone: ${skin} (KEEP IDENTICAL across all variations).`,
+      `- Hair: ${hairStyle}${hairColor ? `, ${hairColor} color` : ""} (KEEP IDENTICAL across all variations).`,
       `- Realistic ethnically diverse human features matching the choices above.`,
       `- UNIQUE FACE for this variation #${variationIdx + 1}: ${faceArchetypes[variationIdx % faceArchetypes.length]}`,
       `- ${variationTwists[variationIdx % variationTwists.length]}`,
       `- ${cameraTwists[variationIdx % cameraTwists.length]}`,
       a.faceShape ? `- Face shape: ${a.faceShape}.` : "",
-      a.eyeColor ? `- Eye color: ${a.eyeColor.replace(/_/g," ")}, intense and clearly visible.` : "",
-      a.mask && a.mask !== "sem" ? `- Mask style: ${a.mask.replace(/_/g," ")} mask.` : "",
-      a.uniform ? `- Uniform style: ${a.uniform.replace(/_/g," ")} superhero uniform.` : "",
-      a.chestSymbol && a.chestSymbol !== "sem" ? `- Chest emblem: a ${a.chestSymbol.replace(/_/g," ")} symbol glowing at the center of the chest (replacing the card's emblem).` : "",
-      a.cape && a.cape !== "sem" ? `- Cape: ${a.cape.replace(/_/g," ")} style cape flowing behind.` : "",
-      a.gloves && a.gloves !== "sem" ? `- Gloves: ${a.gloves.replace(/_/g," ")} hero gloves on both hands.` : "",
-      a.boots ? `- Boots: ${a.boots.replace(/_/g," ")} hero boots.` : "",
-      a.aura && a.aura !== "sem" ? `- Aura: visible ${a.aura.replace(/_/g," ")} energy aura glowing around the body.` : "",
-      a.mainPower ? `- Main power expression: hands/body subtly showing ${a.mainPower.replace(/_/g," ")} power effect.` : "",
-      a.accessory ? `- Accessory: wearing ${a.accessory.replace(/_/g," ")}.` : "",
-      a.pose ? `- Pose override: ${a.pose.replace(/_/g," ")} hero pose.` : "",
+      a.eyeColor ? `- Eye color: ${a.eyeColor.replace(/_/g, " ")}, intense and clearly visible.` : "",
+      a.mask && a.mask !== "sem" ? `- Mask style: ${a.mask.replace(/_/g, " ")} mask.` : "",
+      a.uniform ? `- Uniform style: ${a.uniform.replace(/_/g, " ")} hero uniform.` : "",
+      a.chestSymbol && a.chestSymbol !== "sem" ? `- Chest emblem: a ${a.chestSymbol.replace(/_/g, " ")} symbol glowing at the center of the chest.` : "",
+      a.cape && a.cape !== "sem" ? `- Cape: ${a.cape.replace(/_/g, " ")} style cape flowing behind.` : "",
+      a.gloves && a.gloves !== "sem" ? `- Gloves: ${a.gloves.replace(/_/g, " ")} hero gloves on both hands.` : "",
+      a.boots ? `- Boots: ${a.boots.replace(/_/g, " ")} hero boots.` : "",
+      a.aura && a.aura !== "sem" ? `- Aura: visible ${a.aura.replace(/_/g, " ")} energy aura glowing around the body.` : "",
+      a.mainPower ? `- Main power expression: hands/body subtly showing ${a.mainPower.replace(/_/g, " ")} power effect.` : "",
+      a.accessory ? `- Accessory: wearing ${a.accessory.replace(/_/g, " ")}.` : "",
+      a.pose ? `- Pose override: ${a.pose.replace(/_/g, " ")} hero pose.` : "",
       ``,
       `COMPOSITION: FULL-BODY head to feet, both feet inside frame, centered, shallow DoF.`,
       `LIGHTING: cool frontal key, soft ambient fill, cinematic realism.`,
       ``,
-      `COSTUME (inspired by the attached card):`,
+      `COSTUME:`,
       `- Suit texture evokes the REAL natural texture of "${el.name}".`,
       `- Luminous chemical symbol "${el.symbol}" glowing at the CENTER OF THE CHEST.`,
       `- Cape: gaseous shimmer for gases, solid glossy for liquids/solids.`,
@@ -246,10 +277,10 @@ Deno.serve(async (req) => {
       accDesc && `- Accessory: ${accDesc}.`,
       ``,
       `BACKGROUND: cinematic photoreal environment of where "${el.name}" is naturally found / extracted.`,
-      eq.background ? `Subtly blend with: ${bgDesc}.` : ``,
-      a.scene ? `Background override (mandatory): set the scene in a ${a.scene.replace(/_/g," ")} environment, photoreal cinematic.` : ``,
+      bgDesc && `Subtly blend with: ${bgDesc}.`,
+      a.scene ? `Background override (mandatory): set the scene in a ${a.scene.replace(/_/g, " ")} environment, photoreal cinematic.` : ``,
       ``,
-      `STRICTLY FORBIDDEN: copying the face/body/hair/gender of the person on the reference card, pixel art, cartoon, anime, drawing, card frame, borders, captions, atomic numbers, UI chrome, watermarks, cropped feet or head.`,
+      `STRICTLY FORBIDDEN: copying the face/body/hair/gender of any person in the reference, pixel art, cartoon, anime, drawing, card frame, borders, captions, atomic numbers, UI chrome, watermarks, cropped feet or head.`,
       photoBase64 ? `The SECOND attached image is the user's real face — use ONLY as facial likeness reference.` : "",
       ``,
       `Random seed: ${Math.random().toString(36).slice(2)}-${variationIdx}`,
@@ -260,46 +291,120 @@ Deno.serve(async (req) => {
       return json({ error: reason }, status);
     };
 
+    /** true quando o provedor recusou o conteúdo: terminal, sem reescrever e sem trocar de modelo. */
+    const isRefusal = (data: any) => {
+      const code = String(data?.error?.code ?? "");
+      const type = String(data?.error?.type ?? "");
+      const msg = String(data?.error?.message ?? "");
+      return code === "moderation_blocked" || type === "content_policy_violation"
+        || /safety system|content policy|refus/i.test(msg);
+    };
+
+    const readImage = (raw: string) => {
+      let data: any = null;
+      try { data = raw ? JSON.parse(raw) : null; } catch { /* */ }
+      const b64 = data?.data?.[0]?.b64_json;
+      return { data, b64: typeof b64 === "string" && b64.length > 0 ? b64 : null };
+    };
+
     const generateImage = async (variationIdx: number) => {
-      const content: any[] = [{ type: "text", text: buildPrompt(variationIdx) }];
-      content.push({ type: "image_url", image_url: { url: cardImageDataUrl } });
-      if (photoBase64) {
-        const dataUrl = photoBase64.startsWith("data:") ? photoBase64 : `data:image/png;base64,${photoBase64}`;
-        content.push({ type: "image_url", image_url: { url: dataUrl } });
-      }
-      const makeGeminiEditBody = (model: string) => ({
+      const prompt = buildPrompt(variationIdx);
+      const photoDataUrl = photoBase64
+        ? (photoBase64.startsWith("data:") ? photoBase64 : `data:image/png;base64,${photoBase64}`)
+        : null;
+
+      // Corpo gemini-chat (usado no modelo padrão sem referência e nos fallbacks)
+      const chatBody = (model: string) => ({
         model,
-        messages: [{ role: "user", content }],
+        messages: [{
+          role: "user",
+          content: [
+            { type: "text", text: prompt },
+            ...(hasReference ? [{ type: "image_url", image_url: { url: cardImageDataUrl! } }] : []),
+            ...(photoDataUrl ? [{ type: "image_url", image_url: { url: photoDataUrl } }] : []),
+          ],
+        }],
         modalities: ["image", "text"],
+        image_config: { aspect_ratio: ASPECT_RATIO },
         stream: false,
       });
-      const attempts = [
-        { name: "google/gemini-2.5-flash-image", body: makeGeminiEditBody("google/gemini-2.5-flash-image") },
-        { name: "google/gemini-3.1-flash-image", body: makeGeminiEditBody("google/gemini-3.1-flash-image") },
-        { name: "google/gemini-3-pro-image", body: makeGeminiEditBody("google/gemini-3-pro-image") },
-      ];
+
+      // multipart OpenAI /v1/images/edits (com imagem de referência)
+      const editsForm = () => {
+        const fd = new FormData();
+        fd.set("prompt", prompt);
+        fd.set("model", IMAGE_MODEL);
+        fd.set("size", SIZE);
+        fd.set("quality", QUALITY);
+        fd.set("image[]", new Blob([refBytes!], { type: refMime }), "reference.png");
+        if (photoDataUrl) {
+          const m = photoDataUrl.match(/^data:(image\/\w+);base64,(.+)$/);
+          if (m) {
+            const bytes = Uint8Array.from(atob(m[2]), (c) => c.charCodeAt(0));
+            fd.set("image[]", new Blob([bytes], { type: m[1] }), "face.png");
+          }
+        }
+        return fd;
+      };
+
+      const attempts: { name: string; run: () => Promise<Response> }[] = hasReference
+        ? [
+            { name: `${IMAGE_MODEL} edits`, run: () => fetch(`${GATEWAY}/v1/images/edits`, {
+                method: "POST", headers: { Authorization: `Bearer ${lovableKey}` }, body: editsForm() }) },
+            ...CHAT_FALLBACK_MODELS.map((model) => ({
+              name: `${model} chat`,
+              run: () => fetch(`${GATEWAY}/v1/images/generations`, {
+                method: "POST",
+                headers: { Authorization: `Bearer ${lovableKey}`, "Content-Type": "application/json" },
+                body: JSON.stringify(chatBody(model)) }),
+            })),
+          ]
+        : [
+            { name: `${IMAGE_MODEL} generations`, run: () => fetch(`${GATEWAY}/v1/images/generations`, {
+                method: "POST",
+                headers: { Authorization: `Bearer ${lovableKey}`, "Content-Type": "application/json" },
+                body: JSON.stringify({ model: IMAGE_MODEL, prompt, size: SIZE, quality: QUALITY, stream: false }) }) },
+            ...CHAT_FALLBACK_MODELS.map((model) => ({
+              name: `${model} chat`,
+              run: () => fetch(`${GATEWAY}/v1/images/generations`, {
+                method: "POST",
+                headers: { Authorization: `Bearer ${lovableKey}`, "Content-Type": "application/json" },
+                body: JSON.stringify(chatBody(model)) }),
+            })),
+          ];
+
       const failures: string[] = [];
       for (const attempt of attempts) {
-        const resp = await fetch("https://ai.gateway.lovable.dev/v1/images/generations", {
-          method: "POST",
-          headers: { "Content-Type": "application/json", "Lovable-API-Key": lovableKey },
-          body: JSON.stringify(attempt.body),
-        });
+        const resp = await attempt.run();
         const raw = await resp.text();
-        let data: any = null;
-        try { data = raw ? JSON.parse(raw) : null; } catch { /* */ }
-        if (!resp.ok) {
-          failures.push(`${attempt.name}: HTTP ${resp.status}${raw ? ` — ${raw.slice(0, 220)}` : ""}`);
-          if (resp.status >= 400 && resp.status < 500) {
-            const err: any = new Error(failures.join(" | "));
-            err.status = resp.status;
-            throw err;
-          }
+        const { data, b64 } = readImage(raw);
+
+        if (b64) return `data:image/png;base64,${b64}`;
+
+        if (resp.ok) {
+          failures.push(`${attempt.name}: resposta sem imagem${raw ? ` — ${raw.slice(0, 200)}` : ""}`);
           continue;
         }
-        const b64 = data?.data?.[0]?.b64_json;
-        if (typeof b64 === "string" && b64.length > 0) return `data:image/png;base64,${b64}`;
-        failures.push(`${attempt.name}: resposta sem imagem${raw ? ` — ${raw.slice(0, 220)}` : ""}`);
+
+        // Recusa de conteúdo: terminal — não reescrever, não trocar de modelo.
+        if (isRefusal(data)) {
+          const err: any = new Error(
+            `A IA recusou este conteúdo: ${String(data?.error?.message ?? "motivo não informado").slice(0, 200)}`);
+          err.status = resp.status;
+          err.terminal = true;
+          throw err;
+        }
+
+        // Falhas de configuração/crédito do workspace: terminal, preserva o status.
+        if (resp.status === 401 || resp.status === 402 || resp.status === 403) {
+          const err: any = new Error(String(data?.error?.message ?? raw ?? "").slice(0, 300)
+            || `HTTP ${resp.status}`);
+          err.status = resp.status;
+          err.terminal = true;
+          throw err;
+        }
+
+        failures.push(`${attempt.name}: HTTP ${resp.status}${raw ? ` — ${raw.slice(0, 200)}` : ""}`);
       }
       throw new Error(failures.join(" | ") || "nenhum modelo retornou imagem");
     };
@@ -311,27 +416,33 @@ Deno.serve(async (req) => {
       } catch (e) {
         const details = String((e as Error).message ?? e);
         const status = (e as any).status ?? (details.includes("HTTP 429") ? 429 : details.includes("HTTP 402") ? 402 : 502);
-        if (status === 402) return { url: cardImageDataUrl!, fallback: true };
+        if ((e as any).terminal) throw Object.assign(new Error(details), { status, terminal: true });
+        // Sem IA e com carta oficial: usa a carta. Sem carta: propaga a falha (o app devolve os Átomos).
+        if (cardImageDataUrl) return { url: cardImageDataUrl, fallback: true };
         throw Object.assign(new Error(details), { status });
       }
     };
 
     const uploads: string[] = [];
     let anyFallback = false;
+    let firstError: any = null;
     try {
       const results = await Promise.allSettled(
         Array.from({ length: nWanted }, (_, i) => generateOne(i))
       );
       for (let i = 0; i < results.length; i++) {
         const r = results[i];
-        if (r.status !== "fulfilled") continue;
+        if (r.status !== "fulfilled") {
+          if (!firstError) firstError = r.reason;
+          continue;
+        }
         const { url: imageUrl, fallback } = r.value;
         if (fallback) anyFallback = true;
         const match = imageUrl.match(/^data:(image\/\w+);base64,(.+)$/);
         if (!match) continue;
         const mime = match[1];
         const ext = mime.split("/")[1] || "png";
-        const bytes = Uint8Array.from(atob(match[2]), c => c.charCodeAt(0));
+        const bytes = Uint8Array.from(atob(match[2]), (c) => c.charCodeAt(0));
         const path = `${user.id}/${cardSymbol}-${Date.now()}-${i}.${ext}`;
         const { error: upErr } = await admin.storage.from("player-avatars").upload(path, bytes, { contentType: mime, upsert: true });
         if (upErr) continue;
@@ -339,10 +450,9 @@ Deno.serve(async (req) => {
         if (signed?.signedUrl) uploads.push(signed.signedUrl);
       }
       if (uploads.length === 0) {
-        const firstErr = results.find(r => r.status === "rejected") as PromiseRejectedResult | undefined;
-        const details = String(firstErr?.reason?.message ?? firstErr?.reason ?? "sem detalhe");
-        const status = (firstErr?.reason as any)?.status ?? 502;
-        if (status === 429) return await generationError("A IA está com limite temporário de uso. Tente novamente em alguns minutos; suas moedas foram preservadas.", 429);
+        const details = String(firstError?.message ?? firstError ?? "sem detalhe");
+        const status = firstError?.status ?? 502;
+        if (status === 429) return await generationError("A IA está com limite temporário de uso. Tente novamente em alguns minutos; seus Átomos foram devolvidos.", 429);
         return await generationError(`A IA não conseguiu gerar o avatar ultrarrealista agora. Detalhes: ${details.slice(0, 500)}`, status);
       }
     } catch (e) {
@@ -364,8 +474,9 @@ Deno.serve(async (req) => {
       urls: uploads,
       url: uploads[0],
       fallback: anyFallback,
+      reference: hasReference ? "carta" : "texto",
       message: anyFallback
-        ? "Os créditos de IA do workspace acabaram em alguma variação. A carta original foi usada como alternativa. Escolha a melhor opção abaixo."
+        ? "A IA falhou em alguma variação. A carta original foi usada como alternativa. Escolha a melhor opção abaixo."
         : `${uploads.length} variações geradas — escolha a melhor!`,
     });
   } catch (e) {
