@@ -4,7 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { ensureUserAccess } from "@/lib/ensureUserAccess";
 import { loadAvatar, loadWallet, isAdmin, spendCoins, addCoins, COIN_SYMBOL, COIN_NAME, COSTS } from "@/lib/playerEconomy";
 import { ELEMENTS_DATA } from "@/data/elements";
-import { levelFromLifetime, xpProgress, maxAtomicForLevel, canUnlockCard, cardUnlockCost, listAllCards } from "@/lib/playerProfile";
+import { levelFromLifetime, xpProgress, maxAtomicForLevel, canUnlockCard, cardUnlockCost, listAllCards, usableCardReference } from "@/lib/playerProfile";
 import { RARITY_FRAME, FAMILY_BADGE, getFamily, calcRarity } from "@/lib/heroStyles";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
