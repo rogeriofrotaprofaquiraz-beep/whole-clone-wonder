@@ -211,17 +211,20 @@ export default function Perfil() {
     }
     setGenerating(true);
     setOptionUrls([]);
+    let charged = 0;
 
     try {
       if (!admin) {
-        const ok = await spendCoins(session.user.id, cost, "generate_avatar_ai");
-        if (!ok) { toast.error("Falha ao debitar Átomos."); setOptionsOpen(false); return; }
+        const r = await spendCoins(session.user.id, cost, "generate_avatar_ai");
+        if (!r.ok) { toast.error(r.reason ?? "Falha ao debitar Átomos."); setOptionsOpen(false); return; }
+        charged = r.charged ?? 0;
       }
       const { data, error } = await supabase.functions.invoke("generate-player-avatar", {
         body: {
           cardSymbol: currentSymbol,
           appearance: avatar?.appearance ?? {},
           photoBase64: photoBase64 ?? undefined,
+          cardImageUrl: usableCardArt,
           count: 1,
         },
       });
@@ -235,7 +238,14 @@ export default function Perfil() {
 
       await refresh(session.user.id);
     } catch (e: any) {
-      toast.error(e?.message ?? "Falha ao gerar avatar");
+      // A geração falhou: devolve os Átomos debitados.
+      if (charged > 0) {
+        await addCoins(session.user.id, charged);
+        setWallet((w: any) => ({ ...w, coins: (w?.coins ?? 0) + charged }));
+        toast.error(`${e?.message ?? "Falha ao gerar avatar"} — ${charged}${COIN_SYMBOL} devolvidos.`);
+      } else {
+        toast.error(e?.message ?? "Falha ao gerar avatar");
+      }
       setOptionsOpen(false);
     } finally { setGenerating(false); }
   };
