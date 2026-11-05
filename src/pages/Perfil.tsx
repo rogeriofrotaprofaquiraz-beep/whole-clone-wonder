@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { ensureUserAccess } from "@/lib/ensureUserAccess";
-import { loadAvatar, loadWallet, isAdmin, spendCoins, COIN_SYMBOL, COIN_NAME, COSTS } from "@/lib/playerEconomy";
+import { loadAvatar, loadWallet, isAdmin, spendCoins, addCoins, COIN_SYMBOL, COIN_NAME, COSTS } from "@/lib/playerEconomy";
 import { ELEMENTS_DATA } from "@/data/elements";
 import { levelFromLifetime, xpProgress, maxAtomicForLevel, canUnlockCard, cardUnlockCost, listAllCards } from "@/lib/playerProfile";
 import { RARITY_FRAME, FAMILY_BADGE, getFamily, calcRarity } from "@/lib/heroStyles";
@@ -114,6 +114,12 @@ export default function Perfil() {
   const gen = avatar?.generated_url as string | undefined;
   const isSimpleDrawing = !!gen && (gen.startsWith("data:image/svg") || /\.svg(\?|$)/i.test(gen) || gen.includes("/fallback-"));
   const avatarImage = gen && !isSimpleDrawing ? gen : currentEl.heroImage;
+
+  // Arte da carta que pode servir de referência visual para a IA (imagem fixa, não vídeo/SVG)
+  const usableCardArt =
+    currentEl.heroImage && !/\.(mp4|mov|webm|svg)(\?|$)/i.test(currentEl.heroImage) && !/fallback-/i.test(currentEl.heroImage)
+      ? currentEl.heroImage
+      : undefined;
 
 
   const unlockedSet = new Set<string>(avatar?.unlocked_cards ?? ["H"]);
