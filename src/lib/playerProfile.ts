@@ -2,7 +2,8 @@ import { ELEMENTS_DATA } from "@/data/elements";
 
 /** Sistema de níveis com base em Átomos acumulados. */
 export const XP_PER_LEVEL = 100;
-export const MAX_LEVEL = 10;
+/** Um nível por elemento: nível 1 = Hidrogênio (nº1), nível 2 = Hélio (nº2)… até 118. */
+export const MAX_LEVEL = 118;
 
 export function levelFromLifetime(lifetimeCoins: number): number {
   return Math.min(MAX_LEVEL, Math.floor((lifetimeCoins ?? 0) / XP_PER_LEVEL) + 1);
@@ -29,7 +30,13 @@ const LEVEL_MAX_ATOMIC: Record<number, number> = {
 };
 
 export function maxAtomicForLevel(level: number) {
-  return LEVEL_MAX_ATOMIC[Math.min(MAX_LEVEL, Math.max(1, level))] ?? 2;
+  return Math.min(MAX_LEVEL, Math.max(1, Math.floor(level || 1)));
+}
+
+/** Símbolo do elemento associado ao nível (nº atômico = nível). */
+export function elementForLevel(level: number): string {
+  const n = maxAtomicForLevel(level);
+  return Object.values(ELEMENTS_DATA).find((e) => e.number === n)?.symbol ?? "H";
 }
 
 export function canUnlockCard(symbol: string, level: number) {

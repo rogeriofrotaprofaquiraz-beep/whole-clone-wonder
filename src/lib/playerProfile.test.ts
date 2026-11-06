@@ -22,3 +22,10 @@ describe("referência da carta para o avatar ultrarrealista", () => {
     expect(usableCardReference(ELEMENTS_DATA["Si"].heroImage)).toBe(ELEMENTS_DATA["Si"].heroImage);
   });
 });
+
+import { elementForLevel as efl } from "./playerProfile";
+describe("elemento por nível", () => {
+  it("nível 1 = H, 2 = He, 3 = Li", () => {
+    expect(efl(1)).toBe("H"); expect(efl(2)).toBe("He"); expect(efl(3)).toBe("Li");
+  });
+});
