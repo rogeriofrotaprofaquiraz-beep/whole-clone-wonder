@@ -1,6 +1,7 @@
 import React from "react";
 import { PeriodicElement } from "@/data/elements";
 import { Badge } from "@/components/ui/badge";
+import { galleryHeroSource, fullBodyHeroUrl, localHeroFallback } from "@/lib/heroArt";
 import { RARITY_FRAME, FAMILY_BADGE, getFamily, calcRarity } from "@/lib/heroStyles";
 
 type Props = {
@@ -14,8 +15,10 @@ export const HeroMiniCard: React.FC<Props> = ({ element, onClick, size = "md" })
   const frame = RARITY_FRAME[rarity];
   const family = getFamily(element.symbol, element.number);
   const familyBadge = FAMILY_BADGE[family];
-  const heroImage = element.heroImage || "/placeholder.svg";
-  const isVideo = heroImage.endsWith(".mp4");
+  const { src: heroImage, isVideo } = galleryHeroSource(element);
+  const [tries, setTries] = React.useState(0);
+  const imgSrc =
+    tries === 0 ? heroImage : tries === 1 ? fullBodyHeroUrl(element, element.number + 1000) : localHeroFallback(element);
 
   const sizing = size === "sm"
     ? "w-[150px] h-[230px]"
@@ -36,7 +39,13 @@ export const HeroMiniCard: React.FC<Props> = ({ element, onClick, size = "md" })
         {isVideo ? (
           <video src={heroImage} muted autoPlay loop playsInline className="w-full h-full object-cover" />
         ) : (
-          <img src={heroImage} alt={element.heroName || element.name} className="w-full h-full object-cover" loading="lazy" />
+          <img
+            src={imgSrc}
+            alt={element.heroName || element.name}
+            className="w-full h-full object-cover object-top"
+            loading="lazy"
+            onError={() => setTries((t) => Math.min(t + 1, 2))}
+          />
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/40" />
       </div>
