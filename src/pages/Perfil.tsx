@@ -101,9 +101,9 @@ export default function Perfil() {
   const progress = useMemo(() => xpProgress(lifetime), [lifetime]);
   const level = progress.level;
   const maxAtomic = maxAtomicForLevel(level);
-  // Jogador começa no Hidrogênio (nível 1) e avança um elemento por nível; admin escolhe livremente
+  // Jogador começa no Hidrogênio (nível 1) e avança um elemento por nível
   const levelSymbol = elementForLevel(level);
-  const currentSymbol = admin ? (avatar?.current_card ?? "H") : levelSymbol;
+  const currentSymbol = levelSymbol;
   const currentEl = ELEMENTS_DATA[currentSymbol] ?? ELEMENTS_DATA["H"];
   const family = getFamily(currentEl.symbol, currentEl.number);
   const fb = FAMILY_BADGE[family];
@@ -122,12 +122,12 @@ export default function Perfil() {
 
 
   useEffect(() => {
-    if (!session?.user || !avatar || admin || avatar.current_card === levelSymbol) return;
+    if (!session?.user || !avatar || avatar.current_card === levelSymbol) return;
     const unlocked = Array.from(new Set([...(avatar.unlocked_cards ?? ["H"]), levelSymbol]));
     supabase.from("player_avatars").update({ current_card: levelSymbol, unlocked_cards: unlocked, generated_url: null })
       .eq("user_id", session.user.id).then(() => refresh(session.user.id));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [session?.user?.id, avatar?.current_card, levelSymbol, admin]);
+  }, [session?.user?.id, avatar?.current_card, levelSymbol]);
 
   const unlockedSet = new Set<string>(avatar?.unlocked_cards ?? ["H"]);
 
