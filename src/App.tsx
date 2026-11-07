@@ -12,6 +12,7 @@ import Perfil from "./pages/Perfil.tsx";
 import Carteira from "./pages/Carteira.tsx";
 import Progresso from "./pages/Progresso.tsx";
 import Escola from "./pages/Escola.tsx";
+import Laboratorio from "./pages/Laboratorio.tsx";
 import Historico from "./pages/Historico.tsx";
 import PainelDesempenho from "./pages/PainelDesempenho.tsx";
 import RankingPage from "./pages/Ranking.tsx";
@@ -51,6 +52,7 @@ const App = () => (
           <Route path="/carteira" element={<FeatureGuard feature="pagina_carteira"><Carteira /></FeatureGuard>} />
           <Route path="/progresso" element={<FeatureGuard feature="pagina_progresso"><Progresso /></FeatureGuard>} />
           <Route path="/escola" element={<Escola />} />
+          <Route path="/laboratorio" element={<Laboratorio />} />
           <Route path="/ranking" element={<FeatureGuard feature="pagina_ranking"><RankingPage /></FeatureGuard>} />
           <Route path="/plano-de-aula" element={<PlanoDeAula />} />
           <Route path="/permissoes" element={<Permissoes />} />
