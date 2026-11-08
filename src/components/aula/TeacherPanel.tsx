@@ -12,6 +12,7 @@ import { Sparkles, Play, Copy, Loader2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { QuestionBankByTopic } from "./QuestionBankByTopic";
 import { AreaQuestionsDialog } from "./AreaQuestionsDialog";
+import { QuestionBankCentral } from "./QuestionBankCentral";
 
 export function TeacherPanel({ userId }: { userId: string }) {
   const navigate = useNavigate();
@@ -190,6 +191,7 @@ export function TeacherPanel({ userId }: { userId: string }) {
           ))}
         </div>
         <AreaQuestionsDialog area={openArea} onClose={() => setOpenArea(null)} onChanged={() => loadStats()} />
+        <QuestionBankCentral />
         <div className="grid md:grid-cols-2 gap-3">
           <div>
             <Label>Área</Label>
