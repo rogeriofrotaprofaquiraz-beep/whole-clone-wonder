@@ -141,6 +141,13 @@
       "when": 1793802257233,
       "tag": "0019_student_lesson_resets",
       "breakpoints": true
+    },
+    {
+      "idx": 20,
+      "version": "7",
+      "when": 1794149218994,
+      "tag": "0020_award_team_coins",
+      "breakpoints": true
     }
   ]
 }

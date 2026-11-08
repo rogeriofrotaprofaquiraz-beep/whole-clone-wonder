@@ -2138,6 +2138,10 @@ export type Database = {
         Args: { _approve: boolean; _class_id: string; _user_id: string }
         Returns: undefined
       }
+      award_team_coins: {
+        Args: { _amount: number; _user_ids: string[] }
+        Returns: number
+      }
       current_credit_bonus: { Args: { _user_id: string }; Returns: number }
       ensure_current_user_access: {
         Args: never
