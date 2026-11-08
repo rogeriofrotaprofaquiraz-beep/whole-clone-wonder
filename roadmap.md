@@ -4,7 +4,7 @@
 - [x] Jogar vs computador: moedas por vitória, explicação do porquê, pontos escondidos
 - [x] Sala de jogos com equipes (membros da equipe vencedora ganham moedas)
 - [x] 3/5/10/15 também no caça-palavras e na cruzada (grade cresce com o nº)
-- [ ] Áreas da química: adicionar/editar/excluir, clicar mostra questões; esconder pontuação; explicação no cadastro do elemento
+- [x] Áreas da química: adicionar/editar/excluir, clicar mostra questões; esconder pontuação; explicação no cadastro do elemento
 
 # Roadmap (prompt-38)
 - [x] Perguntas sem repetir + relatório de acertos/erros por nível (Quiz rápido)

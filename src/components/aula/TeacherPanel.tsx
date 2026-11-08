@@ -11,6 +11,7 @@ import { AREAS, MODES, genCode, areaMeta, AreaValue, LEVELS, LevelValue, DIFFICU
 import { Sparkles, Play, Copy, Loader2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { QuestionBankByTopic } from "./QuestionBankByTopic";
+import { AreaQuestionsDialog } from "./AreaQuestionsDialog";
 
 export function TeacherPanel({ userId }: { userId: string }) {
   const navigate = useNavigate();
@@ -27,6 +28,7 @@ export function TeacherPanel({ userId }: { userId: string }) {
   const [content, setContent] = useState("");
   const [generatingAll, setGeneratingAll] = useState(false);
   const [stats, setStats] = useState<Record<string, number>>({});
+  const [openArea, setOpenArea] = useState<AreaValue | null>(null);
   const [sessions, setSessions] = useState<any[]>([]);
 
   const [stdProgress, setStdProgress] = useState("");
@@ -173,17 +175,21 @@ export function TeacherPanel({ userId }: { userId: string }) {
         </div>
         <div className="grid grid-cols-2 md:grid-cols-5 gap-2 mb-4">
           {AREAS.map((a) => (
-            <div
+            <button
+              type="button"
+              onClick={() => setOpenArea(a.value)}
+              title="Ver assuntos e questões"
               key={a.value}
-              className="rounded-lg p-3 text-white text-center"
+              className="rounded-lg p-3 text-white text-center hover:opacity-90 transition"
               style={{ background: a.color }}
             >
               <div className="text-2xl">{a.emoji}</div>
               <div className="text-xs font-bold mt-1">{a.label}</div>
               <div className="text-lg font-black">{stats[a.value] ?? 0}</div>
-            </div>
+            </button>
           ))}
         </div>
+        <AreaQuestionsDialog area={openArea} onClose={() => setOpenArea(null)} onChanged={() => loadStats()} />
         <div className="grid md:grid-cols-2 gap-3">
           <div>
             <Label>Área</Label>
