@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import { LabSimulations } from "@/components/lab/LabSimulations";
 import { supabase } from "@/integrations/supabase/client";
 import { addCoins } from "@/lib/playerEconomy";
 import { REAGENTS, REACTIONS, mix, type Reaction } from "@/lib/labReactions";
@@ -45,6 +46,8 @@ export default function Laboratorio() {
           <h1 className="text-3xl font-bold text-foreground">⚗️ Laboratório Virtual</h1>
           <Link to="/" className="text-sm text-muted-foreground underline">Voltar</Link>
         </div>
+        <LabSimulations />
+        <h2 className="text-xl font-bold text-foreground">🧪 Misturas no béquer</h2>
         <p className="text-muted-foreground">Escolha até 3 reagentes, coloque no béquer e misture para descobrir compostos.</p>
 
         <div className="grid md:grid-cols-[1fr_320px] gap-6">
