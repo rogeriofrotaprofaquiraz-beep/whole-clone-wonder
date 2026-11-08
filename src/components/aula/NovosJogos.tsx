@@ -1,3 +1,4 @@
+import { loadLinkedTerms, loadLinkedQuestions } from "@/lib/linkedBank";
 import { QUESTION_COUNTS } from "@/lib/miniGames";
 import { recordHit, recordMiss } from "@/lib/gameStats";
 import { useEffect, useMemo, useState } from "react";
@@ -49,14 +50,14 @@ function useTerms(area: AreaValue) {
 /* ---------------- Palavras Cruzadas (cruzadinha com palavra-chave) ---------------- */
 const CROSS_COINS = [1, 2, 4, 7, 10]; // Átomos por palavra conforme dificuldade 1★..5★
 type CTerm = { term: string; clue: string; difficulty: number };
-export function PalavrasCruzadas({ area }: { area: AreaValue }) {
+export function PalavrasCruzadas({ area, topic }: { area: AreaValue; topic?: string }) {
   const meta = areaMeta(area);
   const [terms, setTerms] = useState<CTerm[] | null>(null);
   const [size, setSize] = useState(5);
   useEffect(() => {
     setTerms(null);
-    supabase.from("chem_terms").select("term,clue,difficulty").eq("area", area).limit(400).then(({ data }) => setTerms((data ?? []) as CTerm[]));
-  }, [area]);
+    loadLinkedTerms(area, topic).then(setTerms);
+  }, [area, topic]);
   const [words, setWords] = useState<CTerm[]>([]);
   const [answers, setAnswers] = useState<string[]>([]);
   const [done, setDone] = useState<boolean[]>([]);
@@ -111,7 +112,7 @@ export function PalavrasCruzadas({ area }: { area: AreaValue }) {
 
 /* ---------------- Tabuleiro Químico ---------------- */
 type Q = { question: string; options: any; correct_index: number };
-export function TabuleiroQuimico() {
+export function TabuleiroQuimico({ area = "geral", topic }: { area?: AreaValue; topic?: string }) {
   const SIZE = 20;
   const [qs, setQs] = useState<Q[]>([]);
   const [pos, setPos] = useState(0);
@@ -119,8 +120,8 @@ export function TabuleiroQuimico() {
   const [dice, setDice] = useState<number | null>(null);
   const [turns, setTurns] = useState(0);
   useEffect(() => {
-    supabase.from("chem_questions").select("question,options,correct_index").limit(200).then(({ data }) => setQs((data ?? []) as Q[]));
-  }, []);
+    loadLinkedQuestions(area, topic).then((d) => setQs(d as Q[]));
+  }, [area, topic]);
   const reset = () => { setPos(0); setQ(null); setDice(null); setTurns(0); };
   const roll = () => {
     if (!qs.length) return;

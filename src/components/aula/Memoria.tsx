@@ -1,3 +1,4 @@
+import { loadLinkedTerms } from "@/lib/linkedBank";
 import { recordHit, recordMiss } from "@/lib/gameStats";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
@@ -11,7 +12,7 @@ import { addCoins } from "@/lib/playerEconomy";
 
 type Tile = { id: number; key: string; face: string; sub?: string; flipped: boolean; matched: boolean };
 
-export function Memoria({ area }: { area: AreaValue }) {
+export function Memoria({ area, topic }: { area: AreaValue; topic?: string }) {
   const meta = areaMeta(area);
   const [tiles, setTiles] = useState<Tile[]>([]);
   const [flipped, setFlipped] = useState<number[]>([]);
@@ -19,7 +20,7 @@ export function Memoria({ area }: { area: AreaValue }) {
   const [busy, setBusy] = useState(false);
 
   const load = async () => {
-    const { data } = await supabase.from("chem_terms").select("*").eq("area", area).limit(80);
+    const data = await loadLinkedTerms(area, topic);
     const pool = (data ?? []).sort(() => Math.random() - 0.5).slice(0, 8);
     if (!pool.length) return setTiles([]);
     const pairs: Tile[] = [];
@@ -30,7 +31,7 @@ export function Memoria({ area }: { area: AreaValue }) {
     setTiles(pairs.sort(() => Math.random() - 0.5));
     setFlipped([]); setMoves(0);
   };
-  useEffect(() => { load(); }, [area]);
+  useEffect(() => { load(); }, [area, topic]);
 
   const click = (idx: number) => {
     if (busy) return;

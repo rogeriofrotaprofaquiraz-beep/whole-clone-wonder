@@ -141,10 +141,10 @@ export function CampeonatoJogos() {
       </Card>
       {game === "quiz" ? <ElementQuiz /> : game === "forca" ? <ForcaDuelo area={area} level="medio" difficulty={difficulty} /> : !unlocked ? <QuestionGate area={area} topic={topic || undefined} phase={phase} onPass={() => setUnlocked(true)} /> : (<div key={phase} className="space-y-3">
       <div className="flex items-center justify-between"><span className="font-bold text-sm">🏁 Fase {phase}</span><Button size="sm" onClick={() => { setPhase((p) => p + 1); setUnlocked(false); }}>Próxima fase →</Button></div>
-      {game === "caca" && <CacaPalavras area={area} />}
-      {game === "cruzada" && <PalavrasCruzadas area={area} />}
-      {game === "memoria" && <Memoria area={area} />}
-      {game === "tabuleiro" && <TabuleiroQuimico />}
+      {game === "caca" && <CacaPalavras area={area} topic={topic || undefined} />}
+      {game === "cruzada" && <PalavrasCruzadas area={area} topic={topic || undefined} />}
+      {game === "memoria" && <Memoria area={area} topic={topic || undefined} />}
+      {game === "tabuleiro" && <TabuleiroQuimico area={area} topic={topic || undefined} />}
       {game === "naval" && <BatalhaNaval />}
       {game === "stop" && <StopQuimico />}
       {game === "bingo" && <BingoQuimico />}

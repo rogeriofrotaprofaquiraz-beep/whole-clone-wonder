@@ -1,3 +1,4 @@
+import { loadLinkedTerms } from "@/lib/linkedBank";
 import { recordHit } from "@/lib/gameStats";
 import { useEffect, useMemo, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
@@ -46,7 +47,7 @@ function buildGrid(words: string[]): Grid {
   return { letters, placed };
 }
 
-export function CacaPalavras({ area }: { area: AreaValue }) {
+export function CacaPalavras({ area, topic }: { area: AreaValue; topic?: string }) {
   const meta = areaMeta(area);
   const [terms, setTerms] = useState<any[]>([]);
   const [grid, setGrid] = useState<Grid | null>(null);
@@ -56,9 +57,8 @@ export function CacaPalavras({ area }: { area: AreaValue }) {
   const [count, setCount] = useState(5);
 
   useEffect(() => {
-    supabase.from("chem_terms").select("*").eq("area", area).limit(200)
-      .then(({ data }) => setTerms(data ?? []));
-  }, [area]);
+    loadLinkedTerms(area, topic).then(setTerms);
+  }, [area, topic]);
 
   useEffect(() => { if (terms.length) reset(); }, [terms, count]);
 
