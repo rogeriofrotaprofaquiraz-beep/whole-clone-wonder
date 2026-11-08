@@ -625,9 +625,9 @@ export const AdminPanel = ({ userRole, initialSymbol, usersOnly }: { userRole?: 
                               />
                             </div>
                             <div className="space-y-1">
-                              <Label className="text-[9px] font-black uppercase text-slate-600">Justificativa Lore/Ciência</Label>
+                              <Label className="text-[9px] font-black uppercase text-slate-600">Explicação: por que este elemento pontua mais neste atributo</Label>
                               <Textarea 
-                                placeholder="Conecte a propriedade química ao poder do herói..." 
+                                placeholder="Ex.: o sódio vence em reatividade porque tem 1 elétron na camada de valência e o perde facilmente..." 
                                 value={attr.justification} 
                                 onChange={e => handleAttributeChange(index, 'justification', e.target.value)}
                                 className="bg-black/40 border-white/10 text-[10px] h-16 italic text-white"

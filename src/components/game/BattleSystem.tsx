@@ -6,6 +6,8 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Swords, Trophy, RefreshCw, ChevronRight, User, Users, CircleHelp } from 'lucide-react';
 import { toast } from "sonner";
+import { addCoins } from "@/lib/playerEconomy";
+import { battleCoins, explainBattle } from "@/lib/battleRules";
 
 export const BattleSystem = () => {
   const [session, setSession] = useState<any>(null);
@@ -146,6 +148,11 @@ export const BattleSystem = () => {
       startNewRound();
     } else {
       setGameState('gameOver');
+      const coins = battleCoins(score.player, score.cpu);
+      if (session && coins > 0) {
+        await addCoins(session.user.id, coins);
+        toast.success(`+${coins}⚛ pela partida${score.player > score.cpu ? ' (vitória!)' : ''}`);
+      }
       if (session && score.player !== score.cpu) {
         const isWin = score.player > score.cpu;
         const { data: profile } = await supabase.from('profiles').select('*').eq('id', session.user.id).single();
@@ -285,7 +292,7 @@ export const BattleSystem = () => {
                           </div>
                        </div>
                        <span className={`text-2xl font-black italic z-10 tracking-tighter ${selectedAttr === attr.label ? 'text-white' : 'text-blue-300'}`}>
-                         {gameState === 'result' || selectedAttr === attr.label ? attr.score.toFixed(0) : '??'}
+                         {gameState === 'result' && selectedAttr === attr.label ? (winner === 'player' ? '🏆' : winner === 'cpu' ? '✖' : '＝') : ''}
                        </span>
                      </button>
                      
@@ -381,7 +388,7 @@ export const BattleSystem = () => {
                             </div>
                          </div>
                          <span className={`text-2xl font-black italic tracking-tighter ${selectedAttr === attr.label ? 'text-red-400' : 'text-slate-800'}`}>
-                           {gameState === 'result' ? cpuAttr?.score.toFixed(0) : '??'}
+                           {gameState === 'result' && selectedAttr === attr.label ? (winner === 'cpu' ? '🏆' : winner === 'player' ? '✖' : '＝') : ''}
                          </span>
                        </div>
 
@@ -416,6 +423,12 @@ export const BattleSystem = () => {
               {winner === 'player' ? 'VITÓRIA TÁTICA!' : winner === 'cpu' ? 'DERROTA CRÍTICA!' : 'EMPATE ELEMENTAL!'}
             </span>
           </div>
+          {playerCard && cpuCard && selectedAttr && (
+            <div className="max-w-2xl mb-8 p-5 rounded-2xl bg-card text-card-foreground border text-sm leading-relaxed">
+              <p className="font-bold mb-2">🔎 Por que {winner === 'draw' ? 'empatou' : winner === 'player' ? 'você venceu' : 'o oponente venceu'}?</p>
+              <p className="whitespace-pre-line">{explainBattle(playerCard, cpuCard, selectedAttr)}</p>
+            </div>
+          )}
           <Button 
             onClick={nextRound} 
             size="lg" 
