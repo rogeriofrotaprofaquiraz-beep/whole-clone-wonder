@@ -1,152 +1,132 @@
 import { recordHit, recordMiss } from "@/lib/gameStats";
-import React, { useEffect, useState } from 'react';
-import { ELEMENTS_DATA } from '@/data/elements';
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Brain, CheckCircle2, XCircle, Trophy, ArrowRight } from 'lucide-react';
+import { CheckCircle2, XCircle, Trophy, Zap } from "lucide-react";
 import { toast } from "sonner";
 import { addCoins } from "@/lib/playerEconomy";
 import { supabase } from "@/integrations/supabase/client";
+import { DIFFICULTIES } from "@/lib/aula";
+import { loadSeen, pickUnseen, quizCoins, saveSeen, summarize, ReportRow } from "@/lib/questionPicker";
 
-type Q = { prompt: string; big?: string; options: string[]; correct: string; explanation?: string | null; image?: string | null };
+type Q = { id: string; prompt: string; options: string[]; correct: string; difficulty: number; explanation?: string | null; image?: string | null };
 const MAX_QUESTIONS = 10;
 const shuffle = <T,>(a: T[]) => [...a].sort(() => Math.random() - 0.5);
-
-function heroQuestions(): Q[] {
-  const syms = Object.keys(ELEMENTS_DATA).filter((s) => ELEMENTS_DATA[s]?.heroName);
-  return Array.from({ length: MAX_QUESTIONS }, () => {
-    const c = syms[Math.floor(Math.random() * syms.length)];
-    const el = ELEMENTS_DATA[c];
-    const wrong = new Set<string>();
-    while (wrong.size < 3) {
-      const s = syms[Math.floor(Math.random() * syms.length)];
-      if (s !== c) wrong.add(ELEMENTS_DATA[s].heroName);
-    }
-    return { prompt: `Quem é o herói do elemento ${el.name}?`, big: el.symbol, options: shuffle([...wrong, el.heroName]), correct: el.heroName };
-  });
-}
+const levelLabel = (d: number) => DIFFICULTIES.find((x) => x.value === d)?.label ?? `${d}`;
 
 export const ElementQuiz = () => {
-  const [gameState, setGameState] = useState<'start' | 'playing' | 'end'>('start');
+  const [state, setState] = useState<"loading" | "playing" | "end" | "empty">("loading");
   const [questions, setQuestions] = useState<Q[]>([]);
   const [idx, setIdx] = useState(0);
-  const [score, setScore] = useState(0);
-  const [answered, setAnswered] = useState(false);
+  const [coins, setCoins] = useState(0);
   const [selected, setSelected] = useState<string | null>(null);
-  const [grade, setGrade] = useState<number | null>(null);
-  const [classIds, setClassIds] = useState<string[]>([]);
+  const [report, setReport] = useState<ReportRow[]>([]);
 
-  useEffect(() => {
-    (async () => {
-      const { data: u } = await supabase.auth.getUser();
-      if (!u.user) return;
-      const { data: m } = await supabase.from("class_members")
-        .select("class_id,status,classes(grade_year)").eq("user_id", u.user.id);
-      const ok = (m ?? []).filter((x: any) => x.status !== "pending");
-      setClassIds(ok.map((x: any) => x.class_id));
-      const g = ok.map((x: any) => x.classes?.grade_year).find((v: any) => v != null);
-      if (g != null) setGrade(g);
-    })();
-  }, []);
-
-  const startQuiz = async () => {
-    let qs: Q[] = [];
-    if (grade != null) {
-      let q = supabase.from("chem_questions").select("question,options,correct_index,explanation,image_url,class_id,grade_year");
-      q = classIds.length
-        ? q.or(`grade_year.eq.${grade},class_id.in.(${classIds.join(",")})`)
-        : q.eq("grade_year", grade);
-      const { data } = await q.limit(300);
-      qs = shuffle((data ?? []).filter((r: any) => Array.isArray(r.options) && r.options[r.correct_index] != null))
-        .slice(0, MAX_QUESTIONS)
-        .map((r: any) => ({
-          prompt: r.question, options: shuffle(r.options.map(String)), correct: String(r.options[r.correct_index]),
-          explanation: r.explanation, image: r.image_url,
-        }));
-    }
-    if (!qs.length) {
-      if (grade != null) toast.info("Ainda não há questões do banco para sua série. Usando o quiz dos heróis.");
-      qs = heroQuestions();
-    }
-    setQuestions(qs); setIdx(0); setScore(0); setAnswered(false); setSelected(null); setGameState('playing');
+  const start = async () => {
+    setState("loading");
+    const { data: u } = await supabase.auth.getUser();
+    const scope = u.user?.id ?? "anon";
+    const { data } = await supabase.from("chem_questions")
+      .select("id,question,options,correct_index,explanation,image_url,difficulty").limit(1000);
+    const pool = (data ?? []).filter((r: any) => Array.isArray(r.options) && r.options[r.correct_index] != null);
+    if (!pool.length) { setState("empty"); return; }
+    const { picked, seen } = pickUnseen(pool as any[], loadSeen(scope), MAX_QUESTIONS);
+    saveSeen(scope, seen);
+    setQuestions(picked.map((r: any) => ({
+      id: r.id, prompt: r.question, options: shuffle(r.options.map(String)), correct: String(r.options[r.correct_index]),
+      difficulty: r.difficulty ?? 2, explanation: r.explanation, image: r.image_url,
+    })));
+    setIdx(0); setCoins(0); setSelected(null); setReport([]); setState("playing");
   };
+
+  useEffect(() => { start(); }, []);
 
   const cur = questions[idx];
 
-  const handleAnswer = (option: string) => {
-    if (answered) return;
-    setSelected(option); setAnswered(true);
-    if (option === cur.correct) {
-      setScore((s) => s + 1);
-      toast.success(`Correto! +5 ⚛️`);
-      recordHit(5);
-      supabase.auth.getUser().then(({ data }) => { if (data.user) addCoins(data.user.id, 5).catch(() => {}); });
-    } else {
-      toast.error(`Incorreto! Resposta: ${cur.correct}`); recordMiss();
-    }
+  const answer = (o: string) => {
+    if (selected) return;
+    setSelected(o);
+    const ok = o === cur.correct;
+    setReport((r) => [...r, { question: cur.prompt, difficulty: cur.difficulty, correct: ok, answer: cur.correct, chosen: o }]);
+    if (ok) {
+      const c = quizCoins(cur.difficulty);
+      setCoins((x) => x + c);
+      toast.success(`Correto! +${c} ⚛`);
+      recordHit(c);
+      supabase.auth.getUser().then(({ data }) => { if (data.user) addCoins(data.user.id, c).catch(() => {}); });
+    } else { recordMiss(); }
     setTimeout(() => {
-      if (idx + 1 < questions.length) { setIdx((i) => i + 1); setAnswered(false); setSelected(null); }
-      else setGameState('end');
-    }, 2500);
+      if (idx + 1 < questions.length) { setIdx((i) => i + 1); setSelected(null); }
+      else setState("end");
+    }, 2200);
   };
 
-  if (gameState === 'start') {
-    return (
-      <div className="flex flex-col items-center justify-center p-12 bg-slate-900/50 rounded-3xl border border-white/10 backdrop-blur-xl h-[500px] text-center">
-        <div className="w-20 h-20 bg-purple-600/20 rounded-full flex items-center justify-center mb-6">
-          <Brain className="w-10 h-10 text-purple-400" />
-        </div>
-        <h2 className="text-3xl font-black italic mb-4">DESAFIO DO CONHECIMENTO</h2>
-        <p className="text-slate-400 mb-8 max-w-md">
-          {grade != null ? `Perguntas do banco de questões para o ${grade}º ano.` : "Teste seus conhecimentos sobre os heróis dos elementos."}
-        </p>
-        <Button onClick={startQuiz} size="lg" className="bg-purple-600 hover:bg-purple-700 font-bold px-12 py-6 rounded-2xl">
-          COMEÇAR QUIZ
-        </Button>
-      </div>
-    );
-  }
+  const shell = "relative overflow-hidden rounded-3xl border border-primary/30 bg-card/80 backdrop-blur-xl shadow-[0_0_40px_hsl(var(--primary)/0.15)]";
 
-  if (gameState === 'end') {
-    const total = questions.length;
+  if (state === "loading") return <div className={`${shell} p-12 text-center text-muted-foreground`}>Carregando perguntas…</div>;
+  if (state === "empty") return <div className={`${shell} p-12 text-center`}>Ainda não há perguntas no banco de questões.</div>;
+
+  if (state === "end") {
+    const s = summarize(report);
     return (
-      <div className="flex flex-col items-center justify-center p-12 bg-slate-900/50 rounded-3xl border border-white/10 backdrop-blur-xl h-[500px] text-center">
-        <Trophy className="w-20 h-20 text-yellow-400 mb-6" />
-        <h2 className="text-4xl font-black italic mb-2">FIM DO DESAFIO!</h2>
-        <div className="text-6xl font-black text-yellow-400 mb-6">{score}/{total}</div>
-        <Button onClick={startQuiz} size="lg" className="font-bold px-12 py-6 rounded-2xl">TENTAR NOVAMENTE</Button>
+      <div className={`${shell} p-6 md:p-8 space-y-6`}>
+        <div className="text-center space-y-2">
+          <Trophy className="mx-auto h-14 w-14 text-primary" />
+          <h2 className="font-mono text-2xl font-black tracking-widest uppercase">Relatório da missão</h2>
+          <div className="flex justify-center gap-3 flex-wrap">
+            <Badge className="text-base px-4 py-1">✅ {s.hit} acertos</Badge>
+            <Badge variant="destructive" className="text-base px-4 py-1">❌ {s.miss} erros</Badge>
+            <Badge variant="outline" className="text-base px-4 py-1">{s.percent}%</Badge>
+            <Badge variant="secondary" className="text-base px-4 py-1">+{coins} ⚛</Badge>
+          </div>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-2">
+          {DIFFICULTIES.map((d) => {
+            const b = s.byLevel[d.value]; if (!b) return null;
+            const pct = Math.round((b.hit / (b.hit + b.miss)) * 100);
+            return (
+              <div key={d.value} className="rounded-xl border border-primary/20 bg-background/50 p-3 text-center">
+                <div className="text-xs uppercase text-muted-foreground">{d.label}</div>
+                <div className="font-mono text-xl font-black">{b.hit}/{b.hit + b.miss}</div>
+                <div className="h-1.5 rounded bg-muted mt-1"><div className="h-full rounded bg-primary" style={{ width: `${pct}%` }} /></div>
+              </div>
+            );
+          })}
+        </div>
+        <ol className="space-y-2">
+          {report.map((r, i) => (
+            <li key={i} className={`rounded-xl border p-3 text-sm ${r.correct ? "border-primary/30" : "border-destructive/40"}`}>
+              <div className="flex gap-2 font-semibold">{r.correct ? <CheckCircle2 className="h-4 w-4 text-primary shrink-0" /> : <XCircle className="h-4 w-4 text-destructive shrink-0" />}{i + 1}. {r.question}</div>
+              <div className="text-xs text-muted-foreground mt-1">Nível: {levelLabel(r.difficulty)} · Resposta: {r.answer}{!r.correct && ` · Você marcou: ${r.chosen}`}</div>
+            </li>
+          ))}
+        </ol>
+        <div className="text-center"><Button size="lg" onClick={start}>Nova rodada (perguntas novas)</Button></div>
       </div>
     );
   }
 
   return (
-    <div className="flex flex-col items-center gap-8 w-full max-w-2xl mx-auto p-4">
-      <div className="w-full flex justify-between items-center mb-4">
-        <Badge variant="outline" className="px-4 py-1 text-lg font-mono">Questão {idx + 1}/{questions.length}</Badge>
-        <Badge className="px-4 py-1 text-lg">Pontos: {score}</Badge>
+    <div className={`${shell} p-6 md:p-8 space-y-6 max-w-3xl mx-auto`}>
+      <div className="flex justify-between items-center font-mono">
+        <Badge variant="outline">Questão {idx + 1}/{questions.length}</Badge>
+        <Badge variant="secondary"><Zap className="h-3 w-3 mr-1" />{levelLabel(cur.difficulty)} · {quizCoins(cur.difficulty)} ⚛</Badge>
+        <Badge>{coins} ⚛</Badge>
       </div>
-      <Card className="w-full bg-slate-900 border-white/10 overflow-hidden shadow-2xl">
-        <CardContent className="p-8 flex flex-col items-center text-center">
-          {cur.big && <div className="text-7xl font-black mb-4 text-blue-400">{cur.big}</div>}
-          {cur.image && <img src={cur.image} alt="" className="max-h-56 rounded-xl mb-4" />}
-          <h3 className="text-xl font-bold mb-8 text-white">{cur.prompt}</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
-            {cur.options.map((o) => (
-              <Button key={o} onClick={() => handleAnswer(o)} disabled={answered} variant="outline"
-                className={`min-h-20 h-auto whitespace-normal text-base font-bold rounded-2xl border-2
-                  ${answered && o === cur.correct ? 'bg-green-500/20 border-green-500 text-green-400' : ''}
-                  ${answered && selected === o && o !== cur.correct ? 'bg-red-500/20 border-red-500 text-red-400' : ''}`}>
-                {o}
-                {answered && o === cur.correct && <CheckCircle2 className="ml-2 w-6 h-6" />}
-                {answered && selected === o && o !== cur.correct && <XCircle className="ml-2 w-6 h-6" />}
-              </Button>
-            ))}
-          </div>
-          {answered && cur.explanation && <p className="mt-6 text-sm text-slate-300">{cur.explanation}</p>}
-        </CardContent>
-      </Card>
-      {answered && <div className="flex items-center gap-2 text-slate-400 italic">Preparando próxima pergunta <ArrowRight className="w-4 h-4" /></div>}
+      <div className="h-1 rounded bg-muted"><div className="h-full rounded bg-primary transition-all" style={{ width: `${(idx / questions.length) * 100}%` }} /></div>
+      {cur.image && <img src={cur.image} alt="" className="max-h-56 mx-auto rounded-xl" />}
+      <h3 className="text-xl font-bold text-center">{cur.prompt}</h3>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+        {cur.options.map((o) => (
+          <Button key={o} onClick={() => answer(o)} disabled={!!selected} variant="outline"
+            className={`min-h-16 h-auto whitespace-normal text-base font-semibold rounded-2xl border-2 border-primary/20
+              ${selected && o === cur.correct ? "border-primary bg-primary/20" : ""}
+              ${selected === o && o !== cur.correct ? "border-destructive bg-destructive/20" : ""}`}>
+            {o}
+          </Button>
+        ))}
+      </div>
+      {selected && cur.explanation && <p className="text-sm text-muted-foreground text-center">{cur.explanation}</p>}
     </div>
   );
 };

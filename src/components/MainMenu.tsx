@@ -15,8 +15,6 @@ export function MainMenu({ activeTab, setActiveTab, role }: {
   const groups: Group[] = [
     { label: "Jogos e Competições", emoji: "🎮", items: [
       { label: "Desafio dos Elementos", emoji: "⚔️", tab: "battle" },
-      { label: "Treino", emoji: "🏋️", to: "/aula/treino" },
-      { label: "Tabela", emoji: "🧪", tab: "collection" },
       { label: "Campeonato", emoji: "🏆", tab: "quiz" },
       { label: "Olimpíadas", emoji: "🏅", to: "/olimpiadas" },
       { label: "Ranking da partida", emoji: "📊", tab: "ranking" },
@@ -58,6 +56,10 @@ export function MainMenu({ activeTab, setActiveTab, role }: {
       <button onClick={() => navigate("/perfil")}
         className="inline-flex items-center gap-1.5 rounded-xl px-4 py-2.5 text-sm font-semibold text-slate-200 hover:text-white hover:bg-white/5">
         <span>👤</span> Perfil
+      </button>
+      <button onClick={() => setActiveTab("collection")}
+        className={`inline-flex items-center gap-1.5 rounded-xl px-4 py-2.5 text-sm font-semibold ${activeTab === "collection" ? "bg-violet-600 text-white" : "text-slate-200 hover:text-white hover:bg-white/5"}`}>
+        <span>🧪</span> Tabela
       </button>
       {groups.map((g) => {
         const items = g.items.filter((i) => i.show !== false);

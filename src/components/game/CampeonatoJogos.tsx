@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useState } from "react";
 import { ElementQuiz } from "@/components/game/ElementQuiz";
-import { Forca } from "@/components/aula/Forca";
+import { ForcaDuelo } from "@/components/aula/ForcaDuelo";
 import { CacaPalavras } from "@/components/aula/CacaPalavras";
 import { Memoria } from "@/components/aula/Memoria";
 import { PalavrasCruzadas, TabuleiroQuimico, BatalhaNaval, StopQuimico, BingoQuimico, TangramMolecular } from "@/components/aula/NovosJogos";
@@ -16,6 +16,13 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, Clock } from "lucide-react";
 
 type Lvl = "fácil" | "médio" | "difícil";
+// [cor normal, cor ao clicar]
+const LEVEL_COLORS: Record<"todos" | Lvl, [string, string]> = {
+  todos: ["", "bg-primary text-primary-foreground"],
+  "fácil": ["bg-green-200 text-green-900 border-green-300 hover:bg-green-300", "bg-green-800 text-white border-green-900 hover:bg-green-800"],
+  "médio": ["bg-yellow-200 text-yellow-900 border-yellow-300 hover:bg-yellow-300", "bg-yellow-600 text-white border-yellow-700 hover:bg-yellow-600"],
+  "difícil": ["bg-red-200 text-red-900 border-red-300 hover:bg-red-300", "bg-red-700 text-white border-red-800 hover:bg-red-700"],
+};
 export const GAME_MODES: { id: string; label: string; desc: string; emoji: string; level: Lvl; time: string; tag?: "Popular" | "Novo"; area?: boolean }[] = [
   { id: "quiz", label: "Quiz Rápido", desc: "Perguntas e respostas rápidas", emoji: "❓", level: "fácil", time: "2-5 min", tag: "Popular" },
   { id: "forca", label: "Jogo da Forca", desc: "Adivinhe a palavra química", emoji: "🎯", level: "médio", time: "3-5 min", area: true },
@@ -82,7 +89,8 @@ export function CampeonatoJogos() {
         )}
         <div className="flex gap-2">
           {(["todos", "fácil", "médio", "difícil"] as const).map((f) => (
-            <Button key={f} size="sm" variant={filter === f ? "default" : "outline"} onClick={() => setFilter(f)} className="capitalize">{f}</Button>
+            <Button key={f} size="sm" variant="outline" onClick={() => setFilter(f)}
+              className={`capitalize font-bold border-2 ${LEVEL_COLORS[f][filter === f ? 1 : 0]}`}>{f}</Button>
           ))}
         </div>
       </div>
@@ -131,10 +139,8 @@ export function CampeonatoJogos() {
           </select>
         </div>
       </Card>
-      {!unlocked ? <QuestionGate area={area} topic={topic || undefined} phase={phase} onPass={() => setUnlocked(true)} /> : (<div key={phase} className="space-y-3">
+      {game === "quiz" ? <ElementQuiz /> : game === "forca" ? <ForcaDuelo area={area} level="medio" difficulty={difficulty} /> : !unlocked ? <QuestionGate area={area} topic={topic || undefined} phase={phase} onPass={() => setUnlocked(true)} /> : (<div key={phase} className="space-y-3">
       <div className="flex items-center justify-between"><span className="font-bold text-sm">🏁 Fase {phase}</span><Button size="sm" onClick={() => { setPhase((p) => p + 1); setUnlocked(false); }}>Próxima fase →</Button></div>
-      {game === "quiz" && <ElementQuiz />}
-      {game === "forca" && <Forca area={area} level="medio" difficulty={difficulty} />}
       {game === "caca" && <CacaPalavras area={area} />}
       {game === "cruzada" && <PalavrasCruzadas area={area} />}
       {game === "memoria" && <Memoria area={area} />}
