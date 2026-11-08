@@ -1,22 +1,22 @@
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
-import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { toast } from "sonner";
-import { areaMeta, genCode, LEVELS } from "@/lib/aula";
+import { areaMeta, genCode, LEVELS, AREAS, DIFFICULTIES } from "@/lib/aula";
 import { BookOpen, Trophy, Medal, ChevronDown, ChevronUp, Pencil, ImagePlus } from "lucide-react";
 import { SlideEditor } from "./SlideEditor";
+import { groupQuestionsByTopic, questionPlacement } from "@/lib/questionTopics";
 import { usePermission } from "@/lib/permissions";
 
 type Q = { id: string; question: string; options: any; correct_index: number; explanation: string | null; area: string; difficulty: number; school_level: string; topic: string | null; lesson: string | null; image_url: string | null; school_levels: string[] | null; slide_content: string | null };
-type Group = { key: string; area: string; items: Q[] };
+type Group = { id: string; key: string; area: string; items: Q[] };
 
 /** Banco de questões agrupado por assunto, com envio para campeonato (sala) ou olimpíada. */
-export function QuestionBankByTopic({ userId }: { userId: string }) {
+export function QuestionBankByTopic({ userId, revision = 0, embedded = false, onChanged }: { userId: string; revision?: number; embedded?: boolean; onChanged?: () => void }) {
   const navigate = useNavigate();
   const [qs, setQs] = useState<Q[]>([]);
   const [search, setSearch] = useState("");
@@ -27,6 +27,10 @@ export function QuestionBankByTopic({ userId }: { userId: string }) {
   const [olyId, setOlyId] = useState("");
   const [olyTitle, setOlyTitle] = useState("");
   const [edit, setEdit] = useState<Q | null>(null);
+  const [areaFilter, setAreaFilter] = useState("");
+  const [moving, setMoving] = useState<Group | null>(null);
+  const [targetArea, setTargetArea] = useState("geral");
+  const [targetTopic, setTargetTopic] = useState("");
   const [saving, setSaving] = useState(false);
   const perm = usePermission("painel_professor");
 
@@ -45,37 +49,65 @@ export function QuestionBankByTopic({ userId }: { userId: string }) {
     if (!perm.edit) return toast.error("Seu perfil não tem permissão para editar questões.");
     setSaving(true);
     const { error } = await supabase.from("chem_questions").update({
-      question: q.question, options: q.options, correct_index: q.correct_index, explanation: q.explanation,
-      difficulty: q.difficulty, school_level: (q.school_levels?.[0] ?? q.school_level), school_levels: q.school_levels?.length ? q.school_levels : [q.school_level], slide_content: q.slide_content, lesson: q.lesson, image_url: q.image_url,
+      ...questionPlacement(q.area, q.topic ?? q.lesson ?? ""), question: q.question, options: q.options, correct_index: q.correct_index, explanation: q.explanation,
+      difficulty: q.difficulty, school_level: (q.school_levels?.[0] ?? q.school_level), school_levels: q.school_levels?.length ? q.school_levels : [q.school_level], slide_content: q.slide_content, image_url: q.image_url,
     } as any).eq("id", q.id);
     setSaving(false);
     if (error) return toast.error(error.message);
     setQs((all) => all.map((x) => (x.id === q.id ? q : x)));
+    onChanged?.();
     toast.success("Questão salva");
     setEdit(null);
   };
 
   useEffect(() => {
-    supabase.from("chem_questions").select("id,question,options,correct_index,explanation,area,difficulty,school_level,topic,lesson,image_url,school_levels,slide_content")
-      .order("created_at", { ascending: false }).limit(1000).then(({ data }) => setQs((data ?? []) as Q[]));
+    let cancelled = false;
+    (async () => {
+      const all: Q[] = [];
+      for (let from = 0; ; from += 1000) {
+        const { data, error } = await supabase.from("chem_questions")
+          .select("id,question,options,correct_index,explanation,area,difficulty,school_level,topic,lesson,image_url,school_levels,slide_content")
+          .order("id").range(from, from + 999);
+        if (error) { toast.error(error.message); return; }
+        all.push(...((data ?? []) as Q[]));
+        if (!data || data.length < 1000) break;
+      }
+      if (!cancelled) setQs(all);
+    })();
     supabase.from("olympiads").select("id,acronym,name").order("acronym").then(({ data }) => setOlympiads(data ?? []));
-  }, []);
+    return () => { cancelled = true; };
+  }, [revision]);
 
   const groups = useMemo(() => {
-    const m = new Map<string, Group>();
-    for (const q of qs) {
-      const key = (q.lesson || q.topic || "Sem assunto").trim();
-      if (!m.has(key)) m.set(key, { key, area: q.area, items: [] });
-      m.get(key)!.items.push(q);
-    }
-    const s = search.toLowerCase();
-    return [...m.values()].filter((g) => !s || g.key.toLowerCase().includes(s))
-      .sort((a, b) => a.key.localeCompare(b.key, "pt-BR", { numeric: true }));
-  }, [qs, search]);
+    const term = search.toLocaleLowerCase("pt-BR");
+    return groupQuestionsByTopic(qs).filter(g => (!areaFilter || g.area === areaFilter) &&
+      (!term || g.key.toLocaleLowerCase("pt-BR").includes(term) || g.items.some(q => q.question.toLocaleLowerCase("pt-BR").includes(term))));
+  }, [qs, search, areaFilter]);
+
+  const moveQuestions = async () => {
+    if (!moving || !perm.edit || !targetTopic.trim()) return;
+    setSaving(true);
+    const placement = questionPlacement(targetArea, targetTopic);
+    const ids = pickIds(moving).map(q => q.id);
+    const { error } = await supabase.from("chem_questions").update(placement as any).in("id", ids);
+    setSaving(false);
+    if (error) return toast.error(error.message);
+    setQs(all => all.map(q => ids.includes(q.id) ? { ...q, ...placement } : q));
+    setSelected(new Set()); setMoving(null); onChanged?.();
+    toast.success("Questões movidas para o assunto escolhido");
+  };
+
+  const deleteQuestion = async (q: Q) => {
+    if (!perm.remove || !confirm("Excluir esta questão do banco?")) return;
+    const { error } = await supabase.from("chem_questions").delete().eq("id", q.id);
+    if (error) return toast.error(error.message);
+    setQs(all => all.filter(item => item.id !== q.id)); onChanged?.();
+    toast.success("Questão excluída");
+  };
 
   const pickIds = (g: Group) => {
     const chosen = g.items.filter((q) => selected.has(q.id));
-    return (chosen.length ? chosen : g.items).sort((a, b) => a.difficulty - b.difficulty);
+    return [...(chosen.length ? chosen : g.items)].sort((a, b) => a.difficulty - b.difficulty);
   };
 
   const toChampionship = async (g: Group) => {
@@ -107,40 +139,43 @@ export function QuestionBankByTopic({ userId }: { userId: string }) {
   const toggle = (id: string) => setSelected((s) => { const n = new Set(s); n.has(id) ? n.delete(id) : n.add(id); return n; });
 
   return (
-    <Card className="p-6">
+    <section className={embedded ? "space-y-3 border-t pt-4" : "space-y-3"}>
       <h3 className="text-lg font-bold mb-1 flex items-center gap-2"><BookOpen className="text-primary" /> Questões por assunto</h3>
-      <p className="text-xs text-muted-foreground mb-3">Abra um assunto, marque as questões (ou deixe sem marcar para usar todas) e envie para um campeonato ou olimpíada.</p>
+      <select aria-label="Área das questões por assunto" className="border rounded-md p-2 bg-background text-sm max-w-full" value={areaFilter} onChange={e => setAreaFilter(e.target.value)}><option value="">Todas as áreas</option>{AREAS.map(a => <option key={a.value} value={a.value}>{a.label}</option>)}</select>
       <Input placeholder="Buscar assunto…" value={search} onChange={(e) => setSearch(e.target.value)} className="mb-3" />
       {!groups.length && <div className="text-sm text-muted-foreground">Nenhuma questão gerada ainda.</div>}
       <div className="space-y-2 max-h-[520px] overflow-y-auto">
         {groups.map((g) => {
           const m = areaMeta(g.area);
-          const isOpen = open === g.key;
+          const isOpen = open === g.id;
           const nSel = g.items.filter((q) => selected.has(q.id)).length;
           return (
-            <div key={g.key} className="border rounded-lg">
+            <div key={g.id} className="border rounded-lg">
               <div className="flex flex-wrap items-center gap-2 p-3">
-                <button className="flex-1 min-w-[180px] text-left font-semibold flex items-center gap-2" onClick={() => setOpen(isOpen ? null : g.key)}>
+                <Button variant="ghost" className="flex-1 min-w-0 h-auto whitespace-normal justify-start text-left font-semibold flex items-center gap-2" onClick={() => setOpen(isOpen ? null : g.id)}>
                   {isOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />} {m.emoji} {g.key}
                   <Badge variant="secondary">{g.items.length}</Badge>
                   {nSel > 0 && <Badge>{nSel} marcadas</Badge>}
-                </button>
+                </Button>
+                <Badge variant="outline">{m.label}</Badge>
+                {perm.edit && <Button size="sm" variant="outline" onClick={() => { setMoving(g); setTargetArea(g.area); setTargetTopic(g.key === "Sem assunto" ? "" : g.key); }}>Mover / assunto</Button>}
                 <Button size="sm" variant="outline" onClick={() => toChampionship(g)}><Trophy size={14} className="mr-1" />Campeonato</Button>
                 <Button size="sm" variant="outline" onClick={() => { setOlyDialog(g); setOlyTitle(g.key); }}><Medal size={14} className="mr-1" />Olimpíada</Button>
               </div>
               {isOpen && (
                 <div className="border-t p-3 space-y-1">
-                  {g.items.sort((a, b) => a.difficulty - b.difficulty).map((q) => (
-                    <div key={q.id} className="flex items-start gap-2 text-sm py-1">
+                  {[...g.items].sort((a, b) => a.difficulty - b.difficulty).map((q) => (
+                    <div key={q.id} className="flex flex-wrap items-start gap-2 text-sm py-1">
                       <input type="checkbox" checked={selected.has(q.id)} onChange={() => toggle(q.id)} className="mt-1" />
                       {q.image_url && <img src={q.image_url} alt="" className="w-10 h-10 object-cover rounded" />}
-                      <span className="flex-1">{q.question}</span>
+                      <span className="flex-1 min-w-[160px] break-words">{q.question}</span>
                       <label className="cursor-pointer text-muted-foreground hover:text-foreground" title="Adicionar imagem">
                         <ImagePlus size={16} />
                         <input type="file" accept="image/*" className="hidden" onChange={(e) => e.target.files?.[0] && uploadImage(q, e.target.files[0])} />
                       </label>
-                      <button type="button" title="Editar" onClick={(e) => { e.preventDefault(); setEdit({ ...q, options: Array.isArray(q.options) ? [...q.options] : [] }); }} className="text-muted-foreground hover:text-foreground"><Pencil size={16} /></button>
-                      <span className="text-xs text-muted-foreground whitespace-nowrap">{"★".repeat(q.difficulty)} · {(q.school_levels?.length ? q.school_levels : [q.school_level]).map((v) => LEVELS.find((l) => l.value === v)?.label ?? v).join(", ")}{q.slide_content ? " · 🖥️ slide" : ""}</span>
+                      <Button variant="ghost" size="icon" disabled={!perm.edit} type="button" title="Editar questão" onClick={(e) => { e.preventDefault(); setEdit({ ...q, options: Array.isArray(q.options) ? [...q.options] : [] }); }} className="text-muted-foreground hover:text-foreground"><Pencil size={16} /></Button>
+                      {perm.remove && <Button variant="ghost" size="sm" onClick={() => deleteQuestion(q)}>Excluir</Button>}
+                      <span className="text-xs text-muted-foreground">{"★".repeat(q.difficulty)} · {(q.school_levels?.length ? q.school_levels : [q.school_level]).map((v) => LEVELS.find((l) => l.value === v)?.label ?? v).join(", ")}{q.slide_content ? " · 🖥️ slide" : ""}</span>
                     </div>
                   ))}
                 </div>
@@ -150,6 +185,14 @@ export function QuestionBankByTopic({ userId }: { userId: string }) {
         })}
       </div>
 
+      <Dialog open={!!moving} onOpenChange={o => !o && setMoving(null)}>
+        <DialogContent><DialogHeader><DialogTitle>Mover questões para área e assunto</DialogTitle></DialogHeader>
+          <select aria-label="Área de destino" className="border rounded-md p-2 bg-background" value={targetArea} onChange={e => setTargetArea(e.target.value)}>{AREAS.map(a => <option key={a.value} value={a.value}>{a.label}</option>)}</select>
+          <Input aria-label="Assunto de destino" placeholder="Assunto de destino" value={targetTopic} onChange={e => setTargetTopic(e.target.value)} />
+          <p className="text-sm text-muted-foreground">{moving ? pickIds(moving).length : 0} questões selecionadas</p>
+          <Button disabled={saving || !targetTopic.trim()} onClick={moveQuestions}>Mover questões</Button>
+        </DialogContent>
+      </Dialog>
       <Dialog open={!!olyDialog} onOpenChange={(o) => !o && setOlyDialog(null)}>
         <DialogContent>
           <DialogHeader><DialogTitle>Enviar para olimpíada</DialogTitle></DialogHeader>
@@ -177,10 +220,11 @@ export function QuestionBankByTopic({ userId }: { userId: string }) {
                 </div>
               ))}
               <textarea className="w-full border rounded-md p-2 bg-background" rows={2} placeholder="Explicação" value={edit.explanation ?? ""} onChange={(e) => setEdit({ ...edit, explanation: e.target.value || null })} />
-              <Input placeholder="Assunto (aula)" value={edit.lesson ?? ""} onChange={(e) => setEdit({ ...edit, lesson: e.target.value || null })} />
+              <select aria-label="Área da questão" className="w-full border rounded-md p-2 bg-background" value={edit.area} onChange={e => setEdit({ ...edit, area: e.target.value })}>{AREAS.map(a => <option key={a.value} value={a.value}>{a.label}</option>)}</select>
+              <Input aria-label="Assunto da questão" placeholder="Assunto" value={edit.topic ?? edit.lesson ?? ""} onChange={(e) => setEdit({ ...edit, topic: e.target.value || null })} />
               <div className="grid grid-cols-2 gap-2">
                 <select className="border rounded-md p-2 bg-background" value={edit.difficulty} onChange={(e) => setEdit({ ...edit, difficulty: +e.target.value })}>
-                  {[1, 2, 3, 4, 5].map((d) => <option key={d} value={d}>{"★".repeat(d)}</option>)}
+                  {[1, 2, 3, 4, 5].map((d) => <option key={d} value={d}>{DIFFICULTIES.find(item => item.value === d)?.label} ({d})</option>)}
                 </select>
                 <div className="flex flex-wrap gap-2 items-center">
                   {LEVELS.map((l) => {
@@ -215,6 +259,6 @@ export function QuestionBankByTopic({ userId }: { userId: string }) {
           )}
         </DialogContent>
       </Dialog>
-    </Card>
+    </section>
   );
 }

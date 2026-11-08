@@ -10,7 +10,6 @@ import { toast } from "sonner";
 import { AREAS, MODES, genCode, areaMeta, AreaValue, LEVELS, LevelValue, DIFFICULTIES } from "@/lib/aula";
 import { Sparkles, Play, Copy, Loader2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { QuestionBankByTopic } from "./QuestionBankByTopic";
 import { AreaQuestionsDialog } from "./AreaQuestionsDialog";
 import { QuestionBankCentral } from "./QuestionBankCentral";
 
@@ -28,6 +27,7 @@ export function TeacherPanel({ userId }: { userId: string }) {
   const [creating, setCreating] = useState(false);
   const [content, setContent] = useState("");
   const [generatingAll, setGeneratingAll] = useState(false);
+  const [bankRevision, setBankRevision] = useState(0);
   const [stats, setStats] = useState<Record<string, number>>({});
   const [openArea, setOpenArea] = useState<AreaValue | null>(null);
   const [sessions, setSessions] = useState<any[]>([]);
@@ -44,7 +44,8 @@ export function TeacherPanel({ userId }: { userId: string }) {
     const queue = [...jobs];
     const worker = async () => {
       while (queue.length) {
-        const j = queue.shift()!;
+        const j = queue.shift();
+        if (!j) break;
         try {
           const { data, error } = await supabase.functions.invoke("generate-chem-questions", { body: { ...j, count: 5 } });
           if (error || (data as any)?.error) fail++; else ok += (data as any)?.inserted ?? 0;
@@ -69,6 +70,7 @@ export function TeacherPanel({ userId }: { userId: string }) {
       out[a.value] = c ?? 0;
     }
     setStats(out);
+    setBankRevision(v => v + 1);
   };
 
   const loadSessions = async () => {
@@ -191,7 +193,6 @@ export function TeacherPanel({ userId }: { userId: string }) {
           ))}
         </div>
         <AreaQuestionsDialog area={openArea} onClose={() => setOpenArea(null)} onChanged={() => loadStats()} />
-        <QuestionBankCentral />
         <div className="grid md:grid-cols-2 gap-3">
           <div>
             <Label>Área</Label>
@@ -257,7 +258,7 @@ export function TeacherPanel({ userId }: { userId: string }) {
 
 
 
-      <QuestionBankByTopic userId={userId} />
+      <Card className="p-6"><QuestionBankCentral userId={userId} revision={bankRevision} onChanged={loadStats} /></Card>
 
 
 

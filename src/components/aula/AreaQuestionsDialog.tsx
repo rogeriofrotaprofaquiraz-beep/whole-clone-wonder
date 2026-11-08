@@ -4,9 +4,10 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
-import { areaMeta, AreaValue } from "@/lib/aula";
+import { areaMeta, AreaValue, LEVELS, DIFFICULTIES } from "@/lib/aula";
+import { groupQuestionsByTopic } from "@/lib/questionTopics";
 
-type Q = { id: string; topic: string | null; question: string; options: any; correct_index: number; difficulty: number };
+type Q = { id: string; area: string; topic: string | null; lesson: string | null; question: string; options: any; correct_index: number; difficulty: number };
 
 const NO_TOPIC = "Sem assunto";
 
@@ -17,12 +18,16 @@ export function AreaQuestionsDialog({ area, onClose, onChanged }: { area: AreaVa
   const [newTopic, setNewTopic] = useState("");
   const [form, setForm] = useState({ question: "", a: "", b: "", c: "", d: "", correct: 0 });
   const [formTopic, setFormTopic] = useState<string | null>(null);
+  const [schoolLevel, setSchoolLevel] = useState("medio");
+  const [difficulty, setDifficulty] = useState(2);
+  const [explanation, setExplanation] = useState("");
+  const [saving, setSaving] = useState(false);
 
   const load = async () => {
     if (!area) return;
     setLoading(true);
     const { data, error } = await supabase.from("chem_questions")
-      .select("id, topic, question, options, correct_index, difficulty").eq("area", area).order("created_at", { ascending: false }).limit(1000);
+      .select("id, area, topic, lesson, question, options, correct_index, difficulty").eq("area", area).order("created_at", { ascending: false }).limit(1000);
     setLoading(false);
     if (error) return toast.error(error.message);
     setRows((data as Q[]) ?? []);
@@ -30,26 +35,26 @@ export function AreaQuestionsDialog({ area, onClose, onChanged }: { area: AreaVa
   useEffect(() => { setOpen(null); setFormTopic(null); load(); }, [area]);
 
   const groups = useMemo(() => {
-    const m = new Map<string, Q[]>();
-    for (const r of rows) { const k = r.topic?.trim() || NO_TOPIC; m.set(k, [...(m.get(k) ?? []), r]); }
-    return [...m.entries()].sort((a, b) => a[0].localeCompare(b[0], "pt"));
+    return groupQuestionsByTopic(rows).map(g => [g.key, g.items] as const);
   }, [rows]);
 
   const changed = () => { load(); onChanged(); };
 
   const rename = async (t: string) => {
+    if (!area) return;
     const name = prompt("Novo nome do assunto:", t === NO_TOPIC ? "" : t)?.trim();
     if (!name || name === t) return;
-    const q = supabase.from("chem_questions").update({ topic: name }).eq("area", area!);
-    const { error } = t === NO_TOPIC ? await q.is("topic", null) : await q.eq("topic", t);
+    const ids = groups.find(([name]) => name === t)?.[1].map(q => q.id) ?? [];
+    const { error } = await supabase.from("chem_questions").update({ topic: name, lesson: name }).eq("area", area).in("id", ids);
     if (error) return toast.error(error.message);
     toast.success("Assunto renomeado"); changed();
   };
 
   const removeTopic = async (t: string, n: number) => {
+    if (!area) return;
     if (!confirm(`Excluir o assunto "${t}" e suas ${n} questões?`)) return;
-    const q = supabase.from("chem_questions").delete().eq("area", area!);
-    const { error } = t === NO_TOPIC ? await q.is("topic", null) : await q.eq("topic", t);
+    const ids = groups.find(([name]) => name === t)?.[1].map(q => q.id) ?? [];
+    const { error } = await supabase.from("chem_questions").delete().eq("area", area).in("id", ids);
     if (error) return toast.error(error.message);
     toast.success("Assunto excluído"); changed();
   };
@@ -62,17 +67,22 @@ export function AreaQuestionsDialog({ area, onClose, onChanged }: { area: AreaVa
   };
 
   const addQuestion = async () => {
+    if (!area || !formTopic || saving) return;
     const opts = [form.a, form.b, form.c, form.d].map((s) => s.trim());
     if (!form.question.trim() || opts.some((o) => !o)) return toast.error("Preencha a pergunta e as 4 alternativas");
     const topic = formTopic === NO_TOPIC ? null : formTopic;
     const { data: u } = await supabase.auth.getUser();
+    if (!u.user) return toast.error("Entre na sua conta para adicionar questões");
+    setSaving(true);
     const { error } = await supabase.from("chem_questions").insert({
-      area: area!, topic, question: form.question.trim(), options: opts, correct_index: form.correct,
-      difficulty: 2, school_level: "medio", school_levels: ["medio"], created_by: u.user?.id,
+      area, topic, lesson: topic, question: form.question.trim(), options: opts, correct_index: form.correct,
+      difficulty, explanation: explanation.trim() || null, school_level: schoolLevel, school_levels: [schoolLevel], created_by: u.user.id,
     } as any);
+    setSaving(false);
     if (error) return toast.error(error.message);
     toast.success("Questão adicionada");
     setForm({ question: "", a: "", b: "", c: "", d: "", correct: 0 });
+    setExplanation("");
     setOpen(formTopic); setFormTopic(null); changed();
   };
 
@@ -83,7 +93,7 @@ export function AreaQuestionsDialog({ area, onClose, onChanged }: { area: AreaVa
       <DialogContent className="max-w-3xl max-h-[85vh] overflow-y-auto">
         <DialogHeader><DialogTitle>{meta?.emoji} {meta?.label} — assuntos e questões</DialogTitle></DialogHeader>
 
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           <Input value={newTopic} onChange={(e) => setNewTopic(e.target.value)} placeholder="Novo assunto (ex: Ligações químicas)" />
           <Button onClick={() => { const t = newTopic.trim(); if (!t) return; setFormTopic(t); setNewTopic(""); }}>＋ Adicionar assunto</Button>
         </div>
@@ -98,7 +108,10 @@ export function AreaQuestionsDialog({ area, onClose, onChanged }: { area: AreaVa
                 <Input value={form[k]} onChange={(e) => setForm({ ...form, [k]: e.target.value })} placeholder={`Alternativa ${k.toUpperCase()}${form.correct === i ? " (correta)" : ""}`} />
               </label>
             ))}
-            <div className="flex gap-2"><Button onClick={addQuestion}>Salvar questão</Button><Button variant="ghost" onClick={() => setFormTopic(null)}>Cancelar</Button></div>
+            <select aria-label="Nível de ensino da nova questão" className="w-full border rounded-md p-2 bg-background" value={schoolLevel} onChange={e => setSchoolLevel(e.target.value)}>{LEVELS.map(l => <option key={l.value} value={l.value}>{l.label}</option>)}</select>
+            <select aria-label="Dificuldade da nova questão" className="w-full border rounded-md p-2 bg-background" value={difficulty} onChange={e => setDifficulty(Number(e.target.value))}>{DIFFICULTIES.map(d => <option key={d.value} value={d.value}>{d.label}</option>)}</select>
+            <Input aria-label="Explicação da resposta" placeholder="Explicação da resposta" value={explanation} onChange={e => setExplanation(e.target.value)} />
+            <div className="flex gap-2"><Button disabled={saving} onClick={addQuestion}>{saving ? "Salvando…" : "Salvar questão"}</Button><Button variant="ghost" onClick={() => setFormTopic(null)}>Cancelar</Button></div>
           </div>
         )}
 
@@ -106,20 +119,20 @@ export function AreaQuestionsDialog({ area, onClose, onChanged }: { area: AreaVa
           <p className="text-sm text-muted-foreground">Nenhuma questão nesta área ainda.</p>
         ) : groups.map(([t, qs]) => (
           <div key={t} className="rounded-lg border">
-            <div className="flex items-center gap-2 p-2">
-              <button className="flex-1 text-left font-semibold" onClick={() => setOpen(open === t ? null : t)}>
+            <div className="flex flex-wrap items-center gap-2 p-2">
+              <Button variant="ghost" className="flex-1 h-auto whitespace-normal text-left justify-start font-semibold" onClick={() => setOpen(open === t ? null : t)}>
                 {open === t ? "▾" : "▸"} {t} <span className="text-muted-foreground font-normal">({qs.length})</span>
-              </button>
+              </Button>
               <Button size="sm" variant="ghost" onClick={() => setFormTopic(t)}>＋ Questão</Button>
               <Button size="sm" variant="ghost" onClick={() => rename(t)}>✏️ Editar</Button>
-              <Button size="sm" variant="ghost" onClick={() => removeTopic(t, qs.length)}>🗑️</Button>
+              <Button size="sm" variant="ghost" title="Excluir assunto" onClick={() => removeTopic(t, qs.length)}>🗑️</Button>
             </div>
             {open === t && (
               <ol className="px-4 pb-3 space-y-2 list-decimal list-inside text-sm">
                 {qs.map((q) => (
                   <li key={q.id}>
                     <span>{q.question}</span>
-                    <button className="ml-2 text-destructive text-xs" onClick={() => removeQuestion(q.id)}>excluir</button>
+                    <Button size="sm" variant="ghost" className="ml-2 text-destructive text-xs" onClick={() => removeQuestion(q.id)}>excluir</Button>
                     <div className="text-xs text-muted-foreground ml-5">
                       ✔ {Array.isArray(q.options) ? String(q.options[q.correct_index] ?? "") : ""}
                     </div>

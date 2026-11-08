@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
+import { QuestionBankByTopic } from "./QuestionBankByTopic";
 import { AREAS } from "@/lib/aula";
 import { gamesFor, difficultyBand, MC_GAMES, WORD_GAMES } from "@/lib/questionGames";
 
@@ -15,7 +15,7 @@ const BANDS = [
   { v: "", l: "Todas" }, { v: "facil", l: "Fácil" }, { v: "medio", l: "Médio" }, { v: "dificil", l: "Difícil" },
 ];
 
-export function QuestionBankCentral() {
+export function QuestionBankCentral({ userId, revision = 0, onChanged }: { userId: string; revision?: number; onChanged?: () => void }) {
   const [rows, setRows] = useState<Row[]>([]);
   const [loading, setLoading] = useState(true);
   const [area, setArea] = useState("");
@@ -27,15 +27,16 @@ export function QuestionBankCentral() {
     (async () => {
       const all: Row[] = [];
       for (let from = 0; ; from += 1000) {
-        const { data } = await supabase.from("chem_questions")
+        const { data, error } = await supabase.from("chem_questions")
           .select("id,area,topic,difficulty,question,options,correct_index,answer_text,school_level")
           .order("created_at", { ascending: false }).range(from, from + 999);
+        if (error) { setLoading(false); return; }
         all.push(...((data as Row[]) ?? []));
         if (!data || data.length < 1000) break;
       }
       setRows(all); setLoading(false);
     })();
-  }, []);
+  }, [revision]);
 
   const withGames = useMemo(() => rows.map((r) => ({ ...r, games: gamesFor(r) })), [rows]);
   const list = withGames.filter((r) =>
@@ -44,7 +45,7 @@ export function QuestionBankCentral() {
     (!q || (r.question + " " + (r.topic ?? "")).toLowerCase().includes(q.toLowerCase())));
 
   return (
-    <Card className="p-4 space-y-3">
+    <section className="space-y-3">
       <div>
         <h2 className="text-lg font-black">🗃️ Banco de Questões — todas as questões</h2>
         <p className="text-xs text-muted-foreground">Todas as questões do app reunidas, com os jogos em que cada uma é usada.</p>
@@ -85,6 +86,7 @@ export function QuestionBankCentral() {
         })}
         {list.length > 300 && <div className="text-xs text-muted-foreground">Mostrando 300 — use os filtros para refinar.</div>}
       </div>
-    </Card>
+      <QuestionBankByTopic userId={userId} revision={revision} embedded onChanged={onChanged} />
+    </section>
   );
 }

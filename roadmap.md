@@ -1,4 +1,5 @@
 # Roadmap (prompt-37)
+- [ ] Consolidar questões por assunto no Banco de Questões, completar edição e transferência por área/assunto, atualizar listas após alterações.
 - [x] Laboratório Virtual (reagentes, misturas, reações, compostos descobertos)
 - [x] Minijogos: montar moléculas, Caça aos Elementos, Salve o Planeta, Escape Room, pilhas/temperaturas, moléculas biológicas, processos menos poluentes
 - [x] Jogar vs computador: moedas por vitória, explicação do porquê, pontos escondidos
