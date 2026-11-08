@@ -185,6 +185,7 @@ export function UserAccessManager({ profiles, onRole, onCoins, onDelete, onGrant
                     </div>
                   </div>
                   <UserGamePanel userId={p.id} />
+                  <QuestionLog userId={p.id} />
                   {(["Jogos", "Páginas"] as const).map((g) => (
                     <div key={g} className="space-y-2">
                       <p className="text-xs font-semibold text-muted-foreground">{g}</p>

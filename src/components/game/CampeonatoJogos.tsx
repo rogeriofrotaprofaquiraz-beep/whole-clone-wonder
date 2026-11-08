@@ -145,7 +145,7 @@ export function CampeonatoJogos() {
       {game === "cruzada" && <PalavrasCruzadas area={area} topic={topic || undefined} />}
       {game === "memoria" && <Memoria area={area} topic={topic || undefined} />}
       {game === "tabuleiro" && <TabuleiroQuimico area={area} topic={topic || undefined} />}
-      {game === "naval" && <BatalhaNaval />}
+      {game === "naval" && <BatalhaNaval area={area} topic={topic || undefined} />}
       {game === "stop" && <StopQuimico />}
       {game === "bingo" && <BingoQuimico />}
       {game === "tangram" && <TangramMolecular />}

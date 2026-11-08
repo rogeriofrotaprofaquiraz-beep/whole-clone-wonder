@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
+import { logGameQuestion } from "@/components/game/QuestionLog";
 import { RotateCcw, Trophy } from "lucide-react";
 import { addCoins } from "@/lib/playerEconomy";
 import { areaMeta, AreaValue } from "@/lib/aula";
@@ -170,7 +171,7 @@ export function TabuleiroQuimico({ area = "geral", topic }: { area?: AreaValue; 
 }
 
 /* ---------------- Batalha Naval ---------------- */
-export function BatalhaNaval() {
+export function BatalhaNaval({ area = "geral", topic }: { area?: string; topic?: string } = {}) {
   const N = 8;
   const grid = ELEMENTS.slice(0, N * N);
   const make = () => {
@@ -187,20 +188,27 @@ export function BatalhaNaval() {
   };
   const [ships, setShips] = useState(make);
   const [shots, setShots] = useState<Map<number, boolean>>(new Map());
-  const [ask, setAsk] = useState<{ idx: number; opts: string[] } | null>(null);
+  const [ask, setAsk] = useState<{ idx: number; q: string; opts: string[]; right: string } | null>(null);
+  const [bank, setBank] = useState<{ question: string; options: string[]; correct_index: number }[]>([]);
+  useEffect(() => { loadLinkedQuestions(area, topic).then((d) => setBank(d as never)); }, [area, topic]);
   const [ammo, setAmmo] = useState(30);
   const reset = () => { setShips(make()); setShots(new Map()); setAsk(null); setAmmo(30); };
   const click = (idx: number) => {
     if (shots.has(idx) || ammo <= 0) return;
     const el = grid[idx];
+    if (bank.length) {
+      const b = bank[Math.floor(Math.random() * bank.length)];
+      setAsk({ idx, q: b.question, opts: shuffle(b.options), right: b.options[b.correct_index] });
+      return;
+    }
     const opts = shuffle([el.name, ...shuffle(ELEMENTS.filter((e) => e.name !== el.name)).slice(0, 2).map((e) => e.name)]);
-    setAsk({ idx, opts });
+    setAsk({ idx, q: `Qual é o nome do elemento ${el.symbol}?`, opts, right: el.name });
   };
   const answer = (o: string) => {
     if (!ask) return;
-    const el = grid[ask.idx];
     setAmmo((a) => a - 1);
-    if (o !== el.name) { toast.error(`Errou! ${el.symbol} é ${el.name}. Tiro perdido.`); setAsk(null); return; }
+    logGameQuestion("Batalha Naval", ask.q, o, ask.right, o === ask.right).catch(() => {});
+    if (o !== ask.right) { toast.error(`Errou! A resposta certa é ${ask.right}. Tiro perdido.`); setAsk(null); return; }
     const hit = ships.has(ask.idx);
     setShots((s) => new Map(s).set(ask.idx, hit));
     if (hit) reward(2, "Acertou um navio!"); else { toast("Água 🌊"); recordMiss(); };
@@ -226,7 +234,8 @@ export function BatalhaNaval() {
       </Card>
       {ask && (
         <Card className="p-4 space-y-2">
-          <div className="font-bold">Para atirar em <b>{grid[ask.idx].symbol}</b>: qual é o nome deste elemento?</div>
+          <div className="text-xs text-muted-foreground">🎯 Para atirar em <b>{grid[ask.idx].symbol}</b>, responda:</div>
+          <div className="font-bold">{ask.q}</div>
           <div className="flex flex-wrap gap-2">{ask.opts.map((o) => <Button key={o} variant="outline" onClick={() => answer(o)}>{o}</Button>)}</div>
         </Card>
       )}

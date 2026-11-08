@@ -972,6 +972,39 @@ export type Database = {
         }
         Relationships: []
       }
+      game_question_log: {
+        Row: {
+          answer: string | null
+          correct_answer: string | null
+          created_at: string
+          game: string
+          id: string
+          is_correct: boolean
+          question: string
+          user_id: string
+        }
+        Insert: {
+          answer?: string | null
+          correct_answer?: string | null
+          created_at?: string
+          game: string
+          id?: string
+          is_correct: boolean
+          question: string
+          user_id: string
+        }
+        Update: {
+          answer?: string | null
+          correct_answer?: string | null
+          created_at?: string
+          game?: string
+          id?: string
+          is_correct?: boolean
+          question?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       game_results: {
         Row: {
           correct: number
