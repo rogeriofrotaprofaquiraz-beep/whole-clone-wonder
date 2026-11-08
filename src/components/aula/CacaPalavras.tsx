@@ -9,7 +9,9 @@ import { toast } from "sonner";
 import { RotateCcw, Trophy } from "lucide-react";
 import { addCoins } from "@/lib/playerEconomy";
 
-const SIZE = 14;
+import { QUESTION_COUNTS } from "@/lib/miniGames";
+export const gridSizeFor = (n: number) => (n <= 3 ? 10 : n <= 5 ? 12 : n <= 10 ? 14 : 16);
+let SIZE = 14;
 const DIRS = [[1, 0], [0, 1], [1, 1], [1, -1], [-1, 0], [0, -1]];
 
 type Grid = { letters: string[][]; placed: { term: string; cells: [number, number][] }[] };
@@ -51,16 +53,18 @@ export function CacaPalavras({ area }: { area: AreaValue }) {
   const [found, setFound] = useState<Set<string>>(new Set());
   const [sel, setSel] = useState<[number, number][]>([]);
   const [mouseDown, setMouseDown] = useState(false);
+  const [count, setCount] = useState(5);
 
   useEffect(() => {
-    supabase.from("chem_terms").select("*").eq("area", area).limit(60)
+    supabase.from("chem_terms").select("*").eq("area", area).limit(200)
       .then(({ data }) => setTerms(data ?? []));
   }, [area]);
 
-  useEffect(() => { if (terms.length) reset(); }, [terms]);
+  useEffect(() => { if (terms.length) reset(); }, [terms, count]);
 
   const reset = () => {
-    const sample = [...terms].sort(() => Math.random() - 0.5).slice(0, 8).filter((t) => t.term.length <= SIZE);
+    const sample = [...terms].sort(() => Math.random() - 0.5).filter((t) => t.term.length <= gridSizeFor(count)).slice(0, count);
+    SIZE = gridSizeFor(count);
     setGrid(buildGrid(sample.map((t) => t.term)));
     setFound(new Set());
     setSel([]);
@@ -107,6 +111,9 @@ export function CacaPalavras({ area }: { area: AreaValue }) {
           <div className="font-bold">Caça-palavras · {meta.label}</div>
           <div className="text-xs text-muted-foreground">{found.size}/{grid.placed.length} encontradas</div>
         </div>
+        {QUESTION_COUNTS.map((n) => (
+          <Button key={n} size="sm" variant={count === n ? "default" : "outline"} onClick={() => setCount(n)}>{n}</Button>
+        ))}
         <Button size="sm" variant="outline" onClick={reset}><RotateCcw size={14} /></Button>
       </Card>
 

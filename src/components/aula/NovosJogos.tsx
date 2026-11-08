@@ -1,3 +1,4 @@
+import { QUESTION_COUNTS } from "@/lib/miniGames";
 import { recordHit, recordMiss } from "@/lib/gameStats";
 import { useEffect, useMemo, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
@@ -46,7 +47,6 @@ function useTerms(area: AreaValue) {
 }
 
 /* ---------------- Palavras Cruzadas (cruzadinha com palavra-chave) ---------------- */
-const CROSS_SIZES = [5, 10, 15, 20, 25];
 const CROSS_COINS = [1, 2, 4, 7, 10]; // Átomos por palavra conforme dificuldade 1★..5★
 type CTerm = { term: string; clue: string; difficulty: number };
 export function PalavrasCruzadas({ area }: { area: AreaValue }) {
@@ -80,7 +80,7 @@ export function PalavrasCruzadas({ area }: { area: AreaValue }) {
       <Header title={`Palavras Cruzadas · ${meta.label}`} sub={`${done.filter(Boolean).length}/${words.length} resolvidas · 1★=1⚛ 2★=2⚛ 3★=4⚛ 4★=7⚛ 5★=10⚛`} onReset={reset} color={meta.color} />
       <div className="flex flex-wrap gap-2 items-center">
         <span className="text-sm font-bold">Palavras por rodada:</span>
-        {CROSS_SIZES.map((n) => (
+        {QUESTION_COUNTS.map((n) => (
           <Button key={n} size="sm" variant={size === n ? "default" : "outline"} onClick={() => setSize(n)}>{n}</Button>
         ))}
         {words.length < size && <span className="text-xs text-muted-foreground">Só há {words.length} termos nesta área.</span>}
