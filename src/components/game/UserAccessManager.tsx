@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { QuestionLog } from "@/components/game/QuestionLog";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
