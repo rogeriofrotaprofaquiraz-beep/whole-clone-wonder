@@ -13,6 +13,8 @@ import { useNavigate } from "react-router-dom";
 import { AreaQuestionsDialog } from "./AreaQuestionsDialog";
 import { QuestionBankCentral } from "./QuestionBankCentral";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { DisciplinesDialog } from "./DisciplinesDialog";
+import type { Discipline } from "@/lib/questionImport";
 
 export function TeacherPanel({ userId }: { userId: string }) {
   const navigate = useNavigate();
@@ -32,6 +34,28 @@ export function TeacherPanel({ userId }: { userId: string }) {
   const [stats, setStats] = useState<Record<string, number>>({});
   const [openArea, setOpenArea] = useState<AreaValue | null>(null);
   const [sessions, setSessions] = useState<any[]>([]);
+  const [disciplines, setDisciplines] = useState<Discipline[]>([]);
+  const [discStats, setDiscStats] = useState<Record<string, number>>({});
+  const [discKey, setDiscKey] = useState("");
+  const [openDisc, setOpenDisc] = useState<Discipline | null>(null);
+  const [discDialog, setDiscDialog] = useState(false);
+  const [topicOptions, setTopicOptions] = useState<string[]>([]);
+  const selectedDisc = disciplines.find((d) => d.key === discKey) ?? null;
+
+  const loadDisciplines = async () => {
+    const { data } = await supabase.from("question_disciplines").select("*").order("sort");
+    const list = (data as Discipline[]) ?? [];
+    setDisciplines(list);
+    const counts = await Promise.all(list.map((d) =>
+      supabase.from("chem_questions").select("id", { count: "exact", head: true }).eq("discipline", d.key)));
+    setDiscStats(Object.fromEntries(list.map((d, i) => [d.key, counts[i].count ?? 0])));
+  };
+
+  useEffect(() => {
+    if (!selectedDisc) { setTopicOptions([]); return; }
+    supabase.from("chem_questions").select("topic, lesson").eq("discipline", selectedDisc.key).limit(1000)
+      .then(({ data }) => setTopicOptions([...new Set((data ?? []).map((r: any) => (r.topic || r.lesson || "").trim()).filter(Boolean))].sort()));
+  }, [discKey, disciplines, discStats]);
 
   const [stdProgress, setStdProgress] = useState("");
 
@@ -72,6 +96,7 @@ export function TeacherPanel({ userId }: { userId: string }) {
     }
     setStats(out);
     setBankRevision(v => v + 1);
+    loadDisciplines();
   };
 
   const loadSessions = async () => {
@@ -93,7 +118,8 @@ export function TeacherPanel({ userId }: { userId: string }) {
     setGenerating(true);
     try {
       const { data, error } = await supabase.functions.invoke("generate-chem-questions", {
-        body: { area, count, difficulty, topic: topic || undefined, school_level: level, content: content || undefined },
+        body: { area, count, difficulty, topic: topic || undefined, school_level: level, content: content || undefined,
+          discipline: selectedDisc?.key, discipline_label: selectedDisc?.label },
       });
       if (error) throw error;
       if ((data as any)?.error) throw new Error((data as any).error);
@@ -185,28 +211,50 @@ export function TeacherPanel({ userId }: { userId: string }) {
           <Sparkles className="text-[#D97706]" />
           <h3 className="text-lg font-bold">Gerar questões pela aula</h3>
         </div>
-        <p className="text-xs text-muted-foreground mb-4">Resumo por área (clique para ver os assuntos) e geração a partir do conteúdo ou planejamento da aula.</p>
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-2 mb-4">
-          {AREAS.map((a) => (
+        <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+          <p className="text-xs text-muted-foreground">Clique numa disciplina para adicionar, editar ou excluir assuntos e questões.</p>
+          <Button size="sm" variant="outline" onClick={() => setDiscDialog(true)}>📚 Gerenciar disciplinas</Button>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-2 mb-4">
+          {disciplines.map((d) => (
             <button
               type="button"
-              onClick={() => setOpenArea(a.value)}
-              title="Ver assuntos e questões"
-              key={a.value}
-              className="rounded-lg p-3 text-white text-center hover:opacity-90 transition"
-              style={{ background: a.color }}
+              key={d.key}
+              onClick={() => setOpenDisc(d)}
+              title="Ver e editar assuntos"
+              className="rounded-lg p-3 text-white text-left hover:opacity-90 transition"
+              style={{ background: d.color }}
             >
-              <div className="text-2xl">{a.emoji}</div>
-              <div className="text-xs font-bold mt-1">{a.label}</div>
-              <div className="text-lg font-black">{stats[a.value] ?? 0}</div>
+              <div className="text-xl">{areaMeta(d.area as AreaValue).emoji}</div>
+              <div className="text-xs font-bold mt-1 leading-tight">{d.label}</div>
+              <div className="text-[11px] opacity-90">{discStats[d.key] ?? 0} questões</div>
             </button>
           ))}
         </div>
-        <AreaQuestionsDialog area={openArea} onClose={() => setOpenArea(null)} onChanged={() => loadStats()} />
+        <AreaQuestionsDialog
+          area={openDisc ? (openDisc.area as AreaValue) : openArea}
+          discipline={openDisc ? { key: openDisc.key, label: openDisc.label } : null}
+          onClose={() => { setOpenDisc(null); setOpenArea(null); }}
+          onChanged={() => loadStats()}
+        />
+        <DisciplinesDialog open={discDialog} onOpenChange={setDiscDialog} list={disciplines} onChanged={() => loadStats()} />
         <div className="grid md:grid-cols-2 gap-3">
           <div>
+            <Label>Disciplina</Label>
+            <Select value={discKey || "_none"} onValueChange={(v) => {
+              const k = v === "_none" ? "" : v; setDiscKey(k); setTopic("");
+              const d = disciplines.find((x) => x.key === k); if (d) setArea(d.area as AreaValue);
+            }}>
+              <SelectTrigger><SelectValue /></SelectTrigger>
+              <SelectContent>
+                <SelectItem value="_none">— Sem disciplina —</SelectItem>
+                {disciplines.map((d) => <SelectItem key={d.key} value={d.key}>{d.label}</SelectItem>)}
+              </SelectContent>
+            </Select>
+          </div>
+          <div>
             <Label>Área</Label>
-            <Select value={area} onValueChange={(v) => setArea(v as AreaValue)}>
+            <Select value={area} onValueChange={(v) => setArea(v as AreaValue)} disabled={!!selectedDisc}>
               <SelectTrigger><SelectValue /></SelectTrigger>
               <SelectContent>
                 {AREAS.map((a) => <SelectItem key={a.value} value={a.value}>{a.emoji} {a.label}</SelectItem>)}
@@ -223,8 +271,9 @@ export function TeacherPanel({ userId }: { userId: string }) {
             </Select>
           </div>
           <div>
-            <Label>Tópico (opcional)</Label>
-            <Input value={topic} onChange={(e) => setTopic(e.target.value)} placeholder="Ex: nomenclatura IUPAC" />
+            <Label>Assunto (opcional)</Label>
+            <Input list="aula-topic-options" value={topic} onChange={(e) => setTopic(e.target.value)} placeholder="Escolha um assunto ou digite um novo" />
+            <datalist id="aula-topic-options">{topicOptions.map((t) => <option key={t} value={t} />)}</datalist>
           </div>
           <div>
             <Label>Quantidade ({count})</Label>

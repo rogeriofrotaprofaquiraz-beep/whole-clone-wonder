@@ -11,7 +11,7 @@ type Q = { id: string; area: string; topic: string | null; lesson: string | null
 
 const NO_TOPIC = "Sem assunto";
 
-export function AreaQuestionsDialog({ area, onClose, onChanged }: { area: AreaValue | null; onClose: () => void; onChanged: () => void }) {
+export function AreaQuestionsDialog({ area, discipline, onClose, onChanged }: { area: AreaValue | null; discipline?: { key: string; label: string } | null; onClose: () => void; onChanged: () => void }) {
   const [rows, setRows] = useState<Q[]>([]);
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState<string | null>(null);
@@ -26,13 +26,15 @@ export function AreaQuestionsDialog({ area, onClose, onChanged }: { area: AreaVa
   const load = async () => {
     if (!area) return;
     setLoading(true);
-    const { data, error } = await supabase.from("chem_questions")
-      .select("id, area, topic, lesson, question, options, correct_index, difficulty").eq("area", area).order("created_at", { ascending: false }).limit(1000);
+    let q = supabase.from("chem_questions")
+      .select("id, area, topic, lesson, question, options, correct_index, difficulty").eq("area", area);
+    if (discipline) q = q.eq("discipline", discipline.key);
+    const { data, error } = await q.order("created_at", { ascending: false }).limit(1000);
     setLoading(false);
     if (error) return toast.error(error.message);
     setRows((data as Q[]) ?? []);
   };
-  useEffect(() => { setOpen(null); setFormTopic(null); load(); }, [area]);
+  useEffect(() => { setOpen(null); setFormTopic(null); load(); }, [area, discipline?.key]);
 
   const groups = useMemo(() => {
     return groupQuestionsByTopic(rows).map(g => [g.key, g.items] as const);
@@ -75,7 +77,7 @@ export function AreaQuestionsDialog({ area, onClose, onChanged }: { area: AreaVa
     if (!u.user) return toast.error("Entre na sua conta para adicionar questões");
     setSaving(true);
     const { error } = await supabase.from("chem_questions").insert({
-      area, topic, lesson: topic, question: form.question.trim(), options: opts, correct_index: form.correct,
+      area, discipline: discipline?.key ?? null, topic, lesson: topic, question: form.question.trim(), options: opts, correct_index: form.correct,
       difficulty, explanation: explanation.trim() || null, school_level: schoolLevel, school_levels: [schoolLevel], created_by: u.user.id,
     } as any);
     setSaving(false);
@@ -91,7 +93,7 @@ export function AreaQuestionsDialog({ area, onClose, onChanged }: { area: AreaVa
   return (
     <Dialog open={!!area} onOpenChange={(o) => !o && onClose()}>
       <DialogContent className="max-w-3xl max-h-[85vh] overflow-y-auto">
-        <DialogHeader><DialogTitle>{meta?.emoji} {meta?.label} — assuntos e questões</DialogTitle></DialogHeader>
+        <DialogHeader><DialogTitle>{meta?.emoji} {discipline?.label ?? meta?.label} — assuntos e questões</DialogTitle></DialogHeader>
 
         <div className="flex flex-wrap gap-2">
           <Input value={newTopic} onChange={(e) => setNewTopic(e.target.value)} placeholder="Novo assunto (ex: Ligações químicas)" />
@@ -116,7 +118,7 @@ export function AreaQuestionsDialog({ area, onClose, onChanged }: { area: AreaVa
         )}
 
         {loading ? <p className="text-sm text-muted-foreground">Carregando…</p> : groups.length === 0 ? (
-          <p className="text-sm text-muted-foreground">Nenhuma questão nesta área ainda.</p>
+          <p className="text-sm text-muted-foreground">Nenhum assunto ainda. Adicione um assunto acima ou gere questões com IA.</p>
         ) : groups.map(([t, qs]) => (
           <div key={t} className="rounded-lg border">
             <div className="flex flex-wrap items-center gap-2 p-2">
