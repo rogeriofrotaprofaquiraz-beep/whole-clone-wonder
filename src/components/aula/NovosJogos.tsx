@@ -57,7 +57,7 @@ export function PalavrasCruzadas({ area, topic }: { area: AreaValue; topic?: str
   const [size, setSize] = useState(5);
   useEffect(() => {
     setTerms(null);
-    loadLinkedTerms(area, topic).then(setTerms);
+    loadLinkedTerms(area, topic, "cruzada").then(setTerms);
   }, [area, topic]);
   const [words, setWords] = useState<CTerm[]>([]);
   const [answers, setAnswers] = useState<string[]>([]);
@@ -121,7 +121,7 @@ export function TabuleiroQuimico({ area = "geral", topic }: { area?: AreaValue; 
   const [dice, setDice] = useState<number | null>(null);
   const [turns, setTurns] = useState(0);
   useEffect(() => {
-    loadLinkedQuestions(area, topic).then((d) => setQs(d as Q[]));
+    loadLinkedQuestions(area, topic, "tabuleiro").then((d) => setQs(d as Q[]));
   }, [area, topic]);
   const reset = () => { setPos(0); setQ(null); setDice(null); setTurns(0); };
   const roll = () => {
@@ -190,7 +190,7 @@ export function BatalhaNaval({ area = "geral", topic }: { area?: string; topic?:
   const [shots, setShots] = useState<Map<number, boolean>>(new Map());
   const [ask, setAsk] = useState<{ idx: number; q: string; opts: string[]; right: string } | null>(null);
   const [bank, setBank] = useState<{ question: string; options: string[]; correct_index: number }[]>([]);
-  useEffect(() => { loadLinkedQuestions(area, topic).then((d) => setBank(d as never)); }, [area, topic]);
+  useEffect(() => { loadLinkedQuestions(area, topic, "batalha_naval").then((d) => setBank(d as never)); }, [area, topic]);
   const [ammo, setAmmo] = useState(30);
   const reset = () => { setShips(make()); setShots(new Map()); setAsk(null); setAmmo(30); };
   const click = (idx: number) => {

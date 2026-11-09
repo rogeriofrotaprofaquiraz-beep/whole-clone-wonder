@@ -1,6 +1,11 @@
 import { supabase } from "@/integrations/supabase/client";
 import { topicOrFilter } from "@/lib/questionTopics";
 
+/** Filtro de consulta: questões sem jogos marcados ou marcadas para o jogo. */
+export function gameOrFilter(key: string) {
+  return `games.eq.{},games.cs.{${key}}`;
+}
+
 export type LinkedTerm = { term: string; clue: string; difficulty: number };
 type QRow = { question: string; options: unknown; correct_index: number; difficulty?: number | null; answer_text?: string | null };
 
@@ -18,8 +23,9 @@ export function questionsToTerms(rows: QRow[]): LinkedTerm[] {
 }
 
 /** Palavras dos termos cadastrados + respostas das perguntas geradas (por área ou assunto). */
-export async function loadLinkedTerms(area: string, topic?: string): Promise<LinkedTerm[]> {
+export async function loadLinkedTerms(area: string, topic?: string, game?: string): Promise<LinkedTerm[]> {
   let q = supabase.from("chem_questions").select("question,options,correct_index,difficulty,answer_text").limit(400);
+  if (game) q = q.or(gameOrFilter(game));
   q = q.eq("area", area as never);
   if (topic) q = q.or(topicOrFilter(topic));
   const [{ data: t }, { data: qs }] = await Promise.all([
@@ -34,8 +40,9 @@ export async function loadLinkedTerms(area: string, topic?: string): Promise<Lin
   });
 }
 
-export async function loadLinkedQuestions(area: string, topic?: string) {
+export async function loadLinkedQuestions(area: string, topic?: string, game?: string) {
   let q = supabase.from("chem_questions").select("question,options,correct_index").limit(200);
+  if (game) q = q.or(gameOrFilter(game));
   q = q.eq("area", area as never);
   if (topic) q = q.or(topicOrFilter(topic));
   const { data } = await q;

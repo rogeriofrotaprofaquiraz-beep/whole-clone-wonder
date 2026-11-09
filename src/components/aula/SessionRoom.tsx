@@ -1,3 +1,4 @@
+import { gameOrFilter } from "@/lib/linkedBank";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
@@ -145,7 +146,7 @@ export function SessionRoom({ code, isHost }: { code: string; isHost: boolean })
       pick = data;
       if (!pick) { toast.error("Questão não encontrada"); return; }
     } else {
-      const { data: pool } = await supabase.from("chem_questions").select("*").eq("area", session.area).limit(50);
+      const { data: pool } = await supabase.from("chem_questions").select("*").eq("area", session.area).or(gameOrFilter("partida_ao_vivo")).limit(50);
       const candidates = (pool ?? []).filter((q) => q.id !== session.current_question_id);
       if (!candidates.length) { toast.error("Sem mais questões nessa área"); return; }
       pick = candidates[Math.floor(Math.random() * candidates.length)];

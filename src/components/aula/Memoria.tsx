@@ -20,7 +20,7 @@ export function Memoria({ area, topic }: { area: AreaValue; topic?: string }) {
   const [busy, setBusy] = useState(false);
 
   const load = async () => {
-    const data = await loadLinkedTerms(area, topic);
+    const data = await loadLinkedTerms(area, topic, "memoria");
     const pool = (data ?? []).sort(() => Math.random() - 0.5).slice(0, 8);
     if (!pool.length) return setTiles([]);
     const pairs: Tile[] = [];

@@ -1,3 +1,4 @@
+import { gameOrFilter } from "@/lib/linkedBank";
 import { recordHit, recordMiss } from "@/lib/gameStats";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -27,7 +28,7 @@ export const ElementQuiz = () => {
     const { data: u } = await supabase.auth.getUser();
     const scope = u.user?.id ?? "anon";
     const { data } = await supabase.from("chem_questions")
-      .select("id,question,options,correct_index,explanation,image_url,difficulty").limit(1000);
+      .select("id,question,options,correct_index,explanation,image_url,difficulty").or(gameOrFilter("quiz")).limit(1000);
     const pool = (data ?? []).filter((r: any) => Array.isArray(r.options) && r.options[r.correct_index] != null);
     if (!pool.length) { setState("empty"); return; }
     const { picked, seen } = pickUnseen(pool as any[], loadSeen(scope), MAX_QUESTIONS);

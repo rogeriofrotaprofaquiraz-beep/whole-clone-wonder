@@ -13,3 +13,9 @@
 - [x] Campeonato: fácil verde, médio amarelo, difícil vermelho (claro → escuro ao clicar)
 - [x] Quiz rápido vai direto às perguntas, só banco de questões, moedas por nível
 - [x] Forca em duelo: jogo em cima, pergunta embaixo, quem acerta primeiro dá palpite; errar perde
+
+# Roadmap (prompt-49)
+- [x] Banco de Questões no padrão da imagem (gerar com IA por disciplina e tipo de jogo, importar CSV/XLSX/JSON, filtros, cartões, editor)
+- [x] Tipos de jogo completos (18), incluindo os que faltavam
+- [x] Disciplinas editáveis (adicionar/editar/excluir) com 20 disciplinas iniciais
+- [x] Marcar em quais jogos cada questão aparece; os jogos respeitam a marcação

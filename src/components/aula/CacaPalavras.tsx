@@ -57,7 +57,7 @@ export function CacaPalavras({ area, topic }: { area: AreaValue; topic?: string 
   const [count, setCount] = useState(5);
 
   useEffect(() => {
-    loadLinkedTerms(area, topic).then(setTerms);
+    loadLinkedTerms(area, topic, "caca_palavras").then(setTerms);
   }, [area, topic]);
 
   useEffect(() => { if (terms.length) reset(); }, [terms, count]);

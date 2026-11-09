@@ -1,3 +1,4 @@
+import { gameOrFilter } from "@/lib/linkedBank";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
@@ -39,7 +40,7 @@ export function ForcaDuelo({ area, level, difficulty }: { area: AreaValue; level
     const { data: terms } = await supabase.from("chem_terms").select("*")
       .eq("area", area).eq("school_level", level).eq("difficulty", difficulty).limit(200);
     const { data: qs } = await supabase.from("chem_questions")
-      .select("id,question,options,correct_index").lte("difficulty", 2).limit(1000);
+      .select("id,question,options,correct_index").lte("difficulty", 2).or(gameOrFilter("forca")).limit(1000);
     const validQ = (qs ?? []).filter((r: any) => Array.isArray(r.options) && r.options[r.correct_index] != null);
     if (!terms?.length || !validQ.length) { setEmpty(true); return; }
     const t = pickUnseen(terms as any[], loadSeen(`forca:${s}`), 1);

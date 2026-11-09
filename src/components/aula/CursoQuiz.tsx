@@ -1,3 +1,4 @@
+import { gameOrFilter } from "@/lib/linkedBank";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Card } from "@/components/ui/card";
@@ -33,7 +34,7 @@ export function CursoQuiz({ topic, content, level }: { topic: string; content?: 
     setLoading(true); setI(0); setPick(null); setScore(0); setEarned(0); setStarted(false);
     const word = topic.replace(/^\d+\.\s*/, "").split(/[\s:–-]+/).filter((w) => w.length > 4).slice(0, 2);
     const ors = [`lesson.ilike.%${topic.replace(/[%,()]/g, "")}%`, ...word.map((w) => `topic.ilike.%${w}%`), ...word.map((w) => `question.ilike.%${w}%`)].join(",");
-    let q = supabase.from("chem_questions").select("id,question,options,correct_index,explanation,image_url,difficulty,slide_content").or(ors).limit(40);
+    let q = supabase.from("chem_questions").select("id,question,options,correct_index,explanation,image_url,difficulty,slide_content").or(ors).or(gameOrFilter("quiz_curso")).limit(40);
     if (level) q = q.or(`school_level.eq.${level},school_levels.cs.{${level}}`);
     q.then(({ data }) => {
       const list = ((data ?? []) as Q[]).sort(() => Math.random() - 0.5).slice(0, 10).sort((a, b) => a.difficulty - b.difficulty);

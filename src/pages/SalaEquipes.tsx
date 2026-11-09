@@ -1,3 +1,4 @@
+import { gameOrFilter } from "@/lib/linkedBank";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
@@ -46,7 +47,7 @@ export default function SalaEquipes() {
 
   const start = async () => {
     const n = count * teams.length;
-    const { data } = await supabase.from("chem_questions").select("id,question,options,correct_index,difficulty").limit(1000);
+    const { data } = await supabase.from("chem_questions").select("id,question,options,correct_index,difficulty").or(gameOrFilter("sala_equipes")).limit(1000);
     const pool = (data ?? []).filter((r: any) => Array.isArray(r.options) && r.options[r.correct_index] != null);
     const { picked, seen } = pickUnseen(pool as any[], loadSeen(`sala:${classId}`), n);
     saveSeen(`sala:${classId}`, seen);

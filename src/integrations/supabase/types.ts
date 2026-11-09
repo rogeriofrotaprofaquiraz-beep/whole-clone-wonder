@@ -392,8 +392,11 @@ export type Database = {
           created_at: string
           created_by: string | null
           difficulty: number
+          discipline: string | null
           explanation: string | null
+          games: string[]
           grade_year: number | null
+          hint: string | null
           id: string
           image_url: string | null
           lesson: string | null
@@ -402,6 +405,8 @@ export type Database = {
           school_level: string
           school_levels: string[]
           slide_content: string | null
+          subcategory: string | null
+          time_limit: number
           topic: string | null
           updated_at: string
         }
@@ -413,8 +418,11 @@ export type Database = {
           created_at?: string
           created_by?: string | null
           difficulty?: number
+          discipline?: string | null
           explanation?: string | null
+          games?: string[]
           grade_year?: number | null
+          hint?: string | null
           id?: string
           image_url?: string | null
           lesson?: string | null
@@ -423,6 +431,8 @@ export type Database = {
           school_level?: string
           school_levels?: string[]
           slide_content?: string | null
+          subcategory?: string | null
+          time_limit?: number
           topic?: string | null
           updated_at?: string
         }
@@ -434,8 +444,11 @@ export type Database = {
           created_at?: string
           created_by?: string | null
           difficulty?: number
+          discipline?: string | null
           explanation?: string | null
+          games?: string[]
           grade_year?: number | null
+          hint?: string | null
           id?: string
           image_url?: string | null
           lesson?: string | null
@@ -444,6 +457,8 @@ export type Database = {
           school_level?: string
           school_levels?: string[]
           slide_content?: string | null
+          subcategory?: string | null
+          time_limit?: number
           topic?: string | null
           updated_at?: string
         }
@@ -1738,6 +1753,33 @@ export type Database = {
           username?: string | null
           wins?: number | null
           xp?: number | null
+        }
+        Relationships: []
+      }
+      question_disciplines: {
+        Row: {
+          area: Database["public"]["Enums"]["chem_area"]
+          color: string
+          created_at: string
+          key: string
+          label: string
+          sort: number
+        }
+        Insert: {
+          area?: Database["public"]["Enums"]["chem_area"]
+          color?: string
+          created_at?: string
+          key: string
+          label: string
+          sort?: number
+        }
+        Update: {
+          area?: Database["public"]["Enums"]["chem_area"]
+          color?: string
+          created_at?: string
+          key?: string
+          label?: string
+          sort?: number
         }
         Relationships: []
       }

@@ -30,7 +30,7 @@ Deno.serve(async (req) => {
     const { data: isAdmin } = await admin.rpc("has_role", { _user_id: user.id, _role: "admin" });
     if (!isAdmin) return json({ error: "Forbidden — admin only" }, 403);
 
-    const { area, count = 10, difficulty = 2, topic, school_level = "medio", content = "" } = await req.json();
+    const { area, count = 10, difficulty = 2, topic, school_level = "medio", content = "", discipline, discipline_label, game, game_label, word_answer } = await req.json();
     if (!area || !AREA_LABELS[area]) return json({ error: "Invalid area" }, 400);
     const LEVEL_LABELS: Record<string, string> = {
       fundamental: "Ensino Fundamental II (linguagem acessível, sem fórmulas complexas)",
@@ -43,12 +43,13 @@ Deno.serve(async (req) => {
     const n = Math.min(Math.max(parseInt(String(count)) || 10, 1), 25);
 
     const sys = `Você é um professor de ciências e química brasileiro criando questões de múltipla escolha. Responda APENAS com JSON válido, sem markdown.`;
-    const userPrompt = `Crie ${n} questões objetivas em PORTUGUÊS sobre ${AREA_LABELS[area]}${topic ? ` — tópico: ${topic}` : ""}.
+    const userPrompt = `Crie ${n} questões objetivas em PORTUGUÊS sobre ${discipline_label ? discipline_label + " — " : ""}${AREA_LABELS[area]}${topic ? ` — tópico: ${topic}` : ""}.
 Público-alvo: ${levelLabel}. Dificuldade: ${difficulty}/5.
+${game_label ? `As questões serão usadas no jogo "${game_label}".` : ""}${word_answer ? " A resposta correta de cada questão deve ser UMA ÚNICA PALAVRA (3 a 12 letras, sem espaços), para caber em jogos de palavras." : ""}
 Cada questão com EXATAMENTE 4 alternativas plausíveis e uma única correta. Inclua explicação curta e uma MINI-AULA (\"lesson\", 2 a 4 frases) que ensine o conceito ANTES da pergunta, sem revelar a resposta.${content ? `\nBaseie-se EXCLUSIVAMENTE neste CONTEÚDO/PLANEJAMENTO do professor:\n"""\n${String(content).slice(0,12000)}\n"""` : ""}
 
 Retorne JSON:
-{ "questions": [ { "question": "...", "options": ["A","B","C","D"], "correct_index": 0, "explanation": "...", "lesson": "...", "topic": "..." } ] }`;
+{ "questions": [ { "question": "...", "options": ["A","B","C","D"], "correct_index": 0, "explanation": "...", "lesson": "...", "topic": "...", "hint": "dica curta sem revelar a resposta" } ] }`;
 
     const aiResp = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
@@ -82,6 +83,9 @@ Retorne JSON:
       explanation: q.explanation ?? null,
       lesson: q.lesson ?? null,
       created_by: user.id,
+      discipline: discipline ? String(discipline) : null,
+      games: game ? [String(game)] : [],
+      hint: q.hint ? String(q.hint) : null,
     })).filter((r) => r.question && r.options.length === 4);
 
     const { data: inserted, error: insErr } = await admin.from("chem_questions").insert(rows).select("id");
