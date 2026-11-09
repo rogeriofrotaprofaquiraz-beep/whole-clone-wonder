@@ -1764,6 +1764,7 @@ export type Database = {
           key: string
           label: string
           sort: number
+          topics: string[]
         }
         Insert: {
           area?: Database["public"]["Enums"]["chem_area"]
@@ -1772,6 +1773,7 @@ export type Database = {
           key: string
           label: string
           sort?: number
+          topics?: string[]
         }
         Update: {
           area?: Database["public"]["Enums"]["chem_area"]
@@ -1780,6 +1782,7 @@ export type Database = {
           key?: string
           label?: string
           sort?: number
+          topics?: string[]
         }
         Relationships: []
       }

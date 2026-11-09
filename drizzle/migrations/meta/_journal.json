@@ -169,6 +169,13 @@
       "when": 1794250963255,
       "tag": "0023_chem_questions_default_discipline",
       "breakpoints": true
+    },
+    {
+      "idx": 24,
+      "version": "7",
+      "when": 1794252980929,
+      "tag": "0024_discipline_topics",
+      "breakpoints": true
     }
   ]
 }

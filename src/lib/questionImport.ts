@@ -1,6 +1,6 @@
 import { GAME_TYPES } from "./questionGames";
 
-export type Discipline = { key: string; label: string; area: string; color: string; sort: number };
+export type Discipline = { key: string; label: string; area: string; color: string; sort: number; topics?: string[] };
 
 export const IMPORT_HEADERS = [
   "disciplina", "nivel", "dificuldade", "assunto", "jogos", "pergunta",

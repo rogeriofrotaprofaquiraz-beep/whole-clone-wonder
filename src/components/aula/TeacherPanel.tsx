@@ -54,7 +54,7 @@ export function TeacherPanel({ userId }: { userId: string }) {
   useEffect(() => {
     if (!selectedDisc) { setTopicOptions([]); return; }
     supabase.from("chem_questions").select("topic, lesson").eq("discipline", selectedDisc.key).limit(1000)
-      .then(({ data }) => setTopicOptions([...new Set((data ?? []).map((r: any) => (r.topic || r.lesson || "").trim()).filter(Boolean))].sort()));
+      .then(({ data }) => setTopicOptions([...new Set([...(selectedDisc.topics ?? []), ...(data ?? []).map((r: any) => (r.topic || r.lesson || "").trim()).filter(Boolean)])]));
   }, [discKey, disciplines, discStats]);
 
   const [stdProgress, setStdProgress] = useState("");
@@ -274,6 +274,14 @@ export function TeacherPanel({ userId }: { userId: string }) {
             <Label>Assunto (opcional)</Label>
             <Input list="aula-topic-options" value={topic} onChange={(e) => setTopic(e.target.value)} placeholder="Escolha um assunto ou digite um novo" />
             <datalist id="aula-topic-options">{topicOptions.map((t) => <option key={t} value={t} />)}</datalist>
+            {!!selectedDisc?.topics?.length && (
+              <div className="flex flex-wrap gap-1 mt-2">
+                {selectedDisc.topics.map((t) => (
+                  <button key={t} type="button" onClick={() => setTopic(t)}
+                    className={`text-xs px-2 py-0.5 rounded-full border ${topic === t ? "bg-primary text-primary-foreground" : "bg-muted"}`}>{t}</button>
+                ))}
+              </div>
+            )}
           </div>
           <div>
             <Label>Quantidade ({count})</Label>

@@ -1,0 +1,1 @@
+ALTER TABLE public.question_disciplines ADD COLUMN IF NOT EXISTS topics text[] NOT NULL DEFAULT '{}';
