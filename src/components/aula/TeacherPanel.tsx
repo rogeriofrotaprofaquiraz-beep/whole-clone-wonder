@@ -12,6 +12,7 @@ import { Sparkles, Play, Copy, Loader2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { AreaQuestionsDialog } from "./AreaQuestionsDialog";
 import { QuestionBankCentral } from "./QuestionBankCentral";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export function TeacherPanel({ userId }: { userId: string }) {
   const navigate = useNavigate();
@@ -171,11 +172,20 @@ export function TeacherPanel({ userId }: { userId: string }) {
         <p className="text-white/80 text-sm">Gere questões com IA e crie partidas para sua turma</p>
       </Card>
 
+      <Tabs defaultValue="banco" className="space-y-4">
+        <TabsList className="grid grid-cols-3 h-auto w-full">
+          <TabsTrigger value="banco" className="py-2 font-bold">🗃️ Banco de Questões</TabsTrigger>
+          <TabsTrigger value="aula" className="py-2 font-bold">📄 Gerar pela aula</TabsTrigger>
+          <TabsTrigger value="partidas" className="py-2 font-bold">🎮 Partidas ao vivo</TabsTrigger>
+        </TabsList>
+
+      <TabsContent value="aula">
       <Card className="p-6">
-        <div className="flex items-center gap-2 mb-4">
+        <div className="flex items-center gap-2 mb-1">
           <Sparkles className="text-[#D97706]" />
-          <h3 className="text-lg font-bold">Banco de Questões (IA)</h3>
+          <h3 className="text-lg font-bold">Gerar questões pela aula</h3>
         </div>
+        <p className="text-xs text-muted-foreground mb-4">Resumo por área (clique para ver os assuntos) e geração a partir do conteúdo ou planejamento da aula.</p>
         <div className="grid grid-cols-2 md:grid-cols-5 gap-2 mb-4">
           {AREAS.map((a) => (
             <button
@@ -255,13 +265,14 @@ export function TeacherPanel({ userId }: { userId: string }) {
         </div>
         <p className="text-xs text-muted-foreground mt-2">"Quiz" alimenta o Quiz competitivo. "Termos" alimenta Forca, Caça-palavras e Memória (treino solo).</p>
       </Card>
+      </TabsContent>
 
-
+      <TabsContent value="banco">
 
       <Card className="p-6"><QuestionBankCentral userId={userId} revision={bankRevision} onChanged={loadStats} /></Card>
+      </TabsContent>
 
-
-
+      <TabsContent value="partidas" className="space-y-6">
       <Card className="p-6">
         <h3 className="text-lg font-bold mb-4 flex items-center gap-2"><Play className="text-[#059669]" /> Nova Partida</h3>
         <div className="grid md:grid-cols-3 gap-3">
@@ -322,6 +333,8 @@ export function TeacherPanel({ userId }: { userId: string }) {
           </div>
         </Card>
       )}
+      </TabsContent>
+      </Tabs>
     </div>
   );
 }

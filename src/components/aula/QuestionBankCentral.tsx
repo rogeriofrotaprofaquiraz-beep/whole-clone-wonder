@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { BookOpen, FileDown, FileText, Loader2, Pencil, Plus, Settings2, Sparkles, Trash2, Upload } from "lucide-react";
 import { QuestionBankByTopic } from "./QuestionBankByTopic";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { DisciplinesDialog } from "./DisciplinesDialog";
 import { QuestionEditorDialog, type BankQuestion } from "./QuestionEditorDialog";
 import { LEVELS, DIFFICULTIES } from "@/lib/aula";
@@ -33,7 +34,7 @@ export function QuestionBankCentral({ userId, revision = 0, onChanged }: { userI
   const [gen, setGen] = useState({ count: 5, level: "medio", disc: "geral", game: "quiz", difficulty: 2 });
   const [generating, setGenerating] = useState(false);
   const [importing, setImporting] = useState(false);
-  const importRef = useRef<HTMLDivElement>(null);
+  const [tab, setTab] = useState("lista");
   const fileRef = useRef<HTMLInputElement>(null);
 
   const refresh = useCallback(() => { setTick((t) => t + 1); onChanged?.(); }, [onChanged]);
@@ -129,11 +130,20 @@ export function QuestionBankCentral({ userId, revision = 0, onChanged }: { userI
         </div>
         <div className="flex flex-wrap gap-2">
           <Button variant="outline" onClick={() => setDiscOpen(true)}><Settings2 className="mr-1 h-4 w-4" /> Disciplinas</Button>
-          <Button variant="outline" onClick={() => importRef.current?.scrollIntoView({ behavior: "smooth" })}><Upload className="mr-1 h-4 w-4" /> Importar</Button>
+          <Button variant="outline" onClick={() => setTab("importar")}><Upload className="mr-1 h-4 w-4" /> Importar</Button>
           <Button onClick={() => { setEditing(null); setEditorOpen(true); }}><Plus className="mr-1 h-4 w-4" /> Nova Questão</Button>
         </div>
       </div>
 
+      <Tabs value={tab} onValueChange={setTab} className="space-y-4">
+        <TabsList className="flex flex-wrap h-auto justify-start">
+          <TabsTrigger value="lista">📋 Questões ({rows.length})</TabsTrigger>
+          <TabsTrigger value="assuntos">📚 Por assunto</TabsTrigger>
+          <TabsTrigger value="gerar">✨ Gerar com IA</TabsTrigger>
+          <TabsTrigger value="importar">📥 Importar</TabsTrigger>
+        </TabsList>
+
+      <TabsContent value="gerar">
       <div className="rounded-xl border bg-gradient-to-r from-primary/10 via-background to-accent/30 p-4">
         <h3 className="font-bold text-lg flex items-center gap-2 mb-3"><Sparkles className="h-5 w-5 text-primary" /> Gerar Questões com IA</h3>
         <div className="grid grid-cols-2 md:grid-cols-6 gap-3 items-end">
@@ -160,7 +170,10 @@ export function QuestionBankCentral({ userId, revision = 0, onChanged }: { userI
         </div>
       </div>
 
-      <div ref={importRef} className="rounded-xl border p-4 flex flex-wrap items-center justify-between gap-3">
+      </TabsContent>
+
+      <TabsContent value="importar" className="space-y-3">
+      <div className="rounded-xl border p-4 flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-3">
           <FileText className="h-6 w-6 text-primary" />
           <div><div className="font-bold">Importar Questões</div><div className="text-xs text-muted-foreground">CSV, XLSX ou JSON — com disciplina e jogos de cada questão</div></div>
@@ -174,6 +187,13 @@ export function QuestionBankCentral({ userId, revision = 0, onChanged }: { userI
         </div>
       </div>
 
+      <div className="rounded-xl border p-4 text-sm space-y-1">
+        <div className="font-bold">Colunas do arquivo</div>
+        <p className="text-muted-foreground">disciplina · nivel (fundamental, medio, olimpiada, superior) · dificuldade (1 a 5) · assunto · jogos (separados por vírgula, ex.: quiz,forca) · pergunta · opcao_a a opcao_d · resposta · dica · explicacao</p>
+      </div>
+      </TabsContent>
+
+      <TabsContent value="lista" className="space-y-3">
       <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr] gap-2">
         <Input placeholder="Buscar questões…" value={q} onChange={(e) => setQ(e.target.value)} />
         <select className={sel} value={disc} onChange={(e) => setDisc(e.target.value)}>
@@ -212,7 +232,9 @@ export function QuestionBankCentral({ userId, revision = 0, onChanged }: { userI
                   {r.hint && <div className="text-xs text-muted-foreground">Dica: {r.hint}</div>}
                   <div className="text-xs mt-1">
                     🎮 {marked ? "Marcada para: " : "Automático: "}
-                    {r.gameList.length ? r.gameList.map(gameLabel).join(" · ") : "nenhum jogo"}
+                    {r.gameList.length
+                      ? r.gameList.slice(0, 4).map(gameLabel).join(" · ") + (r.gameList.length > 4 ? ` +${r.gameList.length - 4} jogos` : "")
+                      : "nenhum jogo"}
                   </div>
                 </div>
                 <Button size="icon" variant="ghost" aria-label="Editar" onClick={() => { setEditing(r); setEditorOpen(true); }}><Pencil className="h-4 w-4" /></Button>
@@ -224,7 +246,12 @@ export function QuestionBankCentral({ userId, revision = 0, onChanged }: { userI
         {list.length > 300 && <div className="text-xs text-muted-foreground">Mostrando 300 — use os filtros para refinar.</div>}
       </div>
 
-      <QuestionBankByTopic userId={userId} revision={revision + tick} embedded onChanged={onChanged} />
+      </TabsContent>
+
+      <TabsContent value="assuntos">
+        <QuestionBankByTopic userId={userId} revision={revision + tick} embedded onChanged={onChanged} />
+      </TabsContent>
+      </Tabs>
 
       <QuestionEditorDialog open={editorOpen} onOpenChange={setEditorOpen} value={editing}
         disciplines={disciplines} userId={userId} onSaved={refresh} />
