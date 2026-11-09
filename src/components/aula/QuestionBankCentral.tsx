@@ -28,6 +28,7 @@ export function QuestionBankCentral({ userId, revision = 0, onChanged }: { userI
   const [game, setGame] = useState("");
   const [level, setLevel] = useState("");
   const [q, setQ] = useState("");
+  const [topicF, setTopicF] = useState("");
   const [editing, setEditing] = useState<Row | null>(null);
   const [editorOpen, setEditorOpen] = useState(false);
   const [discOpen, setDiscOpen] = useState(false);
@@ -63,8 +64,18 @@ export function QuestionBankCentral({ userId, revision = 0, onChanged }: { userI
 
   const discMap = useMemo(() => new Map(disciplines.map((d) => [d.key, d])), [disciplines]);
   const withGames = useMemo(() => rows.map((r) => ({ ...r, gameList: gamesFor(r) })), [rows]);
+  const topicOf = (r: Row) => (r.topic || "").trim() || "Sem assunto";
+  const discSummary = useMemo(() => {
+    const m = new Map<string, { n: number; topics: Map<string, number> }>();
+    for (const r of rows) {
+      const k = r.discipline ?? "";
+      const e = m.get(k) ?? { n: 0, topics: new Map() };
+      e.n++; e.topics.set(topicOf(r), (e.topics.get(topicOf(r)) ?? 0) + 1); m.set(k, e);
+    }
+    return m;
+  }, [rows]);
   const list = withGames.filter((r) =>
-    (!disc || r.discipline === disc) && (!level || r.school_level === level) &&
+    (!disc || r.discipline === disc) && (!topicF || topicOf(r) === topicF) && (!level || r.school_level === level) &&
     (!game || r.gameList.includes(game)) &&
     (!q || (r.question + " " + (r.topic ?? "") + " " + (r.answer_text ?? "")).toLowerCase().includes(q.toLowerCase())));
 
@@ -194,9 +205,30 @@ export function QuestionBankCentral({ userId, revision = 0, onChanged }: { userI
       </TabsContent>
 
       <TabsContent value="lista" className="space-y-3">
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-2">
+        {disciplines.map((d) => {
+          const sm = discSummary.get(d.key); const active = disc === d.key;
+          return (
+            <button key={d.key} type="button" onClick={() => { setDisc(active ? "" : d.key); setTopicF(""); }}
+              className={`rounded-xl p-3 text-left text-primary-foreground transition hover:opacity-90 ${active ? "ring-4 ring-ring ring-offset-2" : disc ? "opacity-50" : ""}`}
+              style={{ background: d.color }}>
+              <div className="font-bold text-sm leading-tight">{d.label}</div>
+              <div className="text-xs opacity-90 mt-1">{sm?.n ?? 0} {sm?.n === 1 ? "questão" : "questões"}{sm?.topics.size ? ` • ${sm.topics.size} ${sm.topics.size === 1 ? "assunto" : "assuntos"}` : ""}</div>
+            </button>
+          );
+        })}
+      </div>
+      {disc && (
+        <div className="flex flex-wrap gap-1.5">
+          <Button size="sm" variant={topicF ? "outline" : "default"} onClick={() => setTopicF("")}>Todos os assuntos ({discSummary.get(disc)?.n ?? 0})</Button>
+          {[...(discSummary.get(disc)?.topics ?? new Map<string, number>())].sort((a, b) => a[0].localeCompare(b[0])).map(([t, n]) => (
+            <Button key={t} size="sm" variant={topicF === t ? "default" : "outline"} onClick={() => setTopicF(topicF === t ? "" : t)}>{t} ({n})</Button>
+          ))}
+        </div>
+      )}
       <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr] gap-2">
         <Input placeholder="Buscar questões…" value={q} onChange={(e) => setQ(e.target.value)} />
-        <select className={sel} value={disc} onChange={(e) => setDisc(e.target.value)}>
+        <select className={sel} value={disc} onChange={(e) => { setDisc(e.target.value); setTopicF(""); }}>
           <option value="">Todas Disciplinas</option>
           {disciplines.map((d) => <option key={d.key} value={d.key}>{d.label}</option>)}
         </select>
