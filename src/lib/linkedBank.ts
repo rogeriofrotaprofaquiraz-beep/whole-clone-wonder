@@ -1,4 +1,5 @@
 import { supabase } from "@/integrations/supabase/client";
+import { topicOrFilter } from "@/lib/questionTopics";
 
 export type LinkedTerm = { term: string; clue: string; difficulty: number };
 type QRow = { question: string; options: unknown; correct_index: number; difficulty?: number | null; answer_text?: string | null };
@@ -19,7 +20,8 @@ export function questionsToTerms(rows: QRow[]): LinkedTerm[] {
 /** Palavras dos termos cadastrados + respostas das perguntas geradas (por área ou assunto). */
 export async function loadLinkedTerms(area: string, topic?: string): Promise<LinkedTerm[]> {
   let q = supabase.from("chem_questions").select("question,options,correct_index,difficulty,answer_text").limit(400);
-  q = topic ? q.eq("topic", topic) : q.eq("area", area as never);
+  q = q.eq("area", area as never);
+  if (topic) q = q.or(topicOrFilter(topic));
   const [{ data: t }, { data: qs }] = await Promise.all([
     topic ? Promise.resolve({ data: [] as any[] }) : supabase.from("chem_terms").select("term,clue,difficulty").eq("area", area as never).limit(400),
     q,
@@ -34,7 +36,8 @@ export async function loadLinkedTerms(area: string, topic?: string): Promise<Lin
 
 export async function loadLinkedQuestions(area: string, topic?: string) {
   let q = supabase.from("chem_questions").select("question,options,correct_index").limit(200);
-  q = topic ? q.eq("topic", topic) : q.eq("area", area as never);
+  q = q.eq("area", area as never);
+  if (topic) q = q.or(topicOrFilter(topic));
   const { data } = await q;
   return data ?? [];
 }

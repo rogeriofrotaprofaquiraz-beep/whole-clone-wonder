@@ -1,3 +1,4 @@
+import { topicNames } from "@/lib/questionTopics";
 import { setCurrentGame, PENDING_GAME_KEY } from "@/lib/gameStats";
 import { useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
@@ -53,9 +54,9 @@ export function CampeonatoJogos() {
   const [unlocked, setUnlocked] = useState(false);
   useEffect(() => { setPhase(1); setUnlocked(false); }, [game, area, topic]);
   useEffect(() => {
-    supabase.from("chem_questions").select("topic").not("topic", "is", null).limit(1000).then(({ data }) =>
-      setTopics([...new Set((data ?? []).map((r: any) => String(r.topic).trim()).filter(Boolean))].sort((a, b) => a.localeCompare(b, "pt-BR", { numeric: true }))));
-  }, []);
+    setTopic("");
+    supabase.from("chem_questions").select("topic,lesson").eq("area", area as never).limit(1000).then(({ data }) => setTopics(topicNames(data ?? [])));
+  }, [area]);
   const shownTopics = topics.filter((t) => t.toLowerCase().includes(topicSearch.toLowerCase()));
   useEffect(() => { setCurrentGame(game); return () => setCurrentGame(null); }, [game]);
   useEffect(() => {

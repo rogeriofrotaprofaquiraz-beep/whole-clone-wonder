@@ -1,3 +1,4 @@
+import { topicOrFilter } from "@/lib/questionTopics";
 import { useEffect, useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -17,7 +18,7 @@ export function QuestionGate({ area, level, phase, onPass, topic }: { area: stri
     (async () => {
       setLoading(true); setPicked(null); setQ(null);
       const difficulty = 1 + Math.floor(Math.random() * 5);
-      const base = () => { let b = supabase.from("chem_questions").select("id,question,options,correct_index,difficulty,explanation"); b = topic ? b.eq("topic", topic) : b.eq("area", area as never); return b; };
+      const base = () => { let b = supabase.from("chem_questions").select("id,question,options,correct_index,difficulty,explanation"); b = b.eq("area", area as never); if (topic) b = b.or(topicOrFilter(topic)); return b; };
       let { data } = level ? await base().eq("difficulty", difficulty).contains("school_levels", [level]).limit(50) : await base().eq("difficulty", difficulty).limit(50);
       if (!data?.length && level) ({ data } = await base().contains("school_levels", [level]).limit(50));
       if (!data?.length) ({ data } = await base().limit(50));

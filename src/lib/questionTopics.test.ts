@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { groupQuestionsByTopic, questionPlacement, questionTopic } from "./questionTopics";
+import { groupQuestionsByTopic, questionPlacement, questionTopic, topicNames, topicOrFilter } from "./questionTopics";
 
 describe("organização do banco por assunto", () => {
   it("mantém assuntos de áreas diferentes separados", () => {
@@ -16,5 +16,11 @@ describe("organização do banco por assunto", () => {
   });
   it("transferir mantém assunto e aula alinhados para os jogos", () => {
     expect(questionPlacement("organica", "  Hidrocarbonetos  ")).toEqual({ area: "organica", topic: "Hidrocarbonetos", lesson: "Hidrocarbonetos" });
+  });
+  it("jogos encontram questões antigas pela aula quando falta o assunto", () => {
+    expect(topicOrFilter("Ácidos, bases")).toBe('topic.eq."Ácidos, bases",and(topic.is.null,lesson.eq."Ácidos, bases")');
+  });
+  it("lista de assuntos dos jogos inclui aulas antigas sem repetir", () => {
+    expect(topicNames([{ topic: "Átomos" }, { topic: null, lesson: "Ligações" }, { topic: " Átomos " }, { topic: null, lesson: null }])).toEqual(["Átomos", "Ligações"]);
   });
 });

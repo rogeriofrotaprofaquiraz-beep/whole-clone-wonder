@@ -19,3 +19,18 @@ export function groupQuestionsByTopic<T extends TopicQuestion>(questions: T[]) {
 export function questionPlacement(area: string, topic: string) {
   return { area, topic: topic.trim() || null, lesson: topic.trim() || null };
 }
+/** Filtro PostgREST: assunto cadastrado ou, quando ele falta, a aula antiga. */
+export function topicOrFilter(topic: string) {
+  const v = `"${topic.trim().replace(/\\/g, "\\\\").replace(/"/g, '\\"')}"`;
+  return `topic.eq.${v},and(topic.is.null,lesson.eq.${v})`;
+}
+
+/** Lista de assuntos (sem repetir, em ordem) a partir das questões de uma área. */
+export function topicNames(rows: { topic: string | null; lesson?: string | null }[]) {
+  const names = new Set<string>();
+  for (const r of rows) {
+    const name = r.topic?.trim() || r.lesson?.trim();
+    if (name) names.add(name);
+  }
+  return [...names].sort((a, b) => a.localeCompare(b, "pt-BR", { numeric: true }));
+}
