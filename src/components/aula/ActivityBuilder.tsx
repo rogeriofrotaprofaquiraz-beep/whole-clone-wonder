@@ -166,7 +166,7 @@ function TypeSwitcher({ q, onChange }: { q: Question; onChange: (t: ActivityType
 }
 
 /** Editor das perguntas de um slide de atividade. */
-export function ActivityEditor({ activity, about, onChange }: { activity: Activity; about?: string; onChange: (a: Activity) => void }) {
+export function ActivityEditor({ activity, about, onChange, single }: { activity: Activity; about?: string; onChange: (a: Activity) => void; single?: boolean }) {
   const [adding, setAdding] = useState(false);
   const qs = activity.questions;
   const set = (i: number, p: Partial<Question>) => onChange({ questions: qs.map((q, k) => k === i ? { ...q, ...p } : q) });
@@ -183,9 +183,9 @@ export function ActivityEditor({ activity, about, onChange }: { activity: Activi
       {qs.map((q, i) => (
         <div key={q.id} className="border border-pink-200 rounded-lg p-3 bg-white space-y-2">
           <div className="flex items-center gap-2 text-xs">
-            <span className="font-bold text-pink-700">Pergunta {i + 1}</span>
+            {!single && <span className="font-bold text-pink-700">Pergunta {i + 1}</span>}
             <TypeSwitcher q={q} onChange={t => onChange({ questions: qs.map((x, k) => k === i ? convertQuestion(x, t) : x) })} />
-            <button type="button" className="ml-auto" title="Excluir pergunta" onClick={() => onChange({ questions: qs.filter((_, k) => k !== i) })}>🗑️</button>
+            {!single && <button type="button" className="ml-auto" title="Excluir pergunta" onClick={() => onChange({ questions: qs.filter((_, k) => k !== i) })}>🗑️</button>}
           </div>
           {OPTION_TYPES.includes(q.type) && q.options ? <>
             <OptionCardsEditor q={q} set={p => set(i, p)} upload={uploadImg} />
@@ -279,7 +279,7 @@ export function ActivityEditor({ activity, about, onChange }: { activity: Activi
           </div>}
         </div>
       ))}
-      {adding ? <div className="border rounded-lg p-3 bg-white"><ActivityTypePicker onPick={t => { onChange({ questions: [...qs, newQuestion(t, about)] }); setAdding(false); }} />
+      {single ? null : adding ? <div className="border rounded-lg p-3 bg-white"><ActivityTypePicker onPick={t => { onChange({ questions: [...qs, newQuestion(t, about)] }); setAdding(false); }} />
         <Button variant="ghost" size="sm" onClick={() => setAdding(false)}>Cancelar</Button></div>
         : <Button variant="outline" size="sm" onClick={() => setAdding(true)}>➕ Adicionar pergunta</Button>}
     </div>

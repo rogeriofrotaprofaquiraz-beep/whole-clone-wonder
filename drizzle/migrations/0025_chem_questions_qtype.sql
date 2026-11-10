@@ -1,0 +1,1 @@
+ALTER TABLE public.chem_questions ADD COLUMN IF NOT EXISTS qtype text NOT NULL DEFAULT 'multipla', ADD COLUMN IF NOT EXISTS extra jsonb;

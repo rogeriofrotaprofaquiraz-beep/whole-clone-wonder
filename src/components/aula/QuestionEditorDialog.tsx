@@ -8,11 +8,22 @@ import { toast } from "sonner";
 import { LEVELS, DIFFICULTIES } from "@/lib/aula";
 import { GAME_TYPES, autoGames } from "@/lib/questionGames";
 import type { Discipline } from "@/lib/questionImport";
+import { ActivityEditor } from "@/components/aula/ActivityBuilder";
+import { newQuestion, blanksOf, OPTION_TYPES, type Question } from "@/lib/activities";
+
+const toActivity = (b: BankQuestion, opts: string[]): Question => {
+  const saved = (b.extra as { question?: Question } | null)?.question;
+  if (saved) return saved;
+  const base = newQuestion("multipla");
+  const o = opts.filter(Boolean);
+  return { ...base, prompt: b.question, options: o.length ? o : base.options, correct: [Math.max(0, b.correct_index)] };
+};
 
 export type BankQuestion = {
   id?: string; area: string; discipline: string | null; topic: string | null; subcategory: string | null;
   difficulty: number; question: string; options: unknown; correct_index: number; answer_text: string | null;
   school_level: string; games: string[]; hint: string | null; explanation: string | null; time_limit: number;
+  qtype?: string; extra?: unknown;
 };
 
 const empty = (d?: Discipline): BankQuestion => ({
@@ -28,12 +39,14 @@ export function QuestionEditorDialog({ open, onOpenChange, value, disciplines, u
   disciplines: Discipline[]; userId: string; onSaved: () => void;
 }) {
   const [q, setQ] = useState<BankQuestion>(empty());
+  const [aq, setAq] = useState<Question>(newQuestion("multipla"));
   useEffect(() => {
     if (!open) return;
     const base = value ?? empty(disciplines[0]);
     const opts = Array.isArray(base.options) ? (base.options as string[]).map(String) : [];
     while (opts.length < 4) opts.push("");
     setQ({ ...base, options: opts, answer_text: base.answer_text || opts[base.correct_index] || "" });
+    setAq(toActivity(base, opts));
   }, [open, value, disciplines]);
 
   const opts = q.options as string[];
@@ -41,16 +54,19 @@ export function QuestionEditorDialog({ open, onOpenChange, value, disciplines, u
   const toggleGame = (k: string) => set({ games: q.games.includes(k) ? q.games.filter((g) => g !== k) : [...q.games, k] });
 
   const save = async () => {
-    if (!q.question.trim()) return toast.error("Escreva a pergunta");
-    const answer = (q.answer_text ?? "").trim();
-    if (!answer) return toast.error("Informe a resposta correta");
-    let options = opts.map((o) => o.trim()).filter(Boolean);
+    const text = (aq.prompt || "").trim();
+    if (!text) return toast.error("Escreva a pergunta");
+    const isOpt = OPTION_TYPES.includes(aq.type) && aq.options;
+    const derived = isOpt ? aq.options![(aq.correct || [0])[0] ?? 0]
+      : aq.answer ?? blanksOf(aq.text)[0] ?? aq.pairs?.[0]?.b ?? aq.items?.join(" → ");
+    const answer = (derived || q.answer_text || "").trim() || "—";
+    let options = (isOpt ? aq.options! : opts).map((o) => o.trim()).filter(Boolean);
     let idx = options.findIndex((o) => o.toLowerCase() === answer.toLowerCase());
     if (idx < 0) { options = [answer, ...options].slice(0, 4); idx = 0; }
     const d = disciplines.find((x) => x.key === q.discipline);
     const row = {
       area: (d?.area ?? q.area) as never, discipline: q.discipline, topic: q.topic || null, lesson: q.topic || null,
-      subcategory: q.subcategory || null, difficulty: q.difficulty, question: q.question.trim(), options,
+      subcategory: q.subcategory || null, difficulty: q.difficulty, question: text, options, qtype: aq.type, extra: { question: aq } as never,
       correct_index: idx, answer_text: answer, school_level: q.school_level, school_levels: [q.school_level],
       games: q.games, hint: q.hint || null, explanation: q.explanation || null, time_limit: q.time_limit || 30,
     };
@@ -88,19 +104,8 @@ export function QuestionEditorDialog({ open, onOpenChange, value, disciplines, u
           <div><Label>Subcategoria</Label>
             <Input placeholder="Ex: Hidrocarbonetos" value={q.subcategory ?? ""} onChange={(e) => set({ subcategory: e.target.value })} /></div>
         </div>
-        <div><Label>Pergunta / Dica</Label>
-          <textarea rows={3} className="w-full rounded-md border border-input bg-background p-2 text-sm" value={q.question} onChange={(e) => set({ question: e.target.value })} /></div>
-        <div><Label>Resposta Correta</Label>
-          <Input value={q.answer_text ?? ""} onChange={(e) => set({ answer_text: e.target.value })} /></div>
-        <div><Label>Opções (Quiz)</Label>
-          <div className="grid grid-cols-2 gap-2">
-            {opts.map((o, i) => (
-              <Input key={i} placeholder={`Opção ${"ABCD"[i]}`} value={o}
-                onChange={(e) => { const n = [...opts]; n[i] = e.target.value; set({ options: n }); }} />
-            ))}
-          </div>
-          <p className="text-xs text-muted-foreground mt-1">Se a resposta correta não estiver nas opções, ela entra como a primeira.</p>
-        </div>
+        <div><Label>Pergunta (escolha o tipo no menu)</Label>
+          <ActivityEditor single activity={{ questions: [aq] }} onChange={(a) => a.questions[0] && setAq(a.questions[0])} /></div>
         <div>
           <Label>🎮 Jogos em que esta questão pode aparecer</Label>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-1 mt-1">

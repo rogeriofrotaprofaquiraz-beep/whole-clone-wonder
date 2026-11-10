@@ -394,6 +394,7 @@ export type Database = {
           difficulty: number
           discipline: string | null
           explanation: string | null
+          extra: Json | null
           games: string[]
           grade_year: number | null
           hint: string | null
@@ -401,6 +402,7 @@ export type Database = {
           image_url: string | null
           lesson: string | null
           options: Json
+          qtype: string
           question: string
           school_level: string
           school_levels: string[]
@@ -420,6 +422,7 @@ export type Database = {
           difficulty?: number
           discipline?: string | null
           explanation?: string | null
+          extra?: Json | null
           games?: string[]
           grade_year?: number | null
           hint?: string | null
@@ -427,6 +430,7 @@ export type Database = {
           image_url?: string | null
           lesson?: string | null
           options?: Json
+          qtype?: string
           question: string
           school_level?: string
           school_levels?: string[]
@@ -446,6 +450,7 @@ export type Database = {
           difficulty?: number
           discipline?: string | null
           explanation?: string | null
+          extra?: Json | null
           games?: string[]
           grade_year?: number | null
           hint?: string | null
@@ -453,6 +458,7 @@ export type Database = {
           image_url?: string | null
           lesson?: string | null
           options?: Json
+          qtype?: string
           question?: string
           school_level?: string
           school_levels?: string[]
