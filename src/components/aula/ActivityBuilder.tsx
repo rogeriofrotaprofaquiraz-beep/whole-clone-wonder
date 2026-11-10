@@ -1,9 +1,10 @@
-import { useMemo, useState, type ChangeEvent } from "react";
+import { useMemo, useRef, useState, type ChangeEvent } from "react";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { GamePlayer, GAME_TYPES } from "./ActivityGames";
-import { ACTIVITY_TYPES, OPTION_TYPES, convertQuestion, parseChart, blanksOf, grade, isGraded, newQuestion, type Activity, type ActivityType, type Question } from "@/lib/activities";
+import { ACTIVITY_TYPES, OPTION_TYPES, TYPE_MENU, plainWords, convertQuestion, parseChart, blanksOf, grade, isGraded, newQuestion, type Activity, type ActivityType, type Question } from "@/lib/activities";
 
 /** Grade de tipos de pergunta (estilo Wayground). */
 export function ActivityTypePicker({ onPick }: { onPick: (t: ActivityType) => void }) {
@@ -45,8 +46,10 @@ export function MiniChart({ text }: { text?: string }) {
 }
 
 function QuestionMedia({ q }: { q: Question }) {
-  if (!q.image && !q.chart) return null;
-  return <div className="space-y-2">{q.image && <img src={q.image} alt="" className="max-h-72 w-auto mx-auto rounded-lg border object-contain" />}<MiniChart text={q.chart} /></div>;
+  const chart = q.type === "graficos" ? undefined : q.chart;
+  const img = q.type === "hotspot" ? undefined : q.image;
+  if (!img && !chart) return null;
+  return <div className="space-y-2">{img && <img src={img} alt="" className="max-h-72 w-auto mx-auto rounded-lg border object-contain" />}<MiniChart text={chart} /></div>;
 }
 
 const label = (t: ActivityType) => ACTIVITY_TYPES.find(x => x.key === t)?.label || t;
@@ -128,16 +131,37 @@ function OptionCardsEditor({ q, set, upload }: { q: Question; set: (p: Partial<Q
   );
 }
 
-/** Seletor para mudar o tipo de uma pergunta já criada. */
+const TONE: Record<string, string> = { teal: "bg-qtype-teal", green: "bg-qtype-green", blue: "bg-qtype-blue", purple: "bg-qtype-purple", game: "bg-qtype-game" };
+const toneOf = (t: ActivityType) => TONE[TYPE_MENU.find(m => m.key === t)?.tone || "teal"];
+
+/** Menu "Tipo" estilo Wayground: muda o tipo da pergunta a qualquer momento. */
 function TypeSwitcher({ q, onChange }: { q: Question; onChange: (t: ActivityType) => void }) {
+  const [open, setOpen] = useState(false);
+  const cur = ACTIVITY_TYPES.find(t => t.key === q.type);
+  const tile = (t: ActivityType, icon?: string) => <span className={`w-7 h-7 shrink-0 grid place-items-center rounded-md text-sm text-quiz-panel-foreground ${toneOf(t)}`}>{icon}</span>;
   return (
-    <select value={q.type} title="Mudar o tipo de pergunta" onChange={e => onChange(e.target.value as ActivityType)}
-      className="border rounded px-2 py-1 bg-background text-xs">
-      {(["basico", "interativo", "jogo"] as const).map(g => (
-        <optgroup key={g} label={g === "basico" ? "Básico" : g === "jogo" ? "Jogos e competições" : "Interativo"}>
-          {ACTIVITY_TYPES.filter(t => t.group === g).map(t => <option key={t.key} value={t.key} disabled={!t.ready}>{t.icon} {t.label}{t.ready ? "" : " (em breve)"}</option>)}
-        </optgroup>))}
-    </select>
+    <Popover open={open} onOpenChange={setOpen}>
+      <PopoverTrigger asChild>
+        <button type="button" title="Mudar o tipo de pergunta" className="flex items-center gap-2 rounded-lg border bg-background px-2 py-1.5 font-semibold text-sm hover:bg-muted min-w-[220px]">
+          {tile(q.type, cur?.icon)}<span className="flex-1 text-left">{cur?.label}</span><span className="text-xs">{open ? "▲" : "▼"}</span>
+        </button>
+      </PopoverTrigger>
+      <PopoverContent align="start" className="w-72 p-1 max-h-[70vh] overflow-y-auto">
+        {TYPE_MENU.map((m, i) => {
+          const t = ACTIVITY_TYPES.find(x => x.key === m.key)!;
+          const sel = m.key === q.type;
+          const first = i === 0 || TYPE_MENU[i - 1].tone === "purple" && m.tone !== "purple" || m.tone === "game" && TYPE_MENU[i - 1].tone !== "game";
+          return (
+            <div key={m.key}>
+              {first && i > 0 && <p className="px-2 pt-2 pb-1 text-[11px] font-semibold uppercase text-muted-foreground">{m.tone === "game" ? "Jogos e competições" : "Outros"}</p>}
+              <button type="button" onClick={() => { onChange(m.key); setOpen(false); }}
+                className={`w-full flex items-center gap-3 rounded-md px-2 py-2 text-left text-[15px] font-semibold hover:bg-qtype-selected ${sel ? "bg-qtype-selected text-qtype-purple" : ""}`}>
+                {tile(m.key, t.icon)}<span className="truncate">{t.label}</span>
+              </button>
+            </div>);
+        })}
+      </PopoverContent>
+    </Popover>
   );
 }
 
@@ -160,7 +184,6 @@ export function ActivityEditor({ activity, about, onChange }: { activity: Activi
         <div key={q.id} className="border border-pink-200 rounded-lg p-3 bg-white space-y-2">
           <div className="flex items-center gap-2 text-xs">
             <span className="font-bold text-pink-700">Pergunta {i + 1}</span>
-            <span className="text-muted-foreground">Tipo:</span>
             <TypeSwitcher q={q} onChange={t => onChange({ questions: qs.map((x, k) => k === i ? convertQuestion(x, t) : x) })} />
             <button type="button" className="ml-auto" title="Excluir pergunta" onClick={() => onChange({ questions: qs.filter((_, k) => k !== i) })}>🗑️</button>
           </div>
@@ -185,6 +208,25 @@ export function ActivityEditor({ activity, about, onChange }: { activity: Activi
             <MiniChart text={q.chart} /></div>}
           {q.image && <img src={q.image} alt="" className="max-h-40 rounded border object-contain" />}
           </>}
+          {(q.type === "arraste" || q.type === "destaque") && <>
+            <textarea className={`${inp} w-full`} rows={3} value={q.text || ""} onChange={e => set(i, { text: e.target.value })} />
+            <p className="text-[11px] text-slate-500">{q.type === "arraste" ? "Coloque entre [colchetes] as palavras que o aluno vai arrastar para os espaços." : "Coloque entre [colchetes] as palavras que o aluno deve destacar."} Corretas: {blanksOf(q.text).join(", ") || "nenhuma"}</p>
+            {q.type === "arraste" && <input className={`${inp} w-full`} value={(q.distractors || []).join(", ")} placeholder="Palavras extras (erradas), separadas por vírgula"
+              onChange={e => set(i, { distractors: e.target.value.split(",").map(x => x.trim()) })} />}
+          </>}
+          {q.type === "passagem" && <textarea className={`${inp} w-full`} rows={5} value={q.media || ""} placeholder="Cole aqui o texto que o aluno vai ler" onChange={e => set(i, { media: e.target.value })} />}
+          {q.type === "video" && <input className={`${inp} w-full`} value={q.media || ""} placeholder="Link do vídeo (YouTube)" onChange={e => set(i, { media: e.target.value })} />}
+          {q.type === "hotspot" && (q.image ? <div className="space-y-1">
+            <p className="text-[11px] text-slate-500">Clique na imagem para marcar o lugar certo.</p>
+            <div className="relative inline-block cursor-crosshair" onClick={e => { const b = e.currentTarget.getBoundingClientRect(); set(i, { hotspot: { r: q.hotspot?.r ?? 10, x: ((e.clientX - b.left) / b.width) * 100, y: ((e.clientY - b.top) / b.height) * 100 } }); }}>
+              <img src={q.image} alt="" className="max-h-72 rounded border" />
+              {q.hotspot && <span className="absolute rounded-full border-4 border-quiz-correct bg-quiz-correct/30 -translate-x-1/2 -translate-y-1/2 pointer-events-none" style={{ left: `${q.hotspot.x}%`, top: `${q.hotspot.y}%`, width: `${q.hotspot.r * 2}%`, aspectRatio: "1" }} />}
+            </div>
+            <label className="flex items-center gap-2 text-xs">Tamanho da área: <input type="range" min={3} max={30} value={q.hotspot?.r ?? 10} onChange={e => set(i, { hotspot: { x: q.hotspot?.x ?? 50, y: q.hotspot?.y ?? 50, r: Number(e.target.value) } })} /></label>
+          </div> : <p className="text-xs text-amber-700">Insira uma imagem para marcar o ponto certo.</p>)}
+          {q.type === "graficos" && <p className="text-[11px] text-slate-500">O aluno verá só os nomes das barras e terá de digitar os valores.</p>}
+          {q.type === "marcacao" && !q.image && <p className="text-xs text-amber-700">Insira uma imagem com as marcações numeradas.</p>}
+          {["forum", "desenhar", "audio", "resposta_video", "aberta", "nuvem"].includes(q.type) && <p className="text-[11px] text-slate-500">Sem resposta certa: vale como feita quando o aluno envia.</p>}
           {q.type === "matematica" && <div className="flex items-center gap-2 text-sm">
             <span className="font-semibold">Resposta (número):</span>
             <input className={`${inp} w-40`} inputMode="decimal" value={q.answer ?? ""} placeholder="Ex: 6,02" onChange={e => set(i, { answer: e.target.value })} />
@@ -208,11 +250,11 @@ export function ActivityEditor({ activity, about, onChange }: { activity: Activi
             <p className="text-[11px] text-slate-500">Coloque entre [colchetes] as palavras que o aluno deve escrever. Lacunas: {blanksOf(q.text).join(", ") || "nenhuma"}</p>
           </>}
           {GAME_TYPES.includes(q.type) && <p className="text-[11px] text-slate-500">{["roleta", "domino", "memoria"].includes(q.type) ? "Cada linha: pergunta (esquerda) e resposta (direita)." : "Cada linha: dica (esquerda) e palavra-resposta (direita)."}</p>}
-          {(q.type === "combinar" || GAME_TYPES.includes(q.type)) && q.pairs && <div className="space-y-1">
+          {(["combinar", "tabela", "multipartes", "marcacao"].includes(q.type) || GAME_TYPES.includes(q.type)) && q.pairs && <div className="space-y-1">
             {q.pairs!.map((p, k) => (
               <div key={k} className="flex gap-2 items-center">
-                <input className={`${inp} flex-1`} value={p.a} placeholder="Item" onChange={e => set(i, { pairs: q.pairs!.map((x, j) => j === k ? { ...x, a: e.target.value } : x) })} />🔗
-                <input className={`${inp} flex-1`} value={p.b} placeholder="Par correto" onChange={e => set(i, { pairs: q.pairs!.map((x, j) => j === k ? { ...x, b: e.target.value } : x) })} />
+                <input className={`${inp} flex-1`} value={p.a} placeholder={q.type === "marcacao" ? "Nº da marcação" : q.type === "tabela" || q.type === "multipartes" ? "Pergunta / linha" : "Item"} onChange={e => set(i, { pairs: q.pairs!.map((x, j) => j === k ? { ...x, a: e.target.value } : x) })} />🔗
+                <input className={`${inp} flex-1`} value={p.b} placeholder={["tabela", "multipartes", "marcacao"].includes(q.type) ? "Resposta certa" : "Par correto"} onChange={e => set(i, { pairs: q.pairs!.map((x, j) => j === k ? { ...x, b: e.target.value } : x) })} />
                 <button type="button" onClick={() => set(i, { pairs: q.pairs!.filter((_, j) => j !== k) })}>✕</button>
               </div>))}
             <button type="button" className="text-xs text-violet-700" onClick={() => set(i, { pairs: [...q.pairs!, { a: "", b: "" }] })}>＋ par</button>
@@ -226,7 +268,7 @@ export function ActivityEditor({ activity, about, onChange }: { activity: Activi
               </div>))}
             <button type="button" className="text-xs text-violet-700" onClick={() => set(i, { items: [...q.items!, ""] })}>＋ item</button>
           </div>}
-          {q.type === "categorizar" && <div className="grid md:grid-cols-2 gap-2">
+          {(q.type === "categorizar" || q.type === "correspondencia") && <div className="grid md:grid-cols-2 gap-2">
             {q.categories!.map((c, k) => (
               <div key={k} className="border rounded p-2 space-y-1">
                 <input className={`${inp} w-full font-semibold`} value={c.name} onChange={e => set(i, { categories: q.categories!.map((x, j) => j === k ? { ...x, name: e.target.value } : x) })} />
@@ -247,7 +289,9 @@ export function ActivityEditor({ activity, about, onChange }: { activity: Activi
 const shuffle = <T,>(a: T[]) => [...a].map(v => [Math.random(), v] as const).sort((x, y) => x[0] - y[0]).map(x => x[1]);
 
 function QuestionPlayer({ q, onResult }: { q: Question; onResult: (ok: boolean) => void }) {
-  const [r, setR] = useState<any>(q.type === "selecao" ? [] : q.type === "categorizar" ? {} : undefined);
+  const [r, setR] = useState<any>(["selecao", "destaque"].includes(q.type) ? [] : ["categorizar", "correspondencia"].includes(q.type) ? {} : undefined);
+  const [pick, setPick] = useState<string | null>(null);
+  const pool = useMemo(() => shuffle([...blanksOf(q.text), ...(q.distractors || []).filter(Boolean)]), [q]);
   const [res, setRes] = useState<boolean | null>(null);
   const [tries, setTries] = useState(0);
   const bOrder = useMemo(() => shuffle((q.pairs || []).map((_, i) => i)), [q]);
@@ -301,6 +345,42 @@ function QuestionPlayer({ q, onResult }: { q: Question; onResult: (ok: boolean) 
         <div key={it} className="flex items-center gap-2"><span className="flex-1">{it}</span>
           <select disabled={locked} className="border rounded px-2 py-1 bg-white" value={r?.[it] || ""} onChange={e => setR({ ...r, [it]: e.target.value })}>
             <option value="" disabled>Categoria…</option>{q.categories!.map(c => <option key={c.name}>{c.name}</option>)}</select></div>))}</div>}
+      {q.type === "arraste" && <div className="space-y-3">
+        <div className="flex flex-wrap gap-2">{pool.map((w, k) => { const used = (r || []).includes(w); return (
+          <button key={k} type="button" draggable={!locked && !used} disabled={locked || used} onDragStart={e => e.dataTransfer.setData("text", w)} onClick={() => setPick(w)}
+            className={`px-3 py-1.5 rounded-lg font-semibold text-quiz-panel-foreground bg-qtype-teal ${pick === w ? "ring-4 ring-quiz-correct" : ""} ${used ? "opacity-30" : ""}`}>{w}</button>); })}</div>
+        <p className="leading-[3rem]">{(q.text || "").split(/\[[^\]]+\]/).map((part, k) => <span key={k}>{part}{k < blanks.length && (
+          <span onDragOver={e => e.preventDefault()} onDrop={e => { const w = e.dataTransfer.getData("text"); const a = [...(r || [])]; a[k] = w; setR(a); }}
+            onClick={() => { if (locked) return; const a = [...(r || [])]; a[k] = pick ?? undefined; setR(a); setPick(null); }}
+            className="inline-block min-w-[110px] mx-1 px-2 py-1 border-2 border-dashed border-qtype-teal rounded-lg text-center align-middle leading-normal cursor-pointer bg-muted">{r?.[k] || "…"}</span>)}</span>)}</p>
+        <p className="text-xs text-muted-foreground">Arraste as palavras (ou clique numa palavra e depois no espaço).</p>
+      </div>}
+      {q.type === "destaque" && <p className="leading-loose text-lg">{plainWords(q.text).map((w, k) => /^\s+$/.test(w) || !w ? <span key={k}>{w}</span> : (() => {
+        const clean = w.replace(/[.,;:!?()]/g, ""); const on = (r || []).includes(clean);
+        return <button key={k} type="button" disabled={locked} onClick={() => setR(on ? r.filter((x: string) => x !== clean) : [...(r || []), clean])}
+          className={`rounded px-0.5 ${on ? "bg-quiz-3 font-semibold" : "hover:bg-muted"}`}>{w}</button>; })())}</p>}
+      {["tabela", "multipartes", "marcacao"].includes(q.type) && <table className="w-full border text-sm"><tbody>{(q.pairs || []).map((p, k) => (
+        <tr key={k} className="border-b"><td className="p-2 font-medium bg-muted w-1/2">{p.a}</td>
+          <td className="p-1"><input disabled={locked} className="w-full border rounded p-1.5" value={r?.[k] || ""} onChange={e => { const a = [...(r || [])]; a[k] = e.target.value; setR(a); }} /></td></tr>))}</tbody></table>}
+      {q.type === "correspondencia" && <table className="w-full border text-sm"><thead><tr className="bg-muted"><th />{q.categories!.map(c => <th key={c.name} className="p-2">{c.name}</th>)}</tr></thead>
+        <tbody>{allItems.map(it => <tr key={it} className="border-t"><td className="p-2 font-medium">{it}</td>{q.categories!.map(c => <td key={c.name} className="text-center">
+          <input type="radio" disabled={locked} name={q.id + it} checked={r?.[it] === c.name} onChange={() => setR({ ...r, [it]: c.name })} /></td>)}</tr>)}</tbody></table>}
+      {q.type === "hotspot" && q.image && <div className="relative inline-block cursor-crosshair" onClick={e => { if (locked) return; const b = e.currentTarget.getBoundingClientRect(); setR({ x: ((e.clientX - b.left) / b.width) * 100, y: ((e.clientY - b.top) / b.height) * 100 }); }}>
+        <img src={q.image} alt="" className="max-h-80 rounded-lg border" />
+        {r && <span className="absolute w-5 h-5 rounded-full bg-quiz-4 border-2 border-background -translate-x-1/2 -translate-y-1/2" style={{ left: `${r.x}%`, top: `${r.y}%` }} />}
+      </div>}
+      {q.type === "graficos" && (() => { const d = parseChart(q.chart); const max = Math.max(...d.map(x => x.value), ...((r || []).map(Number).filter(Number.isFinite)), 1); return (
+        <div className="space-y-2 p-3 rounded-lg bg-background border">{d.map((x, k) => { const v = Number(String(r?.[k] ?? "").replace(",", ".")) || 0; return (
+          <div key={k} className="flex items-center gap-2 text-sm"><span className="w-28 truncate">{x.label}</span>
+            <div className="flex-1 bg-muted rounded h-5 overflow-hidden"><div className="h-full bg-qtype-teal transition-all" style={{ width: `${Math.min(100, (Math.abs(v) / max) * 100)}%` }} /></div>
+            <input disabled={locked} inputMode="decimal" className="w-20 border rounded p-1" value={r?.[k] ?? ""} onChange={e => { const a = [...(r || [])]; a[k] = e.target.value; setR(a); }} /></div>); })}</div>); })()}
+      {q.type === "passagem" && <><div className="p-3 rounded-lg bg-background border whitespace-pre-wrap max-h-72 overflow-y-auto">{q.media}</div>
+        <textarea disabled={locked} className="w-full border rounded p-2" rows={3} placeholder="Sua resposta" value={r || ""} onChange={e => setR(e.target.value)} /></>}
+      {q.type === "video" && <>{q.media && <VideoEmbed url={q.media} />}
+        <textarea disabled={locked} className="w-full border rounded p-2" rows={3} placeholder="Sua resposta" value={r || ""} onChange={e => setR(e.target.value)} /></>}
+      {q.type === "forum" && <textarea disabled={locked} className="w-full border rounded p-2" rows={4} placeholder="Escreva sua opinião para a discussão" value={r || ""} onChange={e => setR(e.target.value)} />}
+      {q.type === "desenhar" && <DrawPad disabled={locked} onChange={setR} />}
+      {(q.type === "audio" || q.type === "resposta_video") && <Recorder video={q.type === "resposta_video"} disabled={locked} onDone={setR} />}
       {GAME_TYPES.includes(q.type) && <GamePlayer q={q} locked={locked} submit={v => check(v)} />}
       {!locked && !GAME_TYPES.includes(q.type) && <Button className="bg-violet-700 hover:bg-violet-800" onClick={() => check()}>Responder</Button>}
       {res === true && isGraded(q) && <p className="text-emerald-700 font-bold">✅ Correto!</p>}
@@ -308,6 +388,44 @@ function QuestionPlayer({ q, onResult }: { q: Question; onResult: (ok: boolean) 
       {res === false && isGraded(q) && <p className="text-red-600">Ops! Releia o slide anterior e tente de novo.</p>}
     </div>
   );
+}
+
+function VideoEmbed({ url }: { url: string }) {
+  const id = url.match(/(?:youtu\.be\/|v=|embed\/|shorts\/)([\w-]{11})/)?.[1];
+  return id ? <iframe className="w-full aspect-video rounded-lg" src={`https://www.youtube.com/embed/${id}`} allowFullScreen title="Vídeo" />
+    : <a href={url} target="_blank" rel="noreferrer" className="underline text-primary">Abrir o vídeo</a>;
+}
+
+function DrawPad({ disabled, onChange }: { disabled: boolean; onChange: (v: string) => void }) {
+  const ref = useRef<HTMLCanvasElement>(null); const drawing = useRef(false);
+  const pos = (e: React.PointerEvent<HTMLCanvasElement>) => { const b = e.currentTarget.getBoundingClientRect(); return [(e.clientX - b.left) * (600 / b.width), (e.clientY - b.top) * (300 / b.height)]; };
+  return (
+    <div className="space-y-1">
+      <canvas ref={ref} width={600} height={300} className="w-full max-w-[600px] border-2 rounded-lg bg-background touch-none"
+        onPointerDown={e => { if (disabled) return; drawing.current = true; const c = ref.current!.getContext("2d")!; const [x, y] = pos(e); c.lineWidth = 3; c.lineCap = "round"; c.strokeStyle = getComputedStyle(e.currentTarget).color; c.beginPath(); c.moveTo(x, y); }}
+        onPointerMove={e => { if (!drawing.current) return; const c = ref.current!.getContext("2d")!; const [x, y] = pos(e); c.lineTo(x, y); c.stroke(); }}
+        onPointerUp={() => { if (!drawing.current) return; drawing.current = false; onChange(ref.current!.toDataURL()); }} />
+      {!disabled && <button type="button" className="text-xs underline" onClick={() => { ref.current!.getContext("2d")!.clearRect(0, 0, 600, 300); onChange(""); }}>Apagar desenho</button>}
+    </div>);
+}
+
+function Recorder({ video, disabled, onDone }: { video: boolean; disabled: boolean; onDone: (v: boolean) => void }) {
+  const [rec, setRec] = useState<MediaRecorder | null>(null); const [url, setUrl] = useState<string | null>(null);
+  const start = async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia(video ? { video: true, audio: true } : { audio: true });
+      const mr = new MediaRecorder(stream); const chunks: Blob[] = [];
+      mr.ondataavailable = e => chunks.push(e.data);
+      mr.onstop = () => { stream.getTracks().forEach(t => t.stop()); setUrl(URL.createObjectURL(new Blob(chunks))); onDone(true); };
+      mr.start(); setRec(mr);
+    } catch { toast.error("Não foi possível acessar o microfone/câmera."); }
+  };
+  return (
+    <div className="space-y-2">
+      {rec ? <Button variant="destructive" onClick={() => { rec.stop(); setRec(null); }}>⏹ Parar gravação</Button>
+        : <Button variant="outline" disabled={disabled} onClick={start}>{video ? "📹 Gravar vídeo" : "🎙️ Gravar áudio"}</Button>}
+      {url && (video ? <video src={url} controls className="max-h-60 rounded" /> : <audio src={url} controls />)}
+    </div>);
 }
 
 /** Aluno responde as perguntas do slide de atividade; ao terminar devolve estrelas (1 a 3). */

@@ -64,6 +64,12 @@ All colors MUST be HSL.
     --quiz-5: 270 45% 52%;
     --quiz-6: 140 45% 40%;
     --quiz-correct: 158 85% 41%;
+    --qtype-teal: 181 55% 36%;
+    --qtype-green: 150 62% 36%;
+    --qtype-blue: 212 58% 42%;
+    --qtype-purple: 291 40% 45%;
+    --qtype-game: 32 90% 48%;
+    --qtype-selected: 270 70% 95%;
 
     --sidebar-background: 0 0% 98%;
 

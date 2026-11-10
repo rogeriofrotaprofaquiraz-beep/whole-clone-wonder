@@ -23,6 +23,12 @@ export default {
           panel: "hsl(var(--quiz-panel))",
           "panel-foreground": "hsl(var(--quiz-panel-foreground))",
           correct: "hsl(var(--quiz-correct))",
+          teal: "hsl(var(--qtype-teal))",
+          green: "hsl(var(--qtype-green))",
+          blue: "hsl(var(--qtype-blue))",
+          purple: "hsl(var(--qtype-purple))",
+          game: "hsl(var(--qtype-game))",
+          selected: "hsl(var(--qtype-selected))",
         },
         primary: {
           DEFAULT: "hsl(var(--primary))",

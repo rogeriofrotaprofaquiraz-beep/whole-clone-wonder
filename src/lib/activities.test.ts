@@ -64,3 +64,26 @@ describe("mudar tipo e resposta matemática", () => {
     expect(gradeQ(q, "6.02")).toBe(true); expect(gradeQ(q, "6,02")).toBe(true); expect(gradeQ(q, "6")).toBe(false);
   });
 });
+
+describe("novos tipos estilo Wayground", () => {
+  it("arraste e solte confere cada espaço", () => {
+    const q = newQuestion("arraste");
+    expect(grade(q, ["próton", "elétron"])).toBe(true);
+    expect(grade(q, ["nêutron", "elétron"])).toBe(false);
+  });
+  it("destaque exige exatamente as palavras marcadas", () => {
+    const q = newQuestion("destaque");
+    expect(grade(q, ["sal", "água"])).toBe(true);
+    expect(grade(q, ["água"])).toBe(false);
+  });
+  it("ponto de acesso aceita clique dentro do raio", () => {
+    const q = newQuestion("hotspot");
+    expect(grade(q, { x: 55, y: 52 })).toBe(true);
+    expect(grade(q, { x: 90, y: 90 })).toBe(false);
+  });
+  it("gráficos confere os valores das barras", () => {
+    const q = newQuestion("graficos");
+    expect(grade(q, ["10", "20"])).toBe(true);
+    expect(grade(q, ["10", "15"])).toBe(false);
+  });
+});
