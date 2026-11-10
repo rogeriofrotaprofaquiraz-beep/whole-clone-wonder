@@ -1,9 +1,9 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, type ChangeEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { GamePlayer, GAME_TYPES } from "./ActivityGames";
-import { ACTIVITY_TYPES, parseChart, blanksOf, grade, isGraded, newQuestion, type Activity, type ActivityType, type Question } from "@/lib/activities";
+import { ACTIVITY_TYPES, OPTION_TYPES, convertQuestion, parseChart, blanksOf, grade, isGraded, newQuestion, type Activity, type ActivityType, type Question } from "@/lib/activities";
 
 /** Grade de tipos de pergunta (estilo Wayground). */
 export function ActivityTypePicker({ onPick }: { onPick: (t: ActivityType) => void }) {
@@ -50,6 +50,96 @@ function QuestionMedia({ q }: { q: Question }) {
 }
 
 const label = (t: ActivityType) => ACTIVITY_TYPES.find(x => x.key === t)?.label || t;
+const quizColor = (k: number) => `hsl(var(--quiz-${(k % 6) + 1}))`;
+
+/** Editor estilo Wayground: enunciado em painel e alternativas em cartões coloridos com texto ou imagem. */
+function OptionCardsEditor({ q, set, upload }: { q: Question; set: (p: Partial<Question>) => void; upload: (f: File) => Promise<string | null> }) {
+  const opts = q.options || [];
+  const imgs = opts.map((_, k) => q.optionImages?.[k] ?? null);
+  const vertical = q.layout === "vertical";
+  const fixed = q.type === "vf";
+  const multi = q.type === "selecao";
+  const toggleCorrect = (k: number) => {
+    if (q.type === "enquete") return;
+    const c = q.correct || [];
+    set({ correct: multi ? (c.includes(k) ? c.filter(x => x !== k) : [...c, k]) : [k] });
+  };
+  const remove = (k: number) => set({
+    options: opts.filter((_, j) => j !== k), optionImages: imgs.filter((_, j) => j !== k),
+    correct: (q.correct || []).filter(x => x !== k).map(x => x > k ? x - 1 : x),
+  });
+  const pickImg = (k: number) => async (e: ChangeEvent<HTMLInputElement>) => {
+    const f = e.target.files?.[0]; e.target.value = ""; if (!f) return;
+    const url = await upload(f); if (url) set({ optionImages: imgs.map((x, j) => j === k ? url : x) });
+  };
+  const iconBtn = "w-8 h-8 grid place-items-center rounded-md bg-background/20 hover:bg-background/35 text-sm cursor-pointer";
+  return (
+    <div className="rounded-xl bg-quiz-panel text-quiz-panel-foreground p-4 space-y-3">
+      <div className="rounded-lg border border-quiz-panel-foreground/20 p-3 min-h-[130px] flex flex-col">
+        <div className="flex gap-2">
+          <label className={iconBtn} title={q.image ? "Trocar imagem" : "Inserir imagem"}>🖼️
+            <input type="file" accept="image/*" className="hidden" onChange={async e => { const f = e.target.files?.[0]; e.target.value = ""; if (!f) return; const url = await upload(f); if (url) set({ image: url }); }} /></label>
+          {q.image && <button type="button" className={iconBtn} title="Tirar imagem" onClick={() => set({ image: undefined })}>🗑️</button>}
+        </div>
+        {q.image && <img src={q.image} alt="" className="max-h-40 mx-auto rounded object-contain mt-2" />}
+        <textarea rows={2} value={q.prompt} onChange={e => set({ prompt: e.target.value })} placeholder="Digite a pergunta aqui"
+          className="flex-1 mt-2 w-full resize-none bg-transparent text-center text-lg outline-none placeholder:text-quiz-panel-foreground/50" />
+      </div>
+      <div className={`flex gap-2 ${vertical ? "flex-col" : "items-stretch"}`}>
+        <div className={vertical ? "space-y-2" : "flex-1 grid gap-2"} style={vertical ? undefined : { gridTemplateColumns: `repeat(${Math.max(opts.length, 1)}, minmax(0, 1fr))` }}>
+          {opts.map((o, k) => {
+            const ok = q.correct?.includes(k);
+            return (
+              <div key={k} className={`relative rounded-lg p-2 flex ${vertical ? "items-center gap-2 min-h-[64px]" : "flex-col min-h-[180px]"}`} style={{ background: quizColor(k) }}>
+                <div className={`flex gap-1 ${vertical ? "order-first" : ""}`}>
+                  {!fixed && opts.length > 2 && <button type="button" className={iconBtn} title="Excluir alternativa" onClick={() => remove(k)}>🗑️</button>}
+                  <label className={iconBtn} title={imgs[k] ? "Trocar imagem" : "Imagem na alternativa"}>🖼️<input type="file" accept="image/*" className="hidden" onChange={pickImg(k)} /></label>
+                  {imgs[k] && <button type="button" className={iconBtn} title="Tirar imagem" onClick={() => set({ optionImages: imgs.map((x, j) => j === k ? null : x) })}>✕</button>}
+                </div>
+                {q.type !== "enquete" && (
+                  <button type="button" title="Marcar como correta" onClick={() => toggleCorrect(k)}
+                    className={`${vertical ? "order-last ml-auto" : "absolute top-2 right-2"} w-7 h-7 rounded-full border-2 grid place-items-center text-xs ${ok ? "bg-quiz-correct border-quiz-panel-foreground" : "border-quiz-panel-foreground/70 bg-background/10"}`}>✓</button>
+                )}
+                <div className={`flex-1 flex flex-col items-center justify-center gap-1 ${vertical ? "" : "mt-1"}`}>
+                  {imgs[k] && <img src={imgs[k]!} alt="" className={`${vertical ? "max-h-14" : "max-h-24"} rounded object-contain`} />}
+                  <textarea rows={vertical ? 1 : 3} value={o} disabled={fixed} placeholder="Digite a opção de resposta aqui"
+                    onChange={e => set({ options: opts.map((x, j) => j === k ? e.target.value : x) })}
+                    className="w-full resize-none bg-transparent text-center text-base outline-none placeholder:text-quiz-panel-foreground/60" />
+                </div>
+              </div>
+            );
+          })}
+        </div>
+        {!fixed && opts.length < 6 && <button type="button" title="Adicionar alternativa" className={`${iconBtn} ${vertical ? "w-full" : "self-center"}`}
+          onClick={() => set({ options: [...opts, ""], optionImages: [...imgs, null] })}>＋</button>}
+      </div>
+      <div className="flex flex-wrap items-center gap-3 text-sm font-semibold">
+        {(q.type === "multipla" || q.type === "selecao") && (
+          <label className="flex items-center gap-2 cursor-pointer">Múltiplas respostas corretas:
+            <button type="button" role="switch" aria-checked={multi} onClick={() => set(multi ? { type: "multipla", correct: [(q.correct || [0])[0] ?? 0] } : { type: "selecao" })}
+              className={`w-11 h-6 rounded-full relative transition-colors ${multi ? "bg-quiz-correct" : "bg-background/25"}`}>
+              <span className={`absolute top-0.5 w-5 h-5 rounded-full bg-background transition-all ${multi ? "left-[22px]" : "left-0.5"}`} /></button>
+          </label>)}
+        <button type="button" className="ml-auto border border-quiz-panel-foreground/40 rounded px-3 py-1.5 hover:bg-background/10"
+          onClick={() => set({ layout: vertical ? "horizontal" : "vertical" })}>🔄 Alternar para o layout {vertical ? "horizontal" : "vertical"}</button>
+      </div>
+      <p className="text-xs opacity-75">{q.type === "enquete" ? "Enquete não tem resposta certa." : "Clique no ✓ da alternativa correta."}</p>
+    </div>
+  );
+}
+
+/** Seletor para mudar o tipo de uma pergunta já criada. */
+function TypeSwitcher({ q, onChange }: { q: Question; onChange: (t: ActivityType) => void }) {
+  return (
+    <select value={q.type} title="Mudar o tipo de pergunta" onChange={e => onChange(e.target.value as ActivityType)}
+      className="border rounded px-2 py-1 bg-background text-xs">
+      {(["basico", "interativo", "jogo"] as const).map(g => (
+        <optgroup key={g} label={g === "basico" ? "Básico" : g === "jogo" ? "Jogos e competições" : "Interativo"}>
+          {ACTIVITY_TYPES.filter(t => t.group === g).map(t => <option key={t.key} value={t.key} disabled={!t.ready}>{t.icon} {t.label}{t.ready ? "" : " (em breve)"}</option>)}
+        </optgroup>))}
+    </select>
+  );
+}
 
 /** Editor das perguntas de um slide de atividade. */
 export function ActivityEditor({ activity, about, onChange }: { activity: Activity; about?: string; onChange: (a: Activity) => void }) {
@@ -69,9 +159,19 @@ export function ActivityEditor({ activity, about, onChange }: { activity: Activi
       {qs.map((q, i) => (
         <div key={q.id} className="border border-pink-200 rounded-lg p-3 bg-white space-y-2">
           <div className="flex items-center gap-2 text-xs">
-            <span className="font-bold text-pink-700">Pergunta {i + 1} · {label(q.type)}</span>
+            <span className="font-bold text-pink-700">Pergunta {i + 1}</span>
+            <span className="text-muted-foreground">Tipo:</span>
+            <TypeSwitcher q={q} onChange={t => onChange({ questions: qs.map((x, k) => k === i ? convertQuestion(x, t) : x) })} />
             <button type="button" className="ml-auto" title="Excluir pergunta" onClick={() => onChange({ questions: qs.filter((_, k) => k !== i) })}>🗑️</button>
           </div>
+          {OPTION_TYPES.includes(q.type) && q.options ? <>
+            <OptionCardsEditor q={q} set={p => set(i, p)} upload={uploadImg} />
+            <button type="button" className="text-xs px-2 py-1 rounded border border-violet-300 text-violet-700 hover:bg-violet-50" onClick={() => set(i, { chart: q.chart === undefined ? "Item A: 10\nItem B: 20\nItem C: 15" : undefined })}>📊 {q.chart === undefined ? "Inserir gráfico" : "Tirar gráfico"}</button>
+            {q.chart !== undefined && <div className="grid md:grid-cols-2 gap-2">
+              <div><textarea className={`${inp} w-full`} rows={4} value={q.chart} onChange={e => set(i, { chart: e.target.value })} />
+                <p className="text-[11px] text-slate-500">Uma barra por linha, no formato <b>Nome: valor</b>.</p></div>
+              <MiniChart text={q.chart} /></div>}
+          </> : <>
           <input className={`${inp} w-full font-semibold`} value={q.prompt} onChange={e => set(i, { prompt: e.target.value })} placeholder="Enunciado" />
           <div className="flex flex-wrap gap-2 items-center text-xs">
             <label className="cursor-pointer px-2 py-1 rounded border border-violet-300 text-violet-700 hover:bg-violet-50">🖼️ {q.image ? "Trocar imagem" : "Inserir imagem"}
@@ -84,7 +184,12 @@ export function ActivityEditor({ activity, about, onChange }: { activity: Activi
               <p className="text-[11px] text-slate-500">Uma barra por linha, no formato <b>Nome: valor</b>.</p></div>
             <MiniChart text={q.chart} /></div>}
           {q.image && <img src={q.image} alt="" className="max-h-40 rounded border object-contain" />}
-          {q.options && (
+          </>}
+          {q.type === "matematica" && <div className="flex items-center gap-2 text-sm">
+            <span className="font-semibold">Resposta (número):</span>
+            <input className={`${inp} w-40`} inputMode="decimal" value={q.answer ?? ""} placeholder="Ex: 6,02" onChange={e => set(i, { answer: e.target.value })} />
+          </div>}
+          {q.options && !OPTION_TYPES.includes(q.type) && (
             <div className="space-y-1">
               {q.options.map((o, k) => (
                 <div key={k} className="flex items-center gap-2">
@@ -160,14 +265,26 @@ function QuestionPlayer({ q, onResult }: { q: Question; onResult: (ok: boolean) 
     <div className="space-y-3">
       <p className="font-bold text-lg text-violet-900">{q.prompt}</p>
       <QuestionMedia q={q} />
-      {(q.type === "multipla" || q.type === "vf" || q.type === "enquete") && <div className="grid md:grid-cols-2 gap-2">
-        {q.options!.map((o, k) => <button key={k} type="button" disabled={locked} className={`${btn} ${r === k ? "border-violet-600 ring-2 ring-violet-300" : ""}`} onClick={() => { setR(k); }}>{o}</button>)}
-      </div>}
+      {(q.type === "multipla" || q.type === "vf" || q.type === "enquete" || q.type === "selecao") && (
+        <div className={q.layout === "vertical" ? "space-y-2" : "grid grid-cols-2 md:grid-cols-4 gap-2"}>
+          {q.options!.map((o, k) => {
+            const on = q.type === "selecao" ? r.includes(k) : r === k;
+            const img = q.optionImages?.[k];
+            return (
+              <button key={k} type="button" disabled={locked} style={{ background: quizColor(k) }}
+                onClick={() => setR(q.type === "selecao" ? (r.includes(k) ? r.filter((x: number) => x !== k) : [...r, k]) : k)}
+                className={`relative rounded-lg p-3 text-quiz-panel-foreground font-semibold flex ${q.layout === "vertical" ? "items-center gap-3 text-left min-h-[56px]" : "flex-col items-center justify-center text-center min-h-[120px]"} transition ${on ? "ring-4 ring-quiz-correct scale-[1.02]" : "opacity-95 hover:opacity-100"}`}>
+                {on && <span className="absolute top-1.5 right-1.5 w-6 h-6 rounded-full bg-quiz-correct grid place-items-center text-xs">✓</span>}
+                {img && <img src={img} alt="" className={`${q.layout === "vertical" ? "max-h-12" : "max-h-24 mb-1"} rounded object-contain`} />}
+                {o && <span>{o}</span>}
+              </button>);
+          })}
+        </div>)}
+      {q.type === "selecao" && <p className="text-xs text-muted-foreground">Marque todas as alternativas corretas.</p>}
+      {q.type === "matematica" && <input disabled={locked} inputMode="decimal" className="border rounded p-2 w-48" placeholder="Sua resposta" value={r ?? ""} onChange={e => setR(e.target.value)} />}
       {q.type === "suspenso" && <select disabled={locked} className="border rounded px-2 py-2 bg-white" value={r ?? ""} onChange={e => setR(Number(e.target.value))}>
         <option value="" disabled>Escolha…</option>{q.options!.map((o, k) => <option key={k} value={k}>{o}</option>)}</select>}
-      {q.type === "selecao" && <div className="grid md:grid-cols-2 gap-2">
-        {q.options!.map((o, k) => <label key={k} className={`${btn} flex gap-2`}><input type="checkbox" disabled={locked} checked={r.includes(k)} onChange={() => setR(r.includes(k) ? r.filter((x: number) => x !== k) : [...r, k])} />{o}</label>)}
-      </div>}
+
       {q.type === "lacunas" && <p className="leading-loose">{(q.text || "").split(/\[[^\]]+\]/).map((part, k) => <span key={k}>{part}{k < blanks.length && <input disabled={locked} className="border-b-2 border-violet-500 mx-1 px-1 w-32 bg-violet-50" value={r?.[k] || ""} onChange={e => { const a = [...(r || [])]; a[k] = e.target.value; setR(a); }} />}</span>)}</p>}
       {(q.type === "aberta" || q.type === "nuvem") && (q.type === "aberta"
         ? <textarea disabled={locked} className="w-full border rounded p-2" rows={3} value={r || ""} onChange={e => setR(e.target.value)} />

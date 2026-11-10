@@ -19,6 +19,11 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        quiz: {
+          panel: "hsl(var(--quiz-panel))",
+          "panel-foreground": "hsl(var(--quiz-panel-foreground))",
+          correct: "hsl(var(--quiz-correct))",
+        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

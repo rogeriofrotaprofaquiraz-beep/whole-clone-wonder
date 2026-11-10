@@ -3,6 +3,7 @@ export type ActivityType =
   | "multipla" | "vf" | "selecao" | "lacunas" | "tabela" | "nuvem" | "aberta" | "enquete" | "passagem" | "video"
   | "combinar" | "reordenar" | "arraste" | "categorizar" | "suspenso" | "marcacao" | "audio" | "resposta_video"
   | "destaque" | "correspondencia" | "forum"
+  | "matematica" | "hotspot" | "graficos" | "multipartes" | "desenhar"
   | "cruzadinha" | "roleta" | "domino" | "forca" | "memoria" | "cacapalavras" | "anagrama";
 
 export type Question = {
@@ -14,6 +15,9 @@ export type Question = {
   categories?: { name: string; items: string[] }[]; // categorizar
   image?: string;                                  // imagem de apoio da pergunta
   chart?: string;                                  // gráfico de barras: uma linha "Rótulo: valor"
+  optionImages?: (string | null)[];                // imagem de cada alternativa (mesma posição de options)
+  layout?: "horizontal" | "vertical";              // disposição das alternativas
+  answer?: string;                                 // resposta matemática (número)
 };
 export type Activity = { questions: Question[] };
 
@@ -39,6 +43,11 @@ export const ACTIVITY_TYPES: { key: ActivityType; label: string; icon: string; g
   { key: "destaque", label: "Texto em destaque", icon: "🖍️", group: "interativo", ready: false },
   { key: "correspondencia", label: "Tabela de correspondência", icon: "🧮", group: "interativo", ready: false },
   { key: "forum", label: "Fórum de discussão", icon: "💬", group: "interativo", ready: false },
+  { key: "matematica", label: "Resposta matemática", icon: "𝑓", group: "interativo", ready: true },
+  { key: "hotspot", label: "Ponto de acesso", icon: "🎯", group: "interativo", ready: false },
+  { key: "graficos", label: "Gráficos", icon: "📈", group: "interativo", ready: false },
+  { key: "multipartes", label: "Multipartes", icon: "🧩", group: "interativo", ready: false },
+  { key: "desenhar", label: "Desenhar", icon: "🎨", group: "interativo", ready: false },
   { key: "cruzadinha", label: "Palavra cruzada", icon: "✏️", group: "jogo", ready: true },
   { key: "roleta", label: "Roleta de perguntas", icon: "🎡", group: "jogo", ready: true },
   { key: "domino", label: "Dominó (pergunta e resposta)", icon: "🁫", group: "jogo", ready: true },
@@ -63,9 +72,32 @@ export function newQuestion(type: ActivityType, about = ""): Question {
     case "categorizar": return { id: uid(), type, prompt: prompt + "Separe os itens nas categorias", categories: [{ name: "Grupo A", items: [""] }, { name: "Grupo B", items: [""] }] };
     case "cruzadinha": case "forca": case "anagrama": case "cacapalavras": return { id: uid(), type, prompt: prompt + (type === "cacapalavras" ? "Encontre as palavras" : "Descubra as palavras pelas dicas"), pairs: [{ a: "Ciência que estuda a matéria", b: "QUIMICA" }, { a: "Menor parte de um elemento", b: "ATOMO" }, { a: "Tudo que tem massa e ocupa espaço", b: "MATERIA" }] };
     case "roleta": case "domino": case "memoria": return { id: uid(), type, prompt: prompt + (type === "roleta" ? "Gire a roleta e responda" : type === "domino" ? "Encaixe cada pergunta na peça com a resposta" : "Encontre os pares"), pairs: [{ a: "H₂O", b: "Água" }, { a: "NaCl", b: "Sal de cozinha" }, { a: "CO₂", b: "Gás carbônico" }] };
+    case "matematica": return { id: uid(), type, prompt: prompt + "Quanto vale?", answer: "" };
     default: return { id: uid(), type, prompt: prompt + "Escreva sua resposta" };
   }
 }
+
+/** Tipos cujas respostas são alternativas (cartões coloridos no editor). */
+export const OPTION_TYPES: ActivityType[] = ["multipla", "selecao", "vf", "suspenso", "enquete"];
+
+/** Troca o tipo de uma pergunta mantendo enunciado, mídia e, quando possível, as alternativas. */
+export function convertQuestion(q: Question, type: ActivityType): Question {
+  if (q.type === type) return q;
+  const fresh = newQuestion(type);
+  const out: Question = { ...fresh, id: q.id, prompt: q.prompt, image: q.image, chart: q.chart, layout: q.layout };
+  const fromOpts = OPTION_TYPES.includes(q.type) && q.type !== "vf" && q.options;
+  if (OPTION_TYPES.includes(type) && type !== "vf" && fromOpts) {
+    out.options = [...q.options!];
+    out.optionImages = q.optionImages ? [...q.optionImages] : undefined;
+    const c = (q.correct || []).filter(i => i < out.options!.length);
+    out.correct = type === "enquete" ? [] : type === "selecao" ? (c.length ? c : [0]) : [c[0] ?? 0];
+  }
+  if ((type === "combinar" || GAME_LIKE.includes(type)) && q.pairs) out.pairs = q.pairs.map(p => ({ ...p }));
+  return out;
+}
+const GAME_LIKE: ActivityType[] = ["cruzadinha", "roleta", "domino", "forca", "memoria", "cacapalavras", "anagrama"];
+
+const num = (s: unknown) => Number(String(s ?? "").trim().replace(/\s+/g, "").replace(",", "."));
 
 /** Respostas que não têm certo/errado (abertas, enquete, nuvem) sempre contam como feitas. */
 export const isGraded = (q: Question) => !["aberta", "enquete", "nuvem"].includes(q.type);
@@ -88,6 +120,7 @@ export function grade(q: Question, r: any): boolean {
     case "categorizar": return (q.categories || []).every(c => c.items.filter(Boolean).every(it => r?.[it] === c.name));
     case "cruzadinha": case "roleta": case "anagrama": { const p = (q.pairs || []).filter(x => x.b.trim()); return p.length > 0 && p.every((x, i) => n(r?.[i]).replace(/\s+/g, "") === n(x.b).replace(/\s+/g, "")); }
     case "forca": case "memoria": case "cacapalavras": return r === true;
+    case "matematica": { const a = num(q.answer), b = num(r); return String(q.answer ?? "").trim() !== "" && Number.isFinite(a) && Number.isFinite(b) && Math.abs(a - b) <= 1e-9 * Math.max(1, Math.abs(a)); }
     default: return false;
   }
 }

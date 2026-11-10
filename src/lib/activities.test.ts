@@ -42,3 +42,25 @@ describe("jogos como pergunta", () => {
     expect(grade({ ...q, type: "forca" }, false)).toBe(false);
   });
 });
+
+import { convertQuestion as convQ, grade as gradeQ, newQuestion as newQ } from "./activities";
+describe("mudar tipo e resposta matemática", () => {
+  it("mantém enunciado, alternativas e imagens ao trocar múltipla por seleção", () => {
+    const q = { ...newQ("multipla"), prompt: "Qual?", options: ["A", "B", "C"], optionImages: [null, "img.png", null], correct: [1] };
+    const s = convQ(q, "selecao");
+    expect(s.type).toBe("selecao"); expect(s.id).toBe(q.id); expect(s.prompt).toBe("Qual?");
+    expect(s.options).toEqual(["A", "B", "C"]); expect(s.optionImages?.[1]).toBe("img.png"); expect(s.correct).toEqual([1]);
+  });
+  it("seleção com várias corretas vira múltipla com só a primeira", () => {
+    const q = { ...newQ("selecao"), options: ["A", "B", "C"], correct: [2, 0] };
+    expect(convQ(q, "multipla").correct).toEqual([2]);
+  });
+  it("verdadeiro ou falso mantém as opções fixas", () => {
+    const q = { ...newQ("multipla"), options: ["x", "y", "z"] };
+    expect(convQ(q, "vf").options).toEqual(["Verdadeiro", "Falso"]);
+  });
+  it("resposta matemática aceita vírgula e rejeita valor errado", () => {
+    const q = { ...newQ("matematica"), answer: "6,02" };
+    expect(gradeQ(q, "6.02")).toBe(true); expect(gradeQ(q, "6,02")).toBe(true); expect(gradeQ(q, "6")).toBe(false);
+  });
+});
