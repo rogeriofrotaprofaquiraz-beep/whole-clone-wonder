@@ -17,7 +17,7 @@ import { DisciplinesDialog } from "./DisciplinesDialog";
 import type { Discipline } from "@/lib/questionImport";
 import { GAME_TYPES } from "@/lib/questionGames";
 
-export function TeacherPanel({ userId }: { userId: string }) {
+export function TeacherPanel({ userId, view = "gestao" }: { userId: string; view?: "gestao" | "partidas" }) {
   const navigate = useNavigate();
   const [area, setArea] = useState<AreaValue>("geral");
   const [level, setLevel] = useState<LevelValue>("medio");
@@ -190,11 +190,10 @@ export function TeacherPanel({ userId }: { userId: string }) {
         <p className="text-white/80 text-sm">Gere questões com IA e crie partidas para sua turma</p>
       </Card>
 
-      <Tabs defaultValue="banco" className="space-y-4">
-        <TabsList className="grid grid-cols-3 h-auto w-full">
+      <Tabs value={view === "partidas" ? "partidas" : undefined} defaultValue="banco" className="space-y-4">
+        <TabsList className={view === "partidas" ? "hidden" : "grid grid-cols-2 h-auto w-full"}>
           <TabsTrigger value="banco" className="py-2 font-bold">🗃️ Banco de Questões</TabsTrigger>
           <TabsTrigger value="aula" className="py-2 font-bold">📄 Gerar pela aula</TabsTrigger>
-          <TabsTrigger value="partidas" className="py-2 font-bold">🎮 Partidas ao vivo</TabsTrigger>
         </TabsList>
 
       <TabsContent value="aula">

@@ -7,7 +7,7 @@ import { TeacherPanel } from "@/components/aula/TeacherPanel";
 import { SessionRoom } from "@/components/aula/SessionRoom";
 import { GraduationCap, ArrowLeft } from "lucide-react";
 
-export default function Aula() {
+export default function Aula({ view = "gestao" }: { view?: "gestao" | "partidas" }) {
   const { code } = useParams();
   const [params] = useSearchParams();
   const navigate = useNavigate();
@@ -43,7 +43,7 @@ export default function Aula() {
         </div>
 
         {user ? (
-          <TeacherPanel userId={user.id} />
+          <TeacherPanel userId={user.id} view={view} />
         ) : (
           <Card className="p-6 text-center">
             <h3 className="font-bold mb-2">Sou professor</h3>

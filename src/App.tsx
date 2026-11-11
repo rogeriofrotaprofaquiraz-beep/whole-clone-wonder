@@ -49,6 +49,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/aula" element={<FeatureGuard feature="pagina_aula"><Aula /></FeatureGuard>} />
+          <Route path="/partidas-ao-vivo" element={<Aula view="partidas" />} />
           <Route path="/aula/sala/:code" element={<Aula />} />
           <Route path="/aula/treino" element={<FeatureGuard feature="pagina_aula"><Treino /></FeatureGuard>} />
           <Route path="/perfil" element={<FeatureGuard feature="pagina_perfil"><Perfil /></FeatureGuard>} />
