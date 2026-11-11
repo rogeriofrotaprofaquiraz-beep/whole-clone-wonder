@@ -32,8 +32,6 @@ export function QuestionBankCentral({ userId, revision = 0, onChanged }: { userI
   const [editing, setEditing] = useState<Row | null>(null);
   const [editorOpen, setEditorOpen] = useState(false);
   const [discOpen, setDiscOpen] = useState(false);
-  const [gen, setGen] = useState({ count: 5, level: "medio", disc: "geral", game: "quiz", difficulty: 2 });
-  const [generating, setGenerating] = useState(false);
   const [importing, setImporting] = useState(false);
   const [tab, setTab] = useState("lista");
   const fileRef = useRef<HTMLInputElement>(null);
@@ -78,36 +76,6 @@ export function QuestionBankCentral({ userId, revision = 0, onChanged }: { userI
     (!disc || r.discipline === disc) && (!topicF || topicOf(r) === topicF) && (!level || r.school_level === level) &&
     (!game || r.gameList.includes(game)) &&
     (!q || (r.question + " " + (r.topic ?? "") + " " + (r.answer_text ?? "")).toLowerCase().includes(q.toLowerCase())));
-
-  const generate = async () => {
-    const d = discMap.get(gen.disc);
-    if (!d) return toast.error("Escolha a disciplina");
-    const all = gen.game === "__all";
-    const g = all ? undefined : GAME_TYPES.find((x) => x.key === gen.game);
-    // "Mesclar todas": divide a quantidade entre os níveis de dificuldade
-    const plan: { difficulty: number; count: number }[] = [];
-    if (gen.difficulty === 0) {
-      const n = DIFFICULTIES.length;
-      DIFFICULTIES.forEach((x, i) => {
-        const c = Math.floor(gen.count / n) + (i < gen.count % n ? 1 : 0);
-        if (c > 0) plan.push({ difficulty: x.value, count: c });
-      });
-    } else plan.push({ difficulty: gen.difficulty, count: gen.count });
-    setGenerating(true);
-    const results = await Promise.all(plan.map((p) => supabase.functions.invoke("generate-chem-questions", {
-      body: {
-        area: d.area, count: p.count, difficulty: p.difficulty, school_level: gen.level,
-        discipline: d.key, discipline_label: d.label,
-        game: all ? undefined : gen.game, game_label: all ? "todos os jogos" : g?.label, word_answer: g?.kind === "word",
-      },
-    })));
-    setGenerating(false);
-    const inserted = results.reduce((s, r) => s + (r.data?.inserted ?? 0), 0);
-    const fail = results.find((r) => r.error || r.data?.error);
-    if (fail && !inserted) return toast.error(fail.data?.error ?? fail.error?.message ?? "Erro ao gerar");
-    if (fail) toast.error("Alguns níveis não foram gerados");
-    toast.success(`${inserted} questões criadas para ${all ? "todos os jogos" : g?.label}`); refresh();
-  };
 
   const downloadTemplate = () => {
     const blob = new Blob(["\ufeff" + TEMPLATE_CSV], { type: "text/csv;charset=utf-8" });
@@ -164,40 +132,8 @@ export function QuestionBankCentral({ userId, revision = 0, onChanged }: { userI
         <TabsList className="flex flex-wrap h-auto justify-start">
           <TabsTrigger value="lista">📋 Questões ({rows.length})</TabsTrigger>
           <TabsTrigger value="assuntos">📚 Por assunto</TabsTrigger>
-          <TabsTrigger value="gerar">✨ Gerar com IA</TabsTrigger>
           <TabsTrigger value="importar">📥 Importar</TabsTrigger>
         </TabsList>
-
-      <TabsContent value="gerar">
-      <div className="rounded-xl border bg-gradient-to-r from-primary/10 via-background to-accent/30 p-4">
-        <h3 className="font-bold text-lg flex items-center gap-2 mb-3"><Sparkles className="h-5 w-5 text-primary" /> Gerar Questões com IA</h3>
-        <div className="grid grid-cols-2 md:grid-cols-6 gap-3 items-end">
-          <div><Label>Quantidade</Label><Input type="number" min={1} max={25} value={gen.count} onChange={(e) => setGen({ ...gen, count: Number(e.target.value) })} /></div>
-          <div><Label>Nível de Ensino</Label>
-            <select className={sel} value={gen.level} onChange={(e) => setGen({ ...gen, level: e.target.value })}>
-              {LEVELS.map((l) => <option key={l.value} value={l.value}>{l.label}</option>)}
-            </select></div>
-          <div><Label>Disciplina</Label>
-            <select className={sel} value={gen.disc} onChange={(e) => setGen({ ...gen, disc: e.target.value })}>
-              {disciplines.map((d) => <option key={d.key} value={d.key}>{d.label}</option>)}
-            </select></div>
-          <div><Label>Tipo de Jogo</Label>
-            <select className={sel} value={gen.game} onChange={(e) => setGen({ ...gen, game: e.target.value })}>
-              <option value="__all">🎮 Todos os jogos</option>
-              {GAME_TYPES.map((g) => <option key={g.key} value={g.key}>{g.label}</option>)}
-            </select></div>
-          <div><Label>Dificuldade</Label>
-            <select className={sel} value={gen.difficulty} onChange={(e) => setGen({ ...gen, difficulty: Number(e.target.value) })}>
-              <option value={0}>🔀 Mesclar todas</option>
-              {DIFFICULTIES.map((d) => <option key={d.value} value={d.value}>{d.label}</option>)}
-            </select></div>
-          <Button onClick={generate} disabled={generating}>
-            {generating ? <Loader2 className="mr-1 h-4 w-4 animate-spin" /> : <Sparkles className="mr-1 h-4 w-4" />} Gerar
-          </Button>
-        </div>
-      </div>
-
-      </TabsContent>
 
       <TabsContent value="importar" className="space-y-3">
       <div className="rounded-xl border p-4 flex flex-wrap items-center justify-between gap-3">

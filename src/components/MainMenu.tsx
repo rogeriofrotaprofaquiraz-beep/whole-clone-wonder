@@ -18,6 +18,7 @@ export function MainMenu({ activeTab, setActiveTab, role }: {
       { label: "Campeonato", emoji: "🏆", tab: "quiz" },
       { label: "Minijogos", emoji: "🕹️", to: "/minijogos" },
       { label: "Treino Solo", emoji: "🎯", to: "/aula/treino" },
+      { label: "Sala Virtual (grupo)", emoji: "🚪", to: "/sala-virtual" },
       { label: "Laboratório Virtual", emoji: "⚗️", to: "/laboratorio" },
       { label: "Sala de Equipes", emoji: "👥", to: "/sala-equipes", show: staff },
       { label: "Olimpíadas", emoji: "🏅", to: "/olimpiadas" },

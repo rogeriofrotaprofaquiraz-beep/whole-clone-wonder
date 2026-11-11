@@ -15,6 +15,7 @@ import { QuestionBankCentral } from "./QuestionBankCentral";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { DisciplinesDialog } from "./DisciplinesDialog";
 import type { Discipline } from "@/lib/questionImport";
+import { GAME_TYPES } from "@/lib/questionGames";
 
 export function TeacherPanel({ userId }: { userId: string }) {
   const navigate = useNavigate();
@@ -24,7 +25,9 @@ export function TeacherPanel({ userId }: { userId: string }) {
   const [rounds, setRounds] = useState(10);
   const [count, setCount] = useState(10);
   const [topic, setTopic] = useState("");
-  const [difficulty, setDifficulty] = useState(2);
+  const [difficulty, setDifficulty] = useState(2); // 0 = mesclar todas
+  const [game, setGame] = useState("__all");
+  const [withTerms, setWithTerms] = useState(true);
   const [generating, setGenerating] = useState(false);
   const [generatingTerms, setGeneratingTerms] = useState(false);
   const [creating, setCreating] = useState(false);
@@ -57,34 +60,6 @@ export function TeacherPanel({ userId }: { userId: string }) {
       .then(({ data }) => setTopicOptions([...new Set([...(selectedDisc.topics ?? []), ...(data ?? []).map((r: any) => (r.topic || r.lesson || "").trim()).filter(Boolean)])]));
   }, [discKey, disciplines, discStats]);
 
-  const [stdProgress, setStdProgress] = useState("");
-
-  const generateStandard = async () => {
-    const jobs: { area: string; school_level: string; difficulty: number }[] = [];
-    for (const a of AREAS) for (const l of LEVELS) for (const d of DIFFICULTIES)
-      jobs.push({ area: a.value, school_level: l.value, difficulty: d.value });
-    if (!confirm(`Gerar 5 questões para cada combinação (${jobs.length} combinações, ~${jobs.length * 5} questões)? Pode levar alguns minutos.`)) return;
-    let done = 0, ok = 0, fail = 0;
-    setStdProgress(`0/${jobs.length}`);
-    const queue = [...jobs];
-    const worker = async () => {
-      while (queue.length) {
-        const j = queue.shift();
-        if (!j) break;
-        try {
-          const { data, error } = await supabase.functions.invoke("generate-chem-questions", { body: { ...j, count: 5 } });
-          if (error || (data as any)?.error) fail++; else ok += (data as any)?.inserted ?? 0;
-        } catch { fail++; }
-        done++;
-        setStdProgress(`${done}/${jobs.length}`);
-      }
-    };
-    await Promise.all([worker(), worker(), worker(), worker()]);
-    setStdProgress("");
-    toast.success(`Banco padrão: ${ok} questões criadas${fail ? ` (${fail} combinações falharam)` : ""}`);
-    loadStats();
-  };
-
   const loadStats = async () => {
     const out: Record<string, number> = {};
     for (const a of AREAS) {
@@ -115,15 +90,32 @@ export function TeacherPanel({ userId }: { userId: string }) {
   }, [userId]);
 
   const generateQuestions = async () => {
+    if (!selectedDisc) { toast.error("Escolha a disciplina"); return; }
+    const all = game === "__all";
+    const g = all ? undefined : GAME_TYPES.find((x) => x.key === game);
+    const plan: { difficulty: number; count: number }[] = [];
+    if (difficulty === 0) {
+      const n = DIFFICULTIES.length;
+      DIFFICULTIES.forEach((x, i) => {
+        const c = Math.floor(count / n) + (i < count % n ? 1 : 0);
+        if (c > 0) plan.push({ difficulty: x.value, count: c });
+      });
+    } else plan.push({ difficulty, count });
     setGenerating(true);
     try {
-      const { data, error } = await supabase.functions.invoke("generate-chem-questions", {
-        body: { area, count, difficulty, topic: topic || undefined, school_level: level, content: content || undefined,
-          discipline: selectedDisc?.key, discipline_label: selectedDisc?.label },
-      });
-      if (error) throw error;
-      if ((data as any)?.error) throw new Error((data as any).error);
-      toast.success(`${(data as any).inserted} questões adicionadas!`);
+      const results = await Promise.all(plan.map((p) => supabase.functions.invoke("generate-chem-questions", {
+        body: {
+          area: selectedDisc.area, count: p.count, difficulty: p.difficulty, school_level: level,
+          topic: topic.trim() || undefined, content: content || undefined,
+          discipline: selectedDisc.key, discipline_label: selectedDisc.label,
+          game: all ? undefined : game, game_label: all ? "todos os jogos" : g?.label, word_answer: g?.kind === "word",
+        },
+      })));
+      const inserted = results.reduce((s, r) => s + ((r.data as any)?.inserted ?? 0), 0);
+      const fail = results.find((r) => r.error || (r.data as any)?.error);
+      if (fail && !inserted) throw new Error((fail.data as any)?.error ?? fail.error?.message ?? "Falha ao gerar questões");
+      if (fail) toast.error("Alguns níveis não foram gerados");
+      toast.success(`${inserted} questões salvas em ${selectedDisc.label}${topic.trim() ? ` › ${topic.trim()}` : ""}`);
       loadStats();
     } catch (e: any) {
       toast.error(e.message || "Falha ao gerar questões");
@@ -136,7 +128,7 @@ export function TeacherPanel({ userId }: { userId: string }) {
     setGeneratingTerms(true);
     try {
       const { data, error } = await supabase.functions.invoke("generate-chem-terms", {
-        body: { area, count: 15, difficulty, school_level: level, content: content || undefined },
+        body: { area, count: 15, difficulty: difficulty || 2, school_level: level, content: content || undefined },
       });
       if (error) throw error;
       if ((data as any)?.error) throw new Error((data as any).error);
@@ -164,7 +156,7 @@ export function TeacherPanel({ userId }: { userId: string }) {
   const generateAll = async () => {
     setGeneratingAll(true);
     try {
-      await Promise.all([generateQuestions(), generateTerms()]);
+      await Promise.all(withTerms ? [generateQuestions(), generateTerms()] : [generateQuestions()]);
     } finally { setGeneratingAll(false); }
   };
 
@@ -247,7 +239,7 @@ export function TeacherPanel({ userId }: { userId: string }) {
             }}>
               <SelectTrigger><SelectValue /></SelectTrigger>
               <SelectContent>
-                <SelectItem value="_none">— Sem disciplina —</SelectItem>
+                <SelectItem value="_none">— Escolha a disciplina —</SelectItem>
                 {disciplines.map((d) => <SelectItem key={d.key} value={d.key}>{d.label}</SelectItem>)}
               </SelectContent>
             </Select>
@@ -290,13 +282,20 @@ export function TeacherPanel({ userId }: { userId: string }) {
           <div className="md:col-span-2">
             <Label>Dificuldade</Label>
             <div className="flex flex-wrap gap-2 mt-1">
-              {DIFFICULTIES.map((d) => (
+              {[{ value: 0, label: "Mesclar todas" }, ...DIFFICULTIES].map((d) => (
                 <button key={d.value} type="button" onClick={() => setDifficulty(d.value)}
                   className={`px-3 py-1.5 rounded-md text-xs font-bold border-2 ${difficulty === d.value ? "bg-[#D97706] text-white border-[#D97706]" : "bg-white border-slate-200"}`}>
-                  {d.value}★ {d.label}
+                  {d.value ? `${d.value}★ ` : "🔀 "}{d.label}
                 </button>
               ))}
             </div>
+          </div>
+          <div className="md:col-span-2">
+            <Label>Tipo de jogo</Label>
+            <select className="w-full h-10 rounded-md border border-input bg-background px-3 text-sm" value={game} onChange={(e) => setGame(e.target.value)}>
+              <option value="__all">🎮 Todos os jogos</option>
+              {GAME_TYPES.map((g) => <option key={g.key} value={g.key}>{g.label}</option>)}
+            </select>
           </div>
         </div>
         <div className="mt-3 space-y-1">
@@ -306,21 +305,14 @@ export function TeacherPanel({ userId }: { userId: string }) {
             placeholder="Cole aqui o conteúdo ou anexe a aula (.docx). As questões e termos serão criados com base nele."
             className="w-full rounded-md border border-input bg-background p-2 text-sm" />
         </div>
-        <Button onClick={generateAll} disabled={generatingAll || generating || generatingTerms} className="w-full mt-4 bg-[#059669] hover:bg-[#047857]">
-          {generatingAll ? <><Loader2 className="animate-spin mr-2" />Gerando para todos os jogos...</> : <><Sparkles className="mr-2" />Gerar para TODOS os jogos (Quiz, Forca, Caça-palavras, Memória)</>}
+        <label className="flex items-center gap-2 text-sm mt-3">
+          <input type="checkbox" checked={withTerms} onChange={(e) => setWithTerms(e.target.checked)} />
+          Também gerar termos para Forca, Caça-palavras e Memória
+        </label>
+        <Button onClick={generateAll} disabled={!selectedDisc || generatingAll || generating || generatingTerms} className="w-full mt-3 bg-[#059669] hover:bg-[#047857]">
+          {generatingAll ? <><Loader2 className="animate-spin mr-2" />Gerando...</> : <><Sparkles className="mr-2" />Gerar questões</>}
         </Button>
-        <Button onClick={generateStandard} disabled={!!stdProgress || generatingAll} variant="outline" className="w-full mt-2">
-          {stdProgress ? <><Loader2 className="animate-spin mr-2" />Banco padrão: {stdProgress}</> : <><Sparkles className="mr-2" />Gerar banco padrão (5 questões por dificuldade · todas as áreas e níveis)</>}
-        </Button>
-        <div className="grid grid-cols-2 gap-2 mt-2">
-          <Button onClick={generateQuestions} disabled={generating} className="bg-[#D97706] hover:bg-[#B45309]">
-            {generating ? <><Loader2 className="animate-spin mr-2" />Gerando...</> : <><Sparkles className="mr-2" />Gerar Quiz</>}
-          </Button>
-          <Button onClick={generateTerms} disabled={generatingTerms} className="bg-[#4C1D95] hover:bg-[#3B1486]">
-            {generatingTerms ? <><Loader2 className="animate-spin mr-2" />Gerando...</> : <><Sparkles className="mr-2" />Gerar Termos</>}
-          </Button>
-        </div>
-        <p className="text-xs text-muted-foreground mt-2">"Quiz" alimenta o Quiz competitivo. "Termos" alimenta Forca, Caça-palavras e Memória (treino solo).</p>
+        <p className="text-xs text-muted-foreground mt-2">{selectedDisc ? `As questões serão salvas em ${selectedDisc.label}${topic.trim() ? ` › ${topic.trim()}` : ""}.` : "Escolha a disciplina para gerar."}</p>
       </Card>
       </TabsContent>
 

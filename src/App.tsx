@@ -14,6 +14,7 @@ import Progresso from "./pages/Progresso.tsx";
 import Escola from "./pages/Escola.tsx";
 import Laboratorio from "./pages/Laboratorio.tsx";
 import Minijogos from "./pages/Minijogos.tsx";
+import SalaVirtual from "./pages/SalaVirtual.tsx";
 import SalaEquipes from "./pages/SalaEquipes.tsx";
 import Historico from "./pages/Historico.tsx";
 import PainelDesempenho from "./pages/PainelDesempenho.tsx";
@@ -56,6 +57,7 @@ const App = () => (
           <Route path="/escola" element={<Escola />} />
           <Route path="/laboratorio" element={<Laboratorio />} />
           <Route path="/minijogos" element={<Minijogos />} />
+          <Route path="/sala-virtual" element={<SalaVirtual />} />
           <Route path="/sala-equipes" element={<SalaEquipes />} />
           <Route path="/ranking" element={<FeatureGuard feature="pagina_ranking"><RankingPage /></FeatureGuard>} />
           <Route path="/plano-de-aula" element={<PlanoDeAula />} />

@@ -75,7 +75,7 @@ Retorne JSON:
     if (!questions.length) return json({ error: "Nenhuma questão gerada" }, 500);
 
     const rows = questions.slice(0, n).map((q: any) => ({
-      area, topic: q.topic ?? topic ?? null, difficulty, school_level: level,
+      area, topic: (topic && String(topic).trim()) || q.topic || null, difficulty, school_level: level,
       question: String(q.question ?? "").trim(),
       options: Array.isArray(q.options) ? q.options.slice(0, 4).map(String) : [],
       correct_index: Math.max(0, Math.min(3, parseInt(q.correct_index) || 0)),
