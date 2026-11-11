@@ -113,7 +113,11 @@ export function TeacherPanel({ userId, view = "gestao" }: { userId: string; view
       })));
       const inserted = results.reduce((s, r) => s + ((r.data as any)?.inserted ?? 0), 0);
       const fail = results.find((r) => r.error || (r.data as any)?.error);
-      if (fail && !inserted) throw new Error((fail.data as any)?.error ?? fail.error?.message ?? "Falha ao gerar questões");
+      if (fail && !inserted) {
+        let msg = (fail.data as any)?.error as string | undefined;
+        try { if (!msg) msg = (await (fail.error as any)?.context?.json?.())?.error; } catch { /* ignore */ }
+        throw new Error(msg ?? "Falha ao gerar questões");
+      }
       if (fail) toast.error("Alguns níveis não foram gerados");
       toast.success(`${inserted} questões salvas em ${selectedDisc.label}${topic.trim() ? ` › ${topic.trim()}` : ""}`);
       loadStats();

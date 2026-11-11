@@ -55,7 +55,7 @@ Retorne JSON:
       method: "POST",
       headers: { "Content-Type": "application/json", Authorization: `Bearer ${lovableKey}` },
       body: JSON.stringify({
-        model: "google/gemini-2.5-flash",
+        model: "google/gemini-3.8-flash",
         messages: [{ role: "system", content: sys }, { role: "user", content: userPrompt }],
         response_format: { type: "json_object" },
       }),
@@ -64,7 +64,7 @@ Retorne JSON:
     if (!aiResp.ok) {
       const text = await aiResp.text();
       if (aiResp.status === 429) return json({ error: "Rate limit, tente em instantes" }, 429);
-      if (aiResp.status === 402) return json({ error: "Créditos de IA esgotados" }, 402);
+      if (aiResp.status === 402) return json({ error: "Os créditos de IA do espaço de trabalho acabaram. Adicione créditos em Configurações → Planos e créditos." }, 402);
       return json({ error: "AI error: " + text }, 500);
     }
     const aiData = await aiResp.json();
