@@ -1,3 +1,4 @@
+import { loadAnsweredQuestions, unansweredFirst, logGameQuestion } from "@/components/game/QuestionLog";
 import { gameOrFilter } from "@/lib/linkedBank";
 import { topicOrFilter } from "@/lib/questionTopics";
 import { useEffect, useState } from "react";
@@ -24,8 +25,12 @@ export function QuestionGate({ area, level, phase, onPass, topic }: { area: stri
       if (!data?.length && level) ({ data } = await base().contains("school_levels", [level]).limit(50));
       if (!data?.length) ({ data } = await base().limit(50));
       if (!alive) return;
-      const list = (data ?? []) as unknown as Q[];
-      setQ(list.length ? list[Math.floor(Math.random() * list.length)] : null);
+      const list = unansweredFirst((data ?? []) as unknown as Q[], await loadAnsweredQuestions());
+      const top = list[0];
+      if (top) {
+        const opts = top.options.map((o, i) => ({ o, ok: i === top.correct_index })).sort(() => Math.random() - 0.5);
+        setQ({ ...top, options: opts.map((x) => x.o), correct_index: opts.findIndex((x) => x.ok) });
+      } else setQ(null);
       setLoading(false);
     })();
     return () => { alive = false; };
@@ -52,7 +57,7 @@ export function QuestionGate({ area, level, phase, onPass, topic }: { area: stri
         {q.options.map((o, i) => {
           const cls = !answered ? "bg-card hover:bg-muted" : i === q.correct_index ? "bg-primary text-primary-foreground" : i === picked ? "bg-destructive text-destructive-foreground" : "bg-card opacity-60";
           return (
-            <button key={i} disabled={answered} onClick={() => setPicked(i)} className={`text-left px-4 py-3 rounded-lg border-2 font-medium transition ${cls}`}>
+            <button key={i} disabled={answered} onClick={() => { setPicked(i); logGameQuestion("Campeonato", q.question, String(o), String(q.options[q.correct_index]), i === q.correct_index).catch(() => {}); }} className={`text-left px-4 py-3 rounded-lg border-2 font-medium transition ${cls}`}>
               {String.fromCharCode(65 + i)}) {o}
             </button>
           );

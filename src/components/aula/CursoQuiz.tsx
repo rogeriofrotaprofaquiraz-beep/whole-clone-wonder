@@ -1,3 +1,4 @@
+import { loadAnsweredQuestions, unansweredFirst, logGameQuestion } from "@/components/game/QuestionLog";
 import { gameOrFilter } from "@/lib/linkedBank";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
@@ -36,8 +37,8 @@ export function CursoQuiz({ topic, content, level }: { topic: string; content?: 
     const ors = [`lesson.ilike.%${topic.replace(/[%,()]/g, "")}%`, ...word.map((w) => `topic.ilike.%${w}%`), ...word.map((w) => `question.ilike.%${w}%`)].join(",");
     let q = supabase.from("chem_questions").select("id,question,options,correct_index,explanation,image_url,difficulty,slide_content").or(ors).or(gameOrFilter("quiz_curso")).limit(40);
     if (level) q = q.or(`school_level.eq.${level},school_levels.cs.{${level}}`);
-    q.then(({ data }) => {
-      const list = ((data ?? []) as Q[]).sort(() => Math.random() - 0.5).slice(0, 10).sort((a, b) => a.difficulty - b.difficulty);
+    Promise.all([q, loadAnsweredQuestions()]).then(([{ data }, answered]) => {
+      const list = unansweredFirst((data ?? []) as Q[], answered).slice(0, 10).sort((a, b) => a.difficulty - b.difficulty);
       setQs(list); setLoading(false);
     });
   }, [topic, level]);
@@ -45,6 +46,8 @@ export function CursoQuiz({ topic, content, level }: { topic: string; content?: 
   const answer = async (k: number) => {
     setPick(k);
     const q = qs[i];
+    const opts = Array.isArray(q.options) ? q.options.map(String) : [];
+    logGameQuestion("Quiz do curso", q.question, opts[k] ?? "", opts[q.correct_index] ?? "", k === q.correct_index).catch(() => {});
     if (k !== q.correct_index) return;
     setScore((s) => s + 1);
     const coins = COINS_BY_DIFFICULTY[Math.max(1, Math.min(5, q.difficulty)) - 1];

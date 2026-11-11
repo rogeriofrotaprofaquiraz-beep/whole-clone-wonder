@@ -14,6 +14,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
 import { ArrowLeft, Atom, Lock, Sparkles, Trophy, Wand2, Check } from "lucide-react";
+import { QuestionLog } from "@/components/game/QuestionLog";
 import { HeroOptionsDialog } from "@/components/game/HeroOptionsDialog";
 import { backgroundsFor } from "@/lib/elementBackgrounds";
 import { buildAvatarDataUrl } from "@/lib/localAvatar";
@@ -355,8 +356,12 @@ export default function Perfil() {
               <TabsList className="bg-slate-900/60 border border-white/10">
                 <TabsTrigger value="customize">1. Criar avatar ultrarrealista</TabsTrigger>
                 <TabsTrigger value="gallery">2. Galeria de heróis</TabsTrigger>
+                <TabsTrigger value="questoes">3. Minhas questões</TabsTrigger>
               </TabsList>
 
+              <TabsContent value="questoes">
+                {session?.user?.id && <Card><CardContent className="p-4"><QuestionLog userId={session.user.id} /></CardContent></Card>}
+              </TabsContent>
               <TabsContent value="gallery">
                 <Card className="bg-slate-900/60 border-white/10">
                   <CardHeader>

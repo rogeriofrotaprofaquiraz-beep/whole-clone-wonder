@@ -8,6 +8,7 @@ import { toast } from "sonner";
 import { addCoins } from "@/lib/playerEconomy";
 import { supabase } from "@/integrations/supabase/client";
 import { DIFFICULTIES } from "@/lib/aula";
+import { loadAnsweredQuestions, unansweredFirst, logGameQuestion } from "@/components/game/QuestionLog";
 import { loadSeen, pickUnseen, quizCoins, saveSeen, summarize, ReportRow } from "@/lib/questionPicker";
 
 type Q = { id: string; prompt: string; options: string[]; correct: string; difficulty: number; explanation?: string | null; image?: string | null };
@@ -31,8 +32,13 @@ export const ElementQuiz = () => {
       .select("id,question,options,correct_index,explanation,image_url,difficulty").or(gameOrFilter("quiz")).limit(1000);
     const pool = (data ?? []).filter((r: any) => Array.isArray(r.options) && r.options[r.correct_index] != null);
     if (!pool.length) { setState("empty"); return; }
-    const { picked, seen } = pickUnseen(pool as any[], loadSeen(scope), MAX_QUESTIONS);
-    saveSeen(scope, seen);
+    const answered = await loadAnsweredQuestions();
+    const ordered = unansweredFirst(pool as any[], answered);
+    const fresh = ordered.filter((q: any) => !answered.has(q.question.trim().toLowerCase()));
+    const { picked, seen } = fresh.length >= MAX_QUESTIONS
+      ? { picked: fresh.slice(0, MAX_QUESTIONS), seen: [] as string[] }
+      : pickUnseen(ordered, loadSeen(scope), MAX_QUESTIONS);
+    if (seen.length) saveSeen(scope, seen);
     setQuestions(picked.map((r: any) => ({
       id: r.id, prompt: r.question, options: shuffle(r.options.map(String)), correct: String(r.options[r.correct_index]),
       difficulty: r.difficulty ?? 2, explanation: r.explanation, image: r.image_url,
@@ -48,6 +54,7 @@ export const ElementQuiz = () => {
     if (selected) return;
     setSelected(o);
     const ok = o === cur.correct;
+    logGameQuestion("Quiz", cur.prompt, o, cur.correct, ok).catch(() => {});
     setReport((r) => [...r, { question: cur.prompt, difficulty: cur.difficulty, correct: ok, answer: cur.correct, chosen: o }]);
     if (ok) {
       const c = quizCoins(cur.difficulty);
