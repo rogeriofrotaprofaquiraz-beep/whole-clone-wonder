@@ -82,17 +82,31 @@ export function QuestionBankCentral({ userId, revision = 0, onChanged }: { userI
   const generate = async () => {
     const d = discMap.get(gen.disc);
     if (!d) return toast.error("Escolha a disciplina");
-    const g = GAME_TYPES.find((x) => x.key === gen.game);
+    const all = gen.game === "__all";
+    const g = all ? undefined : GAME_TYPES.find((x) => x.key === gen.game);
+    // "Mesclar todas": divide a quantidade entre os níveis de dificuldade
+    const plan: { difficulty: number; count: number }[] = [];
+    if (gen.difficulty === 0) {
+      const n = DIFFICULTIES.length;
+      DIFFICULTIES.forEach((x, i) => {
+        const c = Math.floor(gen.count / n) + (i < gen.count % n ? 1 : 0);
+        if (c > 0) plan.push({ difficulty: x.value, count: c });
+      });
+    } else plan.push({ difficulty: gen.difficulty, count: gen.count });
     setGenerating(true);
-    const { data, error } = await supabase.functions.invoke("generate-chem-questions", {
+    const results = await Promise.all(plan.map((p) => supabase.functions.invoke("generate-chem-questions", {
       body: {
-        area: d.area, count: gen.count, difficulty: gen.difficulty, school_level: gen.level,
-        discipline: d.key, discipline_label: d.label, game: gen.game, game_label: g?.label, word_answer: g?.kind === "word",
+        area: d.area, count: p.count, difficulty: p.difficulty, school_level: gen.level,
+        discipline: d.key, discipline_label: d.label,
+        game: all ? undefined : gen.game, game_label: all ? "todos os jogos" : g?.label, word_answer: g?.kind === "word",
       },
-    });
+    })));
     setGenerating(false);
-    if (error || data?.error) return toast.error(data?.error ?? error?.message ?? "Erro ao gerar");
-    toast.success(`${data.inserted} questões criadas para ${g?.label}`); refresh();
+    const inserted = results.reduce((s, r) => s + (r.data?.inserted ?? 0), 0);
+    const fail = results.find((r) => r.error || r.data?.error);
+    if (fail && !inserted) return toast.error(fail.data?.error ?? fail.error?.message ?? "Erro ao gerar");
+    if (fail) toast.error("Alguns níveis não foram gerados");
+    toast.success(`${inserted} questões criadas para ${all ? "todos os jogos" : g?.label}`); refresh();
   };
 
   const downloadTemplate = () => {
@@ -169,10 +183,12 @@ export function QuestionBankCentral({ userId, revision = 0, onChanged }: { userI
             </select></div>
           <div><Label>Tipo de Jogo</Label>
             <select className={sel} value={gen.game} onChange={(e) => setGen({ ...gen, game: e.target.value })}>
+              <option value="__all">🎮 Todos os jogos</option>
               {GAME_TYPES.map((g) => <option key={g.key} value={g.key}>{g.label}</option>)}
             </select></div>
           <div><Label>Dificuldade</Label>
             <select className={sel} value={gen.difficulty} onChange={(e) => setGen({ ...gen, difficulty: Number(e.target.value) })}>
+              <option value={0}>🔀 Mesclar todas</option>
               {DIFFICULTIES.map((d) => <option key={d.value} value={d.value}>{d.label}</option>)}
             </select></div>
           <Button onClick={generate} disabled={generating}>
