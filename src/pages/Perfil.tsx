@@ -31,6 +31,7 @@ export default function Perfil() {
   const [avatar, setAvatar] = useState<any>(null);
   const [admin, setAdmin] = useState(false);
   const [busy, setBusy] = useState(false);
+  const [gallerySort, setGallerySort] = useState<"number" | "name">("number");
   const [generating, setGenerating] = useState(false);
   const [photoBase64, setPhotoBase64] = useState<string | null>(null);
   const [photoPreview, setPhotoPreview] = useState<string | null>(null);
@@ -374,9 +375,16 @@ export default function Perfil() {
                     <p className="text-[11px] text-white/70 mb-3 font-bold">
                       Escolha o herói que servirá de base. Depois vá em <span className="text-fuchsia-300">"1. Criar avatar ultrarrealista"</span> e gere seu personagem com IA.
                     </p>
+                    <div className="flex items-center gap-2 mb-3 text-[11px] font-bold">
+                      <span className="text-white/70">Organizar por:</span>
+                      <Button size="sm" variant={gallerySort === "number" ? "default" : "outline"} onClick={() => setGallerySort("number")}>🔢 Número atômico</Button>
+                      <Button size="sm" variant={gallerySort === "name" ? "default" : "outline"} onClick={() => setGallerySort("name")}>🔤 Nome do elemento</Button>
+                    </div>
                     <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3 max-h-[600px] overflow-y-auto pr-2">
                       {allCards
                         .filter((el) => el.heroImage && !el.heroImage.endsWith(".mp4"))
+                        .slice()
+                        .sort((a, b) => gallerySort === "number" ? a.number - b.number : a.name.localeCompare(b.name, "pt-BR"))
                         .map((el) => {
                           const selected = avatar?.current_card === el.symbol;
                           return (
