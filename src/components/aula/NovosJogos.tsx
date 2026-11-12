@@ -13,6 +13,7 @@ import { RotateCcw, Trophy } from "lucide-react";
 import { addCoins } from "@/lib/playerEconomy";
 import { areaMeta, AreaValue } from "@/lib/aula";
 import { ELEMENTS_DATA } from "@/data/elements";
+import { buildCrossword, cwClean, type CwLayout } from "@/lib/crosswordLayout";
 
 const ELEMENTS = Object.values(ELEMENTS_DATA).sort((a, b) => a.number - b.number);
 const shuffle = <T,>(a: T[]) => [...a].sort(() => Math.random() - 0.5);
@@ -48,7 +49,7 @@ function useTerms(area: AreaValue) {
   return terms;
 }
 
-/* ---------------- Palavras Cruzadas (cruzadinha com palavra-chave) ---------------- */
+/* ---------------- Palavras Cruzadas (grade estilo revista) ---------------- */
 const CROSS_COINS = [1, 2, 4, 7, 10]; // Átomos por palavra conforme dificuldade 1★..5★
 type CTerm = { term: string; clue: string; difficulty: number };
 export function PalavrasCruzadas({ area, topic }: { area: AreaValue; topic?: string }) {
@@ -59,53 +60,117 @@ export function PalavrasCruzadas({ area, topic }: { area: AreaValue; topic?: str
     setTerms(null);
     loadLinkedTerms(area, topic, "cruzada").then(setTerms);
   }, [area, topic]);
-  const [words, setWords] = useState<CTerm[]>([]);
-  const [answers, setAnswers] = useState<string[]>([]);
+  const [layout, setLayout] = useState<CwLayout<CTerm>>({ rows: 0, cols: 0, words: [] });
+  const [letters, setLetters] = useState<Record<string, string>>({});
   const [done, setDone] = useState<boolean[]>([]);
+  const [active, setActive] = useState(0);
   const reset = () => {
-    const pool = (terms ?? []).filter((t) => t.term.length >= 3 && t.term.length <= 14);
-    // mistura todos os níveis e ordena do mais fácil ao mais difícil
-    const w = shuffle(pool).slice(0, size).sort((a, b) => (a.difficulty ?? 1) - (b.difficulty ?? 1));
-    setWords(w); setAnswers(w.map(() => "")); setDone(w.map(() => false));
+    const pool = (terms ?? []).filter((t) => cwClean(t.term).length >= 3 && cwClean(t.term).length <= 14);
+    const l = buildCrossword(pool, (t) => t.term, size);
+    setLayout(l); setLetters({}); setDone(l.words.map(() => false)); setActive(0);
   };
   useEffect(() => { if (terms) reset(); /* eslint-disable-next-line */ }, [terms, size]);
-  if (terms === null) return <Card className="p-6">Carregando…</Card>;
-  if (!words.length) return <Card className="p-6 text-center">Sem termos para esta área. Gere no painel do professor.</Card>;
-  const check = (i: number) => {
-    if (norm(answers[i]) === norm(words[i].term)) {
-      const d = Math.max(1, Math.min(5, words[i].difficulty ?? 1));
-      setDone((x) => x.map((v, k) => (k === i ? true : v))); reward(CROSS_COINS[d - 1], `Correto! (${"★".repeat(d)})`);
-    } else toast.error("Ainda não… tente de novo");
+  const cellsOf = (i: number) => {
+    const w = layout.words[i];
+    return w.answer.split("").map((_, k) => `${w.row + (w.dir === "down" ? k : 0)},${w.col + (w.dir === "across" ? k : 0)}`);
   };
+  const cellMap = useMemo(() => {
+    const m = new Map<string, { ch: string; words: number[]; num?: number }>();
+    layout.words.forEach((w, i) => {
+      w.answer.split("").forEach((ch, k) => {
+        const key = `${w.row + (w.dir === "down" ? k : 0)},${w.col + (w.dir === "across" ? k : 0)}`;
+        const c = m.get(key) ?? { ch, words: [] };
+        c.words.push(i); if (k === 0) c.num = w.number; m.set(key, c);
+      });
+    });
+    return m;
+  }, [layout]);
+  if (terms === null) return <Card className="p-6">Carregando…</Card>;
+  if (!layout.words.length) return <Card className="p-6 text-center">Sem termos para esta área. Gere no painel do professor.</Card>;
+
+  const solvedCells = new Set(layout.words.flatMap((_, i) => (done[i] ? cellsOf(i) : [])));
+  const checkWord = (i: number, lt = letters) => {
+    if (done[i]) return;
+    const keys = cellsOf(i);
+    if (keys.some((k) => !lt[k])) return;
+    const w = layout.words[i];
+    if (keys.map((k) => lt[k]).join("") === w.answer) {
+      const d = Math.max(1, Math.min(5, w.item.difficulty ?? 1));
+      setDone((x) => x.map((v, k) => (k === i ? true : v)));
+      reward(CROSS_COINS[d - 1], `${w.number} ${w.dir === "across" ? "horizontal" : "vertical"} correta! (${"★".repeat(d)})`);
+    } else toast.error(`${w.number} ${w.dir === "across" ? "horizontal" : "vertical"}: ainda não…`);
+  };
+  const focusCell = (key: string) => (document.getElementById(`cw-${key}`) as HTMLInputElement | null)?.focus();
+  const onType = (key: string, val: string) => {
+    const ch = cwClean(val).slice(-1);
+    const next = { ...letters, [key]: ch };
+    setLetters(next);
+    const cell = cellMap.get(key)!;
+    const wi = cell.words.includes(active) ? active : cell.words[0];
+    if (ch) {
+      const keys = cellsOf(wi);
+      const pos = keys.indexOf(key);
+      const nxt = keys.slice(pos + 1).find((k) => !solvedCells.has(k));
+      if (nxt) focusCell(nxt);
+      cell.words.forEach((w) => checkWord(w, next));
+    }
+  };
+  const onKey = (key: string, e: React.KeyboardEvent) => {
+    if (e.key === "Backspace" && !letters[key]) {
+      const keys = cellsOf(active); const pos = keys.indexOf(key);
+      if (pos > 0) focusCell(keys[pos - 1]);
+    }
+  };
+  const across = layout.words.map((w, i) => ({ w, i })).filter((x) => x.w.dir === "across").sort((a, b) => a.w.number - b.w.number);
+  const down = layout.words.map((w, i) => ({ w, i })).filter((x) => x.w.dir === "down").sort((a, b) => a.w.number - b.w.number);
+  const activeCells = new Set(layout.words[active] ? cellsOf(active) : []);
+  const Clues = ({ title, list }: { title: string; list: typeof across }) => (
+    <div className="space-y-1">
+      <div className="font-black text-sm uppercase tracking-wide">{title}</div>
+      {list.map(({ w, i }) => (
+        <button key={i} type="button" onClick={() => { setActive(i); focusCell(cellsOf(i)[0]); }}
+          className={`block w-full text-left text-sm rounded px-2 py-1 ${active === i ? "bg-accent" : ""} ${done[i] ? "line-through text-muted-foreground" : ""}`}>
+          <b>{w.number}.</b> {w.item.clue} <span className="text-muted-foreground">({w.answer.length})</span>
+        </button>
+      ))}
+    </div>
+  );
   return (
     <div className="space-y-4">
-      <Header title={`Palavras Cruzadas · ${meta.label}`} sub={`${done.filter(Boolean).length}/${words.length} resolvidas · 1★=1⚛ 2★=2⚛ 3★=4⚛ 4★=7⚛ 5★=10⚛`} onReset={reset} color={meta.color} />
-      <div className="flex flex-wrap gap-2 items-center">
+      <Header title={`Palavras Cruzadas · ${meta.label}`} sub={`${done.filter(Boolean).length}/${layout.words.length} resolvidas · 1★=1⚛ 2★=2⚛ 3★=4⚛ 4★=7⚛ 5★=10⚛`} onReset={reset} color={meta.color} />
+      <Card className="p-3 flex flex-wrap gap-2 items-center">
         <span className="text-sm font-bold">Palavras por rodada:</span>
         {QUESTION_COUNTS.map((n) => (
           <Button key={n} size="sm" variant={size === n ? "default" : "outline"} onClick={() => setSize(n)}>{n}</Button>
         ))}
-        {words.length < size && <span className="text-xs text-muted-foreground">Só há {words.length} termos nesta área.</span>}
-      </div>
-      {words.map((w, i) => (
-        <Card key={i} className="p-4 space-y-2">
-          <div className="text-sm"><b>{i + 1}.</b> {w.clue} <span className="text-muted-foreground">({w.term.length} letras)</span></div>
-          <div className="flex flex-wrap gap-1">
-            {w.term.split("").map((ch, k) => (
-              <div key={k} className={`w-8 h-8 border-2 rounded flex items-center justify-center font-black ${done[i] ? "bg-primary text-primary-foreground border-primary" : "bg-muted"}`}>
-                {done[i] ? ch : (answers[i][k] ?? "").toUpperCase()}
-              </div>
-            ))}
+        {layout.words.length < size && <span className="text-xs text-muted-foreground">Só {layout.words.length} palavras se cruzaram nesta rodada.</span>}
+      </Card>
+      <div className="grid gap-4 lg:grid-cols-[auto_1fr]">
+        <Card className="p-3 overflow-auto">
+          <div className="grid mx-auto w-max" style={{ gridTemplateColumns: `repeat(${layout.cols}, 2.25rem)` }}>
+            {Array.from({ length: layout.rows * layout.cols }, (_, n) => {
+              const key = `${Math.floor(n / layout.cols)},${n % layout.cols}`;
+              const cell = cellMap.get(key);
+              if (!cell) return <div key={key} className="w-9 h-9" />;
+              const solved = solvedCells.has(key);
+              return (
+                <div key={key} className={`relative w-9 h-9 border border-foreground/60 ${solved ? "bg-primary text-primary-foreground" : activeCells.has(key) ? "bg-accent" : "bg-card"}`}>
+                  {cell.num && <span className="absolute left-0.5 top-0 text-[9px] font-bold leading-none">{cell.num}</span>}
+                  <input id={`cw-${key}`} aria-label={`Casa ${key}`} value={solved ? cell.ch : letters[key] ?? ""} readOnly={solved}
+                    onFocus={() => { if (!cell.words.includes(active)) setActive(cell.words[0]); }}
+                    onClick={() => { if (cell.words.length > 1 && cell.words.includes(active)) setActive(cell.words.find((w) => w !== active)!); }}
+                    onChange={(e) => onType(key, e.target.value)} onKeyDown={(e) => onKey(key, e)}
+                    className="w-full h-full bg-transparent text-center font-black uppercase outline-none caret-transparent" />
+                </div>
+              );
+            })}
           </div>
-          {!done[i] && (
-            <div className="flex gap-2">
-              <Input maxLength={w.term.length} value={answers[i]} onChange={(e) => setAnswers((a) => a.map((x, k) => (k === i ? e.target.value : x)))}
-                onKeyDown={(e) => e.key === "Enter" && check(i)} placeholder="Digite a palavra" />
-              <Button onClick={() => check(i)}>Conferir</Button>
-            </div>
-          )}
         </Card>
-      ))}
+        <Card className="p-4 space-y-4">
+          <Clues title="➡️ Horizontais" list={across} />
+          <Clues title="⬇️ Verticais" list={down} />
+        </Card>
+      </div>
       {done.length > 0 && done.every(Boolean) && <Win text="Cruzadinha completa!" onAgain={reset} />}
     </div>
   );
