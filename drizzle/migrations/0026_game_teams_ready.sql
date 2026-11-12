@@ -1,0 +1,1 @@
+ALTER TABLE public.game_teams ADD COLUMN IF NOT EXISTS ready boolean NOT NULL DEFAULT false;

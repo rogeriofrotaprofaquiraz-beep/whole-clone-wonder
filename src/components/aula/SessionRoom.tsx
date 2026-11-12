@@ -115,7 +115,7 @@ export function SessionRoom({ code, isHost }: { code: string; isHost: boolean })
   };
   const submitAnswer = async (idx: number) => {
     if (submittingRef.current) return;
-    if (!myTeamId || !question || submittedRound === session.current_round) return;
+    if (!myTeamId || !question || submittedRound === session.current_round || answers.some((a) => a.team_id === myTeamId)) return;
     submittingRef.current = true;
     setSelectedOption(idx);
     const isCorrect = idx === question.correct_index;
@@ -132,6 +132,12 @@ export function SessionRoom({ code, isHost }: { code: string; isHost: boolean })
     }
     setSubmittedRound(session.current_round);
     toast[isCorrect ? "success" : "error"](isCorrect ? `+${points} pontos!` : "Resposta incorreta");
+  };
+
+  const toggleReady = async () => {
+    if (!myTeam) return;
+    const { error } = await supabase.from("game_teams").update({ ready: !myTeam.ready }).eq("id", myTeam.id);
+    if (error) toast.error(error.message); else loadTeams();
   };
 
   // ---------- Host actions ----------
@@ -151,6 +157,7 @@ export function SessionRoom({ code, isHost }: { code: string; isHost: boolean })
       if (!candidates.length) { toast.error("Sem mais questões nessa área"); return; }
       pick = candidates[Math.floor(Math.random() * candidates.length)];
     }
+    if (session.current_round === 0 && !allReady) { toast.error("Aguarde todas as equipes confirmarem"); return; }
     const nextRound = session.current_round + 1;
     if (nextRound > session.total_rounds) { return finishSession(); }
     await supabase.from("game_sessions").update({
@@ -168,7 +175,12 @@ export function SessionRoom({ code, isHost }: { code: string; isHost: boolean })
   const meta = areaMeta(session.area);
   const finished = session.status === "finished";
   const inLobby = session.status === "lobby";
-  const hasAnswered = submittedRound === session.current_round;
+  const myTeamAnswered = !!myTeamId && answers.some((a) => a.team_id === myTeamId);
+  const hasAnswered = submittedRound === session.current_round || myTeamAnswered;
+  const allAnswered = teams.length > 0 && teams.every((t) => answers.some((a) => a.team_id === t.id));
+  const activeTeams = teams.filter((t) => members.some((m) => m.team_id === t.id));
+  const allReady = activeTeams.length > 0 && activeTeams.every((t) => t.ready);
+  const myTeam = teams.find((t) => t.id === myTeamId);
 
   return (
     <div className="space-y-4 max-w-4xl mx-auto">
@@ -192,7 +204,7 @@ export function SessionRoom({ code, isHost }: { code: string; isHost: boolean })
               <div key={t.id} className="flex items-center gap-3 p-2 rounded-lg" style={{ background: `${t.color}15` }}>
                 <div className="w-8 h-8 rounded-full flex items-center justify-center text-white font-black" style={{ background: t.color }}>{i + 1}</div>
                 <div className="flex-1">
-                  <div className="font-bold">{t.name} {myTeamId === t.id && <Badge variant="outline" className="ml-1">você</Badge>}</div>
+                  <div className="font-bold">{t.name} {inLobby && (t.ready ? <Badge className="ml-1">✅ confirmada</Badge> : <Badge variant="outline" className="ml-1">⏳ aguardando</Badge>)} {myTeamId === t.id && <Badge variant="outline" className="ml-1">você</Badge>}</div>
                   <div className="text-xs text-muted-foreground flex items-center gap-1"><Users size={10} />{teamMembers.map((m) => m.display_name).join(", ") || "vazio"}</div>
                 </div>
                 <div className="text-2xl font-black" style={{ color: t.color }}>{t.score}</div>
@@ -203,9 +215,9 @@ export function SessionRoom({ code, isHost }: { code: string; isHost: boolean })
       </Card>
 
       {/* Join UI for students */}
-      {!isHost && !myTeamId && !finished && (
+      {!myTeamId && !finished && (
         <Card className="p-4 space-y-3">
-          <h3 className="font-bold">Entrar na partida</h3>
+          <h3 className="font-bold">{isHost ? "Jogar também: entre ou crie uma equipe" : "Entrar na partida"}</h3>
           <Input placeholder="Seu nome" value={myName} onChange={(e) => setMyName(e.target.value)} />
           <div className="grid grid-cols-2 gap-2">
             {teams.map((t) => (
@@ -221,11 +233,22 @@ export function SessionRoom({ code, isHost }: { code: string; isHost: boolean })
         </Card>
       )}
 
+      {myTeam && inLobby && (
+        <Card className="p-4 flex flex-wrap items-center gap-3">
+          <div className="flex-1 text-sm">
+            {myTeam.ready ? "Sua equipe está confirmada. Aguardando as outras equipes…" : "Quando todos da sua equipe tiverem entrado, confirme a equipe."}
+          </div>
+          <Button onClick={toggleReady} variant={myTeam.ready ? "outline" : "default"}>
+            {myTeam.ready ? "Desfazer confirmação" : "✅ Confirmar equipe"}
+          </Button>
+        </Card>
+      )}
+
       {/* Question */}
       {question && session.status === "active" && (
         <Card className="p-6">
           <Badge className="mb-3" style={{ background: meta.color }}>{meta.label}</Badge>
-          {(question.slide_content || question.lesson) && !lessonSeen[question.id] && !isHost ? (
+          {(question.slide_content || question.lesson) && !lessonSeen[question.id] && (!isHost || myTeamId) ? (
             <div className="space-y-4">
               {(() => { const s = parseSlide(question.slide_content ?? null, question.image_url ?? null); return s ? <SlideView slide={s} /> : (<>
                 <h3 className="text-xl font-bold">📖 Aprenda antes de responder</h3>
@@ -235,18 +258,18 @@ export function SessionRoom({ code, isHost }: { code: string; isHost: boolean })
               <Button className="w-full" onClick={() => setLessonSeen((m) => ({ ...m, [question.id]: true }))}>Ir para a questão →</Button>
             </div>
           ) : (<>
-          {question.lesson && isHost && <div className="mb-3 p-3 rounded bg-sky-50 border border-sky-200 text-sm"><strong>📖 Mini-aula:</strong> {question.lesson}</div>}
+          {question.lesson && isHost && !myTeamId && <div className="mb-3 p-3 rounded bg-sky-50 border border-sky-200 text-sm"><strong>📖 Mini-aula:</strong> {question.lesson}</div>}
           {question.image_url && <img src={question.image_url} alt="" className="max-h-64 rounded-lg mx-auto mb-3" />}
           <h3 className="text-xl font-bold mb-4">{question.question}</h3>
           <div className="grid gap-2">
             {(question.options as string[]).map((opt, i) => {
-              const showResult = hasAnswered || isHost;
+              const showResult = hasAnswered || allAnswered;
               const isCorrect = i === question.correct_index;
               return (
                 <Button
                   key={i}
                   variant="outline"
-                  disabled={isHost || hasAnswered || !myTeamId}
+                  disabled={hasAnswered || !myTeamId}
                   onClick={() => submitAnswer(i)}
                   className={`justify-start text-left h-auto py-3 ${
                     showResult && isCorrect ? "border-green-500 bg-green-50" :
@@ -261,7 +284,10 @@ export function SessionRoom({ code, isHost }: { code: string; isHost: boolean })
               );
             })}
           </div>
-          {hasAnswered && question.explanation && (
+          {!myTeamId && !allAnswered && (
+            <div className="mt-3 text-sm text-muted-foreground">Respostas recebidas: {answers.length}/{teams.length}. A resposta certa aparece quando todas as equipes responderem.</div>
+          )}
+          {(hasAnswered || allAnswered) && question.explanation && (
             <div className="mt-4 p-3 bg-amber-50 border border-amber-200 rounded text-sm">
               <strong>Explicação:</strong> {question.explanation}
             </div>
@@ -273,8 +299,8 @@ export function SessionRoom({ code, isHost }: { code: string; isHost: boolean })
       {/* Host controls */}
       {isHost && !finished && (
         <Card className="p-4 flex gap-2">
-          <Button onClick={nextQuestion} className="flex-1 bg-[#059669]">
-            {session.current_round === 0 ? <><Play className="mr-2" />Iniciar</> : <><SkipForward className="mr-2" />Próxima</>}
+          <Button onClick={nextQuestion} disabled={session.current_round === 0 && !allReady} className="flex-1 bg-[#059669]">
+            {session.current_round === 0 ? <><Play className="mr-2" />{allReady ? "Iniciar" : "Aguardando equipes confirmarem"}</> : <><SkipForward className="mr-2" />Próxima</>}
           </Button>
           <Button onClick={finishSession} variant="destructive"><Square className="mr-2" />Encerrar</Button>
         </Card>

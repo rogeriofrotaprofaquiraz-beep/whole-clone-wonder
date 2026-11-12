@@ -1115,6 +1115,7 @@ export type Database = {
           created_at: string
           id: string
           name: string
+          ready: boolean
           score: number
           session_id: string
         }
@@ -1123,6 +1124,7 @@ export type Database = {
           created_at?: string
           id?: string
           name: string
+          ready?: boolean
           score?: number
           session_id: string
         }
@@ -1131,6 +1133,7 @@ export type Database = {
           created_at?: string
           id?: string
           name?: string
+          ready?: boolean
           score?: number
           session_id?: string
         }
