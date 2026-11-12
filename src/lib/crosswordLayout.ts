@@ -59,6 +59,10 @@ function attempt(answers: string[], order: number[]): P[] {
   return placed;
 }
 
+/** Número fica na casa vazia antes da palavra: à esquerda (horizontal) ou acima (vertical). */
+export const cwLabelKey = (w: { row: number; col: number; dir: CwDir }) =>
+  w.dir === "across" ? `${w.row},${w.col - 1}` : `${w.row - 1},${w.col}`;
+
 /** Escolhe até `size` itens do conjunto que se encaixam numa grade cruzada. */
 export function buildCrossword<T>(pool: T[], getWord: (t: T) => string, size: number, tries = 40): CwLayout<T> {
   const items = pool.map((t) => ({ t, a: cwClean(getWord(t)) })).filter((x) => x.a.length >= 2);
@@ -76,15 +80,15 @@ export function buildCrossword<T>(pool: T[], getWord: (t: T) => string, size: nu
     if (best.length >= size) break;
   }
   const minR = Math.min(...best.map((p) => p.row)), minC = Math.min(...best.map((p) => p.col));
-  const norm = best.map((p) => ({ ...p, row: p.row - minR, col: p.col - minC }));
+  // 1 linha/coluna extra no topo/esquerda para os números ficarem fora da grade (padrão revista)
+  const norm = best.map((p) => ({ ...p, row: p.row - minR + 1, col: p.col - minC + 1 }));
   const rows = Math.max(...norm.map((p) => p.row + (p.dir === "down" ? p.answer.length : 1)));
   const cols = Math.max(...norm.map((p) => p.col + (p.dir === "across" ? p.answer.length : 1)));
-  // numeração de revista: da esquerda p/ direita, de cima p/ baixo
-  const starts = [...new Set(norm.map((p) => `${p.row},${p.col}`))]
-    .map((s) => s.split(",").map(Number)).sort((a, b) => a[0] - b[0] || a[1] - b[1]);
-  const num = new Map(starts.map(([r, c], i) => [`${r},${c}`, i + 1]));
+  // cada palavra tem seu próprio número, de cima p/ baixo e da esquerda p/ direita
+  const ord = norm.map((p, i) => i).sort((a, b) => norm[a].row - norm[b].row || norm[a].col - norm[b].col);
+  const num = new Map(ord.map((i, n) => [i, n + 1]));
   return {
     rows, cols,
-    words: norm.map((p) => ({ item: bestCand[p.idx].t, answer: p.answer, row: p.row, col: p.col, dir: p.dir, number: num.get(`${p.row},${p.col}`)! })),
+    words: norm.map((p, i) => ({ item: bestCand[p.idx].t, answer: p.answer, row: p.row, col: p.col, dir: p.dir, number: num.get(i)! })),
   };
 }

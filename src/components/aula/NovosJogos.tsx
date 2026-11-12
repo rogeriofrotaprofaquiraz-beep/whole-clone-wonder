@@ -13,7 +13,7 @@ import { RotateCcw, Trophy } from "lucide-react";
 import { addCoins } from "@/lib/playerEconomy";
 import { areaMeta, AreaValue } from "@/lib/aula";
 import { ELEMENTS_DATA } from "@/data/elements";
-import { buildCrossword, cwClean, type CwLayout } from "@/lib/crosswordLayout";
+import { buildCrossword, cwClean, cwLabelKey, type CwLayout } from "@/lib/crosswordLayout";
 
 const ELEMENTS = Object.values(ELEMENTS_DATA).sort((a, b) => a.number - b.number);
 const shuffle = <T,>(a: T[]) => [...a].sort(() => Math.random() - 0.5);
@@ -75,14 +75,19 @@ export function PalavrasCruzadas({ area, topic }: { area: AreaValue; topic?: str
     return w.answer.split("").map((_, k) => `${w.row + (w.dir === "down" ? k : 0)},${w.col + (w.dir === "across" ? k : 0)}`);
   };
   const cellMap = useMemo(() => {
-    const m = new Map<string, { ch: string; words: number[]; num?: number }>();
+    const m = new Map<string, { ch: string; words: number[] }>();
     layout.words.forEach((w, i) => {
       w.answer.split("").forEach((ch, k) => {
         const key = `${w.row + (w.dir === "down" ? k : 0)},${w.col + (w.dir === "across" ? k : 0)}`;
         const c = m.get(key) ?? { ch, words: [] };
-        c.words.push(i); if (k === 0) c.num = w.number; m.set(key, c);
+        c.words.push(i); m.set(key, c);
       });
     });
+    return m;
+  }, [layout]);
+  const labels = useMemo(() => {
+    const m = new Map<string, { n: number; dir: string }[]>();
+    layout.words.forEach((w) => { const k = cwLabelKey(w); m.set(k, [...(m.get(k) ?? []), { n: w.number, dir: w.dir }]); });
     return m;
   }, [layout]);
   if (terms === null) return <Card className="p-6">Carregando…</Card>;
@@ -151,11 +156,15 @@ export function PalavrasCruzadas({ area, topic }: { area: AreaValue; topic?: str
             {Array.from({ length: layout.rows * layout.cols }, (_, n) => {
               const key = `${Math.floor(n / layout.cols)},${n % layout.cols}`;
               const cell = cellMap.get(key);
-              if (!cell) return <div key={key} className="w-9 h-9" />;
+              if (!cell) {
+                const lb = labels.get(key);
+                return <div key={key} className="w-9 h-9 flex flex-col text-[11px] font-bold leading-tight text-muted-foreground">
+                  {lb?.map((l) => <span key={l.n} className={l.dir === "across" ? "mt-auto mb-auto text-right pr-1" : "mt-auto text-center"}>{l.n}</span>)}
+                </div>;
+              }
               const solved = solvedCells.has(key);
               return (
                 <div key={key} className={`relative w-9 h-9 border border-foreground/60 ${solved ? "bg-primary text-primary-foreground" : activeCells.has(key) ? "bg-accent" : "bg-card"}`}>
-                  {cell.num && <span className="absolute left-0.5 top-0 text-[9px] font-bold leading-none">{cell.num}</span>}
                   <input id={`cw-${key}`} aria-label={`Casa ${key}`} value={solved ? cell.ch : letters[key] ?? ""} readOnly={solved}
                     onFocus={() => { if (!cell.words.includes(active)) setActive(cell.words[0]); }}
                     onClick={() => { if (cell.words.length > 1 && cell.words.includes(active)) setActive(cell.words.find((w) => w !== active)!); }}
