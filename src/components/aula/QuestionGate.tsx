@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
+import { selectGameQuestions } from "@/lib/studentQuestions";
 
 type Q = { id: string; question: string; options: string[]; correct_index: number; difficulty: number; explanation: string | null };
 
@@ -19,13 +20,9 @@ export function QuestionGate({ area, level, phase, onPass, topic }: { area: stri
     let alive = true;
     (async () => {
       setLoading(true); setPicked(null); setQ(null);
-      const difficulty = 1 + Math.floor(Math.random() * 5);
-      const base = () => { let b = supabase.from("chem_questions").select("id,question,options,correct_index,difficulty,explanation"); b = b.eq("area", area as never).or(gameOrFilter("campeonato")); if (topic) b = b.or(topicOrFilter(topic)); return b; };
-      let { data } = level ? await base().eq("difficulty", difficulty).contains("school_levels", [level]).limit(50) : await base().eq("difficulty", difficulty).limit(50);
-      if (!data?.length && level) ({ data } = await base().contains("school_levels", [level]).limit(50));
-      if (!data?.length) ({ data } = await base().limit(50));
+      const data = await selectGameQuestions({ area, topic, level, game: "Campeonato", count: 1 }).catch(() => []);
       if (!alive) return;
-      const list = unansweredFirst((data ?? []) as unknown as Q[], await loadAnsweredQuestions());
+      const list = data as unknown as Q[];
       const top = list[0];
       if (top) {
         const opts = top.options.map((o, i) => ({ o, ok: i === top.correct_index })).sort(() => Math.random() - 0.5);
@@ -39,8 +36,7 @@ export function QuestionGate({ area, level, phase, onPass, topic }: { area: stri
   if (loading) return <Card className="p-6 text-sm text-muted-foreground">Sorteando pergunta…</Card>;
   if (!q) return (
     <Card className="p-6 space-y-3">
-      <div className="text-sm">Ainda não há perguntas no banco para esta área. Peça ao professor para gerar o banco de questões.</div>
-      <Button onClick={onPass}>Jogar mesmo assim</Button>
+      <div className="text-sm">Não há perguntas novas nos cursos atribuídos para esta seleção. Peça ao professor para conferir seus cursos e disciplinas.</div>
     </Card>
   );
 

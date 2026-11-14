@@ -45,7 +45,7 @@ export function autoGames(r: BankRow): string[] {
 
 /** Jogos marcados pelo professor; sem marcação, vale a escolha automática. */
 export function gamesFor(r: BankRow): string[] {
-  return r.games && r.games.length ? r.games : autoGames(r);
+  return autoGames(r);
 }
 
 export function allowsGame(r: BankRow, key: string) {

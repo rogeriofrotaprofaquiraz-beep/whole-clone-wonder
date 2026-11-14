@@ -10,6 +10,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { DIFFICULTIES } from "@/lib/aula";
 import { loadAnsweredQuestions, unansweredFirst, logGameQuestion } from "@/components/game/QuestionLog";
 import { loadSeen, pickUnseen, quizCoins, saveSeen, summarize, ReportRow } from "@/lib/questionPicker";
+import { selectGameQuestions } from "@/lib/studentQuestions";
 
 type Q = { id: string; prompt: string; options: string[]; correct: string; difficulty: number; explanation?: string | null; image?: string | null };
 const MAX_QUESTIONS = 10;
@@ -26,19 +27,10 @@ export const ElementQuiz = () => {
 
   const start = async () => {
     setState("loading");
-    const { data: u } = await supabase.auth.getUser();
-    const scope = u.user?.id ?? "anon";
-    const { data } = await supabase.from("chem_questions")
-      .select("id,question,options,correct_index,explanation,image_url,difficulty").or(gameOrFilter("quiz")).limit(1000);
-    const pool = (data ?? []).filter((r: any) => Array.isArray(r.options) && r.options[r.correct_index] != null);
-    if (!pool.length) { setState("empty"); return; }
-    const answered = await loadAnsweredQuestions();
-    const ordered = unansweredFirst(pool as any[], answered);
-    const fresh = ordered.filter((q: any) => !answered.has(q.question.trim().toLowerCase()));
-    const { picked, seen } = fresh.length >= MAX_QUESTIONS
-      ? { picked: fresh.slice(0, MAX_QUESTIONS), seen: [] as string[] }
-      : pickUnseen(ordered, loadSeen(scope), MAX_QUESTIONS);
-    if (seen.length) saveSeen(scope, seen);
+    let picked;
+    try { picked = await selectGameQuestions({ game: "Quiz", count: MAX_QUESTIONS }); }
+    catch { toast.error("Não foi possível carregar as perguntas"); setState("empty"); return; }
+    if (!picked.length) { setState("empty"); return; }
     setQuestions(picked.map((r: any) => ({
       id: r.id, prompt: r.question, options: shuffle(r.options.map(String)), correct: String(r.options[r.correct_index]),
       difficulty: r.difficulty ?? 2, explanation: r.explanation, image: r.image_url,
@@ -62,7 +54,10 @@ export const ElementQuiz = () => {
       toast.success(`Correto! +${c} ⚛`);
       recordHit(c);
       supabase.auth.getUser().then(({ data }) => { if (data.user) addCoins(data.user.id, c).catch(() => {}); });
-    } else { recordMiss(); }
+    } else {
+      setCoins(x => x + 1); recordMiss();
+      supabase.auth.getUser().then(({ data }) => { if (data.user) addCoins(data.user.id, 1).catch(() => {}); });
+    }
     setTimeout(() => {
       if (idx + 1 < questions.length) { setIdx((i) => i + 1); setSelected(null); }
       else setState("end");
@@ -72,7 +67,7 @@ export const ElementQuiz = () => {
   const shell = "relative overflow-hidden rounded-3xl border border-primary/30 bg-card/80 backdrop-blur-xl shadow-[0_0_40px_hsl(var(--primary)/0.15)]";
 
   if (state === "loading") return <div className={`${shell} p-12 text-center text-muted-foreground`}>Carregando perguntas…</div>;
-  if (state === "empty") return <div className={`${shell} p-12 text-center`}>Ainda não há perguntas no banco de questões.</div>;
+  if (state === "empty") return <div className={`${shell} p-12 text-center`}>Não há perguntas novas nos cursos atribuídos. Peça ao professor para conferir seus cursos ou adicionar questões.</div>;
 
   if (state === "end") {
     const s = summarize(report);

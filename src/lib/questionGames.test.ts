@@ -12,14 +12,14 @@ describe("gamesFor", () => {
     expect(g).not.toContain("caca_palavras");
     expect(g).toContain("batalha_naval");
   });
-  it("jogos marcados pelo professor substituem a escolha automática", () => {
+  it("todas as questões compatíveis ficam disponíveis para todos os jogos", () => {
     const r = { question: "?", options: ["Hélio", "Neon"], correct_index: 0, difficulty: 1, games: ["forca"] };
-    expect(gamesFor(r)).toEqual(["forca"]);
-    expect(allowsGame(r, "quiz")).toBe(false);
+    expect(gamesFor(r)).toContain("forca");
+    expect(allowsGame(r, "quiz")).toBe(true);
     expect(allowsGame(r, "forca")).toBe(true);
   });
   it("filtro de consulta aceita questões sem marcação ou marcadas para o jogo", () => {
-    expect(gameOrFilter("quiz")).toBe("games.eq.{},games.cs.{quiz}");
+    expect(gameOrFilter("quiz")).toBe("id.not.is.null");
   });
   it("faixas de dificuldade", () => {
     expect([difficultyBand(1), difficultyBand(3), difficultyBand(5)]).toEqual(["facil", "medio", "dificil"]);

@@ -772,6 +772,36 @@ export type Database = {
           },
         ]
       }
+      course_question_disciplines: {
+        Row: {
+          course_id: string
+          discipline_key: string
+        }
+        Insert: {
+          course_id: string
+          discipline_key: string
+        }
+        Update: {
+          course_id?: string
+          discipline_key?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "course_question_disciplines_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "courses"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "course_question_disciplines_discipline_key_fkey"
+            columns: ["discipline_key"]
+            isOneToOne: false
+            referencedRelation: "question_disciplines"
+            referencedColumns: ["key"]
+          },
+        ]
+      }
       courses: {
         Row: {
           area: string
@@ -1922,6 +1952,73 @@ export type Database = {
           },
         ]
       }
+      student_game_access: {
+        Row: {
+          all_courses: boolean
+          user_id: string
+        }
+        Insert: {
+          all_courses?: boolean
+          user_id: string
+        }
+        Update: {
+          all_courses?: boolean
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "student_game_access_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: true
+            referencedRelation: "leaderboard"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "student_game_access_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: true
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      student_game_courses: {
+        Row: {
+          course_id: string
+          user_id: string
+        }
+        Insert: {
+          course_id: string
+          user_id: string
+        }
+        Update: {
+          course_id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "student_game_courses_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "courses"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "student_game_courses_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "leaderboard"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "student_game_courses_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       student_lesson_resets: {
         Row: {
           course_id: string
@@ -1945,6 +2042,67 @@ export type Database = {
           user_id?: string
         }
         Relationships: []
+      }
+      student_question_history: {
+        Row: {
+          answer: string | null
+          answered_at: string | null
+          correct_answer: string | null
+          game: string
+          is_correct: boolean | null
+          points: number
+          question_id: string
+          question_text: string
+          shown_at: string
+          user_id: string
+        }
+        Insert: {
+          answer?: string | null
+          answered_at?: string | null
+          correct_answer?: string | null
+          game: string
+          is_correct?: boolean | null
+          points?: number
+          question_id: string
+          question_text: string
+          shown_at?: string
+          user_id: string
+        }
+        Update: {
+          answer?: string | null
+          answered_at?: string | null
+          correct_answer?: string | null
+          game?: string
+          is_correct?: boolean | null
+          points?: number
+          question_id?: string
+          question_text?: string
+          shown_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "student_question_history_question_id_fkey"
+            columns: ["question_id"]
+            isOneToOne: false
+            referencedRelation: "chem_questions"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "student_question_history_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "leaderboard"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "student_question_history_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       team_members: {
         Row: {
@@ -2221,6 +2379,14 @@ export type Database = {
       }
     }
     Functions: {
+      answer_game_question: {
+        Args: { _answer: string; _question: string }
+        Returns: Json
+      }
+      answer_team_question: {
+        Args: { _answer: string; _question: string; _team: string }
+        Returns: undefined
+      }
       approve_class_member: {
         Args: { _approve: boolean; _class_id: string; _user_id: string }
         Returns: undefined
@@ -2229,6 +2395,43 @@ export type Database = {
         Args: { _amount: number; _user_ids: string[] }
         Returns: number
       }
+      claim_game_questions: {
+        Args: { _game: string; _ids: string[] }
+        Returns: {
+          answer_text: string | null
+          area: Database["public"]["Enums"]["chem_area"]
+          class_id: string | null
+          correct_index: number
+          created_at: string
+          created_by: string | null
+          difficulty: number
+          discipline: string | null
+          explanation: string | null
+          extra: Json | null
+          games: string[]
+          grade_year: number | null
+          hint: string | null
+          id: string
+          image_url: string | null
+          lesson: string | null
+          options: Json
+          qtype: string
+          question: string
+          school_level: string
+          school_levels: string[]
+          slide_content: string | null
+          subcategory: string | null
+          time_limit: number
+          topic: string | null
+          updated_at: string
+        }[]
+        SetofOptions: {
+          from: "*"
+          to: "chem_questions"
+          isOneToOne: false
+          isSetofReturn: true
+        }
+      }
       current_credit_bonus: { Args: { _user_id: string }; Returns: number }
       ensure_current_user_access: {
         Args: never
@@ -2236,7 +2439,48 @@ export type Database = {
           role: Database["public"]["Enums"]["app_role"]
         }[]
       }
+      game_question_eligible: {
+        Args: { _question: string; _user: string }
+        Returns: boolean
+      }
       generate_access_code: { Args: { _user_id: string }; Returns: string }
+      get_game_question_pool: {
+        Args: { _area?: string; _level?: string; _topic?: string }
+        Returns: {
+          answer_text: string | null
+          area: Database["public"]["Enums"]["chem_area"]
+          class_id: string | null
+          correct_index: number
+          created_at: string
+          created_by: string | null
+          difficulty: number
+          discipline: string | null
+          explanation: string | null
+          extra: Json | null
+          games: string[]
+          grade_year: number | null
+          hint: string | null
+          id: string
+          image_url: string | null
+          lesson: string | null
+          options: Json
+          qtype: string
+          question: string
+          school_level: string
+          school_levels: string[]
+          slide_content: string | null
+          subcategory: string | null
+          time_limit: number
+          topic: string | null
+          updated_at: string
+        }[]
+        SetofOptions: {
+          from: "*"
+          to: "chem_questions"
+          isOneToOne: false
+          isSetofReturn: true
+        }
+      }
       get_my_permissions: {
         Args: never
         Returns: {
@@ -2256,6 +2500,43 @@ export type Database = {
           feature_key: string
           is_admin: boolean
         }[]
+      }
+      get_team_game_questions: {
+        Args: { _users: string[] }
+        Returns: {
+          answer_text: string | null
+          area: Database["public"]["Enums"]["chem_area"]
+          class_id: string | null
+          correct_index: number
+          created_at: string
+          created_by: string | null
+          difficulty: number
+          discipline: string | null
+          explanation: string | null
+          extra: Json | null
+          games: string[]
+          grade_year: number | null
+          hint: string | null
+          id: string
+          image_url: string | null
+          lesson: string | null
+          options: Json
+          qtype: string
+          question: string
+          school_level: string
+          school_levels: string[]
+          slide_content: string | null
+          subcategory: string | null
+          time_limit: number
+          topic: string | null
+          updated_at: string
+        }[]
+        SetofOptions: {
+          from: "*"
+          to: "chem_questions"
+          isOneToOne: false
+          isSetofReturn: true
+        }
       }
       grant_coins_to_user: {
         Args: { _amount: number; _reason: string; _user_id: string }
@@ -2307,9 +2588,21 @@ export type Database = {
           username: string
         }[]
       }
+      reserve_team_question: {
+        Args: { _question: string; _team: string }
+        Returns: boolean
+      }
+      set_course_question_disciplines: {
+        Args: { _course: string; _disciplines: string[] }
+        Returns: undefined
+      }
       set_olympiad_students: {
         Args: { _off: string[]; _on: string[] }
         Returns: number
+      }
+      set_student_game_courses: {
+        Args: { _all: boolean; _courses: string[]; _user: string }
+        Returns: undefined
       }
       set_user_approved: {
         Args: { _approved: boolean; _user_id: string }

@@ -19,3 +19,9 @@
 - [x] Tipos de jogo completos (18), incluindo os que faltavam
 - [x] Disciplinas editáveis (adicionar/editar/excluir) com 20 disciplinas iniciais
 - [x] Marcar em quais jogos cada questão aparece; os jogos respeitam a marcação
+
+# Roadmap (prompt-70)
+- [x] Unificar seleção individual e de equipes cadastradas por cursos e disciplinas atribuídos pelo professor, sem reiniciar histórico.
+- [x] Registrar questões e índice de acertos no dossiê, com 4 pontos por acerto e 1 por erro.
+- [x] Testar regras e conferir Quiz, salvamento de cursos e leitura do dossiê autenticados.
+- [ ] Vincular todos os participantes das salas por código a contas individuais e testar vários aparelhos — a sala atual identifica integrantes por nome, sem vínculo seguro com contas.

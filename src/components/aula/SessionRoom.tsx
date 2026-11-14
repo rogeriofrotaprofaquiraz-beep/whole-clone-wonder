@@ -1,3 +1,5 @@
+import { gamePool, claimQuestions } from "@/lib/studentQuestions";
+import { logGameQuestion } from "@/components/game/QuestionLog";
 import { gameOrFilter } from "@/lib/linkedBank";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
@@ -130,6 +132,7 @@ export function SessionRoom({ code, isHost }: { code: string; isHost: boolean })
       const team = teams.find((t) => t.id === myTeamId);
       await supabase.from("game_teams").update({ score: (team?.score ?? 0) + points }).eq("id", myTeamId);
     }
+    await logGameQuestion("Partida ao vivo", question.question, String(question.options[idx]), String(question.options[question.correct_index]), isCorrect);
     setSubmittedRound(session.current_round);
     toast[isCorrect ? "success" : "error"](isCorrect ? `+${points} pontos!` : "Resposta incorreta");
   };
@@ -142,7 +145,7 @@ export function SessionRoom({ code, isHost }: { code: string; isHost: boolean })
 
   // ---------- Host actions ----------
   const nextQuestion = async () => {
-    const usedIds = answers.map((a) => a.question_id).filter(Boolean);
+    const usedIds: string[] = Array.isArray(session.settings?.shown_question_ids) ? session.settings.shown_question_ids : [];
     const fixedIds: string[] = Array.isArray(session.settings?.question_ids) ? session.settings.question_ids : [];
     let pick: any;
     if (fixedIds.length) {
@@ -152,8 +155,8 @@ export function SessionRoom({ code, isHost }: { code: string; isHost: boolean })
       pick = data;
       if (!pick) { toast.error("Questão não encontrada"); return; }
     } else {
-      const { data: pool } = await supabase.from("chem_questions").select("*").eq("area", session.area).or(gameOrFilter("partida_ao_vivo")).limit(50);
-      const candidates = (pool ?? []).filter((q) => q.id !== session.current_question_id);
+      const pool = await gamePool(session.area);
+      const candidates = pool.filter(q => !usedIds.includes(q.id) && q.id !== session.current_question_id);
       if (!candidates.length) { toast.error("Sem mais questões nessa área"); return; }
       pick = candidates[Math.floor(Math.random() * candidates.length)];
     }
@@ -162,6 +165,7 @@ export function SessionRoom({ code, isHost }: { code: string; isHost: boolean })
     if (nextRound > session.total_rounds) { return finishSession(); }
     await supabase.from("game_sessions").update({
       status: "active", current_question_id: pick.id, current_round: nextRound,
+      settings: { ...session.settings, shown_question_ids: [...usedIds, pick.id] },
     }).eq("id", session.id);
   };
   const finishSession = async () => {

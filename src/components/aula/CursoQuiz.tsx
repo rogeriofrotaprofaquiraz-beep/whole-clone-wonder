@@ -8,11 +8,12 @@ import { DIFFICULTIES } from "@/lib/aula";
 import { addCoins, COIN_SYMBOL } from "@/lib/playerEconomy";
 import { toast } from "sonner";
 import { SlideView, parseSlide } from "./SlideEditor";
+import { selectGameQuestions } from "@/lib/studentQuestions";
 
 type Q = { id: string; question: string; options: any; correct_index: number; explanation: string | null; image_url: string | null; difficulty: number; slide_content: string | null };
 
 /** Átomos por acerto conforme a dificuldade (1★ → 5★). */
-export const COINS_BY_DIFFICULTY = [1, 2, 4, 7, 10];
+export const COINS_BY_DIFFICULTY = [4, 4, 4, 4, 4];
 
 function summaryOf(content: string | null) {
   if (!content) return "";
@@ -30,27 +31,24 @@ export function CursoQuiz({ topic, content, level }: { topic: string; content?: 
   const [loading, setLoading] = useState(true);
   const [started, setStarted] = useState(false);
   const [slideSeen, setSlideSeen] = useState<string | null>(null);
+  const [round, setRound] = useState(0);
 
   useEffect(() => {
     setLoading(true); setI(0); setPick(null); setScore(0); setEarned(0); setStarted(false);
-    const word = topic.replace(/^\d+\.\s*/, "").split(/[\s:–-]+/).filter((w) => w.length > 4).slice(0, 2);
-    const ors = [`lesson.ilike.%${topic.replace(/[%,()]/g, "")}%`, ...word.map((w) => `topic.ilike.%${w}%`), ...word.map((w) => `question.ilike.%${w}%`)].join(",");
-    let q = supabase.from("chem_questions").select("id,question,options,correct_index,explanation,image_url,difficulty,slide_content").or(ors).or(gameOrFilter("quiz_curso")).limit(40);
-    if (level) q = q.or(`school_level.eq.${level},school_levels.cs.{${level}}`);
-    Promise.all([q, loadAnsweredQuestions()]).then(([{ data }, answered]) => {
-      const list = unansweredFirst((data ?? []) as Q[], answered).slice(0, 10).sort((a, b) => a.difficulty - b.difficulty);
+    selectGameQuestions({ topic, level, game: "Quiz do curso", count: 10 }).then(data => {
+      const list = (data as Q[]).sort((a, b) => a.difficulty - b.difficulty);
       setQs(list); setLoading(false);
-    });
-  }, [topic, level]);
+    }).catch(() => { setQs([]); setLoading(false); });
+  }, [topic, level, round]);
 
   const answer = async (k: number) => {
+    if (pick !== null) return;
     setPick(k);
     const q = qs[i];
     const opts = Array.isArray(q.options) ? q.options.map(String) : [];
     logGameQuestion("Quiz do curso", q.question, opts[k] ?? "", opts[q.correct_index] ?? "", k === q.correct_index).catch(() => {});
-    if (k !== q.correct_index) return;
-    setScore((s) => s + 1);
-    const coins = COINS_BY_DIFFICULTY[Math.max(1, Math.min(5, q.difficulty)) - 1];
+    if (k === q.correct_index) setScore((s) => s + 1);
+    const coins = k === q.correct_index ? 4 : 1;
     const { data } = await supabase.auth.getUser();
     if (data.user) { await addCoins(data.user.id, coins); setEarned((e) => e + coins); toast.success(`+${coins} ${COIN_SYMBOL}`); }
   };
@@ -74,14 +72,14 @@ export function CursoQuiz({ topic, content, level }: { topic: string; content?: 
     <Card className="p-6 text-center space-y-3">
       <div className="text-2xl font-black">Você acertou {score} de {qs.length}!</div>
       <div>Ganhou {earned} {COIN_SYMBOL}</div>
-      <Button onClick={() => { setI(0); setScore(0); setEarned(0); setPick(null); setStarted(false); }}>Jogar de novo</Button>
+      <Button onClick={() => setRound(r => r + 1)}>Novas perguntas</Button>
     </Card>
   );
   const q = qs[i];
   if (q.slide_content && slideSeen !== q.id) return (
     <Card className="p-8 space-y-4 min-h-[320px] flex flex-col justify-center">
       <div className="text-xs text-muted-foreground">🖥️ Slide · Questão {i + 1}/{qs.length}</div>
-      <SlideView slide={{ ...parseSlide(q.slide_content, q.image_url)!, image: q.image_url }} />
+      {(() => { const slide = parseSlide(q.slide_content, q.image_url); return slide ? <SlideView slide={{ ...slide, image: q.image_url }} /> : null; })()}
       <Button onClick={() => setSlideSeen(q.id)}>Ir para a questão</Button>
     </Card>
   );

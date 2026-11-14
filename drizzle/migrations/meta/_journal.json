@@ -190,6 +190,34 @@
       "when": 1794503638481,
       "tag": "0026_game_teams_ready",
       "breakpoints": true
+    },
+    {
+      "idx": 27,
+      "version": "7",
+      "when": 1794671396984,
+      "tag": "0027_student_game_question_selection",
+      "breakpoints": true
+    },
+    {
+      "idx": 28,
+      "version": "7",
+      "when": 1794671433735,
+      "tag": "0028_normalize_game_answers",
+      "breakpoints": true
+    },
+    {
+      "idx": 29,
+      "version": "7",
+      "when": 1794671539674,
+      "tag": "0029_save_student_game_course_settings",
+      "breakpoints": true
+    },
+    {
+      "idx": 30,
+      "version": "7",
+      "when": 1794671795093,
+      "tag": "0030_team_student_question_history",
+      "breakpoints": true
     }
   ]
 }

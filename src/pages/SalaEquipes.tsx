@@ -47,11 +47,16 @@ export default function SalaEquipes() {
 
   const start = async () => {
     const n = count * teams.length;
-    const { data } = await supabase.from("chem_questions").select("id,question,options,correct_index,difficulty").or(gameOrFilter("sala_equipes")).limit(1000);
+    const { data, error } = await supabase.rpc("get_team_game_questions", { _users: [...new Set(teams.flatMap(t => t.members))] });
+    if (error) return toast.error(error.message);
     const pool = (data ?? []).filter((r: any) => Array.isArray(r.options) && r.options[r.correct_index] != null);
     const { picked, seen } = pickUnseen(pool as any[], loadSeen(`sala:${classId}`), n);
     saveSeen(`sala:${classId}`, seen);
     if (picked.length < n) return toast.error("Não há perguntas suficientes no banco.");
+    for (let i = 0; i < picked.length; i++) {
+      const { data: reserved, error } = await supabase.rpc("reserve_team_question", { _team: teams[i % teams.length].id, _question: picked[i].id });
+      if (error || !reserved) return toast.error("Questões indisponíveis nos cursos da equipe. Confira as atribuições.");
+    }
     setQs(picked.map((r: any) => ({ ...r, opts: shuffle(r.options.map(String)), correct: String(r.options[r.correct_index]) })));
     setScore(Object.fromEntries(teams.map((t) => [t.id, { right: 0, wrong: 0 }])));
     setIdx(0); setChosen(null); setDone(false);
@@ -76,6 +81,7 @@ export default function SalaEquipes() {
     if (chosen) return;
     setChosen(o);
     const ok = o === q.correct;
+    supabase.rpc("answer_team_question", { _team: team.id, _question: q.id, _answer: o }).then(({ error }) => { if (error) toast.error("Não foi possível registrar a resposta da equipe"); });
     const sc = { ...score, [team.id]: { right: score[team.id].right + (ok ? 1 : 0), wrong: score[team.id].wrong + (ok ? 0 : 1) } };
     setScore(sc);
     setTimeout(() => {

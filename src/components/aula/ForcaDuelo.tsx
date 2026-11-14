@@ -1,3 +1,5 @@
+import { gamePool, claimQuestions, selectGameQuestions, submitGameAnswer } from "@/lib/studentQuestions";
+import { loadLinkedTerms } from "@/lib/linkedBank";
 import { gameOrFilter } from "@/lib/linkedBank";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
@@ -37,24 +39,24 @@ export function ForcaDuelo({ area, level, difficulty }: { area: AreaValue; level
 
   const newRound = async () => {
     const s = await scope();
-    const { data: terms } = await supabase.from("chem_terms").select("*")
-      .eq("area", area).eq("school_level", level).eq("difficulty", difficulty).limit(200);
-    const { data: qs } = await supabase.from("chem_questions")
-      .select("id,question,options,correct_index").lte("difficulty", 2).or(gameOrFilter("forca")).limit(1000);
+    const terms = await loadLinkedTerms(area);
+    const qs = await gamePool(area);
     const validQ = (qs ?? []).filter((r: any) => Array.isArray(r.options) && r.options[r.correct_index] != null);
     if (!terms?.length || !validQ.length) { setEmpty(true); return; }
     const t = pickUnseen(terms as any[], loadSeen(`forca:${s}`), 1);
     saveSeen(`forca:${s}`, t.seen);
-    setTerm(t.picked[0]); setQPool(validQ);
+    const chosenTerm = t.picked[0];
+    if (!chosenTerm?.id) return setEmpty(true);
+    await claimQuestions([chosenTerm.id], "Forca Duelo (palavra)");
+    setEmpty(false); setTerm(chosenTerm); setQPool(validQ);
     setGuessed([]); setErrors(0); setPot([0, 0]); setWinner(null); setTurn(null); setWord("");
     nextQuestion(validQ, s);
   };
 
   const nextQuestion = async (pool = qPool, s?: string) => {
-    const sc = s ?? (await scope());
-    const r = pickUnseen(pool, loadSeen(`q:${sc}`), 1);
-    saveSeen(`q:${sc}`, r.seen);
-    const raw = r.picked[0];
+    const picked = await selectGameQuestions({ area, game: "Forca Duelo", count: 1 });
+    const raw = picked[0];
+    if (!raw || !Array.isArray(raw.options)) { setEmpty(true); return; }
     setQ({ ...raw, opts: shuffle(raw.options.map(String)), correct: String(raw.options[raw.correct_index]) });
     setLocked([]); setTurn(null);
   };
@@ -78,6 +80,7 @@ export function ForcaDuelo({ area, level, difficulty }: { area: AreaValue; level
 
   const answer = (p: P, o: string) => {
     if (turn !== null || locked.includes(p) || finished) return;
+    submitGameAnswer(q.id, o).catch(() => {});
     if (o === q.correct) { setTurn(p); toast.info(`${NAMES[p]} respondeu primeiro! Escolha uma letra.`); return; }
     const l = [...locked, p] as P[];
     setLocked(l);
@@ -138,7 +141,7 @@ export function ForcaDuelo({ area, level, difficulty }: { area: AreaValue; level
         <div className="text-xs text-muted-foreground italic">Dica: {term.clue}</div>
         {finished ? (
           <div className="space-y-2">
-            <div className="text-2xl font-black">🏆 {NAMES[winner!]} venceu! A palavra era {T}.</div>
+            <div className="text-2xl font-black">🏆 {NAMES[winner ?? 0]} venceu! A palavra era {T}.</div>
             <div className="text-xs text-muted-foreground">Quem errou não ganha as moedas conquistadas.</div>
             <Button onClick={newRound}>Nova palavra</Button>
           </div>

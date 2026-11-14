@@ -1,3 +1,4 @@
+import { claimQuestions, submitGameAnswer } from "@/lib/studentQuestions";
 import { loadLinkedTerms } from "@/lib/linkedBank";
 import { recordHit } from "@/lib/gameStats";
 import { useEffect, useMemo, useState } from "react";
@@ -60,12 +61,18 @@ export function CacaPalavras({ area, topic }: { area: AreaValue; topic?: string 
     loadLinkedTerms(area, topic, "caca_palavras").then(setTerms);
   }, [area, topic]);
 
-  useEffect(() => { if (terms.length) reset(); }, [terms, count]);
+  useEffect(() => { reset(); }, [area, topic, count]);
 
-  const reset = () => {
-    const sample = [...terms].sort(() => Math.random() - 0.5).filter((t) => t.term.length <= gridSizeFor(count)).slice(0, count);
+  const reset = async () => {
+    const latest = await loadLinkedTerms(area, topic, "caca_palavras");
+    const sample = [...latest].sort(() => Math.random() - 0.5).filter((t) => t.term.length <= gridSizeFor(count)).slice(0, count);
     SIZE = gridSizeFor(count);
-    setGrid(buildGrid(sample.map((t) => t.term)));
+    const nextGrid = buildGrid(sample.map((t) => t.term));
+    const placed = sample.filter(t => nextGrid.placed.some(p => p.term === t.term));
+    const claimed = await claimQuestions(placed.flatMap(t => t.id ? [t.id] : []), "Caça-Palavras");
+    const allowed = new Set(claimed.map(q => q.id));
+    nextGrid.placed = nextGrid.placed.filter(p => placed.some(t => t.term === p.term && t.id && allowed.has(t.id)));
+    setTerms(placed); setGrid(nextGrid);
     setFound(new Set());
     setSel([]);
   };
@@ -87,6 +94,8 @@ export function CacaPalavras({ area, topic }: { area: AreaValue; topic?: string 
     const rev = word.split("").reverse().join("");
     const hit = grid.placed.find((p) => (p.term === word || p.term === rev) && !found.has(p.term));
     if (hit) {
+      const item = terms.find(t => t.term === hit.term);
+      if (item?.id) submitGameAnswer(item.id, hit.term).catch(() => {});
       setFound((f) => new Set(f).add(hit.term));
       toast.success(`+${hit.term} · +2 ⚛`);
       recordHit(2, "caca");

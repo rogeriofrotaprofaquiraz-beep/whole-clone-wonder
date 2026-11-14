@@ -1,3 +1,4 @@
+import { claimQuestions, gamePool, submitGameAnswer } from "@/lib/studentQuestions";
 import { loadLinkedTerms, loadLinkedQuestions } from "@/lib/linkedBank";
 import { QUESTION_COUNTS } from "@/lib/miniGames";
 import { recordHit, recordMiss } from "@/lib/gameStats";
@@ -50,8 +51,8 @@ function useTerms(area: AreaValue) {
 }
 
 /* ---------------- Palavras Cruzadas (grade estilo revista) ---------------- */
-const CROSS_COINS = [1, 2, 4, 7, 10]; // Átomos por palavra conforme dificuldade 1★..5★
-type CTerm = { term: string; clue: string; difficulty: number };
+const CROSS_COINS = [4, 4, 4, 4, 4]; // Átomos por palavra conforme dificuldade 1★..5★
+type CTerm = { term: string; clue: string; difficulty: number; id?: string };
 export function PalavrasCruzadas({ area, topic }: { area: AreaValue; topic?: string }) {
   const meta = areaMeta(area);
   const [terms, setTerms] = useState<CTerm[] | null>(null);
@@ -64,9 +65,13 @@ export function PalavrasCruzadas({ area, topic }: { area: AreaValue; topic?: str
   const [letters, setLetters] = useState<Record<string, string>>({});
   const [done, setDone] = useState<boolean[]>([]);
   const [active, setActive] = useState(0);
-  const reset = () => {
-    const pool = (terms ?? []).filter((t) => cwClean(t.term).length >= 3 && cwClean(t.term).length <= 14);
+  const reset = async () => {
+    const latest = await loadLinkedTerms(area, topic, "cruzada");
+    const pool = latest.filter((t) => cwClean(t.term).length >= 3 && cwClean(t.term).length <= 14);
     const l = buildCrossword(pool, (t) => t.term, size);
+    const claimed = await claimQuestions(l.words.flatMap(w => w.item.id ? [w.item.id] : []), "Palavras Cruzadas");
+    const allowed = new Set(claimed.map(q => q.id));
+    if (l.words.some(w => !w.item.id || !allowed.has(w.item.id))) return;
     setLayout(l); setLetters({}); setDone(l.words.map(() => false)); setActive(0);
   };
   useEffect(() => { if (terms) reset(); /* eslint-disable-next-line */ }, [terms, size]);
@@ -102,6 +107,7 @@ export function PalavrasCruzadas({ area, topic }: { area: AreaValue; topic?: str
     if (keys.map((k) => lt[k]).join("") === w.answer) {
       const d = Math.max(1, Math.min(5, w.item.difficulty ?? 1));
       setDone((x) => x.map((v, k) => (k === i ? true : v)));
+      if (w.item.id) submitGameAnswer(w.item.id, w.item.term).catch(() => toast.error("Não foi possível registrar a resposta"));
       reward(CROSS_COINS[d - 1], `${w.number} ${w.dir === "across" ? "horizontal" : "vertical"} correta! (${"★".repeat(d)})`);
     } else toast.error(`${w.number} ${w.dir === "across" ? "horizontal" : "vertical"}: ainda não…`);
   };
@@ -110,7 +116,8 @@ export function PalavrasCruzadas({ area, topic }: { area: AreaValue; topic?: str
     const ch = cwClean(val).slice(-1);
     const next = { ...letters, [key]: ch };
     setLetters(next);
-    const cell = cellMap.get(key)!;
+    const cell = cellMap.get(key);
+    if (!cell) return;
     const wi = cell.words.includes(active) ? active : cell.words[0];
     if (ch) {
       const keys = cellsOf(wi);
@@ -142,7 +149,7 @@ export function PalavrasCruzadas({ area, topic }: { area: AreaValue; topic?: str
   );
   return (
     <div className="space-y-4">
-      <Header title={`Palavras Cruzadas · ${meta.label}`} sub={`${done.filter(Boolean).length}/${layout.words.length} resolvidas · 1★=1⚛ 2★=2⚛ 3★=4⚛ 4★=7⚛ 5★=10⚛`} onReset={reset} color={meta.color} />
+      <Header title={`Palavras Cruzadas · ${meta.label}`} sub={`${done.filter(Boolean).length}/${layout.words.length} resolvidas · 4⚛ por acerto`} onReset={reset} color={meta.color} />
       <Card className="p-3 flex flex-wrap gap-2 items-center">
         <span className="text-sm font-bold">Palavras por rodada:</span>
         {QUESTION_COUNTS.map((n) => (
@@ -167,7 +174,7 @@ export function PalavrasCruzadas({ area, topic }: { area: AreaValue; topic?: str
                 <div key={key} className={`relative w-9 h-9 border border-foreground/60 ${solved ? "bg-primary text-primary-foreground" : activeCells.has(key) ? "bg-accent" : "bg-card"}`}>
                   <input id={`cw-${key}`} aria-label={`Casa ${key}`} value={solved ? cell.ch : letters[key] ?? ""} readOnly={solved}
                     onFocus={() => { if (!cell.words.includes(active)) setActive(cell.words[0]); }}
-                    onClick={() => { if (cell.words.length > 1 && cell.words.includes(active)) setActive(cell.words.find((w) => w !== active)!); }}
+                    onClick={() => { if (cell.words.length > 1 && cell.words.includes(active)) setActive(cell.words.find((w) => w !== active) ?? active); }}
                     onChange={(e) => onType(key, e.target.value)} onKeyDown={(e) => onKey(key, e)}
                     className="w-full h-full bg-transparent text-center font-black uppercase outline-none caret-transparent" />
                 </div>
@@ -186,7 +193,7 @@ export function PalavrasCruzadas({ area, topic }: { area: AreaValue; topic?: str
 }
 
 /* ---------------- Tabuleiro Químico ---------------- */
-type Q = { question: string; options: any; correct_index: number };
+type Q = { id: string; question: string; options: any; correct_index: number };
 export function TabuleiroQuimico({ area = "geral", topic }: { area?: AreaValue; topic?: string }) {
   const SIZE = 20;
   const [qs, setQs] = useState<Q[]>([]);
@@ -198,13 +205,17 @@ export function TabuleiroQuimico({ area = "geral", topic }: { area?: AreaValue; 
     loadLinkedQuestions(area, topic, "tabuleiro").then((d) => setQs(d as Q[]));
   }, [area, topic]);
   const reset = () => { setPos(0); setQ(null); setDice(null); setTurns(0); };
-  const roll = () => {
-    if (!qs.length) return;
-    setDice(1 + Math.floor(Math.random() * 6));
-    setQ(qs[Math.floor(Math.random() * qs.length)]);
+  const roll = async () => {
+    const pool = await gamePool(area, topic);
+    const picked = pool[Math.floor(Math.random() * pool.length)];
+    if (!picked) return toast.info("Não há perguntas novas para esta seleção");
+    const claimed = await claimQuestions([picked.id], "Tabuleiro");
+    const next = claimed[0]; if (!next) return;
+    setDice(1 + Math.floor(Math.random() * 6)); setQ(next);
   };
   const answer = (k: number) => {
     if (!q || dice === null) return;
+    submitGameAnswer(q.id, String(q.options[k])).catch(() => toast.error("Não foi possível registrar a resposta"));
     setTurns((t) => t + 1);
     if (k === q.correct_index) {
       const np = Math.min(SIZE - 1, pos + dice);
@@ -267,16 +278,15 @@ export function BatalhaNaval({ area = "geral", topic }: { area?: string; topic?:
   useEffect(() => { loadLinkedQuestions(area, topic, "batalha_naval").then((d) => setBank(d as never)); }, [area, topic]);
   const [ammo, setAmmo] = useState(30);
   const reset = () => { setShips(make()); setShots(new Map()); setAsk(null); setAmmo(30); };
-  const click = (idx: number) => {
-    if (shots.has(idx) || ammo <= 0) return;
-    const el = grid[idx];
-    if (bank.length) {
-      const b = bank[Math.floor(Math.random() * bank.length)];
-      setAsk({ idx, q: b.question, opts: shuffle(b.options), right: b.options[b.correct_index] });
-      return;
-    }
-    const opts = shuffle([el.name, ...shuffle(ELEMENTS.filter((e) => e.name !== el.name)).slice(0, 2).map((e) => e.name)]);
-    setAsk({ idx, q: `Qual é o nome do elemento ${el.symbol}?`, opts, right: el.name });
+  const click = async (idx: number) => {
+    if (ask || shots.has(idx) || ammo <= 0) return;
+    const pool = await gamePool(area, topic);
+    const candidate = pool[Math.floor(Math.random() * pool.length)];
+    if (!candidate) return toast.info("Não há perguntas novas nos cursos atribuídos");
+    const claimed = await claimQuestions([candidate.id], "Batalha Naval");
+    const next = claimed[0];
+    if (!next || !Array.isArray(next.options)) return;
+    setAsk({ idx, q: next.question, opts: shuffle(next.options.map(String)), right: String(next.options[next.correct_index]) });
   };
   const answer = (o: string) => {
     if (!ask) return;

@@ -8,6 +8,7 @@ import { toast } from "sonner";
 import { ChevronDown, ChevronUp, Search, Shield, Trash, CheckCircle2, XCircle } from "lucide-react";
 import { GAME_FEATURES, PAGE_FEATURES } from "@/lib/featureAccess";
 import { UserGamePanel } from "./UserGamePanel";
+import { StudentCourses } from "./StudentCourses";
 
 const FEATURES = [...GAME_FEATURES.map((f) => ({ ...f, group: "Jogos" })), ...PAGE_FEATURES.map((f) => ({ key: f.key, label: f.label, group: "Páginas" }))];
 const ALL = "__all";
@@ -186,6 +187,7 @@ export function UserAccessManager({ profiles, onRole, onCoins, onDelete, onGrant
                     </div>
                   </div>
                   <UserGamePanel userId={p.id} />
+                  <StudentCourses userId={p.id} />
                   <QuestionLog userId={p.id} />
                   {(["Jogos", "Páginas"] as const).map((g) => (
                     <div key={g} className="space-y-2">

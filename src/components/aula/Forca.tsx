@@ -1,3 +1,5 @@
+import { loadLinkedTerms } from "@/lib/linkedBank";
+import { claimQuestions, submitGameAnswer } from "@/lib/studentQuestions";
 import { recordHit, recordMiss } from "@/lib/gameStats";
 import { useEffect, useMemo, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
@@ -27,9 +29,7 @@ export function Forca({ area, level, difficulty }: { area: AreaValue; level: Lev
   const meta = areaMeta(area);
 
   useEffect(() => {
-    supabase.from("chem_terms").select("*")
-      .eq("area", area).eq("school_level", level).eq("difficulty", difficulty).limit(100)
-      .then(({ data }) => { setPool(data ?? []); });
+    loadLinkedTerms(area, undefined, "forca").then(data => setPool(data.filter(q => q.difficulty === difficulty)));
   }, [area, level, difficulty]);
 
   useEffect(() => { if (pool.length) pickNext(pool); }, [pool]);
@@ -39,9 +39,13 @@ export function Forca({ area, level, difficulty }: { area: AreaValue; level: Lev
     return () => clearInterval(id);
   }, []);
 
-  const pickNext = (p: any[]) => {
-    if (!p.length) return;
-    setCurrent(p[Math.floor(Math.random() * p.length)]);
+  const pickNext = async (p: any[]) => {
+    const latest = await loadLinkedTerms(area, undefined, "forca");
+    const chosen = latest.filter(t => t.difficulty === difficulty).sort(() => Math.random() - 0.5)[0];
+    if (!chosen?.id) { setPool([]); setCurrent(null); return; }
+    const claimed = await claimQuestions([chosen.id], "Forca");
+    if (!claimed.length) return;
+    setCurrent(chosen);
     setGuessed([]); setErrors(0); setConsecutiveWrong(0); setHintRevealed(false);
     setStartedAt(Date.now()); setNow(Date.now());
   };
@@ -72,7 +76,7 @@ export function Forca({ area, level, difficulty }: { area: AreaValue; level: Lev
       const c = consecutiveWrong + 1;
       setConsecutiveWrong(c);
       setErrors((e) => e + 1);
-      if (errors + 1 >= MAX_ERRORS) recordMiss("forca");
+      if (errors + 1 >= MAX_ERRORS) { recordMiss("forca"); submitGameAnswer(current.id, next.join("")).catch(() => {}); }
       if (c >= 2 && !hintRevealed) {
         setHintRevealed(true);
         toast.info("Dica revelada! (sua pontuação será menor)");
@@ -86,7 +90,8 @@ export function Forca({ area, level, difficulty }: { area: AreaValue; level: Lev
           penalty: (hintRevealed ? 0.4 : 0) + Math.min(0.3, errors * 0.05),
           correct: true,
         });
-        const coins = coinsFor(difficulty, elapsedMs);
+        const coins = 4;
+        submitGameAnswer(current.id, term).catch(() => {});
         setScore((s) => s + pts);
         setWins((w) => w + 1);
         recordHit(coins, "forca");

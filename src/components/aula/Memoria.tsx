@@ -1,3 +1,4 @@
+import { claimQuestions, submitGameAnswer } from "@/lib/studentQuestions";
 import { loadLinkedTerms } from "@/lib/linkedBank";
 import { recordHit, recordMiss } from "@/lib/gameStats";
 import { useEffect, useState } from "react";
@@ -10,7 +11,7 @@ import { RotateCcw, Trophy } from "lucide-react";
 import { toast } from "sonner";
 import { addCoins } from "@/lib/playerEconomy";
 
-type Tile = { id: number; key: string; face: string; sub?: string; flipped: boolean; matched: boolean };
+type Tile = { questionId?: string; clue?: string; term?: string; id: number; key: string; face: string; sub?: string; flipped: boolean; matched: boolean };
 
 export function Memoria({ area, topic }: { area: AreaValue; topic?: string }) {
   const meta = areaMeta(area);
@@ -23,10 +24,12 @@ export function Memoria({ area, topic }: { area: AreaValue; topic?: string }) {
     const data = await loadLinkedTerms(area, topic, "memoria");
     const pool = (data ?? []).sort(() => Math.random() - 0.5).slice(0, 8);
     if (!pool.length) return setTiles([]);
+    const claimed = await claimQuestions(pool.flatMap(t => t.id ? [t.id] : []), "Memória");
+    const allowed = new Set(claimed.map(q => q.id));
     const pairs: Tile[] = [];
-    pool.forEach((t, i) => {
-      pairs.push({ id: i * 2, key: `k${i}`, face: t.term, flipped: false, matched: false });
-      pairs.push({ id: i * 2 + 1, key: `k${i}`, face: "💡", sub: t.clue, flipped: false, matched: false });
+    pool.filter(t => t.id && allowed.has(t.id)).forEach((t, i) => {
+      pairs.push({ questionId: t.id, clue: t.clue, term: t.term, id: i * 2, key: `k${i}`, face: t.term, flipped: false, matched: false });
+      pairs.push({ questionId: t.id, clue: t.clue, term: t.term, id: i * 2 + 1, key: `k${i}`, face: "💡", sub: t.clue, flipped: false, matched: false });
     });
     setTiles(pairs.sort(() => Math.random() - 0.5));
     setFlipped([]); setMoves(0);
@@ -46,6 +49,7 @@ export function Memoria({ area, topic }: { area: AreaValue; topic?: string }) {
       setMoves((m) => m + 1);
       const [a, b] = nf;
       if (next[a].key === next[b].key) {
+        if (next[a].questionId) submitGameAnswer(String(next[a].questionId), next[a].term ?? "").catch(() => {});
         setTimeout(() => {
           setTiles((cur) => cur.map((x, i) => i === a || i === b ? { ...x, matched: true } : x));
           setFlipped([]); setBusy(false);

@@ -8,13 +8,13 @@ describe("questionPicker", () => {
     const { picked } = pickUnseen(pool, ["q0", "q1", "q2"], 2);
     expect(picked.map((p) => p.id).sort()).toEqual(["q3", "q4"]);
   });
-  it("recomeça quando acabam as perguntas novas", () => {
+  it("usa apenas as perguntas novas restantes", () => {
     const r = pickUnseen(pool, ["q0", "q1", "q2", "q3"], 3);
-    expect(r.picked).toHaveLength(3);
-    expect(r.seen).toHaveLength(3);
+    expect(r.picked.map(q => q.id)).toEqual(["q4"]);
+    expect(r.seen).toHaveLength(5);
   });
   it("moedas sobem com a dificuldade", () => {
-    expect([1, 2, 3, 4, 5].map(quizCoins)).toEqual([2, 4, 6, 8, 10]);
+    expect([1, 2, 3, 4, 5].map(quizCoins)).toEqual([4, 4, 4, 4, 4]);
   });
   it("relatório conta acertos por nível", () => {
     const s = summarize([

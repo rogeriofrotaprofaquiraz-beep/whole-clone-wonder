@@ -1,12 +1,18 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import { accuracy, freshQuestions, submitGameAnswer } from "@/lib/studentQuestions";
 
 type Row = { id: string; game: string; question: string; answer: string | null; correct_answer: string | null; is_correct: boolean; created_at: string };
 
 export async function logGameQuestion(game: string, question: string, answer: string, correct: string, isCorrect: boolean) {
   const { data } = await supabase.auth.getUser();
   if (!data.user) return;
-  await supabase.from("game_question_log").insert({ user_id: data.user.id, game, question, answer, correct_answer: correct, is_correct: isCorrect });
+  const { data: history, error } = await supabase.from("student_question_history").select("question_id,answered_at").eq("user_id", data.user.id).eq("question_text", question).maybeSingle();
+  if (error) throw error;
+  if (history?.answered_at) return;
+  if (history) { await submitGameAnswer(history.question_id, answer); return; }
+  const { error: insertError } = await supabase.from("game_question_log").insert({ user_id: data.user.id, game, question, answer, correct_answer: correct, is_correct: isCorrect });
+  if (insertError) throw insertError;
 }
 
 /** Textos das perguntas já respondidas pelo aluno logado (em qualquer aparelho). */
@@ -20,22 +26,34 @@ export async function loadAnsweredQuestions(): Promise<Set<string>> {
 /** Coloca primeiro as perguntas ainda não vistas pelo aluno (embaralhadas); as já vistas só entram se faltar. */
 export function unansweredFirst<T extends { question: string }>(pool: T[], answered: Set<string>): T[] {
   const mix = <X,>(a: X[]) => [...a].sort(() => Math.random() - 0.5);
-  const fresh = pool.filter((q) => !answered.has(q.question.trim().toLowerCase()));
-  const old = pool.filter((q) => answered.has(q.question.trim().toLowerCase()));
-  return [...mix(fresh), ...mix(old)];
+  return mix(freshQuestions(pool, answered));
 }
 
 /** Lista das perguntas respondidas pelo aluno nos jogos. */
 export function QuestionLog({ userId }: { userId: string }) {
   const [rows, setRows] = useState<Row[]>([]);
+  const [shown, setShown] = useState(0);
+  const [total, setTotal] = useState(0);
+  const [right, setRight] = useState(0);
+  const [points, setPoints] = useState(0);
   useEffect(() => {
-    supabase.from("game_question_log").select("*").eq("user_id", userId).order("created_at", { ascending: false }).limit(1000)
-      .then(({ data }) => setRows((data ?? []) as Row[]));
+    (async () => {
+      const all: Row[] = [];
+      for (let offset = 0; ; offset += 500) {
+        const { data, error } = await supabase.from("game_question_log").select("*").eq("user_id", userId).order("created_at", { ascending: false }).range(offset, offset + 499);
+        if (error) break;
+        all.push(...(data ?? []));
+        if (!data || data.length < 500) break;
+      }
+      setRows(all); const stats = accuracy(all); setTotal(stats.answered); setRight(stats.right);
+      const { count } = await supabase.from("student_question_history").select("question_id", { count: "exact", head: true }).eq("user_id", userId).is("answered_at", null);
+      setShown(count ?? 0); setPoints(all.reduce((sum, r) => sum + (r.is_correct ? 4 : 1), 0));
+    })();
   }, [userId]);
-  const right = rows.filter((r) => r.is_correct).length;
   return (
     <div className="space-y-2">
-      <p className="text-xs font-semibold text-muted-foreground">📝 Perguntas respondidas nos jogos ({right}/{rows.length} certas)</p>
+      <h3 className="font-semibold">📝 Dossiê de questões</h3>
+      <p className="text-sm text-muted-foreground">{right}/{total} acertos · {total ? Math.round(right * 100 / total) : 0}% de acerto · {points} pontos · {shown} apresentadas sem resposta</p>
       {!rows.length ? <p className="text-sm text-muted-foreground">Nenhuma pergunta respondida ainda.</p> : (
         <div className="max-h-64 overflow-auto rounded-lg border divide-y">
           {rows.map((r) => (

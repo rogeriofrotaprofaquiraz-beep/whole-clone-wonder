@@ -5,6 +5,9 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { lessonTopics, slugifyTopic, lessonPercent, isAfterReset, PASS_PERCENT } from "@/lib/deckScore";
+import { CourseQuestionBank } from "@/components/game/CourseQuestionBank";
+import { StudentCourses } from "@/components/game/StudentCourses";
+import { QuestionLog } from "@/components/game/QuestionLog";
 
 type Course = { id: string; title: string };
 type Lesson = { id: string; title: string; content: string | null; order_index: number };
@@ -21,8 +24,11 @@ export default function PainelDesempenho() {
   const [topicResets, setTopicResets] = useState<Record<string, string>>({});
   const [done, setDone] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
+  const [studentId, setStudentId] = useState("");
+  const [allStudents, setAllStudents] = useState<Student[]>([]);
 
   useEffect(() => {
+    supabase.from("profiles").select("id,full_name,username").order("full_name").then(({ data }) => setAllStudents((data ?? []).map(p => ({ id: p.id, name: p.full_name || p.username || "Aluno" }))));
     supabase.from("courses").select("id,title").order("title").then(({ data }) => {
       setCourses((data ?? []) as Course[]);
       if (data?.length) setCourseId(data[0].id);
@@ -86,6 +92,15 @@ export default function PainelDesempenho() {
         </select>
         <Link to="/" className="ml-auto text-sm underline">Voltar</Link>
       </div>
+      {courseId && <CourseQuestionBank courseId={courseId} />}
+      <section className="space-y-3 border-b pb-4">
+        <h2 className="font-semibold">Cursos e dossiê do aluno</h2>
+        <select aria-label="Aluno para cursos e dossiê" className="border rounded px-2 py-2 bg-background max-w-full" value={studentId} onChange={e => setStudentId(e.target.value)}>
+          <option value="">Escolha o aluno</option>
+          {allStudents.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
+        </select>
+        {studentId && <><StudentCourses key={studentId} userId={studentId} /><QuestionLog userId={studentId} /></>}
+      </section>
       <p className="text-sm text-muted-foreground">Nota de cada aluno em cada aula (módulo). Abaixo de {PASS_PERCENT}% o próximo módulo fica travado. Use 🔄 para o aluno fazer o módulo de novo.</p>
       <Card className="p-2 overflow-auto">
         {loading ? <p className="p-4">Carregando…</p> : !students.length ? <p className="p-4">Nenhum aluno matriculado neste curso.</p> : (

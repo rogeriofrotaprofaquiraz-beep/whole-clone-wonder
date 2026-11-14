@@ -4,17 +4,15 @@ export const SEEN_KEY = "seen_questions_v1";
 /** Moedas por acerto conforme a dificuldade (1 muito fácil … 5 muito difícil). */
 export function quizCoins(difficulty: number): number {
   const d = Math.min(5, Math.max(1, Math.round(difficulty || 1)));
-  return d * 2; // 2, 4, 6, 8, 10
+  return 4;
 }
 
-/** Escolhe até n itens ainda não vistos; se acabarem, recomeça o ciclo. */
+/** Nunca reinicia automaticamente o histórico do aluno. */
 export function pickUnseen<T extends { id: string }>(pool: T[], seen: string[], n: number, rnd = Math.random) {
   const seenSet = new Set(seen);
-  let fresh = pool.filter((q) => !seenSet.has(q.id));
-  let reset = false;
-  if (fresh.length < Math.min(n, pool.length)) { fresh = pool; reset = true; }
+  const fresh = pool.filter((q) => !seenSet.has(q.id));
   const picked = [...fresh].sort(() => rnd() - 0.5).slice(0, n);
-  const nextSeen = reset ? picked.map((q) => q.id) : [...seen, ...picked.map((q) => q.id)];
+  const nextSeen = [...seen, ...picked.map((q) => q.id)];
   return { picked, seen: nextSeen };
 }
 
