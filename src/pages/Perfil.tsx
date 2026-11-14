@@ -18,6 +18,7 @@ import { QuestionLog } from "@/components/game/QuestionLog";
 import { HeroOptionsDialog } from "@/components/game/HeroOptionsDialog";
 import { backgroundsFor } from "@/lib/elementBackgrounds";
 import { buildAvatarDataUrl } from "@/lib/localAvatar";
+import { AvatarModuleBuilder } from "@/components/game/AvatarModuleBuilder";
 import { APPEARANCE_LABELS, APPEARANCE_GROUPS, APPEARANCE_OPTIONS } from "@/lib/heroAppearance";
 
 
@@ -117,7 +118,7 @@ export default function Perfil() {
   // Card principal: SOMENTE arte de IA. Desenhos simples (SVG) nunca são exibidos.
   const gen = avatar?.generated_url as string | undefined;
   const isSimpleDrawing = !!gen && (gen.startsWith("data:image/svg") || /\.svg(\?|$)/i.test(gen) || gen.includes("/fallback-"));
-  const avatarImage = gen && !isSimpleDrawing ? gen : currentEl.heroImage;
+  const avatarImage = gen || currentEl.heroImage;
 
   // Arte da carta que pode servir de referência visual para a IA (imagem fixa, não vídeo/SVG)
   const usableCardArt = usableCardReference(currentEl.heroImage);
@@ -356,12 +357,19 @@ export default function Perfil() {
             <Tabs defaultValue="customize">
               <TabsList className="bg-slate-900/60 border border-white/10">
                 <TabsTrigger value="customize">1. Criar avatar ultrarrealista</TabsTrigger>
+                <TabsTrigger value="montar">🧩 Montar (grátis)</TabsTrigger>
                 <TabsTrigger value="gallery">2. Galeria de heróis</TabsTrigger>
                 <TabsTrigger value="questoes">3. Minhas questões</TabsTrigger>
               </TabsList>
 
               <TabsContent value="questoes">
                 {session?.user?.id && <Card><CardContent className="p-4"><QuestionLog userId={session.user.id} /></CardContent></Card>}
+              </TabsContent>
+              <TabsContent value="montar">
+                <Card className="bg-slate-900/60 border-white/10"><CardContent className="p-4">
+                  <AvatarModuleBuilder appearance={avatar?.appearance ?? {}} symbol={currentSymbol} elementName={currentEl.name} busy={busy}
+                    onApplyOption={(k, v) => updateAppearance({ [k]: v })} onSave={applyLocalAvatar} />
+                </CardContent></Card>
               </TabsContent>
               <TabsContent value="gallery">
                 <Card className="bg-slate-900/60 border-white/10">
